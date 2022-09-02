@@ -1,18 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
-import styled from 'styled-components/native'
 import React from 'react'
-import { COLORS } from '../constants'
-
-const StyledView = styled.View`
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-`;
 
 const Container = (props) => (
-    <StyledView>
+    <View style={{flex:1, alignItems:"center", justifyContent:"center"}}>
       {props.children}
-    </StyledView>
+    </View>
 );
 
 
