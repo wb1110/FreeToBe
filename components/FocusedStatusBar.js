@@ -1,13 +1,13 @@
-import { View, Text, StatusBar } from 'react-native'
+import { View, Text, StatusBar } from 'react-native';
 import { useIsFocused } from '@react-navigation/core';
-import React from 'react'
+import React from 'react';
 
 import { COLORS } from '../constants/theme.js';
 
-const FocusedStatusBar = () => {
+function FocusedStatusBar() {
   const isFocused = useIsFocused();
-  
-  return isFocused ? <StatusBar animated={true} barStyle='dark-content' /> : null
+
+  return isFocused ? <StatusBar animated barStyle="dark-content" /> : null;
 }
 
-export default FocusedStatusBar
+export default FocusedStatusBar;

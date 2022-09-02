@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from 'react-native';
+import React from 'react';
 
-const NFTCard = () => {
+function NFTCard() {
   return (
     <View>
       <Text>NFTCard</Text>
     </View>
-  )
+  );
 }
 
-export default NFTCard
+export default NFTCard;

@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { Text } from 'react-native';
 
-const Details = () => {
+function Details() {
   return (
     <Text>Details</Text>
-  )
+  );
 }
 
-export default Details
+export default Details;

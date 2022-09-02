@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from 'react-native';
+import React from 'react';
 
-const HomeHeader = () => {
+function HomeHeader() {
   return (
     <View>
       <Text>HomeHeader</Text>
     </View>
-  )
+  );
 }
 
-export default HomeHeader
+export default HomeHeader;
