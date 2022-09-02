@@ -3,18 +3,18 @@ import styled from 'styled-components/native'
 import React from 'react'
 import { COLORS } from '../constants'
 
-export const StyledView = styled.View`
-  flex: 1,
-  backgroundColor: ${COLORS.primary},
-  alignItems: 'center',
-  justifyContent: 'center',
+const StyledView = styled.View`
+  flex: 1;
+  background-color: ${COLORS.primary};
+  align-items: center;
+  justify-content: center;
 `;
 
-const Container = (props) => {
-    <View style={StyledView}>
+const Container = (props) => (
+    <StyledView>
       {props.children}
-    </View>
-};
+    </StyledView>
+);
 
 
 

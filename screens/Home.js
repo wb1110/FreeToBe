@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
-      <View>
+      <Container>
         <Text>
           Welcome!
         </Text>
@@ -19,7 +19,7 @@ const Home = () => {
         <Text>
             Fill in the following to get started:
         </Text>
-      </View>
+      </Container>
     </SafeAreaView>
   )
 }
