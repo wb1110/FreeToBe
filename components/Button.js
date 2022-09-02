@@ -4,15 +4,15 @@ import {
 import React from 'react';
 import { COLORS } from '../constants';
 
-function Button(props) {
+function Button({ onPress, title }) {
   return (
     <TouchableOpacity
       style={{
         backgroundColor: COLORS.primary, alignItems: 'center', justifyContent: 'center', borderRadius: '25px', padding: '2%',
       }}
-      onPress={() => alert('Hello, world!')}
+      onPress={onPress}
     >
-      <Text style={{ color: COLORS.secondary }}>{props.children}</Text>
+      <Text style={{ color: COLORS.secondary }}>{title}</Text>
     </TouchableOpacity>
   );
 }
