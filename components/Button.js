@@ -12,7 +12,7 @@ function Button({ onPress, title }) {
       }}
       onPress={onPress}
     >
-      <Text style={{ color: COLORS.secondary }}>{title}</Text>
+      <Text style={{ color: COLORS.white }}>{title}</Text>
     </TouchableOpacity>
   );
 }
