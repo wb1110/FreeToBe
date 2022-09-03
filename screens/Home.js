@@ -1,11 +1,9 @@
-import { useState } from 'react';
-import { Text, View, SafeAreaView, FlatList } from 'react-native';
-
-import { COLORS, NFTData } from '../constants';
-import { HomeHeader, FocusedStatusBard, FocusedStatusBar } from '../components';
+import { SafeAreaView, Text } from 'react-native';
+import { FocusedStatusBar } from '../components';
+import Button from '../components/Button';
 import Container from '../components/Container';
 import CustomText from '../components/CustomText';
-import Button from '../components/Button';
+
 
 function Home({ navigation }) {
   return (
