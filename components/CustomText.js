@@ -3,18 +3,23 @@ import { Text } from 'react-native';
 import { COLORS } from '../constants';
 
 function CustomText({ variant, children, ...props }) {
-  const fontVariant = (variant) => {
-    if(variant === 'h1') {
-      return 21
-    }
-    if (!variant) {
-      return 16
-    }
-    
-  }
+  const variantsMapping = {
+    h1: 21,
+    h2: "h2",
+    h3: "h3",
+    h4: "h4",
+    h5: "h5",
+    h6: "h6",
+    subheading1: "h6",
+    subheading2: "h6",
+    body1: 16,
+    body2: "p",
+  };
+
+  const size = variant ? variantsMapping[variant] : 16;
 
   return (
-    <Text style={{ color: COLORS.primary, fontFamily: 'Inter-Regular', fontSize: fontVariant() }} {...props}>
+    <Text style={{ color: COLORS.primary, fontFamily: 'Inter-Regular', fontSize: size }} {...props}>
       {children}
     </Text>
   );
