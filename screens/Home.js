@@ -10,7 +10,7 @@ function Home({ navigation }) {
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
       <Container>
-        <CustomText>Welcome!</CustomText>
+        <CustomText variant='h1' >Welcome!</CustomText>
         <Text>Are you ready to have real sustainable change?</Text>
         <Text>Fill in the following to get started:</Text>
         <Button onPress={() => navigation.navigate('Gender')} title="Let's Do This" />
