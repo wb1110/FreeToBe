@@ -4,6 +4,8 @@ import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
 import Button from '../../components/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+
 
 function Gender({ navigation }) {
   return (
@@ -18,6 +20,7 @@ function Gender({ navigation }) {
           <Button title="Nonbinary" />
         </Text>
         <Button onPress={() => navigation.navigate('Home')} title="Submit" />
+        <FontAwesomeIcon />
       </Container>
     </SafeAreaView>
   );
