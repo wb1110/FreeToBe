@@ -14,7 +14,7 @@ function CustomText({ variant, children, ...props }) {
   }
 
   return (
-    <Text style={{ color: COLORS.primary, fontSize: fontVariant() }} {...props}>
+    <Text style={{ color: COLORS.primary, fontFamily: 'Inter-Regular', fontSize: fontVariant() }} {...props}>
       {children}
     </Text>
   );
