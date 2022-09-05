@@ -1,9 +1,7 @@
-import { SafeAreaView, TextInput } from 'react-native';
+import { SafeAreaView, TextInput, View } from 'react-native';
 import { FocusedStatusBar } from '../../components';
-import ArrowRight from '../../components/ArrowRight';
-import Button from '../../components/Button';
 import Container from '../../components/Container';
-import CustomText from '../../components/CustomText';
+import { Input } from "@rneui/themed";
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../../constants/theme';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -14,11 +12,17 @@ function HeightWeightAge({ navigation }) {
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
       <Container>
-        <CustomText>Height</CustomText>
-        <TextInput style={{ height: 40, margin: 12, borderWidth: 1, padding: 10 }} />
-        <CustomText>Weight</CustomText>
-        <CustomText>Age</CustomText>
-        <ArrowRight navigation={navigation} />
+        <Input label='Height' />
+        <Input label='Weight' />
+        <Input label='Age' />
+        <View style={{ flexDirection: "row" }}>
+          <TouchableOpacity onPress={() => {navigation.navigate('Gender')}}>
+            <Ionicons name="arrow-back-circle" size={48} color={COLORS.primary} navigation={navigation} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {navigation.navigate('Home')}}>
+            <Ionicons name="arrow-forward-circle" size={48} color={COLORS.primary} />
+          </TouchableOpacity>
+        </View>
       </Container>
     </SafeAreaView>
   );
