@@ -1,4 +1,4 @@
-import { SafeAreaView, Text } from 'react-native';
+import { SafeAreaView, TextInput } from 'react-native';
 import { FocusedStatusBar } from '../../components';
 import ArrowRight from '../../components/ArrowRight';
 import Button from '../../components/Button';
@@ -15,11 +15,10 @@ function HeightWeightAge({ navigation }) {
       <FocusedStatusBar />
       <Container>
         <CustomText>Height</CustomText>
+        <TextInput style={{ height: 40, width: 40, margin: 12, borderWidth: 1, padding: 10 }} />
         <CustomText>Weight</CustomText>
         <CustomText>Age</CustomText>
-        <TouchableOpacity onPress={() => {navigation.navigate('Home')}}>
-          <Ionicons name="arrow-forward-circle" size={48} color={COLORS.primary} />
-        </TouchableOpacity>
+        <ArrowRight navigation={navigation} />
       </Container>
     </SafeAreaView>
   );

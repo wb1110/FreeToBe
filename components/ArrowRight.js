@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 function ArrowRight ({ navigation }) {
   return (
     <TouchableOpacity onPress={() => {navigation.navigate('Home')}}>
-      <Ionicons name="arrow-forward-circle" size={48} color={COLORS.primary} />
+      <Ionicons name="arrow-forward-circle" size={48} color={COLORS.primary} navigation={navigation} />
     </TouchableOpacity>
   );
 }
