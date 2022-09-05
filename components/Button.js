@@ -6,11 +6,11 @@ function Button({ onPress, title }) {
   return (
     <TouchableOpacity
       style={{
-        backgroundColor: COLORS.primary, alignItems: 'center', justifyContent: 'center', borderRadius: '25px', padding: '2%',
+        backgroundColor: COLORS.primary, alignItems: 'center', justifyContent: 'center', borderRadius: '25px', padding: '4%', margin: '2%'
       }}
       onPress={onPress}
     >
-      <Text style={{ color: COLORS.white }}>{title}</Text>
+      <Text style={{ color: COLORS.white, fontSize: '21px' }}>{title}</Text>
     </TouchableOpacity>
   );
 }
