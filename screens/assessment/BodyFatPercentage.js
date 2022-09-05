@@ -60,9 +60,6 @@ function BodyFatPercentage({ navigation }) {
           <TouchableOpacity onPress={() => {navigation.navigate('HeightWeightAge')}}>
             <Ionicons name="arrow-back-circle" size={48} color={COLORS.primary} navigation={navigation} />
           </TouchableOpacity>
-          <TouchableOpacity disabled onPress={() => {navigation.navigate('CaliperSites')}}>
-            <Ionicons name="arrow-forward-circle" size={48} color={COLORS.primary} />
-          </TouchableOpacity>
         </View>
       </Container>
     </SafeAreaView>

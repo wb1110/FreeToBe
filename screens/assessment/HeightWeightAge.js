@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
 import { COLORS } from '../../constants/theme';
+import { Button } from '@rneui/base';
 
 
 function HeightWeightAge({ navigation }) {
@@ -15,12 +16,22 @@ function HeightWeightAge({ navigation }) {
         <Input label='Height' />
         <Input label='Weight' />
         <Input label='Age' />
+        <Button title="Submit" buttonStyle={{
+                backgroundColor: COLORS.primary,
+                borderWidth: 2,
+                borderColor: COLORS.primary,
+                borderRadius: 30,
+              }}
+              containerStyle={{
+                width: 200,
+                marginHorizontal: 50,
+                marginVertical: 10,
+              }}
+              onPress={() => {navigation.navigate('BodyFatPercentage')}}
+          />
         <View style={{ flexDirection: "row" }}>
           <TouchableOpacity onPress={() => {navigation.navigate('Gender')}}>
             <Ionicons name="arrow-back-circle" size={48} color={COLORS.primary} navigation={navigation} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {navigation.navigate('BodyFatPercentage')}}>
-            <Ionicons name="arrow-forward-circle" size={48} color={COLORS.primary} />
           </TouchableOpacity>
         </View>
       </Container>

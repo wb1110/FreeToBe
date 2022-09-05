@@ -16,16 +16,11 @@ function Gender({ navigation }) {
         <CustomText>Before we get started in order to make the best plan for you, we will need some more information.</CustomText>
         <CustomText>Gender</CustomText>
         <CustomText>Fill in the following to get started:</CustomText>
-        <Button title="Female" />
-        <Button title="Nonbinary" />
-        <View style={{ flexDirection: "row" }}>
+        <Button title="Female" onPress={() => {navigation.navigate('HeightWeightAge')}} />
+        <Button title="Nonbinary" onPress={() => {navigation.navigate('HeightWeightAge')}} />
           <TouchableOpacity onPress={() => {navigation.navigate('Home')}}>
             <Ionicons name="arrow-back-circle" size={48} color={COLORS.primary} navigation={navigation} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {navigation.navigate('HeightWeightAge')}}>
-            <Ionicons name="arrow-forward-circle" size={48} color={COLORS.primary} />
-          </TouchableOpacity>
-        </View>
       </Container>
     </SafeAreaView>
   );
