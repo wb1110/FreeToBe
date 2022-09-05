@@ -7,6 +7,8 @@ import { useCallback, useEffect } from 'react';
 import Gender from './screens/assessment/Gender';
 import HeightWeightAge from './screens/assessment/HeightWeightAge';
 import Home from './screens/Home';
+import BodyFatPercentage from './screens/assessment/BodyFatPercentage';
+import CaliperSites from './screens/assessment/CaliperSites';
 
 const Stack = createStackNavigator();
 
@@ -54,6 +56,8 @@ export default function App() {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Gender" component={Gender} />
           <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
+          <Stack.Screen name="BodyFatPercentage" component={BodyFatPercentage} />
+          <Stack.Screen name="CaliperSites" component={CaliperSites} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

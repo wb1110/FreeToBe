@@ -1,12 +1,11 @@
 import { SafeAreaView, Text } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
-import ArrowRight from '../../components/ArrowRight';
 import Button from '../../components/Button';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
-import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../../constants/theme';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 function Gender({ navigation }) {

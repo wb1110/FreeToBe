@@ -1,10 +1,10 @@
 import { SafeAreaView, TextInput, View } from 'react-native';
-import { FocusedStatusBar } from '../../components';
-import Container from '../../components/Container';
 import { Input } from "@rneui/themed";
 import { Ionicons } from '@expo/vector-icons';
-import { COLORS } from '../../constants/theme';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { FocusedStatusBar } from '../../components';
+import Container from '../../components/Container';
+import { COLORS } from '../../constants/theme';
 
 
 function HeightWeightAge({ navigation }) {
@@ -19,7 +19,7 @@ function HeightWeightAge({ navigation }) {
           <TouchableOpacity onPress={() => {navigation.navigate('Gender')}}>
             <Ionicons name="arrow-back-circle" size={48} color={COLORS.primary} navigation={navigation} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {navigation.navigate('Home')}}>
+          <TouchableOpacity onPress={() => {navigation.navigate('BodyFatPercentage')}}>
             <Ionicons name="arrow-forward-circle" size={48} color={COLORS.primary} />
           </TouchableOpacity>
         </View>
