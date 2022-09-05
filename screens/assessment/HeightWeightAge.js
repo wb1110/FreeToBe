@@ -9,17 +9,15 @@ import { COLORS } from '../../constants/theme';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-function Gender({ navigation }) {
+function HeightWeightAge({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
       <Container>
-        <CustomText>Before we get started in order to make the best plan for you, we will need some more information.</CustomText>
-        <CustomText>Gender</CustomText>
-        <CustomText>Fill in the following to get started:</CustomText>
-        <Button title="Female" />
-        <Button title="Nonbinary" />
-        <TouchableOpacity onPress={() => {navigation.navigate('HeightWeightAge')}}>
+        <CustomText>Height</CustomText>
+        <CustomText>Weight</CustomText>
+        <CustomText>Age</CustomText>
+        <TouchableOpacity onPress={() => {navigation.navigate('Home')}}>
           <Ionicons name="arrow-forward-circle" size={48} color={COLORS.primary} />
         </TouchableOpacity>
       </Container>
@@ -27,4 +25,4 @@ function Gender({ navigation }) {
   );
 }
 
-export default Gender;
+export default HeightWeightAge;

@@ -4,6 +4,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect } from 'react';
 import Gender from './screens/assessment/Gender';
+import HeightWeightAge from './screens/assessment/HeightWeightAge';
 import Home from './screens/Home';
 
 const Stack = createStackNavigator();
@@ -50,6 +51,7 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Gender" component={Gender} />
+        <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
       </Stack.Navigator>
     </NavigationContainer>
   );
