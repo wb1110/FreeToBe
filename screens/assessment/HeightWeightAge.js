@@ -15,7 +15,7 @@ function HeightWeightAge({ navigation }) {
       <FocusedStatusBar />
       <Container>
         <CustomText>Height</CustomText>
-        <TextInput style={{ height: 40, width: 40, margin: 12, borderWidth: 1, padding: 10 }} />
+        <TextInput style={{ height: 40, margin: 12, borderWidth: 1, padding: 10 }} />
         <CustomText>Weight</CustomText>
         <CustomText>Age</CustomText>
         <ArrowRight navigation={navigation} />
