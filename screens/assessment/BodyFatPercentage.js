@@ -29,7 +29,9 @@ function BodyFatPercentage({ navigation }) {
                 width: 200,
                 marginHorizontal: 50,
                 marginVertical: 10,
-              }} />
+              }}
+              onPress={() => {navigation.navigate('BodyFatKnown')}}
+            />
           <Button title="No" buttonStyle={{
                 backgroundColor: COLORS.primary,
                 borderWidth: 2,
@@ -51,12 +53,14 @@ function BodyFatPercentage({ navigation }) {
                 width: 200,
                 marginHorizontal: 50,
                 marginVertical: 10,
-              }}/>
+              }}
+              onPress={() => {navigation.navigate('CaliperSites')}}
+            />
         <View style={{ flexDirection: "row" }}>
           <TouchableOpacity onPress={() => {navigation.navigate('HeightWeightAge')}}>
             <Ionicons name="arrow-back-circle" size={48} color={COLORS.primary} navigation={navigation} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {navigation.navigate('CaliperSites')}}>
+          <TouchableOpacity disabled onPress={() => {navigation.navigate('CaliperSites')}}>
             <Ionicons name="arrow-forward-circle" size={48} color={COLORS.primary} />
           </TouchableOpacity>
         </View>

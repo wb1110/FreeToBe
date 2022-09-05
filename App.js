@@ -9,6 +9,7 @@ import HeightWeightAge from './screens/assessment/HeightWeightAge';
 import Home from './screens/Home';
 import BodyFatPercentage from './screens/assessment/BodyFatPercentage';
 import CaliperSites from './screens/assessment/CaliperSites';
+import BodyFatKnown from './screens/assessment/BodyFatKnown';
 
 const Stack = createStackNavigator();
 
@@ -57,6 +58,7 @@ export default function App() {
           <Stack.Screen name="Gender" component={Gender} />
           <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
           <Stack.Screen name="BodyFatPercentage" component={BodyFatPercentage} />
+          <Stack.Screen name="BodyFatKnown" component={BodyFatKnown} />
           <Stack.Screen name="CaliperSites" component={CaliperSites} />
         </Stack.Navigator>
       </NavigationContainer>
