@@ -17,14 +17,14 @@ function HeightWeightAge({ navigation }) {
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
       <Formik
-        initialValues={{ height: state.assessment.height, weight: '', age: '' }}
-        onSubmit={values => console.log(values)}
+        initialValues={{ height: state.assessment.height, weight: state.assessment.weight, age: state.assessment.age }}
+        onSubmit={values => state.setHWA(values)}
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
           <Container>
           <Input label='Height' value={values.height} onChangeText={handleChange('height')} onBlur={handleBlur('height')}/>
-          <Input label='Weight' />
-          <Input label='Age' />
+          <Input label='Weight' value={values.weight} onChangeText={handleChange('weight')} onBlur={handleBlur('weight')}/>
+          <Input label='Age' value={values.age} onChangeText={handleChange('age')} onBlur={handleBlur('age')}/>
           <Button title="Submit" buttonStyle={{
                   backgroundColor: COLORS.primary,
                   borderWidth: 2,
@@ -36,7 +36,7 @@ function HeightWeightAge({ navigation }) {
                   marginHorizontal: 50,
                   marginVertical: 10,
                 }}
-                onPress={() => {handleSubmit; state.setHeight(values.height); navigation.navigate('BodyFatPercentage') }}
+                onPress={() => {handleSubmit(); navigation.navigate('BodyFatPercentage') }}
             />
           <View style={{ flexDirection: "row" }}>
             <TouchableOpacity onPress={() => {navigation.navigate('Gender')}}>

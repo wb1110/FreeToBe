@@ -11,7 +11,6 @@ import useStore from '../../state/Store';
 
 function BodyFatPercentage({ navigation }) {
   const state = useStore();
-  console.log(state.assessment)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />

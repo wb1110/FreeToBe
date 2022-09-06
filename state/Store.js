@@ -3,7 +3,7 @@ import create from 'zustand'
 const useStore = create(set => ({
   assessment: {
     gender: '',
-    height: 'test',
+    height: '',
     weight: '',
     age: '',
     bodyFat: '',
@@ -16,15 +16,15 @@ const useStore = create(set => ({
         gender: title
       }
   })),
-  setHeight: (value) =>
+  setHWA: (values) =>
     set((state) => ({
       assessment: {
         ...state.assessment,
-        height: value
+        height: values.height,
+        weight: values.weight,
+        age: values.age,
       }
   })),
-  setWeight: () => set(state => ({ weight: state.weight })),
-  setAge: () => set(state => ({ age: state.age })),
   setBodyFat: () => set(state => ({ bodyFat: state.bodyFat })),
 }))
 
