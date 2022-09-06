@@ -11,12 +11,11 @@ import useStore from '../../state/Store';
 
 function HeightWeightAge({ navigation }) {
   const state = useStore();
-  console.log(state.assessment.gender)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
       <Container>
-        <Input label='Height' />
+        <Input label='Height' value={state.assessment.height} onChange={(e) => state.setHeight(e.target.value)}/>
         <Input label='Weight' />
         <Input label='Age' />
         <Button title="Submit" buttonStyle={{
@@ -30,7 +29,7 @@ function HeightWeightAge({ navigation }) {
                 marginHorizontal: 50,
                 marginVertical: 10,
               }}
-              onPress={() => {navigation.navigate('BodyFatPercentage')}}
+              onPress={() => {navigation.navigate('BodyFatPercentage') }}
           />
         <View style={{ flexDirection: "row" }}>
           <TouchableOpacity onPress={() => {navigation.navigate('Gender')}}>
