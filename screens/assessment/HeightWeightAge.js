@@ -2,13 +2,16 @@ import { SafeAreaView, TextInput, View } from 'react-native';
 import { Input } from "@rneui/themed";
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Button } from '@rneui/base';
 import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
 import { COLORS } from '../../constants/theme';
-import { Button } from '@rneui/base';
+import useStore from '../../state/Store';
 
 
 function HeightWeightAge({ navigation }) {
+  const state = useStore();
+  console.log(state.assessment.gender)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />

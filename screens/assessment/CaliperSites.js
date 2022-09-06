@@ -27,7 +27,8 @@ function CaliperSites({ navigation }) {
                 width: 50,
                 marginHorizontal: 10,
                 marginVertical: 10,
-              }} />
+              }} 
+              />
           <Button title="4" buttonStyle={{
                 backgroundColor: COLORS.primary,
                 borderWidth: 2,
