@@ -11,6 +11,7 @@ import useStore from '../../state/Store';
 
 function Gender({ navigation }) {
   const state = useStore();
+  console.log(state.assessment)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />

@@ -38,11 +38,9 @@ function HeightWeightAge({ navigation }) {
                 }}
                 onPress={() => {handleSubmit(); navigation.navigate('BodyFatPercentage') }}
             />
-          <View style={{ flexDirection: "row" }}>
             <TouchableOpacity onPress={() => {navigation.navigate('Gender')}}>
               <Ionicons name="arrow-back-circle" size={48} color={COLORS.primary} navigation={navigation} />
             </TouchableOpacity>
-          </View>
         </Container>
         )}
       </Formik>
