@@ -6,7 +6,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
-import RoundButton from '../../components/RoundButton';
+import RoundButton from '../../components/Buttons/RoundButton';
+import LArrowButton from '../../components/Buttons/LArrowButton';
+import StandardButton from '../../components/Buttons/StandardButton';
 
 
 function CaliperSites({ navigation }) {
@@ -18,59 +20,19 @@ function CaliperSites({ navigation }) {
           How many sites did you use?
         </CustomText>
         <View style={{ flexDirection: 'row' }}>
-          <RoundButton />
-          <Button title="3" buttonStyle={{
-                borderWidth: 2,
-                borderRadius: 30,
-              }}
-              containerStyle={{
-                width: 45,
-                marginHorizontal: 10,
-                marginVertical: 10,
-              }} 
-              />
-          <Button title="4" buttonStyle={{
-                borderWidth: 2,
-                borderRadius: 30,
-              }}
-              containerStyle={{
-                width: 45,
-                marginHorizontal: 10,
-                marginVertical: 10,
-              }}/>
-          <Button title="7" buttonStyle={{
-                borderWidth: 2,
-                borderRadius: 30,
-              }}
-              containerStyle={{
-                width: 45,
-                marginHorizontal: 10,
-                marginVertical: 10,
-              }}/>
-              <Button title="9" buttonStyle={{
-                borderWidth: 2,
-                borderRadius: 30,
-              }}
-              containerStyle={{
-                width: 45,
-                marginHorizontal: 10,
-                marginVertical: 10,
-              }}/>
-              </View>
-              <CustomText>
+          <RoundButton title="3"/>
+          <RoundButton title="4"/>
+          <RoundButton title="7"/>
+          <RoundButton title="9"/>
+        </View>
+        <CustomText>
           Type in your measurements in mm
         </CustomText>
         <Input label='Abdominal' />
         <Input label='Triceps' />
         <Input label='Suprailiac' />
-        <View style={{ flexDirection: "row" }}>
-          <TouchableOpacity onPress={() => {navigation.navigate('BodyFatPercentage')}}>
-            <Ionicons name="arrow-back-circle" size={48} navigation={navigation} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {navigation.navigate('Home')}}>
-            <Ionicons name="arrow-forward-circle" size={48} />
-          </TouchableOpacity>
-        </View>
+        <StandardButton title="Submit" onPress={() => {navigation.navigate('Home')}}/>
+        <LArrowButton onPress={() => {navigation.navigate('BodyFatPercentage')}}/>
       </Container>
     </SafeAreaView>
   );

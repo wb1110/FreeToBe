@@ -4,6 +4,8 @@ import { Formik } from 'formik';
 import { SafeAreaView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
+import LArrowButton from '../../components/Buttons/LArrowButton';
+import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import useStore from '../../state/Store';
 
@@ -25,20 +27,8 @@ function BodyFatKnown({ navigation }) {
               onBlur={handleBlur('bodyFat')}
               value={values.bodyFat}
             />
-            <Button title="Submit" buttonStyle={{
-                  borderWidth: 2,
-                  borderRadius: 30,
-                }}
-                containerStyle={{
-                  width: 200,
-                  marginHorizontal: 50,
-                  marginVertical: 10,
-                }}
-                onPress={() => {handleSubmit(); navigation.navigate('Gender') }}
-            />
-              <TouchableOpacity onPress={() => {navigation.navigate('BodyFatPercentage')}}>
-                < Ionicons name="arrow-back-circle" size={48} navigation={navigation} />
-              </TouchableOpacity>
+            <StandardButton title="Submit" onPress={() => {handleSubmit(); navigation.navigate('Gender') }}/>
+              <LArrowButton onPress={() => {navigation.navigate('BodyFatPercentage')}}/>
           </Container>
         )}
       </Formik>

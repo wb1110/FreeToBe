@@ -5,6 +5,8 @@ import { Formik } from 'formik';
 import { SafeAreaView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
+import LArrowButton from '../../components/Buttons/LArrowButton';
+import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import useStore from '../../state/Store';
 
@@ -20,24 +22,12 @@ function HeightWeightAge({ navigation }) {
         onSubmit={values => state.setHWA(values)}
       >
         {({ handleChange, handleBlur, handleSubmit, values }) => (
-          <Container>
+        <Container>
           <Input label='Height' value={values.height} onChangeText={handleChange('height')} onBlur={handleBlur('height')}/>
           <Input label='Weight' value={values.weight} onChangeText={handleChange('weight')} onBlur={handleBlur('weight')}/>
           <Input label='Age' value={values.age} onChangeText={handleChange('age')} onBlur={handleBlur('age')}/>
-          <Button title="Submit" buttonStyle={{
-                  borderWidth: 2,
-                  borderRadius: 30
-                }}
-                containerStyle={{
-                  width: 200,
-                  marginHorizontal: 50,
-                  marginVertical: 10,
-                }}
-                onPress={() => {handleSubmit(); navigation.navigate('BodyFatPercentage') }}
-            />
-            <TouchableOpacity onPress={() => {navigation.navigate('Gender')}}>
-              <Ionicons name="arrow-back-circle" size={48} navigation={navigation} />
-            </TouchableOpacity>
+          <StandardButton title="Submit" onPress={() => {handleSubmit(); navigation.navigate('BodyFatPercentage') }}/>
+          <LArrowButton onPress={() => {navigation.navigate('Gender')}}/>
         </Container>
         )}
       </Formik>

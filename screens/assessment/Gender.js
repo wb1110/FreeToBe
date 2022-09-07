@@ -6,6 +6,8 @@ import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
 import useStore from '../../state/Store';
+import StandardButton from '../../components/Buttons/StandardButton';
+import LArrowButton from '../../components/Buttons/LArrowButton';
 
 
 function Gender({ navigation }) {
@@ -17,11 +19,9 @@ function Gender({ navigation }) {
         <CustomText>Before we get started in order to make the best plan for you, we will need some more information.</CustomText>
         <CustomText>Gender</CustomText>
         <CustomText>Fill in the following to get started:</CustomText>
-        <Button title="Female" onPress={() => {navigation.navigate('HeightWeightAge'); state.setGender('Female') }} />
-        <Button title="Nonbinary" onPress={() => {navigation.navigate('HeightWeightAge'); state.setGender('Nonbinary') }} />
-          <TouchableOpacity onPress={() => {navigation.navigate('Home')}}>
-            <Ionicons name="arrow-back-circle" size={48} navigation={navigation} />
-          </TouchableOpacity>
+        <StandardButton title="Female" onPress={() => {navigation.navigate('HeightWeightAge'); state.setGender('Female') }} />
+        <StandardButton title="Nonbinary" onPress={() => {navigation.navigate('HeightWeightAge'); state.setGender('Nonbinary') }} />
+          <LArrowButton onPress={() => {navigation.navigate('Home')}} />
       </Container>
     </SafeAreaView>
   );

@@ -6,6 +6,8 @@ import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
 import useStore from '../../state/Store';
+import StandardButton from '../../components/Buttons/StandardButton';
+import LArrowButton from '../../components/Buttons/LArrowButton';
 
 
 function BodyFatPercentage({ navigation }) {
@@ -20,42 +22,10 @@ function BodyFatPercentage({ navigation }) {
         <CustomText>
           Do you know your BF%
         </CustomText>
-          <Button title="Yes" buttonStyle={{
-                borderWidth: 2,
-                borderRadius: 30,
-              }}
-              containerStyle={{
-                width: 200,
-                marginHorizontal: 50,
-                marginVertical: 10,
-              }}
-              onPress={() => {navigation.navigate('BodyFatKnown')}}
-            />
-          <Button title="No" buttonStyle={{
-                borderWidth: 2,
-                borderRadius: 30,
-              }}
-              containerStyle={{
-                width: 200,
-                marginHorizontal: 50,
-                marginVertical: 10,
-              }}/>
-          <Button title="I used calipers and need to calculate it" buttonStyle={{
-                borderWidth: 2,
-                borderRadius: 30,
-              }}
-              containerStyle={{
-                width: 200,
-                marginHorizontal: 50,
-                marginVertical: 10,
-              }}
-              onPress={() => {navigation.navigate('CaliperSites')}}
-            />
-        <View style={{ flexDirection: "row" }}>
-          <TouchableOpacity onPress={() => {navigation.navigate('HeightWeightAge')}}>
-            <Ionicons name="arrow-back-circle" size={48} navigation={navigation} />
-          </TouchableOpacity>
-        </View>
+          <StandardButton title="Yes" onPress={() => {navigation.navigate('BodyFatKnown')}} />
+          <StandardButton title="No" />
+          <StandardButton title="I used calipers and need to calculate it" onPress={() => {navigation.navigate('CaliperSites')}} />
+          <LArrowButton onPress={() => {navigation.navigate('HeightWeightAge')}}/>
       </Container>
     </SafeAreaView>
   );
