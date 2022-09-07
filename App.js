@@ -4,13 +4,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect } from 'react';
+import { ThemeProvider, createTheme } from '@rneui/themed';
 import Gender from './screens/assessment/Gender';
 import HeightWeightAge from './screens/assessment/HeightWeightAge';
 import Home from './screens/Home';
 import BodyFatPercentage from './screens/assessment/BodyFatPercentage';
 import CaliperSites from './screens/assessment/CaliperSites';
 import BodyFatKnown from './screens/assessment/BodyFatKnown';
-import { ThemeProvider, createTheme } from '@rneui/themed';
 
 const theme = createTheme({
   colors: {
