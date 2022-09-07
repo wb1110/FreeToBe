@@ -1,13 +1,13 @@
-import { SafeAreaView, Text, TextInput, View } from 'react-native';
-import { Input } from "@rneui/themed";
 import { Ionicons } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Button } from '@rneui/base';
+import { Input } from "@rneui/themed";
+import { Formik } from 'formik';
+import { SafeAreaView } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
 import { COLORS } from '../../constants/theme';
 import useStore from '../../state/Store';
-import { Formik } from 'formik';
 
 
 function BodyFatKnown({ navigation }) {

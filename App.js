@@ -10,16 +10,17 @@ import Home from './screens/Home';
 import BodyFatPercentage from './screens/assessment/BodyFatPercentage';
 import CaliperSites from './screens/assessment/CaliperSites';
 import BodyFatKnown from './screens/assessment/BodyFatKnown';
+import { ThemeProvider, Button, createTheme } from '@rneui/themed';
+
+const theme = createTheme({
+  components: {
+    Button: {
+      raised: true,
+    },
+  },
+});
 
 const Stack = createStackNavigator();
-
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    background: 'transparent',
-  },
-};
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -52,16 +53,18 @@ export default function App() {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer theme={theme}>
-        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Gender" component={Gender} />
-          <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
-          <Stack.Screen name="BodyFatPercentage" component={BodyFatPercentage} />
-          <Stack.Screen name="BodyFatKnown" component={BodyFatKnown} />
-          <Stack.Screen name="CaliperSites" component={CaliperSites} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Gender" component={Gender} />
+            <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
+            <Stack.Screen name="BodyFatPercentage" component={BodyFatPercentage} />
+            <Stack.Screen name="BodyFatKnown" component={BodyFatKnown} />
+            <Stack.Screen name="CaliperSites" component={CaliperSites} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ThemeProvider>
     </SafeAreaProvider>
   );
 }

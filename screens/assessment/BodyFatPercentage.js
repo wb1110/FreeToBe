@@ -1,11 +1,11 @@
-import { SafeAreaView, TextInput, View } from 'react-native';
-import { Button } from "@rneui/themed";
 import { Ionicons } from '@expo/vector-icons';
+import { Button } from "@rneui/themed";
+import { SafeAreaView, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
-import { COLORS } from '../../constants/theme';
 import CustomText from '../../components/CustomText';
+import { COLORS } from '../../constants/theme';
 import useStore from '../../state/Store';
 
 

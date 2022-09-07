@@ -1,5 +1,5 @@
-import { SafeAreaView, Text, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
 import Button from '../../components/Button';
@@ -11,7 +11,6 @@ import useStore from '../../state/Store';
 
 function Gender({ navigation }) {
   const state = useStore();
-  console.log(state.assessment)
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />

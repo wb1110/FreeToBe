@@ -1,11 +1,12 @@
-import { SafeAreaView, TextInput, View } from 'react-native';
-import { Button, Input } from "@rneui/themed";
 import { Ionicons } from '@expo/vector-icons';
+import { Button, Input } from "@rneui/themed";
+import { useState } from 'react';
+import { SafeAreaView, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
-import { COLORS } from '../../constants/theme';
 import CustomText from '../../components/CustomText';
+import { COLORS } from '../../constants/theme';
 
 
 function CaliperSites({ navigation }) {
@@ -24,7 +25,7 @@ function CaliperSites({ navigation }) {
                 borderRadius: 30,
               }}
               containerStyle={{
-                width: 50,
+                width: 45,
                 marginHorizontal: 10,
                 marginVertical: 10,
               }} 
@@ -36,7 +37,7 @@ function CaliperSites({ navigation }) {
                 borderRadius: 30,
               }}
               containerStyle={{
-                width: 50,
+                width: 45,
                 marginHorizontal: 10,
                 marginVertical: 10,
               }}/>
@@ -47,7 +48,7 @@ function CaliperSites({ navigation }) {
                 borderRadius: 30,
               }}
               containerStyle={{
-                width: 50,
+                width: 45,
                 marginHorizontal: 10,
                 marginVertical: 10,
               }}/>
@@ -58,7 +59,7 @@ function CaliperSites({ navigation }) {
                 borderRadius: 30,
               }}
               containerStyle={{
-                width: 50,
+                width: 45,
                 marginHorizontal: 10,
                 marginVertical: 10,
               }}/>
