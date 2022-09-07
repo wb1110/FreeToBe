@@ -1,12 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Button } from '@rneui/base';
+import { Button } from '@rneui/themed';
 import { Input } from "@rneui/themed";
 import { Formik } from 'formik';
 import { SafeAreaView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
-import { COLORS } from '../../constants/theme';
 import useStore from '../../state/Store';
 
 
@@ -26,10 +25,8 @@ function HeightWeightAge({ navigation }) {
           <Input label='Weight' value={values.weight} onChangeText={handleChange('weight')} onBlur={handleBlur('weight')}/>
           <Input label='Age' value={values.age} onChangeText={handleChange('age')} onBlur={handleBlur('age')}/>
           <Button title="Submit" buttonStyle={{
-                  backgroundColor: COLORS.primary,
                   borderWidth: 2,
-                  borderColor: COLORS.primary,
-                  borderRadius: 30,
+                  borderRadius: 30
                 }}
                 containerStyle={{
                   width: 200,
@@ -39,7 +36,7 @@ function HeightWeightAge({ navigation }) {
                 onPress={() => {handleSubmit(); navigation.navigate('BodyFatPercentage') }}
             />
             <TouchableOpacity onPress={() => {navigation.navigate('Gender')}}>
-              <Ionicons name="arrow-back-circle" size={48} color={COLORS.primary} navigation={navigation} />
+              <Ionicons name="arrow-back-circle" size={48} navigation={navigation} />
             </TouchableOpacity>
         </Container>
         )}

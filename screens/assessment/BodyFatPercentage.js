@@ -5,7 +5,6 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
-import { COLORS } from '../../constants/theme';
 import useStore from '../../state/Store';
 
 
@@ -22,9 +21,7 @@ function BodyFatPercentage({ navigation }) {
           Do you know your BF%
         </CustomText>
           <Button title="Yes" buttonStyle={{
-                backgroundColor: COLORS.primary,
                 borderWidth: 2,
-                borderColor: COLORS.primary,
                 borderRadius: 30,
               }}
               containerStyle={{
@@ -35,9 +32,7 @@ function BodyFatPercentage({ navigation }) {
               onPress={() => {navigation.navigate('BodyFatKnown')}}
             />
           <Button title="No" buttonStyle={{
-                backgroundColor: COLORS.primary,
                 borderWidth: 2,
-                borderColor: COLORS.primary,
                 borderRadius: 30,
               }}
               containerStyle={{
@@ -46,9 +41,7 @@ function BodyFatPercentage({ navigation }) {
                 marginVertical: 10,
               }}/>
           <Button title="I used calipers and need to calculate it" buttonStyle={{
-                backgroundColor: COLORS.primary,
                 borderWidth: 2,
-                borderColor: COLORS.primary,
                 borderRadius: 30,
               }}
               containerStyle={{
@@ -60,7 +53,7 @@ function BodyFatPercentage({ navigation }) {
             />
         <View style={{ flexDirection: "row" }}>
           <TouchableOpacity onPress={() => {navigation.navigate('HeightWeightAge')}}>
-            <Ionicons name="arrow-back-circle" size={48} color={COLORS.primary} navigation={navigation} />
+            <Ionicons name="arrow-back-circle" size={48} navigation={navigation} />
           </TouchableOpacity>
         </View>
       </Container>

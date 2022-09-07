@@ -1,12 +1,14 @@
-import { Button } from "@rneui/themed";
+import { Button, useTheme } from "@rneui/themed";
 import React from 'react'
 
 export default function RoundButton() {
+  const { theme } = useTheme();
+
   return (
     <Button title="3" buttonStyle={{
-      backgroundColor: COLORS.primary,
+      backgroundColor: theme.primary,
       borderWidth: 2,
-      borderColor: COLORS.primary,
+      borderColor: theme.primary,
       borderRadius: 30,
     }}
     containerStyle={{

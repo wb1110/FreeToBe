@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
-import { COLORS } from '../../constants/theme';
+import RoundButton from '../../components/RoundButton';
 
 
 function CaliperSites({ navigation }) {
@@ -18,10 +18,9 @@ function CaliperSites({ navigation }) {
           How many sites did you use?
         </CustomText>
         <View style={{ flexDirection: 'row' }}>
+          <RoundButton />
           <Button title="3" buttonStyle={{
-                backgroundColor: COLORS.primary,
                 borderWidth: 2,
-                borderColor: COLORS.primary,
                 borderRadius: 30,
               }}
               containerStyle={{
@@ -31,9 +30,7 @@ function CaliperSites({ navigation }) {
               }} 
               />
           <Button title="4" buttonStyle={{
-                backgroundColor: COLORS.primary,
                 borderWidth: 2,
-                borderColor: COLORS.primary,
                 borderRadius: 30,
               }}
               containerStyle={{
@@ -42,9 +39,7 @@ function CaliperSites({ navigation }) {
                 marginVertical: 10,
               }}/>
           <Button title="7" buttonStyle={{
-                backgroundColor: COLORS.primary,
                 borderWidth: 2,
-                borderColor: COLORS.primary,
                 borderRadius: 30,
               }}
               containerStyle={{
@@ -53,9 +48,7 @@ function CaliperSites({ navigation }) {
                 marginVertical: 10,
               }}/>
               <Button title="9" buttonStyle={{
-                backgroundColor: COLORS.primary,
                 borderWidth: 2,
-                borderColor: COLORS.primary,
                 borderRadius: 30,
               }}
               containerStyle={{
@@ -72,10 +65,10 @@ function CaliperSites({ navigation }) {
         <Input label='Suprailiac' />
         <View style={{ flexDirection: "row" }}>
           <TouchableOpacity onPress={() => {navigation.navigate('BodyFatPercentage')}}>
-            <Ionicons name="arrow-back-circle" size={48} color={COLORS.primary} navigation={navigation} />
+            <Ionicons name="arrow-back-circle" size={48} navigation={navigation} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => {navigation.navigate('Home')}}>
-            <Ionicons name="arrow-forward-circle" size={48} color={COLORS.primary} />
+            <Ionicons name="arrow-forward-circle" size={48} />
           </TouchableOpacity>
         </View>
       </Container>

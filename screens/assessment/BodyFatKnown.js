@@ -1,12 +1,10 @@
 import { Ionicons } from '@expo/vector-icons';
-import { Button } from '@rneui/base';
-import { Input } from "@rneui/themed";
+import { Input, Button } from "@rneui/themed";
 import { Formik } from 'formik';
 import { SafeAreaView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FocusedStatusBar } from '../../components';
 import Container from '../../components/Container';
-import { COLORS } from '../../constants/theme';
 import useStore from '../../state/Store';
 
 
@@ -28,9 +26,7 @@ function BodyFatKnown({ navigation }) {
               value={values.bodyFat}
             />
             <Button title="Submit" buttonStyle={{
-                  backgroundColor: COLORS.primary,
                   borderWidth: 2,
-                  borderColor: COLORS.primary,
                   borderRadius: 30,
                 }}
                 containerStyle={{
@@ -41,7 +37,7 @@ function BodyFatKnown({ navigation }) {
                 onPress={() => {handleSubmit(); navigation.navigate('Gender') }}
             />
               <TouchableOpacity onPress={() => {navigation.navigate('BodyFatPercentage')}}>
-                < Ionicons name="arrow-back-circle" size={48} color={COLORS.primary} navigation={navigation} />
+                < Ionicons name="arrow-back-circle" size={48} navigation={navigation} />
               </TouchableOpacity>
           </Container>
         )}

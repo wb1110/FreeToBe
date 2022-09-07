@@ -1,11 +1,12 @@
 import { SafeAreaView, Text } from 'react-native';
 import { FocusedStatusBar } from '../components';
-import Button from '../components/Button';
 import Container from '../components/Container';
 import CustomText from '../components/CustomText';
+import { Button } from '@rneui/themed';
 
 
 function Home({ navigation }) {
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { COLORS } from '../constants';
 
 function CustomText({ variant, children, ...props }) {
   const variantsMapping = {
@@ -19,7 +18,7 @@ function CustomText({ variant, children, ...props }) {
   const size = variant ? variantsMapping[variant] : 16;
 
   return (
-    <Text style={{ color: COLORS.primary, fontFamily: 'Inter-Regular', fontSize: size }} {...props}>
+    <Text style={{ fontFamily: 'Inter-Regular', fontSize: size }} {...props}>
       {children}
     </Text>
   );
