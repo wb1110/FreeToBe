@@ -1,13 +1,10 @@
-import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Button } from '@rneui/themed';
-import { FocusedStatusBar } from '../../components';
+import FocusedStatusBar from '../../components/FocusedStatusBar';
+import LArrowButton from '../../components/Buttons/LArrowButton';
+import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
 import useStore from '../../state/Store';
-import StandardButton from '../../components/Buttons/StandardButton';
-import LArrowButton from '../../components/Buttons/LArrowButton';
 
 
 function Gender({ navigation }) {

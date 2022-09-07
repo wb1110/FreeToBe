@@ -1,13 +1,10 @@
-import { Ionicons } from '@expo/vector-icons';
-import { Button } from "@rneui/themed";
-import { SafeAreaView, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { FocusedStatusBar } from '../../components';
+import { SafeAreaView } from 'react-native';
+import FocusedStatusBar from '../../components/FocusedStatusBar';
+import LArrowButton from '../../components/Buttons/LArrowButton';
+import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
 import useStore from '../../state/Store';
-import StandardButton from '../../components/Buttons/StandardButton';
-import LArrowButton from '../../components/Buttons/LArrowButton';
 
 
 function BodyFatPercentage({ navigation }) {

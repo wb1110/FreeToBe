@@ -1,14 +1,11 @@
-import { Ionicons } from '@expo/vector-icons';
-import { Button, Input } from "@rneui/themed";
-import { useState } from 'react';
+import { Input } from "@rneui/themed";
 import { SafeAreaView, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { FocusedStatusBar } from '../../components';
+import FocusedStatusBar from '../../components/FocusedStatusBar';
+import LArrowButton from '../../components/Buttons/LArrowButton';
+import RoundButton from '../../components/Buttons/RoundButton';
+import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
-import RoundButton from '../../components/Buttons/RoundButton';
-import LArrowButton from '../../components/Buttons/LArrowButton';
-import StandardButton from '../../components/Buttons/StandardButton';
 
 
 function CaliperSites({ navigation }) {

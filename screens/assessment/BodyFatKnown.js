@@ -1,9 +1,7 @@
-import { Ionicons } from '@expo/vector-icons';
-import { Input, Button } from "@rneui/themed";
+import { Input } from "@rneui/themed";
 import { Formik } from 'formik';
 import { SafeAreaView } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { FocusedStatusBar } from '../../components';
+import FocusedStatusBar from '../../components/FocusedStatusBar';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';

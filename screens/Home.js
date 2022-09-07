@@ -1,9 +1,8 @@
 import { SafeAreaView, Text } from 'react-native';
-import { FocusedStatusBar } from '../components';
+import FocusedStatusBar from '../components/FocusedStatusBar';
+import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import CustomText from '../components/CustomText';
-import { Button } from '@rneui/themed';
-import StandardButton from '../components/Buttons/StandardButton';
 
 
 function Home({ navigation }) {
@@ -19,6 +18,6 @@ function Home({ navigation }) {
       </Container>
     </SafeAreaView>
   );
-}
+};
 
 export default Home;
