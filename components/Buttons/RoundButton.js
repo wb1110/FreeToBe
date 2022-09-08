@@ -13,6 +13,7 @@ export default function RoundButton(props) {
       marginHorizontal: 10,
       marginVertical: 10,
     }} 
+    type={props.type}
     onPress={props.onPress}
     />
   )
