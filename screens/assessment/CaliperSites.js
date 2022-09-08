@@ -1,4 +1,4 @@
-import { ButtonGroup, Input } from "@rneui/themed";
+import { Input } from "@rneui/themed";
 import { SafeAreaView, View } from 'react-native';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import LArrowButton from '../../components/Buttons/LArrowButton';
@@ -7,6 +7,10 @@ import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
 import { useState } from "react";
+import ThreeSite from './skinFoldSites/ThreeSite';
+import FourSite from "./skinFoldSites/FourSite";
+import SevenSite from "./skinFoldSites/SevenSite";
+import NineSite from "./skinFoldSites/NineSite";
 
 
 function CaliperSites({ navigation }) {
@@ -27,10 +31,11 @@ function CaliperSites({ navigation }) {
         <CustomText>
           Type in your measurements in mm
         </CustomText>
-        <Input label='Abdominal' />
-        <Input label='Triceps' />
-        <Input label='Suprailiac' />
-        <StandardButton title="Submit" onPress={() => {navigation.navigate('Home')}}/>
+        {selected === 3 ? <ThreeSite /> : null }
+        {selected === 4 ? <FourSite /> : null }
+        {selected === 7 ? <SevenSite /> : null }
+        {selected === 9 ? <NineSite /> : null }
+        <StandardButton title="Submit" onPress={() => alert('success!')}/>
         <LArrowButton onPress={() => {navigation.navigate('BodyFatPercentage')}}/>
       </Container>
     </SafeAreaView>
