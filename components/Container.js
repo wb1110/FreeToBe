@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 function Container(props) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 'auto', padding: '2%', width: '100%' }}>
+    <View contentContainerStyle={{flexGrow: props.flexGrow}} style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: 'auto', padding: '2%', width: '100%', height: props.height }}>
       {props.children}
     </View>
   );

@@ -31,10 +31,12 @@ function CaliperSites({ navigation }) {
         <CustomText>
           Type in your measurements in mm
         </CustomText>
+        <Container>
         {selected === 3 ? <ThreeSite /> : null }
         {selected === 4 ? <FourSite /> : null }
         {selected === 7 ? <SevenSite /> : null }
         {selected === 9 ? <NineSite /> : null }
+        </Container>
         <StandardButton title="Submit" onPress={() => alert('success!')}/>
         <LArrowButton onPress={() => {navigation.navigate('BodyFatPercentage')}}/>
       </Container>
