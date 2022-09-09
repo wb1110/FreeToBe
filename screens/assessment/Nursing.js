@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { SafeAreaView, View } from 'react-native';
+import { Text } from "@rneui/themed";
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import NarrowButton from "../../components/Buttons/NarrowButton";
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import { Text } from "@rneui/themed";
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 
 

@@ -1,5 +1,4 @@
 import { Ionicons } from '@expo/vector-icons';
-import React from 'react'
 import { useTheme } from "@rneui/themed";
 
 export default function LArrowButton(props) {

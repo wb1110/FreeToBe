@@ -1,5 +1,5 @@
 import { CheckBox } from "@rneui/themed";
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function CustomCheckBox(props) {
   const [check, setCheck] = useState(false);

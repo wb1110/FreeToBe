@@ -1,10 +1,9 @@
 import { SafeAreaView , View, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { Input } from "@rneui/themed";
+import { Input , Text } from "@rneui/themed";
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import { Text } from "@rneui/themed";
 import CustomCheckBox from '../../components/CustomCheckBox';
 
 
