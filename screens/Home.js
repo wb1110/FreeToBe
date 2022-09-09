@@ -14,7 +14,7 @@ function Home({ navigation }) {
         <CustomText variant='h1' >Welcome!</CustomText>
         <Text>Are you ready to have real sustainable change?</Text>
         <Text>Fill in the following to get started:</Text>
-        <StandardButton onPress={() => navigation.navigate('Gender')} title="Let's Do This" />
+        <StandardButton onPress={() => navigation.navigate('HeightWeightAge')} title="Let's Do This" />
       </Container>
     </SafeAreaView>
   );

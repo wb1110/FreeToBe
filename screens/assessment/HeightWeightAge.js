@@ -24,7 +24,7 @@ function HeightWeightAge({ navigation }) {
           <Input label='Weight' value={values.weight} onChangeText={handleChange('weight')} onBlur={handleBlur('weight')}/>
           <Input label='Age' value={values.age} onChangeText={handleChange('age')} onBlur={handleBlur('age')}/>
           <StandardButton title="Submit" onPress={() => {handleSubmit(); navigation.navigate('BodyFatPercentage') }}/>
-          <LArrowButton onPress={() => {navigation.navigate('Gender')}}/>
+          <LArrowButton onPress={() => {navigation.navigate('Home')}}/>
         </Container>
         )}
       </Formik>

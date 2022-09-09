@@ -1,8 +1,7 @@
 import { Input } from "@rneui/themed";
-import React from 'react'
 import { View } from "react-native";
 
-const NineSite = () => {
+function NineSite() {
   return (
     <View style={{ width: "100%", flex: 1, flexGrow: 1, flexDirection: "row", marginTop: "20%" }}>
       <View style={{ flex: 1, flexGrow: 1 }}>

@@ -3,9 +3,10 @@ import React from 'react'
 import { useTheme } from "@rneui/themed";
 
 export default function LArrowButton(props) {
+  const { onPress } = props;
   const { theme } = useTheme();
 
   return (
-      <Ionicons name="arrow-back-circle" color={theme.colors.primary} size={48} onPress={props.onPress}/>
+      <Ionicons name="arrow-back-circle" color={theme.colors.primary} size={48} onPress={onPress}/>
   )
 };

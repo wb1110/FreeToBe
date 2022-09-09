@@ -4,11 +4,9 @@ import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
-import useStore from '../../state/Store';
 
 
 function BodyFatPercentage({ navigation }) {
-  const state = useStore();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />

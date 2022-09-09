@@ -1,12 +1,12 @@
 import { Input } from "@rneui/themed";
 import { SafeAreaView, View } from 'react-native';
+import { useState } from "react";
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RoundButton from '../../components/Buttons/RoundButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
-import { useState } from "react";
 import ThreeSite from './skinFoldSites/ThreeSite';
 import FourSite from "./skinFoldSites/FourSite";
 import SevenSite from "./skinFoldSites/SevenSite";

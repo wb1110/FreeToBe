@@ -1,10 +1,9 @@
 import { Button } from "@rneui/themed";
-import React from 'react'
 
 export default function StandardButton(props) {
-
+  const { title, onPress } = props;
   return (
-    <Button title={props.title} buttonStyle={{
+    <Button title={title} buttonStyle={{
       borderWidth: 2,
       borderRadius: 30,
     }}
@@ -13,7 +12,7 @@ export default function StandardButton(props) {
       marginHorizontal: 50,
       marginVertical: 10,
     }}
-    onPress={props.onPress}
+    onPress={onPress}
     />
   )
 }

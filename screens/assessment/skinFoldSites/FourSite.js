@@ -1,8 +1,7 @@
 import { Input } from "@rneui/themed";
-import React from 'react'
 import Container from '../../../components/Container'
 
-const FourSite = () => {
+function FourSite() {
   return (
     <Container>
       <Input label='Abdominal' />

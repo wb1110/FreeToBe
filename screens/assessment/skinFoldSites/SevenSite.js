@@ -1,9 +1,7 @@
 import { Input } from "@rneui/themed";
-import React from 'react'
 import { View } from "react-native";
-import Container from '../../../components/Container'
 
-const SevenSite = () => {
+function SevenSite() {
   return (
     <View style={{ width: "100%", flex: 1, flexGrow: 1, flexDirection: "row", marginTop: "25%" }}>
       <View style={{ flex: 1, flexGrow: 1 }}>
