@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { Input } from "@rneui/themed";
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RoundButton from '../../components/Buttons/RoundButton';
@@ -14,40 +14,42 @@ function Pregnant({ navigation }) {
   const [pregnant, setPregnant] = useState(0);
   const [babies, setBabies] = useState(0);
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar />
-      <Container>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <FocusedStatusBar />
         <Container>
+          <Container>
+            <CustomText>
+              Are you currently pregnant?
+            </CustomText>
+            <View style={{ flexDirection: 'row' }}>
+              {pregnant === 1 ? <NarrowButton title="Yes" type="clear" onPress={() => setPregnant(1)}/> : <NarrowButton title="Yes" onPress={() => setPregnant(1)}/>}
+              {pregnant === 2 ? <NarrowButton title="No" type="clear" onPress={() => setPregnant(2)}/> : <NarrowButton title="No" onPress={() => setPregnant(2)}/>}
+            </View>
+          </Container>
+          <Container>
           <CustomText>
-            Are you currently pregnant?
+            How many babies are you carrying?
           </CustomText>
           <View style={{ flexDirection: 'row' }}>
-            {pregnant === 1 ? <NarrowButton title="Yes" type="clear" onPress={() => setPregnant(1)}/> : <NarrowButton title="Yes" onPress={() => setPregnant(1)}/>}
-            {pregnant === 2 ? <NarrowButton title="No" type="clear" onPress={() => setPregnant(2)}/> : <NarrowButton title="No" onPress={() => setPregnant(2)}/>}
+            {babies === 1 ? <RoundButton title="1" type="clear" onPress={() => setBabies(1)}/> : <RoundButton title="1" onPress={() => setBabies(1)}/>}
+            {babies === 2 ? <RoundButton title="2" type="clear" onPress={() => setBabies(2)}/> : <RoundButton title="2" onPress={() => setBabies(2)}/>}
+            {babies === 3 ? <RoundButton title="3" type="clear" onPress={() => setBabies(3)}/> : <RoundButton title="3" onPress={() => setBabies(3)}/>}
+            {babies === 4 ? <RoundButton title="4" type="clear" onPress={() => setBabies(4)}/> : <RoundButton title="4" onPress={() => setBabies(4)}/>}
+            {babies === 5 ? <RoundButton title="5" type="clear" onPress={() => setBabies(5)}/> : <RoundButton title="5" onPress={() => setBabies(5)}/>}
+            {babies === 6 ? <RoundButton title="6" type="clear" onPress={() => setBabies(6)}/> : <RoundButton title="6" onPress={() => setBabies(6)}/>}
           </View>
+          </Container>
+          <Container>
+            <Input label='What is your due date?' />
+          </Container>
+          <Container>
+            <StandardButton title="Submit" onPress={() => {navigation.navigate('Nursing')}}/>
+            <LArrowButton onPress={() => navigation.goBack()}/>
+          </Container>
         </Container>
-        <Container>
-        <CustomText>
-          How many babies are you carrying?
-        </CustomText>
-        <View style={{ flexDirection: 'row' }}>
-          {babies === 1 ? <RoundButton title="1" type="clear" onPress={() => setBabies(1)}/> : <RoundButton title="1" onPress={() => setBabies(1)}/>}
-          {babies === 2 ? <RoundButton title="2" type="clear" onPress={() => setBabies(2)}/> : <RoundButton title="2" onPress={() => setBabies(2)}/>}
-          {babies === 3 ? <RoundButton title="3" type="clear" onPress={() => setBabies(3)}/> : <RoundButton title="3" onPress={() => setBabies(3)}/>}
-          {babies === 4 ? <RoundButton title="4" type="clear" onPress={() => setBabies(4)}/> : <RoundButton title="4" onPress={() => setBabies(4)}/>}
-          {babies === 5 ? <RoundButton title="5" type="clear" onPress={() => setBabies(5)}/> : <RoundButton title="5" onPress={() => setBabies(5)}/>}
-          {babies === 6 ? <RoundButton title="6" type="clear" onPress={() => setBabies(6)}/> : <RoundButton title="6" onPress={() => setBabies(6)}/>}
-        </View>
-        </Container>
-        <Container>
-          <Input label='What is your due date?' />
-        </Container>
-        <Container>
-          <StandardButton title="Submit" onPress={() => {navigation.navigate('Nursing')}}/>
-          <LArrowButton onPress={() => navigation.goBack()}/>
-        </Container>
-      </Container>
-    </SafeAreaView>
+      </SafeAreaView>
+    </TouchableWithoutFeedback>
   );
 }
 
