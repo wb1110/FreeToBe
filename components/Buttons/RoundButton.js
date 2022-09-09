@@ -9,7 +9,7 @@ export default function RoundButton(props) {
     }}
     containerStyle={{
       width: 45,
-      marginHorizontal: 10,
+      marginHorizontal: 5,
       marginVertical: 10,
     }} 
     type={type}
