@@ -42,6 +42,13 @@ const theme = createTheme({
         fontFamily: 'Inter-Regular',
         color: '#893F04',
       },
+    },
+    Input: {
+      labelStyle: {
+        fontFamily: 'Inter-Bold',
+        color: '#893F04',
+
+      }
     }
   }
 });
