@@ -1,8 +1,8 @@
-import { SafeAreaView, Text } from 'react-native';
+import { SafeAreaView } from 'react-native';
+import { Text } from "@rneui/themed";
 import FocusedStatusBar from '../components/FocusedStatusBar';
 import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
-import CustomText from '../components/CustomText';
 
 
 function Home({ navigation }) {
@@ -10,9 +10,9 @@ function Home({ navigation }) {
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
       <Container>
-        <CustomText variant='h1' >Welcome!</CustomText>
-        <Text>Are you ready to have real sustainable change?</Text>
-        <Text>Fill in the following to get started:</Text>
+        <Text h1>Welcome!</Text>
+        <Text h2>Are you ready to have real sustainable change?</Text>
+        <Text h2>Fill in the following to get started:</Text>
         <StandardButton onPress={() => navigation.navigate('HeightWeightAge')} title="Let's Do This" />
       </Container>
     </SafeAreaView>

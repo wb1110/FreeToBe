@@ -20,6 +20,26 @@ const theme = createTheme({
     primary: '#893F04',
     secondary: '#989E8B',
   },
+  components: {
+    Text: {
+      h1Style: {
+        fontFamily: 'Inter-Regular',
+        color: '#989E8B',
+      },
+      h2Style: {
+        fontFamily: 'Inter-Regular',
+        color: '#989E8B',
+      },
+      h3Style: {
+        fontFamily: 'Inter-Regular',
+        color: '#989E8B',
+      },
+      h4Style: {
+        fontFamily: 'Inter-Regular',
+        color: '#989E8B',
+      },
+    }
+  }
 });
 
 const Stack = createStackNavigator();
