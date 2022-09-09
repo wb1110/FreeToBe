@@ -36,7 +36,7 @@ function Nursing({ navigation }) {
         </View>
         </Container>
         <Container>
-          <StandardButton title="Submit" onPress={() => alert('success!')}/>
+          <StandardButton title="Submit" onPress={() => {navigation.navigate('Goals')}}/>
           <LArrowButton onPress={() => {navigation.navigate('Pregnant')}}/>
         </Container>
       </Container>
