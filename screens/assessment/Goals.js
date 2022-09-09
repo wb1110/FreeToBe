@@ -4,7 +4,7 @@ import FocusedStatusBar from '../../components/FocusedStatusBar';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import CustomText from '../../components/CustomText';
+import { Text } from "@rneui/themed";
 import CustomCheckBox from '../../components/CustomCheckBox';
 
 
@@ -14,12 +14,12 @@ function Goals({ navigation }) {
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
-          <CustomText>
+          <Text>
             Which of these goals would you like to get out of this experience?
-          </CustomText>
-          <CustomText>
+          </Text>
+          <Text>
             Check all that apply:
-          </CustomText>
+          </Text>
           <View style={{ alignItems: "flex-start"}}>
             <CustomCheckBox title="Increase metabolic rate"/>
             <CustomCheckBox title="Have steady energy throughout the day"/>

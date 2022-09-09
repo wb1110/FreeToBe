@@ -22,21 +22,25 @@ const theme = createTheme({
   },
   components: {
     Text: {
+      style: {
+        fontFamily: 'Inter-Regular',
+        color: '#893F04',
+      },
       h1Style: {
         fontFamily: 'Inter-Regular',
-        color: '#989E8B',
+        color: '#893F04',
       },
       h2Style: {
         fontFamily: 'Inter-Regular',
-        color: '#989E8B',
+        color: '#893F04',
       },
       h3Style: {
         fontFamily: 'Inter-Regular',
-        color: '#989E8B',
+        color: '#893F04',
       },
       h4Style: {
         fontFamily: 'Inter-Regular',
-        color: '#989E8B',
+        color: '#893F04',
       },
     }
   }

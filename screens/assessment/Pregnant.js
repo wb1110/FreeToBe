@@ -5,7 +5,7 @@ import LArrowButton from '../../components/Buttons/LArrowButton';
 import RoundButton from '../../components/Buttons/RoundButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import CustomText from '../../components/CustomText';
+import { Text } from "@rneui/themed";
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import NarrowButton from "../../components/Buttons/NarrowButton";
 
@@ -19,18 +19,18 @@ function Pregnant({ navigation }) {
         <FocusedStatusBar />
         <Container>
           <Container>
-            <CustomText>
+            <Text>
               Are you currently pregnant?
-            </CustomText>
+            </Text>
             <View style={{ flexDirection: 'row' }}>
               {pregnant === 1 ? <NarrowButton title="Yes" type="clear" onPress={() => setPregnant(1)}/> : <NarrowButton title="Yes" onPress={() => setPregnant(1)}/>}
               {pregnant === 2 ? <NarrowButton title="No" type="clear" onPress={() => setPregnant(2)}/> : <NarrowButton title="No" onPress={() => setPregnant(2)}/>}
             </View>
           </Container>
           <Container>
-          <CustomText>
+          <Text>
             How many babies are you carrying?
-          </CustomText>
+          </Text>
           <View style={{ flexDirection: 'row' }}>
             {babies === 1 ? <RoundButton title="1" type="clear" onPress={() => setBabies(1)}/> : <RoundButton title="1" onPress={() => setBabies(1)}/>}
             {babies === 2 ? <RoundButton title="2" type="clear" onPress={() => setBabies(2)}/> : <RoundButton title="2" onPress={() => setBabies(2)}/>}

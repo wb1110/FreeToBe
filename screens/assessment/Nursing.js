@@ -4,7 +4,7 @@ import LArrowButton from '../../components/Buttons/LArrowButton';
 import NarrowButton from "../../components/Buttons/NarrowButton";
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import CustomText from '../../components/CustomText';
+import { Text } from "@rneui/themed";
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 
 
@@ -16,18 +16,18 @@ function Nursing({ navigation }) {
       <FocusedStatusBar />
       <Container>
         <Container>
-          <CustomText>
+          <Text>
             Are you currently nursing?
-          </CustomText>
+          </Text>
           <View style={{ flexDirection: 'row' }}>
             {nursing === 1 ? <NarrowButton title="Yes" type="clear" onPress={() => setNursing(1)}/> : <NarrowButton title="Yes" onPress={() => setNursing(1)}/>}
             {nursing === 2 ? <NarrowButton title="No" type="clear" onPress={() => setNursing(2)}/> : <NarrowButton title="No" onPress={() => setNursing(2)}/>}
           </View>
         </Container>
         <Container>
-        <CustomText>
+        <Text>
           Are you...
-        </CustomText>
+        </Text>
         <View>
           {partum === 1 ? <StandardButton title="0-6 months postpartum" type="clear" onPress={() => setPartum(1)}/> : <StandardButton title="0-6 months postpartum" onPress={() => setPartum(1)}/>}
           {partum === 2 ? <StandardButton title="7+ months postpartum" type="clear" onPress={() => setPartum(2)}/> : <StandardButton title="7+ months postpartum" onPress={() => setPartum(2)}/>}
