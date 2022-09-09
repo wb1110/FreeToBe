@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
 import { CheckBox } from "@rneui/themed";
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-const CustomCheckBox = (props) => {
+function CustomCheckBox(props) {
   const [check, setCheck] = useState(false);
   const { title } = props;
   return (

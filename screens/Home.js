@@ -6,7 +6,6 @@ import CustomText from '../components/CustomText';
 
 
 function Home({ navigation }) {
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />

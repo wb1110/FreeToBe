@@ -1,10 +1,9 @@
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView , View } from 'react-native';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
-import { View } from "react-native";
 import CustomCheckBox from '../../components/CustomCheckBox';
 
 

@@ -1,16 +1,15 @@
-import { Input } from "@rneui/themed";
-import { SafeAreaView, View } from 'react-native';
 import { useState } from "react";
-import FocusedStatusBar from '../../components/FocusedStatusBar';
+import { SafeAreaView, View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RoundButton from '../../components/Buttons/RoundButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
-import ThreeSite from './skinFoldSites/ThreeSite';
+import FocusedStatusBar from '../../components/FocusedStatusBar';
 import FourSite from "./skinFoldSites/FourSite";
-import SevenSite from "./skinFoldSites/SevenSite";
 import NineSite from "./skinFoldSites/NineSite";
+import SevenSite from "./skinFoldSites/SevenSite";
+import ThreeSite from './skinFoldSites/ThreeSite';
 
 
 function CaliperSites({ navigation }) {

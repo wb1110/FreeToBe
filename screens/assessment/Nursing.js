@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { SafeAreaView, View } from 'react-native';
-import { Input } from "@rneui/themed";
 import LArrowButton from '../../components/Buttons/LArrowButton';
-import RoundButton from '../../components/Buttons/RoundButton';
+import NarrowButton from "../../components/Buttons/NarrowButton";
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomText from '../../components/CustomText';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
-import NarrowButton from "../../components/Buttons/NarrowButton";
 
 
 function Nursing({ navigation }) {
