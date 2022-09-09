@@ -11,8 +11,8 @@ import NarrowButton from "../../components/Buttons/NarrowButton";
 
 
 function Pregnant({ navigation }) {
-  const [pregnant, setPregnant] = useState(1);
-  const [babies, setBabies] = useState(1);
+  const [pregnant, setPregnant] = useState(0);
+  const [babies, setBabies] = useState(0);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
@@ -43,7 +43,7 @@ function Pregnant({ navigation }) {
           <Input label='What is your due date?' />
         </Container>
         <Container>
-          <StandardButton title="Submit" onPress={() => alert('success!')}/>
+          <StandardButton title="Submit" onPress={() => {navigation.navigate('Nursing')}}/>
           <LArrowButton onPress={() => {navigation.navigate('BodyFatPercentage')}}/>
         </Container>
       </Container>

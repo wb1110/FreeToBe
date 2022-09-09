@@ -14,7 +14,7 @@ import NineSite from "./skinFoldSites/NineSite";
 
 
 function CaliperSites({ navigation }) {
-  const [selected, setSelected] = useState(3);
+  const [selected, setSelected] = useState(0);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />

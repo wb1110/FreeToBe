@@ -1,0 +1,47 @@
+import { useState } from "react";
+import { SafeAreaView, View } from 'react-native';
+import { Input } from "@rneui/themed";
+import LArrowButton from '../../components/Buttons/LArrowButton';
+import RoundButton from '../../components/Buttons/RoundButton';
+import StandardButton from '../../components/Buttons/StandardButton';
+import Container from '../../components/Container';
+import CustomText from '../../components/CustomText';
+import FocusedStatusBar from '../../components/FocusedStatusBar';
+import NarrowButton from "../../components/Buttons/NarrowButton";
+
+
+function Nursing({ navigation }) {
+  const [nursing, setNursing] = useState(0);
+  const [partum, setPartum] = useState(0);
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <FocusedStatusBar />
+      <Container>
+        <Container>
+          <CustomText>
+            Are you currently nursing?
+          </CustomText>
+          <View style={{ flexDirection: 'row' }}>
+            {nursing === 1 ? <NarrowButton title="Yes" type="clear" onPress={() => setNursing(1)}/> : <NarrowButton title="Yes" onPress={() => setNursing(1)}/>}
+            {nursing === 2 ? <NarrowButton title="No" type="clear" onPress={() => setNursing(2)}/> : <NarrowButton title="No" onPress={() => setNursing(2)}/>}
+          </View>
+        </Container>
+        <Container>
+        <CustomText>
+          Are you...
+        </CustomText>
+        <View>
+          {partum === 1 ? <StandardButton title="0-6 months postpartum" type="clear" onPress={() => setPartum(1)}/> : <StandardButton title="0-6 months postpartum" onPress={() => setPartum(1)}/>}
+          {partum === 2 ? <StandardButton title="7+ months postpartum" type="clear" onPress={() => setPartum(2)}/> : <StandardButton title="7+ months postpartum" onPress={() => setPartum(2)}/>}
+        </View>
+        </Container>
+        <Container>
+          <StandardButton title="Submit" onPress={() => alert('success!')}/>
+          <LArrowButton onPress={() => {navigation.navigate('Pregnant')}}/>
+        </Container>
+      </Container>
+    </SafeAreaView>
+  );
+}
+
+export default Nursing;

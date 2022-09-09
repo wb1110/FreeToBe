@@ -12,6 +12,7 @@ import BodyFatPercentage from './screens/assessment/BodyFatPercentage';
 import CaliperSites from './screens/assessment/CaliperSites';
 import BodyFatKnown from './screens/assessment/BodyFatKnown';
 import Pregnant from './screens/assessment/Pregnant';
+import Nursing from './screens/assessment/Nursing';
 
 const theme = createTheme({
   colors: {
@@ -63,6 +64,7 @@ export default function App() {
             <Stack.Screen name="BodyFatKnown" component={BodyFatKnown} />
             <Stack.Screen name="CaliperSites" component={CaliperSites} />
             <Stack.Screen name="Pregnant" component={Pregnant} />
+            <Stack.Screen name="Nursing" component={Nursing} />
           </Stack.Navigator>
         </NavigationContainer>
       </ThemeProvider>
