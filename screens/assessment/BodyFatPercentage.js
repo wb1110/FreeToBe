@@ -20,7 +20,7 @@ function BodyFatPercentage({ navigation }) {
           <StandardButton title="Yes" onPress={() => {navigation.navigate('BodyFatKnown')}} />
           <StandardButton title="No" onPress={() => {navigation.navigate('Pregnant')}} />
           <StandardButton title="I used calipers and need to calculate it" onPress={() => {navigation.navigate('CaliperSites')}} />
-          <LArrowButton onPress={() => {navigation.navigate('HeightWeightAge')}}/>
+          <LArrowButton onPress={() => navigation.goBack()}/>
       </Container>
     </SafeAreaView>
   );

@@ -37,7 +37,7 @@ function Nursing({ navigation }) {
         </Container>
         <Container>
           <StandardButton title="Submit" onPress={() => {navigation.navigate('Goals')}}/>
-          <LArrowButton onPress={() => {navigation.navigate('Pregnant')}}/>
+          <LArrowButton onPress={() => navigation.goBack()}/>
         </Container>
       </Container>
     </SafeAreaView>

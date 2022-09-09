@@ -38,7 +38,7 @@ function CaliperSites({ navigation }) {
         {selected === 9 ? <NineSite /> : null }
         </Container>
         <StandardButton title="Submit" onPress={() => alert('success!')}/>
-        <LArrowButton onPress={() => {navigation.navigate('BodyFatPercentage')}}/>
+        <LArrowButton onPress={() => navigation.goBack()}/>
       </Container>
     </SafeAreaView>
   );

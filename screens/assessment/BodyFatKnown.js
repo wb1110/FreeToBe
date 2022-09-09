@@ -26,7 +26,7 @@ function BodyFatKnown({ navigation }) {
               value={values.bodyFat}
             />
             <StandardButton title="Submit" onPress={() => {handleSubmit(); alert('success!') }}/>
-              <LArrowButton onPress={() => {navigation.navigate('BodyFatPercentage')}}/>
+              <LArrowButton onPress={() => navigation.goBack()}/>
           </Container>
         )}
       </Formik>

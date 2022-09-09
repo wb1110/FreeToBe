@@ -18,7 +18,7 @@ function Gender({ navigation }) {
         <CustomText>Fill in the following to get started:</CustomText>
         <StandardButton title="Female" onPress={() => {navigation.navigate('HeightWeightAge'); state.setGender('Female') }} />
         <StandardButton title="Nonbinary" onPress={() => {navigation.navigate('HeightWeightAge'); state.setGender('Nonbinary') }} />
-          <LArrowButton onPress={() => {navigation.navigate('Home')}} />
+          <LArrowButton onPress={() => navigation.goBack()} />
       </Container>
     </SafeAreaView>
   );

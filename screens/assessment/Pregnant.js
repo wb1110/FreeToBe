@@ -44,7 +44,7 @@ function Pregnant({ navigation }) {
         </Container>
         <Container>
           <StandardButton title="Submit" onPress={() => {navigation.navigate('Nursing')}}/>
-          <LArrowButton onPress={() => {navigation.navigate('BodyFatPercentage')}}/>
+          <LArrowButton onPress={() => navigation.goBack()}/>
         </Container>
       </Container>
     </SafeAreaView>

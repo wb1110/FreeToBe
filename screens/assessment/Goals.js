@@ -29,7 +29,7 @@ function Goals({ navigation }) {
           <CustomCheckBox title="Write in your own goal"/>
         </View>
           <StandardButton title="Submit" onPress={() => alert('Success!')} />
-          <LArrowButton onPress={() => {navigation.navigate('Nursing')}}/>
+          <LArrowButton onPress={() => navigation.goBack()}/>
       </Container>
     </SafeAreaView>
   );
