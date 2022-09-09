@@ -5,7 +5,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect } from 'react';
 import { ThemeProvider, createTheme } from '@rneui/themed';
-import Gender from './screens/assessment/Gender';
+import Welcome from './screens/Welcome';
 import HeightWeightAge from './screens/assessment/HeightWeightAge';
 import Home from './screens/Home';
 import BodyFatPercentage from './screens/assessment/BodyFatPercentage';
@@ -90,7 +90,7 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
             <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Gender" component={Gender} />
+            <Stack.Screen name="Welcome" component={Welcome} />
             <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
             <Stack.Screen name="BodyFatPercentage" component={BodyFatPercentage} />
             <Stack.Screen name="BodyFatKnown" component={BodyFatKnown} />
