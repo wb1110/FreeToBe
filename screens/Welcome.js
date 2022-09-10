@@ -1,8 +1,8 @@
+import { Text } from "@rneui/themed";
 import { SafeAreaView } from 'react-native';
-import { Text, Input } from "@rneui/themed";
-import FocusedStatusBar from '../components/FocusedStatusBar';
 import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
+import FocusedStatusBar from '../components/FocusedStatusBar';
 
 
 function Welcome({ navigation }) {
