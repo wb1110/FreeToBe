@@ -96,7 +96,6 @@ function HeightWeightAge({ navigation }) {
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (
           <Container>
-            <Input label='Height' value={values.height} onChangeText={handleChange('height')} onBlur={handleBlur('height')}/>
             <StandardButton title={`Height ${height}`} onPress={toggleOverlay} value={values.height}/>
             <Overlay isVisible={visible} onBackdropPress={toggleOverlay} overlayStyle={{ backgroundColor: 'transparent' }}>
               <View style={{ height: '85%', marginTop: '10%' }}>
