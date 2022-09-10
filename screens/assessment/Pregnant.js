@@ -1,10 +1,10 @@
+import { Text } from "@rneui/themed";
 import { useState } from "react";
-import { SafeAreaView, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { Input , Text } from "@rneui/themed";
+import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
+import NarrowButton from "../../components/Buttons/NarrowButton";
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
-import NarrowButton from "../../components/Buttons/NarrowButton";
 import IsPregnant from "../../components/IsPregnant";
 
 

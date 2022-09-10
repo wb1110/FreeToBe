@@ -1,10 +1,10 @@
-import { SafeAreaView , View, TouchableWithoutFeedback, Keyboard } from 'react-native';
-import { Input , Text } from "@rneui/themed";
-import FocusedStatusBar from '../../components/FocusedStatusBar';
+import { Text } from "@rneui/themed";
+import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomCheckBox from '../../components/CustomCheckBox';
+import FocusedStatusBar from '../../components/FocusedStatusBar';
 
 
 function WorkActivityLevel({ navigation }) {
