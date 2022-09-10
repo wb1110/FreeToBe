@@ -26,7 +26,7 @@ function BodyFatKnown({ navigation }) {
                 onBlur={handleBlur('bodyFat')}
                 value={values.bodyFat}
               />
-              <StandardButton title="Submit" onPress={() => {handleSubmit(); alert('success!') }}/>
+              <StandardButton title="Submit" onPress={() => {navigation.navigate('Pregnant')}}/>
                 <LArrowButton onPress={() => navigation.goBack()}/>
             </Container>
           )}
