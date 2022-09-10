@@ -7,29 +7,28 @@ import Container from '../../components/Container';
 import CustomCheckBox from '../../components/CustomCheckBox';
 
 
-function Goals({ navigation }) {
+function FoodPreferences({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
           <Text>
-            Which of these goals would you like to get out of this experience?
-          </Text>
-          <Text>
-            Check all that apply:
+            Choose all the apply. What I currently eat can be best described as…
           </Text>
           <View style={{ alignItems: "flex-start"}}>
-            <CustomCheckBox title="Increase metabolism"/>
-            <CustomCheckBox title="Have steady energy throughout the day"/>
-            <CustomCheckBox title="Lose weight"/>
-            <CustomCheckBox title="Increase the calories I eat without gaining weight"/>
-            <CustomCheckBox title="Increase muscle mass"/>
-            <CustomCheckBox title="Food Freedom (Learn about the makeup of food and be able to intuitively eat)"/>
+            <CustomCheckBox title="All types of food"/>
+            <CustomCheckBox title="Vegan"/>
+            <CustomCheckBox title="Vegetarian"/>
+            <CustomCheckBox title="Dairy Free"/>
+            <CustomCheckBox title="Gluten Free"/>
+            <CustomCheckBox title="Dairy + Gluten Free"/>
+            <CustomCheckBox title="Pescatarian"/>
+            <CustomCheckBox title="Low Carb"/>
+            <CustomCheckBox title="Keto"/>
+            <CustomCheckBox title="Carnivore"/>
           </View>
-
-          <Input label='Write in your own goal' style={{ margin: "auto", width: "80%" }}/>
-            <StandardButton title="Submit" onPress={() => navigation.navigate('DietHistory')} />
+            <StandardButton title="Submit" onPress={() => navigation.navigate('TrackingHistory')} />
             <LArrowButton onPress={() => navigation.goBack()}/>
         </Container>
       </SafeAreaView>
@@ -37,4 +36,4 @@ function Goals({ navigation }) {
   );
 }
 
-export default Goals;
+export default FoodPreferences;

@@ -14,6 +14,11 @@ import BodyFatKnown from './screens/assessment/BodyFatKnown';
 import Pregnant from './screens/assessment/Pregnant';
 import Nursing from './screens/assessment/Nursing';
 import Goals from './screens/assessment/Goals';
+import DietHistory from './screens/assessment/DietHistory';
+import FoodPreferences from './screens/assessment/FoodPreferences';
+import TrackingHistory from './screens/assessment/TrackingHistory';
+import InternalStress from './screens/assessment/InternalStress';
+import ExternalStress from './screens/assessment/ExternalStress';
 
 const theme = createTheme({
   colors: {
@@ -95,7 +100,7 @@ export default function App() {
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
+          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="ExternalStress">
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Welcome" component={Welcome} />
             <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
@@ -105,6 +110,11 @@ export default function App() {
             <Stack.Screen name="Pregnant" component={Pregnant} />
             <Stack.Screen name="Nursing" component={Nursing} />
             <Stack.Screen name="Goals" component={Goals} />
+            <Stack.Screen name="DietHistory" component={DietHistory} />
+            <Stack.Screen name="FoodPreferences" component={FoodPreferences} />
+            <Stack.Screen name="TrackingHistory" component={TrackingHistory} />
+            <Stack.Screen name="InternalStress" component={InternalStress} />
+            <Stack.Screen name="ExternalStress" component={ExternalStress} />
           </Stack.Navigator>
         </NavigationContainer>
       </ThemeProvider>
