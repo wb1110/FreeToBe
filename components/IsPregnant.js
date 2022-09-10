@@ -1,11 +1,11 @@
 import { View } from 'react-native'
 import { Input , Text } from "@rneui/themed";
 import React, { useState } from 'react'
-import RoundButton from '../components/Buttons/RoundButton';
-import StandardButton from '../components/Buttons/StandardButton';
-import Container from '../components/Container';
+import RoundButton from "./Buttons/RoundButton";
+import StandardButton from "./Buttons/StandardButton";
+import Container from "./Container";
 
-const IsPregnant = ({ navigation }) => {
+function IsPregnant({ navigation }) {
   const [babies, setBabies] = useState(0);
   return (
     <Container>
