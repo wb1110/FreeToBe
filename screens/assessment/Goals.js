@@ -20,12 +20,12 @@ function Goals({ navigation }) {
             Check all that apply:
           </Text>
           <View style={{ alignItems: "flex-start"}}>
-            <CustomCheckBox title="Increase metabolic rate"/>
+            <CustomCheckBox title="Increase metabolism"/>
             <CustomCheckBox title="Have steady energy throughout the day"/>
             <CustomCheckBox title="Lose weight"/>
             <CustomCheckBox title="Increase the calories I eat without gaining weight"/>
             <CustomCheckBox title="Increase muscle mass"/>
-            <CustomCheckBox title="Food Freedom (Free of tracking my food, and be able to intuitively eat"/>
+            <CustomCheckBox title="Food Freedom (Learn about the makeup of food and be able to intuitively eat)"/>
           </View>
 
           <Input label='Write in your own goal' style={{ margin: "auto", width: "80%" }}/>

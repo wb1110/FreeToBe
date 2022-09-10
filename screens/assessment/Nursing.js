@@ -20,10 +20,10 @@ function Nursing({ navigation }) {
           </Text>
           <View style={{ flexDirection: 'row' }}>
             <NarrowButton title="Yes" onPress={() => setNursing(true)}/>
-            <NarrowButton title="No" onPress={() => setNursing(false)}/>
+            <NarrowButton title="No" onPress={() => {setNursing(false); navigation.navigate('Goals') }}/>
           </View>
         </Container>
-        {nursing? <IsNursing /> : null}
+        {nursing? <IsNursing navigation={navigation}/> : null}
         <LArrowButton onPress={() => navigation.goBack()}/>
       </Container>
     </SafeAreaView>

@@ -49,6 +49,13 @@ const theme = createTheme({
         color: '#893F04',
 
       }
+    },
+    CheckBox: {
+      textStyle: {
+        fontFamily: 'Inter-Bold',
+        color: '#893F04',
+
+      }
     }
   }
 });
