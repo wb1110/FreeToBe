@@ -26,7 +26,7 @@ function ExternalStress ({ navigation }) {
             {selected === 4 ? <RoundButton title="4" type="clear" onPress={() => setSelected(4)}/> : <RoundButton title="4" onPress={() => setSelected(4)}/>}
             {selected === 5 ? <RoundButton title="5" type="clear" onPress={() => setSelected(5)}/> : <RoundButton title="5" onPress={() => setSelected(5)}/>}
           </View>
-          <StandardButton title="Submit" onPress={() => alert('success!')}/>
+          <StandardButton title="Submit" onPress={() => navigation.navigate('ActivityLevel')}/>
           <LArrowButton onPress={() => navigation.goBack()}/>
         </Container>
       </SafeAreaView>

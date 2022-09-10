@@ -19,6 +19,12 @@ import FoodPreferences from './screens/assessment/FoodPreferences';
 import TrackingHistory from './screens/assessment/TrackingHistory';
 import InternalStress from './screens/assessment/InternalStress';
 import ExternalStress from './screens/assessment/ExternalStress';
+import ActivityLevel from './screens/assessment/ActivityLevel';
+import WorkActivityLevel from './screens/assessment/WorkActivityLevel';
+import Personality from './screens/assessment/Personality';
+import TimeLearning from './screens/assessment/TimeLearning';
+import NumberedTracking from './screens/assessment/NumberedTracking';
+import Disclaimer from './screens/assessment/Disclaimer';
 
 const theme = createTheme({
   colors: {
@@ -100,7 +106,7 @@ export default function App() {
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="ExternalStress">
+          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="NumberedTracking">
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Welcome" component={Welcome} />
             <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
@@ -115,6 +121,12 @@ export default function App() {
             <Stack.Screen name="TrackingHistory" component={TrackingHistory} />
             <Stack.Screen name="InternalStress" component={InternalStress} />
             <Stack.Screen name="ExternalStress" component={ExternalStress} />
+            <Stack.Screen name="ActivityLevel" component={ActivityLevel} />
+            <Stack.Screen name="WorkActivityLevel" component={WorkActivityLevel} />
+            <Stack.Screen name="Personality" component={Personality} />
+            <Stack.Screen name="TimeLearning" component={TimeLearning} />
+            <Stack.Screen name="NumberedTracking" component={NumberedTracking} />
+            <Stack.Screen name="Disclaimer" component={Disclaimer} />
           </Stack.Navigator>
         </NavigationContainer>
       </ThemeProvider>
