@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native';
 import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import FocusedStatusBar from '../components/FocusedStatusBar';
+import TextContainer from "../components/TextContainer";
 
 
 function Welcome({ navigation }) {
@@ -11,7 +12,9 @@ function Welcome({ navigation }) {
       <FocusedStatusBar />
       <Container>
         <Text h1>Welcome!</Text>
-        <Text h2>Are you ready to have real sustainable change?</Text>
+        <TextContainer>
+          <Text h2>Are you ready to have real sustainable change?</Text>
+        </TextContainer>
         <Text h2>Fill in the following to get started:</Text>
         <StandardButton onPress={() => navigation.navigate('HeightWeightAge')} title="Let's Do This" />
       </Container>
