@@ -33,43 +33,43 @@ import LieSkinny4 from './screens/assessment/LieSkinny4';
 
 const theme = createTheme({
   colors: {
-    primary: '#893F04',
-    secondary: '#989E8B',
+    primary: '#6200EE',
+    secondary: '#03DAC6',
   },
   components: {
     Text: {
       style: {
         fontFamily: 'Inter-Regular',
-        color: '#893F04',
+        color: '#6200EE',
       },
       h1Style: {
         fontFamily: 'Inter-Regular',
-        color: '#893F04',
+        color: '#6200EE',
       },
       h2Style: {
         fontFamily: 'Inter-Regular',
-        color: '#893F04',
+        color: '#6200EE',
       },
       h3Style: {
         fontFamily: 'Inter-Regular',
-        color: '#893F04',
+        color: '#6200EE',
       },
       h4Style: {
         fontFamily: 'Inter-Regular',
-        color: '#893F04',
+        color: '#6200EE',
       },
     },
     Input: {
       labelStyle: {
         fontFamily: 'Inter-Bold',
-        color: '#893F04',
+        color: '#6200EE',
 
       }
     },
     CheckBox: {
       textStyle: {
         fontFamily: 'Inter-Bold',
-        color: '#893F04',
+        color: '#6200EE',
 
       }
     }

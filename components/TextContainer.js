@@ -2,11 +2,10 @@ import { View } from 'react-native';
 import { useTheme } from '@rneui/themed';
 
 function TextContainer(props) {
-  const { flexGrow, children } = props;
+  const { children } = props;
   const { theme } = useTheme();
   return (
-    <View 
-      contentContainerStyle={{flexGrow}} 
+    <View
       style={{
         alignItems: 'center', 
         justifyContent: 'center', 
@@ -14,6 +13,13 @@ function TextContainer(props) {
         padding: '6%', 
         backgroundColor: theme.colors.secondary,
         borderRadius: '25%',
+        shadowOffset: {
+          height: 10  
+        },
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
        }}
     >
       {children}
