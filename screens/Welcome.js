@@ -13,9 +13,9 @@ function Welcome({ navigation }) {
       <Container>
         <Text h1>Welcome!</Text>
         <TextContainer>
-          <Text h2>Are you ready to have real sustainable change?</Text>
+           Are you ready to have real sustainable change?{"\n"}{"\n"}Fill in the following to get started:
         </TextContainer>
-        <Text h2>Fill in the following to get started:</Text>
+        <Text h3></Text>
         <StandardButton onPress={() => navigation.navigate('HeightWeightAge')} title="Let's Do This" />
       </Container>
     </SafeAreaView>

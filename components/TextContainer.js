@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import { useTheme } from '@rneui/themed';
+import { useTheme, Text } from '@rneui/themed';
 
 function TextContainer(props) {
   const { children } = props;
@@ -11,7 +11,7 @@ function TextContainer(props) {
         justifyContent: 'center', 
         margin: '2%', 
         padding: '6%', 
-        backgroundColor: theme.colors.secondary,
+        backgroundColor: theme.colors.primary,
         borderRadius: '25%',
         shadowOffset: {
           height: 10  
@@ -22,7 +22,9 @@ function TextContainer(props) {
         shadowRadius: 3,
        }}
     >
+      <Text h4 h4Style={{ color: theme.colors.white }}>
       {children}
+      </Text>
     </View>
   );
 }

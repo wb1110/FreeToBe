@@ -35,6 +35,7 @@ const theme = createTheme({
   colors: {
     primary: '#6200EE',
     secondary: '#03DAC6',
+    white: "#FFFFFF",
   },
   components: {
     Text: {
