@@ -4,6 +4,7 @@ import LArrowButton from '../../components/Buttons/LArrowButton';
 import RArrowButton from '../../components/Buttons/RArrowButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
+import TextContainer from "../../components/TextContainer";
 
 
 function LieSkinny2({ navigation }) {
@@ -12,9 +13,9 @@ function LieSkinny2({ navigation }) {
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
-          <Text>
+          <TextContainer>
           Although this may be hard to do, please try your best to put everything you eat in for these 3 days and do not be concerned by the number of calories you are currently consuming during this time.
-          </Text>
+          </TextContainer>
           <View style={{ flexDirection: 'row' }}>
             <LArrowButton onPress={() => navigation.goBack()}/>
             <RArrowButton title="Submit" onPress={() => navigation.navigate('LieSkinny3')} />

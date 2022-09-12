@@ -13,7 +13,7 @@ function Personality({ navigation }) {
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
-          <Text>
+          <Text h4>
           If you were to categorize yourself into 1 of the 4 types of people, which would it be?
           </Text>
           <View style={{ alignItems: "flex-start"}}>

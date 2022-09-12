@@ -10,7 +10,7 @@ function IsPregnant({ navigation }) {
   return (
     <Container>
       <Container>
-      <Text>
+      <Text h4>
         How many babies are you carrying?
       </Text>
       <View style={{ flexDirection: 'row' }}>

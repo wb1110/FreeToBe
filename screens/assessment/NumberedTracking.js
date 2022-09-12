@@ -13,7 +13,7 @@ function NumberedTracking({ navigation }) {
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
-          <Text>
+          <Text h4>
           Do you enjoy having specific measurable numbers to hit when you track your food?”
           </Text>
           <View style={{ alignItems: "flex-start"}}>

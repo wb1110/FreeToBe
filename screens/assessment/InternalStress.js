@@ -6,6 +6,7 @@ import RoundButton from '../../components/Buttons/RoundButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
+import TextContainer from "../../components/TextContainer";
 
 
 function InternalStress ({ navigation }) {
@@ -15,9 +16,9 @@ function InternalStress ({ navigation }) {
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
-          <Text>
+          <TextContainer>
           Studies show that stress has an impact on many health markers including sleep, weight loss, energy throughout the day, and many more. There can be internal stress, which is stress that comes within. Worrying about things outside of your control such as losing your job, rain on your birthday, or negative self talk are all examples of internal stress. What would you rate your internal stress between 0-5? 0= no internal stress, 5 = overwhelming amount of internal stress
-          </Text>
+          </TextContainer>
           <View style={{ flexDirection: 'row' }}>
             {selected === 0 ? <RoundButton title="0" type="clear" onPress={() => setSelected(0)}/> : <RoundButton title="0" onPress={() => setSelected(0)}/>}
             {selected === 1 ? <RoundButton title="1" type="clear" onPress={() => setSelected(1)}/> : <RoundButton title="1" onPress={() => setSelected(1)}/>}

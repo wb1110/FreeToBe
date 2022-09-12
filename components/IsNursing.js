@@ -10,7 +10,7 @@ function IsNursing({ navigation }) {
   return (
       <Container>
         <Container>
-          <Text>
+          <Text h4>
             Are you...
           </Text>
           <View>

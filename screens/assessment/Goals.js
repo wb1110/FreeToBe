@@ -5,6 +5,7 @@ import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomCheckBox from '../../components/CustomCheckBox';
+import TextContainer from '../../components/TextContainer';
 
 
 function Goals({ navigation }) {
@@ -13,10 +14,10 @@ function Goals({ navigation }) {
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
-          <Text>
+          <TextContainer>
             Which of these goals would you like to get out of this experience?
-          </Text>
-          <Text>
+          </TextContainer>
+          <Text h4>
             Check all that apply:
           </Text>
           <View style={{ alignItems: "flex-start"}}>

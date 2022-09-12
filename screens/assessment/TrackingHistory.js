@@ -8,7 +8,7 @@ import FocusedStatusBar from '../../components/FocusedStatusBar';
 
 function TrackedMacros({ navigation }) {
   return <Container>
-      <Text>
+      <Text h4>
       Have you had any experience with tracking calories?
       </Text>
       <View style={{ flexDirection: 'row' }}>
@@ -24,7 +24,7 @@ function TrackingHistory({ navigation }) {
       <FocusedStatusBar />
       <Container>
         <Container>
-          <Text>
+          <Text h4>
             Have you had any experience with tracking macros?
           </Text>
           <View style={{ flexDirection: 'row' }}>

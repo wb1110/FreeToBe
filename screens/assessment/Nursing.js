@@ -15,7 +15,7 @@ function Nursing({ navigation }) {
       <FocusedStatusBar />
       <Container>
         <Container>
-          <Text>
+          <Text h4>
             Are you currently nursing?
           </Text>
           <View style={{ flexDirection: 'row' }}>

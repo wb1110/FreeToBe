@@ -13,7 +13,7 @@ function TimeLearning({ navigation }) {
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
-          <Text>
+          <Text h4>
           Based on your answers, we need to ask a couple more questions. How many minutes a day would you like to sprend learning more about nutrition?
           </Text>
           <View style={{ alignItems: "flex-start"}}>

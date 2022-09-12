@@ -13,7 +13,7 @@ function WorkActivityLevel({ navigation }) {
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
-          <Text>
+          <Text h4>
           What is your activity level at work?
           </Text>
           <View style={{ alignItems: "flex-start"}}>
@@ -22,8 +22,8 @@ function WorkActivityLevel({ navigation }) {
             <CustomCheckBox title="Very active - requires physical activity (trainer, construction worker, stay at home mama with littles)"/>
             <CustomCheckBox title="Extremely active - professional/collegiate athlete"/>
           </View>
-            <StandardButton title="Submit" onPress={() => navigation.navigate('Personality')} />
-            <LArrowButton onPress={() => navigation.goBack()}/>
+          <StandardButton title="Submit" onPress={() => navigation.navigate('Personality')} />
+          <LArrowButton onPress={() => navigation.goBack()}/>
         </Container>
       </SafeAreaView>
     </TouchableWithoutFeedback>

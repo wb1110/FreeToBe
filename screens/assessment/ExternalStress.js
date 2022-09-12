@@ -6,6 +6,7 @@ import RoundButton from '../../components/Buttons/RoundButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
+import TextContainer from "../../components/TextContainer";
 
 
 function ExternalStress ({ navigation }) {
@@ -15,9 +16,9 @@ function ExternalStress ({ navigation }) {
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
-          <Text>
+          <TextContainer>
           External stress is stress that comes form outside sources. For example, pressure at work such as deadlines, major life changes, and relationship turmoil are all external stressors. What would you rate your external stress between 0-5?
-          </Text>
+          </TextContainer>
           <View style={{ flexDirection: 'row' }}>
             {selected === 0 ? <RoundButton title="0" type="clear" onPress={() => setSelected(0)}/> : <RoundButton title="0" onPress={() => setSelected(0)}/>}
             {selected === 1 ? <RoundButton title="1" type="clear" onPress={() => setSelected(1)}/> : <RoundButton title="1" onPress={() => setSelected(1)}/>}

@@ -16,7 +16,7 @@ function Pregnant({ navigation }) {
         <FocusedStatusBar />
         <Container>
           <Container>
-            <Text>
+            <Text h4>
               Are you currently pregnant?
             </Text>
             <View style={{ flexDirection: 'row' }}>

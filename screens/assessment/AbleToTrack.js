@@ -11,7 +11,7 @@ function AbleToTrack({ navigation }) {
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
       <Container>
-        <Text>
+        <Text h4>
         After this disclaimer I am…
         </Text>
           <StandardButton title="Able to track 3 days" onPress={() => {navigation.navigate('LieSkinny')}} />
