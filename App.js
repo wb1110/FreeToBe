@@ -30,6 +30,7 @@ import LieSkinny from './screens/assessment/LieSkinny';
 import LieSkinny2 from './screens/assessment/LieSkinny2';
 import LieSkinny3 from './screens/assessment/LieSkinny3';
 import LieSkinny4 from './screens/assessment/LieSkinny4';
+import UserHome from './screens/UserHome';
 
 const theme = createTheme({
   colors: {
@@ -138,6 +139,7 @@ export default function App() {
             <Stack.Screen name="LieSkinny2" component={LieSkinny2} />
             <Stack.Screen name="LieSkinny3" component={LieSkinny3} />
             <Stack.Screen name="LieSkinny4" component={LieSkinny4} />
+            <Stack.Screen name="UserHome" component={UserHome} />
           </Stack.Navigator>
         </NavigationContainer>
       </ThemeProvider>

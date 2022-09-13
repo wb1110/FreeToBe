@@ -19,7 +19,7 @@ function LieSkinny4({ navigation }) {
           </ScrollView>
           <View style={{ flexDirection: 'row' }}>
             <LArrowButton onPress={() => navigation.goBack()}/>
-            <RArrowButton title="Let's Get Started" onPress={() => alert('UserHome Route')} />
+            <RArrowButton title="Let's Get Started" onPress={() => navigation.navigate('UserHome')} />
           </View>
         </Container>
       </SafeAreaView>
