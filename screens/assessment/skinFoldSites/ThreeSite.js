@@ -46,7 +46,7 @@ const ThreeSite = ({ navigation }) => {
          onBlur={handleBlur('suprailiac')}
          value={values.suprailiac}
        />
-       <StandardButton title="Submit" onPress={() => {navigation.navigate('BodyFatKnown'); handleSubmit()}}/>
+       <StandardButton title="Submit" onPress={() => {navigation.navigate('Pregnant'); handleSubmit()}}/>
      </Container>
      )}
   </Formik>
