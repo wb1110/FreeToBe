@@ -1,7 +1,10 @@
 import { Input } from "@rneui/themed";
 import Container from '../../../components/Container'
 
-function ThreeSite() {
+function ThreeSite({ skinfolds, setSkinfolds }) {
+  const handleChange = {
+    
+  }
   return (
     <Container>
       <Input label='Abdominal' />
