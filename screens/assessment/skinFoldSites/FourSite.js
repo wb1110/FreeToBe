@@ -6,7 +6,7 @@ function FourSite() {
     <Container>
       <Input label='Abdominal' />
       <Input label='Triceps' />
-      <Input label='Suprailiac' />
+      <Input label='Thigh' />
       <Input label='Suprailiac' />
     </Container>
   )
