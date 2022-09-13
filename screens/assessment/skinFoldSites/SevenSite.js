@@ -1,8 +1,10 @@
 import { Input } from "@rneui/themed";
 import { View } from "react-native";
+import StandardButton from "../../../components/Buttons/StandardButton";
 
 function SevenSite() {
   return (
+    <View style={{ alignItems: 'center' }}>
     <View style={{ width: "100%", flex: 1, flexGrow: 1, flexDirection: "row", marginTop: "25%" }}>
       <View style={{ flex: 1, flexGrow: 1 }}>
         <Input label='Chest' style={{ flex: 1 }}/>
@@ -16,6 +18,8 @@ function SevenSite() {
         <Input label='Subscapular'  style={{ flex: 1 }} />
       </View>
     </View>
+      <StandardButton title="Submit" onPress={() => alert('success!')}/>
+      </View>
   )
 }
 

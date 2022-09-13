@@ -14,15 +14,6 @@ import ThreeSite from './skinFoldSites/ThreeSite';
 
 function CaliperSites({ navigation }) {
   const [selected, setSelected] = useState(0);
-  const [skinfolds, setSkinfolds] = useState({
-    sum: 0,
-    square: 0,
-  })
-  const handleSubmit = () => {
-    const bodyFat = () => {
-
-    }
-  }
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -41,12 +32,11 @@ function CaliperSites({ navigation }) {
             Type in your measurements in mm
           </Text>
           <Container>
-          {selected === 3 ? <ThreeSite skinfolds={skinfolds} setSkinfolds={setSkinfolds} /> : null }
+          {selected === 3 ? <ThreeSite navigation={navigation}/> : null }
           {selected === 4 ? <FourSite /> : null }
           {selected === 7 ? <SevenSite /> : null }
           {selected === 9 ? <NineSite /> : null }
           </Container>
-          <StandardButton title="Submit" onPress={() => alert('success!')}/>
           <LArrowButton onPress={() => navigation.goBack()}/>
         </Container>
       </SafeAreaView>

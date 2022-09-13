@@ -10,6 +10,9 @@ import useStore from '../../state/Store';
 
 function BodyFatKnown({ navigation }) {
   const state = useStore();
+  if (state.assessment.bodyFat) {
+    console.log(state.assessment.bodyFat)
+  }
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -26,7 +29,7 @@ function BodyFatKnown({ navigation }) {
                 onBlur={handleBlur('bodyFat')}
                 value={values.bodyFat}
               />
-              <StandardButton title="Submit" onPress={() => {navigation.navigate('Pregnant')}}/>
+              <StandardButton title="Submit" onPress={() => {navigation.navigate('Pregnant'); handleSubmit()}}/>
                 <LArrowButton onPress={() => navigation.goBack()}/>
             </Container>
           )}
