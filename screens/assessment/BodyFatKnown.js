@@ -10,9 +10,7 @@ import useStore from '../../state/Store';
 
 function BodyFatKnown({ navigation }) {
   const state = useStore();
-  if (state.assessment.bodyFat) {
-    console.log(state.assessment.bodyFat)
-  }
+  console.log(state.assessment.bodyFat)
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>

@@ -10,7 +10,7 @@ const ThreeSite = ({ navigation }) => {
   const state = useStore();
   const bodyFat = (sum, age) => {
     const result = ((0.41563 * sum) - (0.00112 * (Math.pow(sum, 2))) + (0.03661 * age) + 4.03653)
-   return console.log(result);
+   return result;
   };
   
   return (
@@ -22,11 +22,11 @@ const ThreeSite = ({ navigation }) => {
       bodyFat: state.assessment.bodyFat,
     }}
     onSubmit={values => {
+      values.bodyFat = bodyFat((+values.abdominal + +values.triceps + +values.suprailiac),state.assessment.age)
       state.setBodyFat(values);
-      bodyFat((+values.abdominal + +values.triceps + +values.suprailiac),state.assessment.age)
     }}
   >
-{({ handleChange, handleBlur, handleSubmit, bodyFat, values }) => (
+{({ handleChange, handleBlur, handleSubmit, values }) => (
        <Container>
        <Input 
          label='Abdominal' 
@@ -46,7 +46,6 @@ const ThreeSite = ({ navigation }) => {
          onBlur={handleBlur('suprailiac')}
          value={values.suprailiac}
        />
-       <TextContainer>Body Fat: {+values.abdominal + +values.triceps + +values.suprailiac}</TextContainer>
        <StandardButton title="Submit" onPress={() => {navigation.navigate('BodyFatKnown'); handleSubmit()}}/>
      </Container>
      )}
