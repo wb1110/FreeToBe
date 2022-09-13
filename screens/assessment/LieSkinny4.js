@@ -1,5 +1,4 @@
-import { Text } from "@rneui/themed";
-import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import { ScrollView } from "react-native-gesture-handler";
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RArrowButton from '../../components/Buttons/RArrowButton';

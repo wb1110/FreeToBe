@@ -1,4 +1,4 @@
-import { SafeAreaView, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView } from 'react-native';
+import { SafeAreaView, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
 import { Input } from "@rneui/themed";
 import FocusedStatusBar from '../components/FocusedStatusBar';
 import StandardButton from '../components/Buttons/StandardButton';

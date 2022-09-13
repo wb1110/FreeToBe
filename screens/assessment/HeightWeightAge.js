@@ -1,6 +1,6 @@
 import { Input } from "@rneui/themed";
 import { Formik } from 'formik';
-import { Keyboard, KeyboardAvoidingView, SafeAreaView, TouchableWithoutFeedback } from 'react-native';
+import { Keyboard, KeyboardAvoidingView, SafeAreaView, TouchableWithoutFeedback, Platform } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';

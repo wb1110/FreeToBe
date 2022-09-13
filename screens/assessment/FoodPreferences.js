@@ -1,5 +1,4 @@
-import { Text } from "@rneui/themed";
-import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
