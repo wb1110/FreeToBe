@@ -7,15 +7,15 @@ import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 
 function TrackedMacros({ navigation }) {
-  return <Container>
+  return <View>
       <Text h4>
       Have you had any experience with tracking calories?
       </Text>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
         <NarrowButton title="Yes" onPress={() => navigation.navigate('InternalStress')}/>
         <NarrowButton title="No" onPress={() => navigation.navigate('InternalStress')}/>
       </View>
-    </Container>
+    </View>
 }
 function TrackingHistory({ navigation }) {
   const [macrosHistory, setMacrosHistory] = useState(false);
@@ -31,8 +31,8 @@ function TrackingHistory({ navigation }) {
             <NarrowButton title="Yes" onPress={() => setMacrosHistory(true)}/>
             <NarrowButton title="No" onPress={() => {setMacrosHistory(false); navigation.navigate('Goals') }}/>
           </View>
-        </Container>
         {macrosHistory? <TrackedMacros navigation={navigation}/> : null}
+        </Container>
         <LArrowButton onPress={() => navigation.goBack()}/>
       </Container>
     </SafeAreaView>

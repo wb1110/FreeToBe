@@ -1,4 +1,4 @@
-import { SafeAreaView , View, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import { SafeAreaView , View, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView } from 'react-native';
 import { Input , Text } from "@rneui/themed";
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import LArrowButton from '../../components/Buttons/LArrowButton';
@@ -10,6 +10,10 @@ import TextContainer from '../../components/TextContainer';
 
 function Goals({ navigation }) {
   return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
@@ -28,13 +32,14 @@ function Goals({ navigation }) {
             <CustomCheckBox title="Increase muscle mass"/>
             <CustomCheckBox title="Food Freedom (Learn about the makeup of food and be able to intuitively eat)"/>
           </View>
-
-          <Input label='Write in your own goal' style={{ margin: "auto", width: "80%" }}/>
-            <StandardButton title="Submit" onPress={() => navigation.navigate('DietHistory')} />
-            <LArrowButton onPress={() => navigation.goBack()}/>
+            <Input label='Write in your own goal' style={{ margin: "auto", width: "80%" }}/>
+          
+          <StandardButton title="Submit" onPress={() => navigation.navigate('DietHistory')} />
+          <LArrowButton onPress={() => navigation.goBack()}/>
         </Container>
       </SafeAreaView>
     </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 
