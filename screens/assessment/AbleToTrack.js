@@ -15,7 +15,7 @@ function AbleToTrack({ navigation }) {
         After this disclaimer I am…
         </Text>
           <StandardButton title="Able to track 3 days" onPress={() => {navigation.navigate('LieSkinny')}} />
-          <StandardButton title="Unable to track 3 days" onPress={() => alert('Need Route')} />
+          <StandardButton title="Unable to track 3 days" disabled/>
           <LArrowButton onPress={() => navigation.goBack()}/>
       </Container>
     </SafeAreaView>

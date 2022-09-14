@@ -6,11 +6,9 @@ import NarrowButton from "../../components/Buttons/NarrowButton";
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import IsPregnant from "../../components/IsPregnant";
-import useStore from "../../state/Store";
 
 
 function Pregnant({ navigation }) {
-  const state = useStore();
   const [pregnant, setPregnant] = useState(false);
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

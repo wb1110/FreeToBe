@@ -1,7 +1,7 @@
 import { Button } from "@rneui/themed";
 
 export default function StandardButton(props) {
-  const { title, onPress, type } = props;
+  const { title, onPress, type, disabled } = props;
   return (
     <Button title={title} buttonStyle={{
       borderWidth: 2,
@@ -14,6 +14,7 @@ export default function StandardButton(props) {
     }}
     type={type}
     onPress={onPress}
+    disabled={disabled}
     />
   )
 }

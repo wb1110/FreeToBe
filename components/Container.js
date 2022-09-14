@@ -1,5 +1,5 @@
+import { useTheme } from '@rneui/themed';
 import { View } from 'react-native';
-import { useTheme, Text } from '@rneui/themed';
 
 function Container(props) {
   const { flexGrow, children, height } = props;

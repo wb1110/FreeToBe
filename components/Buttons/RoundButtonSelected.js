@@ -2,7 +2,7 @@ import { Button, useTheme } from "@rneui/themed";
 
 export default function RoundButtonSelected(props) {
   const { theme } = useTheme();
-  const { title, type, onPress } = props;
+  const { title, onPress } = props;
   return (
     <Button title={title} buttonStyle={{
       borderWidth: 2,

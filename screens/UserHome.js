@@ -1,12 +1,11 @@
-import { View } from 'react-native'
-import { Text } from "@rneui/themed";
-import React from 'react'
-import useStore from '../state/Store'
-import TextContainer from '../components/TextContainer';
+import React from 'react';
 import Container from '../components/Container';
+import TextContainer from '../components/TextContainer';
+import useStore from '../state/Store';
 
 export default function UserHome() {
   const state = useStore();
+  console.log(state.assessment);
   return (
     <Container>
     <TextContainer>

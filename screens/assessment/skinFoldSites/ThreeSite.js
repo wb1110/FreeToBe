@@ -1,10 +1,8 @@
-import { Input, Text } from "@rneui/themed";
-import { useState } from "react";
+import { Input } from "@rneui/themed";
 import { Formik } from 'formik';
-import Container from '../../../components/Container'
 import StandardButton from "../../../components/Buttons/StandardButton";
+import Container from '../../../components/Container';
 import useStore from "../../../state/Store";
-import TextContainer from "../../../components/TextContainer";
 
 function ThreeSite({ navigation }) {
   const state = useStore();
@@ -22,8 +20,9 @@ function ThreeSite({ navigation }) {
       bodyFat: state.assessment.bodyFat,
     }}
     onSubmit={values => {
-      values.bodyFat = bodyFat((+values.abdominal + +values.triceps + +values.suprailiac),state.assessment.age)
-      state.setBodyFat(values);
+      const recurranceValue = {...values};
+      recurranceValue.bodyFat = bodyFat((+values.abdominal + +values.triceps + +values.suprailiac),state.assessment.age)
+      state.setBodyFat(recurranceValue);
     }}
   >
 {({ handleChange, handleBlur, handleSubmit, values }) => (

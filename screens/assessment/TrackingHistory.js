@@ -29,7 +29,7 @@ function TrackingHistory({ navigation }) {
           </Text>
           <View style={{ flexDirection: 'row' }}>
             <NarrowButton title="Yes" onPress={() => setMacrosHistory(true)}/>
-            <NarrowButton title="No" onPress={() => {setMacrosHistory(false); navigation.navigate('Goals') }}/>
+            <NarrowButton title="No" onPress={() => {setMacrosHistory(false); navigation.navigate('InternalStress') }}/>
           </View>
         {macrosHistory? <TrackedMacros navigation={navigation}/> : null}
         </Container>
