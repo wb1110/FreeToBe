@@ -6,10 +6,10 @@ import StandardButton from "../../../components/Buttons/StandardButton";
 import useStore from "../../../state/Store";
 import TextContainer from "../../../components/TextContainer";
 
-const ThreeSite = ({ navigation }) => {
+function ThreeSite({ navigation }) {
   const state = useStore();
   const bodyFat = (sum, age) => {
-    const result = ((0.41563 * sum) - (0.00112 * (Math.pow(sum, 2))) + (0.03661 * age) + 4.03653)
+    const result = ((0.41563 * sum) - (0.00112 * (sum**2)) + (0.03661 * age) + 4.03653)
    return result;
   };
   
@@ -29,18 +29,21 @@ const ThreeSite = ({ navigation }) => {
 {({ handleChange, handleBlur, handleSubmit, values }) => (
        <Container>
        <Input 
+        inputContainerStyle={{ borderColor:'white' }}
          label='Abdominal' 
          onChangeText={handleChange('abdominal')}
          onBlur={handleBlur('abdominal')}
          value={values.abdominal}
        />
        <Input 
-         label='Triceps' 
+        inputContainerStyle={{ borderColor:'white' }}
+        label='Triceps' 
          onChangeText={handleChange('triceps')}
          onBlur={handleBlur('triceps')}
          value={values.triceps}
        />
        <Input 
+         inputContainerStyle={{ borderColor:'white' }}
          label='Suprailiac' 
          onChangeText={handleChange('suprailiac')}
          onBlur={handleBlur('suprailiac')}
@@ -51,6 +54,6 @@ const ThreeSite = ({ navigation }) => {
      )}
   </Formik>
   )
-};
+}
 
 export default ThreeSite

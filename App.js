@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font';
@@ -34,49 +34,59 @@ import UserHome from './screens/UserHome';
 
 const theme = createTheme({
   colors: {
-    primary: '#6200EE',
-    secondary: '#03DAC6',
-    white: "#FFFFFF",
+    primary: '#B65C3D',
+    secondary: '#CD947D',
+    white: "#F6F7EC",
   },
   components: {
     Text: {
       style: {
         fontFamily: 'Inter-Regular',
-        color: '#6200EE',
+        color: '#F6F7EC',
       },
       h1Style: {
         fontFamily: 'Inter-Regular',
-        color: '#6200EE',
+        color: '#F6F7EC',
       },
       h2Style: {
         fontFamily: 'Inter-Regular',
-        color: '#6200EE',
+        color: '#F6F7EC',
       },
       h3Style: {
         fontFamily: 'Inter-Regular',
-        color: '#6200EE',
+        color: '#F6F7EC',
       },
       h4Style: {
         fontFamily: 'Inter-Regular',
-        color: '#6200EE',
+        color: '#F6F7EC',
       },
     },
     Input: {
       labelStyle: {
         fontFamily: 'Inter-Bold',
-        color: '#6200EE',
-
+        color: '#F6F7EC',
+      },
+      inputContainerStyle: {
+        borderColor: '#F6F7EC',
       }
     },
     CheckBox: {
       textStyle: {
         fontFamily: 'Inter-Bold',
-        color: '#6200EE',
+        color: '#F6F7EC',
 
       }
-    }
+    },
   }
 });
+
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: '#CD947D',
+  },
+};
 
 const Stack = createStackNavigator();
 
@@ -112,7 +122,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
+        <NavigationContainer theme={MyTheme}>
           <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Welcome" component={Welcome} />

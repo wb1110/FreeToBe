@@ -1,4 +1,6 @@
+import { color } from "@rneui/base";
 import { Input } from "@rneui/themed";
+import { useTheme, Text } from '@rneui/themed';
 import { Formik } from 'formik';
 import { Keyboard, KeyboardAvoidingView, SafeAreaView, TouchableWithoutFeedback, Platform } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
@@ -11,6 +13,7 @@ import useStore from '../../state/Store';
 
 function HeightWeightAge({ navigation }) {
   const state = useStore();
+  const { theme } = useTheme();
 
   return (
     <KeyboardAvoidingView
@@ -26,9 +29,9 @@ function HeightWeightAge({ navigation }) {
           >
             {({ handleChange, handleBlur, handleSubmit, values }) => (
             <Container>
-              <Input label='Height' value={values.height} onChangeText={handleChange('height')} onBlur={handleBlur('height')}/>
-              <Input label='Weight' value={values.weight} onChangeText={handleChange('weight')} onBlur={handleBlur('weight')}/>
-              <Input label='Age' value={values.age} onChangeText={handleChange('age')} onBlur={handleBlur('age')}/>
+              <Input label='Height' inputContainerStyle={{ borderColor:'white' }} value={values.height} onChangeText={handleChange('height')} onBlur={handleBlur('height')}/>
+              <Input label='Weight' inputContainerStyle={{ borderColor:'white' }} value={values.weight} onChangeText={handleChange('weight')} onBlur={handleBlur('weight')}/>
+              <Input label='Age' inputContainerStyle={{ borderColor:'white' }} value={values.age} onChangeText={handleChange('age')} onBlur={handleBlur('age')}/>
               <StandardButton title="Submit" onPress={() => {handleSubmit(); navigation.navigate('BodyFatPercentage') }}/>
               <LArrowButton onPress={() => navigation.goBack()}/>
             </Container>
