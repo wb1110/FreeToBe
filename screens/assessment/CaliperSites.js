@@ -33,9 +33,9 @@ function CaliperSites({ navigation }) {
           </Text>
           <Container>
           {selected === 3 ? <ThreeSite navigation={navigation}/> : null }
-          {selected === 4 ? <FourSite /> : null }
-          {selected === 7 ? <SevenSite /> : null }
-          {selected === 9 ? <NineSite /> : null }
+          {selected === 4 ? <FourSite navigation={navigation} /> : null }
+          {selected === 7 ? <SevenSite navigation={navigation} /> : null }
+          {selected === 9 ? <NineSite navigation={navigation} /> : null }
           </Container>
           <LArrowButton onPress={() => navigation.goBack()}/>
         </Container>

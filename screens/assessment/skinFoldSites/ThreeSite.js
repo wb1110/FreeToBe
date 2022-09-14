@@ -27,22 +27,19 @@ function ThreeSite({ navigation }) {
   >
 {({ handleChange, handleBlur, handleSubmit, values }) => (
        <Container>
-       <Input 
-        inputContainerStyle={{ borderColor:'white' }}
+       <Input
          label='Abdominal' 
          onChangeText={handleChange('abdominal')}
          onBlur={handleBlur('abdominal')}
          value={values.abdominal}
        />
-       <Input 
-        inputContainerStyle={{ borderColor:'white' }}
+       <Input
         label='Triceps' 
          onChangeText={handleChange('triceps')}
          onBlur={handleBlur('triceps')}
          value={values.triceps}
        />
-       <Input 
-         inputContainerStyle={{ borderColor:'white' }}
+       <Input
          label='Suprailiac' 
          onChangeText={handleChange('suprailiac')}
          onBlur={handleBlur('suprailiac')}
