@@ -19,7 +19,7 @@ export default function UserHome() {
       Age: {state.assessment.age}
     </TextContainer>
     <TextContainer>
-      Body Fat: {state.assessment.bodyFat}
+      Body Fat: {Math.round(state.assessment.bodyFat * 100) / 100}
     </TextContainer>
     </Container>
   )

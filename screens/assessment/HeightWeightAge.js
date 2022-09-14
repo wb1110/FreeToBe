@@ -1,6 +1,5 @@
 import { color } from "@rneui/base";
-import { Input } from "@rneui/themed";
-import { useTheme, Text } from '@rneui/themed';
+import { Input , useTheme, Text } from "@rneui/themed";
 import { Formik } from 'formik';
 import { Keyboard, KeyboardAvoidingView, SafeAreaView, TouchableWithoutFeedback, Platform } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
