@@ -6,6 +6,6 @@ export default function RArrowButton(props) {
   const { theme } = useTheme();
 
   return (
-      <Ionicons name="arrow-forward-circle" color={theme.colors.primary} size={48} onPress={onPress}/>
+      <Ionicons name="arrow-forward-circle" color={theme.colors.white} size={48} onPress={onPress}/>
   )
 };

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { SafeAreaView, View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import NarrowButton from "../../components/Buttons/NarrowButton";
+import NarrowButtonSelected from "../../components/Buttons/NarrowButtonSelected";
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 
@@ -28,7 +29,7 @@ function TrackingHistory({ navigation }) {
             Have you had any experience with tracking macros?
           </Text>
           <View style={{ flexDirection: 'row' }}>
-            <NarrowButton title="Yes" onPress={() => setMacrosHistory(true)}/>
+            {macrosHistory ? <NarrowButtonSelected title="Yes" onPress={() => setMacrosHistory(true)}/> : <NarrowButton title="Yes" onPress={() => setMacrosHistory(true)}/>}
             <NarrowButton title="No" onPress={() => {setMacrosHistory(false); navigation.navigate('InternalStress') }}/>
           </View>
         {macrosHistory? <TrackedMacros navigation={navigation}/> : null}

@@ -77,8 +77,9 @@ const theme = createTheme({
       textStyle: {
         fontFamily: 'Inter-Bold',
         color: '#F6F7EC',
-
-      }
+      },
+      wrapperStyle: '#F6F7EC',
+      checkedColor: '#F6F7EC',
     },
   }
 });
