@@ -27,7 +27,6 @@ function SevenSite({ navigation }) {
     onSubmit={values => {
       const recurranceValue = {...values};
       recurranceValue.bodyFat = bodyFat((+values.abdominal + +values.triceps + +values.suprailiac + +values.thigh + +values.chest + +values.midaxillary + +values.subscapular),state.assessment.age)
-      console.log(recurranceValue.bodyFat);
       state.setBodyFat(recurranceValue);
     }}
   >
