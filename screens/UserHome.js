@@ -25,7 +25,7 @@ const Tab = createBottomTabNavigator();
                   } else if (route.name === 'Assessment') {
                     iconName = 'clipboard';
                   } else if (route.name === 'Metabolic') {
-                    iconName ='restaurant';
+                    iconName ='fitness';
                   }
 
                   // You can return any component that you like here!
