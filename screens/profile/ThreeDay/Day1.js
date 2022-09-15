@@ -44,9 +44,9 @@ export default function Day1() {
     </ListItem>
   )
   return (
-    <View>
-      <Text>Day 1</Text>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+    <View style={{ margin: 10 }}>
+      <Text h2 style={{ textAlign: 'center' }}>Day 1</Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 10 }}>
         <Text>Food Item</Text>
         <Text>Quantity</Text>
         <Text>Notes</Text>
