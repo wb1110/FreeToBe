@@ -1,56 +1,43 @@
+import { Ionicons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useTheme } from "@rneui/themed";
 import React, { useState } from 'react';
-import Container from '../components/Container';
-import TextContainer from '../components/TextContainer';
-import useStore from '../state/Store';
-import { Tab, useTheme } from "@rneui/themed";
 import { View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import useStore from '../state/Store';
+import Assessment from './assessment/Assessment';
+import Metabolic from './metabolic/Metabolic';
+import Tracker from './tracker/Tracker';
 
 export default function UserHome() {
-  const state = useStore();
-  const [index, setIndex] = useState();
   const { theme } = useTheme();
+
+const Tab = createBottomTabNavigator();
+
   return (
-    <SafeAreaView style={{ justifyContent: 'space-between', flex: 1, backgroundColor: theme.colors.primary }}>
-      <View style={{ flex: 1, backgroundColor: theme.colors.secondary }}>
-        <TextContainer>
-          Height: {state.assessment.height}
-        </TextContainer>
-        <TextContainer>
-          Weight: {state.assessment.weight}
-        </TextContainer>
-        <TextContainer>
-          Age: {state.assessment.age}
-        </TextContainer>
-        <TextContainer>
-          Body Fat: {Math.round(state.assessment.bodyFat * 100) / 100}
-        </TextContainer>
-      </View>
-      <Tab
-        value={index} 
-        onChange={(e) => setIndex(e)}
-        variant='primary' 
-        indicatorStyle={{
-        backgroundColor: 'white',
-        height: 3
-        }}
-      >
-        <Tab.Item 
-          title='Tracker' 
-          titleStyle={{ fontSize: 12 }} 
-          icon={{ name: 'analytics', type: 'ionicon', color: 'white' }}
-        />
-        <Tab.Item 
-          title='Assessment' 
-          titleStyle={{ fontSize: 12 }} 
-          icon={{ name: 'clipboard', type: 'ionicon', color: 'white' }}
-        />
-        <Tab.Item 
-          title='Metabolic' 
-          titleStyle={{ fontSize: 12 }} 
-          icon={{ name: 'restaurant', type: 'ionicon', color: 'white' }}
-        />
-      </Tab>
-    </SafeAreaView>
+    <Tab.Navigator
+              screenOptions={({ route }) => ({
+                tabBarStyle: { backgroundColor: theme.colors.primary },
+                tabBarIcon: ({ color, size }) => {
+                  let iconName;
+
+                  if (route.name === 'Tracker') {
+                    iconName = 'analytics';
+                  } else if (route.name === 'Assessment') {
+                    iconName = 'clipboard';
+                  } else if (route.name === 'Metabolic') {
+                    iconName ='restaurant';
+                  }
+
+                  // You can return any component that you like here!
+                  return <Ionicons name={iconName} size={size} color={color} />;
+                },
+                tabBarActiveTintColor: theme.colors.white,
+                tabBarInactiveTintColor: theme.colors.secondary,
+              })}
+            >
+        <Tab.Screen name="Tracker" component={Tracker} />
+        <Tab.Screen name="Assessment" component={Assessment} />
+        <Tab.Screen name="Metabolic" component={Metabolic} />
+      </Tab.Navigator>
   )
 }
