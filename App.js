@@ -127,7 +127,7 @@ export default function App() {
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <NavigationContainer theme={MyTheme}>
-          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
+          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="UserHome">
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="Welcome" component={Welcome} />
             <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
