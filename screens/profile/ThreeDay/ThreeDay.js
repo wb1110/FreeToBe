@@ -3,10 +3,10 @@ import React from 'react'
 import StandardButton from '../../../components/Buttons/StandardButton'
 import Container from '../../../components/Container'
 
-export default function ThreeDay() {
+export default function ThreeDay({ navigation }) {
   return (
     <Container>
-      <StandardButton title='Day 1' />
+      <StandardButton title='Day 1' onPress={() => navigation.navigate('Day1')}/>
       <StandardButton title='Day 2' />
       <StandardButton title='Day 3' />
     </Container>

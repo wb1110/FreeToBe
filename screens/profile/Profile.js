@@ -4,6 +4,7 @@ import StandardButton from '../../components/Buttons/StandardButton'
 import Container from '../../components/Container'
 import { createStackNavigator } from '@react-navigation/stack';
 import ThreeDay from './ThreeDay/ThreeDay';
+import Day1 from './ThreeDay/Day1';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const ProfileNavigator = () => {
     <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Profile">
     <Stack.Screen name="Profile" component={Profile} />
     <Stack.Screen name="ThreeDay" component={ThreeDay} />
+    <Stack.Screen name="Day1" component={Day1} />
   </Stack.Navigator>
   )
 }
