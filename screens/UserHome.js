@@ -4,7 +4,7 @@ import { useTheme } from "@rneui/themed";
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import useStore from '../state/Store';
-import Assessment from './assessment/Assessment';
+import Profile from './profile/Profile';
 import Metabolic from './metabolic/Metabolic';
 import Tracker from './tracker/Tracker';
 
@@ -16,13 +16,17 @@ const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator
               screenOptions={({ route }) => ({
+                headerStyle: {
+                  backgroundColor: theme.colors.secondary,
+                },
+                headerTintColor: theme.colors.white,
                 tabBarStyle: { backgroundColor: theme.colors.primary },
                 tabBarIcon: ({ color, size }) => {
                   let iconName;
 
                   if (route.name === 'Tracker') {
                     iconName = 'analytics';
-                  } else if (route.name === 'Assessment') {
+                  } else if (route.name === 'Profile') {
                     iconName = 'clipboard';
                   } else if (route.name === 'Metabolic') {
                     iconName ='fitness';
@@ -36,7 +40,7 @@ const Tab = createBottomTabNavigator();
               })}
             >
         <Tab.Screen name="Tracker" component={Tracker} />
-        <Tab.Screen name="Assessment" component={Assessment} />
+        <Tab.Screen name="Profile" component={Profile} />
         <Tab.Screen name="Metabolic" component={Metabolic} />
       </Tab.Navigator>
   )

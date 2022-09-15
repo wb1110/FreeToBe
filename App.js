@@ -7,7 +7,6 @@ import { useCallback, useEffect } from 'react';
 import { ThemeProvider, createTheme } from '@rneui/themed';
 import Welcome from './screens/Welcome';
 import HeightWeightAge from './screens/assessment/HeightWeightAge';
-import Home from './screens/Home';
 import BodyFatPercentage from './screens/assessment/BodyFatPercentage';
 import CaliperSites from './screens/assessment/CaliperSites';
 import BodyFatKnown from './screens/assessment/BodyFatKnown';
@@ -31,6 +30,8 @@ import LieSkinny2 from './screens/assessment/LieSkinny2';
 import LieSkinny3 from './screens/assessment/LieSkinny3';
 import LieSkinny4 from './screens/assessment/LieSkinny4';
 import UserHome from './screens/UserHome';
+import Login from './screens/Login';
+import Register from './screens/Register';
 
 const theme = createTheme({
   colors: {
@@ -43,6 +44,7 @@ const theme = createTheme({
       style: {
         fontFamily: 'Inter-Regular',
         color: '#F6F7EC',
+        fontSize: 16
       },
       h1Style: {
         fontFamily: 'Inter-Regular',
@@ -59,6 +61,12 @@ const theme = createTheme({
       h4Style: {
         fontFamily: 'Inter-Regular',
         color: '#F6F7EC',
+      },
+    },
+    Button: {
+      titleStyle: {
+        fontWeight: 'bold',
+        fontSize: 16,
       },
     },
     Input: {
@@ -127,8 +135,9 @@ export default function App() {
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <NavigationContainer theme={MyTheme}>
-          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="UserHome">
-            <Stack.Screen name="Home" component={Home} />
+          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Login">
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Welcome" component={Welcome} />
             <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
             <Stack.Screen name="BodyFatPercentage" component={BodyFatPercentage} />
