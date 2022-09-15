@@ -1,11 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from "@rneui/themed";
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import useStore from '../state/Store';
-import Profile from './profile/Profile';
+import React from 'react';
 import Metabolic from './metabolic/Metabolic';
+import ProfileNavigator from './profile/Profile';
 import Tracker from './tracker/Tracker';
 
 export default function UserHome() {
@@ -40,7 +38,7 @@ const Tab = createBottomTabNavigator();
               })}
             >
         <Tab.Screen name="Tracker" component={Tracker} />
-        <Tab.Screen name="Profile" component={Profile} />
+        <Tab.Screen name="Profile" component={ProfileNavigator} />
         <Tab.Screen name="Metabolic" component={Metabolic} />
       </Tab.Navigator>
   )
