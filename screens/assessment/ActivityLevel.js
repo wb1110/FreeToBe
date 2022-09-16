@@ -4,7 +4,6 @@ import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-na
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import CustomCheckBox from '../../components/CustomCheckBox';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import SingleSelectCheck from "../../components/SingleSelectCheck";
 
@@ -21,19 +20,19 @@ function ActivityLevel({ navigation }) {
           </Text>
           <View style={{ alignItems: "flex-start"}}>
             {selected === 1 ? 
-            <SingleSelectCheck title="No exercise" checked={true} onPress={() => setSelected(1)}/> : 
+            <SingleSelectCheck title="No exercise" checked onPress={() => setSelected(1)}/> : 
             <SingleSelectCheck title="No exercise" checked={false} onPress={() => setSelected(1)}/>
             }
             {selected === 2 ? 
-            <SingleSelectCheck title="Light Exercise/Rec Sports (1-3x per week)" checked={true} onPress={() => setSelected(2)}/> : 
+            <SingleSelectCheck title="Light Exercise/Rec Sports (1-3x per week)" checked onPress={() => setSelected(2)}/> : 
             <SingleSelectCheck title="Light Exercise/Rec Sports (1-3x per week)" checked={false} onPress={() => setSelected(2)}/>
             }
             {selected === 3 ? 
-            <SingleSelectCheck title="Moderate Exercise/Sports (3-5x per week)" checked={true} onPress={() => setSelected(3)}/> : 
+            <SingleSelectCheck title="Moderate Exercise/Sports (3-5x per week)" checked onPress={() => setSelected(3)}/> : 
             <SingleSelectCheck title="Moderate Exercise/Sports (3-5x per week)" checked={false} onPress={() => setSelected(3)}/>
             }
             {selected === 4 ? 
-            <SingleSelectCheck title="Extreme Exercise (6-7x per week)" checked={true} onPress={() => setSelected(4)}/> : 
+            <SingleSelectCheck title="Extreme Exercise (6-7x per week)" checked onPress={() => setSelected(4)}/> : 
             <SingleSelectCheck title="Extreme Exercise (6-7x per week)" checked={false} onPress={() => setSelected(4)}/>
             }
           </View>

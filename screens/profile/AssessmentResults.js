@@ -1,8 +1,7 @@
-import { View } from 'react-native'
-import { Text, Button } from '@rneui/themed'
-import React, { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import useStore from '../../state/Store'
+import { Text } from '@rneui/themed'
+import React, { useEffect, useState } from 'react'
+import { View } from 'react-native'
 import StandardButton from '../../components/Buttons/StandardButton'
 
 export default function AssessmentResults() {
@@ -16,16 +15,13 @@ export default function AssessmentResults() {
       const { bodyFat } = userAssessment
       setValues(bodyFat)
     } catch(e) {
-      // read error
-      console.log(e);
       return e;
     }
+    return userAssessment;
   }
   useEffect(() => {
     getAssessment();
   }, [])
-
-  console.log(values);
 
   return (
     <View>

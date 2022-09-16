@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { Text, View } from 'react-native'
 
-const Metabolic = () => {
+function Metabolic() {
   return (
     <View>
       <Text>Metabolic</Text>

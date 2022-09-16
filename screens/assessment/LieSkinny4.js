@@ -1,11 +1,11 @@
 import { SafeAreaView, View } from 'react-native';
 import { ScrollView } from "react-native-gesture-handler";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RArrowButton from '../../components/Buttons/RArrowButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from "../../components/TextContainer";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import useStore from '../../state/Store';
 
 
@@ -18,7 +18,7 @@ function LieSkinny4({ navigation }) {
       await AsyncStorage.setItem('assessment', jsonValue)
     } catch (e) {
       // saving error
-      console.log(e);
+      return e
     }
   }
   return (

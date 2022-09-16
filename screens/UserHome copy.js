@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Container from '../components/Container';
-import TextContainer from '../components/TextContainer';
-import useStore from '../state/Store';
 import { Tab, useTheme } from "@rneui/themed";
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Container from '../components/Container';
+import TextContainer from '../components/TextContainer';
+import useStore from '../state/Store';
 
 export default function UserHome() {
   const state = useStore();

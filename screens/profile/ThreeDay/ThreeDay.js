@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import StandardButton from '../../../components/Buttons/StandardButton'
 import Container from '../../../components/Container'

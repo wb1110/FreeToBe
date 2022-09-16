@@ -1,6 +1,6 @@
-import { FlatList, StyleSheet, View } from 'react-native'
-import React from 'react'
-import { ListItem, Text, useTheme } from '@rneui/themed'
+import { ListItem, Text, useTheme } from '@rneui/themed';
+import React from 'react';
+import { FlatList, View } from 'react-native';
 
 const list = [
   {

@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Tracker = () => {
+function Tracker() {
   return (
     <View>
       <Text>Tracker</Text>
