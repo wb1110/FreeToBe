@@ -5,9 +5,22 @@ import RArrowButton from '../../components/Buttons/RArrowButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from "../../components/TextContainer";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import useStore from '../../state/Store';
 
 
 function LieSkinny4({ navigation }) {
+  const state = useStore();
+
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value)
+      await AsyncStorage.setItem('assessment', jsonValue)
+    } catch (e) {
+      // saving error
+      console.log(e);
+    }
+  }
   return (
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
@@ -19,7 +32,7 @@ function LieSkinny4({ navigation }) {
           </ScrollView>
           <View style={{ flexDirection: 'row' }}>
             <LArrowButton onPress={() => navigation.goBack()}/>
-            <RArrowButton title="Let's Get Started" onPress={() => navigation.navigate('UserHome')} />
+            <RArrowButton title="Let's Get Started" onPress={() => {navigation.navigate('UserHome'); storeData(state.assessment)}} />
           </View>
         </Container>
       </SafeAreaView>

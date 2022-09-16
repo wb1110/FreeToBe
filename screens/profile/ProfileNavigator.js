@@ -7,13 +7,14 @@ import ThreeDay from './ThreeDay/ThreeDay';
 import Day1 from './ThreeDay/Day1';
 import Day2 from './ThreeDay/Day2';
 import Day3 from './ThreeDay/Day3';
+import AssessmentResults from './AssessmentResults';
 
 const Stack = createStackNavigator();
 
 export const Profile = ({ navigation }) => {
 return(
   <Container>
-  <StandardButton title='Assessment Results' />
+  <StandardButton title='Assessment Results'  onPress={() => navigation.navigate('AssessmentResults')} />
   <StandardButton title='Three-Day Dietary Record' onPress={() => navigation.navigate('ThreeDay')} />
 </Container>
 )
@@ -23,6 +24,7 @@ const ProfileNavigator = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Profile">
     <Stack.Screen name="Profile" component={Profile} />
+    <Stack.Screen name="AssessmentResults" component={AssessmentResults} />
     <Stack.Screen name="ThreeDay" component={ThreeDay} />
     <Stack.Screen name="Day1" component={Day1} />
     <Stack.Screen name="Day2" component={Day2} />

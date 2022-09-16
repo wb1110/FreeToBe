@@ -43,6 +43,11 @@ const useStore = create(set => ({
         bodyFat: values.bodyFat,
       }
   })),
+  setAssessment: (values) =>
+    set((state) => ({
+      ...state,
+      assessment: values.assessment
+  })),
 }))
 
 export default useStore;
