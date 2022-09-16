@@ -45,8 +45,23 @@ const useStore = create(set => ({
   })),
   setAssessment: (values) =>
     set((state) => ({
-      ...state,
-      assessment: values.assessment
+      assessment: {
+        ...state.assessment,
+        height: values.height,
+        weight: values.weight,
+        age: values.age,
+        abdominal: values.abdominal,
+        triceps: values.triceps,
+        suprailiac: values.suprailiac,
+        thigh: values.thigh,
+        chest: values.chest,
+        midaxillary: values.midaxillary,
+        subscapular: values.subscapular,
+        bicep: values.bicep,
+        lowerBack: values.lowerBack,
+        calf: values.calf,
+        bodyFat: values.bodyFat,
+      }
   })),
 }))
 
