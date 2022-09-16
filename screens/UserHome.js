@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from "@rneui/themed";
 import React from 'react';
 import Metabolic from './metabolic/Metabolic';
-import ProfileNavigator from './profile/ProfileNavigator';
+import Profile from './profile/Profile';
 import Tracker from './tracker/Tracker';
 
 export default function UserHome() {
@@ -24,7 +24,7 @@ const Tab = createBottomTabNavigator();
 
                   if (route.name === 'Tracker') {
                     iconName = 'analytics';
-                  } else if (route.name === 'ProfileNavigator') {
+                  } else if (route.name === 'Profile') {
                     iconName = 'clipboard';
                   } else if (route.name === 'Metabolic') {
                     iconName ='fitness';
@@ -38,7 +38,7 @@ const Tab = createBottomTabNavigator();
               })}
             >
         <Tab.Screen name="Tracker" component={Tracker} />
-        <Tab.Screen name="ProfileNavigator" component={ProfileNavigator} />
+        <Tab.Screen name="Profile" component={Profile} />
         <Tab.Screen name="Metabolic" component={Metabolic} />
       </Tab.Navigator>
   )

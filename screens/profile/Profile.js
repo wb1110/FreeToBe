@@ -11,7 +11,7 @@ import AssessmentResults from './AssessmentResults';
 
 const Stack = createStackNavigator();
 
-export const Profile = ({ navigation }) => {
+export const UserProfile = ({ navigation }) => {
 return(
   <Container>
   <StandardButton title='Assessment Results'  onPress={() => navigation.navigate('AssessmentResults')} />
@@ -20,10 +20,10 @@ return(
 )
 }
 
-const ProfileNavigator = () => {
+const Profile = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Profile">
-    <Stack.Screen name="Profile" component={Profile} />
+    <Stack.Screen name="Profile" component={UserProfile} />
     <Stack.Screen name="AssessmentResults" component={AssessmentResults} />
     <Stack.Screen name="ThreeDay" component={ThreeDay} />
     <Stack.Screen name="Day1" component={Day1} />
@@ -33,4 +33,4 @@ const ProfileNavigator = () => {
   )
 }
 
-export default ProfileNavigator
+export default Profile

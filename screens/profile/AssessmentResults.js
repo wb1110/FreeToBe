@@ -7,18 +7,6 @@ import StandardButton from '../../components/Buttons/StandardButton'
 
 export default function AssessmentResults() {
   const [values, setValues] = useState();
-  const state = useStore();
-  const storeData = async (value) => {
-    try {
-      const jsonValue = JSON.stringify(value)
-      await AsyncStorage.setItem('assessment', jsonValue)
-      console.log(jsonValue)
-    } catch (e) {
-      // saving error
-      console.log(e);
-      return e;
-    }
-  }
 
   const getAssessment = async () => {
     let userAssessment
@@ -43,7 +31,6 @@ export default function AssessmentResults() {
     <View>
       <Text>AssessmentResults</Text>
     <Text>Bodyfat: {values}</Text>
-    <StandardButton title='Set' onPress={() => state.setAssessment(getAssessment())}/>
     <StandardButton title='Get' onPress={() => getAssessment()}/>
 
 
