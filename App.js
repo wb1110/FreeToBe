@@ -76,10 +76,12 @@ const theme = createTheme({
       },
       inputContainerStyle: {
         borderColor: '#F6F7EC',
+        borderWidth: 1,
+        borderRadius: 10,
       },
       inputStyle: {
         color: '#F6F7EC',
-      }
+      },
     },
     CheckBox: {
       textStyle: {
