@@ -3,6 +3,7 @@ import { Text } from '@rneui/themed'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import StandardButton from '../../components/Buttons/StandardButton'
+import Calculations from '../assessment/Calculations'
 
 export default function AssessmentResults() {
   const [values, setValues] = useState();
@@ -27,6 +28,7 @@ export default function AssessmentResults() {
     <View>
       <Text>AssessmentResults</Text>
     <Text>Bodyfat: {values}</Text>
+    <Calculations />
     <StandardButton title='Get' onPress={() => getAssessment()}/>
 
 
