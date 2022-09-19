@@ -27,7 +27,7 @@ export default function Calculations() {
 }
   return (
     <View>
-      <Text>{energyEquations()}</Text>
+      <Text>TDEE: {energyEquations()}</Text>
     </View>
   )
 }
