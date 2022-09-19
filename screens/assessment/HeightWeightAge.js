@@ -1,16 +1,27 @@
 import { Input } from "@rneui/themed";
 import { Formik } from 'formik';
-import { Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, TouchableWithoutFeedback } from 'react-native';
+import { useState } from "react";
+import { Keyboard, KeyboardAvoidingView, Modal, Platform, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import useStore from '../../state/Store';
+import {Picker} from '@react-native-picker/picker';
+import NarrowButton from "../../components/Buttons/NarrowButton";
 
 
 
 function HeightWeightAge({ navigation }) {
   const state = useStore();
+
+  const [heightModal, setHeightModal] = useState(false);
+  const [weightModal, setWeightModal] = useState(false);
+  const [ageModal, setAgeModal] = useState(false);
+
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+  const [age, setAge] = useState('');
 
   return (
     <KeyboardAvoidingView
@@ -34,6 +45,7 @@ function HeightWeightAge({ navigation }) {
             </Container>
             )}
           </Formik>
+          <StandardButton title="Height" onPress={() => setHeightModal(!heightModal)}/>
         </SafeAreaView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
