@@ -61,6 +61,7 @@ const useStore = create(set => ({
         lowerBack: values.lowerBack,
         calf: values.calf,
         bodyFat: values.bodyFat,
+        dueDate: values.dueDate,
       }
   })),
 }))
