@@ -3,9 +3,11 @@ import { Text } from '@rneui/themed'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import StandardButton from '../../components/Buttons/StandardButton'
+import useStore from '../../state/Store'
 import Calculations from '../assessment/Calculations'
 
 export default function AssessmentResults() {
+  const state = useStore();
   const [values, setValues] = useState();
 
   const getAssessment = async () => {
@@ -22,12 +24,13 @@ export default function AssessmentResults() {
   }
   useEffect(() => {
     getAssessment();
+    console.log(state.assessment);
   }, [])
 
   return (
     <View>
       <Text>AssessmentResults</Text>
-    <Text>Bodyfat: {values}</Text>
+    <Text>Bodyfat: {state.assessment.bodyFat}</Text>
     <Calculations />
     <StandardButton title='Get' onPress={() => getAssessment()}/>
 

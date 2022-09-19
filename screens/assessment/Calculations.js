@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 export default function Calculations() {
   const [state, setState] = useState({
-    bodyFat: .15,
+    bodyFat: 15,
     height: 72,
     weight: 185,
     age: 33,
@@ -19,7 +19,7 @@ export default function Calculations() {
     const TDEE = BMR * state.activity;
     return TDEE
   } else {
-    const FBM = (state.weight * 0.45359237) * state.bodyFat;
+    const FBM = (state.weight * 0.45359237) * (state.bodyFat/100);
     const LBM = (state.weight * 0.45359237) - FBM;
     const TDEE = 370 + (21.6 * LBM);
     return TDEE;

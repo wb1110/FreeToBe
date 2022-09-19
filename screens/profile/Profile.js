@@ -22,7 +22,7 @@ return(
 function Profile() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Profile">
-    <Stack.Screen name="Profile" component={UserProfile} />
+    <Stack.Screen name="UserProfile" component={UserProfile} />
     <Stack.Screen name="AssessmentResults" component={AssessmentResults} />
     <Stack.Screen name="ThreeDay" component={ThreeDay} />
     <Stack.Screen name="Day1" component={Day1} />
