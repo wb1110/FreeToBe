@@ -10,13 +10,24 @@ import * as Yup from 'yup';
 import useStore from '../state/Store';
 
 const DueDateSchema = Yup.object().shape({
-  dueDate: Yup.date('Must be a valid date')
+  dueDate: Yup.date()
+    .typeError('Must be a valid date')
     .required('Required'),
 });
 
 function IsPregnant({ navigation }) {
   const [babies, setBabies] = useState(0);
+  const [focused, setFocused] = useState(1);
   const state = useStore();
+
+function onFocus() {
+  setFocused(3)
+}
+
+function onBlur() {
+  setFocused(1)
+}
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -26,7 +37,7 @@ function IsPregnant({ navigation }) {
         <Container>
         <Formik
           initialValues={{ dueDate: state.assessment.dueDate }}
-          onSubmit={values => state.setBodyFat(values)}
+          onSubmit={values => {state.setBodyFat(values); navigation.navigate('Nursing')}}
           validationSchema={DueDateSchema}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
@@ -42,16 +53,16 @@ function IsPregnant({ navigation }) {
               {babies === 5 ? <RoundButtonSelected title="5" onPress={() => setBabies(5)}/> : <RoundButton title="5" onPress={() => setBabies(5)}/>}
               {babies === 6 ? <RoundButtonSelected title="6" onPress={() => setBabies(6)}/> : <RoundButton title="6" onPress={() => setBabies(6)}/>}
             </View>
-              <Input 
+              <Input
+                inputContainerStyle={{ borderWidth: focused, borderBottomWidth: focused }}
                 label='What is your due date?' 
                 onChangeText={handleChange('dueDate')}
-                onBlur={handleBlur('dueDate')}
+                onBlur={() => {handleBlur('dueDate'); onBlur()}}
+                onFocus={() => onFocus()}
                 value={values.dueDate}
+                errorMessage={errors.dueDate && touched.dueDate ? errors.dueDate : null}
               />
-              {errors.dueDate && touched.dueDate ? (
-             <Text>{errors.dueDate}</Text>
-           ) : null}
-              <StandardButton title="Submit" onPress={() => {navigation.navigate('Nursing'); handleSubmit()}}/>
+              <StandardButton title="Submit" onPress={() => handleSubmit()}/>
             </Container>
           )}
         </Formik>

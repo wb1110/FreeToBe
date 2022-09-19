@@ -38,6 +38,7 @@ const theme = createTheme({
     primary: '#B65C3D',
     secondary: '#CD947D',
     white: "#F6F7EC",
+    error: "FF0000"
   },
   components: {
     Text: {
@@ -81,6 +82,11 @@ const theme = createTheme({
       },
       inputStyle: {
         color: '#F6F7EC',
+        textAlign: 'center',
+      },
+      errorStyle: {
+        color: '#8B0000',
+        fontWeight: 'bold',
       },
     },
     CheckBox: {
