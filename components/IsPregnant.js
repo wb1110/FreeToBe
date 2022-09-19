@@ -17,16 +17,7 @@ const DueDateSchema = Yup.object().shape({
 
 function IsPregnant({ navigation }) {
   const [babies, setBabies] = useState(0);
-  const [focused, setFocused] = useState(1);
   const state = useStore();
-
-function onFocus() {
-  setFocused(3)
-}
-
-function onBlur() {
-  setFocused(1)
-}
 
   return (
     <KeyboardAvoidingView
@@ -54,11 +45,9 @@ function onBlur() {
               {babies === 6 ? <RoundButtonSelected title="6" onPress={() => setBabies(6)}/> : <RoundButton title="6" onPress={() => setBabies(6)}/>}
             </View>
               <Input
-                inputContainerStyle={{ borderWidth: focused, borderBottomWidth: focused }}
                 label='What is your due date?' 
                 onChangeText={handleChange('dueDate')}
-                onBlur={() => {handleBlur('dueDate'); onBlur()}}
-                onFocus={() => onFocus()}
+                onBlur={handleBlur('dueDate')}
                 value={values.dueDate}
                 errorMessage={errors.dueDate && touched.dueDate ? errors.dueDate : null}
               />
