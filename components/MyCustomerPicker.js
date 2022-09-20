@@ -1,4 +1,6 @@
-import { View, Text } from 'react-native'
+import { View, StyleSheet, Modal } from 'react-native'
+import {Picker} from '@react-native-picker/picker'
+import NarrowButton from './Buttons/NarrowButton'
 import React from 'react'
 
 const MyCustomerPicker = ({
@@ -6,54 +8,58 @@ const MyCustomerPicker = ({
   setModalOpen,
   value,
   setValue,
-  data
+  items
 }) =>
 {
 
-  const pickerData = () => {
-    return (
-      <Picker.Item label="Java" value="java" />
-    )
+  const pickerData = (data) => {
+    return (data?.length > 0) && (
+      data.map((val, index) => <Picker.Item label={val} value={val} key={index} />)
+        );
   }
   return (
     <Modal
             animationType="slide"
             transparent={true}
-            visible={heightModal}
+            visible={modalOpen}
             onRequestClose={() => {
               Alert.alert("Modal has been closed.");
               setModalVisible(!modalVisible);
             }}
           >
-            <View
-              style={{
-                flex: 1,
-              }}
-            >
-              <View
-                style={{
-                  backgroundColor: 'white',
-                  width: '100%',
-                  height: '40%',
-                  position: 'absolute',
-                  bottom: 0,
-                }}
-              >
-                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                  <NarrowButton title="Close" onPress={() => setHeightModal(!heightModal)}/>
+            <View style={styles.container}>
+              <View style={styles.pickerContainer}>
+                <View style={styles.closeContainer}>
+                  <NarrowButton title="Close" onPress={() => setModalOpen(!modalOpen)}/>
                 </View>
                 <Picker
-                  selectedValue={height}
+                  selectedValue={value}
                   onValueChange={(itemValue, itemIndex) =>
-                    setHeight(itemValue)
+                    setValue(itemValue)
                   }>
-                  <Picker.Item label="Java" value="java" />
-                  <Picker.Item label="JavaScript" value="js" />
+                  {pickerData(items)}
                 </Picker>
               </View>
             </View>
           </Modal>
   )
 }
+
+const styles=StyleSheet.create({
+  container: {
+      flex: 1,
+  },
+  pickerContainer: {
+      backgroundColor: 'white',
+      width: '100%',
+      height: '40%',
+      position: 'absolute',
+      bottom: 0,
+  },
+  closeContainer: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
 
 export default MyCustomerPicker

@@ -7,8 +7,12 @@ import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import useStore from '../../state/Store';
-import {Picker} from '@react-native-picker/picker';
-import NarrowButton from "../../components/Buttons/NarrowButton";
+import MyCustomerPicker from "../../components/MyCustomerPicker";
+import {
+  height as dataHeight,
+  weight as dataWeight,
+  age as dataAge
+} from '../../assets/data/data';
 
 
 
@@ -45,7 +49,30 @@ function HeightWeightAge({ navigation }) {
             </Container>
             )}
           </Formik>
+          <MyCustomerPicker
+            setModalOpen={setHeightModal}
+            modalOpen={heightModal}
+            value={height}
+            items={dataHeight}
+            setValue={setHeight}
+          />
           <StandardButton title="Height" onPress={() => setHeightModal(!heightModal)}/>
+          <MyCustomerPicker
+            setModalOpen={setWeightModal}
+            modalOpen={weightModal}
+            value={weight}
+            items={dataWeight}
+            setValue={setWeight}
+          />
+          <StandardButton title="Weight" onPress={() => setWeightModal(!weightModal)}/>
+          <MyCustomerPicker
+            setModalOpen={setAgeModal}
+            modalOpen={ageModal}
+            value={age}
+            items={dataAge}
+            setValue={setAge}
+          />
+          <StandardButton title="Age" onPress={() => setAgeModal(!ageModal)}/>
         </SafeAreaView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
