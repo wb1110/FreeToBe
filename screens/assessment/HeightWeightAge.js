@@ -28,54 +28,37 @@ function HeightWeightAge({ navigation }) {
   const [age, setAge] = useState('');
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={{ flex: 1 }}
-    >
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <SafeAreaView style={{ flex: 1 }}>
           <FocusedStatusBar />
-          <Formik
-            initialValues={{ height: state.assessment.height, weight: state.assessment.weight, age: state.assessment.age }}
-            onSubmit={values => state.setHWA(values)}
-          >
-            {({ handleChange, handleBlur, handleSubmit, values }) => (
-            <Container>
-              <Input label='Height' value={values.height} onChangeText={handleChange('height')} onBlur={handleBlur('height')}/>
-              <Input label='Weight' value={values.weight} onChangeText={handleChange('weight')} onBlur={handleBlur('weight')}/>
-              <Input label='Age' value={values.age} onChangeText={handleChange('age')} onBlur={handleBlur('age')}/>
-              <StandardButton title="Submit" onPress={() => {handleSubmit(); navigation.navigate('BodyFatPercentage') }}/>
-              <LArrowButton onPress={() => navigation.goBack()}/>
-            </Container>
-            )}
-          </Formik>
-          <MyCustomerPicker
-            setModalOpen={setHeightModal}
-            modalOpen={heightModal}
-            value={height}
-            items={dataHeight}
-            setValue={setHeight}
-          />
-          <StandardButton title="Height" onPress={() => setHeightModal(!heightModal)}/>
-          <MyCustomerPicker
-            setModalOpen={setWeightModal}
-            modalOpen={weightModal}
-            value={weight}
-            items={dataWeight}
-            setValue={setWeight}
-          />
-          <StandardButton title="Weight" onPress={() => setWeightModal(!weightModal)}/>
-          <MyCustomerPicker
-            setModalOpen={setAgeModal}
-            modalOpen={ageModal}
-            value={age}
-            items={dataAge}
-            setValue={setAge}
-          />
-          <StandardButton title="Age" onPress={() => setAgeModal(!ageModal)}/>
+          <Container>
+            <MyCustomerPicker
+              setModalOpen={setHeightModal}
+              modalOpen={heightModal}
+              value={height}
+              items={dataHeight}
+              setValue={setHeight}
+            />
+            <StandardButton title={`Height: ${height}`} onPress={() => setHeightModal(!heightModal)}/>
+            <MyCustomerPicker
+              setModalOpen={setWeightModal}
+              modalOpen={weightModal}
+              value={weight}
+              items={dataWeight}
+              setValue={setWeight}
+            />
+            <StandardButton title={`Weight: ${weight}`} onPress={() => setWeightModal(!weightModal)}/>
+            <MyCustomerPicker
+              setModalOpen={setAgeModal}
+              modalOpen={ageModal}
+              value={age}
+              items={dataAge}
+              setValue={setAge}
+            />
+            <StandardButton title={`Age: ${age}`} onPress={() => setAgeModal(!ageModal)}/>
+            <StandardButton title="Submit" onPress={() => {state.setHWA(height, weight, age); navigation.navigate('BodyFatPercentage') }}/>
+            <LArrowButton onPress={() => navigation.goBack()}/>
+          </Container>
         </SafeAreaView>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
   );
 }
 

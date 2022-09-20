@@ -17,13 +17,13 @@ const useStore = create(set => ({
     calf: '',
     bodyFat: '',
   },
-  setHWA: (values) =>
+  setHWA: (height, weight, age) =>
     set((state) => ({
       assessment: {
         ...state.assessment,
-        height: values.height,
-        weight: values.weight,
-        age: values.age,
+        height: height,
+        weight: weight,
+        age: age,
       }
   })),
   setBodyFat: (values) =>

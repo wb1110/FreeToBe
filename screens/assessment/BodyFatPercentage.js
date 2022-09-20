@@ -4,9 +4,12 @@ import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from '../../components/TextContainer';
+import useStore from '../../state/Store';
 
 
 function BodyFatPercentage({ navigation }) {
+  const state = useStore();
+  console.log(state.assessment);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
