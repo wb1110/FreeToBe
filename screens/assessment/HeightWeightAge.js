@@ -55,7 +55,16 @@ function HeightWeightAge({ navigation }) {
               setValue={setAge}
             />
             <StandardButton title={`Age: ${age}`} onPress={() => setAgeModal(!ageModal)}/>
-            <StandardButton title="Submit" onPress={() => {state.setHWA(height, weight, age); navigation.navigate('BodyFatPercentage') }}/>
+            {height && weight && age ?
+            <StandardButton
+              title="Submit"
+              onPress={() => {state.setHWA(height, weight, age); navigation.navigate('BodyFatPercentage') }}
+            /> : 
+            <StandardButton
+            title="Submit"
+            disabled
+            />}
+            
             <LArrowButton onPress={() => navigation.goBack()}/>
           </Container>
         </SafeAreaView>
@@ -63,3 +72,5 @@ function HeightWeightAge({ navigation }) {
 }
 
 export default HeightWeightAge;
+
+
