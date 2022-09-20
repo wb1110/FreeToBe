@@ -26,7 +26,7 @@ function BodyFatKnown({ navigation }) {
         <FocusedStatusBar />
         <Formik
           initialValues={{ bodyFat: state.assessment.bodyFat }}
-          onSubmit={values => state.setBodyFat(values)}
+          onSubmit={values => {state.setBodyFat(values); navigation.navigate('Pregnant')}}
           validationSchema={BodyFatSchema}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
@@ -38,7 +38,7 @@ function BodyFatKnown({ navigation }) {
                 value={values.bodyFat}
                 errorMessage={errors.bodyFat}
               />
-              <StandardButton title="Submit" onPress={() => {navigation.navigate('Pregnant'); handleSubmit()}}/>
+              <StandardButton title="Submit" onPress={() => handleSubmit()}/>
                 <LArrowButton onPress={() => navigation.goBack()}/>
             </Container>
           )}
