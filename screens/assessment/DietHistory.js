@@ -15,8 +15,8 @@ function DietHistory({ navigation }) {
         When you think about your experience when it comes to dieting you most likely fit in which of these categories?
         </Text>
         <StandardButton title="Never been on a diet" onPress={() => {navigation.navigate('FoodPreferences')}} />
-        <StandardButton title="Have gone through different phases in my life of eating healthy, losing weight, then returning to normal eating habits and gaining the weight back" disabled />
-        <StandardButton title="Eating disorder - I have a negative relationship with food" disabled />
+        <StandardButton title="Have gone through different phases in my life of eating healthy, losing weight, then returning to normal eating habits and gaining the weight back" onPress={() => {navigation.navigate('FoodPreferences')}} />
+        <StandardButton title="Eating disorder - I have a negative relationship with food" onPress={() => {navigation.navigate('FoodPreferences')}} />
         <LArrowButton onPress={() => navigation.goBack()}/>
       </Container>
     </SafeAreaView>

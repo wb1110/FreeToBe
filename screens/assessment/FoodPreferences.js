@@ -11,11 +11,11 @@ function FoodPreferences({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
-      <Container>
+      <View>
         <TextContainer>
           What I currently eat can be best described as…{/* {"\n"}{"\n"}Choose all that apply.} */}
         </TextContainer>
-        <View style={{ alignItems: "flex-start"}}>
+        <View style={{ alignItems: "flex-start" }}>
           <CustomCheckBox title="All types of food"/>
           <CustomCheckBox title="Vegan"/>
           <CustomCheckBox title="Vegetarian"/>
@@ -27,9 +27,11 @@ function FoodPreferences({ navigation }) {
           <CustomCheckBox title="Keto"/>
           <CustomCheckBox title="Carnivore"/>
         </View>
+        <View style={{ alignItems: "center" }}>
           <StandardButton title="Submit" onPress={() => navigation.navigate('TrackingHistory')} />
           <LArrowButton onPress={() => navigation.goBack()}/>
-      </Container>
+          </View>
+      </View>
     </SafeAreaView>
   );
 }
