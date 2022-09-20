@@ -9,7 +9,8 @@ import useStore from '../../state/Store';
 import * as Yup from 'yup';
 
 const BodyFatSchema = Yup.object().shape({
-  bodyFat: Yup.number('Must be a number!')
+  bodyFat: Yup.number()
+  .typeError('Must be a number!')
     .positive('Must be a positive number!')
     .integer('Must be a whole number!')
     .max(99, 'Too Long!')
@@ -35,10 +36,8 @@ function BodyFatKnown({ navigation }) {
                 onChangeText={handleChange('bodyFat')}
                 onBlur={handleBlur('bodyFat')}
                 value={values.bodyFat}
+                errorMessage={errors.bodyFat}
               />
-              {errors.bodyFat && touched.bodyFat ? (
-             <Text>{errors.bodyFat}</Text>
-           ) : null}
               <StandardButton title="Submit" onPress={() => {navigation.navigate('Pregnant'); handleSubmit()}}/>
                 <LArrowButton onPress={() => navigation.goBack()}/>
             </Container>
