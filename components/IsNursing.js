@@ -19,7 +19,15 @@ function IsNursing({ navigation }) {
             {partum === 2 ? <StandardButtonSelected title="7+ months postpartum" onPress={() => setPartum(2)}/> : <StandardButton title="7+ months postpartum" onPress={() => setPartum(2)}/>}
           </View>
         </View>
-        <StandardButton title="Submit" onPress={() => {navigation.navigate('Goals')}}/>
+        {partum ?
+            <StandardButton
+              title="Submit"
+              onPress={() => {navigation.navigate('Goals') }}
+            /> : 
+            <StandardButton
+            title="Submit"
+            disabled
+            />}
       </View>
   );
 }
