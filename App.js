@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -37,15 +38,15 @@ const theme = createTheme({
   colors: {
     primary: '#B65C3D',
     secondary: '#CD947D',
-    white: "#F6F7EC",
-    error: "FF0000"
+    white: '#F6F7EC',
+    error: 'FF0000',
   },
   components: {
     Text: {
       style: {
         fontFamily: 'Inter-Regular',
         color: '#F6F7EC',
-        fontSize: 16
+        fontSize: 16,
       },
       h1Style: {
         fontFamily: 'Inter-Regular',
@@ -75,7 +76,7 @@ const theme = createTheme({
       },
       disabledTitleStyle: {
         color: 'white',
-      }
+      },
     },
     Input: {
       labelStyle: {
@@ -104,7 +105,7 @@ const theme = createTheme({
       wrapperStyle: '#F6F7EC',
       checkedColor: '#F6F7EC',
     },
-  }
+  },
 });
 
 const MyTheme = {
@@ -123,7 +124,7 @@ export default function App() {
     'Inter-Bold': require('./assets/fonts/Inter-Bold.ttf'),
     'Inter-Light': require('./assets/fonts/Inter-Light.ttf'),
     'Inter-Medium': require('./assets/fonts/Inter-Medium.ttf'),
-    'Inter-SemiBold': require('./assets/fonts/Inter-SemiBold.ttf')
+    'Inter-SemiBold': require('./assets/fonts/Inter-SemiBold.ttf'),
   });
 
   useEffect(() => {

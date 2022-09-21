@@ -1,6 +1,6 @@
-import create from 'zustand'
+import create from 'zustand';
 
-const useStore = create(set => ({
+const useStore = create((set) => ({
   assessment: {
     height: '',
     weight: '',
@@ -24,8 +24,8 @@ const useStore = create(set => ({
         height,
         weight,
         age,
-      }
-  })),
+      },
+    })),
   setBodyFat: (values) =>
     set((state) => ({
       assessment: {
@@ -41,8 +41,8 @@ const useStore = create(set => ({
         lowerBack: values.lowerBack,
         calf: values.calf,
         bodyFat: values.bodyFat,
-      }
-  })),
+      },
+    })),
   setAssessment: (values) =>
     set((state) => ({
       assessment: {
@@ -62,8 +62,8 @@ const useStore = create(set => ({
         calf: values.calf,
         bodyFat: values.bodyFat,
         dueDate: values.dueDate,
-      }
-  })),
-}))
+      },
+    })),
+}));
 
 export default useStore;

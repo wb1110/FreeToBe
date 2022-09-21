@@ -1,0 +1,7 @@
+{
+  "files.autoSave": "onFocusChange",
+  "editor.wordWrap": "on",
+  "editor.codeActionsOnSave": {},
+  "eslint.lintTask.enable": true,
+  "eslint.alwaysShowStatus": true
+}
