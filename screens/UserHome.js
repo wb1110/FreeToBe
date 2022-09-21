@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unstable-nested-components */
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@rneui/themed';

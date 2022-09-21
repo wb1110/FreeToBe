@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function Calculations() {
   const [state, setState] = useState({
