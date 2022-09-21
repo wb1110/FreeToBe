@@ -65,7 +65,14 @@ function ActivityLevel({ navigation }) {
               />
             )}
           </View>
-          <StandardButton title="Submit" onPress={() => navigation.navigate('WorkActivityLevel')} />
+          {selected ? (
+            <StandardButton
+              title="Submit"
+              onPress={() => navigation.navigate('WorkActivityLevel')}
+            />
+          ) : (
+            <StandardButton title="Submit" disabled />
+          )}
           <LArrowButton onPress={() => navigation.goBack()} />
         </Container>
       </SafeAreaView>
