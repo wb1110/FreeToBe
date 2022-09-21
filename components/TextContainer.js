@@ -13,12 +13,6 @@ function TextContainer(props) {
         padding: '6%',
         backgroundColor: theme.colors.primary,
         borderRadius: '25%',
-        shadowOffset: {
-          height: 10,
-        },
-        shadowColor: '#171717',
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
       }}
     >
       <Text h4 h4Style={{ color: theme.colors.white }}>
