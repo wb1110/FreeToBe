@@ -1,5 +1,6 @@
 import { SafeAreaView , View, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
 import { Input , Text } from "@rneui/themed";
+import { useState } from 'react';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
@@ -9,6 +10,15 @@ import TextContainer from '../../components/TextContainer';
 
 
 function Goals({ navigation }) {
+  const [state, setState] = useState({
+    metabolism: false,
+    energy: false,
+    loseWeight: false,
+    calories: false,
+    muscle: false,
+    freedom: false,
+    writeYourOwn: '',
+  })
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}

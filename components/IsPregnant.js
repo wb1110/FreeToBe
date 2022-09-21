@@ -1,12 +1,12 @@
 import { View, KeyboardAvoidingView, Platform } from 'react-native'
 import { Input , Text } from "@rneui/themed";
 import React, { useState } from 'react'
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import RoundButton from "./Buttons/RoundButton";
 import RoundButtonSelected from './Buttons/RoundButtonSelected';
 import StandardButton from "./Buttons/StandardButton";
 import Container from "./Container";
-import { Formik } from 'formik';
-import * as Yup from 'yup';
 import useStore from '../state/Store';
 import MyCustomerPicker from './MyCustomerPicker';
 import {

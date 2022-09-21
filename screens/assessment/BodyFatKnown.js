@@ -1,12 +1,12 @@
 import { Input, Text } from "@rneui/themed";
 import { Formik } from 'formik';
 import { SafeAreaView, TouchableWithoutFeedback, Keyboard, View } from 'react-native';
+import * as Yup from 'yup';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import useStore from '../../state/Store';
-import * as Yup from 'yup';
 
 const BodyFatSchema = Yup.object().shape({
   bodyFat: Yup.number()

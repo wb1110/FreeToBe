@@ -1,26 +1,23 @@
 import { View, StyleSheet, Modal } from 'react-native'
 import {Picker} from '@react-native-picker/picker'
-import NarrowButton from './Buttons/NarrowButton'
 import React from 'react'
+import NarrowButton from './Buttons/NarrowButton'
 
-const MyCustomerPicker = ({
+function MyCustomerPicker({
   modalOpen,
   setModalOpen,
   value,
   setValue,
   items
-}) =>
-{
+}) {
 
-  const pickerData = (data) => {
-    return (data?.length > 0) && (
+  const pickerData = (data) => (data?.length > 0) && (
       data.map((val, index) => <Picker.Item label={val} value={val} key={index} />)
-        );
-  }
+        )
   return (
     <Modal
             animationType="slide"
-            transparent={true}
+            transparent
             visible={modalOpen}
             onRequestClose={() => {
               Alert.alert("Modal has been closed.");

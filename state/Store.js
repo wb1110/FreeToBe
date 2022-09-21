@@ -21,9 +21,9 @@ const useStore = create(set => ({
     set((state) => ({
       assessment: {
         ...state.assessment,
-        height: height,
-        weight: weight,
-        age: age,
+        height,
+        weight,
+        age,
       }
   })),
   setBodyFat: (values) =>
