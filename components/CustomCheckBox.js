@@ -1,11 +1,9 @@
 import { CheckBox } from "@rneui/themed";
-import { useState } from 'react';
 
 function CustomCheckBox(props) {
-  const [check, setCheck] = useState(false);
-  const { title, checked } = props;
+  const { title, state, setState } = props;
   return (
-      <CheckBox center title={title} checked={check} onPress={() => setCheck(!check)}/>
+      <CheckBox center title={title} checked={state} onPress={() => setState(!state)}/>
   )
 }
 

@@ -1,5 +1,5 @@
 import { SafeAreaView , View, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView, Platform } from 'react-native';
-import { Input , Text } from "@rneui/themed";
+import { Input , Text, CheckBox } from "@rneui/themed";
 import { useState } from 'react';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import LArrowButton from '../../components/Buttons/LArrowButton';
@@ -10,15 +10,14 @@ import TextContainer from '../../components/TextContainer';
 
 
 function Goals({ navigation }) {
-  const [state, setState] = useState({
-    metabolism: false,
-    energy: false,
-    loseWeight: false,
-    calories: false,
-    muscle: false,
-    freedom: false,
-    writeYourOwn: '',
-  })
+  const [metabolism, setMetabolism] = useState(false);
+  const [energy, setEnergy] = useState(false);
+  const [loseWeight, setLoseWeight] = useState(false);
+  const [increaseCalories, setIncreaseCalories] = useState(false);
+  const [muscleMass, setMuscleMass] = useState(false);
+  const [freedom, setFreedom] = useState(false);
+  const [written, setWritten] = useState(false);
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -35,16 +34,23 @@ function Goals({ navigation }) {
             Check all that apply:
           </Text>
           <View style={{ alignItems: "flex-start"}}>
-            <CustomCheckBox title="Increase metabolism"/>
-            <CustomCheckBox title="Have steady energy throughout the day"/>
-            <CustomCheckBox title="Lose weight"/>
-            <CustomCheckBox title="Increase the calories I eat without gaining weight"/>
-            <CustomCheckBox title="Increase muscle mass"/>
-            <CustomCheckBox title="Food Freedom (Learn about the makeup of food and be able to intuitively eat)"/>
+            <CustomCheckBox title="Increase metabolism" state={metabolism} setState={setMetabolism} />
+            <CustomCheckBox title="Have steady energy throughout the day" state={energy} setState={setEnergy} />
+            <CustomCheckBox title="Lose weight" state={loseWeight} setState={setLoseWeight} />
+            <CustomCheckBox title="Increase the calories I eat without gaining weight" state={increaseCalories} setState={setIncreaseCalories} />
+            <CustomCheckBox title="Increase muscle mass" state={muscleMass} setState={setMuscleMass} />
+            <CustomCheckBox title="Food Freedom (Learn about the makeup of food and be able to intuitively eat)"  state={freedom} setState={setFreedom} />
           </View>
-            <Input label='Write in your own goal' style={{ margin: "auto", width: "80%" }}/>
-          
-          <StandardButton title="Submit" onPress={() => navigation.navigate('DietHistory')} />
+            <Input label='Write in your own goal' onChangeText={value => setWritten(value)} style={{ margin: "auto", width: "80%" }}/>
+          {metabolism || energy || loseWeight || increaseCalories || muscleMass || freedom || written ?
+            <StandardButton
+              title="Submit"
+              onPress={() => navigation.navigate('DietHistory')}
+            /> : 
+            <StandardButton
+            title="Submit"
+            disabled
+            />}
           <LArrowButton onPress={() => navigation.goBack()}/>
         </Container>
       </SafeAreaView>
