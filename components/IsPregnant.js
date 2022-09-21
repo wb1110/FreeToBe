@@ -34,11 +34,7 @@ function IsPregnant({ navigation }) {
   const [year, setYear] = useState('');
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={{ flex: 1 }}
-    >
-            <Container>
+            <View style={{ alignItems: 'center' }}>
             <Text h4>
               How many babies are you carrying?
             </Text>
@@ -83,8 +79,7 @@ function IsPregnant({ navigation }) {
             title="Submit"
             disabled
             />}
-            </Container>
-    </KeyboardAvoidingView>
+            </View>
   )
 }
 
