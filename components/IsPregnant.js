@@ -8,6 +8,12 @@ import Container from "./Container";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import useStore from '../state/Store';
+import MyCustomerPicker from './MyCustomerPicker';
+import {
+  month as dataMonth,
+  day as dataDay,
+  year as dataYear
+} from '../assets/data/monthDayYearData';
 
 const DueDateSchema = Yup.object().shape({
   dueDate: Yup.date()
@@ -19,19 +25,19 @@ function IsPregnant({ navigation }) {
   const [babies, setBabies] = useState(0);
   const state = useStore();
 
+  const [monthModal, setMonthModal] = useState(false);
+  const [dayModal, setDayModal] = useState(false);
+  const [yearModal, setYearModal] = useState(false);
+
+  const [month, setMonth] = useState('');
+  const [day, setDay] = useState('');
+  const [year, setYear] = useState('');
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={{ flex: 1 }}
     >
-      <Container>
-        <Container>
-        <Formik
-          initialValues={{ dueDate: state.assessment.dueDate }}
-          onSubmit={values => {state.setBodyFat(values); navigation.navigate('Nursing')}}
-          validationSchema={DueDateSchema}
-        >
-          {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
             <Container>
             <Text h4>
               How many babies are you carrying?
@@ -44,19 +50,40 @@ function IsPregnant({ navigation }) {
               {babies === 5 ? <RoundButtonSelected title="5" onPress={() => setBabies(5)}/> : <RoundButton title="5" onPress={() => setBabies(5)}/>}
               {babies === 6 ? <RoundButtonSelected title="6" onPress={() => setBabies(6)}/> : <RoundButton title="6" onPress={() => setBabies(6)}/>}
             </View>
-              <Input
-                label='What is your due date?' 
-                onChangeText={handleChange('dueDate')}
-                onBlur={handleBlur('dueDate')}
-                value={values.dueDate}
-                errorMessage={errors.dueDate && touched.dueDate ? errors.dueDate : null}
-              />
-              <StandardButton title="Submit" onPress={() => handleSubmit()}/>
+            <MyCustomerPicker
+              setModalOpen={setMonthModal}
+              modalOpen={monthModal}
+              value={month}
+              items={dataMonth}
+              setValue={setMonth}
+            />
+            <StandardButton title={`Month: ${month}`} onPress={() => setMonthModal(!monthModal)}/>
+            <MyCustomerPicker
+              setModalOpen={setDayModal}
+              modalOpen={dayModal}
+              value={day}
+              items={dataDay}
+              setValue={setDay}
+            />
+            <StandardButton title={`Day: ${day}`} onPress={() => setDayModal(!dayModal)}/>
+            <MyCustomerPicker
+              setModalOpen={setYearModal}
+              modalOpen={yearModal}
+              value={year}
+              items={dataYear}
+              setValue={setYear}
+            />
+            <StandardButton title={`Year: ${year}`} onPress={() => setYearModal(!yearModal)}/>
+            {babies && month && day && year ?
+            <StandardButton
+              title="Submit"
+              onPress={() => {navigation.navigate('Nursing') }}
+            /> : 
+            <StandardButton
+            title="Submit"
+            disabled
+            />}
             </Container>
-          )}
-        </Formik>
-      </Container>
-      </Container>
     </KeyboardAvoidingView>
   )
 }

@@ -15,7 +15,6 @@ function Pregnant({ navigation }) {
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
-          <Container>
             <Text h4>
               Are you currently pregnant?
             </Text>
@@ -23,7 +22,6 @@ function Pregnant({ navigation }) {
               <NarrowButton title="Yes" onPress={() => setPregnant(true)}/>
               <NarrowButton title="No" onPress={() => {setPregnant(false); navigation.navigate('Nursing')}}/>
             </View>
-          </Container>
           {pregnant ? <IsPregnant navigation={navigation}/> : null }
           <LArrowButton onPress={() => navigation.goBack()}/>
         </Container>
