@@ -69,6 +69,13 @@ const theme = createTheme({
         fontWeight: 'bold',
         fontSize: 16,
       },
+      disabledStyle: {
+        backgroundColor: 'grey',
+        borderColor: 'grey',
+      },
+      disabledTitleStyle: {
+        color: 'white',
+      }
     },
     Input: {
       labelStyle: {
