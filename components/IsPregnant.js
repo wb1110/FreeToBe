@@ -1,4 +1,5 @@
 import { Text } from '@rneui/themed';
+import moment from 'moment/moment';
 import { useState } from 'react';
 import { View } from 'react-native';
 import {
@@ -6,12 +7,14 @@ import {
   month as dataMonth,
   year as dataYear,
 } from '../assets/data/monthDayYearData';
+import useStore from '../state/Store';
 import RoundButton from './Buttons/RoundButton';
 import RoundButtonSelected from './Buttons/RoundButtonSelected';
 import StandardButton from './Buttons/StandardButton';
 import MyCustomerPicker from './MyCustomerPicker';
 
 function IsPregnant({ navigation }) {
+  const state = useStore();
   const [babies, setBabies] = useState(0);
 
   const [monthModal, setMonthModal] = useState(false);
@@ -21,6 +24,31 @@ function IsPregnant({ navigation }) {
   const [month, setMonth] = useState('');
   const [day, setDay] = useState('');
   const [year, setYear] = useState('');
+
+  const values = {
+    babies,
+    trimester: 2,
+  };
+
+  const weeksDifference = Math.ceil(
+    moment(`${month}-${day}-${year}`, 'MMMM-D-YYYY').diff(moment(), 'days') / 7
+  );
+  const trimester = (number) => {
+    let result = '';
+    if (number <= 9) {
+      result = 'Third';
+      return result;
+    }
+    if (number <= 23 && number > 9) {
+      result = 'Second';
+      return result;
+    }
+    if (number > 23) {
+      result = 'First';
+      return result;
+    }
+    return result;
+  };
 
   return (
     <View style={{ alignItems: 'center' }}>
@@ -57,6 +85,7 @@ function IsPregnant({ navigation }) {
           <RoundButton title="6" onPress={() => setBabies(6)} />
         )}
       </View>
+      <Text h4>What is your due date?</Text>
       <MyCustomerPicker
         setModalOpen={setMonthModal}
         modalOpen={monthModal}
@@ -85,7 +114,9 @@ function IsPregnant({ navigation }) {
         <StandardButton
           title="Submit"
           onPress={() => {
-            navigation.navigate('Nursing');
+            // state.setAssessment();
+            // navigation.navigate('Nursing');
+            console.log(trimester(weeksDifference));
           }}
         />
       ) : (

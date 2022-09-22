@@ -26,7 +26,7 @@ function BodyFatKnown({ navigation }) {
         <Formik
           initialValues={{ bodyFat: state.assessment.bodyFat }}
           onSubmit={(values) => {
-            state.setBodyFat(values);
+            state.setAssessment(values);
             navigation.navigate('Pregnant');
           }}
           validationSchema={BodyFatSchema}
