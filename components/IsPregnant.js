@@ -25,29 +25,11 @@ function IsPregnant({ navigation }) {
   const [day, setDay] = useState('');
   const [year, setYear] = useState('');
 
+  const date = moment(`${month}-${day}-${year}`, 'MMMM-D-YYYY');
+
   const values = {
     babies,
-    trimester: 2,
-  };
-
-  const weeksDifference = Math.ceil(
-    moment(`${month}-${day}-${year}`, 'MMMM-D-YYYY').diff(moment(), 'days') / 7
-  );
-  const trimester = (number) => {
-    let result = '';
-    if (number <= 9) {
-      result = 'Third';
-      return result;
-    }
-    if (number <= 23 && number > 9) {
-      result = 'Second';
-      return result;
-    }
-    if (number > 23) {
-      result = 'First';
-      return result;
-    }
-    return result;
+    dueDate: date,
   };
 
   return (
@@ -114,9 +96,8 @@ function IsPregnant({ navigation }) {
         <StandardButton
           title="Submit"
           onPress={() => {
-            // state.setAssessment();
-            // navigation.navigate('Nursing');
-            console.log(trimester(weeksDifference));
+            state.setAssessment(values);
+            navigation.navigate('Nursing');
           }}
         />
       ) : (

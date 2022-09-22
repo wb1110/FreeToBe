@@ -7,9 +7,14 @@ import NarrowButtonSelected from '../../components/Buttons/NarrowButtonSelected'
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import IsNursing from '../../components/IsNursing';
+import useStore from '../../state/Store';
 
 function Nursing({ navigation }) {
+  const state = useStore();
   const [nursing, setNursing] = useState(false);
+
+  console.log(state.assessment);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
