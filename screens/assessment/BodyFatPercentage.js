@@ -1,4 +1,5 @@
 import { SafeAreaView } from 'react-native';
+import useStore from '../../state/Store';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
@@ -6,6 +7,8 @@ import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from '../../components/TextContainer';
 
 function BodyFatPercentage({ navigation }) {
+  const state = useStore();
+  console.log(state.assessment);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />

@@ -1,17 +1,20 @@
 import { View, Text } from 'react-native';
-import { useState } from 'react';
+import useStore from '../../state/Store';
 
 export default function Calculations() {
-  const [state, setState] = useState({
-    bodyFat: 15,
-    height: 72,
-    weight: 185,
-    age: 33,
-    trimester: 1,
-    babies: 1,
-    nursing: 2,
-    activity: 1.2,
-  });
+  const state = useStore();
+  // const [state, setState] = useState({
+  //   bodyFat: 15,
+  //   height: 72,
+  //   weight: 185,
+  //   age: 33,
+  //   trimester: 1,
+  //   babies: 1,
+  //   nursing: 2,
+  //   activity: 1.2,
+  // });
+
+  console.log(state.assessment);
 
   const energyEquations = () => {
     if (!state.bodyFat) {

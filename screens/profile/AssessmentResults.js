@@ -20,6 +20,7 @@ export default function AssessmentResults() {
     } catch (e) {
       return e;
     }
+    console.log(userAssessment);
     return userAssessment;
   };
   useEffect(() => {

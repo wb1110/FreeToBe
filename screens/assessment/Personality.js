@@ -44,7 +44,7 @@ function Personality({ navigation }) {
             />
           </View>
           {obliger || questioner || upholder || rebel ? (
-            <StandardButton title="Submit" onPress={() => navigation.navigate('TimeLearning')} />
+            <StandardButton title="Submit" onPress={() => navigation.navigate('Disclaimer')} />
           ) : (
             <StandardButton title="Submit" disabled />
           )}

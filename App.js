@@ -22,8 +22,6 @@ import ExternalStress from './screens/assessment/ExternalStress';
 import ActivityLevel from './screens/assessment/ActivityLevel';
 import WorkActivityLevel from './screens/assessment/WorkActivityLevel';
 import Personality from './screens/assessment/Personality';
-import TimeLearning from './screens/assessment/TimeLearning';
-import NumberedTracking from './screens/assessment/NumberedTracking';
 import Disclaimer from './screens/assessment/Disclaimer';
 import AbleToTrack from './screens/assessment/AbleToTrack';
 import LieSkinny from './screens/assessment/LieSkinny';
@@ -153,7 +151,7 @@ export default function App() {
         <NavigationContainer theme={MyTheme}>
           <Stack.Navigator
             screenOptions={{ headerShown: false }}
-            initialRouteName="TrackingHistory"
+            initialRouteName="HeightWeightAge"
           >
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Register" component={Register} />
@@ -173,8 +171,6 @@ export default function App() {
             <Stack.Screen name="ActivityLevel" component={ActivityLevel} />
             <Stack.Screen name="WorkActivityLevel" component={WorkActivityLevel} />
             <Stack.Screen name="Personality" component={Personality} />
-            <Stack.Screen name="TimeLearning" component={TimeLearning} />
-            <Stack.Screen name="NumberedTracking" component={NumberedTracking} />
             <Stack.Screen name="Disclaimer" component={Disclaimer} />
             <Stack.Screen name="AbleToTrack" component={AbleToTrack} />
             <Stack.Screen name="LieSkinny" component={LieSkinny} />
