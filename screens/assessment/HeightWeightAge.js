@@ -10,10 +10,14 @@ import useStore from '../../state/Store';
 
 function HeightWeightAge({ navigation }) {
   const state = useStore();
+  let nHeight;
+  let nWeight;
+  let nAge;
+
   const values = {
-    height: 0,
-    weight: 0,
-    age: 0,
+    height: nHeight,
+    weight: nWeight,
+    age: nAge,
   };
 
   const [heightModal, setHeightModal] = useState(false);
@@ -28,9 +32,9 @@ function HeightWeightAge({ navigation }) {
     const array = x.match(/\d+/g);
     const feet = parseInt(array[0], 10) * 12;
     const inches = parseInt(array[1], 10);
-    const nHeight = feet + inches;
-    const nWeight = parseInt(y, 10);
-    const nAge = parseInt(z, 10);
+    nHeight = feet + inches;
+    nWeight = parseInt(y, 10);
+    nAge = parseInt(z, 10);
 
     values.height = nHeight;
     values.weight = nWeight;
@@ -71,7 +75,8 @@ function HeightWeightAge({ navigation }) {
           <StandardButton
             title="Submit"
             onPress={() => {
-              state.setAssessment(conversion(height, weight, age));
+              conversion(height, weight, age);
+              state.setHWA(values);
               navigation.navigate('BodyFatPercentage');
             }}
           />

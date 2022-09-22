@@ -11,6 +11,30 @@ const useStore = create((set) => ({
     nursing: 0,
     activity: 0,
   },
+  setHWA: (values) =>
+    set((state) => ({
+      assessment: {
+        ...state.assessment,
+        height: values.height,
+        weight: values.weight,
+        age: values.age,
+      },
+    })),
+  setBodyFat: (values) =>
+    set((state) => ({
+      assessment: {
+        ...state.assessment,
+        bodyFat: values.bodyFat,
+      },
+    })),
+  setPregnant: (values) =>
+    set((state) => ({
+      assessment: {
+        ...state.assessment,
+        dueDate: values.dueDate,
+        babies: values.babies,
+      },
+    })),
   setAssessment: (values) =>
     set((state) => ({
       assessment: {

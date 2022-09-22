@@ -15,6 +15,7 @@ import MyCustomerPicker from './MyCustomerPicker';
 
 function IsPregnant({ navigation }) {
   const state = useStore();
+
   const [babies, setBabies] = useState(0);
 
   const [monthModal, setMonthModal] = useState(false);
@@ -96,7 +97,7 @@ function IsPregnant({ navigation }) {
         <StandardButton
           title="Submit"
           onPress={() => {
-            state.setAssessment(values);
+            state.setPregnant(values);
             navigation.navigate('Nursing');
           }}
         />
