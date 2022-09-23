@@ -1,5 +1,4 @@
 import { Text } from '@rneui/themed';
-import { View } from 'react-native';
 import Container from '../../components/Container';
 import Calculations from './Calculations';
 
