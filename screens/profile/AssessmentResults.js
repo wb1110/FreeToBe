@@ -1,12 +1,13 @@
 import { Text } from '@rneui/themed';
 import { View } from 'react-native';
-import Calculations from '../assessment/Calculations';
+import Container from '../../components/Container';
+import Calculations from './Calculations';
 
 export default function AssessmentResults() {
   return (
-    <View>
-      <Text>AssessmentResults</Text>
+    <Container>
+      <Text h1>AssessmentResults</Text>
       <Calculations />
-    </View>
+    </Container>
   );
 }

@@ -1,6 +1,8 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { Text } from '@rneui/themed';
 import moment from 'moment/moment';
 import useStore from '../../state/Store';
+import Suggestions from './Suggestions';
 
 export default function Calculations() {
   const state = useStore();
@@ -118,12 +120,23 @@ export default function Calculations() {
   const weekCalories = maintenanceCal * 7;
 
   const idealProtein = `${Math.round(maintenanceCal * 0.2)} - ${Math.round(maintenanceCal * 0.3)}`;
+  const idealCarb = `${Math.round(maintenanceCal * 0.4)} - ${Math.round(maintenanceCal * 0.7)}`;
+  const idealFat = `${Math.round(maintenanceCal * 0.2)} - ${Math.round(maintenanceCal * 0.3)}`;
 
   return (
     <View>
       <Text>Maintenance Calories: {`${maintenanceCal}`}</Text>
       <Text>Calories per week: {`${weekCalories}`}</Text>
-      <Text>Ideal Macronutrients: -Protein {idealProtein}</Text>
+      <Text>
+        Ideal Macronutrients:{'\n'}
+        -Protein {idealProtein}
+        {'\n'}
+        -Carbohydrates {idealCarb}
+        {'\n'}
+        -Fats {idealFat}
+        {'\n'}
+      </Text>
+      <Suggestions TDEE={maintenanceCal} />
     </View>
   );
 }
