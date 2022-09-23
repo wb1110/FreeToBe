@@ -18,7 +18,10 @@ function ExternalStress({ navigation }) {
           <TextContainer>
             External stress is stress that comes form outside sources. For example, pressure at work
             such as deadlines, major life changes, and relationship turmoil are all external
-            stressors. What would you rate your external stress between 0-5?
+            stressors.
+            {'\n'}
+            {'\n'}
+            What would you rate your external stress between 0-5?
           </TextContainer>
           <View style={{ flexDirection: 'row' }}>
             {selected === 0 ? (

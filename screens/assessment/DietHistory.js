@@ -68,7 +68,6 @@ function DietHistory({ navigation }) {
         ) : (
           <StandardButton title="Submit" disabled />
         )}
-
         <LArrowButton onPress={() => navigation.goBack()} />
       </Container>
     </SafeAreaView>

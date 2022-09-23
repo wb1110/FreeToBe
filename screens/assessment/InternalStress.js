@@ -17,11 +17,18 @@ function InternalStress({ navigation }) {
         <Container>
           <TextContainer>
             Studies show that stress has an impact on many health markers including sleep, weight
-            loss, energy throughout the day, and many more. There can be internal stress, which is
-            stress that comes within. Worrying about things outside of your control such as losing
-            your job, rain on your birthday, or negative self talk are all examples of internal
-            stress. What would you rate your internal stress between 0-5? 0= no internal stress, 5 =
-            overwhelming amount of internal stress
+            loss, energy throughout the day, and many more.
+            {'\n'}
+            {'\n'}
+            Internal stress is stress that comes within. Worrying about things outside of your
+            control such as losing your job, rain on your birthday, or negative self talk are all
+            examples of internal stress.
+            {'\n'}
+            {'\n'}
+            What would you rate your internal stress between 0-5?
+            {'\n'}
+            {'\n'}
+            0= no internal stress, 5 = overwhelming amount of internal stress
           </TextContainer>
           <View style={{ flexDirection: 'row' }}>
             {selected === 0 ? (

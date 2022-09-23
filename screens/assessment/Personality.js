@@ -4,14 +4,11 @@ import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-na
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import CustomCheckBox from '../../components/CustomCheckBox';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
+import SingleSelectCheck from '../../components/SingleSelectCheck';
 
 function Personality({ navigation }) {
-  const [upholder, setUpholder] = useState(false);
-  const [obliger, setObliger] = useState(false);
-  const [rebel, setRebel] = useState(false);
-  const [questioner, setQuestioner] = useState(false);
+  const [selected, setSelected] = useState(false);
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -22,28 +19,60 @@ function Personality({ navigation }) {
             If you were to categorize yourself into 1 of the 4 types of people, which would it be?
           </Text>
           <View style={{ alignItems: 'flex-start' }}>
-            <CustomCheckBox
-              title="Upholder - meets outer and inner expectations"
-              state={upholder}
-              setState={setUpholder}
-            />
-            <CustomCheckBox
-              title="Obliger - meets outer expectations but resists inner expectations"
-              state={obliger}
-              setState={setObliger}
-            />
-            <CustomCheckBox
-              title="Questioner - resists outer expectations by meets inner expectations"
-              state={questioner}
-              setState={setQuestioner}
-            />
-            <CustomCheckBox
-              title="Rebel - resists inner and outer expectations"
-              state={rebel}
-              setState={setRebel}
-            />
+            {selected === 1 ? (
+              <SingleSelectCheck
+                title="Upholder - meets outer and inner expectations"
+                checked
+                onPress={() => setSelected(1)}
+              />
+            ) : (
+              <SingleSelectCheck
+                title="Upholder - meets outer and inner expectations"
+                checked={false}
+                onPress={() => setSelected(1)}
+              />
+            )}
+            {selected === 2 ? (
+              <SingleSelectCheck
+                title="Obliger - meets outer expectations but resists inner expectations"
+                checked
+                onPress={() => setSelected(2)}
+              />
+            ) : (
+              <SingleSelectCheck
+                title="Obliger - meets outer expectations but resists inner expectations"
+                checked={false}
+                onPress={() => setSelected(2)}
+              />
+            )}
+            {selected === 3 ? (
+              <SingleSelectCheck
+                title="Questioner - resists outer expectations by meets inner expectations"
+                checked
+                onPress={() => setSelected(3)}
+              />
+            ) : (
+              <SingleSelectCheck
+                title="Questioner - resists outer expectations by meets inner expectations"
+                checked={false}
+                onPress={() => setSelected(3)}
+              />
+            )}
+            {selected === 4 ? (
+              <SingleSelectCheck
+                title="Rebel - resists inner and outer expectations"
+                checked
+                onPress={() => setSelected(4)}
+              />
+            ) : (
+              <SingleSelectCheck
+                title="Rebel - resists inner and outer expectations"
+                checked={false}
+                onPress={() => setSelected(4)}
+              />
+            )}
           </View>
-          {obliger || questioner || upholder || rebel ? (
+          {selected ? (
             <StandardButton title="Submit" onPress={() => navigation.navigate('Disclaimer')} />
           ) : (
             <StandardButton title="Submit" disabled />
