@@ -25,7 +25,7 @@ function FoodPreferences({ navigation }) {
         <TextContainer>
           What I currently eat can be best described as…{/* {"\n"}{"\n"}Choose all that apply.} */}
         </TextContainer>
-        <View style={{ alignItems: 'flex-start' }}>
+        <View style={{ alignItems: 'center' }}>
           <CustomCheckBox title="All types of food" state={all} setState={setAll} />
           <CustomCheckBox title="Vegan" state={vegan} setState={setVegan} />
           <CustomCheckBox title="Vegetarian" state={vegetarian} setState={setVegetarian} />
