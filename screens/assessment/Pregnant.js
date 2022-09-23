@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import NarrowButton from '../../components/Buttons/NarrowButton';
+import NarrowButtonSelected from '../../components/Buttons/NarrowButtonSelected';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import IsPregnant from '../../components/IsPregnant';
@@ -16,7 +17,11 @@ function Pregnant({ navigation }) {
         <Container>
           <Text h4>Are you currently pregnant?</Text>
           <View style={{ flexDirection: 'row' }}>
-            <NarrowButton title="Yes" onPress={() => setPregnant(true)} />
+            {pregnant ? (
+              <NarrowButtonSelected title="Yes" onPress={() => setPregnant(true)} />
+            ) : (
+              <NarrowButton title="Yes" onPress={() => setPregnant(false)} />
+            )}
             <NarrowButton
               title="No"
               onPress={() => {
