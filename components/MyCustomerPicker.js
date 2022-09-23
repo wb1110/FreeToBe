@@ -1,6 +1,5 @@
-import { View, StyleSheet, Modal } from 'react-native';
+import { View, StyleSheet, Modal, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import NarrowButton from './Buttons/NarrowButton';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,13 +8,10 @@ const styles = StyleSheet.create({
   pickerContainer: {
     backgroundColor: 'white',
     width: '100%',
-    height: '40%',
+    height: '30%',
     position: 'absolute',
     bottom: 0,
-  },
-  closeContainer: {
     justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 
@@ -33,16 +29,19 @@ function MyCustomerPicker({ modalOpen, setModalOpen, value, setValue, items }) {
         setModalOpen(!modalOpen);
       }}
     >
-      <View style={styles.container}>
-        <View style={styles.pickerContainer}>
-          <View style={styles.closeContainer}>
-            <NarrowButton title="Close" onPress={() => setModalOpen(!modalOpen)} />
+      <TouchableOpacity
+        style={styles.container}
+        activeOpacity={1}
+        onPressOut={() => setModalOpen(!modalOpen)}
+      >
+        <TouchableWithoutFeedback>
+          <View style={styles.pickerContainer}>
+            <Picker selectedValue={value} onValueChange={(itemValue) => setValue(itemValue)}>
+              {pickerData(items)}
+            </Picker>
           </View>
-          <Picker selectedValue={value} onValueChange={(itemValue) => setValue(itemValue)}>
-            {pickerData(items)}
-          </Picker>
-        </View>
-      </View>
+        </TouchableWithoutFeedback>
+      </TouchableOpacity>
     </Modal>
   );
 }
