@@ -79,7 +79,6 @@ export default function Calculations() {
   // 2 = Light exercise / Moderate
   // 3 = Moderate / Very Active
   // 4 = Extreme
-  console.log(activityMultiplier());
 
   const energyEquations = () => {
     if (!bodyFat) {
@@ -112,14 +111,19 @@ export default function Calculations() {
     return result;
   };
 
-  const endGoal = Math.round(
+  const maintenanceCal = Math.round(
     energyEquations() + (dueDate ? trimester(weeksDifference) : 0) + babyCalories() + nursing
   );
 
+  const weekCalories = maintenanceCal * 7;
+
+  const idealProtein = `${Math.round(maintenanceCal * 0.2)} - ${Math.round(maintenanceCal * 0.3)}`;
+
   return (
     <View>
-      <Text>TDEE: {energyEquations()}</Text>
-      <Text>End Goal: {`${endGoal}`}</Text>
+      <Text>Maintenance Calories: {`${maintenanceCal}`}</Text>
+      <Text>Calories per week: {`${weekCalories}`}</Text>
+      <Text>Ideal Macronutrients: -Protein {idealProtein}</Text>
     </View>
   );
 }
