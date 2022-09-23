@@ -8,6 +8,9 @@ import StandardButtonSelected from './Buttons/StandardButtonSelected';
 function IsNursing({ navigation }) {
   const state = useStore();
   const [partum, setPartum] = useState(0);
+  const values = {
+    nursing: partum,
+  };
   return (
     <View>
       <View style={{ alignItems: 'center' }}>
@@ -29,7 +32,7 @@ function IsNursing({ navigation }) {
         <StandardButton
           title="Submit"
           onPress={() => {
-            state.setNursing(partum);
+            state.setNursing(values);
             navigation.navigate('Goals');
           }}
         />
