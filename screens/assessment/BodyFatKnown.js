@@ -12,7 +12,6 @@ const BodyFatSchema = Yup.object().shape({
   bodyFat: Yup.number()
     .typeError('Must be a number!')
     .positive('Must be a positive number!')
-    .integer('Must be a whole number!')
     .max(99, 'Too Long!')
     .required('Required'),
 });
