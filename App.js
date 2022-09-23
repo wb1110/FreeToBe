@@ -149,7 +149,7 @@ export default function App() {
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <NavigationContainer theme={MyTheme}>
-          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Disclaimer">
+          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Register">
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Welcome" component={Welcome} />

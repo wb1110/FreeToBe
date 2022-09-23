@@ -37,8 +37,8 @@ export default function UserHome() {
         tabBarInactiveTintColor: theme.colors.secondary,
       })}
     >
-      <Tab.Screen name="Tracker" component={Tracker} />
       <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Tracker" component={Tracker} />
       <Tab.Screen name="Metabolic" component={Metabolic} />
     </Tab.Navigator>
   );
