@@ -1,25 +1,27 @@
 import { Text } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
+import useStore from '../state/Store';
 import StandardButton from './Buttons/StandardButton';
 import StandardButtonSelected from './Buttons/StandardButtonSelected';
 
 function IsNursing({ navigation }) {
+  const state = useStore();
   const [partum, setPartum] = useState(0);
   return (
     <View>
       <View style={{ alignItems: 'center' }}>
         <Text h4>Are you...</Text>
         <View>
-          {partum === 1 ? (
-            <StandardButtonSelected title="0-6 months postpartum" onPress={() => setPartum(1)} />
+          {partum === 330 ? (
+            <StandardButtonSelected title="0-6 months postpartum" onPress={() => setPartum(330)} />
           ) : (
-            <StandardButton title="0-6 months postpartum" onPress={() => setPartum(1)} />
+            <StandardButton title="0-6 months postpartum" onPress={() => setPartum(330)} />
           )}
-          {partum === 2 ? (
-            <StandardButtonSelected title="7+ months postpartum" onPress={() => setPartum(2)} />
+          {partum === 400 ? (
+            <StandardButtonSelected title="7+ months postpartum" onPress={() => setPartum(400)} />
           ) : (
-            <StandardButton title="7+ months postpartum" onPress={() => setPartum(2)} />
+            <StandardButton title="7+ months postpartum" onPress={() => setPartum(400)} />
           )}
         </View>
       </View>
@@ -27,6 +29,7 @@ function IsNursing({ navigation }) {
         <StandardButton
           title="Submit"
           onPress={() => {
+            state.setNursing(partum);
             navigation.navigate('Goals');
           }}
         />

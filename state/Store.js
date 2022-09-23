@@ -35,6 +35,13 @@ const useStore = create((set) => ({
         babies: values.babies,
       },
     })),
+  setNursing: (values) =>
+    set((state) => ({
+      assessment: {
+        ...state.assessment,
+        nursing: values.nursing,
+      },
+    })),
   setAssessment: (values) =>
     set((state) => ({
       assessment: {
