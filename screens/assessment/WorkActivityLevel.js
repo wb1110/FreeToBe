@@ -6,9 +6,14 @@ import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import SingleSelectCheck from '../../components/SingleSelectCheck';
+import useStore from '../../state/Store';
 
 function WorkActivityLevel({ navigation }) {
+  const state = useStore();
   const [selected, setSelected] = useState(0);
+  const values = {
+    workActivity: selected,
+  };
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -70,7 +75,13 @@ function WorkActivityLevel({ navigation }) {
             )}
           </View>
           {selected ? (
-            <StandardButton title="Submit" onPress={() => navigation.navigate('Personality')} />
+            <StandardButton
+              title="Submit"
+              onPress={() => {
+                state.setWorkActivity(values);
+                navigation.navigate('Personality');
+              }}
+            />
           ) : (
             <StandardButton title="Submit" disabled />
           )}

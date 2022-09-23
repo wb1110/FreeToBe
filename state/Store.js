@@ -9,7 +9,8 @@ const useStore = create((set) => ({
     dueDate: 0,
     babies: 0,
     nursing: 0,
-    activity: 0,
+    exerciseActivity: 0,
+    workActivity: 0,
   },
   setHWA: (values) =>
     set((state) => ({
@@ -42,6 +43,20 @@ const useStore = create((set) => ({
         nursing: values.nursing,
       },
     })),
+  setExerciseActivity: (values) =>
+    set((state) => ({
+      assessment: {
+        ...state.assessment,
+        exerciseActivity: values.exerciseActivity,
+      },
+    })),
+  setWorkActivity: (values) =>
+    set((state) => ({
+      assessment: {
+        ...state.assessment,
+        workActivity: values.workActivity,
+      },
+    })),
   setAssessment: (values) =>
     set((state) => ({
       assessment: {
@@ -53,7 +68,8 @@ const useStore = create((set) => ({
         dueDate: values.dueDate,
         babies: values.babies,
         nursing: values.nursing,
-        activity: values.activity,
+        exerciseActivity: values.exerciseActivity,
+        workActivity: values.workActivity,
       },
     })),
 }));

@@ -6,9 +6,15 @@ import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import SingleSelectCheck from '../../components/SingleSelectCheck';
+import useStore from '../../state/Store';
 
 function ActivityLevel({ navigation }) {
+  const state = useStore();
   const [selected, setSelected] = useState(0);
+  const values = {
+    exerciseActivity: selected,
+  };
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -68,7 +74,10 @@ function ActivityLevel({ navigation }) {
           {selected ? (
             <StandardButton
               title="Submit"
-              onPress={() => navigation.navigate('WorkActivityLevel')}
+              onPress={() => {
+                state.setExerciseActivity(values);
+                navigation.navigate('WorkActivityLevel');
+              }}
             />
           ) : (
             <StandardButton title="Submit" disabled />

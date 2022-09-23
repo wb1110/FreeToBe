@@ -4,7 +4,8 @@ import useStore from '../../state/Store';
 
 export default function Calculations() {
   const state = useStore();
-  const { bodyFat, weight, height, age, dueDate, activity, babies, nursing } = state.assessment;
+  const { bodyFat, weight, height, age, dueDate, exerciseActivity, workActivity, babies, nursing } =
+    state.assessment;
   let TDEE;
   let pregnancyCalories = 0;
   const babyCalories = () => {
@@ -27,21 +28,63 @@ export default function Calculations() {
     }
     return pregnancyCalories;
   };
-  // const [state, setState] = useState({
-  //   bodyFat: 15,
-  //   height: 72,
-  //   weight: 185,
-  //   age: 33,
-  //   dueDate: 20230524,
-  //   babies: 1,
-  //   nursing: 2,
-  //   activity: 1.2,
-  // });
+
+  const activityMultiplier = () => {
+    let multiplier;
+    // Sedentary
+    if (exerciseActivity === 1 && workActivity <= 2) {
+      multiplier = 1.2;
+      return multiplier;
+    }
+    // Liight
+    if (exerciseActivity === 1 && workActivity === 3) {
+      multiplier = 1.375;
+      return multiplier;
+    }
+    if (exerciseActivity === 2 && workActivity <= 2) {
+      multiplier = 1.375;
+      return multiplier;
+    }
+    // Moderate
+    if (exerciseActivity === 2 && workActivity === 3) {
+      multiplier = 1.55;
+      return multiplier;
+    }
+    if (exerciseActivity === 3 && workActivity <= 2) {
+      multiplier = 1.55;
+      return multiplier;
+    }
+    // Very
+    if (exerciseActivity === 3 && workActivity === 3) {
+      multiplier = 1.725;
+      return multiplier;
+    }
+    if (exerciseActivity === 4 && workActivity === 1) {
+      multiplier = 1.725;
+      return multiplier;
+    }
+    // Extreme
+    if (exerciseActivity === 4 && workActivity >= 2) {
+      multiplier = 1.9;
+      return multiplier;
+    }
+    if (exerciseActivity < 4 && workActivity === 4) {
+      multiplier = 1.9;
+      return multiplier;
+    }
+    return multiplier;
+  };
+
+  // 1 = No exercise / activity
+  // 2 = Light exercise / Moderate
+  // 3 = Moderate / Very Active
+  // 4 = Extreme
+  console.log(activityMultiplier());
 
   const energyEquations = () => {
     if (!bodyFat) {
       const BMR = 10 * (weight * 0.45359237) + 6.25 * (height * 2.54) - 5 * age - 161;
-      TDEE = BMR * activity;
+      TDEE = BMR * activityMultiplier();
       return TDEE;
     }
     const FBM = weight * 0.45359237 * (bodyFat / 100);
