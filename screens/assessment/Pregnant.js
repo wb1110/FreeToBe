@@ -20,7 +20,7 @@ function Pregnant({ navigation }) {
             {pregnant ? (
               <NarrowButtonSelected title="Yes" onPress={() => setPregnant(true)} />
             ) : (
-              <NarrowButton title="Yes" onPress={() => setPregnant(false)} />
+              <NarrowButton title="Yes" onPress={() => setPregnant(true)} />
             )}
             <NarrowButton
               title="No"
