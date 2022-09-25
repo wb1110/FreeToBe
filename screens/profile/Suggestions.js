@@ -1,7 +1,7 @@
+import { Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
-import { Text, useTheme } from '@rneui/themed';
-import { VictoryPie, VictoryContainer } from 'victory-native';
+import { VictoryContainer, VictoryPie } from 'victory-native';
 import SingleSelectCheck from '../../components/SingleSelectCheck';
 
 export default function Suggestions({ TDEE }) {
@@ -81,7 +81,7 @@ export default function Suggestions({ TDEE }) {
           },
         }}
         colorScale={['#519085', '#E9E0AC', '#88CED2']}
-        containerComponent={<VictoryContainer width={400} />}
+        containerComponent=<VictoryContainer width={400} />
         innerRadius={100}
         animate={{ duration: 1000 }}
         data={[
