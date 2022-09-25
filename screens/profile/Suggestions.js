@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { View } from 'react-native';
-import { Text } from '@rneui/themed';
-import { VictoryBar, VictoryPie, VictoryTheme } from 'victory-native';
+import { Text, useTheme } from '@rneui/themed';
+import { VictoryPie, VictoryContainer } from 'victory-native';
 import SingleSelectCheck from '../../components/SingleSelectCheck';
 
 export default function Suggestions({ TDEE }) {
-  const [selected, setSelected] = useState(0);
+  const { theme } = useTheme();
+  const [selected, setSelected] = useState(1);
 
   let protein;
   let carb;
@@ -75,11 +76,18 @@ export default function Suggestions({ TDEE }) {
       )}
       <VictoryPie
         width={350}
-        theme={VictoryTheme.material}
+        style={{
+          labels: {
+            fill: theme.colors.white,
+          },
+        }}
+        colorScale={['#519085', '#E9E0AC', '#88CED2']}
+        containerComponent={<VictoryContainer width={400} />}
+        innerRadius={100}
         data={[
-          { x: 'Protein', y: protein },
-          { x: 'Carbohydrates', y: carb },
-          { x: 'Fats', y: fat },
+          { x: `Protein ${protein}g`, y: protein },
+          { x: `Carbohydrates ${carb}g`, y: carb },
+          { x: `Fats ${fat}g`, y: fat },
         ]}
       />
       <Text>Protein: {protein}g</Text>
