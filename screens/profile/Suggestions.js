@@ -34,7 +34,6 @@ export default function Suggestions({ TDEE }) {
 
   return (
     <View>
-      <Text h2>Suggestions</Text>
       {selected === 1 ? (
         <SingleSelectCheck
           title="Protein, Carb, Fat(30/40/30)"
@@ -84,10 +83,11 @@ export default function Suggestions({ TDEE }) {
         colorScale={['#519085', '#E9E0AC', '#88CED2']}
         containerComponent={<VictoryContainer width={400} />}
         innerRadius={100}
+        animate={{ duration: 1000 }}
         data={[
-          { x: `Protein ${protein}g`, y: protein },
-          { x: `Carbohydrates ${carb}g`, y: carb },
-          { x: `Fats ${fat}g`, y: fat },
+          { x: `Protein`, y: protein },
+          { x: `Carbohydrates`, y: carb },
+          { x: `Fats`, y: fat },
         ]}
       />
       <Text>Protein: {protein}g</Text>
