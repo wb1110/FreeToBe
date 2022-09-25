@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { View } from 'react-native';
 import { Text } from '@rneui/themed';
-
+import { VictoryBar, VictoryPie, VictoryTheme } from 'victory-native';
 import SingleSelectCheck from '../../components/SingleSelectCheck';
 
 export default function Suggestions({ TDEE }) {
@@ -73,7 +73,15 @@ export default function Suggestions({ TDEE }) {
           onPress={() => setSelected(3)}
         />
       )}
-
+      <VictoryPie
+        width={350}
+        theme={VictoryTheme.material}
+        data={[
+          { x: 'Protein', y: protein },
+          { x: 'Carbohydrates', y: carb },
+          { x: 'Fats', y: fat },
+        ]}
+      />
       <Text>Protein: {protein}g</Text>
       <Text>Carbohydrates: {carb}g</Text>
       <Text>Fats: {fat}g</Text>
