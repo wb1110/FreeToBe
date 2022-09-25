@@ -13,19 +13,19 @@ export default function Suggestions({ TDEE }) {
 
   const macroOptions = (option) => {
     if (option === 1) {
-      protein = Math.round(TDEE * 0.3);
-      carb = Math.round(TDEE * 0.4);
-      fat = Math.round(TDEE * 0.3);
+      protein = Math.round((TDEE * 0.3) / 4);
+      carb = Math.round((TDEE * 0.4) / 4);
+      fat = Math.round((TDEE * 0.3) / 4);
     }
     if (option === 2) {
-      protein = Math.round(TDEE * 0.2);
-      carb = Math.round(TDEE * 0.55);
-      fat = Math.round(TDEE * 0.25);
+      protein = Math.round((TDEE * 0.2) / 4);
+      carb = Math.round((TDEE * 0.55) / 4);
+      fat = Math.round((TDEE * 0.25) / 4);
     }
     if (option === 3) {
-      protein = Math.round(TDEE * 0.25);
-      carb = Math.round(TDEE * 0.45);
-      fat = Math.round(TDEE * 0.2);
+      protein = Math.round((TDEE * 0.25) / 4);
+      carb = Math.round((TDEE * 0.45) / 4);
+      fat = Math.round((TDEE * 0.2) / 4);
     }
   };
 
@@ -74,9 +74,9 @@ export default function Suggestions({ TDEE }) {
         />
       )}
 
-      <Text>Protein: {protein}</Text>
-      <Text>Carbohydrates: {carb}</Text>
-      <Text>Fats: {fat}</Text>
+      <Text>Protein: {protein}g</Text>
+      <Text>Carbohydrates: {carb}g</Text>
+      <Text>Fats: {fat}g</Text>
     </View>
   );
 }

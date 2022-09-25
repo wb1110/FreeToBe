@@ -119,9 +119,15 @@ export default function Calculations() {
 
   const weekCalories = maintenanceCal * 7;
 
-  const idealProtein = `${Math.round(maintenanceCal * 0.2)} - ${Math.round(maintenanceCal * 0.3)}`;
-  const idealCarb = `${Math.round(maintenanceCal * 0.4)} - ${Math.round(maintenanceCal * 0.7)}`;
-  const idealFat = `${Math.round(maintenanceCal * 0.2)} - ${Math.round(maintenanceCal * 0.3)}`;
+  const idealProtein = `${Math.round((maintenanceCal * 0.2) / 4)}g - ${Math.round(
+    (maintenanceCal * 0.3) / 4
+  )}g`;
+  const idealCarb = `${Math.round((maintenanceCal * 0.4) / 4)}g - ${Math.round(
+    (maintenanceCal * 0.7) / 4
+  )}`;
+  const idealFat = `${Math.round((maintenanceCal * 0.2) / 9)}g - ${Math.round(
+    (maintenanceCal * 0.3) / 9
+  )}g`;
 
   return (
     <View>
