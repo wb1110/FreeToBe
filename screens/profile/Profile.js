@@ -1,15 +1,16 @@
-import { Text } from '@rneui/themed';
-import { SafeAreaView } from 'react-native';
-import Container from '../../components/Container';
+import { SafeAreaView, View } from 'react-native';
 import Calculations from './Calculations';
 
 function Profile() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Container>
-        <Text h1>AssessmentResults</Text>
+    <SafeAreaView>
+      <View
+        style={{
+          alignItems: 'center',
+        }}
+      >
         <Calculations />
-      </Container>
+      </View>
     </SafeAreaView>
   );
 }

@@ -1,8 +1,7 @@
-import { View } from 'react-native';
-import { Text } from '@rneui/themed';
 import moment from 'moment/moment';
+import { SafeAreaView } from 'react-native';
 import useStore from '../../state/Store';
-import Suggestions from './Suggestions';
+import PFCPieChart from './PFCPieChart';
 
 export default function Calculations() {
   const state = useStore();
@@ -117,32 +116,9 @@ export default function Calculations() {
     energyEquations() + (dueDate ? trimester(weeksDifference) : 0) + babyCalories() + nursing
   );
 
-  const weekCalories = maintenanceCal * 7;
-
-  const idealProtein = `${Math.round((maintenanceCal * 0.2) / 4)}g - ${Math.round(
-    (maintenanceCal * 0.3) / 4
-  )}g`;
-  const idealCarb = `${Math.round((maintenanceCal * 0.4) / 4)}g - ${Math.round(
-    (maintenanceCal * 0.7) / 4
-  )}`;
-  const idealFat = `${Math.round((maintenanceCal * 0.2) / 9)}g - ${Math.round(
-    (maintenanceCal * 0.3) / 9
-  )}g`;
-
   return (
-    <View>
-      <Text>Maintenance Calories: {`${maintenanceCal}`}</Text>
-      <Text>Calories per week: {`${weekCalories}`}</Text>
-      <Text>
-        Ideal Macronutrients:{'\n'}
-        -Protein {idealProtein}
-        {'\n'}
-        -Carbohydrates {idealCarb}
-        {'\n'}
-        -Fats {idealFat}
-        {'\n'}
-      </Text>
-      <Suggestions TDEE={maintenanceCal} />
-    </View>
+    <SafeAreaView>
+      <PFCPieChart TDEE={maintenanceCal} />
+    </SafeAreaView>
   );
 }
