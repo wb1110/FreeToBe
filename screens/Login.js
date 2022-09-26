@@ -40,7 +40,7 @@ function Login({ navigation }) {
             <Input label="Password" />
             <StandardButton
               onPress={() => {
-                navigation.navigate('UserHome');
+                navigation.navigate('UserHome', { screen: 'Profile' });
                 getAssessment();
               }}
               title="Sign In"
