@@ -1,6 +1,7 @@
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { useEffect, useState } from 'react';
-import { Button, Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import StandardButton from '../../components/Buttons/StandardButton';
 
 export default function FoodScanner() {
   const [hasPermission, setHasPermission] = useState(null);
@@ -39,17 +40,15 @@ export default function FoodScanner() {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.barcodebox}>
         <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={{ height: 400, width: 400 }}
         />
-        {scanned && (
-          <Button title="Tap to Scan Again" onPress={() => setScanned(false)} color="tomato" />
-        )}
       </View>
       <Text>{code}</Text>
+      {scanned && <StandardButton title="Tap to Scan Again" onPress={() => setScanned(false)} />}
     </View>
   );
 }
@@ -57,7 +56,6 @@ export default function FoodScanner() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
