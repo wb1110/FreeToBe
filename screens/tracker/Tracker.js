@@ -10,7 +10,7 @@ function Tracker() {
     setSearch(searchValue);
   };
   return (
-    <View style={{ justifyContent: 'space-between', flex: 1 }}>
+    <View style={{ justifyContent: 'space-between', flex: 1, alignItems: 'center' }}>
       <Text>Tracker</Text>
 
       <FoodScanner />
