@@ -1,6 +1,7 @@
-import { useTheme } from '@rneui/themed';
+import { Text, useTheme } from '@rneui/themed';
 import { SafeAreaView } from 'react-native';
-import { VictoryContainer, VictoryPie } from 'victory-native';
+import Svg from 'react-native-svg';
+import { VictoryContainer, VictoryLabel, VictoryPie } from 'victory-native';
 
 export default function PFCPieChart({ TDEE }) {
   const { theme } = useTheme();
@@ -31,25 +32,37 @@ export default function PFCPieChart({ TDEE }) {
 
   return (
     <SafeAreaView>
-      <VictoryPie
-        width={300}
-        style={{
-          labels: {
-            fill: theme.colors.white,
-          },
-        }}
-        colorScale={['#519085', '#E9E0AC', '#88CED2']}
-        containerComponent={
-          <VictoryContainer width={425} style={{ marginLeft: '21%', top: '-20%' }} />
-        }
-        innerRadius={75}
-        // animate={{ duration: 1000 }}
-        data={[
-          { x: `Protein ${protein}g`, y: protein },
-          { x: `Carbohydrates ${carb}g`, y: carb },
-          { x: `Fats ${fat}g`, y: fat },
-        ]}
-      />
+      <Text h1 style={{ textAlign: 'center' }}>
+        Maintenance
+      </Text>
+      <Svg viewBox="0 147 400 400">
+        <VictoryPie
+          width={300}
+          style={{
+            labels: {
+              fill: theme.colors.white,
+            },
+          }}
+          colorScale={['#519085', '#E9E0AC', '#88CED2']}
+          containerComponent={
+            <VictoryContainer width={425} style={{ marginLeft: '21%', top: '-20%' }} />
+          }
+          innerRadius={75}
+          // animate={{ duration: 1000 }}
+          data={[
+            { x: `Protein ${protein}g`, y: protein },
+            { x: `Carbohydrates ${carb}g`, y: carb },
+            { x: `Fats ${fat}g`, y: fat },
+          ]}
+        />
+        <VictoryLabel
+          textAnchor="middle"
+          style={{ fontSize: 20, fill: theme.colors.white }}
+          x={200}
+          y={200}
+          text={`${TDEE} cal`}
+        />
+      </Svg>
     </SafeAreaView>
   );
 }
