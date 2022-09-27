@@ -1,5 +1,5 @@
 import { useTheme } from '@rneui/themed';
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { VictoryContainer, VictoryPie } from 'victory-native';
 
 export default function PFCPieChart({ TDEE }) {
@@ -40,10 +40,7 @@ export default function PFCPieChart({ TDEE }) {
         }}
         colorScale={['#519085', '#E9E0AC', '#88CED2']}
         containerComponent={
-          <VictoryContainer
-            width={425}
-            style={{ marginLeft: 120, position: 'absolute', top: -100 }}
-          />
+          <VictoryContainer width={425} style={{ marginLeft: '21%', top: '-20%' }} />
         }
         innerRadius={75}
         // animate={{ duration: 1000 }}
