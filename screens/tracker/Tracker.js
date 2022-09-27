@@ -10,9 +10,11 @@ function Tracker() {
     setSearch(searchValue);
   };
   return (
-    <View>
+    <View style={{ justifyContent: 'space-between', flex: 1 }}>
       <Text>Tracker</Text>
-      <View style={{ position: 'absolute', width: '100%', top: 400 }}>
+
+      <FoodScanner />
+      <View style={{ width: '100%' }}>
         <SearchBar
           placeholder="Type Here..."
           onChangeText={updateSearch}
@@ -21,7 +23,6 @@ function Tracker() {
           containerStyle={{ borderBottomColor: 'transparent', borderTopColor: 'transparent' }}
         />
       </View>
-      <FoodScanner />
     </View>
   );
 }
