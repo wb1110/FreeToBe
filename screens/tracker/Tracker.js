@@ -1,6 +1,14 @@
-import { View, Text } from 'react-native';
-import { SearchBar } from '@rneui/themed';
+import {
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
+import { SearchBar, FAB } from '@rneui/themed';
 import { useState } from 'react';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import FoodScanner from '../foodScanner/FoodScanner';
 
 function Tracker() {
@@ -10,20 +18,37 @@ function Tracker() {
     setSearch(searchValue);
   };
   return (
-    <View style={{ justifyContent: 'space-between', flex: 1, alignItems: 'center' }}>
-      <Text>Tracker</Text>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={{ flex: 1 }}
+    >
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={{ justifyContent: 'space-between', flex: 1, alignItems: 'center' }}>
+          <Text>Tracker</Text>
+          <FoodScanner setSearch={setSearch} />
 
-      <FoodScanner setSearch={setSearch} />
-      <View style={{ width: '100%' }}>
-        <SearchBar
-          placeholder="Type Here..."
-          onChangeText={updateSearch}
-          value={search}
-          inputContainerStyle={{ backgroundColor: 'white' }}
-          containerStyle={{ borderBottomColor: 'transparent', borderTopColor: 'transparent' }}
-        />
-      </View>
-    </View>
+          <View style={{ width: '100%', alignItems: 'flex-end' }}>
+            <FAB
+              icon={<MaterialCommunityIcons name="barcode-scan" size={24} color="black" />}
+              size="medium"
+              color="white"
+              style={{ marginRight: '2%' }}
+            />
+            <SearchBar
+              placeholder="Type Here..."
+              onChangeText={updateSearch}
+              value={search}
+              inputContainerStyle={{ backgroundColor: 'white' }}
+              containerStyle={{
+                borderBottomColor: 'transparent',
+                borderTopColor: 'transparent',
+                width: '100%',
+              }}
+            />
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 
