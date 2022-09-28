@@ -13,7 +13,7 @@ function Tracker() {
     <View style={{ justifyContent: 'space-between', flex: 1, alignItems: 'center' }}>
       <Text>Tracker</Text>
 
-      <FoodScanner />
+      <FoodScanner setSearch={setSearch} />
       <View style={{ width: '100%' }}>
         <SearchBar
           placeholder="Type Here..."

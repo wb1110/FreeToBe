@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import StandardButton from '../../components/Buttons/StandardButton';
 
-export default function FoodScanner() {
+export default function FoodScanner({ setSearch }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [code, setCode] = useState('');
@@ -19,8 +19,7 @@ export default function FoodScanner() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    setCode(data);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    setSearch(data);
   };
 
   if (hasPermission === null) {
@@ -34,7 +33,7 @@ export default function FoodScanner() {
     return (
       <View>
         <Text>No access to camera</Text>
-        <Button title="Allow Camera" onPress={() => getBarCodeScannerPermissions()} />
+        <StandardButton title="Allow Camera" onPress={() => getBarCodeScannerPermissions()} />
       </View>
     );
   }
