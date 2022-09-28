@@ -13,6 +13,7 @@ import FoodScanner from '../foodScanner/FoodScanner';
 
 function Tracker() {
   const [search, setSearch] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
 
   const updateSearch = (searchValue) => {
     setSearch(searchValue);
@@ -25,7 +26,7 @@ function Tracker() {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={{ justifyContent: 'space-between', flex: 1, alignItems: 'center' }}>
           <Text>Tracker</Text>
-          <FoodScanner setSearch={setSearch} />
+          <FoodScanner setSearch={setSearch} modalOpen={modalOpen} setModalOpen={setModalOpen} />
 
           <View style={{ width: '100%', alignItems: 'flex-end' }}>
             <FAB
@@ -33,6 +34,7 @@ function Tracker() {
               size="medium"
               color="white"
               style={{ marginRight: '2%' }}
+              onPress={() => setModalOpen(!modalOpen)}
             />
             <SearchBar
               placeholder="Type Here..."

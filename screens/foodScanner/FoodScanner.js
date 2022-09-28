@@ -1,12 +1,40 @@
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { useEffect, useState } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Modal,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import StandardButton from '../../components/Buttons/StandardButton';
 
-export default function FoodScanner({ setSearch }) {
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+  },
+  barcodebox: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 300,
+    width: 300,
+    overflow: 'hidden',
+    borderRadius: 30,
+    backgroundColor: 'tomato',
+  },
+  boxContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+export default function FoodScanner({ setSearch, modalOpen, setModalOpen }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
-  const [code, setCode] = useState('');
 
   const getBarCodeScannerPermissions = async () => {
     const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -39,32 +67,33 @@ export default function FoodScanner({ setSearch }) {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.barcodebox}>
-        <BarCodeScanner
-          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-          style={{ height: 400, width: 400 }}
-        />
-      </View>
-      <Text>{code}</Text>
-      {scanned && <StandardButton title="Tap to Scan Again" onPress={() => setScanned(false)} />}
-    </View>
+    <Modal
+      animationType="fade"
+      transparent
+      visible={modalOpen}
+      onRequestClose={() => {
+        setModalOpen(!modalOpen);
+      }}
+    >
+      <TouchableOpacity
+        style={styles.container}
+        activeOpacity={1}
+        onPressOut={() => setModalOpen(!modalOpen)}
+      >
+        <TouchableWithoutFeedback>
+          <View style={styles.boxContainer}>
+            <View style={styles.barcodebox}>
+              <BarCodeScanner
+                onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+                style={{ height: 400, width: 400 }}
+              />
+            </View>
+            {scanned && (
+              <StandardButton title="Tap to Scan Again" onPress={() => setScanned(false)} />
+            )}
+          </View>
+        </TouchableWithoutFeedback>
+      </TouchableOpacity>
+    </Modal>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  barcodebox: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 300,
-    width: 300,
-    overflow: 'hidden',
-    borderRadius: 30,
-    backgroundColor: 'tomato',
-  },
-});
