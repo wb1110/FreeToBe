@@ -10,6 +10,7 @@ import { SearchBar, FAB } from '@rneui/themed';
 import { useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import FoodScanner from '../foodScanner/FoodScanner';
+import MealItem from './MealItem';
 
 function Tracker() {
   const [search, setSearch] = useState('');
@@ -24,8 +25,34 @@ function Tracker() {
       style={{ flex: 1 }}
     >
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View style={{ justifyContent: 'space-between', flex: 1, alignItems: 'center' }}>
-          <Text>Tracker</Text>
+        <View style={{ justifyContent: 'space-between', flex: 1 }}>
+          <View style={{ flex: 1 }}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-around',
+                flex: 1,
+                width: '100%',
+                margin: '2%',
+              }}
+            >
+              <View>
+                <Text>Protein</Text>
+              </View>
+              <View>
+                <Text>Fat</Text>
+              </View>
+              <View>
+                <Text>Carbs</Text>
+              </View>
+              <View>
+                <Text>Calories</Text>
+              </View>
+            </View>
+          </View>
+          <View style={{ flex: 1, margin: '2%', width: '100%' }}>
+            <MealItem />
+          </View>
           <FoodScanner setSearch={setSearch} modalOpen={modalOpen} setModalOpen={setModalOpen} />
 
           <View style={{ width: '100%', alignItems: 'flex-end' }}>
