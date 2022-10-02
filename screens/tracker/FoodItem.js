@@ -1,5 +1,6 @@
-import { Button, Input, useTheme } from '@rneui/themed';
+import { Button, FAB, Input, SearchBar, useTheme } from '@rneui/themed';
 import { Formik } from 'formik';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from 'react';
 import {
   Keyboard,
@@ -48,6 +49,11 @@ export default function FoodItem() {
     proteinGrams: '',
   });
   const [modalOpen, setModalOpen] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const updateSearch = (searchValue) => {
+    setSearch(searchValue);
+  };
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View>
@@ -82,6 +88,26 @@ export default function FoodItem() {
                 >
                   {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
                     <View style={styles.formBox}>
+                      <SearchBar
+                        placeholder="Type Here..."
+                        onChangeText={updateSearch}
+                        value={search}
+                        inputContainerStyle={{ backgroundColor: 'white' }}
+                        containerStyle={{
+                          borderBottomColor: 'transparent',
+                          borderTopColor: 'transparent',
+                          width: '100%',
+                        }}
+                      />
+                      <FAB
+                        icon={
+                          <MaterialCommunityIcons name="barcode-scan" size={24} color="black" />
+                        }
+                        size="medium"
+                        color="white"
+                        style={{ marginRight: '2%' }}
+                        onPress={() => setModalOpen(!modalOpen)}
+                      />
                       <Input
                         label="Food Name"
                         onChangeText={handleChange('foodName')}

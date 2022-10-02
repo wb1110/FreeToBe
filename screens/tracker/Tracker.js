@@ -67,7 +67,7 @@ function Tracker() {
             ))}
             {/* <MealItem /> */}
           </View>
-          <AddMeal modalOpen={modalOpen} setModalOpen={setModalOpen} />
+          <AddMeal modalOpen={modalOpen} setModalOpen={setModalOpen} mealList={mealList} />
 
           <View style={{ width: '100%', alignItems: 'flex-end' }}>
             <FAB

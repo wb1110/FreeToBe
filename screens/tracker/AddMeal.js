@@ -1,12 +1,9 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { FAB, Input, SearchBar } from '@rneui/themed';
+import { Input } from '@rneui/themed';
 import { Formik } from 'formik';
 import { useState } from 'react';
 import {
   Keyboard,
-  KeyboardAvoidingView,
   Modal,
-  Platform,
   StyleSheet,
   TouchableOpacity,
   TouchableWithoutFeedback,
@@ -36,19 +33,11 @@ const styles = StyleSheet.create({
   },
 });
 
-function AddMeal({ modalOpen, setModalOpen }) {
-  const [search, setSearch] = useState('');
+function AddMeal({ modalOpen, setModalOpen, mealList }) {
   const [formValues, setFormValues] = useState({
-    foodName: 'Burrito',
-    calories: '',
-    fatGrams: '',
-    carbsGrams: '',
-    proteinGrams: '',
+    mealName: '',
+    mealTime: '',
   });
-
-  const updateSearch = (searchValue) => {
-    setSearch(searchValue);
-  };
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View>
@@ -65,90 +54,37 @@ function AddMeal({ modalOpen, setModalOpen }) {
             activeOpacity={1}
             onPressOut={() => setModalOpen(!modalOpen)}
           >
-            <TouchableWithoutFeedback>
-              <View style={styles.boxContainer}>
-                <KeyboardAvoidingView
-                  behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                  style={{ flex: 1 }}
-                >
-                  <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-                    <View style={{ justifyContent: 'space-between', flex: 1 }}>
-                      <View style={{ flex: 1 }}>
-                        <View style={{ width: '100%', alignItems: 'flex-end' }} />
-                      </View>
-                    </View>
-                  </TouchableWithoutFeedback>
-                </KeyboardAvoidingView>
-                <Formik
-                  initialValues={{ formValues }}
-                  onSubmit={(values) => {
-                    setFormValues(values);
-                  }}
-                >
-                  {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
-                    <View style={styles.formBox}>
-                      <SearchBar
-                        placeholder="Type Here..."
-                        onChangeText={updateSearch}
-                        value={search}
-                        inputContainerStyle={{ backgroundColor: 'white' }}
-                        containerStyle={{
-                          borderBottomColor: 'transparent',
-                          borderTopColor: 'transparent',
-                          width: '100%',
-                        }}
-                      />
-                      <FAB
-                        icon={
-                          <MaterialCommunityIcons name="barcode-scan" size={24} color="black" />
-                        }
-                        size="medium"
-                        color="white"
-                        style={{ marginRight: '2%' }}
-                        onPress={() => setModalOpen(!modalOpen)}
-                      />
-                      <Input
-                        label="Food Name"
-                        onChangeText={handleChange('foodName')}
-                        onBlur={handleBlur('foodName')}
-                        value={values.foodName}
-                        errorMessage={errors.foodName}
-                        containerStyle={{ width: '100%' }}
-                      />
-                      <Input
-                        label="Calories"
-                        onChangeText={handleChange('calories')}
-                        onBlur={handleBlur('calories')}
-                        value={values.calories}
-                        errorMessage={errors.calories}
-                      />
-                      <Input
-                        label="Fat"
-                        onChangeText={handleChange('fatGrams')}
-                        onBlur={handleBlur('fatGrams')}
-                        value={values.fatGrams}
-                        errorMessage={errors.fatGrams}
-                      />
-                      <Input
-                        label="Carbs"
-                        onChangeText={handleChange('carbsGrams')}
-                        onBlur={handleBlur('carbsGrams')}
-                        value={values.carbsGrams}
-                        errorMessage={errors.carbsGrams}
-                      />
-                      <Input
-                        label="Protein"
-                        onChangeText={handleChange('proteinGrams')}
-                        onBlur={handleBlur('proteinGrams')}
-                        value={values.proteinGrams}
-                        errorMessage={errors.proteinGrams}
-                      />
-                      <StandardButton title="Submit" onPress={() => handleSubmit()} />
-                    </View>
-                  )}
-                </Formik>
-              </View>
-            </TouchableWithoutFeedback>
+            <View style={styles.boxContainer}>
+              <Formik
+                initialValues={{ formValues }}
+                onSubmit={(values) => {
+                  setFormValues(values);
+                  setModalOpen(!modalOpen);
+                  mealList.push({ mealName: values.mealName, mealTime: values.mealTime });
+                }}
+              >
+                {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
+                  <View style={styles.formBox}>
+                    <Input
+                      label="Meal Name"
+                      onChangeText={handleChange('mealName')}
+                      onBlur={handleBlur('mealName')}
+                      value={values.mealName}
+                      errorMessage={errors.mealName}
+                      containerStyle={{ width: '100%' }}
+                    />
+                    <Input
+                      label="Meal Time"
+                      onChangeText={handleChange('mealTime')}
+                      onBlur={handleBlur('mealTime')}
+                      value={values.mealTime}
+                      errorMessage={errors.mealTime}
+                    />
+                    <StandardButton title="Submit" onPress={() => handleSubmit()} />
+                  </View>
+                )}
+              </Formik>
+            </View>
           </TouchableOpacity>
         </Modal>
       </View>
