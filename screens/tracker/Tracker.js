@@ -1,39 +1,35 @@
+import { Ionicons } from '@expo/vector-icons';
+import { FAB } from '@rneui/themed';
+import { useState } from 'react';
 import {
-  View,
-  Text,
-  TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
+  Text,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
-import { SearchBar, FAB } from '@rneui/themed';
-import { useState } from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import FoodScanner from '../foodScanner/FoodScanner';
+import AddMeal from './AddMeal';
 import MealItem from './MealItem';
 
 const mealList = [
   {
-    mealName: 'food1',
+    mealName: 1,
     mealTime: 'time1',
   },
   {
-    mealName: 'food2',
+    mealName: 2,
     mealTime: 'time2',
   },
   {
-    mealName: 'food3',
+    mealName: 3,
     mealTime: 'time3',
   },
 ];
 
 function Tracker() {
-  const [search, setSearch] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
 
-  const updateSearch = (searchValue) => {
-    setSearch(searchValue);
-  };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -66,31 +62,20 @@ function Tracker() {
             </View>
           </View>
           <View style={{ flex: 5, margin: '2%', width: '100%' }}>
-            {mealList.map((item) => (
-              <MealItem mealName={item.mealName} mealTime={item.mealTime} />
+            {mealList.map((item, index) => (
+              <MealItem mealNumber={index} key={item.mealName} mealTime={item.mealTime} />
             ))}
             {/* <MealItem /> */}
           </View>
-          <FoodScanner setSearch={setSearch} modalOpen={modalOpen} setModalOpen={setModalOpen} />
+          <AddMeal modalOpen={modalOpen} setModalOpen={setModalOpen} />
 
           <View style={{ width: '100%', alignItems: 'flex-end' }}>
             <FAB
-              icon={<MaterialCommunityIcons name="barcode-scan" size={24} color="black" />}
+              icon={<Ionicons name="add" size={24} color="black" />}
               size="medium"
               color="white"
-              style={{ marginRight: '2%' }}
+              style={{ marginRight: '2%', marginBottom: '2%' }}
               onPress={() => setModalOpen(!modalOpen)}
-            />
-            <SearchBar
-              placeholder="Type Here..."
-              onChangeText={updateSearch}
-              value={search}
-              inputContainerStyle={{ backgroundColor: 'white' }}
-              containerStyle={{
-                borderBottomColor: 'transparent',
-                borderTopColor: 'transparent',
-                width: '100%',
-              }}
             />
           </View>
         </View>

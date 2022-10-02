@@ -2,7 +2,7 @@ import { Text, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import FoodItem from './FoodItem';
 
-export default function MealItem({ mealName, mealTime }) {
+export default function MealItem({ mealTime, mealNumber }) {
   const { theme } = useTheme();
   return (
     <View
@@ -15,7 +15,7 @@ export default function MealItem({ mealName, mealTime }) {
     >
       <View style={{ flexDirection: 'row' }}>
         <Text h4 style={{ marginLeft: '5.5%' }}>
-          {mealName}
+          Meal {mealNumber}
         </Text>
         <Text h4 style={{ marginLeft: '4%' }}>
           {mealTime}
