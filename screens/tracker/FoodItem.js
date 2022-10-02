@@ -49,7 +49,7 @@ export default function FoodItem() {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={{ flex: 1 }}>
+      <View>
         <StandardButton title={formValues.foodName} onPress={() => setModalOpen(!modalOpen)} />
         <Modal
           animationType="fade"
