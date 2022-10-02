@@ -1,4 +1,4 @@
-import { Input } from '@rneui/themed';
+import { Button, Input, useTheme } from '@rneui/themed';
 import { Formik } from 'formik';
 import { useState } from 'react';
 import {
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
 });
 
 export default function FoodItem() {
+  const { theme } = useTheme();
   const [formValues, setFormValues] = useState({
     foodName: 'Burrito',
     calories: '',
@@ -50,7 +51,13 @@ export default function FoodItem() {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View>
-        <StandardButton title={formValues.foodName} onPress={() => setModalOpen(!modalOpen)} />
+        <Button
+          title={formValues.foodName}
+          type="clear"
+          titleStyle={{ color: theme.colors.white }}
+          containerStyle={{ width: 100 }}
+          onPress={() => setModalOpen(!modalOpen)}
+        />
         <Modal
           animationType="fade"
           transparent

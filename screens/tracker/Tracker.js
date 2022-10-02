@@ -12,6 +12,21 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import FoodScanner from '../foodScanner/FoodScanner';
 import MealItem from './MealItem';
 
+const mealList = [
+  {
+    mealName: 'food1',
+    mealTime: 'time1',
+  },
+  {
+    mealName: 'food2',
+    mealTime: 'time2',
+  },
+  {
+    mealName: 'food3',
+    mealTime: 'time3',
+  },
+];
+
 function Tracker() {
   const [search, setSearch] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
@@ -50,8 +65,11 @@ function Tracker() {
               </View>
             </View>
           </View>
-          <View style={{ flex: 1, margin: '2%', width: '100%' }}>
-            <MealItem />
+          <View style={{ flex: 5, margin: '2%', width: '100%' }}>
+            {mealList.map((item) => (
+              <MealItem mealName={item.mealName} mealTime={item.mealTime} />
+            ))}
+            {/* <MealItem /> */}
           </View>
           <FoodScanner setSearch={setSearch} modalOpen={modalOpen} setModalOpen={setModalOpen} />
 
