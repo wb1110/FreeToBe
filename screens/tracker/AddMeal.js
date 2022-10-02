@@ -74,28 +74,7 @@ function AddMeal({ modalOpen, setModalOpen }) {
                   <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                     <View style={{ justifyContent: 'space-between', flex: 1 }}>
                       <View style={{ flex: 1 }}>
-                        <View style={{ width: '100%', alignItems: 'flex-end' }}>
-                          <SearchBar
-                            placeholder="Type Here..."
-                            onChangeText={updateSearch}
-                            value={search}
-                            inputContainerStyle={{ backgroundColor: 'white' }}
-                            containerStyle={{
-                              borderBottomColor: 'transparent',
-                              borderTopColor: 'transparent',
-                              width: '100%',
-                            }}
-                          />
-                          <FAB
-                            icon={
-                              <MaterialCommunityIcons name="barcode-scan" size={24} color="black" />
-                            }
-                            size="medium"
-                            color="white"
-                            style={{ marginRight: '2%' }}
-                            onPress={() => setModalOpen(!modalOpen)}
-                          />
-                        </View>
+                        <View style={{ width: '100%', alignItems: 'flex-end' }} />
                       </View>
                     </View>
                   </TouchableWithoutFeedback>
@@ -108,6 +87,26 @@ function AddMeal({ modalOpen, setModalOpen }) {
                 >
                   {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
                     <View style={styles.formBox}>
+                      <SearchBar
+                        placeholder="Type Here..."
+                        onChangeText={updateSearch}
+                        value={search}
+                        inputContainerStyle={{ backgroundColor: 'white' }}
+                        containerStyle={{
+                          borderBottomColor: 'transparent',
+                          borderTopColor: 'transparent',
+                          width: '100%',
+                        }}
+                      />
+                      <FAB
+                        icon={
+                          <MaterialCommunityIcons name="barcode-scan" size={24} color="black" />
+                        }
+                        size="medium"
+                        color="white"
+                        style={{ marginRight: '2%' }}
+                        onPress={() => setModalOpen(!modalOpen)}
+                      />
                       <Input
                         label="Food Name"
                         onChangeText={handleChange('foodName')}
