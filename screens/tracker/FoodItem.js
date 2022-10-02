@@ -1,6 +1,6 @@
-import { Button, FAB, Input, SearchBar, useTheme } from '@rneui/themed';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { Button, Input, SearchBar, Text, useTheme } from '@rneui/themed';
 import { Formik } from 'formik';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from 'react';
 import {
   Keyboard,
@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: '2%',
-    width: 300,
+    width: 400,
+    height: 800,
     overflow: 'hidden',
     borderRadius: 30,
     backgroundColor: 'green',
@@ -99,15 +100,33 @@ export default function FoodItem() {
                           width: '100%',
                         }}
                       />
-                      <FAB
-                        icon={
+                      <View style={{ flexDirection: 'row' }}>
+                        <View
+                          style={{
+                            backgroundColor: 'white',
+                            padding: '2%',
+                            alignItems: 'center',
+                            margin: '2%',
+                            width: '40%',
+                          }}
+                        >
                           <MaterialCommunityIcons name="barcode-scan" size={24} color="black" />
-                        }
-                        size="medium"
-                        color="white"
-                        style={{ marginRight: '2%' }}
-                        onPress={() => setModalOpen(!modalOpen)}
-                      />
+                          <Text style={{ color: 'black' }}>Scan Barcode</Text>
+                        </View>
+                        <View
+                          style={{
+                            backgroundColor: 'white',
+                            padding: '2%',
+                            alignItems: 'center',
+                            margin: '2%',
+                            width: '40%',
+                          }}
+                        >
+                          <MaterialIcons name="post-add" size={24} color="black" />
+                          <Text style={{ color: 'black' }}>Manual Add</Text>
+                        </View>
+                      </View>
+
                       <Input
                         label="Food Name"
                         onChangeText={handleChange('foodName')}
