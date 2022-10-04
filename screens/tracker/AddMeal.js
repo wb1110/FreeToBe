@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Input } from '@rneui/themed';
 import { Formik } from 'formik';
 import { useState } from 'react';
@@ -10,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import StandardButton from '../../components/Buttons/StandardButton';
+import useTrackerStore from '../../state/TrackerStore';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,10 +36,23 @@ const styles = StyleSheet.create({
 });
 
 function AddMeal({ modalOpen, setModalOpen, mealList }) {
+  const state = useTrackerStore();
   const [formValues, setFormValues] = useState({
     mealName: '',
     mealTime: '',
   });
+
+  // eslint-disable-next-line consistent-return
+  // const storeData = async (value) => {
+  //   try {
+  //     const jsonValue = JSON.stringify(value);
+  //     await AsyncStorage.setItem('tracker', jsonValue);
+  //   } catch (e) {
+  //     // saving error
+  //     return e;
+  //   }
+  // };
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View>

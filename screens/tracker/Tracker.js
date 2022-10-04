@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FAB } from '@rneui/themed';
 import { useState } from 'react';
 import {
@@ -9,6 +10,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import useTrackerStore from '../../state/TrackerStore';
 import AddMeal from './AddMeal';
 import MealItem from './MealItem';
 
@@ -29,6 +31,20 @@ const mealList = [
 
 function Tracker() {
   const [modalOpen, setModalOpen] = useState(false);
+  const state = useTrackerStore();
+  console.log(state.tracker);
+
+  // const getMeals = async () => {
+  //   let meals;
+  //   try {
+  //     const tracker = await AsyncStorage.getItem('tracker');
+  //     meals = JSON.parse(tracker);
+  //     state.setMeals(meals);
+  //   } catch (e) {
+  //     return e;
+  //   }
+  //   return meals;
+  // };
 
   return (
     <KeyboardAvoidingView
