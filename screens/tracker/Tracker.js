@@ -18,6 +18,15 @@ const mealList = [
   {
     mealName: 1,
     mealTime: 'time1',
+    foodItems: [
+      {
+        foodName: 'Food1',
+        foodCalories: 0,
+        foodCarbs: 0,
+        foodFat: 0,
+        foodProtein: 0,
+      },
+    ],
   },
   {
     mealName: 2,
@@ -32,7 +41,7 @@ const mealList = [
 function Tracker() {
   const [modalOpen, setModalOpen] = useState(false);
   const state = useTrackerStore();
-  console.log(state.tracker);
+  console.log(state.tracker[0].day.meals[0].meal.foodItems);
 
   // const getMeals = async () => {
   //   let meals;

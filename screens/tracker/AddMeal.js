@@ -73,7 +73,6 @@ function AddMeal({ modalOpen, setModalOpen, mealList }) {
               <Formik
                 initialValues={{ formValues }}
                 onSubmit={(values) => {
-                  setFormValues(values);
                   setModalOpen(!modalOpen);
                   mealList.push({ mealName: values.mealName, mealTime: values.mealTime });
                 }}
