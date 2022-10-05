@@ -10,6 +10,8 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import StandardButton from '../../components/Buttons/StandardButton';
 import useTrackerStore from '../../state/TrackerStore';
 import AddMeal from './AddMeal';
 import MealItem from './MealItem';
@@ -42,6 +44,20 @@ function Tracker() {
   const [modalOpen, setModalOpen] = useState(false);
   const state = useTrackerStore();
   console.log(state.tracker[0].day.meals[0].meal.foodItems);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+  const handleConfirm = (date) => {
+    console.warn('A date has been picked: ', date);
+    hideDatePicker();
+  };
 
   // const getMeals = async () => {
   //   let meals;
@@ -63,6 +79,16 @@ function Tracker() {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={{ justifyContent: 'space-between', flex: 1 }}>
           <View style={{ flex: 1 }}>
+            <View>
+              <StandardButton title="Show Date Picker" onPress={showDatePicker} />
+              <DateTimePickerModal
+                isVisible={isDatePickerVisible}
+                mode="date"
+                display="inline"
+                onConfirm={handleConfirm}
+                onCancel={hideDatePicker}
+              />
+            </View>
             <View
               style={{
                 flexDirection: 'row',
