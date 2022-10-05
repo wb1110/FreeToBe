@@ -46,6 +46,7 @@ function Tracker() {
   const state = useTrackerStore();
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [trackDate, setTrackDate] = useState('Today');
+  const [date, setDate] = useState(new Date());
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -55,8 +56,9 @@ function Tracker() {
     setDatePickerVisibility(false);
   };
 
-  const handleConfirm = (date) => {
-    const formatDate = moment(date).format('dddd, MMMM Do YYYY');
+  const handleConfirm = (newDate) => {
+    const formatDate = moment(newDate).format('dddd, MMMM Do YYYY');
+    setDate(newDate);
     setTrackDate(formatDate);
     hideDatePicker();
   };
@@ -86,6 +88,7 @@ function Tracker() {
               <DateTimePickerModal
                 isVisible={isDatePickerVisible}
                 mode="date"
+                date={date}
                 display="inline"
                 onConfirm={handleConfirm}
                 onCancel={hideDatePicker}
