@@ -1,10 +1,17 @@
-import { Text, useTheme } from '@rneui/themed';
+import { Dialog, Text, useTheme } from '@rneui/themed';
 import { MaterialIcons } from '@expo/vector-icons';
 import { View } from 'react-native';
+import { useState } from 'react';
 import FoodItem from './FoodItem';
 
 export default function MealItem({ mealTime, mealNumber }) {
   const { theme } = useTheme();
+  const [visible, setVisible] = useState(false);
+
+  const toggleDialog = () => {
+    setVisible(!visible);
+  };
+
   return (
     <View
       style={{
@@ -30,7 +37,26 @@ export default function MealItem({ mealTime, mealNumber }) {
         </View>
       </View>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <MaterialIcons name="edit" size={24} color="white" />
+        <MaterialIcons name="edit" size={24} color="white" onPress={toggleDialog} />
+        <Dialog
+          isVisible={visible}
+          onBackdropPress={toggleDialog}
+          overlayStyle={{
+            flexDirection: 'column',
+            width: '50%',
+          }}
+        >
+          <Dialog.Actions>
+            <Dialog.Button
+              title="Edit Meal"
+              onPress={() => console.log('Primary Action Clicked!')}
+            />
+            <Dialog.Button
+              title="Edit Food Item"
+              onPress={() => console.log('Secondary Action Clicked!')}
+            />
+          </Dialog.Actions>
+        </Dialog>
         <MaterialIcons name="delete" size={24} color="white" />
       </View>
     </View>

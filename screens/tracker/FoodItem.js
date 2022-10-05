@@ -59,10 +59,10 @@ export default function FoodItem() {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View>
         <Button
-          title={formValues.foodName}
+          title="Add Food"
           type="clear"
           titleStyle={{ color: theme.colors.white }}
-          containerStyle={{ width: 100 }}
+          containerStyle={{ width: 160 }}
           onPress={() => setModalOpen(!modalOpen)}
         />
         <Modal

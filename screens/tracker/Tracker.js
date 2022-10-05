@@ -1,20 +1,16 @@
 import { Ionicons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { FAB } from '@rneui/themed';
+import { FAB, Text } from '@rneui/themed';
+import moment from 'moment';
 import { useState } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
-  Text,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import moment from 'moment';
-import StandardButton from '../../components/Buttons/StandardButton';
 import useTrackerStore from '../../state/TrackerStore';
-import AddMeal from './AddMeal';
 import MealItem from './MealItem';
 
 const mealList = [
@@ -41,12 +37,12 @@ const mealList = [
   },
 ];
 
-function Tracker() {
-  const [modalOpen, setModalOpen] = useState(false);
+function Tracker({ navigation }) {
   const state = useTrackerStore();
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [trackDate, setTrackDate] = useState('Today');
   const [date, setDate] = useState(new Date());
+  const [dateData, setDateData] = useState();
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -58,8 +54,10 @@ function Tracker() {
 
   const handleConfirm = (newDate) => {
     const formatDate = moment(newDate).format('dddd, MMMM Do YYYY');
+    const databaseDate = moment(newDate).format('L');
     setDate(newDate);
     setTrackDate(formatDate);
+    setDateData(databaseDate);
     hideDatePicker();
   };
 
@@ -83,8 +81,17 @@ function Tracker() {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={{ justifyContent: 'space-between', flex: 1 }}>
           <View style={{ flex: 1 }}>
-            <View>
-              <StandardButton title={`${trackDate}`} onPress={showDatePicker} />
+            <View style={{ alignItems: 'center' }}>
+              <View style={{ flexDirection: 'row' }}>
+                <Text h4 onPress={showDatePicker}>{`${trackDate}`}</Text>
+                <Ionicons
+                  name="chevron-down-circle"
+                  size={24}
+                  color="white"
+                  onPress={showDatePicker}
+                />
+              </View>
+
               <DateTimePickerModal
                 isVisible={isDatePickerVisible}
                 mode="date"
@@ -121,9 +128,7 @@ function Tracker() {
             {mealList.map((item, index) => (
               <MealItem mealNumber={index} key={item.mealName} mealTime={item.mealTime} />
             ))}
-            {/* <MealItem /> */}
           </View>
-          <AddMeal modalOpen={modalOpen} setModalOpen={setModalOpen} mealList={mealList} />
 
           <View style={{ width: '100%', alignItems: 'flex-end' }}>
             <FAB
@@ -131,7 +136,7 @@ function Tracker() {
               size="medium"
               color="white"
               style={{ marginRight: '2%', marginBottom: '2%' }}
-              onPress={() => setModalOpen(!modalOpen)}
+              onPress={() => navigation.navigate('AddMeal')}
             />
           </View>
         </View>

@@ -4,7 +4,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@rneui/themed';
 import Metabolic from './metabolic/Metabolic';
 import Profile from './profile/Profile';
+import FoodItem from './tracker/FoodItem';
 import Tracker from './tracker/Tracker';
+import TrackerStackScreen from './tracker/TrackerStackScreen';
 
 export default function UserHome() {
   const { theme } = useTheme();
@@ -37,7 +39,7 @@ export default function UserHome() {
         tabBarInactiveTintColor: theme.colors.secondary,
       })}
     >
-      <Tab.Screen name="Tracker" component={Tracker} />
+      <Tab.Screen name="Tracker" component={TrackerStackScreen} />
       <Tab.Screen name="Profile" component={Profile} />
       <Tab.Screen name="Metabolic" component={Metabolic} />
     </Tab.Navigator>
