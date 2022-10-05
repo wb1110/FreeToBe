@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import moment from 'moment';
 import StandardButton from '../../components/Buttons/StandardButton';
 import useTrackerStore from '../../state/TrackerStore';
 import AddMeal from './AddMeal';
@@ -43,8 +44,8 @@ const mealList = [
 function Tracker() {
   const [modalOpen, setModalOpen] = useState(false);
   const state = useTrackerStore();
-  console.log(state.tracker[0].day.meals[0].meal.foodItems);
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [trackDate, setTrackDate] = useState('Today');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -55,7 +56,8 @@ function Tracker() {
   };
 
   const handleConfirm = (date) => {
-    console.warn('A date has been picked: ', date);
+    const formatDate = moment(date).format('dddd, MMMM Do YYYY');
+    setTrackDate(formatDate);
     hideDatePicker();
   };
 
@@ -80,7 +82,7 @@ function Tracker() {
         <View style={{ justifyContent: 'space-between', flex: 1 }}>
           <View style={{ flex: 1 }}>
             <View>
-              <StandardButton title="Show Date Picker" onPress={showDatePicker} />
+              <StandardButton title={`${trackDate}`} onPress={showDatePicker} />
               <DateTimePickerModal
                 isVisible={isDatePickerVisible}
                 mode="date"
