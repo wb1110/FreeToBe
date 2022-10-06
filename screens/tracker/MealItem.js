@@ -1,10 +1,9 @@
-import { Dialog, Text, useTheme } from '@rneui/themed';
+import { Button, Dialog, Text, useTheme } from '@rneui/themed';
 import { MaterialIcons } from '@expo/vector-icons';
 import { View } from 'react-native';
 import { useState } from 'react';
-import FoodItem from './FoodItem';
 
-export default function MealItem({ mealTime, mealNumber }) {
+export default function MealItem({ mealTime, mealNumber, navigation }) {
   const { theme } = useTheme();
   const [visible, setVisible] = useState(false);
 
@@ -33,7 +32,13 @@ export default function MealItem({ mealTime, mealNumber }) {
           </Text>
         </View>
         <View>
-          <FoodItem />
+          <Button
+            title="Add Food"
+            type="clear"
+            titleStyle={{ color: theme.colors.white }}
+            containerStyle={{ width: 160 }}
+            onPress={() => navigation.navigate('AddFoodItem')}
+          />
         </View>
       </View>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>

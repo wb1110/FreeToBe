@@ -4,8 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@rneui/themed';
 import Metabolic from './metabolic/Metabolic';
 import Profile from './profile/Profile';
-import FoodItem from './tracker/FoodItem';
-import Tracker from './tracker/Tracker';
 import TrackerStackScreen from './tracker/TrackerStackScreen';
 
 export default function UserHome() {

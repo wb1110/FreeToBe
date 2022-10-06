@@ -1,13 +1,11 @@
 import { Input } from '@rneui/themed';
 import { Formik } from 'formik';
 import { useState } from 'react';
-import { Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import useTrackerStore from '../../state/TrackerStore';
 
 function AddMeal({ navigation, mealList }) {
-  const state = useTrackerStore();
   const [formValues, setFormValues] = useState({
     mealName: '',
     mealTime: '',
