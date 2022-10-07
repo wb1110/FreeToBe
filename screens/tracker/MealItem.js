@@ -50,7 +50,7 @@ export default function MealItem({ mealTime, mealNumber, foodItems, navigation }
         <View style={{ marginLeft: '5.5%' }}>
           <View style={{ flexDirection: 'row' }}>
             {foodItems.map((item) => (
-              <Text> {item.foodName}</Text>
+              <Text key={item.foodName}> {item.foodName}</Text>
             ))}
           </View>
           <View

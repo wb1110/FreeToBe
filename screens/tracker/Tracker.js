@@ -157,7 +157,7 @@ function Tracker({ navigation }) {
           <View style={{ flex: 5, margin: '2%', width: '100%' }}>
             {mealList.map((item, index) => (
               <MealItem
-                mealNumber={index}
+                mealNumber={item.mealName}
                 key={item.mealName}
                 mealTime={item.mealTime}
                 foodItems={item.foodItems}
