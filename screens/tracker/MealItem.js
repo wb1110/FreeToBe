@@ -47,10 +47,12 @@ export default function MealItem({ mealTime, mealNumber, foodItems, navigation }
             {mealTime}
           </Text>
         </View>
-        <View style={{ marginLeft: '5.5%', flexDirection: 'row' }}>
-          {foodItems.map((item) => (
-            <Text> {item.foodName}</Text>
-          ))}
+        <View style={{ marginLeft: '5.5%' }}>
+          <View style={{ flexDirection: 'row' }}>
+            {foodItems.map((item) => (
+              <Text> {item.foodName}</Text>
+            ))}
+          </View>
           <View
             style={{
               backgroundColor: theme.colors.white,
