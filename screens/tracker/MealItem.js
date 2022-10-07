@@ -1,15 +1,31 @@
-import { Button, Dialog, Text, useTheme } from '@rneui/themed';
-import { MaterialIcons } from '@expo/vector-icons';
-import { View } from 'react-native';
+import { FontAwesome5, Feather, MaterialIcons } from '@expo/vector-icons';
+import { Button, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
+import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 
 export default function MealItem({ mealTime, mealNumber, navigation }) {
   const { theme } = useTheme();
-  const [visible, setVisible] = useState(false);
-
-  const toggleDialog = () => {
-    setVisible(!visible);
-  };
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    menuContainer: {
+      backgroundColor: 'white',
+      width: '100%',
+      height: '30%',
+      position: 'absolute',
+      bottom: 0,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    innerMenu: {
+      backgroundColor: theme.colors.primary,
+      width: '90%',
+      borderRadius: 20,
+      justifyContent: 'center',
+    },
+  });
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <View
@@ -41,29 +57,83 @@ export default function MealItem({ mealTime, mealNumber, navigation }) {
           />
         </View>
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <MaterialIcons name="edit" size={24} color="white" onPress={toggleDialog} />
-        <Dialog
-          isVisible={visible}
-          onBackdropPress={toggleDialog}
-          overlayStyle={{
-            flexDirection: 'column',
-            width: '50%',
-          }}
-        >
-          <Dialog.Actions>
-            <Dialog.Button
-              title="Edit Meal"
-              onPress={() => console.log('Primary Action Clicked!')}
-            />
-            <Dialog.Button
-              title="Edit Food Item"
-              onPress={() => console.log('Secondary Action Clicked!')}
-            />
-          </Dialog.Actions>
-        </Dialog>
-        <MaterialIcons name="delete" size={24} color="white" />
+      <View style={{ justifyContent: 'flex-end' }}>
+        <FontAwesome5
+          name="ellipsis-h"
+          size={16}
+          color="white"
+          onPress={() => setModalOpen(!modalOpen)}
+        />
       </View>
+      <Modal
+        animationType="slide"
+        transparent
+        visible={modalOpen}
+        onRequestClose={() => {
+          setModalOpen(!modalOpen);
+        }}
+      >
+        <TouchableOpacity
+          style={styles.container}
+          activeOpacity={1}
+          onPressOut={() => setModalOpen(!modalOpen)}
+        >
+          <TouchableWithoutFeedback>
+            <View style={styles.menuContainer}>
+              <View style={styles.innerMenu}>
+                <View
+                  style={{
+                    padding: '5%',
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Feather name="edit-2" size={24} color={theme.colors.white} />
+                  <Text style={{ marginLeft: '2%' }}>Edit Meal</Text>
+                </View>
+                <View
+                  style={{
+                    padding: '5%',
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}
+                >
+                  <MaterialIcons name="delete-outline" size={24} color={theme.colors.white} />
+                  <Text style={{ marginLeft: '2%' }}>Delete Meal</Text>
+                </View>
+                <View
+                  style={{
+                    padding: '5%',
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Feather name="edit-2" size={24} color={theme.colors.white} />
+                  <Text style={{ marginLeft: '2%' }}>Edit Food Item</Text>
+                </View>
+                <View
+                  style={{
+                    padding: '5%',
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                  }}
+                >
+                  <MaterialIcons name="delete-outline" size={24} color={theme.colors.white} />
+                  <Text style={{ marginLeft: '2%' }}>Delete Food Item</Text>
+                </View>
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </TouchableOpacity>
+      </Modal>
     </View>
   );
 }
