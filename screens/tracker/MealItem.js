@@ -3,7 +3,7 @@ import { Button, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 
-export default function MealItem({ mealTime, mealNumber, navigation }) {
+export default function MealItem({ mealTime, mealNumber, foodItems, navigation }) {
   const { theme } = useTheme();
   const styles = StyleSheet.create({
     container: {
@@ -39,22 +39,36 @@ export default function MealItem({ mealTime, mealNumber, navigation }) {
       }}
     >
       <View>
-        <View style={{ flexDirection: 'row' }}>
-          <Text h4 style={{ marginLeft: '5.5%' }}>
+        <View style={{ flexDirection: 'row', marginLeft: '5.5%', marginBottom: '2%' }}>
+          <Text h4 style={{}}>
             Meal {mealNumber}
           </Text>
           <Text h4 style={{ marginLeft: '4%' }}>
             {mealTime}
           </Text>
         </View>
-        <View>
-          <Button
-            title="Add Food"
-            type="clear"
-            titleStyle={{ color: theme.colors.white }}
-            containerStyle={{ width: 160 }}
-            onPress={() => navigation.navigate('AddFoodItem')}
-          />
+        <View style={{ marginLeft: '5.5%', flexDirection: 'row' }}>
+          {foodItems.map((item) => (
+            <Text> {item.foodName}</Text>
+          ))}
+          <View
+            style={{
+              backgroundColor: theme.colors.white,
+              borderRadius: 20,
+              alignItems: 'center',
+              marginLeft: '2%',
+              width: 90,
+            }}
+          >
+            <Text
+              style={{
+                color: theme.colors.primary,
+              }}
+              onPress={() => navigation.navigate('AddFoodItem')}
+            >
+              Add Food
+            </Text>
+          </View>
         </View>
       </View>
       <View style={{ justifyContent: 'flex-end' }}>

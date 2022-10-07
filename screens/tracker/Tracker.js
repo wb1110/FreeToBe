@@ -18,7 +18,21 @@ const mealList = [
     mealTime: 'time1',
     foodItems: [
       {
-        foodName: 'Food1',
+        foodName: 'Rice',
+        foodCalories: 0,
+        foodCarbs: 0,
+        foodFat: 0,
+        foodProtein: 0,
+      },
+      {
+        foodName: 'Beans',
+        foodCalories: 0,
+        foodCarbs: 0,
+        foodFat: 0,
+        foodProtein: 0,
+      },
+      {
+        foodName: 'Chicken',
         foodCalories: 0,
         foodCarbs: 0,
         foodFat: 0,
@@ -29,10 +43,28 @@ const mealList = [
   {
     mealName: 2,
     mealTime: 'time2',
+    foodItems: [
+      {
+        foodName: 'Food2',
+        foodCalories: 0,
+        foodCarbs: 0,
+        foodFat: 0,
+        foodProtein: 0,
+      },
+    ],
   },
   {
     mealName: 3,
     mealTime: 'time3',
+    foodItems: [
+      {
+        foodName: 'Food3',
+        foodCalories: 0,
+        foodCarbs: 0,
+        foodFat: 0,
+        foodProtein: 0,
+      },
+    ],
   },
 ];
 
@@ -128,6 +160,7 @@ function Tracker({ navigation }) {
                 mealNumber={index}
                 key={item.mealName}
                 mealTime={item.mealTime}
+                foodItems={item.foodItems}
                 navigation={navigation}
               />
             ))}
