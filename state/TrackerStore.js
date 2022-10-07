@@ -1,4 +1,5 @@
 import create from 'zustand';
+import produce from 'immer';
 
 const useTrackerStore = create((set) => ({
   tracker: [
@@ -25,15 +26,20 @@ const useTrackerStore = create((set) => ({
       },
     },
   ],
-  setMeals: (values) =>
-    set((state) => ({
-      tracker: {
-        ...state.tracker,
-        height: values.height,
-        weight: values.weight,
-        age: values.age,
-      },
-    })),
+  addMeal: (values) =>
+    set(
+      produce((state) => {
+        const mealList = state.tracker[0].day.meals;
+        mealList.push(values);
+      })
+    ),
+  clearMeals: () =>
+    set(
+      produce((state) => {
+        // eslint-disable-next-line no-param-reassign
+        state.tracker[0].day.meals = null;
+      })
+    ),
 }));
 
 export default useTrackerStore;

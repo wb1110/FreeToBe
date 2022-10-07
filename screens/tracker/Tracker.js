@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import useTrackerStore from '../../state/TrackerStore';
 import MealItem from './MealItem';
 
 const mealList = [
@@ -69,6 +70,14 @@ const mealList = [
 ];
 
 function Tracker({ navigation }) {
+  const state = useTrackerStore();
+  // console.log(state.tracker);
+  const dayArray = state.tracker[0].day.meals;
+  console.log(dayArray);
+  // dayArray.map((i) => {
+  //   const mealArray = i.day.meals;
+  //   mealArray.map((meal) => console.log(meal));
+  // });
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [trackDate, setTrackDate] = useState('Today');
   const [date, setDate] = useState(new Date());
@@ -155,7 +164,7 @@ function Tracker({ navigation }) {
             </View>
           </View>
           <View style={{ flex: 5, margin: '2%', width: '100%' }}>
-            {mealList.map((item, index) => (
+            {dayArray.map((item, index) => (
               <MealItem
                 mealNumber={item.mealName}
                 key={item.mealName}

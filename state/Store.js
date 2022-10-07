@@ -12,30 +12,7 @@ const useStore = create((set) => ({
     exerciseActivity: 0,
     workActivity: 0,
   },
-  tracker: [
-    {
-      day: {
-        date: '',
-        meals: [
-          {
-            meal: {
-              mealName: '',
-              mealTime: 0,
-              foodItems: [
-                {
-                  foodName: '',
-                  foodCalories: 0,
-                  foodProtein: 0,
-                  foodCarbs: 0,
-                  foodFat: 0,
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
+
   setHWA: (values) =>
     set((state) => ({
       assessment: {
@@ -94,16 +71,6 @@ const useStore = create((set) => ({
         nursing: values.nursing,
         exerciseActivity: values.exerciseActivity,
         workActivity: values.workActivity,
-      },
-    })),
-  // tracker settings
-  setMeals: (values) =>
-    set((state) => ({
-      tracker: {
-        ...state.tracker,
-        height: values.height,
-        weight: values.weight,
-        age: values.age,
       },
     })),
 }));

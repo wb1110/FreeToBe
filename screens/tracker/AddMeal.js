@@ -1,15 +1,13 @@
 import { Input } from '@rneui/themed';
 import { Formik } from 'formik';
-import { useState } from 'react';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
+import useTrackerStore from '../../state/TrackerStore';
 
-function AddMeal({ navigation, mealList }) {
-  const [formValues, setFormValues] = useState({
-    mealName: '',
-    mealTime: '',
-  });
+function AddMeal({ navigation }) {
+  const state = useTrackerStore();
+  const test = state.addMeal;
 
   // eslint-disable-next-line consistent-return
   // const storeData = async (value) => {
@@ -26,9 +24,10 @@ function AddMeal({ navigation, mealList }) {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container>
         <Formik
-          initialValues={{ formValues }}
+          initialValues={{ mealName: '', mealTime: '' }}
           onSubmit={(values) => {
-            mealList.push({ mealName: values.mealName, mealTime: values.mealTime });
+            // state.addMeal(values);
+            test(values);
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
