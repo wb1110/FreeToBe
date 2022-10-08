@@ -13,75 +13,14 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import useTrackerStore from '../../state/TrackerStore';
 import MealItem from './MealItem';
 
-const mealList = [
-  {
-    mealName: 1,
-    mealTime: 'time1',
-    foodItems: [
-      {
-        foodName: 'Rice',
-        foodCalories: 0,
-        foodCarbs: 0,
-        foodFat: 0,
-        foodProtein: 0,
-      },
-      {
-        foodName: 'Beans',
-        foodCalories: 0,
-        foodCarbs: 0,
-        foodFat: 0,
-        foodProtein: 0,
-      },
-      {
-        foodName: 'Chicken',
-        foodCalories: 0,
-        foodCarbs: 0,
-        foodFat: 0,
-        foodProtein: 0,
-      },
-    ],
-  },
-  {
-    mealName: 2,
-    mealTime: 'time2',
-    foodItems: [
-      {
-        foodName: 'Food2',
-        foodCalories: 0,
-        foodCarbs: 0,
-        foodFat: 0,
-        foodProtein: 0,
-      },
-    ],
-  },
-  {
-    mealName: 3,
-    mealTime: 'time3',
-    foodItems: [
-      {
-        foodName: 'Food3',
-        foodCalories: 0,
-        foodCarbs: 0,
-        foodFat: 0,
-        foodProtein: 0,
-      },
-    ],
-  },
-];
-
 function Tracker({ navigation }) {
   const state = useTrackerStore();
-  // console.log(state.tracker);
-  const dayArray = state.tracker[0].day.meals;
-  console.log(dayArray);
-  // dayArray.map((i) => {
-  //   const mealArray = i.day.meals;
-  //   mealArray.map((meal) => console.log(meal));
-  // });
+  const dayArray = state.tracker[0].meals;
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [trackDate, setTrackDate] = useState('Today');
   const [date, setDate] = useState(new Date());
-  const [dateData, setDateData] = useState();
+  const todaysDateData = moment(new Date()).format('L');
+  const [dateData, setDateData] = useState(todaysDateData);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -164,15 +103,18 @@ function Tracker({ navigation }) {
             </View>
           </View>
           <View style={{ flex: 5, margin: '2%', width: '100%' }}>
-            {dayArray.map((item, index) => (
-              <MealItem
-                mealNumber={item.mealName}
-                key={item.mealName}
-                mealTime={item.mealTime}
-                foodItems={item.foodItems}
-                navigation={navigation}
-              />
-            ))}
+            {state.tracker[0].date
+              ? dayArray.map((item, index) => (
+                  <MealItem
+                    mealNumber={index + 1}
+                    mealName={item.mealName}
+                    key={item.mealName}
+                    mealTime={item.mealTime}
+                    foodItems={item.foodItems}
+                    navigation={navigation}
+                  />
+                ))
+              : null}
           </View>
 
           <View style={{ width: '100%', alignItems: 'flex-end' }}>
@@ -181,7 +123,7 @@ function Tracker({ navigation }) {
               size="medium"
               color="white"
               style={{ marginRight: '2%', marginBottom: '2%' }}
-              onPress={() => navigation.navigate('AddMeal')}
+              onPress={() => navigation.navigate('AddMeal', { dateToAddTo: dateData })}
             />
           </View>
         </View>

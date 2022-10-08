@@ -4,28 +4,31 @@ import produce from 'immer';
 const useTrackerStore = create((set) => ({
   tracker: [
     {
-      day: {
-        date: '',
-        meals: [
-          {
-            meal: {
-              mealName: '',
-              mealTime: 0,
-              foodItems: [
-                {
-                  foodName: '',
-                  foodCalories: 0,
-                  foodProtein: 0,
-                  foodCarbs: 0,
-                  foodFat: 0,
-                },
-              ],
+      date: null,
+      meals: [
+        {
+          mealName: '',
+          mealTime: 0,
+          foodItems: [
+            {
+              foodName: '',
+              foodCalories: 0,
+              foodProtein: 0,
+              foodCarbs: 0,
+              foodFat: 0,
             },
-          },
-        ],
-      },
+          ],
+        },
+      ],
     },
   ],
+  addDate: (date) =>
+    set(
+      produce((state) => {
+        const dateArray = state.tracker;
+        dateArray.push(date);
+      })
+    ),
   addMeal: (values) =>
     set(
       produce((state) => {

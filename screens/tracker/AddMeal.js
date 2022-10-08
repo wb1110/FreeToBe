@@ -5,9 +5,11 @@ import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import useTrackerStore from '../../state/TrackerStore';
 
-function AddMeal({ navigation }) {
+function AddMeal({ navigation, route }) {
+  const { dateToAddTo } = route.params;
   const state = useTrackerStore();
-  const test = state.addMeal;
+  console.log(state.tracker);
+  const addNewMeal = state.addMeal;
 
   // eslint-disable-next-line consistent-return
   // const storeData = async (value) => {
@@ -27,7 +29,7 @@ function AddMeal({ navigation }) {
           initialValues={{ mealName: '', mealTime: '' }}
           onSubmit={(values) => {
             // state.addMeal(values);
-            test(values);
+            addNewMeal(values);
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors }) => (

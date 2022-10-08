@@ -3,7 +3,7 @@ import { Button, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 
-export default function MealItem({ mealTime, mealNumber, foodItems, navigation }) {
+export default function MealItem({ mealTime, mealNumber, foodItems, navigation, mealName }) {
   const { theme } = useTheme();
   const styles = StyleSheet.create({
     container: {
@@ -39,15 +39,13 @@ export default function MealItem({ mealTime, mealNumber, foodItems, navigation }
       }}
     >
       <View>
-        <View style={{ flexDirection: 'row', marginLeft: '5.5%', marginBottom: '2%' }}>
-          <Text h4 style={{}}>
-            Meal {mealNumber}
+        <View style={{ flexDirection: 'row', marginBottom: '2%' }}>
+          <Text>
+            Meal {mealNumber} {mealName}
           </Text>
-          <Text h4 style={{ marginLeft: '4%' }}>
-            {mealTime}
-          </Text>
+          <Text style={{ marginLeft: '4%' }}>{mealTime}</Text>
         </View>
-        <View style={{ marginLeft: '5.5%' }}>
+        <View>
           <View style={{ flexDirection: 'row' }}>
             {/* {foodItems.map((item) => (
               <Text key={item.foodName}> {item.foodName}</Text>
@@ -58,7 +56,6 @@ export default function MealItem({ mealTime, mealNumber, foodItems, navigation }
               backgroundColor: theme.colors.white,
               borderRadius: 20,
               alignItems: 'center',
-              marginLeft: '2%',
               width: 90,
             }}
           >
