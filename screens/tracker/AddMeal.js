@@ -8,8 +8,8 @@ import useTrackerStore from '../../state/TrackerStore';
 function AddMeal({ navigation, route }) {
   const { dateToAddTo } = route.params;
   const state = useTrackerStore();
-  console.log(state.tracker);
   const addNewMeal = state.addMeal;
+  const { addDate } = state;
 
   // eslint-disable-next-line consistent-return
   // const storeData = async (value) => {
@@ -28,8 +28,10 @@ function AddMeal({ navigation, route }) {
         <Formik
           initialValues={{ mealName: '', mealTime: '' }}
           onSubmit={(values) => {
+            addDate(dateToAddTo);
+            addNewMeal(values, dateToAddTo);
             // state.addMeal(values);
-            addNewMeal(values);
+            // addNewMeal(values);
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors }) => (

@@ -15,12 +15,14 @@ import MealItem from './MealItem';
 
 function Tracker({ navigation }) {
   const state = useTrackerStore();
-  const dayArray = state.tracker[0].meals;
+  const dayArray = state.tracker;
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [trackDate, setTrackDate] = useState('Today');
   const [date, setDate] = useState(new Date());
   const todaysDateData = moment(new Date()).format('L');
   const [dateData, setDateData] = useState(todaysDateData);
+  const objIndex = dayArray.findIndex((obj) => obj.date === dateData);
+  const mealArray = dayArray[objIndex].meals;
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -103,8 +105,8 @@ function Tracker({ navigation }) {
             </View>
           </View>
           <View style={{ flex: 5, margin: '2%', width: '100%' }}>
-            {state.tracker[0].date
-              ? dayArray.map((item, index) => (
+            {state.tracker[objIndex]
+              ? mealArray.map((item, index) => (
                   <MealItem
                     mealNumber={index + 1}
                     mealName={item.mealName}
