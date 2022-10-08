@@ -25,8 +25,8 @@ const useTrackerStore = create((set) => ({
   addDate: (date) =>
     set(
       produce((state) => {
-        const dateArray = state.tracker;
-        dateArray.push({ date, meals: [] });
+        const { tracker } = state;
+        tracker.push({ date, meals: [] });
       })
     ),
   addMeal: (values, dateV) =>

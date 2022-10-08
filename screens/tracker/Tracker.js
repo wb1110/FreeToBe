@@ -15,15 +15,18 @@ import MealItem from './MealItem';
 
 function Tracker({ navigation }) {
   const state = useTrackerStore();
-  const { addDate } = state;
-  const dayArray = state.tracker;
+  const { addDate, tracker } = state;
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [trackDate, setTrackDate] = useState('Today');
   const [date, setDate] = useState(new Date());
-  const todaysDateData = moment(new Date()).format('L');
-  const [dateData, setDateData] = useState(todaysDateData);
-  const objIndex = dayArray.findIndex((obj) => obj.date === dateData);
-  // const mealArray = dayArray[objIndex].meals;
+  const [dateData, setDateData] = useState();
+  function indexExists(array, dateVariable) {
+    const objIndex = array.findIndex((obj) => obj.date === dateVariable);
+    return objIndex;
+  }
+  const currentIndex = indexExists(tracker, dateData);
+  const mealArray = tracker[currentIndex].meals;
+  console.log(tracker[currentIndex].meals);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -43,8 +46,14 @@ function Tracker({ navigation }) {
   };
 
   useEffect(() => {
-    addDate(date);
-  }, []);
+    const onLoadDate = moment(date).format('L');
+    setDateData(onLoadDate);
+    const savedDate = tracker[indexExists(tracker, onLoadDate)];
+    if (!savedDate) {
+      addDate(onLoadDate);
+    }
+  }, [date]);
+
   // const getMeals = async () => {
   //   let meals;
   //   try {
@@ -109,7 +118,7 @@ function Tracker({ navigation }) {
             </View>
           </View>
           <View style={{ flex: 5, margin: '2%', width: '100%' }}>
-            {state.tracker[objIndex]
+            {tracker[currentIndex]
               ? mealArray.map((item, index) => (
                   <MealItem
                     mealNumber={index + 1}
