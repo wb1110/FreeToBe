@@ -25,8 +25,6 @@ function Tracker({ navigation }) {
     return objIndex;
   }
   const currentIndex = indexExists(tracker, dateData);
-  const mealArray = tracker[currentIndex].meals;
-  console.log(tracker[currentIndex].meals);
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -119,7 +117,7 @@ function Tracker({ navigation }) {
           </View>
           <View style={{ flex: 5, margin: '2%', width: '100%' }}>
             {tracker[currentIndex]
-              ? mealArray.map((item, index) => (
+              ? tracker[currentIndex].meals.map((item, index) => (
                   <MealItem
                     mealNumber={index + 1}
                     mealName={item.mealName}
