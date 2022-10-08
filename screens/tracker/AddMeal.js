@@ -28,7 +28,6 @@ function AddMeal({ navigation, route }) {
         <Formik
           initialValues={{ mealName: '', mealTime: '' }}
           onSubmit={(values) => {
-            addDate(dateToAddTo);
             addNewMeal(values, dateToAddTo);
             // state.addMeal(values);
             // addNewMeal(values);

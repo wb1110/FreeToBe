@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { FAB, Text } from '@rneui/themed';
 import moment from 'moment';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -15,6 +15,7 @@ import MealItem from './MealItem';
 
 function Tracker({ navigation }) {
   const state = useTrackerStore();
+  const { addDate } = state;
   const dayArray = state.tracker;
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [trackDate, setTrackDate] = useState('Today');
@@ -22,7 +23,7 @@ function Tracker({ navigation }) {
   const todaysDateData = moment(new Date()).format('L');
   const [dateData, setDateData] = useState(todaysDateData);
   const objIndex = dayArray.findIndex((obj) => obj.date === dateData);
-  const mealArray = dayArray[objIndex].meals;
+  // const mealArray = dayArray[objIndex].meals;
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -41,6 +42,9 @@ function Tracker({ navigation }) {
     hideDatePicker();
   };
 
+  useEffect(() => {
+    addDate(date);
+  }, []);
   // const getMeals = async () => {
   //   let meals;
   //   try {

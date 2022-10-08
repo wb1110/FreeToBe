@@ -26,7 +26,7 @@ const useTrackerStore = create((set) => ({
     set(
       produce((state) => {
         const dateArray = state.tracker;
-        dateArray.push({ date });
+        dateArray.push({ date, meals: [] });
       })
     ),
   addMeal: (values, dateV) =>
@@ -34,7 +34,6 @@ const useTrackerStore = create((set) => ({
       produce((state) => {
         const dayArray = state.tracker;
         const objIndex = dayArray.findIndex((obj) => obj.date === dateV);
-        dayArray[objIndex].meals = [];
         const result = dayArray[objIndex].meals;
         result.push(values);
         // mealList.push(values);
