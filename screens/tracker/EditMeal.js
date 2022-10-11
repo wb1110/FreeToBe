@@ -5,10 +5,10 @@ import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import useTrackerStore from '../../state/TrackerStore';
 
-function AddMeal({ navigation, route }) {
-  const { dateToAddTo } = route.params;
+function EditMeal({ navigation, route }) {
+  const { mealName, mealTime, mealIndex } = route.params;
   const state = useTrackerStore();
-  const addNewMeal = state.addMeal;
+  const { editMeal } = state;
 
   // eslint-disable-next-line consistent-return
   // const storeData = async (value) => {
@@ -25,9 +25,9 @@ function AddMeal({ navigation, route }) {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container>
         <Formik
-          initialValues={{ mealName: '', mealTime: '' }}
+          initialValues={{ mealName, mealTime }}
           onSubmit={(values) => {
-            addNewMeal(values, dateToAddTo);
+            editMeal(values, mealIndex, mealName);
             // state.addMeal(values);
             // addNewMeal(values);
           }}
@@ -64,4 +64,4 @@ function AddMeal({ navigation, route }) {
   );
 }
 
-export default AddMeal;
+export default EditMeal;

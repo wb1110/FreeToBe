@@ -1,9 +1,16 @@
-import { FontAwesome5, Feather, MaterialIcons } from '@expo/vector-icons';
-import { Button, Text, useTheme } from '@rneui/themed';
+import { Feather, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
+import { Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 
-export default function MealItem({ mealTime, mealNumber, foodItems, navigation, mealName }) {
+export default function MealItem({
+  mealTime,
+  mealNumber,
+  foodItems,
+  navigation,
+  mealName,
+  mealIndex,
+}) {
   const { theme } = useTheme();
   const styles = StyleSheet.create({
     container: {
@@ -94,7 +101,7 @@ export default function MealItem({ mealTime, mealNumber, foodItems, navigation, 
           <TouchableWithoutFeedback>
             <View style={styles.menuContainer}>
               <View style={styles.innerMenu}>
-                <View
+                <TouchableOpacity
                   style={{
                     padding: '5%',
                     borderBottomColor: 'white',
@@ -102,11 +109,12 @@ export default function MealItem({ mealTime, mealNumber, foodItems, navigation, 
                     flexDirection: 'row',
                     alignItems: 'center',
                   }}
+                  onPress={() => navigation.navigate('EditMeal', { mealIndex, mealName, mealTime })}
                 >
                   <Feather name="edit-2" size={24} color={theme.colors.white} />
                   <Text style={{ marginLeft: '2%' }}>Edit Meal</Text>
-                </View>
-                <View
+                </TouchableOpacity>
+                <TouchableOpacity
                   style={{
                     padding: '5%',
                     borderBottomColor: 'white',
@@ -117,8 +125,8 @@ export default function MealItem({ mealTime, mealNumber, foodItems, navigation, 
                 >
                   <MaterialIcons name="delete-outline" size={24} color={theme.colors.white} />
                   <Text style={{ marginLeft: '2%' }}>Delete Meal</Text>
-                </View>
-                <View
+                </TouchableOpacity>
+                <TouchableOpacity
                   style={{
                     padding: '5%',
                     borderBottomColor: 'white',
@@ -129,8 +137,8 @@ export default function MealItem({ mealTime, mealNumber, foodItems, navigation, 
                 >
                   <Feather name="edit-2" size={24} color={theme.colors.white} />
                   <Text style={{ marginLeft: '2%' }}>Edit Food Item</Text>
-                </View>
-                <View
+                </TouchableOpacity>
+                <TouchableOpacity
                   style={{
                     padding: '5%',
                     borderBottomColor: 'white',
@@ -141,7 +149,7 @@ export default function MealItem({ mealTime, mealNumber, foodItems, navigation, 
                 >
                   <MaterialIcons name="delete-outline" size={24} color={theme.colors.white} />
                   <Text style={{ marginLeft: '2%' }}>Delete Food Item</Text>
-                </View>
+                </TouchableOpacity>
               </View>
             </View>
           </TouchableWithoutFeedback>
