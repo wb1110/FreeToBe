@@ -2,6 +2,7 @@ import { Feather, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
+import useTrackerStore from '../../state/TrackerStore';
 
 export default function MealItem({
   mealTime,
@@ -9,8 +10,10 @@ export default function MealItem({
   foodItems,
   navigation,
   mealName,
-  mealIndex,
+  dayIndex,
 }) {
+  const state = useTrackerStore();
+  const { deleteMeal } = state;
   const { theme } = useTheme();
   const styles = StyleSheet.create({
     container: {
@@ -109,7 +112,7 @@ export default function MealItem({
                     flexDirection: 'row',
                     alignItems: 'center',
                   }}
-                  onPress={() => navigation.navigate('EditMeal', { mealIndex, mealName, mealTime })}
+                  onPress={() => navigation.navigate('EditMeal', { dayIndex, mealName, mealTime })}
                 >
                   <Feather name="edit-2" size={24} color={theme.colors.white} />
                   <Text style={{ marginLeft: '2%' }}>Edit Meal</Text>
@@ -122,6 +125,7 @@ export default function MealItem({
                     flexDirection: 'row',
                     alignItems: 'center',
                   }}
+                  onPress={() => deleteMeal(dayIndex, mealName)}
                 >
                   <MaterialIcons name="delete-outline" size={24} color={theme.colors.white} />
                   <Text style={{ marginLeft: '2%' }}>Delete Meal</Text>

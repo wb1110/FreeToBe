@@ -125,7 +125,7 @@ function Tracker({ navigation }) {
                     mealTime={item.mealTime}
                     foodItems={item.foodItems}
                     navigation={navigation}
-                    mealIndex={currentIndex}
+                    dayIndex={currentIndex}
                   />
                 ))
               : null}

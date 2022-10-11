@@ -39,14 +39,25 @@ const useTrackerStore = create((set) => ({
         // mealList.push(values);
       })
     ),
-  editMeal: (values, mealIndex, mealName) =>
+  editMeal: (values, dayIndex, mealName) =>
     set(
       produce((state) => {
         const dayArray = state.tracker;
-        const dayResult = dayArray[mealIndex].meals;
+        const dayResult = dayArray[dayIndex].meals;
         const objIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
         const meal = dayResult[objIndex];
         Object.assign(meal, values);
+        // mealList.push(values);
+      })
+    ),
+  deleteMeal: (dayIndex, mealName) =>
+    set(
+      produce((state) => {
+        const dayArray = state.tracker;
+        const dayResult = dayArray[dayIndex].meals;
+        const objIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
+        // const meal = dayResult[objIndex];
+        dayResult.splice(objIndex, 1);
         // mealList.push(values);
       })
     ),

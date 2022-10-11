@@ -6,7 +6,7 @@ import Container from '../../components/Container';
 import useTrackerStore from '../../state/TrackerStore';
 
 function EditMeal({ navigation, route }) {
-  const { mealName, mealTime, mealIndex } = route.params;
+  const { mealName, mealTime, dayIndex } = route.params;
   const state = useTrackerStore();
   const { editMeal } = state;
 
@@ -27,7 +27,7 @@ function EditMeal({ navigation, route }) {
         <Formik
           initialValues={{ mealName, mealTime }}
           onSubmit={(values) => {
-            editMeal(values, mealIndex, mealName);
+            editMeal(values, dayIndex, mealName);
             // state.addMeal(values);
             // addNewMeal(values);
           }}
