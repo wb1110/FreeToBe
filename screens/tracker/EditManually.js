@@ -11,20 +11,21 @@ const foodSchema = Yup.object().shape({
 
 export default function EditManually({ route, navigation }) {
   const { mealName, item, dayIndex } = route.params;
+  const { foodName, calories, fatGrams, carbsGrams, proteinGrams } = item;
   const state = useTrackerStore();
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View>
         <Formik
           initialValues={{
-            foodName: item.foodName,
-            calories: item.calories,
-            fatGrams: item.fatGrams,
-            carbsGrams: item.carbsGrams,
-            proteinGrams: item.proteinGrams,
+            foodName,
+            calories,
+            fatGrams,
+            carbsGrams,
+            proteinGrams,
           }}
           onSubmit={(values) => {
-            state.addFood(values, dayIndex, mealName);
+            state.editFood(values, dayIndex, mealName, foodName);
           }}
           validationSchema={foodSchema}
         >

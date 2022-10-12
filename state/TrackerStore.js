@@ -71,8 +71,18 @@ const useTrackerStore = create((set) => ({
       produce((state) => {
         const mealArray = state.tracker[dayIndex].meals;
         const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
-        const food = mealArray[mealIndex].foodItems;
-        food.push(values);
+        const foodArray = mealArray[mealIndex].foodItems;
+        foodArray.push(values);
+      })
+    ),
+  editFood: (values, dayIndex, mealName, foodName) =>
+    set(
+      produce((state) => {
+        const mealArray = state.tracker[dayIndex].meals;
+        const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
+        const foodArray = mealArray[mealIndex].foodItems;
+        const foodIndex = foodArray.findIndex((obj) => obj.foodName === foodName);
+        Object.assign(foodArray[foodIndex], values);
       })
     ),
 }));
