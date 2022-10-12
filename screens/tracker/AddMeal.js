@@ -27,6 +27,8 @@ function AddMeal({ navigation, route }) {
         <Formik
           initialValues={{ mealName: '', mealTime: '' }}
           onSubmit={(values) => {
+            // eslint-disable-next-line no-param-reassign
+            values.foodItems = [];
             addNewMeal(values, dateToAddTo);
             // state.addMeal(values);
             // addNewMeal(values);

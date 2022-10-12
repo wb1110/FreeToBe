@@ -13,6 +13,7 @@ export default function MealItem({
   dayIndex,
 }) {
   const state = useTrackerStore();
+  // const meal = state.tracker[dayIndex].meals[mealName].foodItems;
   const { deleteMeal } = state;
   const { theme } = useTheme();
   const styles = StyleSheet.create({
@@ -57,9 +58,9 @@ export default function MealItem({
         </View>
         <View>
           <View style={{ flexDirection: 'row' }}>
-            {/* {foodItems.map((item) => (
-              <Text key={item.foodName}> {item.foodName}</Text>
-            ))} */}
+            {foodItems
+              ? foodItems.map((item) => <Text key={item.foodName}> {item.foodName}</Text>)
+              : null}
           </View>
           <View
             style={{
@@ -73,7 +74,7 @@ export default function MealItem({
               style={{
                 color: theme.colors.primary,
               }}
-              onPress={() => navigation.navigate('AddFoodItem')}
+              onPress={() => navigation.navigate('AddFoodItem', { mealName, dayIndex })}
             >
               Add Food
             </Text>

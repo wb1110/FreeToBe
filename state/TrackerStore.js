@@ -29,6 +29,7 @@ const useTrackerStore = create((set) => ({
         tracker.push({ date, meals: [] });
       })
     ),
+  // Meal CRUD
   addMeal: (values, dateV) =>
     set(
       produce((state) => {
@@ -36,7 +37,6 @@ const useTrackerStore = create((set) => ({
         const objIndex = dayArray.findIndex((obj) => obj.date === dateV);
         const dayResult = dayArray[objIndex].meals;
         dayResult.push(values);
-        // mealList.push(values);
       })
     ),
   editMeal: (values, dayIndex, mealName) =>
@@ -44,10 +44,9 @@ const useTrackerStore = create((set) => ({
       produce((state) => {
         const dayArray = state.tracker;
         const dayResult = dayArray[dayIndex].meals;
-        const objIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
-        const meal = dayResult[objIndex];
+        const mealIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
+        const meal = dayResult[mealIndex];
         Object.assign(meal, values);
-        // mealList.push(values);
       })
     ),
   deleteMeal: (dayIndex, mealName) =>
@@ -56,9 +55,7 @@ const useTrackerStore = create((set) => ({
         const dayArray = state.tracker;
         const dayResult = dayArray[dayIndex].meals;
         const objIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
-        // const meal = dayResult[objIndex];
         dayResult.splice(objIndex, 1);
-        // mealList.push(values);
       })
     ),
   clearMeals: () =>
@@ -66,6 +63,16 @@ const useTrackerStore = create((set) => ({
       produce((state) => {
         // eslint-disable-next-line no-param-reassign
         state.tracker[0].day.meals = null;
+      })
+    ),
+  // Food Items Crud
+  addFood: (values, dayIndex, mealName) =>
+    set(
+      produce((state) => {
+        const mealArray = state.tracker[dayIndex].meals;
+        const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
+        const food = mealArray[mealIndex].foodItems;
+        food.push(values);
       })
     ),
 }));
