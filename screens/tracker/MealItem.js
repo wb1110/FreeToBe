@@ -2,8 +2,6 @@ import { Feather, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { Button, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
-import NarrowButton from '../../components/Buttons/NarrowButton';
-import StandardButton from '../../components/Buttons/StandardButton';
 import useTrackerStore from '../../state/TrackerStore';
 
 export default function MealItem({
@@ -60,7 +58,15 @@ export default function MealItem({
         <View>
           <View style={{ flexDirection: 'row' }}>
             {foodItems
-              ? foodItems.map((item) => <Button key={item.foodName} title={item.foodName} />)
+              ? foodItems.map((item) => (
+                  <Button
+                    key={item.foodName}
+                    title={item.foodName}
+                    onPress={() =>
+                      navigation.navigate('EditManually', { mealName, dayIndex, item })
+                    }
+                  />
+                ))
               : null}
           </View>
           <Button

@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AddFoodItem from './AddFoodItem';
 import AddMeal from './AddMeal';
+import EditManually from './EditManually';
 import EditMeal from './EditMeal';
 import Tracker from './Tracker';
 
@@ -13,6 +14,7 @@ export default function TrackerStackScreen() {
       <TrackerStack.Screen name="AddMeal" component={AddMeal} />
       <TrackerStack.Screen name="EditMeal" component={EditMeal} />
       <TrackerStack.Screen name="AddFoodItem" component={AddFoodItem} />
+      <TrackerStack.Screen name="EditManually" component={EditManually} />
     </TrackerStack.Navigator>
   );
 }

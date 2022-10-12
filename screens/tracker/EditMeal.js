@@ -28,8 +28,6 @@ function EditMeal({ navigation, route }) {
           initialValues={{ mealName, mealTime }}
           onSubmit={(values) => {
             editMeal(values, dayIndex, mealName);
-            // state.addMeal(values);
-            // addNewMeal(values);
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
