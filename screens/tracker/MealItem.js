@@ -1,7 +1,9 @@
 import { Feather, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
-import { Text, useTheme } from '@rneui/themed';
+import { Button, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
+import NarrowButton from '../../components/Buttons/NarrowButton';
+import StandardButton from '../../components/Buttons/StandardButton';
 import useTrackerStore from '../../state/TrackerStore';
 
 export default function MealItem({
@@ -51,34 +53,25 @@ export default function MealItem({
     >
       <View>
         <View style={{ flexDirection: 'row', marginBottom: '2%' }}>
-          <Text>
-            Meal {mealNumber} {mealName}
+          <Text h4>
+            Meal {mealNumber} {mealName} {mealTime}
           </Text>
-          <Text style={{ marginLeft: '4%' }}>{mealTime}</Text>
         </View>
         <View>
           <View style={{ flexDirection: 'row' }}>
             {foodItems
-              ? foodItems.map((item) => <Text key={item.foodName}> {item.foodName}</Text>)
+              ? foodItems.map((item) => <Button key={item.foodName} title={item.foodName} />)
               : null}
           </View>
-          <View
-            style={{
-              backgroundColor: theme.colors.white,
-              borderRadius: 20,
-              alignItems: 'center',
-              width: 90,
+          <Button
+            titleStyle={{
+              color: theme.colors.primary,
             }}
-          >
-            <Text
-              style={{
-                color: theme.colors.primary,
-              }}
-              onPress={() => navigation.navigate('AddFoodItem', { mealName, dayIndex })}
-            >
-              Add Food
-            </Text>
-          </View>
+            color={theme.colors.white}
+            onPress={() => navigation.navigate('AddFoodItem', { mealName, dayIndex })}
+            title="Add Food"
+            size="sm"
+          />
         </View>
       </View>
       <View style={{ justifyContent: 'flex-end' }}>
