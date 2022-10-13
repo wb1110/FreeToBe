@@ -20,6 +20,8 @@ function Tracker({ navigation }) {
   const [trackDate, setTrackDate] = useState('Today');
   const [date, setDate] = useState(new Date());
   const [dateData, setDateData] = useState();
+  const [protein, setProtein] = useState(0);
+
   function indexExists(array, dateVariable) {
     const objIndex = array.findIndex((obj) => obj.date === dateVariable);
     return objIndex;
@@ -43,6 +45,13 @@ function Tracker({ navigation }) {
     hideDatePicker();
   };
 
+  function addProtein(array, selectedDate) {
+    const objIndex = array.findIndex((obj) => obj.date === selectedDate);
+    array[objIndex].meals.map((mealObj) =>
+      mealObj.foodItems.map((foodObj) => setProtein(protein + foodObj.foodProtein))
+    );
+  }
+
   useEffect(() => {
     const onLoadDate = moment(date).format('L');
     setDateData(onLoadDate);
@@ -50,6 +59,7 @@ function Tracker({ navigation }) {
     if (!savedDate) {
       addDate(onLoadDate);
     }
+    // addProtein(tracker, dateData);
   }, [date]);
 
   // const getMeals = async () => {
@@ -103,6 +113,16 @@ function Tracker({ navigation }) {
             >
               <View>
                 <Text>Protein</Text>
+                <Text>{protein}</Text>
+                {/* {tracker.date
+                  ? tracker.map((dayObj) =>
+                      dayObj.meals.map((mealObj) =>
+                        mealObj.foodItems.map((foodObj) =>
+                          setProtein(protein + foodObj.foodProtein)
+                        )
+                      )
+                    )
+                  : null} */}
               </View>
               <View>
                 <Text>Fat</Text>
