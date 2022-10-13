@@ -54,8 +54,8 @@ const useTrackerStore = create((set) => ({
       produce((state) => {
         const dayArray = state.tracker;
         const dayResult = dayArray[dayIndex].meals;
-        const objIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
-        dayResult.splice(objIndex, 1);
+        const mealIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
+        dayResult.splice(mealIndex, 1);
       })
     ),
   clearMeals: () =>
@@ -83,6 +83,16 @@ const useTrackerStore = create((set) => ({
         const foodArray = mealArray[mealIndex].foodItems;
         const foodIndex = foodArray.findIndex((obj) => obj.foodName === foodName);
         Object.assign(foodArray[foodIndex], values);
+      })
+    ),
+  deleteFood: (dayIndex, mealName, foodName) =>
+    set(
+      produce((state) => {
+        const mealArray = state.tracker[dayIndex].meals;
+        const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
+        const foodArray = mealArray[mealIndex].foodItems;
+        const foodIndex = foodArray.findIndex((obj) => obj.foodName === foodName);
+        foodArray.splice(foodIndex, 1);
       })
     ),
 }));

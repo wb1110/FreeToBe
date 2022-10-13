@@ -1,4 +1,4 @@
-import { Input } from '@rneui/themed';
+import { Button, Input } from '@rneui/themed';
 import { Formik } from 'formik';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import * as Yup from 'yup';
@@ -15,7 +15,7 @@ export default function EditManually({ route, navigation }) {
   const state = useTrackerStore();
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View>
+      <View style={{ flex: 1, justifyContent: 'center' }}>
         <Formik
           initialValues={{
             foodName,
@@ -72,6 +72,23 @@ export default function EditManually({ route, navigation }) {
                 onPress={() => {
                   handleSubmit();
                   navigation.navigate('TrackerHome');
+                }}
+              />
+              <Button
+                title="Delete"
+                color="red"
+                onPress={() => {
+                  state.deleteFood(dayIndex, mealName, foodName);
+                  navigation.navigate('TrackerHome');
+                }}
+                buttonStyle={{
+                  borderWidth: 2,
+                  borderRadius: 30,
+                }}
+                containerStyle={{
+                  width: 200,
+                  marginHorizontal: 10,
+                  marginVertical: 10,
                 }}
               />
             </View>
