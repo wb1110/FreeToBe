@@ -20,7 +20,7 @@ function Tracker({ navigation }) {
   const [trackDate, setTrackDate] = useState('Today');
   const [date, setDate] = useState(new Date());
   const [dateData, setDateData] = useState();
-  const [protein, setProtein] = useState(0);
+  let protein = 0;
 
   function indexExists(array, dateVariable) {
     const objIndex = array.findIndex((obj) => obj.date === dateVariable);
@@ -45,11 +45,19 @@ function Tracker({ navigation }) {
     hideDatePicker();
   };
 
-  function addProtein(array, selectedDate) {
-    const objIndex = array.findIndex((obj) => obj.date === selectedDate);
-    array[objIndex].meals.map((mealObj) =>
-      mealObj.foodItems.map((foodObj) => setProtein(protein + foodObj.foodProtein))
-    );
+  function addProtein(array, day) {
+    let macroSum = 0;
+    array[day].meals.map((mealObj) => {
+      // eslint-disable-next-line no-return-assign
+      mealObj.foodItems.map((foodObj) => (macroSum += +foodObj.proteinGrams));
+      state.updateProtein(macroSum, day);
+      return macroSum;
+    });
+  }
+
+  if (tracker[currentIndex]) {
+    addProtein(tracker, currentIndex);
+    protein = tracker[currentIndex].protein;
   }
 
   useEffect(() => {
@@ -59,7 +67,6 @@ function Tracker({ navigation }) {
     if (!savedDate) {
       addDate(onLoadDate);
     }
-    // addProtein(tracker, dateData);
   }, [date]);
 
   // const getMeals = async () => {
@@ -113,7 +120,7 @@ function Tracker({ navigation }) {
             >
               <View>
                 <Text>Protein</Text>
-                <Text>{protein}</Text>
+                <Text>{`${protein}g`}</Text>
                 {/* {tracker.date
                   ? tracker.map((dayObj) =>
                       dayObj.meals.map((mealObj) =>

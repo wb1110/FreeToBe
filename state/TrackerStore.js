@@ -5,6 +5,10 @@ const useTrackerStore = create((set) => ({
   tracker: [
     {
       date: null,
+      protein: 0,
+      fat: 0,
+      carbs: 0,
+      calories: 0,
       meals: [
         {
           mealName: '',
@@ -26,7 +30,14 @@ const useTrackerStore = create((set) => ({
     set(
       produce((state) => {
         const { tracker } = state;
-        tracker.push({ date, meals: [] });
+        tracker.push({ date, protein: 0, fat: 0, carbs: 0, calories: 0, meals: [] });
+      })
+    ),
+  updateProtein: (protein, date) =>
+    set(
+      produce((state) => {
+        const { tracker } = state;
+        tracker[date].protein = protein;
       })
     ),
   // Meal CRUD

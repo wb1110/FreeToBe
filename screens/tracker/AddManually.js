@@ -1,5 +1,6 @@
 import { Input } from '@rneui/themed';
 import { Formik } from 'formik';
+import { useState } from 'react';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import * as Yup from 'yup';
 import StandardButton from '../../components/Buttons/StandardButton';
@@ -11,6 +12,8 @@ const foodSchema = Yup.object().shape({
 
 export default function AddManually({ mealName, dayIndex, navigation }) {
   const state = useTrackerStore();
+  const { tracker } = state;
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View>
