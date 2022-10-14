@@ -45,18 +45,7 @@ function Tracker({ navigation }) {
     hideDatePicker();
   };
 
-  function addProtein(array, day) {
-    let macroSum = 0;
-    array[day].meals.map((mealObj) => {
-      // eslint-disable-next-line no-return-assign
-      mealObj.foodItems.map((foodObj) => (macroSum += +foodObj.proteinGrams));
-      state.updateProtein(macroSum, day);
-      return macroSum;
-    });
-  }
-
   if (tracker[currentIndex]) {
-    addProtein(tracker, currentIndex);
     protein = tracker[currentIndex].protein;
   }
 
@@ -67,7 +56,10 @@ function Tracker({ navigation }) {
     if (!savedDate) {
       addDate(onLoadDate);
     }
-  }, [date]);
+    if (tracker[currentIndex]) {
+      state.updateProtein(tracker, currentIndex);
+    }
+  }, [tracker]);
 
   // const getMeals = async () => {
   //   let meals;

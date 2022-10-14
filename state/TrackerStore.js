@@ -33,11 +33,21 @@ const useTrackerStore = create((set) => ({
         tracker.push({ date, protein: 0, fat: 0, carbs: 0, calories: 0, meals: [] });
       })
     ),
-  updateProtein: (protein, date) =>
+  updateProtein: (array, date) =>
     set(
       produce((state) => {
         const { tracker } = state;
-        tracker[date].protein = protein;
+        let macroSum = 0;
+        array[date].meals.map((mealObj) => {
+          // eslint-disable-next-line no-return-assign
+          mealObj.foodItems.map((foodObj) => {
+            macroSum += +foodObj.proteinGrams;
+            return foodObj.proteinGrams;
+          });
+          // console.log(macroSum, date);
+          return macroSum;
+        });
+        tracker[date].protein = macroSum;
       })
     ),
   // Meal CRUD
