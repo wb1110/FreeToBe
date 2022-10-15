@@ -18,7 +18,9 @@ function Tracker({ navigation }) {
   const state = useTrackerStore();
   const { addDate, tracker } = state;
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  // trackDate = Date Header
   const [trackDate, setTrackDate] = useState('Today');
+  // date = datePickerDate
   const [date, setDate] = useState(new Date());
   const [dateData, setDateData] = useState();
   let protein = 0;
@@ -31,18 +33,6 @@ function Tracker({ navigation }) {
     return objIndex;
   }
   const currentIndex = indexExists(tracker, dateData);
-
-  const getTracker = async () => {
-    let parsedResult;
-    try {
-      const result = await AsyncStorage.getItem('tracker');
-      parsedResult = await JSON.parse(result);
-      state.updateTracker(parsedResult);
-    } catch (e) {
-      return e;
-    }
-    return parsedResult;
-  };
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -67,9 +57,24 @@ function Tracker({ navigation }) {
     fats = tracker[currentIndex].fats;
     calories = tracker[currentIndex].calories;
   }
-  console.log(tracker);
+
+  const getTracker = async (todaysDate) => {
+    let parsedResult;
+    try {
+      const result = await AsyncStorage.getItem('tracker');
+      parsedResult = await JSON.parse(result);
+      // state.updateTracker(parsedResult);
+      console.log(todaysDate, 'date');
+      console.log(parsedResult[currentIndex].meals[0], 'storedtracker');
+      console.log(tracker[currentIndex].meals[0], 'statetracker');
+    } catch (e) {
+      return e;
+    }
+    return parsedResult;
+  };
+
   useEffect(() => {
-    getTracker();
+    getTracker(currentIndex);
     const onLoadDate = moment(date).format('L');
     setDateData(onLoadDate);
     const savedDate = tracker[indexExists(tracker, onLoadDate)];
@@ -81,7 +86,7 @@ function Tracker({ navigation }) {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [tracker]);
 
   return (
     <KeyboardAvoidingView

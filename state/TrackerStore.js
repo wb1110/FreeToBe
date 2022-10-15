@@ -43,6 +43,7 @@ const useTrackerStore = create((set) => ({
       produce((state) => {
         const { tracker } = state;
         tracker.push({ date, protein: 0, fats: 0, carbs: 0, calories: 0, meals: [] });
+        storeTracker(tracker);
       })
     ),
   updateMacros: (array, date) =>
@@ -90,6 +91,7 @@ const useTrackerStore = create((set) => ({
         const mealIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
         const meal = dayResult[mealIndex];
         Object.assign(meal, values);
+        storeTracker(state.tracker);
       })
     ),
   deleteMeal: (dayIndex, mealName) =>
@@ -127,6 +129,7 @@ const useTrackerStore = create((set) => ({
         const foodArray = mealArray[mealIndex].foodItems;
         const foodIndex = foodArray.findIndex((obj) => obj.foodName === foodName);
         Object.assign(foodArray[foodIndex], values);
+        storeTracker(state.tracker);
       })
     ),
   deleteFood: (dayIndex, mealName, foodName) =>
