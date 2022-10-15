@@ -10,17 +10,6 @@ function AddMeal({ navigation, route }) {
   const state = useTrackerStore();
   const addNewMeal = state.addMeal;
 
-  // eslint-disable-next-line consistent-return
-  // const storeData = async (value) => {
-  //   try {
-  //     const jsonValue = JSON.stringify(value);
-  //     await AsyncStorage.setItem('tracker', jsonValue);
-  //   } catch (e) {
-  //     // saving error
-  //     return e;
-  //   }
-  // };
-
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container>

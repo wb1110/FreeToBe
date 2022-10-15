@@ -1,31 +1,50 @@
 import create from 'zustand';
 import produce from 'immer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// eslint-disable-next-line consistent-return
+const storeMeal = async (value) => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem(`tracker`, jsonValue);
+  } catch (e) {
+    // saving error
+    return e;
+  }
+};
 
 const useTrackerStore = create((set) => ({
-  tracker: [
-    {
-      date: null,
-      protein: 0,
-      fat: 0,
-      carbs: 0,
-      calories: 0,
-      meals: [
-        {
-          mealName: '',
-          mealTime: 0,
-          foodItems: [
-            {
-              foodName: '',
-              foodCalories: 0,
-              proteinGrams: 0,
-              carbGrams: 0,
-              fatGrams: 0,
-            },
-          ],
-        },
-      ],
-    },
-  ],
+  tracker: [],
+  // {
+  //   date: null,
+  //   protein: 0,
+  //   fat: 0,
+  //   carbs: 0,
+  //   calories: 0,
+  //   meals: [
+  //     {
+  //       mealName: '',
+  //       mealTime: 0,
+  //       foodItems: [
+  //         {
+  //           foodName: '',
+  //           foodCalories: 0,
+  //           proteinGrams: 0,
+  //           carbGrams: 0,
+  //           fatGrams: 0,
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
+  updateTracker: (getTracker) =>
+    set(
+      produce((state) => {
+        let { tracker } = state;
+        tracker = getTracker;
+        return tracker;
+      })
+    ),
   addDate: (date) =>
     set(
       produce((state) => {

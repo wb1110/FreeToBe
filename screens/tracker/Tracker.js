@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FAB, Text } from '@rneui/themed';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
@@ -31,6 +32,29 @@ function Tracker({ navigation }) {
   }
   const currentIndex = indexExists(tracker, dateData);
 
+  // eslint-disable-next-line consistent-return
+  const storeTracker = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem(`tracker`, jsonValue);
+    } catch (e) {
+      // saving error
+      return e;
+    }
+  };
+
+  const getTracker = async () => {
+    let parsedResult;
+    try {
+      const result = await AsyncStorage.getItem('tracker');
+      parsedResult = JSON.parse(result);
+      state.updateTracker(parsedResult);
+    } catch (e) {
+      return e;
+    }
+    return parsedResult;
+  };
+
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -59,26 +83,17 @@ function Tracker({ navigation }) {
     const onLoadDate = moment(date).format('L');
     setDateData(onLoadDate);
     const savedDate = tracker[indexExists(tracker, onLoadDate)];
+    getTracker();
     if (!savedDate) {
       addDate(onLoadDate);
     }
     if (tracker[currentIndex]) {
       state.updateMacros(tracker, currentIndex);
+      storeTracker(tracker);
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tracker]);
-
-  // const getMeals = async () => {
-  //   let meals;
-  //   try {
-  //     const tracker = await AsyncStorage.getItem('tracker');
-  //     meals = JSON.parse(tracker);
-  //     state.setMeals(meals);
-  //   } catch (e) {
-  //     return e;
-  //   }
-  //   return meals;
-  // };
 
   return (
     <KeyboardAvoidingView
