@@ -58,14 +58,11 @@ function Tracker({ navigation }) {
     calories = tracker[currentIndex].calories;
   }
 
-  const getTracker = async (todaysDate) => {
+  const getTracker = async () => {
     let parsedResult;
     try {
       const result = await AsyncStorage.getItem('tracker');
       parsedResult = await JSON.parse(result);
-      console.log(todaysDate, 'date');
-      console.log(parsedResult, 'storedtracker');
-      console.log(tracker, 'statetracker');
     } catch (e) {
       return e;
     }
@@ -74,8 +71,8 @@ function Tracker({ navigation }) {
 
   useEffect(() => {
     const asyncWrap = async () => {
-      const value = await getTracker(currentIndex);
-      state.updateTracker(value);
+      const value = await getTracker();
+      await state.updateTracker(value);
     };
     asyncWrap();
 
