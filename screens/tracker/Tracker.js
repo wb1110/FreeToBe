@@ -65,6 +65,7 @@ function Tracker({ navigation }) {
     if (tracker[currentIndex]) {
       state.updateMacros(tracker, currentIndex);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tracker]);
 
   // const getMeals = async () => {
