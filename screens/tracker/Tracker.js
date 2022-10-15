@@ -43,7 +43,6 @@ function Tracker({ navigation }) {
     }
     return parsedResult;
   };
-  console.log(tracker, 'test');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -68,12 +67,12 @@ function Tracker({ navigation }) {
     fats = tracker[currentIndex].fats;
     calories = tracker[currentIndex].calories;
   }
-
+  console.log(tracker);
   useEffect(() => {
+    getTracker();
     const onLoadDate = moment(date).format('L');
     setDateData(onLoadDate);
     const savedDate = tracker[indexExists(tracker, onLoadDate)];
-    getTracker();
     if (!savedDate) {
       addDate(onLoadDate);
     }
@@ -82,7 +81,7 @@ function Tracker({ navigation }) {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tracker]);
+  }, []);
 
   return (
     <KeyboardAvoidingView
