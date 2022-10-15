@@ -23,6 +23,7 @@ function Tracker({ navigation }) {
   let protein = 0;
   let carbs = 0;
   let fats = 0;
+  let calories = 0;
 
   function indexExists(array, dateVariable) {
     const objIndex = array.findIndex((obj) => obj.date === dateVariable);
@@ -51,6 +52,7 @@ function Tracker({ navigation }) {
     protein = tracker[currentIndex].protein;
     carbs = tracker[currentIndex].carbs;
     fats = tracker[currentIndex].fats;
+    calories = tracker[currentIndex].calories;
   }
 
   useEffect(() => {
@@ -137,6 +139,7 @@ function Tracker({ navigation }) {
               </View>
               <View>
                 <Text>Calories</Text>
+                <Text>{`${calories}`}</Text>
               </View>
             </View>
           </View>

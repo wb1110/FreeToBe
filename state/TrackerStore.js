@@ -40,12 +40,14 @@ const useTrackerStore = create((set) => ({
         let proteinSum = 0;
         let carbSum = 0;
         let fatSum = 0;
+        let caloriesSum = 0;
         array[date].meals.map((mealObj) => {
           // eslint-disable-next-line no-return-assign
           mealObj.foodItems.map((foodObj) => {
             proteinSum += +foodObj.proteinGrams;
             carbSum += +foodObj.carbGrams;
             fatSum += +foodObj.fatGrams;
+            caloriesSum += +foodObj.calories;
             return foodObj;
           });
           // console.log(macroSum, date);
@@ -54,6 +56,7 @@ const useTrackerStore = create((set) => ({
         tracker[date].protein = proteinSum;
         tracker[date].carbs = carbSum;
         tracker[date].fats = fatSum;
+        tracker[date].calories = caloriesSum;
       })
     ),
   // Meal CRUD

@@ -11,7 +11,7 @@ const foodSchema = Yup.object().shape({
 
 export default function EditManually({ route, navigation }) {
   const { mealName, item, dayIndex } = route.params;
-  const { foodName, calories, fatGrams, carbsGrams, proteinGrams } = item;
+  const { foodName, calories, fatGrams, carbGrams, proteinGrams } = item;
   const state = useTrackerStore();
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -21,7 +21,7 @@ export default function EditManually({ route, navigation }) {
             foodName,
             calories,
             fatGrams,
-            carbsGrams,
+            carbGrams,
             proteinGrams,
           }}
           onSubmit={(values) => {
@@ -55,10 +55,10 @@ export default function EditManually({ route, navigation }) {
               />
               <Input
                 label="Carbs"
-                onChangeText={handleChange('carbsGrams')}
-                onBlur={handleBlur('carbsGrams')}
-                value={values.carbsGrams}
-                errorMessage={errors.carbsGrams}
+                onChangeText={handleChange('carbGrams')}
+                onBlur={handleBlur('carbGrams')}
+                value={values.carbGrams}
+                errorMessage={errors.carbGrams}
               />
               <Input
                 label="Protein"
