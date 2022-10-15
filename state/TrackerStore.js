@@ -3,7 +3,7 @@ import produce from 'immer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // eslint-disable-next-line consistent-return
-const storeMeal = async (value) => {
+const storeTracker = async (value) => {
   try {
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem(`tracker`, jsonValue);
@@ -37,11 +37,11 @@ const useTrackerStore = create((set) => ({
   //     },
   //   ],
   // },
-  updateTracker: (getTracker) =>
+  updateTracker: (data) =>
     set(
       produce((state) => {
-        let { tracker } = state;
-        tracker = getTracker;
+        const { tracker } = state;
+        tracker.push(data);
         return tracker;
       })
     ),
@@ -86,6 +86,7 @@ const useTrackerStore = create((set) => ({
         const objIndex = dayArray.findIndex((obj) => obj.date === dateV);
         const dayResult = dayArray[objIndex].meals;
         dayResult.push(values);
+        storeTracker(state.tracker);
       })
     ),
   editMeal: (values, dayIndex, mealName) =>
@@ -122,6 +123,7 @@ const useTrackerStore = create((set) => ({
         const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
         const foodArray = mealArray[mealIndex].foodItems;
         foodArray.push(values);
+        storeTracker(state.tracker);
       })
     ),
   editFood: (values, dayIndex, mealName, foodName) =>

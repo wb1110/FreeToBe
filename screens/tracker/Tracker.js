@@ -32,28 +32,18 @@ function Tracker({ navigation }) {
   }
   const currentIndex = indexExists(tracker, dateData);
 
-  // eslint-disable-next-line consistent-return
-  const storeTracker = async (value) => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem(`tracker`, jsonValue);
-    } catch (e) {
-      // saving error
-      return e;
-    }
-  };
-
   const getTracker = async () => {
     let parsedResult;
     try {
       const result = await AsyncStorage.getItem('tracker');
-      parsedResult = JSON.parse(result);
+      parsedResult = await JSON.parse(result);
       state.updateTracker(parsedResult);
     } catch (e) {
       return e;
     }
     return parsedResult;
   };
+  console.log(tracker, 'test');
 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
@@ -89,7 +79,6 @@ function Tracker({ navigation }) {
     }
     if (tracker[currentIndex]) {
       state.updateMacros(tracker, currentIndex);
-      storeTracker(tracker);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
