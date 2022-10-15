@@ -17,9 +17,9 @@ const useTrackerStore = create((set) => ({
             {
               foodName: '',
               foodCalories: 0,
-              foodProtein: 0,
-              foodCarbs: 0,
-              foodFat: 0,
+              proteinGrams: 0,
+              carbGrams: 0,
+              fatGrams: 0,
             },
           ],
         },
@@ -30,24 +30,30 @@ const useTrackerStore = create((set) => ({
     set(
       produce((state) => {
         const { tracker } = state;
-        tracker.push({ date, protein: 0, fat: 0, carbs: 0, calories: 0, meals: [] });
+        tracker.push({ date, protein: 0, fats: 0, carbs: 0, calories: 0, meals: [] });
       })
     ),
-  updateProtein: (array, date) =>
+  updateMacros: (array, date) =>
     set(
       produce((state) => {
         const { tracker } = state;
-        let macroSum = 0;
+        let proteinSum = 0;
+        let carbSum = 0;
+        let fatSum = 0;
         array[date].meals.map((mealObj) => {
           // eslint-disable-next-line no-return-assign
           mealObj.foodItems.map((foodObj) => {
-            macroSum += +foodObj.proteinGrams;
-            return foodObj.proteinGrams;
+            proteinSum += +foodObj.proteinGrams;
+            carbSum += +foodObj.carbGrams;
+            fatSum += +foodObj.fatGrams;
+            return foodObj;
           });
           // console.log(macroSum, date);
-          return macroSum;
+          return mealObj;
         });
-        tracker[date].protein = macroSum;
+        tracker[date].protein = proteinSum;
+        tracker[date].carbs = carbSum;
+        tracker[date].fats = fatSum;
       })
     ),
   // Meal CRUD

@@ -21,6 +21,8 @@ function Tracker({ navigation }) {
   const [date, setDate] = useState(new Date());
   const [dateData, setDateData] = useState();
   let protein = 0;
+  let carbs = 0;
+  let fats = 0;
 
   function indexExists(array, dateVariable) {
     const objIndex = array.findIndex((obj) => obj.date === dateVariable);
@@ -47,6 +49,8 @@ function Tracker({ navigation }) {
 
   if (tracker[currentIndex]) {
     protein = tracker[currentIndex].protein;
+    carbs = tracker[currentIndex].carbs;
+    fats = tracker[currentIndex].fats;
   }
 
   useEffect(() => {
@@ -57,7 +61,7 @@ function Tracker({ navigation }) {
       addDate(onLoadDate);
     }
     if (tracker[currentIndex]) {
-      state.updateProtein(tracker, currentIndex);
+      state.updateMacros(tracker, currentIndex);
     }
   }, [tracker]);
 
@@ -125,9 +129,11 @@ function Tracker({ navigation }) {
               </View>
               <View>
                 <Text>Fat</Text>
+                <Text>{`${fats}g`}</Text>
               </View>
               <View>
                 <Text>Carbs</Text>
+                <Text>{`${carbs}g`}</Text>
               </View>
               <View>
                 <Text>Calories</Text>

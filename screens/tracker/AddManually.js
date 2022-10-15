@@ -20,7 +20,7 @@ export default function AddManually({ mealName, dayIndex, navigation }) {
             foodName: '',
             calories: '',
             fatGrams: '',
-            carbsGrams: '',
+            carbGrams: '',
             proteinGrams: '',
           }}
           onSubmit={(values) => {
@@ -54,10 +54,10 @@ export default function AddManually({ mealName, dayIndex, navigation }) {
               />
               <Input
                 label="Carbs"
-                onChangeText={handleChange('carbsGrams')}
-                onBlur={handleBlur('carbsGrams')}
-                value={values.carbsGrams}
-                errorMessage={errors.carbsGrams}
+                onChangeText={handleChange('carbGrams')}
+                onBlur={handleBlur('carbGrams')}
+                value={values.carbGrams}
+                errorMessage={errors.carbGrams}
               />
               <Input
                 label="Protein"
