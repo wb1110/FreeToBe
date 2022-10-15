@@ -63,10 +63,9 @@ function Tracker({ navigation }) {
     try {
       const result = await AsyncStorage.getItem('tracker');
       parsedResult = await JSON.parse(result);
-      // state.updateTracker(parsedResult);
       console.log(todaysDate, 'date');
-      console.log(parsedResult[currentIndex].meals[0], 'storedtracker');
-      console.log(tracker[currentIndex].meals[0], 'statetracker');
+      console.log(parsedResult, 'storedtracker');
+      console.log(tracker, 'statetracker');
     } catch (e) {
       return e;
     }
@@ -74,7 +73,12 @@ function Tracker({ navigation }) {
   };
 
   useEffect(() => {
-    getTracker(currentIndex);
+    const asyncWrap = async () => {
+      const value = await getTracker(currentIndex);
+      state.updateTracker(value);
+    };
+    asyncWrap();
+
     const onLoadDate = moment(date).format('L');
     setDateData(onLoadDate);
     const savedDate = tracker[indexExists(tracker, onLoadDate)];
@@ -86,7 +90,7 @@ function Tracker({ navigation }) {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tracker]);
+  }, []);
 
   return (
     <KeyboardAvoidingView
