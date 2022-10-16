@@ -23,7 +23,7 @@ export default function MealItem({
     menuContainer: {
       backgroundColor: 'white',
       width: '100%',
-      height: '30%',
+      height: '20%',
       position: 'absolute',
       bottom: 0,
       justifyContent: 'center',
@@ -129,30 +129,6 @@ export default function MealItem({
                 >
                   <MaterialIcons name="delete-outline" size={24} color={theme.colors.white} />
                   <Text style={{ marginLeft: '2%' }}>Delete Meal</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={{
-                    padding: '5%',
-                    borderBottomColor: 'white',
-                    borderBottomWidth: 1,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Feather name="edit-2" size={24} color={theme.colors.white} />
-                  <Text style={{ marginLeft: '2%' }}>Edit Food Item</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={{
-                    padding: '5%',
-                    borderBottomColor: 'white',
-                    borderBottomWidth: 1,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                  }}
-                >
-                  <MaterialIcons name="delete-outline" size={24} color={theme.colors.white} />
-                  <Text style={{ marginLeft: '2%' }}>Delete Food Item</Text>
                 </TouchableOpacity>
               </View>
             </View>

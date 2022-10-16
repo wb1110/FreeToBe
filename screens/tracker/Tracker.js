@@ -63,6 +63,7 @@ function Tracker({ navigation }) {
     try {
       const result = await AsyncStorage.getItem('tracker');
       parsedResult = await JSON.parse(result);
+      console.log(parsedResult);
     } catch (e) {
       return e;
     }

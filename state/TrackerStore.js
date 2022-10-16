@@ -102,6 +102,7 @@ const useTrackerStore = create((set) => ({
         const dayResult = dayArray[dayIndex].meals;
         const mealIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
         dayResult.splice(mealIndex, 1);
+        storeTracker(state.tracker);
       })
     ),
   clearMeals: () =>
@@ -141,6 +142,7 @@ const useTrackerStore = create((set) => ({
         const foodArray = mealArray[mealIndex].foodItems;
         const foodIndex = foodArray.findIndex((obj) => obj.foodName === foodName);
         foodArray.splice(foodIndex, 1);
+        storeTracker(state.tracker);
       })
     ),
 }));
