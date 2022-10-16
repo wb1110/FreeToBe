@@ -70,7 +70,9 @@ function Tracker({ navigation }) {
     }
   };
 
-  state.updateMacros(tracker, currentIndex);
+  if (tracker[currentIndex]) {
+    state.updateMacros(tracker, currentIndex);
+  }
 
   useEffect(() => {
     const asyncWrap = async () => {
@@ -84,9 +86,6 @@ function Tracker({ navigation }) {
     const savedDate = tracker[indexExists(tracker, onLoadDate)];
     if (!savedDate) {
       addDate(onLoadDate);
-    }
-    if (tracker[currentIndex]) {
-      state.updateMacros(tracker, currentIndex);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
