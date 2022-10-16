@@ -63,12 +63,14 @@ function Tracker({ navigation }) {
     try {
       const result = await AsyncStorage.getItem('tracker');
       parsedResult = await JSON.parse(result);
-      console.log(parsedResult);
+      console.log(parsedResult, 'data');
+      return parsedResult;
     } catch (e) {
       return e;
     }
-    return parsedResult;
   };
+
+  state.updateMacros(tracker, currentIndex);
 
   useEffect(() => {
     const asyncWrap = async () => {
