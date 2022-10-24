@@ -13,7 +13,7 @@ function LieSkinny({ navigation }) {
         <FocusedStatusBar />
         <Container>
           <TextContainer>
-            Our society tells women eating fewer calories equals skinny beautiful women.
+            Our society tells women that eating fewer calories equals skinny, beautiful women.
             {'\n'}
             {'\n'}
             <Text style={{ textAlign: 'center' }} h4>

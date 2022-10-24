@@ -12,9 +12,9 @@ function LieSkinny2({ navigation }) {
         <FocusedStatusBar />
         <Container>
           <TextContainer>
-            Although this may be hard to do, please try your best to put everything you eat in for
-            these 3 days and do not be concerned by the number of calories you are currently
-            consuming during this time.
+            Although this may be hard to do, please try your best to add everything you eat and
+            drink for the next 3 days. Do not be concerned by the number of calories you are
+            currently consuming during this time.
           </TextContainer>
           <View style={{ flexDirection: 'row' }}>
             <LArrowButton onPress={() => navigation.goBack()} />

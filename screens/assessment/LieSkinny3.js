@@ -12,12 +12,12 @@ function LieSkinny3({ navigation }) {
         <FocusedStatusBar />
         <Container>
           <TextContainer>
-            We will be using this information to set a healthy path for you to meet your health
-            goals.
+            Your 3 day assessment tracking will be used to pave a realistic path to achieve your
+            health goals
             {'\n'}
             {'\n'}
-            It is common for women to eat differently throughout the week than on a weekend.
-            Therefore, we ask that one day of tracking is reflective of a weekend day of eating.
+            It is common for women to eat differently during the week than on a weekend. Therefore,
+            we ask that one day of tracking is reflective of a weekend day of eating.
           </TextContainer>
           <View style={{ flexDirection: 'row' }}>
             <LArrowButton onPress={() => navigation.goBack()} />

@@ -30,21 +30,21 @@ function LieSkinny4({ navigation }) {
             Women eat anywhere from 1 to 7 meals a day.
             {'\n'}
             {'\n'}
-            While you are tracking these three days, fill in the times and the amounts of meals you
-            ate that day. Only fill in the meals you eat, there is no need to fill in all 7 meals.
+            While you are tracking these three days, fill in the times and the number of meals you
+            ate that day. Only fill in the meals you eat. (There is no need to fill in all 7 meals.)
             {'\n'}
             {'\n'}
-            Currently, we are just getting a baseline of where to start you in your nutrition
-            journey.
+            Remember, we are just getting a baseline of where to start you in your nutrition
+            journey. Accurate tracking is important to help you improve during this process.
             {'\n'}
             {'\n'}
-            At the top of the page you will see three macronutrients and your calories you consumed
-            for the day. For the purpose of these 3 days, it will only count up from 0 to show you
+            At the top of the page, you will see three macronutrients and the calories you consumed
+            for the day. For the purpose of these 3 days, the tracker will count up from 0 to show
             what you ate for the day.
             {'\n'}
             {'\n'}
-            After the 3 days, it will show your goals for each macronutrients and fill in the circle
-            underneath according to how many more grams you need to consume to meet your goals.
+            After these 3 days, the tracker will display your goals for each macronutrient and show
+            you in real time how many grams you have left to consume for the day to meet your goals.
           </TextContainer>
         </ScrollView>
         <View style={{ flexDirection: 'row' }}>
