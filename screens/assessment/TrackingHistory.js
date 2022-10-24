@@ -1,40 +1,50 @@
-import { Text } from "@rneui/themed";
-import { useState } from "react";
+import { Text } from '@rneui/themed';
+import { useState } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
-import NarrowButton from "../../components/Buttons/NarrowButton";
-import NarrowButtonSelected from "../../components/Buttons/NarrowButtonSelected";
+import NarrowButton from '../../components/Buttons/NarrowButton';
+import NarrowButtonSelected from '../../components/Buttons/NarrowButtonSelected';
+import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 
-function TrackedMacros({ navigation }) {
-  return <View>
-      <Text h4>
-      Have you had any experience with tracking calories?
-      </Text>
-      <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-        <NarrowButton title="Yes" onPress={() => navigation.navigate('InternalStress')}/>
-        <NarrowButton title="No" onPress={() => navigation.navigate('InternalStress')}/>
-      </View>
-    </View>
-}
 function TrackingHistory({ navigation }) {
-  const [macrosHistory, setMacrosHistory] = useState(false);
+  const [macrosHistory, setMacrosHistory] = useState(0);
+  const [caloriesHistory, setCaloriesHistory] = useState(0);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
       <Container>
         <Container>
-          <Text h4>
-            Have you had any experience with tracking macros?
-          </Text>
+          <Text h4>Have you had any experience with tracking macros?</Text>
           <View style={{ flexDirection: 'row' }}>
-            {macrosHistory ? <NarrowButtonSelected title="Yes" onPress={() => setMacrosHistory(true)}/> : <NarrowButton title="Yes" onPress={() => setMacrosHistory(true)}/>}
-            <NarrowButton title="No" onPress={() => {setMacrosHistory(false); navigation.navigate('InternalStress') }}/>
+            {macrosHistory === 1 ? (
+              <NarrowButtonSelected title="Yes" onPress={() => setMacrosHistory(1)} />
+            ) : (
+              <NarrowButton title="Yes" onPress={() => setMacrosHistory(1)} />
+            )}
+            {macrosHistory === 2 ? (
+              <NarrowButtonSelected title="No" onPress={() => setMacrosHistory(2)} />
+            ) : (
+              <NarrowButton title="No" onPress={() => setMacrosHistory(2)} />
+            )}
           </View>
-        {macrosHistory? <TrackedMacros navigation={navigation}/> : null}
+          <Text h4>Have you had any experience with tracking calories?</Text>
+          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+            {caloriesHistory === 1 ? (
+              <NarrowButtonSelected title="Yes" onPress={() => setCaloriesHistory(1)} />
+            ) : (
+              <NarrowButton title="Yes" onPress={() => setCaloriesHistory(1)} />
+            )}
+            {caloriesHistory === 2 ? (
+              <NarrowButtonSelected title="No" onPress={() => setCaloriesHistory(2)} />
+            ) : (
+              <NarrowButton title="No" onPress={() => setCaloriesHistory(2)} />
+            )}
+          </View>
+          <StandardButton title="Submit" onPress={() => navigation.navigate('InternalStress')} />
+          <LArrowButton onPress={() => navigation.goBack()} />
         </Container>
-        <LArrowButton onPress={() => navigation.goBack()}/>
       </Container>
     </SafeAreaView>
   );

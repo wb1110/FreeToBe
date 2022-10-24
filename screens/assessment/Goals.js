@@ -1,4 +1,4 @@
-import { Input, Text } from '@rneui/themed';
+import { Input } from '@rneui/themed';
 import { useState } from 'react';
 import {
   Keyboard,
@@ -35,8 +35,10 @@ function Goals({ navigation }) {
           <Container>
             <TextContainer>
               Which of these goals would you like to get out of this experience?
+              {'\n'}
+              {'\n'}
+              Check all that apply:
             </TextContainer>
-            <Text h4>Check all that apply:</Text>
             <View style={{ alignItems: 'flex-start' }}>
               <CustomCheckBox
                 title="Increase metabolism"

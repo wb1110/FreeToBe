@@ -6,6 +6,7 @@ import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import MyCustomerPicker from '../../components/MyCustomerPicker';
+import TextContainer from '../../components/TextContainer';
 import useStore from '../../state/Store';
 
 function HeightWeightAge({ navigation }) {
@@ -47,6 +48,7 @@ function HeightWeightAge({ navigation }) {
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
       <Container>
+        <TextContainer>Fill in the following to get started:</TextContainer>
         <MyCustomerPicker
           setModalOpen={setHeightModal}
           modalOpen={heightModal}

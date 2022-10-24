@@ -22,7 +22,7 @@ function Register({ navigation }) {
           <FocusedStatusBar />
           <Container>
             <Input label="Email" />
-            <Input label="Password" />
+            <Input secureTextEntry="true" label="Password" />
             <Input label="Full name" />
             <StandardButton onPress={() => navigation.navigate('Welcome')} title="Sign Up" />
             <View

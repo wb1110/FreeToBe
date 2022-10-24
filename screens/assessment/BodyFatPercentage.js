@@ -11,15 +11,15 @@ function BodyFatPercentage({ navigation }) {
       <FocusedStatusBar />
       <Container>
         <TextContainer>
-          Body Fat % is the percentage of fat on our body compared to every thing else in our body
+          Body Fat % is the percentage of fat on our body compared to everything else in our body
           such as organic muscle tissue, water, and bones.
           {'\n'}
           {'\n'}
           Fat is essential for our bodies to thrive. Women in particular need somewhere between
-          21-33 percent body fat.
+          21-33% body fat.
           {'\n'}
           {'\n'}
-          Do you know your BF%?
+          Do you know your body fat %?
         </TextContainer>
         <StandardButton
           title="Yes"

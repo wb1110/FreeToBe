@@ -37,7 +37,7 @@ function Login({ navigation }) {
           <FocusedStatusBar />
           <Container>
             <Input label="Email" />
-            <Input label="Password" />
+            <Input secureTextEntry="true" label="Password" />
             <StandardButton
               onPress={() => {
                 navigation.navigate('UserHome', { screen: 'Profile' });

@@ -14,8 +14,8 @@ function DietHistory({ navigation }) {
       <FocusedStatusBar />
       <Container>
         <TextContainer>
-          When you think about your experience when it comes to dieting you most likely fit in which
-          of these categories?
+          When thinking about your dieting experience, you most likely fit in which of these
+          categories:
         </TextContainer>
         <View style={{ alignItems: 'flex-start' }}>
           {selected === 1 ? (

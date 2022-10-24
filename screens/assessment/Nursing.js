@@ -32,8 +32,8 @@ function Nursing({ navigation }) {
             />
           </View>
           {nursing ? <IsNursing navigation={navigation} /> : null}
+          <LArrowButton onPress={() => navigation.goBack()} />
         </Container>
-        <LArrowButton onPress={() => navigation.goBack()} />
       </Container>
     </SafeAreaView>
   );
