@@ -23,10 +23,13 @@ function Tracker({ navigation }) {
   // date = datePickerDate
   const [date, setDate] = useState(new Date());
   const [dateData, setDateData] = useState();
-  let protein = 0;
-  let carbs = 0;
-  let fats = 0;
-  let calories = 0;
+  const [protein, setProtein] = useState(0);
+
+  const [carbs, setCarbs] = useState(0);
+
+  const [fats, setFats] = useState(0);
+
+  const [calories, setCalories] = useState(0);
 
   function indexExists(array, dateVariable) {
     const objIndex = array.findIndex((obj) => obj.date === dateVariable);
@@ -51,28 +54,16 @@ function Tracker({ navigation }) {
     hideDatePicker();
   };
 
-  if (tracker[currentIndex]) {
-    protein = tracker[currentIndex].protein;
-    carbs = tracker[currentIndex].carbs;
-    fats = tracker[currentIndex].fats;
-    calories = tracker[currentIndex].calories;
-  }
-
   const getTracker = async () => {
     let parsedResult;
     try {
       const result = await AsyncStorage.getItem('tracker');
       parsedResult = await JSON.parse(result);
-      console.log(parsedResult, 'data');
       return parsedResult;
     } catch (e) {
       return e;
     }
   };
-
-  if (tracker[currentIndex]) {
-    state.updateMacros(tracker, currentIndex);
-  }
 
   useEffect(() => {
     const asyncWrap = async () => {
@@ -80,6 +71,13 @@ function Tracker({ navigation }) {
       await state.updateTracker(value);
     };
     asyncWrap();
+    if (tracker[currentIndex]) {
+      state.updateMacros(tracker, currentIndex);
+      setProtein(tracker[currentIndex].protein);
+      setCarbs(tracker[currentIndex].carbs);
+      setFats(tracker[currentIndex].fats);
+      setCalories(tracker[currentIndex].calories);
+    }
 
     const onLoadDate = moment(date).format('L');
     setDateData(onLoadDate);
