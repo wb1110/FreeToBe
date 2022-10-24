@@ -14,7 +14,7 @@ function Disclaimer({ navigation }) {
         <Container>
           <Text h1>Disclaimer</Text>
           <TextContainer>
-            If you do not know where you are, you can not know where you are going.
+            An important aspect in changing our habits is knowing your current tendencies.
             {'\n'}
             {'\n'}
             We know that tracking your food can have a negative effect on some women but to get

@@ -79,7 +79,7 @@ function WorkActivityLevel({ navigation }) {
               title="Submit"
               onPress={() => {
                 state.setWorkActivity(values);
-                navigation.navigate('Personality');
+                navigation.navigate('ActivityLevel');
               }}
             />
           ) : (

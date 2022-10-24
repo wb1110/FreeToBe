@@ -24,7 +24,7 @@ function AbleToTrack({ navigation }) {
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
       <Container>
-        <Text h4>After this disclaimer I am…</Text>
+        <Text h4>After this disclaimer, I am…</Text>
         <StandardButton
           title="Able to track 3 days"
           onPress={() => {
@@ -35,7 +35,7 @@ function AbleToTrack({ navigation }) {
           title="Unable to track 3 days"
           onPress={() => {
             storeData(state.assessment);
-            navigation.navigate('UserHome');
+            navigation.navigate('UserHome', { screen: 'Profile' });
           }}
         />
         <LArrowButton onPress={() => navigation.goBack()} />

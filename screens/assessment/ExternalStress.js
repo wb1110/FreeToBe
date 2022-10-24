@@ -16,12 +16,16 @@ function ExternalStress({ navigation }) {
         <FocusedStatusBar />
         <Container>
           <TextContainer>
-            External stress is stress that comes form outside sources. For example, pressure at work
+            External stress is stress that comes from outside sources. For example, pressure at work
             such as deadlines, major life changes, and relationship turmoil are all external
             stressors.
             {'\n'}
             {'\n'}
             What would you rate your external stress between 0-5?
+            {'\n'}
+            {'\n'}0 = no external stress
+            {'\n'}
+            {'\n'}5 = overwhelming amount of external stress
           </TextContainer>
           <View style={{ flexDirection: 'row' }}>
             {selected === 0 ? (
@@ -55,7 +59,7 @@ function ExternalStress({ navigation }) {
               <RoundButton title="5" onPress={() => setSelected(5)} />
             )}
           </View>
-          <StandardButton title="Submit" onPress={() => navigation.navigate('ActivityLevel')} />
+          <StandardButton title="Submit" onPress={() => navigation.navigate('WorkActivityLevel')} />
           <LArrowButton onPress={() => navigation.goBack()} />
         </Container>
       </SafeAreaView>

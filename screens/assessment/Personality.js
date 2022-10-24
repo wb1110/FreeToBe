@@ -15,9 +15,7 @@ function Personality({ navigation }) {
       <SafeAreaView style={{ flex: 1 }}>
         <FocusedStatusBar />
         <Container>
-          <Text h4>
-            If you were to categorize yourself into 1 of the 4 types of people, which would it be?
-          </Text>
+          <Text h4>Which of the following tendency types describes you best?</Text>
           <View style={{ alignItems: 'flex-start' }}>
             {selected === 1 ? (
               <SingleSelectCheck
@@ -47,13 +45,13 @@ function Personality({ navigation }) {
             )}
             {selected === 3 ? (
               <SingleSelectCheck
-                title="Questioner - resists outer expectations by meets inner expectations"
+                title="Questioner - resists outer expectations but meets inner expectations"
                 checked
                 onPress={() => setSelected(3)}
               />
             ) : (
               <SingleSelectCheck
-                title="Questioner - resists outer expectations by meets inner expectations"
+                title="Questioner - resists outer expectations but meets inner expectations"
                 checked={false}
                 onPress={() => setSelected(3)}
               />

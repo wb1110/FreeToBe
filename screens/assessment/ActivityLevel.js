@@ -76,7 +76,7 @@ function ActivityLevel({ navigation }) {
               title="Submit"
               onPress={() => {
                 state.setExerciseActivity(values);
-                navigation.navigate('WorkActivityLevel');
+                navigation.navigate('Personality');
               }}
             />
           ) : (
