@@ -1,8 +1,9 @@
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/core';
 import { FAB, Text } from '@rneui/themed';
 import moment from 'moment';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -12,6 +13,7 @@ import {
 } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import useTrackerStore from '../../state/TrackerStore';
+import MacroBar from './MacroBar';
 import MealItem from './MealItem';
 
 function Tracker({ navigation }) {
@@ -23,12 +25,10 @@ function Tracker({ navigation }) {
   // date = datePickerDate
   const [date, setDate] = useState(new Date());
   const [dateData, setDateData] = useState();
+  // macro bar
   const [protein, setProtein] = useState(0);
-
   const [carbs, setCarbs] = useState(0);
-
   const [fats, setFats] = useState(0);
-
   const [calories, setCalories] = useState(0);
 
   function indexExists(array, dateVariable) {
@@ -71,13 +71,13 @@ function Tracker({ navigation }) {
       await state.updateTracker(value);
     };
     asyncWrap();
-    if (tracker[currentIndex]) {
-      state.updateMacros(tracker, currentIndex);
-      setProtein(tracker[currentIndex].protein);
-      setCarbs(tracker[currentIndex].carbs);
-      setFats(tracker[currentIndex].fats);
-      setCalories(tracker[currentIndex].calories);
-    }
+    // if (tracker[currentIndex]) {
+    //   state.updateMacros(tracker, currentIndex);
+    //   setProtein(tracker[currentIndex].protein);
+    //   setCarbs(tracker[currentIndex].carbs);
+    //   setFats(tracker[currentIndex].fats);
+    //   setCalories(tracker[currentIndex].calories);
+    // }
 
     const onLoadDate = moment(date).format('L');
     setDateData(onLoadDate);
@@ -88,6 +88,22 @@ function Tracker({ navigation }) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useFocusEffect(
+    useCallback(() =>
+      // Do something when the screen is focused
+      {
+        if (tracker[currentIndex]) {
+          state.updateMacros(tracker, currentIndex);
+          setProtein(tracker[currentIndex].protein);
+          setCarbs(tracker[currentIndex].carbs);
+          setFats(tracker[currentIndex].fats);
+          setCalories(tracker[currentIndex].calories);
+        }
+        // Do something when the screen is unfocused
+        // Useful for cleanup functions
+      }, [tracker])
+  );
 
   return (
     <KeyboardAvoidingView
@@ -117,41 +133,7 @@ function Tracker({ navigation }) {
                 onCancel={hideDatePicker}
               />
             </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-                flex: 1,
-                width: '100%',
-                margin: '2%',
-              }}
-            >
-              <View>
-                <Text>Protein</Text>
-                <Text>{`${protein}g`}</Text>
-                {/* {tracker.date
-                  ? tracker.map((dayObj) =>
-                      dayObj.meals.map((mealObj) =>
-                        mealObj.foodItems.map((foodObj) =>
-                          setProtein(protein + foodObj.foodProtein)
-                        )
-                      )
-                    )
-                  : null} */}
-              </View>
-              <View>
-                <Text>Fat</Text>
-                <Text>{`${fats}g`}</Text>
-              </View>
-              <View>
-                <Text>Carbs</Text>
-                <Text>{`${carbs}g`}</Text>
-              </View>
-              <View>
-                <Text>Calories</Text>
-                <Text>{`${calories}`}</Text>
-              </View>
-            </View>
+            <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
           </View>
           <View style={{ flex: 5, margin: '2%', width: '100%' }}>
             {tracker[currentIndex]
