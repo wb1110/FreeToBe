@@ -106,29 +106,26 @@ function Tracker({ navigation }) {
     >
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={{ justifyContent: 'space-between', flex: 1 }}>
-          <View style={{ flex: 1 }}>
-            <View style={{ alignItems: 'center' }}>
-              <View style={{ flexDirection: 'row' }}>
-                <Text h4 onPress={showDatePicker}>{`${trackDate}`}</Text>
-                <Ionicons
-                  name="chevron-down-circle"
-                  size={24}
-                  color="white"
-                  onPress={showDatePicker}
-                />
-              </View>
-
-              <DateTimePickerModal
-                isVisible={isDatePickerVisible}
-                mode="date"
-                date={date}
-                display="inline"
-                onConfirm={handleConfirm}
-                onCancel={hideDatePicker}
+          <View style={{ alignItems: 'center' }}>
+            <View style={{ flexDirection: 'row' }}>
+              <Text h4 onPress={showDatePicker}>{`${trackDate}`}</Text>
+              <Ionicons
+                name="chevron-down-circle"
+                size={24}
+                color="white"
+                onPress={showDatePicker}
               />
             </View>
-            <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
+            <DateTimePickerModal
+              isVisible={isDatePickerVisible}
+              mode="date"
+              date={date}
+              display="inline"
+              onConfirm={handleConfirm}
+              onCancel={hideDatePicker}
+            />
           </View>
+          <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
           <View style={{ flex: 5, margin: '2%', width: '100%' }}>
             {tracker[currentIndex]
               ? tracker[currentIndex].meals.map((item, index) => (

@@ -15,25 +15,43 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
     <View
       style={{
         flexDirection: 'row',
-        justifyContent: 'space-around',
         flex: 1,
-        width: '100%',
         margin: '2%',
       }}
     >
-      <View>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+        }}
+      >
         <Text>Protein</Text>
         <MacroPie macro={protein} goal={goalProtein} />
       </View>
-      <View>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+        }}
+      >
         <Text>Fat</Text>
         <MacroPie macro={fats} goal={goalFat} />
       </View>
-      <View>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+        }}
+      >
         <Text>Carbs</Text>
         <MacroPie macro={carbs} goal={goalCarb} />
       </View>
-      <View>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+        }}
+      >
         <Text>Calories</Text>
         <MacroPie macro={calories} goal={TDEE} />
       </View>
