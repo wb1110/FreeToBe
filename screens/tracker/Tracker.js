@@ -71,13 +71,6 @@ function Tracker({ navigation }) {
       await state.updateTracker(value);
     };
     asyncWrap();
-    // if (tracker[currentIndex]) {
-    //   state.updateMacros(tracker, currentIndex);
-    //   setProtein(tracker[currentIndex].protein);
-    //   setCarbs(tracker[currentIndex].carbs);
-    //   setFats(tracker[currentIndex].fats);
-    //   setCalories(tracker[currentIndex].calories);
-    // }
 
     const onLoadDate = moment(date).format('L');
     setDateData(onLoadDate);
@@ -102,6 +95,7 @@ function Tracker({ navigation }) {
         }
         // Do something when the screen is unfocused
         // Useful for cleanup functions
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [tracker])
   );
 

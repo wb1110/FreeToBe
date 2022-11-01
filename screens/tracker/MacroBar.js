@@ -1,7 +1,16 @@
 import { Text } from '@rneui/themed';
 import { View } from 'react-native';
+import useStore from '../../state/Store';
+import MacroPie from './MacroPie';
 
 export default function MacroBar({ protein, carbs, fats, calories }) {
+  const state = useStore();
+  const TDEE = state.assessment.tdee;
+
+  const goalProtein = Math.round((TDEE * 0.3) / 4);
+  const goalCarb = Math.round((TDEE * 0.4) / 4);
+  const goalFat = Math.round((TDEE * 0.3) / 4);
+
   return (
     <View
       style={{
@@ -14,28 +23,19 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
     >
       <View>
         <Text>Protein</Text>
-        <Text>{`${protein}g`}</Text>
-        {/* {tracker.date
-                  ? tracker.map((dayObj) =>
-                      dayObj.meals.map((mealObj) =>
-                        mealObj.foodItems.map((foodObj) =>
-                          setProtein(protein + foodObj.foodProtein)
-                        )
-                      )
-                    )
-                  : null} */}
+        <MacroPie macro={protein} goal={goalProtein} />
       </View>
       <View>
         <Text>Fat</Text>
-        <Text>{`${fats}g`}</Text>
+        <MacroPie macro={fats} goal={goalFat} />
       </View>
       <View>
         <Text>Carbs</Text>
-        <Text>{`${carbs}g`}</Text>
+        <MacroPie macro={carbs} goal={goalCarb} />
       </View>
       <View>
         <Text>Calories</Text>
-        <Text>{`${calories}`}</Text>
+        <MacroPie macro={calories} goal={TDEE} />
       </View>
     </View>
   );

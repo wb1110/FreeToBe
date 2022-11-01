@@ -1,4 +1,5 @@
 import moment from 'moment/moment';
+import { useEffect } from 'react';
 import { SafeAreaView } from 'react-native';
 import useStore from '../../state/Store';
 import PFCPieChart from './PFCPieChart';
@@ -115,6 +116,10 @@ export default function Calculations() {
   const maintenanceCal = Math.round(
     energyEquations() + (dueDate ? trimester(weeksDifference) : 0) + babyCalories() + nursing
   );
+  useEffect(() => {
+    state.setTDEE(maintenanceCal);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <SafeAreaView>

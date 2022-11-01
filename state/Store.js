@@ -11,6 +11,7 @@ const useStore = create((set) => ({
     nursing: 0,
     exerciseActivity: 0,
     workActivity: 0,
+    tdee: 0,
   },
 
   setHWA: (values) =>
@@ -56,6 +57,13 @@ const useStore = create((set) => ({
       assessment: {
         ...state.assessment,
         workActivity: values.workActivity,
+      },
+    })),
+  setTDEE: (value) =>
+    set((state) => ({
+      assessment: {
+        ...state.assessment,
+        tdee: value,
       },
     })),
   setAssessment: (values) =>
