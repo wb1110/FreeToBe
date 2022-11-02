@@ -4,11 +4,13 @@ import { useState } from 'react';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AddManually from './AddManually';
+import FoodScanner from '../foodScanner/FoodScanner';
 
 export default function AddFoodItem({ route, navigation }) {
   const { dayIndex, mealName } = route.params;
   const [search, setSearch] = useState('');
   const [manual, setManual] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const updateSearch = (searchValue) => {
     setSearch(searchValue);
@@ -37,6 +39,7 @@ export default function AddFoodItem({ route, navigation }) {
                 margin: '2%',
                 width: 125,
               }}
+              onPress={() => setModalOpen(true)}
             >
               <MaterialCommunityIcons name="barcode-scan" size={24} color="black" />
               <Text style={{ color: 'black' }}>Scan Barcode</Text>
@@ -59,6 +62,7 @@ export default function AddFoodItem({ route, navigation }) {
         {manual ? (
           <AddManually mealName={mealName} dayIndex={dayIndex} navigation={navigation} />
         ) : null}
+        <FoodScanner setSearch={setSearch} modalOpen={modalOpen} setModalOpen={setModalOpen} />
       </View>
     </TouchableWithoutFeedback>
   );
