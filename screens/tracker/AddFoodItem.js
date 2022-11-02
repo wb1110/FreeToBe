@@ -1,8 +1,9 @@
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import { SearchBar, Text } from '@rneui/themed';
+import { Button, SearchBar, Text } from '@rneui/themed';
 import { useState } from 'react';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import axios from 'axios';
 import AddManually from './AddManually';
 import FoodScanner from '../foodScanner/FoodScanner';
 
@@ -15,6 +16,18 @@ export default function AddFoodItem({ route, navigation }) {
   const updateSearch = (searchValue) => {
     setSearch(searchValue);
   };
+
+  const getData = () => {
+    axios
+      .get('http://reqres.in/api/users/2')
+      .then((res) => {
+        console.log(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View>
@@ -30,6 +43,7 @@ export default function AddFoodItem({ route, navigation }) {
               width: '100%',
             }}
           />
+          <Button onPress={() => getData()}>Test</Button>
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
               style={{
