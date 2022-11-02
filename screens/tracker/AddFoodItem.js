@@ -19,9 +19,12 @@ export default function AddFoodItem({ route, navigation }) {
 
   const getData = () => {
     axios
-      .get('http://reqres.in/api/users/2')
+      .get(
+        'https://api.nal.usda.gov/fdc/v1/foods/search?query=609207617761&pageSize=10&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ'
+      )
       .then((res) => {
-        console.log(res.data.data);
+        // console.log(res.data.labelNutrients);
+        res.data.foods.map((item) => console.log(item.description));
       })
       .catch((err) => {
         console.log(err);
