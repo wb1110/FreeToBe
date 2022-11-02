@@ -6,9 +6,13 @@ import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import SingleSelectCheck from '../../components/SingleSelectCheck';
+import useStore from '../../state/Store';
+import useCalculations from './Calculations';
 
 function Personality({ navigation }) {
+  const state = useStore();
   const [selected, setSelected] = useState(false);
+  const tdee = useCalculations();
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -71,7 +75,13 @@ function Personality({ navigation }) {
             )}
           </View>
           {selected ? (
-            <StandardButton title="Submit" onPress={() => navigation.navigate('Disclaimer')} />
+            <StandardButton
+              title="Submit"
+              onPress={() => {
+                navigation.navigate('Disclaimer');
+                state.setTDEE(tdee);
+              }}
+            />
           ) : (
             <StandardButton title="Submit" disabled />
           )}

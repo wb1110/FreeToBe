@@ -1,7 +1,9 @@
 import { SafeAreaView, View } from 'react-native';
-import Calculations from './Calculations';
+import useStore from '../../state/Store';
+import PFCPieChart from './PFCPieChart';
 
 function Profile() {
+  const state = useStore();
   return (
     <SafeAreaView>
       <View
@@ -9,7 +11,7 @@ function Profile() {
           alignItems: 'center',
         }}
       >
-        <Calculations />
+        <PFCPieChart TDEE={state.assessment.tdee} />
       </View>
     </SafeAreaView>
   );

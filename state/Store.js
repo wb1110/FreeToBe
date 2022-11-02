@@ -79,6 +79,7 @@ const useStore = create((set) => ({
         nursing: values.nursing,
         exerciseActivity: values.exerciseActivity,
         workActivity: values.workActivity,
+        tdee: values.tdee,
       },
     })),
 }));
