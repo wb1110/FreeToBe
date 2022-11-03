@@ -26,7 +26,12 @@ function Register({ navigation }) {
             <Input label="Full name" />
             <StandardButton onPress={() => navigation.navigate('Welcome')} title="Sign Up" />
             <View
-              style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'center' }}
+              style={{
+                flexWrap: 'wrap',
+                flexDirection: 'row',
+                alignItems: 'baseline',
+                justifyContent: 'center',
+              }}
             >
               <Text>Already a member of Free To Be Nourished?</Text>
               <Button type="clear" onPress={() => navigation.navigate('Login')} title="Login" />
