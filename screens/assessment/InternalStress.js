@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RoundButton from '../../components/Buttons/RoundButton';

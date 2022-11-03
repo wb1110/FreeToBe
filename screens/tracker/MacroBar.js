@@ -1,4 +1,3 @@
-import { Text } from '@rneui/themed';
 import { View } from 'react-native';
 import useStore from '../../state/Store';
 import MacroPie from './MacroPie';
@@ -25,8 +24,7 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
           alignItems: 'center',
         }}
       >
-        <Text>Protein</Text>
-        <MacroPie macro={protein} goal={goalProtein} />
+        <MacroPie macro={protein} goal={goalProtein} label="Protein" />
       </View>
       <View
         style={{
@@ -34,8 +32,7 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
           alignItems: 'center',
         }}
       >
-        <Text>Fat</Text>
-        <MacroPie macro={fats} goal={goalFat} />
+        <MacroPie macro={fats} goal={goalFat} label="Fat" />
       </View>
       <View
         style={{
@@ -43,8 +40,7 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
           alignItems: 'center',
         }}
       >
-        <Text>Carbs</Text>
-        <MacroPie macro={carbs} goal={goalCarb} />
+        <MacroPie macro={carbs} goal={goalCarb} label="Carbs" />
       </View>
       <View
         style={{
@@ -52,8 +48,7 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
           alignItems: 'center',
         }}
       >
-        <Text>Calories</Text>
-        <MacroPie macro={calories} goal={TDEE} />
+        <MacroPie macro={calories} goal={TDEE} label="Calories" />
       </View>
     </View>
   );
