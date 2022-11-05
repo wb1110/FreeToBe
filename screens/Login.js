@@ -7,25 +7,14 @@ import {
   View,
 } from 'react-native';
 import { Input, Text, Button } from '@rneui/themed';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import FocusedStatusBar from '../components/FocusedStatusBar';
 import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import useStore from '../state/Store';
+import { getAssessment } from '../functions/Gets';
 
 function Login({ navigation }) {
   const state = useStore();
-  const getAssessment = async () => {
-    let userAssessment;
-    try {
-      const assessment = await AsyncStorage.getItem('assessment');
-      userAssessment = JSON.parse(assessment);
-      state.setAssessment(userAssessment);
-    } catch (e) {
-      return e;
-    }
-    return userAssessment;
-  };
 
   return (
     <KeyboardAvoidingView
@@ -41,7 +30,7 @@ function Login({ navigation }) {
             <StandardButton
               onPress={() => {
                 navigation.navigate('UserHome', { screen: 'Profile' });
-                getAssessment();
+                getAssessment(state);
               }}
               title="Sign In"
             />

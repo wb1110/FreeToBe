@@ -3,7 +3,6 @@ import useStore from '../../state/Store';
 import MacroPie from './MacroPie';
 
 export default function MacroBar({ protein, carbs, fats, calories }) {
-  console.log(protein, 'protein');
   const state = useStore();
   const TDEE = state.assessment.tdee;
 

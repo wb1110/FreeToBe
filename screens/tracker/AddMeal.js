@@ -19,8 +19,6 @@ function AddMeal({ navigation, route }) {
             // eslint-disable-next-line no-param-reassign
             values.foodItems = [];
             addNewMeal(values, dateToAddTo);
-            // state.addMeal(values);
-            // addNewMeal(values);
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors }) => (

@@ -1,5 +1,4 @@
 import { Ionicons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/core';
 import { FAB } from '@rneui/themed';
 import moment from 'moment';
@@ -15,15 +14,15 @@ import useTrackerStore from '../../state/TrackerStore';
 import Calendar from './Calendar';
 import MacroBar from './MacroBar';
 import Meals from './Meals';
+import { getTracker } from '../../functions/Gets';
 
 function Tracker({ navigation }) {
   const state = useTrackerStore();
 
   const { addDate, tracker } = state;
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [date, setDate] = useState(new Date());
-  // trackDate = Date Header
   // date = datePickerDate
+  const [date, setDate] = useState(new Date());
   const [dateData, setDateData] = useState();
   // macro bar
   const [protein, setProtein] = useState(0);
@@ -37,24 +36,8 @@ function Tracker({ navigation }) {
   }
   const currentIndex = indexExists(tracker, dateData);
 
-  const getTracker = async () => {
-    let parsedResult;
-    try {
-      const result = await AsyncStorage.getItem('tracker');
-      parsedResult = await JSON.parse(result);
-      return parsedResult;
-    } catch (e) {
-      return e;
-    }
-  };
-
   useEffect(() => {
-    const asyncWrap = async () => {
-      const value = await getTracker();
-      await state.updateTracker(value);
-    };
-    asyncWrap();
-
+    getTracker(state);
     const selectedDate = moment(date).format('L');
     setDateData(selectedDate);
     const savedDate = tracker[indexExists(tracker, selectedDate)];

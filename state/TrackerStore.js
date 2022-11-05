@@ -43,7 +43,6 @@ const useTrackerStore = create((set) => ({
       produce((state) => {
         const { tracker } = state;
         tracker.push({ date, protein: 0, fats: 0, carbs: 0, calories: 0, meals: [] });
-        storeTracker(tracker);
       })
     ),
   updateMacros: (array, date) =>

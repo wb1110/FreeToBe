@@ -13,7 +13,6 @@ export default function MealItem({
   dayIndex,
 }) {
   const state = useTrackerStore();
-  // const meal = state.tracker[dayIndex].meals[mealName].foodItems;
   const { deleteMeal } = state;
   const { theme } = useTheme();
   const styles = StyleSheet.create({

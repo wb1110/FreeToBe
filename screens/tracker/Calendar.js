@@ -1,4 +1,5 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { Text } from '@rneui/themed';
 import { Ionicons } from '@expo/vector-icons';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { useState } from 'react';
@@ -11,6 +12,7 @@ export default function Calendar({
   date,
   setDate,
 }) {
+  // trackDate = Date Header
   const [trackDate, setTrackDate] = useState('Today');
   const showDatePicker = () => {
     setDatePickerVisibility(true);
