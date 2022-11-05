@@ -62,7 +62,7 @@ function Tracker({ navigation }) {
         // Do something when the screen is unfocused
         // Useful for cleanup functions
         // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [tracker])
+      }, [tracker, currentIndex])
   );
 
   return (
