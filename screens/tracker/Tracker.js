@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/core';
-import { FAB, Text } from '@rneui/themed';
+import { FAB } from '@rneui/themed';
 import moment from 'moment';
 import { useCallback, useEffect, useState } from 'react';
 import {
@@ -11,19 +11,19 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import useTrackerStore from '../../state/TrackerStore';
+import Calendar from './Calendar';
 import MacroBar from './MacroBar';
-import MealItem from './MealItem';
+import Meals from './Meals';
 
 function Tracker({ navigation }) {
   const state = useTrackerStore();
+
   const { addDate, tracker } = state;
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  // trackDate = Date Header
-  const [trackDate, setTrackDate] = useState('Today');
-  // date = datePickerDate
   const [date, setDate] = useState(new Date());
+  // trackDate = Date Header
+  // date = datePickerDate
   const [dateData, setDateData] = useState();
   // macro bar
   const [protein, setProtein] = useState(0);
@@ -36,23 +36,6 @@ function Tracker({ navigation }) {
     return objIndex;
   }
   const currentIndex = indexExists(tracker, dateData);
-
-  const showDatePicker = () => {
-    setDatePickerVisibility(true);
-  };
-
-  const hideDatePicker = () => {
-    setDatePickerVisibility(false);
-  };
-
-  const handleConfirm = (newDate) => {
-    const formatDate = moment(newDate).format('dddd, MMMM Do YYYY');
-    const databaseDate = moment(newDate).format('L');
-    setDate(newDate);
-    setTrackDate(formatDate);
-    setDateData(databaseDate);
-    hideDatePicker();
-  };
 
   const getTracker = async () => {
     let parsedResult;
@@ -72,11 +55,11 @@ function Tracker({ navigation }) {
     };
     asyncWrap();
 
-    const onLoadDate = moment(date).format('L');
-    setDateData(onLoadDate);
-    const savedDate = tracker[indexExists(tracker, onLoadDate)];
+    const selectedDate = moment(date).format('L');
+    setDateData(selectedDate);
+    const savedDate = tracker[indexExists(tracker, selectedDate)];
     if (!savedDate) {
-      addDate(onLoadDate);
+      addDate(selectedDate);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -106,49 +89,26 @@ function Tracker({ navigation }) {
     >
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <View style={{ justifyContent: 'space-between', flex: 1 }}>
-          <View style={{ alignItems: 'center' }}>
-            <View style={{ flexDirection: 'row' }}>
-              <Text h4 onPress={showDatePicker}>{`${trackDate}`}</Text>
-              <Ionicons
-                name="chevron-down-circle"
-                size={24}
-                color="white"
-                onPress={showDatePicker}
-              />
-            </View>
-            <DateTimePickerModal
-              isVisible={isDatePickerVisible}
-              mode="date"
-              date={date}
-              display="inline"
-              onConfirm={handleConfirm}
-              onCancel={hideDatePicker}
-            />
-          </View>
+          <Calendar
+            isDatePickerVisible={isDatePickerVisible}
+            setDatePickerVisibility={setDatePickerVisibility}
+            setDateData={setDateData}
+            date={date}
+            setDate={setDate}
+          />
           <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
-          <View style={{ flex: 5, margin: '2%', width: '100%' }}>
-            {tracker[currentIndex]
-              ? tracker[currentIndex].meals.map((item, index) => (
-                  <MealItem
-                    mealNumber={index + 1}
-                    mealName={item.mealName}
-                    key={item.mealName}
-                    mealTime={item.mealTime}
-                    foodItems={item.foodItems}
-                    navigation={navigation}
-                    dayIndex={currentIndex}
-                  />
-                ))
-              : null}
-          </View>
-
+          <Meals tracker={tracker} currentIndex={currentIndex} navigation={navigation} />
           <View style={{ width: '100%', alignItems: 'flex-end' }}>
             <FAB
               icon={<Ionicons name="add" size={24} color="black" />}
               size="medium"
               color="white"
               style={{ marginRight: '2%', marginBottom: '2%' }}
-              onPress={() => navigation.navigate('AddMeal', { dateToAddTo: dateData })}
+              onPress={() =>
+                navigation.navigate('AddMeal', {
+                  dateToAddTo: dateData,
+                })
+              }
             />
           </View>
         </View>
