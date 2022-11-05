@@ -27,11 +27,6 @@ export default function Calendar({
     setDate(newDate);
     setTrackDate(formatDate);
     setDateData(databaseDate);
-    state.updateMacros(tracker, currentIndex);
-    setProtein(tracker[currentIndex].protein);
-    setCarbs(tracker[currentIndex].carbs);
-    setFats(tracker[currentIndex].fats);
-    setCalories(tracker[currentIndex].calories);
     hideDatePicker();
   };
 

@@ -8,6 +8,7 @@ import useTrackerStore from '../../state/TrackerStore';
 function AddMeal({ navigation, route }) {
   const { dateToAddTo } = route.params;
   const state = useTrackerStore();
+  const { addDate } = state;
   const addNewMeal = state.addMeal;
 
   return (
@@ -16,6 +17,7 @@ function AddMeal({ navigation, route }) {
         <Formik
           initialValues={{ mealName: '', mealTime: '' }}
           onSubmit={(values) => {
+            addDate(dateToAddTo);
             // eslint-disable-next-line no-param-reassign
             values.foodItems = [];
             addNewMeal(values, dateToAddTo);
