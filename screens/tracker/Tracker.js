@@ -52,6 +52,12 @@ function Tracker({ navigation }) {
     useCallback(() =>
       // Do something when the screen is focused
       {
+        const selectedDate = moment(date).format('L');
+        setDateData(selectedDate);
+        const savedDate = tracker[indexExists(tracker, selectedDate)];
+        if (!savedDate) {
+          addDate(selectedDate);
+        }
         if (tracker[currentIndex]) {
           state.updateMacros(tracker, currentIndex);
           setProtein(tracker[currentIndex].protein);
