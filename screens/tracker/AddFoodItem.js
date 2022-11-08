@@ -6,6 +6,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'axios';
 import AddManually from './AddManually';
 import FoodScanner from '../foodScanner/FoodScanner';
+import useTrackerStore from '../../state/TrackerStore';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,11 +23,35 @@ const styles = StyleSheet.create({
   },
 });
 
-function Item({ name, upc }) {
-  // Protein: {protein[0].value} {protein[0].unitName}
-  // Carbohydrate: { carbs[0].value } { carbs[0].unitName }
+function Item({ name, upc, onPress, nutrients }) {
+  const values = {};
+  // const [values, setValues] = useState({
+  //   foodName: '',
+  //   calories: 0,
+  //   fatGrams: 0,
+  //   carbGrams: 0,
+  //   proteinGrams: 0,
+  // });
+  const proteinResults = nutrients.filter((obj) => obj.name === 'protein');
+  if (proteinResults.length > 0) {
+    Object.assign(values, { protein: proteinResults[0].value });
+    console.log(values);
+  }
+
+  const carbResults = nutrients.filter((obj) => obj.name === 'carbohydrate,bydifference');
+  if (carbResults.length > 0) {
+    console.log(carbResults[0].value);
+  }
+  const fatResults = nutrients.filter((obj) => obj.name === 'totallipid(fat)');
+  if (fatResults.length > 0) {
+    console.log(fatResults[0].value);
+  }
+  const caloriesResults = nutrients.filter((obj) => obj.name === 'energy');
+  if (caloriesResults.length > 0) {
+    console.log(caloriesResults[0].value);
+  }
   return (
-    <Button style={styles.item}>
+    <Button style={styles.item} onPress={onPress}>
       <Text style={styles.title}>
         Name: {name} UPC: {upc}
       </Text>
@@ -35,6 +60,7 @@ function Item({ name, upc }) {
 }
 
 export default function AddFoodItem({ route, navigation }) {
+  const state = useTrackerStore();
   const { dayIndex, mealName } = route.params;
   const [search, setSearch] = useState('');
   const [manual, setManual] = useState(false);
@@ -72,6 +98,11 @@ export default function AddFoodItem({ route, navigation }) {
     searchData(search);
   };
 
+  const addNewFood = (foodValues) => {
+    // state.addFood(foodValues, dayIndex, mealName);
+    navigation.navigate('TrackerHome');
+  };
+
   // eslint-disable-next-line consistent-return
   const renderItem = ({ item }) => {
     // when no input, show all
@@ -81,7 +112,22 @@ export default function AddFoodItem({ route, navigation }) {
 
     // filter of the name
     if (item.description.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))) {
-      return <Item name={item.description} upc={item.gtinUpc} />;
+      const nutrients = [];
+      item.foodNutrients.map((nutrient) =>
+        nutrients.push({
+          name: nutrient.nutrientName.toLowerCase().trim().replace(/\s/g, ''),
+          value: nutrient.value,
+          unitName: nutrient.unitName,
+        })
+      );
+      return (
+        <Item
+          name={item.description}
+          upc={item.gtinUpc}
+          onPress={addNewFood}
+          nutrients={nutrients}
+        />
+      );
     }
   };
 

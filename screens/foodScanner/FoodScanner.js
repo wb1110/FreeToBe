@@ -46,6 +46,7 @@ export default function FoodScanner({ scanData, modalOpen, setModalOpen }) {
   }, []);
 
   const handleBarCodeScanned = ({ type, data }) => {
+    console.log(type);
     setScanned(true);
     scanData(data);
   };
