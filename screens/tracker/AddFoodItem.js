@@ -25,33 +25,35 @@ const styles = StyleSheet.create({
 
 function Item({ name, upc, onPress, nutrients }) {
   const values = {};
-  // const [values, setValues] = useState({
-  //   foodName: '',
-  //   calories: 0,
-  //   fatGrams: 0,
-  //   carbGrams: 0,
-  //   proteinGrams: 0,
-  // });
-  const proteinResults = nutrients.filter((obj) => obj.name === 'protein');
-  if (proteinResults.length > 0) {
-    Object.assign(values, { protein: proteinResults[0].value });
-    console.log(values);
-  }
+  const setValues = () => {
+    Object.assign(values, { foodName: name });
+    const proteinResults = nutrients.filter((obj) => obj.name === 'protein');
+    if (proteinResults.length > 0) {
+      Object.assign(values, { proteinGrams: proteinResults[0].value });
+    }
 
-  const carbResults = nutrients.filter((obj) => obj.name === 'carbohydrate,bydifference');
-  if (carbResults.length > 0) {
-    console.log(carbResults[0].value);
-  }
-  const fatResults = nutrients.filter((obj) => obj.name === 'totallipid(fat)');
-  if (fatResults.length > 0) {
-    console.log(fatResults[0].value);
-  }
-  const caloriesResults = nutrients.filter((obj) => obj.name === 'energy');
-  if (caloriesResults.length > 0) {
-    console.log(caloriesResults[0].value);
-  }
+    const carbResults = nutrients.filter((obj) => obj.name === 'carbohydrate,bydifference');
+    if (carbResults.length > 0) {
+      Object.assign(values, { carbGrams: carbResults[0].value });
+    }
+    const fatResults = nutrients.filter((obj) => obj.name === 'totallipid(fat)');
+    if (fatResults.length > 0) {
+      Object.assign(values, { fatGrams: fatResults[0].value });
+    }
+    const caloriesResults = nutrients.filter((obj) => obj.name === 'energy');
+    if (caloriesResults.length > 0) {
+      Object.assign(values, { calories: caloriesResults[0].value });
+    }
+  };
+
   return (
-    <Button style={styles.item} onPress={onPress}>
+    <Button
+      style={styles.item}
+      onPress={() => {
+        setValues();
+        onPress(values);
+      }}
+    >
       <Text style={styles.title}>
         Name: {name} UPC: {upc}
       </Text>
@@ -99,7 +101,7 @@ export default function AddFoodItem({ route, navigation }) {
   };
 
   const addNewFood = (foodValues) => {
-    // state.addFood(foodValues, dayIndex, mealName);
+    state.addFood(foodValues, dayIndex, mealName);
     navigation.navigate('TrackerHome');
   };
 
