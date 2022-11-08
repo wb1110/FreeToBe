@@ -1,17 +1,41 @@
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { Button, SearchBar, Text } from '@rneui/themed';
 import { useState } from 'react';
-import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
+import { FlatList, Keyboard, TouchableWithoutFeedback, View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'axios';
 import AddManually from './AddManually';
 import FoodScanner from '../foodScanner/FoodScanner';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 0,
+  },
+  item: {
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 16,
+  },
+});
+
+function Item({ title }) {
+  return (
+    <Button style={styles.item}>
+      <Text style={styles.title}>Name: {title}</Text>
+    </Button>
+  );
+}
 
 export default function AddFoodItem({ route, navigation }) {
   const { dayIndex, mealName } = route.params;
   const [search, setSearch] = useState('');
   const [manual, setManual] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [data, setData] = useState();
 
   const updateSearch = (searchValue) => {
     setSearch(searchValue);
@@ -24,12 +48,15 @@ export default function AddFoodItem({ route, navigation }) {
       )
       .then((res) => {
         // console.log(res.data.labelNutrients);
-        res.data.foods.map((item) => console.log(item.description));
+        // res.data.foods.map((item) => console.log(item.description));
+        setData(res.data.foods);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  const renderItem = ({ item }) => <Item title={item.description} />;
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -79,6 +106,7 @@ export default function AddFoodItem({ route, navigation }) {
         {manual ? (
           <AddManually mealName={mealName} dayIndex={dayIndex} navigation={navigation} />
         ) : null}
+        <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} />
         <FoodScanner setSearch={setSearch} modalOpen={modalOpen} setModalOpen={setModalOpen} />
       </View>
     </TouchableWithoutFeedback>
