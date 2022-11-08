@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   item: {
     padding: 20,
-    marginVertical: 8,
+    marginVertical: 0,
     marginHorizontal: 16,
   },
   title: {
@@ -22,13 +22,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function Item({ name, upc, nutrients }) {
-  const proteinFilter = 'Protein';
-  const protein = nutrients.filter((val) => val.nutrientName.includes(proteinFilter));
-  console.log(protein[0].value);
-  const carbFilter = 'Carbohydrate';
-  const carbs = nutrients.filter((val) => val.nutrientName.includes(carbFilter));
-  console.log(carbs[0].value);
+function Item({ name, upc }) {
   // Protein: {protein[0].value} {protein[0].unitName}
   // Carbohydrate: { carbs[0].value } { carbs[0].unitName }
   return (
@@ -45,7 +39,7 @@ export default function AddFoodItem({ route, navigation }) {
   const [search, setSearch] = useState('');
   const [manual, setManual] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
 
   const getData = (value) => {
     axios
@@ -53,8 +47,6 @@ export default function AddFoodItem({ route, navigation }) {
         `https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&pageSize=10&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
       )
       .then((res) => {
-        // console.log(res.data.labelNutrients);
-        // res.data.foods.map((item) => console.log(item.description));
         setData(res.data.foods);
       })
       .catch((err) => {
@@ -77,10 +69,6 @@ export default function AddFoodItem({ route, navigation }) {
     if (item.description.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))) {
       return <Item name={item.description} upc={item.gtinUpc} nutrients={item.foodNutrients} />;
     }
-    // filter of the UPC
-    // if (item.gtinUpc.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))) {
-    //   return <Item name={item.description} upc={item.gtinUpc} />;
-    // }
   };
 
   return (
@@ -98,7 +86,6 @@ export default function AddFoodItem({ route, navigation }) {
               width: '100%',
             }}
           />
-          <Button onPress={() => getData()}>Test</Button>
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
               style={{
