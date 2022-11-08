@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function FoodScanner({ setSearch, modalOpen, setModalOpen }) {
+export default function FoodScanner({ scanData, modalOpen, setModalOpen }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -47,7 +47,7 @@ export default function FoodScanner({ setSearch, modalOpen, setModalOpen }) {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    setSearch(data);
+    scanData(data);
   };
 
   if (hasPermission === null) {

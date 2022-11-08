@@ -41,7 +41,20 @@ export default function AddFoodItem({ route, navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [data, setData] = useState([]);
 
-  const getData = (value) => {
+  const searchData = (value) => {
+    axios
+      .get(
+        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&pageSize=10&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
+      )
+      .then((res) => {
+        setData(res.data.foods);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const scanData = (value) => {
     axios
       .get(
         `https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&pageSize=10&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
@@ -56,7 +69,7 @@ export default function AddFoodItem({ route, navigation }) {
 
   const updateSearch = (searchValue) => {
     setSearch(searchValue);
-    getData(search);
+    searchData(search);
   };
 
   // eslint-disable-next-line consistent-return
@@ -65,9 +78,10 @@ export default function AddFoodItem({ route, navigation }) {
     if (search === '') {
       return null;
     }
+
     // filter of the name
     if (item.description.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))) {
-      return <Item name={item.description} upc={item.gtinUpc} nutrients={item.foodNutrients} />;
+      return <Item name={item.description} upc={item.gtinUpc} />;
     }
   };
 
@@ -119,7 +133,7 @@ export default function AddFoodItem({ route, navigation }) {
           <AddManually mealName={mealName} dayIndex={dayIndex} navigation={navigation} />
         ) : null}
         <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.fdcId} />
-        <FoodScanner setSearch={setSearch} modalOpen={modalOpen} setModalOpen={setModalOpen} />
+        <FoodScanner scanData={scanData} modalOpen={modalOpen} setModalOpen={setModalOpen} />
       </View>
     </TouchableWithoutFeedback>
   );
