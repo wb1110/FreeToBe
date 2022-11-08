@@ -22,7 +22,15 @@ const styles = StyleSheet.create({
   },
 });
 
-function Item({ name, upc }) {
+function Item({ name, upc, nutrients }) {
+  const proteinFilter = 'Protein';
+  const protein = nutrients.filter((val) => val.nutrientName.includes(proteinFilter));
+  console.log(protein[0].value);
+  const carbFilter = 'Carbohydrate';
+  const carbs = nutrients.filter((val) => val.nutrientName.includes(carbFilter));
+  console.log(carbs[0].value);
+  // Protein: {protein[0].value} {protein[0].unitName}
+  // Carbohydrate: { carbs[0].value } { carbs[0].unitName }
   return (
     <Button style={styles.item}>
       <Text style={styles.title}>
@@ -47,7 +55,6 @@ export default function AddFoodItem({ route, navigation }) {
       .then((res) => {
         // console.log(res.data.labelNutrients);
         // res.data.foods.map((item) => console.log(item.description));
-        console.log(res.data.foods[0].foodNutrients);
         setData(res.data.foods);
       })
       .catch((err) => {
@@ -62,14 +69,13 @@ export default function AddFoodItem({ route, navigation }) {
 
   // eslint-disable-next-line consistent-return
   const renderItem = ({ item }) => {
-    <Item title={item.description} />;
     // when no input, show all
     if (search === '') {
       return null;
     }
     // filter of the name
     if (item.description.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))) {
-      return <Item name={item.description} upc={item.gtinUpc} />;
+      return <Item name={item.description} upc={item.gtinUpc} nutrients={item.foodNutrients} />;
     }
     // filter of the UPC
     // if (item.gtinUpc.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))) {
