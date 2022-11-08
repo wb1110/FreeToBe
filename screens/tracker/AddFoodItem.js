@@ -22,10 +22,12 @@ const styles = StyleSheet.create({
   },
 });
 
-function Item({ title }) {
+function Item({ name, upc }) {
   return (
     <Button style={styles.item}>
-      <Text style={styles.title}>Name: {title}</Text>
+      <Text style={styles.title}>
+        Name: {name} UPC: {upc}
+      </Text>
     </Button>
   );
 }
@@ -37,18 +39,15 @@ export default function AddFoodItem({ route, navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [data, setData] = useState();
 
-  const updateSearch = (searchValue) => {
-    setSearch(searchValue);
-  };
-
-  const getData = () => {
+  const getData = (value) => {
     axios
       .get(
-        'https://api.nal.usda.gov/fdc/v1/foods/search?query=609207617761&pageSize=10&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ'
+        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&pageSize=10&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
       )
       .then((res) => {
         // console.log(res.data.labelNutrients);
         // res.data.foods.map((item) => console.log(item.description));
+        console.log(res.data.foods[0].foodNutrients);
         setData(res.data.foods);
       })
       .catch((err) => {
@@ -56,7 +55,27 @@ export default function AddFoodItem({ route, navigation }) {
       });
   };
 
-  const renderItem = ({ item }) => <Item title={item.description} />;
+  const updateSearch = (searchValue) => {
+    setSearch(searchValue);
+    getData(search);
+  };
+
+  // eslint-disable-next-line consistent-return
+  const renderItem = ({ item }) => {
+    <Item title={item.description} />;
+    // when no input, show all
+    if (search === '') {
+      return null;
+    }
+    // filter of the name
+    if (item.description.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))) {
+      return <Item name={item.description} upc={item.gtinUpc} />;
+    }
+    // filter of the UPC
+    // if (item.gtinUpc.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))) {
+    //   return <Item name={item.description} upc={item.gtinUpc} />;
+    // }
+  };
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -106,7 +125,7 @@ export default function AddFoodItem({ route, navigation }) {
         {manual ? (
           <AddManually mealName={mealName} dayIndex={dayIndex} navigation={navigation} />
         ) : null}
-        <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} />
+        <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.fdcId} />
         <FoodScanner setSearch={setSearch} modalOpen={modalOpen} setModalOpen={setModalOpen} />
       </View>
     </TouchableWithoutFeedback>
