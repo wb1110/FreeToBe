@@ -1,12 +1,12 @@
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { Button, SearchBar, Text } from '@rneui/themed';
-import { useState } from 'react';
-import { FlatList, Keyboard, TouchableWithoutFeedback, View, StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import axios from 'axios';
-import AddManually from './AddManually';
-import FoodScanner from '../foodScanner/FoodScanner';
+import { useState } from 'react';
+import { FlatList, Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import useTrackerStore from '../../state/TrackerStore';
+import FoodScanner from '../foodScanner/FoodScanner';
+import AddManually from './AddManually';
 
 const styles = StyleSheet.create({
   container: {
@@ -72,7 +72,7 @@ export default function AddFoodItem({ route, navigation }) {
   const searchData = (value) => {
     axios
       .get(
-        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&pageSize=10&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
+        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&pageSize=50&sortBy=lowercaseDescription.keyword&sortOrder=asc&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
       )
       .then((res) => {
         setData(res.data.foods);

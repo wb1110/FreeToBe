@@ -44,7 +44,6 @@ export default function MealItem({
         padding: '2%',
         marginTop: '2%',
         width: '95%',
-        flexDirection: 'row',
         justifyContent: 'space-between',
       }}
     >
@@ -54,32 +53,34 @@ export default function MealItem({
             Meal {mealNumber} {mealName} {mealTime}
           </Text>
         </View>
-        <View>
-          <View style={{ flexDirection: 'row' }}>
-            {foodItems
-              ? foodItems.map((item) => (
-                  <Button
-                    key={item.foodName}
-                    title={item.foodName}
-                    onPress={() =>
-                      navigation.navigate('EditManually', { mealName, dayIndex, item })
-                    }
-                  />
-                ))
-              : null}
-          </View>
-          <Button
-            titleStyle={{
-              color: theme.colors.primary,
-            }}
-            color={theme.colors.white}
-            onPress={() => navigation.navigate('AddFoodItem', { mealName, dayIndex })}
-            title="Add Food"
-            size="sm"
-          />
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+          {foodItems
+            ? foodItems.map((item) => (
+                <Button
+                  key={item.foodName}
+                  title={item.foodName}
+                  titleStyle={{ textAlign: 'left' }}
+                  onPress={() => navigation.navigate('EditManually', { mealName, dayIndex, item })}
+                />
+              ))
+            : null}
         </View>
       </View>
-      <View style={{ justifyContent: 'flex-end' }}>
+      <View
+        style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'flex-end' }}
+      >
+        <Button
+          titleStyle={{
+            color: theme.colors.primary,
+          }}
+          containerStyle={{
+            width: '25%',
+          }}
+          color={theme.colors.white}
+          onPress={() => navigation.navigate('AddFoodItem', { mealName, dayIndex })}
+          title="Add Food"
+          size="sm"
+        />
         <FontAwesome5
           name="ellipsis-h"
           size={16}
