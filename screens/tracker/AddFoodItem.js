@@ -1,63 +1,70 @@
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import { Button, SearchBar, Text } from '@rneui/themed';
+import { SearchBar, Text, useTheme } from '@rneui/themed';
 import axios from 'axios';
 import { useState } from 'react';
-import { FlatList, Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { FlatList, Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import AddButton from '../../components/Buttons/AddButton';
 import useTrackerStore from '../../state/TrackerStore';
 import FoodScanner from '../foodScanner/FoodScanner';
 import AddManually from './AddManually';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 0,
-  },
-  item: {
-    padding: 20,
-    marginVertical: 0,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 16,
-  },
-});
-
-function Item({ name, upc, onPress, nutrients }) {
+function Item({ name, onPress, nutrients }) {
+  const { theme } = useTheme();
   const values = {};
+  const proteinResults = nutrients.filter((obj) => obj.name === 'protein');
+  const carbResults = nutrients.filter((obj) => obj.name === 'carbohydrate,bydifference');
+  const fatResults = nutrients.filter((obj) => obj.name === 'totallipid(fat)');
+  const caloriesResults = nutrients.filter((obj) => obj.name === 'energy');
   const setValues = () => {
     Object.assign(values, { foodName: name });
-    const proteinResults = nutrients.filter((obj) => obj.name === 'protein');
     if (proteinResults.length > 0) {
       Object.assign(values, { proteinGrams: proteinResults[0].value });
     }
 
-    const carbResults = nutrients.filter((obj) => obj.name === 'carbohydrate,bydifference');
     if (carbResults.length > 0) {
       Object.assign(values, { carbGrams: carbResults[0].value });
     }
-    const fatResults = nutrients.filter((obj) => obj.name === 'totallipid(fat)');
     if (fatResults.length > 0) {
       Object.assign(values, { fatGrams: fatResults[0].value });
     }
-    const caloriesResults = nutrients.filter((obj) => obj.name === 'energy');
     if (caloriesResults.length > 0) {
       Object.assign(values, { calories: caloriesResults[0].value });
     }
   };
 
   return (
-    <Button
-      style={styles.item}
+    <View
+      style={{
+        backgroundColor: theme.colors.primary,
+        padding: '1%',
+        marginVertical: '1%',
+        marginHorizontal: 16,
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
       onPress={() => {
         setValues();
         onPress(values);
       }}
     >
-      <Text style={styles.title}>
-        Name: {name} UPC: {upc}
-      </Text>
-    </Button>
+      <View style={{ width: '90%' }}>
+        <Text>{name}</Text>
+        {caloriesResults.length > 0 ? (
+          <Text>{caloriesResults[0].value} cal, </Text>
+        ) : (
+          <Text>No cal info, </Text>
+        )}
+      </View>
+      <AddButton
+        onPress={() => {
+          setValues();
+          onPress(values);
+        }}
+      />
+    </View>
   );
 }
 
