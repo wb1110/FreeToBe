@@ -2,6 +2,8 @@ import { Input } from '@rneui/themed';
 import { Formik } from 'formik';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import * as Yup from 'yup';
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 import StandardButton from '../../components/Buttons/StandardButton';
 import useTrackerStore from '../../state/TrackerStore';
 
@@ -17,6 +19,7 @@ export default function AddManually({ mealName, dayIndex, navigation }) {
       <View>
         <Formik
           initialValues={{
+            foodID: uuidv4(),
             foodName: '',
             calories: '',
             fatGrams: '',

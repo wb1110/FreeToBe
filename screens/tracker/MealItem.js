@@ -57,7 +57,7 @@ export default function MealItem({
           {foodItems
             ? foodItems.map((item) => (
                 <TouchableOpacity
-                  key={item.foodName}
+                  key={item.foodID}
                   style={{ marginBottom: '2%' }}
                   onPress={() => navigation.navigate('EditManually', { mealName, dayIndex, item })}
                 >

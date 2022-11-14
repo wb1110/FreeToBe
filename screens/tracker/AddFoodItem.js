@@ -3,6 +3,8 @@ import { SearchBar, Text, useTheme } from '@rneui/themed';
 import axios from 'axios';
 import { useState } from 'react';
 import { FlatList, Keyboard, TouchableWithoutFeedback, View } from 'react-native';
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AddButton from '../../components/Buttons/AddButton';
 import useTrackerStore from '../../state/TrackerStore';
@@ -17,7 +19,7 @@ function Item({ name, onPress, nutrients }) {
   const fatResults = nutrients.filter((obj) => obj.name === 'totallipid(fat)');
   const caloriesResults = nutrients.filter((obj) => obj.name === 'energy');
   const setValues = () => {
-    Object.assign(values, { foodName: name });
+    Object.assign(values, { foodName: name, foodID: uuidv4() });
     if (proteinResults.length > 0) {
       Object.assign(values, { proteinGrams: proteinResults[0].value });
     }
@@ -118,7 +120,6 @@ export default function AddFoodItem({ route, navigation }) {
     if (search === '') {
       return null;
     }
-
     // filter of the name
     if (item.description.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))) {
       const nutrients = [];

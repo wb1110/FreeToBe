@@ -1,6 +1,8 @@
 import { Input } from '@rneui/themed';
 import { Formik } from 'formik';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import useTrackerStore from '../../state/TrackerStore';
@@ -15,7 +17,7 @@ function AddMeal({ navigation, route }) {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container>
         <Formik
-          initialValues={{ mealName: '', mealTime: '' }}
+          initialValues={{ mealName: '', mealTime: '', mealID: uuidv4() }}
           onSubmit={(values) => {
             addDate(dateToAddTo);
             // eslint-disable-next-line no-param-reassign

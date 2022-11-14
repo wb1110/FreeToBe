@@ -9,7 +9,7 @@ export default function Meals({ tracker, currentIndex, navigation }) {
             <MealItem
               mealNumber={index + 1}
               mealName={item.mealName}
-              key={item.mealName}
+              key={item.mealID}
               mealTime={item.mealTime}
               foodItems={item.foodItems}
               navigation={navigation}
