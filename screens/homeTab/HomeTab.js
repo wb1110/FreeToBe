@@ -2,21 +2,27 @@ import { SafeAreaView, View } from 'react-native';
 import { Text } from '@rneui/themed';
 import useStore from '../../state/Store';
 import MacroPie from './MacroPie';
+import MineralsPie from './MineralsPie';
 
-function Metabolic() {
+function HomeTab() {
   const state = useStore();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* Macros and Minerals Visuals */}
       <View
-        style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '2%', flex: 1 }}
+        style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '2%', flex: 2 }}
       >
         <View style={{ flex: 1, alignItems: 'center' }}>
           <Text>Macros</Text>
-          <MacroPie TDEE={state.assessment.tdee} />
+          {state.assessment ? (
+            <MacroPie TDEE={state.assessment.tdee} />
+          ) : (
+            <Text>Missing Assessment Data</Text>
+          )}
         </View>
         <View style={{ flex: 1, alignItems: 'center' }}>
           <Text>Minerals</Text>
+          <MineralsPie />
         </View>
       </View>
       <View style={{ alignItems: 'center', flex: 1 }}>
@@ -37,4 +43,4 @@ function Metabolic() {
   );
 }
 
-export default Metabolic;
+export default HomeTab;

@@ -2,8 +2,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@rneui/themed';
-import Metabolic from './metabolic/Metabolic';
-import Profile from './profile/Profile';
+import HomeTab from './homeTab/HomeTab';
+import MetabolicJournal from './metabolicJournal/MetabolicJournal';
 import TrackerStackScreen from './tracker/TrackerStackScreen';
 
 export default function UserHome() {
@@ -26,8 +26,10 @@ export default function UserHome() {
             iconName = 'analytics';
           } else if (route.name === 'Profile') {
             iconName = 'clipboard';
-          } else if (route.name === 'Metabolic') {
+          } else if (route.name === 'Metabolic Journal') {
             iconName = 'fitness';
+          } else if (route.name === 'Home') {
+            iconName = 'home-outline';
           }
 
           // You can return any component that you like here!
@@ -38,8 +40,8 @@ export default function UserHome() {
       })}
     >
       <Tab.Screen name="Tracker" component={TrackerStackScreen} />
-      <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="Metabolic" component={Metabolic} />
+      <Tab.Screen name="Metabolic Journal" component={MetabolicJournal} />
+      <Tab.Screen name="Home" component={HomeTab} />
     </Tab.Navigator>
   );
 }

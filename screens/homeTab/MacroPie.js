@@ -1,5 +1,5 @@
 import { Text, useTheme } from '@rneui/themed';
-import { View, SafeAreaView } from 'react-native';
+import { View } from 'react-native';
 import Svg from 'react-native-svg';
 import { VictoryContainer, VictoryLabel, VictoryPie } from 'victory-native';
 
@@ -32,7 +32,7 @@ export default function MacroPie({ TDEE }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <Svg width="190" height="300" viewBox="0 0 190 300">
+      <Svg width="190" height="200" viewBox="0 0 190 300">
         <VictoryPie
           width={190}
           height={190}
@@ -54,33 +54,17 @@ export default function MacroPie({ TDEE }) {
         />
         <VictoryLabel
           textAnchor="middle"
-          style={{ fontSize: 16, fill: theme.colors.white }}
+          style={{ fontSize: 32, fill: theme.colors.white }}
           x={95}
-          y={95}
+          y={140}
           text={`${TDEE} cal`}
         />
-        <VictoryLabel
-          textAnchor="middle"
-          style={{ fontSize: 16, fill: theme.colors.white }}
-          x={45}
-          y={200}
-          text={`Proteins: ${protein}`}
-        />
-        <VictoryLabel
-          textAnchor="middle"
-          style={{ fontSize: 16, fill: theme.colors.white }}
-          x={66}
-          y={220}
-          text={`Carbohydrates: ${carb}`}
-        />
-        <VictoryLabel
-          textAnchor="middle"
-          style={{ fontSize: 16, fill: theme.colors.white }}
-          x={30}
-          y={240}
-          text={`Fats: ${fat}`}
-        />
       </Svg>
+      <View style={{ alignItems: 'center' }}>
+        <Text>Proteins:{protein}</Text>
+        <Text>Carbohydrates:{carb}</Text>
+        <Text>Fats:{fat}</Text>
+      </View>
     </View>
   );
 }
