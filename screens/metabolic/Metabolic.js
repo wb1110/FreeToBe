@@ -1,4 +1,5 @@
-import { SafeAreaView, Text, View } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
+import { Text } from '@rneui/themed';
 import useStore from '../../state/Store';
 import MacroPie from './MacroPie';
 
@@ -10,7 +11,7 @@ function Metabolic() {
       <View
         style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '2%', flex: 1 }}
       >
-        <View style={{ flex: 1, alignItems: 'center', borderWidth: 1 }}>
+        <View style={{ flex: 1, alignItems: 'center' }}>
           <Text>Macros</Text>
           <MacroPie TDEE={state.assessment.tdee} />
         </View>

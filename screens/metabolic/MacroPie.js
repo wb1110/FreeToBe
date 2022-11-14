@@ -31,10 +31,11 @@ export default function MacroPie({ TDEE }) {
   macroOptions(1);
 
   return (
-    <View>
-      <Svg width="100%" height="100%">
+    <View style={{ flex: 1 }}>
+      <Svg width="190" height="300" viewBox="0 0 190 300">
         <VictoryPie
-          width={150}
+          width={190}
+          height={190}
           style={{
             labels: {
               fill: theme.colors.white,
@@ -42,11 +43,11 @@ export default function MacroPie({ TDEE }) {
           }}
           labels={() => null}
           colorScale={['#519085', '#E9E0AC', '#88CED2']}
-          containerComponent={<VictoryContainer width={120} style={{ borderWidth: 1 }} />}
-          innerRadius={50}
+          containerComponent={<VictoryContainer width={190} height={300} />}
+          innerRadius={80}
           // animate={{ duration: 1000 }}
           data={[
-            { x: protein, y: protein, label: null },
+            { x: protein, y: protein },
             { x: `Carbohydrates ${carb}g`, y: carb },
             { x: `Fats ${fat}g`, y: fat },
           ]}
@@ -54,29 +55,29 @@ export default function MacroPie({ TDEE }) {
         <VictoryLabel
           textAnchor="middle"
           style={{ fontSize: 16, fill: theme.colors.white }}
-          x={0}
-          y={0}
+          x={95}
+          y={95}
           text={`${TDEE} cal`}
         />
         <VictoryLabel
           textAnchor="middle"
-          style={{ fontSize: 36, fill: theme.colors.white }}
-          x={300}
-          y={400}
+          style={{ fontSize: 16, fill: theme.colors.white }}
+          x={45}
+          y={200}
           text={`Proteins: ${protein}`}
         />
         <VictoryLabel
           textAnchor="middle"
-          style={{ fontSize: 36, fill: theme.colors.white }}
-          x={300}
-          y={420}
+          style={{ fontSize: 16, fill: theme.colors.white }}
+          x={66}
+          y={220}
           text={`Carbohydrates: ${carb}`}
         />
         <VictoryLabel
           textAnchor="middle"
-          style={{ fontSize: 36, fill: theme.colors.white }}
-          x={300}
-          y={150}
+          style={{ fontSize: 16, fill: theme.colors.white }}
+          x={30}
+          y={240}
           text={`Fats: ${fat}`}
         />
       </Svg>
