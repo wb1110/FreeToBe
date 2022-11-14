@@ -1,11 +1,12 @@
 import { SafeAreaView, View } from 'react-native';
-import { Text } from '@rneui/themed';
+import { Text, useTheme } from '@rneui/themed';
 import useStore from '../../state/Store';
 import MacroPie from './MacroPie';
 import MineralsPie from './MineralsPie';
 
 function HomeTab() {
   const state = useStore();
+  const { theme } = useTheme();
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* Macros and Minerals Visuals */}
@@ -26,15 +27,21 @@ function HomeTab() {
         </View>
       </View>
       <View style={{ alignItems: 'center', flex: 1 }}>
-        <Text>What helps fuel our bodies?</Text>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <View style={{ borderWidth: '1%', flex: 1 }}>
+        <Text h4>What helps fuel our bodies?</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around', flex: 1 }}>
+          <View
+            style={{ flex: 1, backgroundColor: theme.colors.primary, margin: '2%', padding: '2%' }}
+          >
             <Text>Proteins</Text>
           </View>
-          <View style={{ borderWidth: '1%', flex: 1 }}>
+          <View
+            style={{ flex: 1, backgroundColor: theme.colors.primary, margin: '2%', padding: '2%' }}
+          >
             <Text>Fats</Text>
           </View>
-          <View style={{ borderWidth: '1%', flex: 1 }}>
+          <View
+            style={{ flex: 1, backgroundColor: theme.colors.primary, margin: '2%', padding: '2%' }}
+          >
             <Text>Carbs</Text>
           </View>
         </View>
