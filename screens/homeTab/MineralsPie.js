@@ -1,7 +1,7 @@
 import { Text, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import Svg from 'react-native-svg';
-import { VictoryContainer, VictoryPie, VictoryTooltip } from 'victory-native';
+import { VictoryContainer, VictoryPie } from 'victory-native';
 
 export default function MineralsPie() {
   const { theme } = useTheme();

@@ -15,7 +15,7 @@ function HomeTab() {
       >
         <View style={{ flex: 1, alignItems: 'center' }}>
           <Text>Macros</Text>
-          {state.assessment ? (
+          {state.assessment.tdee ? (
             <MacroPie TDEE={state.assessment.tdee} />
           ) : (
             <Text>Missing Assessment Data</Text>
