@@ -56,12 +56,13 @@ export default function MealItem({
         <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
           {foodItems
             ? foodItems.map((item) => (
-                <Button
+                <TouchableOpacity
                   key={item.foodName}
-                  title={item.foodName}
-                  titleStyle={{ textAlign: 'left' }}
+                  style={{ marginBottom: '2%' }}
                   onPress={() => navigation.navigate('EditManually', { mealName, dayIndex, item })}
-                />
+                >
+                  <Text>{item.foodName}</Text>
+                </TouchableOpacity>
               ))
             : null}
         </View>
