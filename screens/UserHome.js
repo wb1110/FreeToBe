@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@rneui/themed';
 import HomeTab from './homeTab/HomeTab';
 import MetabolicJournal from './metabolicJournal/MetabolicJournal';
+import Settings from './settings/Settings';
 import TrackerStackScreen from './tracker/TrackerStackScreen';
 
 export default function UserHome() {
@@ -30,6 +31,8 @@ export default function UserHome() {
             iconName = 'fitness';
           } else if (route.name === 'Home') {
             iconName = 'home-outline';
+          } else if (route.name === 'Settings') {
+            iconName = 'settings-outline';
           }
 
           // You can return any component that you like here!
@@ -42,6 +45,7 @@ export default function UserHome() {
       <Tab.Screen name="Tracker" component={TrackerStackScreen} />
       <Tab.Screen name="Metabolic Journal" component={MetabolicJournal} />
       <Tab.Screen name="Home" component={HomeTab} />
+      <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
 }
