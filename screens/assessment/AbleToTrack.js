@@ -35,7 +35,7 @@ function AbleToTrack({ navigation }) {
           title="Unable to track 3 days"
           onPress={() => {
             storeData(state.assessment);
-            navigation.navigate('UserHome', { screen: 'Profile' });
+            navigation.navigate('UserHome', { screen: 'Home' });
           }}
         />
         <LArrowButton onPress={() => navigation.goBack()} />
