@@ -55,9 +55,9 @@ function Item({ name, onPress, nutrients }) {
       <View style={{ width: '90%' }}>
         <Text>{name}</Text>
         {caloriesResults.length > 0 ? (
-          <Text>{caloriesResults[0].value} cal, </Text>
+          <Text>{caloriesResults[0].value} cal</Text>
         ) : (
-          <Text>No cal info, </Text>
+          <Text>No cal info</Text>
         )}
       </View>
       <AddButton
