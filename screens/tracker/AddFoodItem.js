@@ -16,7 +16,9 @@ function Item({ name, onPress, nutrients }) {
   const proteinResults = nutrients.filter((obj) => obj.name === 'protein');
   const carbResults = nutrients.filter((obj) => obj.name === 'carbohydrate,bydifference');
   const fatResults = nutrients.filter((obj) => obj.name === 'totallipid(fat)');
-  const caloriesResults = nutrients.filter((obj) => obj.name === 'energy');
+  const caloriesResults = nutrients.filter((obj) =>
+    obj.name.toLowerCase().includes('energy'.toLowerCase())
+  );
   const calciumResults = nutrients.filter((obj) => obj.name === 'calcium');
   const cholineResults = nutrients.filter((obj) => obj.name === 'choline');
   const copperResults = nutrients.filter((obj) => obj.name === 'copper');
