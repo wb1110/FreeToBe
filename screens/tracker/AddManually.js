@@ -11,7 +11,8 @@ const foodSchema = Yup.object().shape({
   foodName: Yup.string().required('Required'),
 });
 
-export default function AddManually({ mealName, dayIndex, navigation }) {
+export default function AddManually({ route, navigation }) {
+  const { mealName, dayIndex } = route.params;
   const state = useTrackerStore();
 
   return (
