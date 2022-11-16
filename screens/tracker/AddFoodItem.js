@@ -1,7 +1,7 @@
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { SearchBar, Text, useTheme } from '@rneui/themed';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FlatList, Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
@@ -78,18 +78,21 @@ export default function AddFoodItem({ route, navigation }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [data, setData] = useState([]);
 
-  const searchData = (value) => {
-    axios
-      .get(
-        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&pageSize=50&sortBy=lowercaseDescription.keyword&sortOrder=asc&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
-      )
-      .then((res) => {
-        setData(res.data.foods);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  useEffect(() => {
+    const searchData = setTimeout(() => {
+      axios
+        .get(
+          `https://api.nal.usda.gov/fdc/v1/foods/search?query=${search}&pageSize=50&sortBy=lowercaseDescription.keyword&sortOrder=asc&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
+        )
+        .then((res) => {
+          setData(res.data.foods);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, 2000);
+    return () => clearTimeout(searchData);
+  }, [search]);
 
   const scanData = (value) => {
     axios
@@ -106,7 +109,6 @@ export default function AddFoodItem({ route, navigation }) {
 
   const updateSearch = (searchValue) => {
     setSearch(searchValue);
-    searchData(search);
   };
 
   const addNewFood = (foodValues) => {
