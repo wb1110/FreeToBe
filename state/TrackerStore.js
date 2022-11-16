@@ -21,6 +21,17 @@ const useTrackerStore = create((set) => ({
   //   fat: 0,
   //   carbs: 0,
   //   calories: 0,
+  // calcium: 0,
+  // choline: 0,
+  // copper: 0,
+  // iodine: 0,
+  // iron: 0,
+  // magnesium: 0,
+  // phosphorous: 0,
+  // potassium: 0,
+  // selenium: 0,
+  // sodium: 0,
+  // zinc: 0,
   //   meals: [
   //     {
   //       mealName: '',
@@ -42,7 +53,25 @@ const useTrackerStore = create((set) => ({
     set(
       produce((state) => {
         const { tracker } = state;
-        tracker.push({ date, protein: 0, fats: 0, carbs: 0, calories: 0, meals: [] });
+        tracker.push({
+          date,
+          protein: 0,
+          fats: 0,
+          carbs: 0,
+          calories: 0,
+          calcium: 0,
+          choline: 0,
+          copper: 0,
+          iodine: 0,
+          iron: 0,
+          magnesium: 0,
+          phosphorous: 0,
+          potassium: 0,
+          selenium: 0,
+          sodium: 0,
+          zinc: 0,
+          meals: [],
+        });
       })
     ),
   updateMacros: (array, date) =>
