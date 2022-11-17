@@ -29,7 +29,7 @@ function Login({ navigation }) {
             <Input secureTextEntry="true" label="Password" />
             <StandardButton
               onPress={() => {
-                navigation.navigate('UserHome', { screen: 'Profile' });
+                navigation.navigate('UserHome', { screen: 'Home' });
                 getAssessment(state);
               }}
               title="Sign In"

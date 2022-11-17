@@ -13,72 +13,99 @@ import FoodScanner from '../foodScanner/FoodScanner';
 function Item({ name, onPress, nutrients }) {
   const { theme } = useTheme();
   const values = {};
-  const proteinResults = nutrients.filter((obj) => obj.name === 'protein');
-  const carbResults = nutrients.filter((obj) => obj.name === 'carbohydrate,bydifference');
-  const fatResults = nutrients.filter((obj) => obj.name === 'totallipid(fat)');
-  const caloriesResults = nutrients.filter((obj) =>
-    obj.name.toLowerCase().includes('energy'.toLowerCase())
-  );
-  const calciumResults = nutrients.filter((obj) => obj.name === 'calcium');
-  const cholineResults = nutrients.filter((obj) => obj.name === 'choline');
-  const copperResults = nutrients.filter((obj) => obj.name === 'copper');
-  const iodineResults = nutrients.filter((obj) => obj.name === 'iodine');
-  const ironResults = nutrients.filter((obj) => obj.name === 'iron');
-  const magnesiumResults = nutrients.filter((obj) => obj.name === 'magnesium');
-  const phosphorousResults = nutrients.filter((obj) => obj.name === 'phosphorous');
-  const potassiumResults = nutrients.filter((obj) => obj.name === 'potassium');
-  const seleniumResults = nutrients.filter((obj) => obj.name === 'selenium');
-  const sodiumResults = nutrients.filter((obj) => obj.name === 'sodium');
-  const zincResults = nutrients.filter((obj) => obj.name === 'zinc');
+  const nutrientStringsArray = [
+    'protein',
+    'carbohydrate,bydifference',
+    'totallipid(fat)',
+    'energy',
+    'calcium',
+    'choline',
+    'copper',
+    'iodine',
+    'magnesium',
+    'phosphorous',
+    'potassium',
+    'selenium',
+    'sodium',
+    'zinc',
+  ];
+
+  function nutrientFilter(nutrientsArray, nutrientString) {
+    const results = nutrientsArray.filter((obj) =>
+      obj.name.toLowerCase().includes(nutrientString.toLowerCase())
+    );
+    if (results.length > 0) {
+      const property = results[0].name;
+      Object.assign(values, { [property]: results[0].value });
+    }
+  }
+  // const proteinResults = nutrients.filter((obj) => obj.name === 'protein');
+  // const carbResults = nutrients.filter((obj) => obj.name === 'carbohydrate,bydifference');
+  // const fatResults = nutrients.filter((obj) => obj.name === 'totallipid(fat)');
+  // const caloriesResults = nutrients.filter((obj) =>
+  //   obj.name.toLowerCase().includes('energy'.toLowerCase())
+  // );
+  // const calciumResults = nutrients.filter((obj) => obj.name === 'calcium');
+  // const cholineResults = nutrients.filter((obj) => obj.name === 'choline');
+  // const copperResults = nutrients.filter((obj) => obj.name === 'copper');
+  // const iodineResults = nutrients.filter((obj) => obj.name === 'iodine');
+  // const ironResults = nutrients.filter((obj) => obj.name === 'iron');
+  // const magnesiumResults = nutrients.filter((obj) => obj.name === 'magnesium');
+  // const phosphorousResults = nutrients.filter((obj) => obj.name === 'phosphorous');
+  // const potassiumResults = nutrients.filter((obj) => obj.name === 'potassium');
+  // const seleniumResults = nutrients.filter((obj) => obj.name === 'selenium');
+  // const sodiumResults = nutrients.filter((obj) => obj.name === 'sodium');
+  // const zincResults = nutrients.filter((obj) => obj.name === 'zinc');
 
   const setValues = () => {
     Object.assign(values, { foodName: name, foodID: uuidv4() });
-    if (proteinResults.length > 0) {
-      Object.assign(values, { proteinGrams: proteinResults[0].value });
-    }
+    nutrientStringsArray.map((string) => nutrientFilter(nutrients, string));
+    // if (proteinResults.length > 0) {
+    //   Object.assign(values, { proteinGrams: proteinResults[0].value });
+    // }
 
-    if (carbResults.length > 0) {
-      Object.assign(values, { carbGrams: carbResults[0].value });
-    }
-    if (fatResults.length > 0) {
-      Object.assign(values, { fatGrams: fatResults[0].value });
-    }
-    if (caloriesResults.length > 0) {
-      Object.assign(values, { calories: caloriesResults[0].value });
-    }
-    if (calciumResults.length > 0) {
-      Object.assign(values, { calcium: calciumResults[0].value });
-    }
-    if (cholineResults.length > 0) {
-      Object.assign(values, { choline: cholineResults[0].value });
-    }
-    if (copperResults.length > 0) {
-      Object.assign(values, { copper: copperResults[0].value });
-    }
-    if (iodineResults.length > 0) {
-      Object.assign(values, { iodine: iodineResults[0].value });
-    }
-    if (ironResults.length > 0) {
-      Object.assign(values, { iron: ironResults[0].value });
-    }
-    if (magnesiumResults.length > 0) {
-      Object.assign(values, { magnesium: magnesiumResults[0].value });
-    }
-    if (phosphorousResults.length > 0) {
-      Object.assign(values, { phosphorous: phosphorousResults[0].value });
-    }
-    if (potassiumResults.length > 0) {
-      Object.assign(values, { potassium: potassiumResults[0].value });
-    }
-    if (seleniumResults.length > 0) {
-      Object.assign(values, { selenium: seleniumResults[0].value });
-    }
-    if (sodiumResults.length > 0) {
-      Object.assign(values, { sodium: sodiumResults[0].value });
-    }
-    if (zincResults.length > 0) {
-      Object.assign(values, { zinc: zincResults[0].value });
-    }
+    // if (carbResults.length > 0) {
+    //   Object.assign(values, { carbGrams: carbResults[0].value });
+    // }
+    // if (fatResults.length > 0) {
+    //   Object.assign(values, { fatGrams: fatResults[0].value });
+    // }
+    // if (caloriesResults.length > 0) {
+    //   Object.assign(values, { calories: caloriesResults[0].value });
+    // }
+    // if (calciumResults.length > 0) {
+    //   Object.assign(values, { calcium: calciumResults[0].value });
+    // }
+    // if (cholineResults.length > 0) {
+    //   Object.assign(values, { choline: cholineResults[0].value });
+    // }
+    // if (copperResults.length > 0) {
+    //   Object.assign(values, { copper: copperResults[0].value });
+    // }
+    // if (iodineResults.length > 0) {
+    //   Object.assign(values, { iodine: iodineResults[0].value });
+    // }
+    // if (ironResults.length > 0) {
+    //   Object.assign(values, { iron: ironResults[0].value });
+    // }
+    // if (magnesiumResults.length > 0) {
+    //   Object.assign(values, { magnesium: magnesiumResults[0].value });
+    // }
+    // if (phosphorousResults.length > 0) {
+    //   Object.assign(values, { phosphorous: phosphorousResults[0].value });
+    // }
+    // if (potassiumResults.length > 0) {
+    //   Object.assign(values, { potassium: potassiumResults[0].value });
+    // }
+    // if (seleniumResults.length > 0) {
+    //   Object.assign(values, { selenium: seleniumResults[0].value });
+    // }
+    // if (sodiumResults.length > 0) {
+    //   Object.assign(values, { sodium: sodiumResults[0].value });
+    // }
+    // if (zincResults.length > 0) {
+    //   Object.assign(values, { zinc: zincResults[0].value });
+    // }
   };
 
   return (
@@ -96,11 +123,11 @@ function Item({ name, onPress, nutrients }) {
     >
       <View style={{ width: '90%' }}>
         <Text>{name}</Text>
-        {caloriesResults.length > 0 ? (
+        {/* {caloriesResults.length > 0 ? (
           <Text>{caloriesResults[0].value} cal</Text>
         ) : (
           <Text>No cal info</Text>
-        )}
+        )} */}
       </View>
       <AddButton
         onPress={() => {
@@ -221,7 +248,7 @@ export default function AddFoodItem({ route, navigation }) {
                 margin: '2%',
                 width: 125,
               }}
-              onPress={() => navigation.navigate('AddManually', { mealName, dayIndex })}
+              onPress={() => navigation.navigate('AddFoodManually', { mealName, dayIndex })}
             >
               <MaterialIcons name="post-add" size={24} color="black" />
               <Text style={{ color: 'black' }}>Manual Add</Text>

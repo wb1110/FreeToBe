@@ -9,8 +9,9 @@ const foodSchema = Yup.object().shape({
   foodName: Yup.string().required('Required'),
 });
 
-export default function EditManually({ route, navigation }) {
+export default function EditFoodManually({ route, navigation }) {
   const { mealName, item, dayIndex } = route.params;
+  console.log(item);
   const {
     foodName,
     calories,

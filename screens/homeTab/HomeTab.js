@@ -14,7 +14,7 @@ function HomeTab() {
         style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '2%', flex: 2 }}
       >
         <View style={{ flex: 1, alignItems: 'center' }}>
-          <Text>Macros</Text>
+          <Text>Macro Goals</Text>
           {state.assessment.tdee ? (
             <MacroPie TDEE={state.assessment.tdee} />
           ) : (
@@ -22,7 +22,7 @@ function HomeTab() {
           )}
         </View>
         <View style={{ flex: 1, alignItems: 'center' }}>
-          <Text>Minerals</Text>
+          <Text>Mineral Goals</Text>
           <MineralsPie />
         </View>
       </View>
