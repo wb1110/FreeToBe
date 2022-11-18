@@ -23,9 +23,9 @@ export default function AddFoodManually({ route, navigation }) {
             foodID: uuidv4(),
             foodName: '',
             calories: '',
-            fatGrams: '',
-            carbGrams: '',
-            proteinGrams: '',
+            fat: '',
+            carbs: '',
+            protein: '',
             calcium: '',
             choline: '',
             copper: '',
@@ -65,26 +65,26 @@ export default function AddFoodManually({ route, navigation }) {
                   />
                   <Input
                     label="Fat"
-                    onChangeText={handleChange('fatGrams')}
-                    onBlur={handleBlur('fatGrams')}
-                    value={values.fatGrams}
-                    errorMessage={errors.fatGrams}
+                    onChangeText={handleChange('fat')}
+                    onBlur={handleBlur('fat')}
+                    value={values.fat}
+                    errorMessage={errors.fat}
                     containerStyle={{ width: '50%' }}
                   />
                   <Input
                     label="Carbs"
-                    onChangeText={handleChange('carbGrams')}
-                    onBlur={handleBlur('carbGrams')}
-                    value={values.carbGrams}
-                    errorMessage={errors.carbGrams}
+                    onChangeText={handleChange('carbs')}
+                    onBlur={handleBlur('carbs')}
+                    value={values.carbs}
+                    errorMessage={errors.carbs}
                     containerStyle={{ width: '50%' }}
                   />
                   <Input
                     label="Protein"
-                    onChangeText={handleChange('proteinGrams')}
-                    onBlur={handleBlur('proteinGrams')}
-                    value={values.proteinGrams}
-                    errorMessage={errors.proteinGrams}
+                    onChangeText={handleChange('protein')}
+                    onBlur={handleBlur('protein')}
+                    value={values.protein}
+                    errorMessage={errors.protein}
                     containerStyle={{ width: '50%' }}
                   />
                   <Input

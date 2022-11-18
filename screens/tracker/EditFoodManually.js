@@ -11,50 +11,31 @@ const foodSchema = Yup.object().shape({
 
 export default function EditFoodManually({ route, navigation }) {
   const { mealName, item, dayIndex } = route.params;
-  console.log(item);
-  const {
-    foodName,
-    calories,
-    fatGrams,
-    carbGrams,
-    proteinGrams,
-    calcium,
-    choline,
-    copper,
-    iodine,
-    iron,
-    magnesium,
-    phosphorous,
-    potassium,
-    selenium,
-    sodium,
-    zinc,
-  } = item;
   const state = useTrackerStore();
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={{ flex: 1, justifyContent: 'center' }}>
         <Formik
           initialValues={{
-            foodName,
-            calories,
-            fatGrams,
-            carbGrams,
-            proteinGrams,
-            calcium,
-            choline,
-            copper,
-            iodine,
-            iron,
-            magnesium,
-            phosphorous,
-            potassium,
-            selenium,
-            sodium,
-            zinc,
+            foodName: item.foodName,
+            calories: item.calories,
+            fat: item.fat,
+            carbs: item.carbs,
+            protein: item.protein,
+            calcium: item.calcium,
+            choline: item.choline,
+            copper: item.copper,
+            iodine: item.iodine,
+            iron: item.iron,
+            magnesium: item.magnesium,
+            phosphorous: item.phosphorous,
+            potassium: item.potassium,
+            selenium: item.selenium,
+            sodium: item.sodium,
+            zinc: item.zinc,
           }}
           onSubmit={(values) => {
-            state.editFood(values, dayIndex, mealName, foodName);
+            state.editFood(values, dayIndex, mealName, values.foodName);
           }}
           validationSchema={foodSchema}
         >
@@ -80,26 +61,26 @@ export default function EditFoodManually({ route, navigation }) {
                   />
                   <Input
                     label="Fat"
-                    onChangeText={handleChange('fatGrams')}
-                    onBlur={handleBlur('fatGrams')}
-                    value={values.fatGrams}
-                    errorMessage={errors.fatGrams}
+                    onChangeText={handleChange('fat')}
+                    onBlur={handleBlur('fat')}
+                    value={values.fat}
+                    errorMessage={errors.fat}
                     containerStyle={{ width: '50%' }}
                   />
                   <Input
                     label="Carbs"
-                    onChangeText={handleChange('carbGrams')}
-                    onBlur={handleBlur('carbGrams')}
-                    value={values.carbGrams}
-                    errorMessage={errors.carbGrams}
+                    onChangeText={handleChange('carbs')}
+                    onBlur={handleBlur('carbs')}
+                    value={values.carbs}
+                    errorMessage={errors.carbs}
                     containerStyle={{ width: '50%' }}
                   />
                   <Input
                     label="Protein"
-                    onChangeText={handleChange('proteinGrams')}
-                    onBlur={handleBlur('proteinGrams')}
-                    value={values.proteinGrams}
-                    errorMessage={errors.proteinGrams}
+                    onChangeText={handleChange('protein')}
+                    onBlur={handleBlur('protein')}
+                    value={values.protein}
+                    errorMessage={errors.protein}
                     containerStyle={{ width: '50%' }}
                   />
                   <Input
@@ -202,7 +183,7 @@ export default function EditFoodManually({ route, navigation }) {
                   title="Delete"
                   color="red"
                   onPress={() => {
-                    state.deleteFood(dayIndex, mealName, foodName);
+                    state.deleteFood(dayIndex, mealName, values.foodName);
                     navigation.navigate('TrackerHome');
                   }}
                   buttonStyle={{
