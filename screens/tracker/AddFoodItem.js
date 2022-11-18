@@ -10,8 +10,7 @@ import AddButton from '../../components/Buttons/AddButton';
 import useTrackerStore from '../../state/TrackerStore';
 import FoodScanner from '../foodScanner/FoodScanner';
 
-function Item({ name, onPress, nutrients }) {
-  console.log(nutrients);
+function Item({ name, calories, onPress, nutrients }) {
   const { theme } = useTheme();
   const values = {};
   const nutrientIdsArray = [
@@ -59,6 +58,7 @@ function Item({ name, onPress, nutrients }) {
     >
       <View style={{ width: '90%' }}>
         <Text>{name}</Text>
+        <Text>{calories} cal</Text>
         {/* {caloriesResults.length > 0 ? (
           <Text>{caloriesResults[0].value} cal</Text>
         ) : (
@@ -129,17 +129,23 @@ export default function AddFoodItem({ route, navigation }) {
     // filter of the name
     if (item.description.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))) {
       const nutrients = [];
-      item.foodNutrients.map((nutrient) =>
+      let calories = 0;
+      item.foodNutrients.map((nutrient) => {
         nutrients.push({
           nutrientId: nutrient.nutrientId,
           name: nutrient.nutrientName,
           value: nutrient.value,
           unitName: nutrient.unitName,
-        })
-      );
+        });
+        if (nutrient.nutrientId === 1008) {
+          calories = nutrient.value;
+        }
+        return calories;
+      });
       return (
         <Item
           name={item.description}
+          calories={calories}
           upc={item.gtinUpc}
           onPress={addNewFood}
           nutrients={nutrients}
