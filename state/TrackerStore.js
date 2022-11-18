@@ -86,9 +86,9 @@ const useTrackerStore = create((set) => ({
           // eslint-disable-next-line no-return-assign
           mealObj.foodItems.map((foodObj) => {
             proteinSum += +foodObj.protein;
-            carbSum += +foodObj.carbGrams;
-            fatSum += +foodObj.fatGrams;
-            caloriesSum += +foodObj.energy;
+            carbSum += +foodObj.carbs;
+            fatSum += +foodObj.fat;
+            caloriesSum += +foodObj.calories;
             return foodObj;
           });
           // console.log(macroSum, date);
