@@ -7,6 +7,43 @@ import useTrackerStore from '../../state/TrackerStore';
 
 const foodSchema = Yup.object().shape({
   foodName: Yup.string().required('Required'),
+  calories:
+    Yup.number()
+    .typeError('A number is required'),
+  fat: Yup.number().typeError('A number is required'),
+  carbs: Yup.number().typeError('A number is required'),
+  protein:
+    Yup.number()
+    .typeError('A number is required'),
+  calcium:
+    Yup.number()
+    .typeError('A number is required'),
+  choline:
+    Yup.number()
+    .typeError('A number is required'),
+  copper:
+    Yup.number()
+    .typeError('A number is required'),
+  iodine:
+    Yup.number()
+    .typeError('A number is required'),
+  iron: Yup.number().typeError('A number is required'),
+  magnesium:
+    Yup.number()
+    .typeError('A number is required'),
+  phosphorous:
+    Yup.number()
+    .typeError('A number is required'),
+  potassium:
+    Yup.number()
+    .typeError('A number is required'),
+  selenium:
+    Yup.number()
+    .typeError('A number is required'),
+  sodium:
+    Yup.number()
+    .typeError('A number is required'),
+  zinc: Yup.number().typeError('A number is required'),
 });
 
 export default function EditFoodManually({ route, navigation }) {
@@ -18,21 +55,21 @@ export default function EditFoodManually({ route, navigation }) {
         <Formik
           initialValues={{
             foodName: item.foodName,
-            calories: item.calories,
-            fat: item.fat,
-            carbs: item.carbs,
-            protein: item.protein,
-            calcium: item.calcium,
-            choline: item.choline,
-            copper: item.copper,
-            iodine: item.iodine,
-            iron: item.iron,
-            magnesium: item.magnesium,
-            phosphorous: item.phosphorous,
-            potassium: item.potassium,
-            selenium: item.selenium,
-            sodium: item.sodium,
-            zinc: item.zinc,
+            calories: item.calories === undefined ? 0 : `${item.calories}`,
+            fat: item.fat === undefined ? `${0}` : `${item.fat}`,
+            carbs: item.carbs === undefined ? `${0}` : `${item.carbs}`,
+            protein: item.protein === undefined ? `${0}` : `${item.protein}`,
+            calcium: item.calcium === undefined ? `${0}` : `${item.calcium}`,
+            choline: item.choline === undefined ? `${0}` : `${item.choline}`,
+            copper: item.copper === undefined ? `${0}` : `${item.copper}`,
+            iodine: item.iodine === undefined ? `${0}` : `${item.iodine}`,
+            iron: item.iron === undefined ? `${0}` : `${item.iron}`,
+            magnesium: item.magnesium === undefined ? `${0}` : `${item.magnesium}`,
+            phosphorous: item.phosphorous === undefined ? `${0}` : `${item.phosphorous}`,
+            potassium: item.potassium === undefined ? `${0}` : `${item.potassium}`,
+            selenium: item.selenium === undefined ? `${0}` : `${item.selenium}`,
+            sodium: item.sodium === undefined ? `${0}` : `${item.sodium}`,
+            zinc: item.zinc === undefined ? `${0}` : `${item.zinc}`,
           }}
           onSubmit={(values) => {
             state.editFood(values, dayIndex, mealName, values.foodName);
@@ -109,10 +146,10 @@ export default function EditFoodManually({ route, navigation }) {
                   />
                   <Input
                     label="Iodine"
-                    onChangeText={handleChange('idone')}
-                    onBlur={handleBlur('idone')}
-                    value={values.idone}
-                    errorMessage={errors.idone}
+                    onChangeText={handleChange('iodine')}
+                    onBlur={handleBlur('iodine')}
+                    value={values.iodine}
+                    errorMessage={errors.iodine}
                     containerStyle={{ width: '50%' }}
                   />
                   <Input

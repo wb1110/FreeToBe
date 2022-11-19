@@ -9,6 +9,43 @@ import useTrackerStore from '../../state/TrackerStore';
 
 const foodSchema = Yup.object().shape({
   foodName: Yup.string().required('Required'),
+  calories:
+    Yup.number()
+    .typeError('A number is required'),
+  fat: Yup.number().typeError('A number is required'),
+  carbs: Yup.number().typeError('A number is required'),
+  protein:
+    Yup.number()
+    .typeError('A number is required'),
+  calcium:
+    Yup.number()
+    .typeError('A number is required'),
+  choline:
+    Yup.number()
+    .typeError('A number is required'),
+  copper:
+    Yup.number()
+    .typeError('A number is required'),
+  iodine:
+    Yup.number()
+    .typeError('A number is required'),
+  iron: Yup.number().typeError('A number is required'),
+  magnesium:
+    Yup.number()
+    .typeError('A number is required'),
+  phosphorous:
+    Yup.number()
+    .typeError('A number is required'),
+  potassium:
+    Yup.number()
+    .typeError('A number is required'),
+  selenium:
+    Yup.number()
+    .typeError('A number is required'),
+  sodium:
+    Yup.number()
+    .typeError('A number is required'),
+  zinc: Yup.number().typeError('A number is required'),
 });
 
 export default function AddFoodManually({ route, navigation }) {
@@ -113,10 +150,10 @@ export default function AddFoodManually({ route, navigation }) {
                   />
                   <Input
                     label="Iodine"
-                    onChangeText={handleChange('idone')}
-                    onBlur={handleBlur('idone')}
-                    value={values.idone}
-                    errorMessage={errors.idone}
+                    onChangeText={handleChange('iodine')}
+                    onBlur={handleBlur('iodine')}
+                    value={values.iodine}
+                    errorMessage={errors.iodine}
                     containerStyle={{ width: '50%' }}
                   />
                   <Input
