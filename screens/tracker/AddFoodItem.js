@@ -78,20 +78,23 @@ export default function AddFoodItem({ route, navigation }) {
   const [usedBarcode, setUsedBarcode] = useState(false);
   const [data, setData] = useState([]);
 
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
-    const searchData = setTimeout(() => {
-      axios
-        .get(
-          `https://api.nal.usda.gov/fdc/v1/foods/search?query=${search}&dataType=Foundation&pageSize=50&sortBy=lowercaseDescription.keyword&sortOrder=asc&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
-        )
-        .then((res) => {
-          setData(res.data.foods);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }, 2000);
-    return () => clearTimeout(searchData);
+    if (search) {
+      const searchData = setTimeout(() => {
+        axios
+          .get(
+            `https://api.nal.usda.gov/fdc/v1/foods/search?query=${search}&dataType=Foundation&pageSize=50&sortBy=lowercaseDescription.keyword&sortOrder=asc&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
+          )
+          .then((res) => {
+            setData(res.data.foods);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }, 2000);
+      return () => clearTimeout(searchData);
+    }
   }, [search]);
 
   const scanData = (value) => {
@@ -124,7 +127,10 @@ export default function AddFoodItem({ route, navigation }) {
       return null;
     }
     // filter of the name
-    if (item.description.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))) {
+    if (
+      usedBarcode === false &&
+      item.description.toUpperCase().includes(search.toUpperCase().trim().replace(/\s/g, ''))
+    ) {
       const nutrients = [];
       let calories = 0;
       item.foodNutrients.map((nutrient) => {
@@ -139,6 +145,33 @@ export default function AddFoodItem({ route, navigation }) {
         }
         return calories;
       });
+
+      return (
+        <Item
+          name={item.description}
+          calories={calories}
+          onPress={addNewFood}
+          nutrients={nutrients}
+        />
+      );
+    }
+    if (usedBarcode === true) {
+      console.log(item.foodNutrients);
+      const nutrients = [];
+      let calories = 0;
+      item.foodNutrients.map((nutrient) => {
+        nutrients.push({
+          nutrientId: nutrient.nutrientId,
+          name: nutrient.nutrientName,
+          value: nutrient.value,
+          unitName: nutrient.unitName,
+        });
+        if (nutrient.nutrientId === 1008) {
+          calories = nutrient.value;
+        }
+        return calories;
+      });
+
       return (
         <Item
           name={item.description}
