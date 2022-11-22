@@ -75,6 +75,7 @@ export default function AddFoodItem({ route, navigation }) {
   const { dayIndex, mealName } = route.params;
   const [search, setSearch] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
+  const [usedBarcode, setUsedBarcode] = useState(false);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -99,6 +100,7 @@ export default function AddFoodItem({ route, navigation }) {
         `https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&pageSize=10&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
       )
       .then((res) => {
+        setUsedBarcode(true);
         setData(res.data.foods);
       })
       .catch((err) => {
@@ -117,8 +119,8 @@ export default function AddFoodItem({ route, navigation }) {
 
   // eslint-disable-next-line consistent-return
   const renderItem = ({ item }) => {
-    // when no input, show all
-    if (search === '') {
+    // when no input, show nothing
+    if (search === '' && usedBarcode === false) {
       return null;
     }
     // filter of the name
@@ -141,7 +143,6 @@ export default function AddFoodItem({ route, navigation }) {
         <Item
           name={item.description}
           calories={calories}
-          upc={item.gtinUpc}
           onPress={addNewFood}
           nutrients={nutrients}
         />
