@@ -2,10 +2,16 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@rneui/themed';
+import { Image } from 'react-native';
 import HomeTab from './homeTab/HomeTab';
 import MetabolicJournal from './metabolicJournal/MetabolicJournal';
 import Settings from './settings/Settings';
 import TrackerStackScreen from './tracker/TrackerStackScreen';
+import ftbnLogo from '../assets/icons/ftbnLogo.png';
+
+function LogoTitle() {
+  return <Image style={{ width: 100, height: 40 }} source={ftbnLogo} />;
+}
 
 export default function UserHome() {
   const { theme } = useTheme();
@@ -44,7 +50,7 @@ export default function UserHome() {
     >
       <Tab.Screen name="Tracker" component={TrackerStackScreen} />
       <Tab.Screen name="Metabolic Journal" component={MetabolicJournal} />
-      <Tab.Screen name="Home" component={HomeTab} />
+      <Tab.Screen name="Home" component={HomeTab} options={{ headerTitle: () => <LogoTitle /> }} />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
