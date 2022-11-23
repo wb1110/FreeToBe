@@ -2,7 +2,13 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { SearchBar, Text, useTheme } from '@rneui/themed';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { FlatList, Keyboard, TouchableWithoutFeedback, View } from 'react-native';
+import {
+  FlatList,
+  Keyboard,
+  TouchableWithoutFeedback,
+  View,
+  ActivityIndicator,
+} from 'react-native';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -72,15 +78,18 @@ function Item({ name, calories, onPress, nutrients }) {
 
 export default function AddFoodItem({ route, navigation }) {
   const state = useTrackerStore();
+  const { theme } = useTheme();
   const { dayIndex, mealName } = route.params;
   const [search, setSearch] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
   const [usedBarcode, setUsedBarcode] = useState(false);
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (search) {
+      setLoading(true);
       const searchData = setTimeout(() => {
         axios
           .get(
@@ -88,9 +97,11 @@ export default function AddFoodItem({ route, navigation }) {
           )
           .then((res) => {
             setData(res.data.foods);
+            setLoading(false);
           })
           .catch((err) => {
             console.log(err);
+            setLoading(false);
           });
       }, 2000);
       return () => clearTimeout(searchData);
@@ -185,8 +196,8 @@ export default function AddFoodItem({ route, navigation }) {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View>
-        <View style={{ alignItems: 'center' }}>
+      <View style={{ flex: 1 }}>
+        <View style={{ alignItems: 'center', flex: 1 }}>
           <SearchBar
             placeholder="Type Here..."
             onChangeText={updateSearch}
@@ -227,7 +238,18 @@ export default function AddFoodItem({ route, navigation }) {
             </TouchableOpacity>
           </View>
         </View>
-        <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.fdcId} />
+        <View style={{ justifyContent: 'center', flex: 3.5 }}>
+          {loading ? (
+            <ActivityIndicator
+              size="large"
+              color={theme.colors.white}
+              visible={loading}
+              textContent="Searching USDA Database..."
+            />
+          ) : (
+            <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.fdcId} />
+          )}
+        </View>
         <FoodScanner scanData={scanData} modalOpen={modalOpen} setModalOpen={setModalOpen} />
       </View>
     </TouchableWithoutFeedback>
