@@ -16,6 +16,8 @@ import AddButton from '../../components/Buttons/AddButton';
 import useTrackerStore from '../../state/TrackerStore';
 import FoodScanner from '../foodScanner/FoodScanner';
 
+import LArrowButton from '../../components/Buttons/LArrowButton';
+
 function Item({ name, calories, onPress, nutrients }) {
   const { theme } = useTheme();
   const values = {};
@@ -196,13 +198,13 @@ export default function AddFoodItem({ route, navigation }) {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={{ flex: 1 }}>
+      <View style={{ alignItems: 'center', flex: 1 }}>
         <View style={{ alignItems: 'center', flex: 1 }}>
           <SearchBar
             placeholder="Type Here..."
             onChangeText={updateSearch}
             value={search}
-            inputContainerStyle={{ backgroundColor: 'white' }}
+            inputContainerStyle={{ backgroundColor: 'white', width: '100%' }}
             containerStyle={{
               borderBottomColor: 'transparent',
               borderTopColor: 'transparent',
@@ -251,6 +253,7 @@ export default function AddFoodItem({ route, navigation }) {
           )}
         </View>
         <FoodScanner scanData={scanData} modalOpen={modalOpen} setModalOpen={setModalOpen} />
+        <LArrowButton onPress={() => navigation.goBack()} />
       </View>
     </TouchableWithoutFeedback>
   );
