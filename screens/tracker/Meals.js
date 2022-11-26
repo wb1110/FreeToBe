@@ -1,13 +1,15 @@
 import { View } from 'react-native';
+import { FAB } from '@rneui/themed';
+import { Ionicons } from '@expo/vector-icons';
 import MealItem from './MealItem';
 
 export default function Meals({ tracker, currentIndex, navigation }) {
+  const savedDate = tracker[currentIndex];
   return (
     <View style={{ flex: 5, margin: '2%', width: '100%' }}>
-      {tracker[currentIndex]
-        ? tracker[currentIndex].meals.map((item, index) => (
+      {savedDate
+        ? savedDate.meals.map((item) => (
             <MealItem
-              mealNumber={index + 1}
               mealName={item.mealName}
               key={item.mealID}
               mealTime={item.mealTime}
@@ -17,6 +19,13 @@ export default function Meals({ tracker, currentIndex, navigation }) {
             />
           ))
         : null}
+      <FAB
+        icon={<Ionicons name="add" size={24} color="black" />}
+        size="medium"
+        color="white"
+        style={{ marginTop: '2%' }}
+        onPress={() => navigation.navigate('AddMeal', { savedDate })}
+      />
     </View>
   );
 }

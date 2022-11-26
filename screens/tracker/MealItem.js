@@ -4,14 +4,7 @@ import { useState } from 'react';
 import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import useTrackerStore from '../../state/TrackerStore';
 
-export default function MealItem({
-  mealTime,
-  mealNumber,
-  foodItems,
-  navigation,
-  mealName,
-  dayIndex,
-}) {
+export default function MealItem({ mealTime, foodItems, navigation, mealName, dayIndex }) {
   const state = useTrackerStore();
   const { deleteMeal } = state;
   const { theme } = useTheme();
@@ -48,10 +41,24 @@ export default function MealItem({
       }}
     >
       <View>
-        <View style={{ flexDirection: 'row', marginBottom: '2%' }}>
-          <Text h4>
-            Meal {mealNumber} {mealName} {mealTime}
-          </Text>
+        <View style={{ flexDirection: 'row', marginBottom: '2%', alignItems: 'center' }}>
+          <Text h4>{mealName} </Text>
+          {!mealTime ? (
+            <Button
+              titleStyle={{
+                color: theme.colors.primary,
+              }}
+              containerStyle={{
+                width: '25%',
+              }}
+              color={theme.colors.white}
+              onPress={() => navigation.navigate('AddFoodItem', { mealName, dayIndex })}
+              title="Add Time"
+              size="sm"
+            />
+          ) : (
+            <Text h4>{mealTime}</Text>
+          )}
         </View>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
           {foodItems

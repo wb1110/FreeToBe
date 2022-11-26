@@ -1,6 +1,7 @@
 import create from 'zustand';
 import produce from 'immer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { v4 as uuidv4 } from 'uuid';
 
 // eslint-disable-next-line consistent-return
 const storeTracker = async (value) => {
@@ -12,6 +13,39 @@ const storeTracker = async (value) => {
     return e;
   }
 };
+
+const startingMealArray = [
+  {
+    mealName: 'Breakfast',
+    mealTime: 0,
+    mealID: uuidv4(),
+    foodItems: [],
+  },
+  {
+    mealName: 'Snack 1',
+    mealTime: 0,
+    mealID: uuidv4(),
+    foodItems: [],
+  },
+  {
+    mealName: 'Lunch',
+    mealTime: 0,
+    mealID: uuidv4(),
+    foodItems: [],
+  },
+  {
+    mealName: 'Snack 2',
+    mealTime: 0,
+    mealID: uuidv4(),
+    foodItems: [],
+  },
+  {
+    mealName: 'Dinner',
+    mealTime: 0,
+    mealID: uuidv4(),
+    foodItems: [],
+  },
+];
 
 const useTrackerStore = create((set) => ({
   tracker: [],
@@ -70,7 +104,7 @@ const useTrackerStore = create((set) => ({
           selenium: 0,
           sodium: 0,
           zinc: 0,
-          meals: [],
+          meals: startingMealArray,
         });
       })
     ),

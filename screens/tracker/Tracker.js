@@ -1,6 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/core';
-import { FAB } from '@rneui/themed';
 import moment from 'moment';
 import { useCallback, useEffect, useState } from 'react';
 import {
@@ -87,19 +85,6 @@ function Tracker({ navigation }) {
           />
           <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
           <Meals tracker={tracker} currentIndex={currentIndex} navigation={navigation} />
-          <View style={{ width: '100%', alignItems: 'flex-end' }}>
-            <FAB
-              icon={<Ionicons name="add" size={24} color="black" />}
-              size="medium"
-              color="white"
-              style={{ marginRight: '2%', marginBottom: '2%' }}
-              onPress={() =>
-                navigation.navigate('AddMeal', {
-                  dateToAddTo: dateData,
-                })
-              }
-            />
-          </View>
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>

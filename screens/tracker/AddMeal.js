@@ -14,9 +14,8 @@ import Container from '../../components/Container';
 import useTrackerStore from '../../state/TrackerStore';
 
 function AddMeal({ navigation, route }) {
-  const { dateToAddTo } = route.params;
+  const { savedDate } = route.params;
   const state = useTrackerStore();
-  const { addDate } = state;
   const addNewMeal = state.addMeal;
 
   return (
@@ -29,10 +28,9 @@ function AddMeal({ navigation, route }) {
           <Formik
             initialValues={{ mealName: '', mealTime: '', mealID: uuidv4() }}
             onSubmit={(values) => {
-              addDate(dateToAddTo);
               // eslint-disable-next-line no-param-reassign
               values.foodItems = [];
-              addNewMeal(values, dateToAddTo);
+              addNewMeal(values, savedDate.date);
             }}
           >
             {({ handleChange, handleBlur, handleSubmit, values, errors }) => (

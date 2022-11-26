@@ -3,9 +3,9 @@ import { View } from 'react-native';
 import StandardButton from '../../components/Buttons/StandardButton';
 
 export default function Settings({ navigation }) {
-  const removeValue = async () => {
+  const removeValue = async (item) => {
     try {
-      await AsyncStorage.removeItem('assessment');
+      await AsyncStorage.removeItem(item);
     } catch (e) {
       console.log(e, 'error');
       // remove error
@@ -28,7 +28,8 @@ export default function Settings({ navigation }) {
   };
   return (
     <View style={{ alignItems: 'center' }}>
-      <StandardButton title="Clear Assessment Data" onPress={() => removeValue()} />
+      <StandardButton title="Clear Assessment Data" onPress={() => removeValue('assessment')} />
+      <StandardButton title="Clear Tracker Data" onPress={() => removeValue('tracker')} />
       <StandardButton title="Check Data" onPress={() => getAllKeys()} />
       <StandardButton
         title="Retake Assessment"
