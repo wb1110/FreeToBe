@@ -70,9 +70,6 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
           titleStyle={{
             color: theme.colors.primary,
           }}
-          containerStyle={{
-            width: '25%',
-          }}
           color={theme.colors.white}
           onPress={() => navigation.navigate('AddFoodItem', { mealName, dayIndex })}
           title="Add Food"

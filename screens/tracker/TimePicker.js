@@ -30,9 +30,6 @@ function TimePicker({ mealTime, setTime }) {
         titleStyle={{
           color: theme.colors.primary,
         }}
-        containerStyle={{
-          width: '100%',
-        }}
         color={theme.colors.white}
         onPress={showTimePicker}
       />
