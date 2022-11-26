@@ -6,7 +6,7 @@ import Container from '../../components/Container';
 import useTrackerStore from '../../state/TrackerStore';
 
 function EditMeal({ navigation, route }) {
-  const { mealName, mealTime, dayIndex } = route.params;
+  const { mealName, dayIndex } = route.params;
   const state = useTrackerStore();
   const { editMeal } = state;
 
@@ -25,8 +25,10 @@ function EditMeal({ navigation, route }) {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Container>
         <Formik
-          initialValues={{ mealName, mealTime }}
+          initialValues={{ mealName }}
           onSubmit={(values) => {
+            // eslint-disable-next-line no-param-reassign
+            // values.mealTime = time;
             editMeal(values, dayIndex, mealName);
           }}
         >
@@ -40,13 +42,7 @@ function EditMeal({ navigation, route }) {
                 errorMessage={errors.mealName}
                 containerStyle={{ width: '100%' }}
               />
-              <Input
-                label="Meal Time"
-                onChangeText={handleChange('mealTime')}
-                onBlur={handleBlur('mealTime')}
-                value={values.mealTime}
-                errorMessage={errors.mealTime}
-              />
+              {/* <TimePicker mealTime={time} setTime={setTime} /> */}
               <StandardButton
                 title="Submit"
                 onPress={() => {

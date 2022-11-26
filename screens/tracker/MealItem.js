@@ -3,9 +3,11 @@ import { Button, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import useTrackerStore from '../../state/TrackerStore';
+import TimePicker from './TimePicker';
 
 export default function MealItem({ mealTime, foodItems, navigation, mealName, dayIndex }) {
   const state = useTrackerStore();
+  const [time, setTime] = useState(mealTime);
   const { deleteMeal } = state;
   const { theme } = useTheme();
   const styles = StyleSheet.create({
@@ -43,22 +45,7 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
       <View>
         <View style={{ flexDirection: 'row', marginBottom: '2%', alignItems: 'center' }}>
           <Text h4>{mealName} </Text>
-          {!mealTime ? (
-            <Button
-              titleStyle={{
-                color: theme.colors.primary,
-              }}
-              containerStyle={{
-                width: '25%',
-              }}
-              color={theme.colors.white}
-              onPress={() => navigation.navigate('AddFoodItem', { mealName, dayIndex })}
-              title="Add Time"
-              size="sm"
-            />
-          ) : (
-            <Text h4>{mealTime}</Text>
-          )}
+          <TimePicker mealTime={time} setTime={setTime} />
         </View>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
           {foodItems
@@ -122,10 +109,12 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
                     flexDirection: 'row',
                     alignItems: 'center',
                   }}
-                  onPress={() => navigation.navigate('EditMeal', { dayIndex, mealName, mealTime })}
+                  onPress={() =>
+                    navigation.navigate('EditMeal', { dayIndex, mealName, time, setTime })
+                  }
                 >
                   <Feather name="edit-2" size={24} color={theme.colors.white} />
-                  <Text style={{ marginLeft: '2%' }}>Edit Meal</Text>
+                  <Text style={{ marginLeft: '2%' }}>Edit Meal Name</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={{

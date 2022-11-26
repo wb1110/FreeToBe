@@ -1,5 +1,6 @@
 import { Input } from '@rneui/themed';
 import { Formik } from 'formik';
+import { useState } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -12,10 +13,12 @@ import { v4 as uuidv4 } from 'uuid';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import useTrackerStore from '../../state/TrackerStore';
+import TimePicker from './TimePicker';
 
 function AddMeal({ navigation, route }) {
   const { savedDate } = route.params;
   const state = useTrackerStore();
+  const [time, setTime] = useState('');
   const addNewMeal = state.addMeal;
 
   return (
@@ -26,10 +29,12 @@ function AddMeal({ navigation, route }) {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <Container>
           <Formik
-            initialValues={{ mealName: '', mealTime: '', mealID: uuidv4() }}
+            initialValues={{ mealName: '', mealTime: time, mealID: uuidv4() }}
             onSubmit={(values) => {
               // eslint-disable-next-line no-param-reassign
               values.foodItems = [];
+              // eslint-disable-next-line no-param-reassign
+              values.mealTime = time;
               addNewMeal(values, savedDate.date);
             }}
           >
@@ -43,13 +48,7 @@ function AddMeal({ navigation, route }) {
                   errorMessage={errors.mealName}
                   containerStyle={{ width: '100%' }}
                 />
-                <Input
-                  label="Meal Time"
-                  onChangeText={handleChange('mealTime')}
-                  onBlur={handleBlur('mealTime')}
-                  value={values.mealTime}
-                  errorMessage={errors.mealTime}
-                />
+                <TimePicker mealTime={time} setTime={setTime} />
                 <StandardButton
                   title="Submit"
                   onPress={() => {
