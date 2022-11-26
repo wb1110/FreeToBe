@@ -1,4 +1,4 @@
-import { Button, Input } from '@rneui/themed';
+import { Button, Input, useTheme } from '@rneui/themed';
 import { Formik } from 'formik';
 import { Keyboard, ScrollView, TouchableWithoutFeedback, View } from 'react-native';
 import * as Yup from 'yup';
@@ -27,6 +27,7 @@ const foodSchema = Yup.object().shape({
 export default function EditFoodManually({ route, navigation }) {
   const { mealName, item, dayIndex } = route.params;
   const state = useTrackerStore();
+  const { theme } = useTheme();
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -197,7 +198,7 @@ export default function EditFoodManually({ route, navigation }) {
                   />
                   <Button
                     title="Delete"
-                    color="red"
+                    color={theme.colors.white}
                     onPress={() => {
                       state.deleteFood(dayIndex, mealName, values.foodName);
                       navigation.navigate('TrackerHome');
@@ -205,11 +206,17 @@ export default function EditFoodManually({ route, navigation }) {
                     buttonStyle={{
                       borderWidth: 2,
                       borderRadius: 30,
+                      color: theme.colors.white,
+                      borderColor: theme.colors.white,
                     }}
                     containerStyle={{
                       width: 200,
                       marginHorizontal: 10,
                       marginVertical: 10,
+                      borderColor: theme.colors.white,
+                    }}
+                    titleStyle={{
+                      color: theme.colors.primary,
                     }}
                   />
                 </View>
