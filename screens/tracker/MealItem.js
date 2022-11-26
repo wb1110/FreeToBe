@@ -32,6 +32,13 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
   });
   const [modalOpen, setModalOpen] = useState(false);
 
+  function sum() {
+    let caloriesSum = 0;
+    // eslint-disable-next-line no-return-assign
+    foodItems.forEach((item) => (caloriesSum += parseInt(item.calories, 10)));
+    return caloriesSum;
+  }
+
   return (
     <View
       style={{
@@ -43,9 +50,19 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
       }}
     >
       <View>
-        <View style={{ flexDirection: 'row', marginBottom: '2%', alignItems: 'center' }}>
-          <Text h4>{mealName} </Text>
-          <TimePicker mealTime={time} setTime={setTime} />
+        <View
+          style={{
+            flexDirection: 'row',
+            marginBottom: '2%',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Text h4>{mealName} </Text>
+            <TimePicker mealTime={time} setTime={setTime} />
+          </View>
+          <Text>{sum()} cal</Text>
         </View>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
           {foodItems
