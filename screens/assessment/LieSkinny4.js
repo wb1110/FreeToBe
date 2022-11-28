@@ -52,7 +52,7 @@ function LieSkinny4({ navigation }) {
           <RArrowButton
             title="Let's Get Started"
             onPress={() => {
-              navigation.navigate('UserHome', { screen: 'Home' });
+              navigation.navigate('UserHome', { screen: 'Tracker' });
               storeData(state.assessment);
             }}
           />

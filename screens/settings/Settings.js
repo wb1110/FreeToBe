@@ -3,14 +3,26 @@ import { View } from 'react-native';
 import StandardButton from '../../components/Buttons/StandardButton';
 
 export default function Settings({ navigation }) {
-  const removeValue = async (item) => {
+  const removeAssessment = async () => {
     try {
-      await AsyncStorage.removeItem(item);
+      await AsyncStorage.removeItem('assessment');
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log(e, 'error');
       // remove error
     }
-
+    // eslint-disable-next-line no-console
+    console.log('Done.');
+  };
+  const removeTracker = async () => {
+    try {
+      await AsyncStorage.removeItem('tracker');
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log(e, 'error');
+      // remove error
+    }
+    // eslint-disable-next-line no-console
     console.log('Done.');
   };
   const getAllKeys = async () => {
@@ -18,18 +30,19 @@ export default function Settings({ navigation }) {
     try {
       keys = await AsyncStorage.getAllKeys();
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.log(e, 'error');
       // read key error
     }
-
+    // eslint-disable-next-line no-console
     console.log(keys);
     // example console.log result:
     // ['@MyApp_user', '@MyApp_key']
   };
   return (
     <View style={{ alignItems: 'center' }}>
-      <StandardButton title="Clear Assessment Data" onPress={() => removeValue('assessment')} />
-      <StandardButton title="Clear Tracker Data" onPress={() => removeValue('tracker')} />
+      <StandardButton title="Clear Assessment Data" onPress={() => removeAssessment()} />
+      <StandardButton title="Clear Tracker Data" onPress={() => removeTracker()} />
       <StandardButton title="Check Data" onPress={() => getAllKeys()} />
       <StandardButton
         title="Retake Assessment"

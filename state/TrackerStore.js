@@ -132,7 +132,6 @@ const useTrackerStore = create((set) => ({
         tracker[date].carbs = carbSum;
         tracker[date].fats = fatSum;
         tracker[date].calories = caloriesSum;
-        storeTracker(tracker);
       })
     ),
   // Meal CRUD

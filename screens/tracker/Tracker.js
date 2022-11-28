@@ -1,5 +1,4 @@
 import { useFocusEffect } from '@react-navigation/core';
-import moment from 'moment';
 import { useCallback, useEffect, useState } from 'react';
 import {
   Keyboard,
@@ -9,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import useTrackerStore from '../../state/TrackerStore';
+import addNewDate from '../../functions/AddNewDate';
 import Calendar from './Calendar';
 import MacroBar from './MacroBar';
 import Meals from './Meals';
@@ -36,13 +36,6 @@ function Tracker({ navigation }) {
 
   useEffect(() => {
     getTracker(state);
-    const selectedDate = moment(date).format('L');
-    setDateData(selectedDate);
-    const savedDate = tracker[indexExists(tracker, selectedDate)];
-    if (!savedDate) {
-      addDate(selectedDate);
-    }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -50,12 +43,7 @@ function Tracker({ navigation }) {
     useCallback(() =>
       // Do something when the screen is focused
       {
-        const selectedDate = moment(date).format('L');
-        setDateData(selectedDate);
-        const savedDate = tracker[indexExists(tracker, selectedDate)];
-        if (!savedDate) {
-          addDate(selectedDate);
-        }
+        addNewDate(date, setDateData, indexExists, tracker, addDate);
         if (tracker[currentIndex]) {
           state.updateMacros(tracker, currentIndex);
           setProtein(tracker[currentIndex].protein);

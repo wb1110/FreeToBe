@@ -17,6 +17,7 @@ export const getTracker = async (state) => {
   try {
     const result = await AsyncStorage.getItem('tracker');
     parsedResult = await JSON.parse(result);
+    console.log(parsedResult.length, parsedResult);
     state.updateTracker(parsedResult);
   } catch (e) {
     return e;
