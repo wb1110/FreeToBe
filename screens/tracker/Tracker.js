@@ -7,7 +7,6 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { Button, useTheme } from '@rneui/themed';
 import useTrackerStore from '../../state/TrackerStore';
 import addNewDate from '../../functions/AddNewDate';
 import Calendar from './Calendar';
@@ -15,15 +14,13 @@ import MacroBar from './MacroBar';
 import Meals from './Meals';
 import { getTracker, getThreeDayLog } from '../../functions/Gets';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
+import ThreeDayLogButton from './ThreeDayLogButton';
 
 function Tracker({ navigation }) {
   const state = useTrackerStore();
   const { addDate, tracker } = state;
 
   const threeDayState = useThreeDayLogStore();
-  const { addDay } = threeDayState;
-
-  const { theme } = useTheme();
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   // date = datePickerDate
@@ -43,10 +40,11 @@ function Tracker({ navigation }) {
     return null;
   }
   const currentIndex = indexExists(tracker, dateData);
+  const selectedDay = tracker[indexExists(tracker, dateData)];
 
   useEffect(() => {
     getTracker(state);
-    getThreeDayLog();
+    getThreeDayLog(threeDayState);
     addNewDate(date, setDateData, indexExists, tracker, addDate);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -56,13 +54,18 @@ function Tracker({ navigation }) {
       // Do something when the screen is focused
       {
         addNewDate(date, setDateData, indexExists, tracker, addDate);
-        if (tracker[currentIndex]) {
+        if (selectedDay) {
           state.updateMacros(tracker, currentIndex);
-          setProtein(tracker[currentIndex].protein);
-          setCarbs(tracker[currentIndex].carbs);
-          setFats(tracker[currentIndex].fats);
-          setCalories(tracker[currentIndex].calories);
+          setProtein(selectedDay.protein);
+          setCarbs(selectedDay.carbs);
+          setFats(selectedDay.fats);
+          setCalories(selectedDay.calories);
         }
+        // if (tracker[currentIndex].date !== threeDayLog[0]) {
+        //   console.log('test');
+        // } else {
+        //   console.log('true');
+        // }
         // Do something when the screen is unfocused
         // Useful for cleanup functions
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -84,18 +87,7 @@ function Tracker({ navigation }) {
             setDate={setDate}
           />
           <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
-          <View style={{ alignItems: 'center', marginTop: '8%' }}>
-            <Button
-              titleStyle={{
-                color: theme.colors.primary,
-              }}
-              containerStyle={{ width: '90%' }}
-              color={theme.colors.white}
-              onPress={() => { addDay(tracker[currentIndex]); }}
-              title="Three Day Log: Submit Day 1"
-              size="sm"
-            />
-          </View>
+          {selectedDay ? <ThreeDayLogButton selectedDay={selectedDay} /> : null}
 
           <Meals tracker={tracker} currentIndex={currentIndex} navigation={navigation} />
         </View>

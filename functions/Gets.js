@@ -29,8 +29,7 @@ export const getThreeDayLog = async (state) => {
   try {
     const result = await AsyncStorage.getItem('threeDayLog');
     parsedResult = await JSON.parse(result);
-    console.log(parsedResult.length, parsedResult);
-    // state.updateTracker(parsedResult);
+    state.updateThreeDayLog(parsedResult);
   } catch (e) {
     return e;
   }

@@ -37,13 +37,12 @@ const useThreeDayLogStore = create((set) => ({
   //     },
   //   ],
   // },
-  updateThreeDayLog: (data) => set({ threeDayLog: data }),
+  // updateThreeDayLog: (data) => set({ threeDayLog: data }),
   addDay: (trackerDay) =>
     set(
       produce((state) => {
         const { threeDayLog } = state;
         threeDayLog.push(trackerDay);
-        console.log(threeDayLog, 'threeDayLogState');
         storeThreeDayLog(threeDayLog);
       })
     ),
