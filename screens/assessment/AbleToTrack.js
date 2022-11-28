@@ -1,25 +1,15 @@
 import { SafeAreaView } from 'react-native';
 import { Text } from '@rneui/themed';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import useStore from '../../state/Store';
+import { storeData } from '../../functions/Posts';
 
 function AbleToTrack({ navigation }) {
   const state = useStore();
 
-  // eslint-disable-next-line consistent-return
-  const storeData = async (value) => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem('assessment', jsonValue);
-    } catch (e) {
-      // saving error
-      return e;
-    }
-  };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />

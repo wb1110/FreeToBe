@@ -1,18 +1,7 @@
 import create from 'zustand';
 import produce from 'immer';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { v4 as uuidv4 } from 'uuid';
-
-// eslint-disable-next-line consistent-return
-const storeTracker = async (value) => {
-  try {
-    const jsonValue = JSON.stringify(value);
-    await AsyncStorage.setItem(`tracker`, jsonValue);
-  } catch (e) {
-    // saving error
-    return e;
-  }
-};
+import { storeTracker } from '../functions/Posts';
 
 const startingMealArray = [
   {

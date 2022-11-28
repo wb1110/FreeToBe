@@ -1,26 +1,16 @@
 import { SafeAreaView, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RArrowButton from '../../components/Buttons/RArrowButton';
 import Container from '../../components/Container';
 import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from '../../components/TextContainer';
 import useStore from '../../state/Store';
+import { storeData, storeThreeDayLog } from '../../functions/Posts';
 
 function LieSkinny4({ navigation }) {
   const state = useStore();
 
-  // eslint-disable-next-line consistent-return
-  const storeData = async (value) => {
-    try {
-      const jsonValue = JSON.stringify(value);
-      await AsyncStorage.setItem('assessment', jsonValue);
-    } catch (e) {
-      // saving error
-      return e;
-    }
-  };
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <FocusedStatusBar />
@@ -54,6 +44,7 @@ function LieSkinny4({ navigation }) {
             onPress={() => {
               navigation.navigate('UserHome', { screen: 'Tracker' });
               storeData(state.assessment);
+              storeThreeDayLog('test');
             }}
           />
         </View>

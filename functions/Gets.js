@@ -17,8 +17,20 @@ export const getTracker = async (state) => {
   try {
     const result = await AsyncStorage.getItem('tracker');
     parsedResult = await JSON.parse(result);
-    console.log(parsedResult.length, parsedResult);
     state.updateTracker(parsedResult);
+  } catch (e) {
+    return e;
+  }
+  return parsedResult;
+};
+
+export const getThreeDayLog = async (state) => {
+  let parsedResult;
+  try {
+    const result = await AsyncStorage.getItem('threeDayLog');
+    parsedResult = await JSON.parse(result);
+    console.log(parsedResult.length, parsedResult);
+    // state.updateTracker(parsedResult);
   } catch (e) {
     return e;
   }
