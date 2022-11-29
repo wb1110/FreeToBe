@@ -45,6 +45,7 @@ function Tracker({ navigation }) {
 
   useEffect(() => {
     getTracker(state);
+    getThreeDayLog(state);
     getThreeDayLog(threeDayState);
     addNewDate(date, setDateData, indexExists, tracker, addDate);
     // eslint-disable-next-line react-hooks/exhaustive-deps
