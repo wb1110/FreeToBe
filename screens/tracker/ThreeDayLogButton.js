@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react';
 import { View } from 'react-native';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 
-export default function ThreeDayLogButton({ selectedDay }) {
+export default function ThreeDayLogButton({ selectedDay, navigation }) {
   const { theme } = useTheme();
   const threeDayState = useThreeDayLogStore();
   const { addDay, threeDayLog } = threeDayState;
@@ -71,20 +71,38 @@ export default function ThreeDayLogButton({ selectedDay }) {
 
   return (
     <View style={{ alignItems: 'center', marginTop: '8%' }}>
-      <Button
-        titleStyle={{
-          color: theme.colors.primary,
-        }}
-        disabled={submitted}
-        containerStyle={{ width: '90%' }}
-        color={theme.colors.white}
-        onPress={() => {
-          addDay(selectedDay);
-          conditionalTitle();
-        }}
-        title={title}
-        size="sm"
-      />
+      {threeDayLog.length === 2 ? (
+        <Button
+          titleStyle={{
+            color: theme.colors.primary,
+          }}
+          disabled={submitted}
+          containerStyle={{ width: '90%' }}
+          color={theme.colors.white}
+          onPress={() => {
+            addDay(selectedDay);
+            conditionalTitle();
+            navigation.navigate('Results1');
+          }}
+          title={title}
+          size="sm"
+        />
+      ) : (
+        <Button
+          titleStyle={{
+            color: theme.colors.primary,
+          }}
+          disabled={submitted}
+          containerStyle={{ width: '90%' }}
+          color={theme.colors.white}
+          onPress={() => {
+            addDay(selectedDay);
+            conditionalTitle();
+          }}
+          title={title}
+          size="sm"
+        />
+      )}
     </View>
   );
 }

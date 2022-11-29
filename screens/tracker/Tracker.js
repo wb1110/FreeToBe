@@ -89,7 +89,7 @@ function Tracker({ navigation }) {
           />
           <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
           {selectedDay && threeDayLog.length !== 3 ? (
-            <ThreeDayLogButton selectedDay={selectedDay} />
+            <ThreeDayLogButton selectedDay={selectedDay} navigation={navigation} />
           ) : null}
 
           <Meals tracker={tracker} currentIndex={currentIndex} navigation={navigation} />

@@ -31,6 +31,7 @@ import LieSkinny4 from './screens/assessment/LieSkinny4';
 import UserHome from './screens/UserHome';
 import Login from './screens/Login';
 import Register from './screens/Register';
+import { Results1, Results2, Results3, Results4, Results5, Results6 } from './screens/threeDayLog/Results';
 
 const theme = createTheme({
   colors: {
@@ -150,8 +151,10 @@ export default function App() {
       <ThemeProvider theme={theme}>
         <NavigationContainer theme={MyTheme}>
           <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Register">
+            {/* Authentication */}
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Register" component={Register} />
+            {/* Assessment */}
             <Stack.Screen name="Welcome" component={Welcome} />
             <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
             <Stack.Screen name="BodyFatPercentage" component={BodyFatPercentage} />
@@ -174,7 +177,15 @@ export default function App() {
             <Stack.Screen name="LieSkinny2" component={LieSkinny2} />
             <Stack.Screen name="LieSkinny3" component={LieSkinny3} />
             <Stack.Screen name="LieSkinny4" component={LieSkinny4} />
+            {/* Home Tab Navigator */}
             <Stack.Screen name="UserHome" component={UserHome} />
+            {/* threeDayLog Results Pages */}
+            <Stack.Screen name="Results1" component={Results1} />
+            <Stack.Screen name="Results2" component={Results2} />
+            <Stack.Screen name="Results3" component={Results3} />
+            <Stack.Screen name="Results4" component={Results4} />
+            <Stack.Screen name="Results5" component={Results5} />
+            <Stack.Screen name="Results6" component={Results6} />
           </Stack.Navigator>
         </NavigationContainer>
       </ThemeProvider>
