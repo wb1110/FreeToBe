@@ -15,12 +15,9 @@ export default function ThreeDayLogButton({ selectedDay }) {
   const [title, setTitle] = useState(`Three Day Log: Submit Day ${dayNumber}`);
 
   const daySubmitted = () => {
-    console.log(threeDayLog[0].date, 'log');
-    console.log(selectedDay.date, 'day');
     if (threeDayLog[0]?.date === selectedDay.date) {
       setSubmitted(true);
       setTitle(`Three Day Log: Day 1 Submitted`);
-      console.log(title, submitted);
     }
     if (threeDayLog[1]?.date === selectedDay.date) {
       setSubmitted(true);
