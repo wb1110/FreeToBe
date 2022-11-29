@@ -21,6 +21,7 @@ function Tracker({ navigation }) {
   const { addDate, tracker } = state;
 
   const threeDayState = useThreeDayLogStore();
+  const { threeDayLog } = threeDayState;
 
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   // date = datePickerDate
@@ -87,7 +88,9 @@ function Tracker({ navigation }) {
             setDate={setDate}
           />
           <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
-          {selectedDay ? <ThreeDayLogButton selectedDay={selectedDay} /> : null}
+          {selectedDay && threeDayLog.length !== 3 ? (
+            <ThreeDayLogButton selectedDay={selectedDay} />
+          ) : null}
 
           <Meals tracker={tracker} currentIndex={currentIndex} navigation={navigation} />
         </View>

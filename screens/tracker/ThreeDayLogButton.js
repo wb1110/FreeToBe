@@ -14,13 +14,37 @@ export default function ThreeDayLogButton({ selectedDay }) {
   // console.log(selectedDay.date, 'selected');
   const [title, setTitle] = useState(`Three Day Log: Submit Day ${dayNumber}`);
 
+  const daySubmitted = () => {
+    console.log(threeDayLog[0].date, 'log');
+    console.log(selectedDay.date, 'day');
+    if (threeDayLog[0]?.date === selectedDay.date) {
+      setSubmitted(true);
+      setTitle(`Three Day Log: Day 1 Submitted`);
+      console.log(title, submitted);
+    }
+    if (threeDayLog[1]?.date === selectedDay.date) {
+      setSubmitted(true);
+      setTitle(`Three Day Log: Day 2 Submitted`);
+    }
+    if (threeDayLog[2]?.date === selectedDay.date) {
+      setSubmitted(true);
+      setTitle(`Three Day Log: Day 3 Submitted`);
+    }
+  };
+
   const dayFilter = () => {
     if (threeDayLog?.length > 0) {
-      if (threeDayLog.length === 1) {
+      if (threeDayLog.length === 1 && threeDayLog[0]?.date !== selectedDay.date) {
+        setSubmitted(false);
         setDayNumber(2);
         setTitle(`Three Day Log: Submit Day ${dayNumber}`);
       }
-      if (threeDayLog.length === 2) {
+      if (
+        threeDayLog.length === 2 &&
+        threeDayLog[1]?.date !== selectedDay.date &&
+        threeDayLog[0]?.date !== selectedDay.date
+      ) {
+        setSubmitted(false);
         setDayNumber(3);
         setTitle(`Three Day Log: Submit Day ${dayNumber}`);
       }
@@ -30,28 +54,17 @@ export default function ThreeDayLogButton({ selectedDay }) {
     return dayNumber;
   };
 
-  // const conditionalTitle = () => {
-  //   setSubmitted(true);
-  //   setTitle(`Three Day Log: Day ${dayNumber} Submitted`);
-  // };
+  const conditionalTitle = () => {
+    daySubmitted();
+    setSubmitted(true);
+    setTitle(`Three Day Log: Day ${dayNumber} Submitted`);
+  };
 
   useFocusEffect(
     useCallback(() =>
       // Do something when the screen is focused
       {
-        console.log(threeDayLog[0]?.date, selectedDay?.date);
-        if (threeDayLog[0]?.date === selectedDay.date) {
-          setSubmitted(true);
-          setTitle(`Three Day Log: Day 1 Submitted`);
-        }
-        if (threeDayLog[1]?.date === selectedDay.date) {
-          setSubmitted(true);
-          setTitle(`Three Day Log: Day 2 Submitted`);
-        }
-        if (threeDayLog[2]?.date === selectedDay.date) {
-          setSubmitted(true);
-          setTitle(`Three Day Log: Day 3 Submitted`);
-        }
+        daySubmitted();
         dayFilter();
         // Do something when the screen is unfocused
         // Useful for cleanup functions
