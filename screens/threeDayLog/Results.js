@@ -58,22 +58,36 @@ export function Results3({ navigation }) {
   let proteinPercentage = 0;
   let carbsPercentage = 0;
   let fatsPercentage = 0;
+  let avgCalories = 0;
+  let avgProtein = 0;
+  let avgCarbs = 0;
+  let avgFats = 0;
+  const days = logArray.length;
   const idealProtein = ((tdee * 0.3) / 4).toFixed(2);
   const idealFat = ((tdee * 0.3) / 9).toFixed(2);
   const idealCarbs = ((tdee * 0.4) / 4).toFixed(2);
 
-  for (let i = 0; i < logArray.length; i++) {
+  for (let i = 0; i < days; i++) {
     loggedCalories += logArray[i].calories;
     loggedProtein += logArray[i].protein;
     loggedCarbs += logArray[i].carbs;
     loggedFat += logArray[i].fats;
   }
 
+  const averages = (calories, protein, carbs, fats, numberOfDays) => {
+    avgCalories = (calories / numberOfDays).toFixed(2);
+    avgProtein = (protein / numberOfDays).toFixed(2);
+    avgCarbs = (carbs / numberOfDays).toFixed(2);
+    avgFats = (fats / numberOfDays).toFixed(2);
+  };
+
+  averages(loggedCalories, loggedProtein, loggedCarbs, loggedFat, days);
+
   const macroPercentage = (protein, carbs, fats) => {
     const total = protein + carbs + fats;
-    proteinPercentage = (protein / total).toFixed(2);
-    carbsPercentage = (carbs / total).toFixed(2);
-    fatsPercentage = (fats / total).toFixed(2);
+    proteinPercentage = ((protein / total) * 100).toFixed(2);
+    carbsPercentage = ((carbs / total) * 100).toFixed(2);
+    fatsPercentage = ((fats / total) * 100).toFixed(2);
   };
 
   macroPercentage(loggedProtein, loggedCarbs, loggedFat);
@@ -99,12 +113,12 @@ export function Results3({ navigation }) {
           Based on your 3 days eating journal you have been eating an average of
         </TextContainer>
         <TextContainer>
-          {`${loggedCalories}`} Calories {'\n'}
-          {`${loggedProtein.toFixed(2)}g`} Protein {`${proteinPercentage}%`}
+          {`${avgCalories}`} Calories {'\n'}
+          {`${avgProtein}g`} Protein {`${proteinPercentage}%`}
           {'\n'}
-          {`${loggedFat.toFixed(2)}g`} Fat {`${fatsPercentage}%`}
+          {`${avgFats}g`} Fat {`${fatsPercentage}%`}
           {'\n'}
-          {`${loggedCarbs.toFixed(2)}g`} Carbs {`${carbsPercentage}%`}
+          {`${avgCarbs}g`} Carbs {`${carbsPercentage}%`}
         </TextContainer>
       </View>
       <View style={{ flexDirection: 'row' }}>
@@ -124,7 +138,7 @@ export function Results4({ navigation }) {
           lifelong lasting change! {'\n'}
           {'\n'}
           Starting this first week, we will increase your protein intake to try to get closer to
-          your body&aposs needs. {'\n'}
+          your bodys needs. {'\n'}
           {'\n'}
           This weeks calorie/macro goals:
         </TextContainer>
