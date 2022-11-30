@@ -144,7 +144,36 @@ export function Results4({ navigation }) {
         </TextContainer>
       </View>
       <View>
-        {/* <TextContainer>{`${goalCalories}`} Calories = {`${goalProtein}`} Protein {`${goalProteinPercentage}%`} {`${goalFat}`} Fat {`${goalFatPercentage}%`} {`${goalCarbs}`} Carbs {`${goalCarbPercentage}%`}</TextContainer> */}
+        {/* 
+        Using the previous 7 days averages, add or subtract 5g carbs/protein and 2g fat toward the ideal grams.
+        Week 1 Avg Protein 10g, ideal is 50g.
+        Week 2 Avg Protein 15g, ideal is 50g.
+        Filter days from the previous week Sunday - Saturday
+        https://flaviocopes.com/how-to-sort-array-by-date-javascript/
+
+        const weeklyAvg = (ideal, avg) => {
+          if (ideal !== avg) {
+            if (percentageDifference <= 50%) {
+              if (avg < ideal) {
+                avgProtein/Carbs + 5g || avgFat +2
+              }
+              if (avg > ideal) {
+                avgProtein/Carbs - 5g || avgFat -2
+              }
+            }
+            if (percentageDifference > 50%) {
+              if (avg < ideal) {
+                avgProtein/Carbs + 10g || avgFat +3
+              }
+              if (avg > ideal) {
+                avgProtein/Carbs - 10g || avgFat -3
+              }
+            }
+          }
+        }
+        
+        
+        <TextContainer>{`${goalCalories}`} Calories = {`${goalProtein}`} Protein {`${goalProteinPercentage}%`} {`${goalFat}`} Fat {`${goalFatPercentage}%`} {`${goalCarbs}`} Carbs {`${goalCarbPercentage}%`}</TextContainer> */}
       </View>
       <View style={{ flexDirection: 'row' }}>
         <LArrowButton onPress={() => navigation.goBack()} />
