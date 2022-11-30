@@ -38,14 +38,15 @@ const useThreeDayLogStore = create((set) => ({
   //   ],
   // },
   // updateThreeDayLog: (data) => set({ threeDayLog: data }),
-  updateThreeDayLog: async (data) => {
-    try {
-      const response = await fetch(data);
-      set({ threeDayLog: await response.json() });
-    } catch (error) {
-      console.log(error);
-    }
-  },
+  updateThreeDayLog: (data) =>
+    set(
+      produce((state) => {
+        const { threeDayLog } = state;
+        if (data) {
+          data.map((obj) => threeDayLog.push(obj));
+        }
+      })
+    ),
   addDay: (trackerDay) =>
     set(
       produce((state) => {

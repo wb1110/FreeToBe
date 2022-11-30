@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import { Button } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
@@ -6,6 +7,7 @@ import RArrowButton from '../../components/Buttons/RArrowButton';
 import { SelectedButton } from '../../components/Buttons/StandardButtonSelected';
 import Container from '../../components/Container';
 import TextContainer from '../../components/TextContainer';
+import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 
 export function Results1({ navigation }) {
   return (
@@ -44,12 +46,23 @@ export function Results2({ navigation }) {
 }
 
 export function Results3({ navigation }) {
+  const state = useThreeDayLogStore();
+  const logArray = state.threeDayLog;
+  let loggedCalories;
+  let loggedProtein;
+  let loggedCarbs;
+  let loggedFat;
+
+  for (let i = 0; i < logArray.length; i++) {
+    loggedCalories += logArray[i].calories;
+    console.log(loggedCalories);
+  }
   return (
     <Container>
       <View>
         <TextContainer>
           Awesome job completing your 3 day assessment! Based on your questionnare, your ideal Total
-          Daily Energy Expended nees are
+          Daily Energy Expended needs are
         </TextContainer>
         {/* <TextContainer>{`${idealCalories}`} Calories = {`${idealProtein}`} Protein 30% {`${idealFat}`} Fat 30% {`${idealCarbs}`} Carbs 40%</TextContainer> */}
       </View>

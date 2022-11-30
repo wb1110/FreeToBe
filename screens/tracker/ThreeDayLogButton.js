@@ -31,13 +31,13 @@ export default function ThreeDayLogButton({ selectedDay, navigation }) {
 
   const dayFilter = () => {
     if (threeDayLog?.length > 0) {
-      if (threeDayLog.length === 1 && threeDayLog[0]?.date !== selectedDay.date) {
+      if (threeDayLog?.length === 1 && threeDayLog[0]?.date !== selectedDay.date) {
         setSubmitted(false);
         setDayNumber(2);
         setTitle(`Three Day Log: Submit Day ${dayNumber}`);
       }
       if (
-        threeDayLog.length === 2 &&
+        threeDayLog?.length === 2 &&
         threeDayLog[1]?.date !== selectedDay.date &&
         threeDayLog[0]?.date !== selectedDay.date
       ) {
@@ -71,7 +71,7 @@ export default function ThreeDayLogButton({ selectedDay, navigation }) {
 
   return (
     <View style={{ alignItems: 'center', marginTop: '8%' }}>
-      {threeDayLog.length === 2 ? (
+      {threeDayLog?.length === 2 ? (
         <Button
           titleStyle={{
             color: theme.colors.primary,
