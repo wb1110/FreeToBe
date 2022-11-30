@@ -130,6 +130,28 @@ export function Results3({ navigation }) {
 }
 
 export function Results4({ navigation }) {
+  const weeklyAvg = (ideal, avg) => {
+    const percentageDifference = (100 * (ideal - avg)) / ((ideal + avg) / 2);
+
+    if (ideal !== avg) {
+      if (percentageDifference <= 50) {
+        if (avg < ideal) {
+          return avg + 5;
+        }
+        if (avg > ideal) {
+          return avg - 5;
+        }
+      }
+      if (percentageDifference > 50) {
+        if (avg < ideal) {
+          return avg + 10;
+        }
+        if (avg > ideal) {
+          return avg - 10;
+        }
+      }
+    }
+  };
   return (
     <Container>
       <View>
