@@ -2,6 +2,7 @@
 import { Button } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
+import useStore from '../../state/Store';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RArrowButton from '../../components/Buttons/RArrowButton';
 import { SelectedButton } from '../../components/Buttons/StandardButtonSelected';
@@ -46,17 +47,37 @@ export function Results2({ navigation }) {
 }
 
 export function Results3({ navigation }) {
+  const tdeeState = useStore();
+  const { tdee } = tdeeState.assessment;
   const state = useThreeDayLogStore();
   const logArray = state.threeDayLog;
-  let loggedCalories;
-  let loggedProtein;
-  let loggedCarbs;
-  let loggedFat;
+  let loggedCalories = 0;
+  let loggedProtein = 0;
+  let loggedCarbs = 0;
+  let loggedFat = 0;
+  let proteinPercentage = 0;
+  let carbsPercentage = 0;
+  let fatsPercentage = 0;
+  const idealProtein = ((tdee * 0.3) / 4).toFixed(2);
+  const idealFat = ((tdee * 0.3) / 9).toFixed(2);
+  const idealCarbs = ((tdee * 0.4) / 4).toFixed(2);
 
   for (let i = 0; i < logArray.length; i++) {
     loggedCalories += logArray[i].calories;
-    console.log(loggedCalories);
+    loggedProtein += logArray[i].protein;
+    loggedCarbs += logArray[i].carbs;
+    loggedFat += logArray[i].fats;
   }
+
+  const macroPercentage = (protein, carbs, fats) => {
+    const total = protein + carbs + fats;
+    proteinPercentage = (protein / total).toFixed(2);
+    carbsPercentage = (carbs / total).toFixed(2);
+    fatsPercentage = (fats / total).toFixed(2);
+  };
+
+  macroPercentage(loggedProtein, loggedCarbs, loggedFat);
+
   return (
     <Container>
       <View>
@@ -64,13 +85,27 @@ export function Results3({ navigation }) {
           Awesome job completing your 3 day assessment! Based on your questionnare, your ideal Total
           Daily Energy Expended needs are
         </TextContainer>
-        {/* <TextContainer>{`${idealCalories}`} Calories = {`${idealProtein}`} Protein 30% {`${idealFat}`} Fat 30% {`${idealCarbs}`} Carbs 40%</TextContainer> */}
+        <TextContainer>
+          {`${tdee}`} Calories {'\n'}
+          {`${idealProtein}g`} Protein 30%
+          {'\n'}
+          {`${idealFat}g`} Fat 30%
+          {'\n'}
+          {`${idealCarbs}g`} Carbs 40%
+        </TextContainer>
       </View>
       <View>
         <TextContainer>
           Based on your 3 days eating journal you have been eating an average of
         </TextContainer>
-        {/* <TextContainer>{`${loggedCalories}`} Calories = {`${loggedProtein}`} Protein {`${proteinPercentage}%`} {`${loggedFat}`} Fat {`${fatPercentage}%`} {`${loggedCarbs}`} Carbs {`${carbPercentage}%`}</TextContainer> */}
+        <TextContainer>
+          {`${loggedCalories}`} Calories {'\n'}
+          {`${loggedProtein.toFixed(2)}g`} Protein {`${proteinPercentage}%`}
+          {'\n'}
+          {`${loggedFat.toFixed(2)}g`} Fat {`${fatsPercentage}%`}
+          {'\n'}
+          {`${loggedCarbs.toFixed(2)}g`} Carbs {`${carbsPercentage}%`}
+        </TextContainer>
       </View>
       <View style={{ flexDirection: 'row' }}>
         <LArrowButton onPress={() => navigation.goBack()} />

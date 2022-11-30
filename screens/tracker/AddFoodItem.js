@@ -102,6 +102,7 @@ export default function AddFoodItem({ route, navigation }) {
             setLoading(false);
           })
           .catch((err) => {
+            // eslint-disable-next-line no-console
             console.log(err);
             setLoading(false);
           });
@@ -120,6 +121,7 @@ export default function AddFoodItem({ route, navigation }) {
         setData(res.data.foods);
       })
       .catch((err) => {
+        // eslint-disable-next-line no-console
         console.log(err);
       });
   };
@@ -169,7 +171,6 @@ export default function AddFoodItem({ route, navigation }) {
       );
     }
     if (usedBarcode === true) {
-      console.log(item.foodNutrients);
       const nutrients = [];
       let calories = 0;
       item.foodNutrients.map((nutrient) => {
