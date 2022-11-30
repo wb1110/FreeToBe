@@ -37,7 +37,15 @@ const useThreeDayLogStore = create((set) => ({
   //     },
   //   ],
   // },
-  updateThreeDayLog: (data) => set({ threeDayLog: data }),
+  // updateThreeDayLog: (data) => set({ threeDayLog: data }),
+  updateThreeDayLog: async (data) => {
+    try {
+      const response = await fetch(data);
+      set({ threeDayLog: await response.json() });
+    } catch (error) {
+      console.log(error);
+    }
+  },
   addDay: (trackerDay) =>
     set(
       produce((state) => {

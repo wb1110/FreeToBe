@@ -1,7 +1,9 @@
 import { Button } from '@rneui/themed';
+import { useState } from 'react';
 import { View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RArrowButton from '../../components/Buttons/RArrowButton';
+import { SelectedButton } from '../../components/Buttons/StandardButtonSelected';
 import Container from '../../components/Container';
 import TextContainer from '../../components/TextContainer';
 
@@ -21,16 +23,18 @@ export function Results1({ navigation }) {
 }
 
 export function Results2({ navigation }) {
+  const [selected, setSelected] = useState(0);
+
   return (
     <Container>
       <TextContainer>
         To determine your best plan of action, we need to know how your body is reacting currently
         to what you are eating. {'\n'}
-        {'\n'} Currently, with the way I am eating I am...
+        {'\n'}Currently, with the way I am eating I am...
       </TextContainer>
-      <Button title="Losing weight" />
-      <Button title="Maintaing weight" />
-      <Button title="Gaining weight" />
+      <SelectedButton title="Losing weight" selected={selected} setSelected={setSelected} />
+      <SelectedButton title="Maintaining weight" selected={selected} setSelected={setSelected} />
+      <SelectedButton title="Gaining weight" selected={selected} setSelected={setSelected} />
       <View style={{ flexDirection: 'row' }}>
         <LArrowButton onPress={() => navigation.goBack()} />
         <RArrowButton title="Submit" onPress={() => navigation.navigate('Results3')} />
