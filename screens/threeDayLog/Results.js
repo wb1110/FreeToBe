@@ -1,5 +1,5 @@
 /* eslint-disable no-plusplus */
-import { Button } from '@rneui/themed';
+import { Button, Input } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
 import useStore from '../../state/Store';
@@ -97,9 +97,8 @@ export function Results3({ navigation }) {
       <View>
         <TextContainer>
           Awesome job completing your 3 day assessment! Based on your questionnare, your ideal Total
-          Daily Energy Expended needs are
-        </TextContainer>
-        <TextContainer>
+          Daily Energy Expended needs are{'\n'}
+          {'\n'}
           {`${tdee}`} Calories {'\n'}
           {`${idealProtein}g`} Protein 30%
           {'\n'}
@@ -110,9 +109,8 @@ export function Results3({ navigation }) {
       </View>
       <View>
         <TextContainer>
-          Based on your 3 days eating journal you have been eating an average of
-        </TextContainer>
-        <TextContainer>
+          Based on your 3 days eating journal you have been eating an average of{'\n'}
+          {'\n'}
           {`${avgCalories}`} Calories {'\n'}
           {`${avgProtein}g`} Protein {`${proteinPercentage}%`}
           {'\n'}
@@ -144,6 +142,7 @@ export function Results3({ navigation }) {
 export function Results4({ route, navigation }) {
   const { avgProtein, avgCarbs, avgFats, idealProtein, idealFat, idealCarbs } = route.params;
 
+  // eslint-disable-next-line consistent-return
   const macroGoal = (ideal, avg, macro) => {
     const percentageDifference = (100 * (ideal - avg)) / ((ideal + avg) / 2);
 
@@ -182,6 +181,7 @@ export function Results4({ route, navigation }) {
             return avg - 3;
           }
         }
+        // eslint-disable-next-line no-console
       } else return console.log('error calculating macro goal for the week');
     }
   };
@@ -213,35 +213,6 @@ export function Results4({ route, navigation }) {
           {`Fats ${macroGoal(Number(idealFat), Number(avgFats), 'fat')}g`}
         </TextContainer>
       </View>
-      <View>
-        {/* 
-        Using the previous 7 days averages, add or subtract 5g carbs/protein and 2g fat toward the ideal grams.
-        Week 1 Avg Protein 10g, ideal is 50g.
-        Week 2 Avg Protein 15g, ideal is 50g.
-        Filter days from the previous week Sunday - Saturday
-        https://flaviocopes.com/how-to-sort-array-by-date-javascript/
-
-        const weeklyAvg = (ideal, avg) => {
-          if (ideal !== avg) {
-            if (percentageDifference <= 50%) {
-              if (avg < ideal) {
-                avgProtein/Carbs + 5g || avgFat +2
-              }
-              if (avg > ideal) {
-                avgProtein/Carbs - 5g || avgFat -2
-              }
-            }
-            if (percentageDifference > 50%) {
-              if (avg < ideal) {
-                avgProtein/Carbs + 10g || avgFat +3
-              }
-              if (avg > ideal) {
-                avgProtein/Carbs - 10g || avgFat -3
-              }
-            }
-          }
-        } */}
-      </View>
       <View style={{ flexDirection: 'row' }}>
         <LArrowButton onPress={() => navigation.goBack()} />
         <RArrowButton title="Submit" onPress={() => navigation.navigate('Results5')} />
@@ -251,6 +222,9 @@ export function Results4({ route, navigation }) {
 }
 
 export function Results5({ navigation }) {
+  const [selected, setSelected] = useState(0);
+  const [written, setWritten] = useState('');
+
   return (
     <Container>
       <View>
@@ -261,11 +235,23 @@ export function Results5({ navigation }) {
           {'\n'}I want my goal to be...
         </TextContainer>
       </View>
-      <View>
-        <Button title="Eat 4 meals a day" />
-        <Button title="Eat between 15-20g of protein at each meal" />
-        <Button title="Make sure I have a protein at every meal" />
-        <Button title="Create my own goal" />
+      <View style={{ alignItems: 'center' }}>
+        <SelectedButton title="Eat 4 meals a day" selected={selected} setSelected={setSelected} />
+        <SelectedButton
+          title="Eat between 15-20g of protein at each meal"
+          selected={selected}
+          setSelected={setSelected}
+        />
+        <SelectedButton
+          title="Make sure I have a protein at every meal"
+          selected={selected}
+          setSelected={setSelected}
+        />
+        <Input
+          label="Create my own goal"
+          onChangeText={(value) => setWritten(value)}
+          style={{ margin: 'auto', width: '100%' }}
+        />
       </View>
       <View style={{ flexDirection: 'row' }}>
         <LArrowButton onPress={() => navigation.goBack()} />
