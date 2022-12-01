@@ -144,7 +144,7 @@ export function Results3({ navigation }) {
 export function Results4({ route, navigation }) {
   const { avgProtein, avgCarbs, avgFats, idealProtein, idealFat, idealCarbs } = route.params;
 
-  const threeDayLogAvg = (ideal, avg, macro) => {
+  const macroGoal = (ideal, avg, macro) => {
     const percentageDifference = (100 * (ideal - avg)) / ((ideal + avg) / 2);
 
     if (ideal !== avg) {
@@ -185,6 +185,14 @@ export function Results4({ route, navigation }) {
       } else return console.log('error calculating macro goal for the week');
     }
   };
+  const goalCalories = () => {
+    const total =
+      macroGoal(Number(idealProtein), Number(avgProtein), 'protein') * 4 +
+      macroGoal(Number(idealCarbs), Number(avgCarbs), 'carbs') * 4 +
+      macroGoal(Number(idealFat), Number(avgFats), 'fat') * 9;
+    return total;
+  };
+
   return (
     <Container>
       <View>
@@ -195,8 +203,14 @@ export function Results4({ route, navigation }) {
           Starting this first week, we will increase your protein intake to try to get closer to
           your bodys needs. {'\n'}
           {'\n'}
-          This weeks calorie/macro goals:{' '}
-          {`${threeDayLogAvg(Number(idealProtein), Number(avgProtein), 'protein')}g`}
+          This weeks calorie/macro goals:{'\n'}
+          {`Calories ${goalCalories()} kCal`}
+          {'\n'}
+          {`Protein ${macroGoal(Number(idealProtein), Number(avgProtein), 'protein')}g`}
+          {'\n'}
+          {`Carbohydrates ${macroGoal(Number(idealCarbs), Number(avgCarbs), 'carbs')}g`}
+          {'\n'}
+          {`Fats ${macroGoal(Number(idealFat), Number(avgFats), 'fat')}g`}
         </TextContainer>
       </View>
       <View>
@@ -226,10 +240,7 @@ export function Results4({ route, navigation }) {
               }
             }
           }
-        }
-        
-        
-        <TextContainer>{`${goalCalories}`} Calories = {`${goalProtein}`} Protein {`${goalProteinPercentage}%`} {`${goalFat}`} Fat {`${goalFatPercentage}%`} {`${goalCarbs}`} Carbs {`${goalCarbPercentage}%`}</TextContainer> */}
+        } */}
       </View>
       <View style={{ flexDirection: 'row' }}>
         <LArrowButton onPress={() => navigation.goBack()} />
