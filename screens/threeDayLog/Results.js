@@ -123,33 +123,66 @@ export function Results3({ navigation }) {
       </View>
       <View style={{ flexDirection: 'row' }}>
         <LArrowButton onPress={() => navigation.goBack()} />
-        <RArrowButton title="Submit" onPress={() => navigation.navigate('Results4')} />
+        <RArrowButton
+          title="Submit"
+          onPress={() =>
+            navigation.navigate('Results4', {
+              avgProtein,
+              avgCarbs,
+              avgFats,
+              idealProtein,
+              idealFat,
+              idealCarbs,
+            })
+          }
+        />
       </View>
     </Container>
   );
 }
 
-export function Results4({ navigation }) {
-  const weeklyAvg = (ideal, avg) => {
+export function Results4({ route, navigation }) {
+  const { avgProtein, avgCarbs, avgFats, idealProtein, idealFat, idealCarbs } = route.params;
+
+  const threeDayLogAvg = (ideal, avg, macro) => {
     const percentageDifference = (100 * (ideal - avg)) / ((ideal + avg) / 2);
 
     if (ideal !== avg) {
       if (percentageDifference <= 50) {
         if (avg < ideal) {
-          return avg + 5;
+          if (macro === 'protein' || macro === 'carbs') {
+            return avg + 5;
+          }
+          if (macro === 'fat') {
+            return avg + 2;
+          }
         }
         if (avg > ideal) {
-          return avg - 5;
+          if (macro === 'protein' || macro === 'carbs') {
+            return avg - 5;
+          }
+          if (macro === 'fat') {
+            return avg - 2;
+          }
         }
-      }
-      if (percentageDifference > 50) {
+      } else if (percentageDifference > 50) {
         if (avg < ideal) {
-          return avg + 10;
+          if (macro === 'protein' || macro === 'carbs') {
+            return avg + 10;
+          }
+          if (macro === 'fat') {
+            return avg + 3;
+          }
         }
         if (avg > ideal) {
-          return avg - 10;
+          if (macro === 'protein' || macro === 'carbs') {
+            return avg - 10;
+          }
+          if (macro === 'fat') {
+            return avg - 3;
+          }
         }
-      }
+      } else return console.log('error calculating macro goal for the week');
     }
   };
   return (
@@ -162,7 +195,8 @@ export function Results4({ navigation }) {
           Starting this first week, we will increase your protein intake to try to get closer to
           your bodys needs. {'\n'}
           {'\n'}
-          This weeks calorie/macro goals:
+          This weeks calorie/macro goals:{' '}
+          {`${threeDayLogAvg(Number(idealProtein), Number(avgProtein), 'protein')}g`}
         </TextContainer>
       </View>
       <View>
