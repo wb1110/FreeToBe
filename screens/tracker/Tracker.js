@@ -72,11 +72,6 @@ function Tracker({ navigation }) {
           setFats(selectedDay.fats);
           setCalories(selectedDay.calories);
         }
-        // if (tracker[currentIndex].date !== threeDayLog[0]) {
-        //   console.log('test');
-        // } else {
-        //   console.log('true');
-        // }
         // Do something when the screen is unfocused
         // Useful for cleanup functions
         // eslint-disable-next-line react-hooks/exhaustive-deps

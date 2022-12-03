@@ -11,7 +11,7 @@ function HomeTab() {
     <SafeAreaView style={{ flex: 1 }}>
       {/* Macros and Minerals Visuals */}
       <View
-        style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '2%', flex: 2 }}
+        style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '2%', flex: 1 }}
       >
         <View style={{ flex: 1, alignItems: 'center' }}>
           <Text>Macro Goals</Text>
@@ -28,21 +28,26 @@ function HomeTab() {
       </View>
       <View style={{ alignItems: 'center', flex: 1 }}>
         <Text h4>What helps fuel our bodies?</Text>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around', flex: 1 }}>
+        <View style={{ justifyContent: 'space-around', flex: 1, width: '100%' }}>
           <View
-            style={{ flex: 1, backgroundColor: theme.colors.primary, margin: '2%', padding: '2%' }}
+            style={{
+              flex: 1,
+              backgroundColor: theme.colors.primary,
+              margin: '2%',
+              padding: '2%',
+            }}
           >
-            <Text>Proteins</Text>
+            <Text h4>Proteins</Text>
           </View>
           <View
             style={{ flex: 1, backgroundColor: theme.colors.primary, margin: '2%', padding: '2%' }}
           >
-            <Text>Fats</Text>
+            <Text h4>Fats</Text>
           </View>
           <View
             style={{ flex: 1, backgroundColor: theme.colors.primary, margin: '2%', padding: '2%' }}
           >
-            <Text>Carbs</Text>
+            <Text h4>Carbs</Text>
           </View>
         </View>
       </View>

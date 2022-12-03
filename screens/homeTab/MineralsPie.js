@@ -1,4 +1,4 @@
-import { Text, useTheme } from '@rneui/themed';
+import { Button, Text, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import Svg from 'react-native-svg';
 import { VictoryContainer, VictoryPie } from 'victory-native';
@@ -28,6 +28,7 @@ export default function MineralsPie() {
           style={{
             labels: {
               fill: theme.colors.white,
+              display: 'none',
             },
           }}
           containerComponent={<VictoryContainer width={190} height={300} />}
@@ -36,7 +37,8 @@ export default function MineralsPie() {
         />
       </Svg>
       <View style={{ alignItems: 'center' }}>
-        <Text>Calcium: 10</Text>
+        <Button title="Details" />
+        {/* <Text>Calcium: 10</Text>
         <Text>Choline: 10</Text>
         <Text>Copper: 10</Text>
         <Text>Iodine: 10</Text>
@@ -46,7 +48,7 @@ export default function MineralsPie() {
         <Text>Potassium: 10</Text>
         <Text>Selenium: 10</Text>
         <Text>Sodium: 10</Text>
-        <Text>Zinc: 10</Text>
+        <Text>Zinc: 10</Text> */}
       </View>
     </View>
   );
