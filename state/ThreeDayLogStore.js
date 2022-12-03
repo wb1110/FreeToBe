@@ -4,6 +4,11 @@ import { storeThreeDayLog } from '../functions/Posts';
 
 const useThreeDayLogStore = create((set) => ({
   threeDayLog: [],
+  complete: false,
+  goalProtein: 0,
+  goalCarbs: 0,
+  goalFats: 0,
+  goalCalories: 0,
   // {
   //   date: null,
   //   protein: 0,

@@ -1,8 +1,7 @@
-import { Button, Text, useTheme } from '@rneui/themed';
+import { Button, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import Svg from 'react-native-svg';
 import { VictoryContainer, VictoryLabel, VictoryPie } from 'victory-native';
-import StandardButton from '../../components/Buttons/StandardButton';
 
 export default function MacroPie({ TDEE }) {
   const { theme } = useTheme();

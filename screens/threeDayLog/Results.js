@@ -1,5 +1,5 @@
 /* eslint-disable no-plusplus */
-import { Button, Input } from '@rneui/themed';
+import { Input } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
 import useStore from '../../state/Store';
