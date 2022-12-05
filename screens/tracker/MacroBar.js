@@ -59,11 +59,10 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
     const sortedDesc = convertDate.sort((objA, objB) => Number(objB.date) - Number(objA.date));
     const lastSevenDays = sortedDesc.slice(0, 7);
     const averages = macroAverage(lastSevenDays);
-    console.log(lastSevenDays.length);
     const { avgProtein, avgCarbs, avgFats } = averages;
     goalProtein = macroGoal(Number(idealProtein), Number(avgProtein), 'protein');
-    goalCarb = macroGoal(Number(idealCarbs), Number(avgCarbs), 'protein');
-    goalFat = macroGoal(Number(idealFat), Number(avgFats), 'protein');
+    goalCarb = macroGoal(Number(idealCarbs), Number(avgCarbs), 'carbs');
+    goalFat = macroGoal(Number(idealFat), Number(avgFats), 'fat');
     goalCalories = calculateGoalCalories(
       idealProtein,
       idealCarbs,
