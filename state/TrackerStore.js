@@ -71,7 +71,16 @@ const useTrackerStore = create((set) => ({
   //     },
   //   ],
   // },
-  updateTracker: (data) => set({ tracker: data }),
+  // updateTracker: (data) => set({ tracker: data }),
+  updateTracker: (data) =>
+    set(
+      produce((state) => {
+        const { tracker } = state;
+        if (data) {
+          data.map((obj) => tracker.push(obj));
+        }
+      })
+    ),
   addDate: (date) =>
     set(
       produce((state) => {

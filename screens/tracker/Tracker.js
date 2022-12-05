@@ -38,7 +38,7 @@ function Tracker({ navigation }) {
   const [calories, setCalories] = useState(0);
 
   function indexExists(array, dateVariable) {
-    if (array.length != null) {
+    if (array?.length != null) {
       const objIndex = array.findIndex((obj) => obj.date === dateVariable);
       return objIndex;
     }
@@ -52,7 +52,6 @@ function Tracker({ navigation }) {
     getTracker(state);
     getThreeDayLog(state);
     getThreeDayLog(threeDayState);
-    addNewDate(date, setDateData, indexExists, tracker, addDate);
     setTimeout(() => {
       setLoading(false);
     }, 1000);

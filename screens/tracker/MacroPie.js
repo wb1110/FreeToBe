@@ -1,12 +1,11 @@
 import { Text, useTheme } from '@rneui/themed';
-import { useState } from 'react';
 import { View } from 'react-native';
 import Svg from 'react-native-svg';
 import { VictoryContainer, VictoryLabel, VictoryPie } from 'victory-native';
 
 export default function MacroPie({ macro, goal, label, complete }) {
   const { theme } = useTheme();
-  const remainingGoal = goal - macro;
+  const remainingGoal = (goal - macro).toFixed(2);
   const data = [];
   const noData = [{ y: 1 }];
   if (complete) {
@@ -51,7 +50,7 @@ export default function MacroPie({ macro, goal, label, complete }) {
           x={210}
           y={340}
           // if (complete === false) only use macro numbers
-          text={complete ? remainingGoal : macro}
+          text={complete ? remainingGoal : macro.toFixed(2)}
         />
       </Svg>
     </View>

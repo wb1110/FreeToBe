@@ -68,6 +68,8 @@ export const idealMacro = (tdee, macro, percentage) => {
   if (macro === 'carbs') {
     return ((tdee * percentage) / 4).toFixed(2);
   }
+  // eslint-disable-next-line no-console
+  return console.log('error calculating ideal macro');
 };
 
 export const macroAverage = (array) => {
@@ -84,6 +86,7 @@ export const macroAverage = (array) => {
   // Instead of length, it needs to be sorting the array by date and getting the last 3 or 7 days
   const days = array.length;
 
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < days; i++) {
     loggedCalories += array[i].calories;
     loggedProtein += array[i].protein;

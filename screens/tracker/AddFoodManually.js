@@ -6,6 +6,7 @@ import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import StandardButton from '../../components/Buttons/StandardButton';
 import useTrackerStore from '../../state/TrackerStore';
+import addNewDate from '../../functions/AddNewDate';
 
 const foodSchema = Yup.object().shape({
   foodName: Yup.string().required('Required'),
@@ -54,6 +55,7 @@ export default function AddFoodManually({ route, navigation }) {
             zinc: '',
           }}
           onSubmit={(values) => {
+            addNewDate(date, setDateData, indexExists, tracker, addDate);
             state.addFood(values, dayIndex, mealName);
           }}
           validationSchema={foodSchema}

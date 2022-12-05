@@ -9,7 +9,7 @@ import { SelectedButton } from '../../components/Buttons/StandardButtonSelected'
 import Container from '../../components/Container';
 import TextContainer from '../../components/TextContainer';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
-import { macroGoal, goalCalories, idealMacro } from '../../functions/GoalCalculator';
+import { macroGoal, calculateGoalCalories, idealMacro } from '../../functions/GoalCalculator';
 
 export function Results1({ navigation }) {
   return (
@@ -155,7 +155,7 @@ export function Results4({ route, navigation }) {
           your bodys needs. {'\n'}
           {'\n'}
           This weeks calorie/macro goals:{'\n'}
-          {`Calories ${goalCalories(
+          {`Calories ${calculateGoalCalories(
             idealProtein,
             idealCarbs,
             idealFat,
@@ -208,6 +208,7 @@ export function Results5({ navigation }) {
         <Input
           label="Create my own goal"
           onChangeText={(value) => setWritten(value)}
+          value={written}
           style={{ margin: 'auto', width: '100%' }}
         />
       </View>

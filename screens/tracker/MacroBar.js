@@ -8,9 +8,12 @@ import {
   macroGoal,
   calculateGoalCalories,
 } from '../../functions/GoalCalculator';
+import useTrackerStore from '../../state/TrackerStore';
 
 export default function MacroBar({ protein, carbs, fats, calories }) {
   const state = useStore();
+  const trackerState = useTrackerStore();
+  console.log(trackerState.tracker);
   const threeDayLogState = useThreeDayLogStore();
   const { complete, threeDayLog } = threeDayLogState;
   const { tdee } = state.assessment;
@@ -30,6 +33,7 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
     goalFat = 0;
     goalCalories = 0;
   }
+  // Need to add && tracker.length < 7
   if (complete === true) {
     const averages = macroAverage(threeDayLog);
     const { avgProtein, avgCarbs, avgFats } = averages;
