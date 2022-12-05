@@ -1,6 +1,4 @@
 import { View } from 'react-native';
-import { useFocusEffect } from '@react-navigation/core';
-import { useCallback } from 'react';
 import useStore from '../../state/Store';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import MacroPie from './MacroPie';
@@ -55,10 +53,13 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
 
   // 3 Day Log Complete, and sufficient data to update goals from tracker.
   if (complete === true && tracker.length >= 7) {
-    const convertDate = tracker.map((obj) => ({ ...obj, date: new Date(obj.date) }));
+    const convertDate = tracker.map((obj) => {
+      if (obj.calories > 0) return { ...obj, date: new Date(obj.date) };
+    });
     const sortedDesc = convertDate.sort((objA, objB) => Number(objB.date) - Number(objA.date));
     const lastSevenDays = sortedDesc.slice(0, 7);
     const averages = macroAverage(lastSevenDays);
+    console.log(lastSevenDays.length);
     const { avgProtein, avgCarbs, avgFats } = averages;
     goalProtein = macroGoal(Number(idealProtein), Number(avgProtein), 'protein');
     goalCarb = macroGoal(Number(idealCarbs), Number(avgCarbs), 'protein');

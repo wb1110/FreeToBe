@@ -62,7 +62,7 @@ function Tracker({ navigation }) {
   useFocusEffect(
     useCallback(() =>
       // Do something when the screen is focused
-      {
+    {
         addNewDate(date, setDateData, indexExists, tracker, addDate);
         if (selectedDay) {
           state.updateMacros(tracker, currentIndex);
