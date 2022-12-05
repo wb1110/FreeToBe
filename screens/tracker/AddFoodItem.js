@@ -95,7 +95,7 @@ export default function AddFoodItem({ route, navigation }) {
       const searchData = setTimeout(() => {
         axios
           .get(
-            `https://api.nal.usda.gov/fdc/v1/foods/search?query=${search}&dataType=Foundation&pageSize=50&sortBy=lowercaseDescription.keyword&sortOrder=asc&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
+            `https://api.nal.usda.gov/fdc/v1/foods/search?query=${search}&dataType=Foundation,Survey%20%28FNDDS%29,SR%20Legacy&pageSize=50&sortBy=lowercaseDescription.keyword&sortOrder=asc&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
           )
           .then((res) => {
             setData(res.data.foods);
