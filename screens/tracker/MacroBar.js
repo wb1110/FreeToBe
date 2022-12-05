@@ -1,4 +1,6 @@
 import { View } from 'react-native';
+import { useFocusEffect } from '@react-navigation/core';
+import { useCallback } from 'react';
 import useStore from '../../state/Store';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import MacroPie from './MacroPie';
@@ -13,7 +15,7 @@ import useTrackerStore from '../../state/TrackerStore';
 export default function MacroBar({ protein, carbs, fats, calories }) {
   const state = useStore();
   const trackerState = useTrackerStore();
-  console.log(trackerState.tracker);
+  const { tracker } = trackerState;
   const threeDayLogState = useThreeDayLogStore();
   const { complete, threeDayLog } = threeDayLogState;
   const { tdee } = state.assessment;
@@ -27,14 +29,15 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
   let goalFat;
   let goalCalories;
 
+  // 3 Day Log Incomplete
   if (complete === false) {
     goalProtein = 0;
     goalCarb = 0;
     goalFat = 0;
     goalCalories = 0;
   }
-  // Need to add && tracker.length < 7
-  if (complete === true) {
+  // 3 Day Log Complete, but insufficient data to update goals from tracker.
+  if (complete === true && tracker.length < 7) {
     const averages = macroAverage(threeDayLog);
     const { avgProtein, avgCarbs, avgFats } = averages;
     goalProtein = macroGoal(Number(idealProtein), Number(avgProtein), 'protein');
@@ -49,16 +52,33 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
       avgFats
     );
   }
+
+  if (complete === true && tracker.length >= 7) {
+    const averages = macroAverage(tracker);
+    const { avgProtein, avgCarbs, avgFats } = averages;
+    goalProtein = macroGoal(Number(idealProtein), Number(avgProtein), 'protein');
+    goalCarb = macroGoal(Number(idealCarbs), Number(avgCarbs), 'protein');
+    goalFat = macroGoal(Number(idealFat), Number(avgFats), 'protein');
+    goalCalories = calculateGoalCalories(
+      idealProtein,
+      idealCarbs,
+      idealFat,
+      avgProtein,
+      avgCarbs,
+      avgFats
+    );
+  }
+
   // const goalProtein = Math.round((TDEE * 0.3) / 4);
   // const goalCarb = Math.round((TDEE * 0.4) / 4);
   // const goalFat = Math.round((TDEE * 0.3) / 4);
 
   /*
   
-  if tracker array is less than 7, then use 3 day log goals
   if tracker array is 7 or more, sort by date and use the 7 most recent dates to calculate the goals for that day
 
 */
+
   return (
     <View
       style={{
