@@ -53,14 +53,22 @@ export default function Settings({ navigation }) {
     // ['@MyApp_user', '@MyApp_key']
   };
   return (
-    <View style={{ alignItems: 'flex-start', flex: 1 }}>
+    <View style={{ justifyContent: 'center', flex: 1, backgroundColor: theme.colors.primary }}>
       <View style={{ width: '100%' }}>
         <Button title="Clear Assessment Data" onPress={() => removeAssessment()} />
       </View>
-      <Button title="Clear Tracker Data" onPress={() => removeTracker()} />
-      <Button title="Clear Three Day Log Data" onPress={() => removeThreeDayLog()} />
-      <Button title="Check Data" onPress={() => getAllKeys()} />
-      <Button title="Retake Assessment" onPress={() => navigation.navigate('HeightWeightAge')} />
+      <View style={{ width: '100%' }}>
+        <Button title="Clear Tracker Data" onPress={() => removeTracker()} />
+      </View>
+      <View style={{ width: '100%' }}>
+        <Button title="Clear Three Day Log Data" onPress={() => removeThreeDayLog()} />
+      </View>
+      <View style={{ width: '100%' }}>
+        <Button title="Check Data" onPress={() => getAllKeys()} />
+      </View>
+      <View style={{ width: '100%' }}>
+        <Button title="Retake Assessment" onPress={() => navigation.navigate('HeightWeightAge')} />
+      </View>
     </View>
   );
 }

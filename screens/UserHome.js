@@ -51,7 +51,15 @@ export default function UserHome() {
       <Tab.Screen name="Tracker" component={TrackerStackScreen} />
       <Tab.Screen name="Metabolic Journal" component={MetabolicJournal} />
       <Tab.Screen name="Home" component={HomeTab} options={{ headerTitle: () => <LogoTitle /> }} />
-      <Tab.Screen name="Settings" component={Settings} />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          headerStyle: {
+            backgroundColor: theme.colors.primary,
+          },
+        }}
+      />
     </Tab.Navigator>
   );
 }
