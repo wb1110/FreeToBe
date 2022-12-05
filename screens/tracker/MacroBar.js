@@ -53,8 +53,12 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
     );
   }
 
+  // 3 Day Log Complete, and sufficient data to update goals from tracker.
   if (complete === true && tracker.length >= 7) {
-    const averages = macroAverage(tracker);
+    const convertDate = tracker.map((obj) => ({ ...obj, date: new Date(obj.date) }));
+    const sortedDesc = convertDate.sort((objA, objB) => Number(objB.date) - Number(objA.date));
+    const lastSevenDays = sortedDesc.slice(0, 7);
+    const averages = macroAverage(lastSevenDays);
     const { avgProtein, avgCarbs, avgFats } = averages;
     goalProtein = macroGoal(Number(idealProtein), Number(avgProtein), 'protein');
     goalCarb = macroGoal(Number(idealCarbs), Number(avgCarbs), 'protein');
