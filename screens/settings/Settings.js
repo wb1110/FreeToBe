@@ -1,8 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Button, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import StandardButton from '../../components/Buttons/StandardButton';
 
 export default function Settings({ navigation }) {
+  const { theme } = useTheme();
   const removeAssessment = async () => {
     try {
       await AsyncStorage.removeItem('assessment');
@@ -51,15 +53,14 @@ export default function Settings({ navigation }) {
     // ['@MyApp_user', '@MyApp_key']
   };
   return (
-    <View style={{ alignItems: 'center' }}>
-      <StandardButton title="Clear Assessment Data" onPress={() => removeAssessment()} />
-      <StandardButton title="Clear Tracker Data" onPress={() => removeTracker()} />
-      <StandardButton title="Clear Three Day Log Data" onPress={() => removeThreeDayLog()} />
-      <StandardButton title="Check Data" onPress={() => getAllKeys()} />
-      <StandardButton
-        title="Retake Assessment"
-        onPress={() => navigation.navigate('HeightWeightAge')}
-      />
+    <View style={{ alignItems: 'flex-start', flex: 1 }}>
+      <View style={{ width: '100%' }}>
+        <Button title="Clear Assessment Data" onPress={() => removeAssessment()} />
+      </View>
+      <Button title="Clear Tracker Data" onPress={() => removeTracker()} />
+      <Button title="Clear Three Day Log Data" onPress={() => removeThreeDayLog()} />
+      <Button title="Check Data" onPress={() => getAllKeys()} />
+      <Button title="Retake Assessment" onPress={() => navigation.navigate('HeightWeightAge')} />
     </View>
   );
 }
