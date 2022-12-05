@@ -9,6 +9,7 @@ import { SelectedButton } from '../../components/Buttons/StandardButtonSelected'
 import Container from '../../components/Container';
 import TextContainer from '../../components/TextContainer';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
+import { macroGoal, goalCalories, idealMacro } from '../../functions/GoalCalculator';
 
 export function Results1({ navigation }) {
   return (
@@ -63,9 +64,10 @@ export function Results3({ navigation }) {
   let avgCarbs = 0;
   let avgFats = 0;
   const days = logArray.length;
-  const idealProtein = ((tdee * 0.3) / 4).toFixed(2);
-  const idealFat = ((tdee * 0.3) / 9).toFixed(2);
-  const idealCarbs = ((tdee * 0.4) / 4).toFixed(2);
+
+  const idealProtein = idealMacro(tdee, 'protein', 0.3);
+  const idealFat = idealMacro(tdee, 'fat', 0.3);
+  const idealCarbs = idealMacro(tdee, 'carbs', 0.4);
 
   for (let i = 0; i < days; i++) {
     loggedCalories += logArray[i].calories;
@@ -142,57 +144,6 @@ export function Results3({ navigation }) {
 export function Results4({ route, navigation }) {
   const { avgProtein, avgCarbs, avgFats, idealProtein, idealFat, idealCarbs } = route.params;
 
-  // eslint-disable-next-line consistent-return
-  const macroGoal = (ideal, avg, macro) => {
-    const percentageDifference = (100 * (ideal - avg)) / ((ideal + avg) / 2);
-
-    if (ideal !== avg) {
-      if (percentageDifference <= 50) {
-        if (avg < ideal) {
-          if (macro === 'protein' || macro === 'carbs') {
-            return avg + 5;
-          }
-          if (macro === 'fat') {
-            return avg + 2;
-          }
-        }
-        if (avg > ideal) {
-          if (macro === 'protein' || macro === 'carbs') {
-            return avg - 5;
-          }
-          if (macro === 'fat') {
-            return avg - 2;
-          }
-        }
-      } else if (percentageDifference > 50) {
-        if (avg < ideal) {
-          if (macro === 'protein' || macro === 'carbs') {
-            return avg + 10;
-          }
-          if (macro === 'fat') {
-            return avg + 3;
-          }
-        }
-        if (avg > ideal) {
-          if (macro === 'protein' || macro === 'carbs') {
-            return avg - 10;
-          }
-          if (macro === 'fat') {
-            return avg - 3;
-          }
-        }
-        // eslint-disable-next-line no-console
-      } else return console.log('error calculating macro goal for the week');
-    }
-  };
-  const goalCalories = () => {
-    const total =
-      macroGoal(Number(idealProtein), Number(avgProtein), 'protein') * 4 +
-      macroGoal(Number(idealCarbs), Number(avgCarbs), 'carbs') * 4 +
-      macroGoal(Number(idealFat), Number(avgFats), 'fat') * 9;
-    return total;
-  };
-
   return (
     <Container>
       <View>
@@ -204,7 +155,14 @@ export function Results4({ route, navigation }) {
           your bodys needs. {'\n'}
           {'\n'}
           This weeks calorie/macro goals:{'\n'}
-          {`Calories ${goalCalories()} kCal`}
+          {`Calories ${goalCalories(
+            idealProtein,
+            idealCarbs,
+            idealFat,
+            avgProtein,
+            avgCarbs,
+            avgFats
+          )} kCal`}
           {'\n'}
           {`Protein ${macroGoal(Number(idealProtein), Number(avgProtein), 'protein')}g`}
           {'\n'}

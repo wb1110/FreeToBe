@@ -42,7 +42,7 @@ const useThreeDayLogStore = create((set) => ({
   //     },
   //   ],
   // },
-  // updateThreeDayLog: (data) => set({ threeDayLog: data }),
+  updateCompletion: () => set(() => ({ complete: true })),
   updateThreeDayLog: (data) =>
     set(
       produce((state) => {

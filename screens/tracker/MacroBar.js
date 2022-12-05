@@ -2,12 +2,22 @@ import { View } from 'react-native';
 import useStore from '../../state/Store';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import MacroPie from './MacroPie';
+import {
+  idealMacro,
+  macroAverage,
+  macroGoal,
+  calculateGoalCalories,
+} from '../../functions/GoalCalculator';
 
 export default function MacroBar({ protein, carbs, fats, calories }) {
   const state = useStore();
   const threeDayLogState = useThreeDayLogStore();
-  const { complete } = threeDayLogState;
-  const TDEE = state.assessment.tdee;
+  const { complete, threeDayLog } = threeDayLogState;
+  const { tdee } = state.assessment;
+
+  const idealProtein = idealMacro(tdee, 'protein', 0.3);
+  const idealFat = idealMacro(tdee, 'fat', 0.3);
+  const idealCarbs = idealMacro(tdee, 'carbs', 0.4);
 
   let goalProtein;
   let goalCarb;
@@ -20,13 +30,27 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
     goalFat = 0;
     goalCalories = 0;
   }
+  if (complete === true) {
+    const averages = macroAverage(threeDayLog);
+    const { avgProtein, avgCarbs, avgFats } = averages;
+    goalProtein = macroGoal(Number(idealProtein), Number(avgProtein), 'protein');
+    goalCarb = macroGoal(Number(idealCarbs), Number(avgCarbs), 'protein');
+    goalFat = macroGoal(Number(idealFat), Number(avgFats), 'protein');
+    goalCalories = calculateGoalCalories(
+      idealProtein,
+      idealCarbs,
+      idealFat,
+      avgProtein,
+      avgCarbs,
+      avgFats
+    );
+  }
   // const goalProtein = Math.round((TDEE * 0.3) / 4);
   // const goalCarb = Math.round((TDEE * 0.4) / 4);
   // const goalFat = Math.round((TDEE * 0.3) / 4);
 
   /*
   
-  if there are no 3 day log goals, then have the pie charts start at zero and increase in value as foods are added
   if tracker array is less than 7, then use 3 day log goals
   if tracker array is 7 or more, sort by date and use the 7 most recent dates to calculate the goals for that day
 

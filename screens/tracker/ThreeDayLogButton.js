@@ -7,7 +7,7 @@ import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 export default function ThreeDayLogButton({ selectedDay, navigation }) {
   const { theme } = useTheme();
   const threeDayState = useThreeDayLogStore();
-  const { addDay, threeDayLog } = threeDayState;
+  const { addDay, threeDayLog, updateCompletion } = threeDayState;
   const [submitted, setSubmitted] = useState(false);
   const [dayNumber, setDayNumber] = useState(1);
   // console.log(threeDayLog[0].date, '3day');
@@ -82,6 +82,7 @@ export default function ThreeDayLogButton({ selectedDay, navigation }) {
           onPress={() => {
             addDay(selectedDay);
             conditionalTitle();
+            updateCompletion();
             navigation.navigate('Results1');
           }}
           title={title}
