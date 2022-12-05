@@ -2,16 +2,10 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { SearchBar, Text, useTheme } from '@rneui/themed';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import {
-  FlatList,
-  Keyboard,
-  TouchableWithoutFeedback,
-  View,
-  ActivityIndicator,
-} from 'react-native';
+import { ActivityIndicator, FlatList, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import AddButton from '../../components/Buttons/AddButton';
 import useTrackerStore from '../../state/TrackerStore';
 import FoodScanner from '../foodScanner/FoodScanner';
@@ -95,7 +89,7 @@ export default function AddFoodItem({ route, navigation }) {
       const searchData = setTimeout(() => {
         axios
           .get(
-            `https://api.nal.usda.gov/fdc/v1/foods/search?query=${search}&dataType=Foundation,Survey%20%28FNDDS%29,SR%20Legacy&pageSize=50&sortBy=lowercaseDescription.keyword&sortOrder=asc&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
+            `https://api.nal.usda.gov/fdc/v1/foods/search?query=${search}&dataType=Foundation,Survey%20%28FNDDS%29,SR%20Legacy&pageSize=50&sortBy=dataType.keyword&sortOrder=asc&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
           )
           .then((res) => {
             setData(res.data.foods);
@@ -198,64 +192,62 @@ export default function AddFoodItem({ route, navigation }) {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+    <View style={{ alignItems: 'center', flex: 1 }}>
       <View style={{ alignItems: 'center', flex: 1 }}>
-        <View style={{ alignItems: 'center', flex: 1 }}>
-          <SearchBar
-            placeholder="Type Here..."
-            onChangeText={updateSearch}
-            value={search}
-            inputContainerStyle={{ backgroundColor: 'white', width: '100%' }}
-            containerStyle={{
-              borderBottomColor: 'transparent',
-              borderTopColor: 'transparent',
-              width: '100%',
+        <SearchBar
+          placeholder="Type Here..."
+          onChangeText={updateSearch}
+          value={search}
+          inputContainerStyle={{ backgroundColor: 'white', width: '100%' }}
+          containerStyle={{
+            borderBottomColor: 'transparent',
+            borderTopColor: 'transparent',
+            width: '100%',
+          }}
+        />
+        <View style={{ flexDirection: 'row' }}>
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'white',
+              padding: '2%',
+              alignItems: 'center',
+              margin: '2%',
+              width: 125,
             }}
-          />
-          <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity
-              style={{
-                backgroundColor: 'white',
-                padding: '2%',
-                alignItems: 'center',
-                margin: '2%',
-                width: 125,
-              }}
-              onPress={() => setModalOpen(true)}
-            >
-              <MaterialCommunityIcons name="barcode-scan" size={24} color="black" />
-              <Text style={{ color: 'black' }}>Scan Barcode</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                backgroundColor: 'white',
-                padding: '2%',
-                alignItems: 'center',
-                margin: '2%',
-                width: 125,
-              }}
-              onPress={() => navigation.navigate('AddFoodManually', { mealName, dayIndex })}
-            >
-              <MaterialIcons name="post-add" size={24} color="black" />
-              <Text style={{ color: 'black' }}>Manual Add</Text>
-            </TouchableOpacity>
-          </View>
+            onPress={() => setModalOpen(true)}
+          >
+            <MaterialCommunityIcons name="barcode-scan" size={24} color="black" />
+            <Text style={{ color: 'black' }}>Scan Barcode</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={{
+              backgroundColor: 'white',
+              padding: '2%',
+              alignItems: 'center',
+              margin: '2%',
+              width: 125,
+            }}
+            onPress={() => navigation.navigate('AddFoodManually', { mealName, dayIndex })}
+          >
+            <MaterialIcons name="post-add" size={24} color="black" />
+            <Text style={{ color: 'black' }}>Manual Add</Text>
+          </TouchableOpacity>
         </View>
-        <View style={{ justifyContent: 'center', flex: 3.5 }}>
-          {loading ? (
-            <ActivityIndicator
-              size="large"
-              color={theme.colors.white}
-              visible={loading}
-              textContent="Searching USDA Database..."
-            />
-          ) : (
-            <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.fdcId} />
-          )}
-        </View>
-        <FoodScanner scanData={scanData} modalOpen={modalOpen} setModalOpen={setModalOpen} />
-        <LArrowButton onPress={() => navigation.goBack()} />
       </View>
-    </TouchableWithoutFeedback>
+      <View style={{ justifyContent: 'center', flex: 3.5 }}>
+        {loading ? (
+          <ActivityIndicator
+            size="large"
+            color={theme.colors.white}
+            visible={loading}
+            textContent="Searching USDA Database..."
+          />
+        ) : (
+          <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.fdcId} />
+        )}
+      </View>
+      <FoodScanner scanData={scanData} modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      <LArrowButton onPress={() => navigation.goBack()} />
+    </View>
   );
 }
