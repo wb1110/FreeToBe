@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button, Text, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
+import SettingsContainer from './SettingsContainer';
 
 export default function Settings({ navigation }) {
   const { theme } = useTheme();
@@ -60,71 +61,22 @@ export default function Settings({ navigation }) {
         alignItems: 'flex-end',
       }}
     >
-      <View
-        style={{
-          width: '95%',
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          borderBottomWidth: '1%',
-          borderBottomColor: theme.colors.secondary,
-        }}
-      >
-        <Button title="Clear Assessment Data" onPress={() => removeAssessment()} />
-        <Text style={{ margin: '2%' }}>{'>'}</Text>
-      </View>
-      <View
-        style={{
-          width: '95%',
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          borderBottomWidth: '1%',
-          borderBottomColor: theme.colors.secondary,
-        }}
-      >
-        <Button title="Clear Tracker Data" onPress={() => removeTracker()} />
-        <Text style={{ margin: '2%' }}>{'>'}</Text>
-      </View>
-      <View
-        style={{
-          width: '95%',
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          borderBottomWidth: '1%',
-          borderBottomColor: theme.colors.secondary,
-        }}
-      >
-        <Button title="Clear Three Day Log Data" onPress={() => removeThreeDayLog()} />
-        <Text style={{ margin: '2%' }}>{'>'}</Text>
-      </View>
-      <View
-        style={{
-          width: '95%',
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          borderBottomWidth: '1%',
-          borderBottomColor: theme.colors.secondary,
-        }}
-      >
-        <Button title="Check Data" onPress={() => getAllKeys()} />
-        <Text style={{ margin: '2%' }}>{'>'}</Text>
-      </View>
-      <View
-        style={{
-          width: '95%',
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          borderBottomWidth: '1%',
-          borderBottomColor: theme.colors.secondary,
-        }}
-      >
-        <Button title="Retake Assessment" onPress={() => navigation.navigate('HeightWeightAge')} />
-        <Text style={{ margin: '2%' }}>{'>'}</Text>
-      </View>
+      <SettingsContainer onPress={() => removeAssessment()}>
+        <Text h4>Clear Assessment Data</Text>
+        {/* <Button title="Clear Assessment Data" /> */}
+      </SettingsContainer>
+      <SettingsContainer onPress={() => removeTracker()}>
+        <Text h4>Clear Tracker Data</Text>
+      </SettingsContainer>
+      <SettingsContainer onPress={() => removeThreeDayLog()}>
+        <Text h4>Clear Three Day Log Data</Text>
+      </SettingsContainer>
+      <SettingsContainer onPress={() => getAllKeys()}>
+        <Text h4>Check Data</Text>
+      </SettingsContainer>
+      <SettingsContainer onPress={() => navigation.navigate('HeightWeightAge')}>
+        <Text h4>Retake Assessment</Text>
+      </SettingsContainer>
     </View>
   );
 }

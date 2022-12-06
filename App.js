@@ -31,7 +31,14 @@ import LieSkinny4 from './screens/assessment/LieSkinny4';
 import UserHome from './screens/UserHome';
 import Login from './screens/Login';
 import Register from './screens/Register';
-import { Results1, Results2, Results3, Results4, Results5, Results6 } from './screens/threeDayLog/Results';
+import {
+  Results1,
+  Results2,
+  Results3,
+  Results4,
+  Results5,
+  Results6,
+} from './screens/threeDayLog/Results';
 
 const theme = createTheme({
   colors: {
@@ -60,8 +67,9 @@ const theme = createTheme({
         color: '#F6F7EC',
       },
       h4Style: {
-        fontFamily: 'Inter-Regular',
+        fontFamily: 'Inter-Bold',
         color: '#F6F7EC',
+        fontSize: 16,
       },
     },
     Button: {
