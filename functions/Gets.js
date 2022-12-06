@@ -38,3 +38,15 @@ export const getThreeDayLog = async (state) => {
   }
   return parsedResult;
 };
+
+export const getSettings = async (state) => {
+  let parsedResult;
+  try {
+    const result = await AsyncStorage.getItem('settings');
+    parsedResult = await JSON.parse(result);
+    state.updateSettings(parsedResult);
+  } catch (e) {
+    return e;
+  }
+  return parsedResult;
+};

@@ -12,8 +12,9 @@ import FocusedStatusBar from '../components/FocusedStatusBar';
 import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import useStore from '../state/Store';
-import { getAssessment } from '../functions/Gets';
+import { getAssessment, getSettings } from '../functions/Gets';
 import ftbnBigLogo from '../assets/icons/ftbnBigLogo.png';
+import useSettingsStore from '../state/SettingsStore';
 
 function LogoTitle() {
   return <Image source={ftbnBigLogo} />;
@@ -21,6 +22,7 @@ function LogoTitle() {
 
 function Login({ navigation }) {
   const state = useStore();
+  const settingsState = useSettingsStore();
 
   return (
     <KeyboardAvoidingView
@@ -38,6 +40,7 @@ function Login({ navigation }) {
               onPress={() => {
                 navigation.navigate('UserHome', { screen: 'Home' });
                 getAssessment(state);
+                getSettings(settingsState);
               }}
               title="Sign In"
             />
