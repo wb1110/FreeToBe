@@ -9,6 +9,7 @@ import {
   calculateGoalCalories,
 } from '../../functions/GoalCalculator';
 import useTrackerStore from '../../state/TrackerStore';
+import useSettingsStore from '../../state/SettingsStore';
 
 export default function MacroBar({ protein, carbs, fats, calories }) {
   const state = useStore();
@@ -16,11 +17,14 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
   const { tracker } = trackerState;
   const threeDayLogState = useThreeDayLogStore();
   const { complete, threeDayLog } = threeDayLogState;
+  const settingsState = useSettingsStore();
+  const { idealCarbs, idealProtein, idealFat } = settingsState.macroSettings;
+
   const { tdee } = state.assessment;
 
-  const idealProtein = idealMacro(tdee, 'protein', 0.3);
-  const idealFat = idealMacro(tdee, 'fat', 0.3);
-  const idealCarbs = idealMacro(tdee, 'carbs', 0.4);
+  const iProtein = idealMacro(tdee, 'protein', parseFloat(idealProtein) / 100);
+  const iFat = idealMacro(tdee, 'fat', parseFloat(idealFat) / 100);
+  const iCarbs = idealMacro(tdee, 'carbs', parseFloat(idealCarbs) / 100);
 
   let goalProtein;
   let goalCarb;
@@ -38,17 +42,10 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
   if (complete === true && tracker.length < 7) {
     const averages = macroAverage(threeDayLog);
     const { avgProtein, avgCarbs, avgFats } = averages;
-    goalProtein = macroGoal(Number(idealProtein), Number(avgProtein), 'protein');
-    goalCarb = macroGoal(Number(idealCarbs), Number(avgCarbs), 'protein');
-    goalFat = macroGoal(Number(idealFat), Number(avgFats), 'protein');
-    goalCalories = calculateGoalCalories(
-      idealProtein,
-      idealCarbs,
-      idealFat,
-      avgProtein,
-      avgCarbs,
-      avgFats
-    );
+    goalProtein = macroGoal(Number(iProtein), Number(avgProtein), 'protein');
+    goalCarb = macroGoal(Number(iCarbs), Number(avgCarbs), 'carbs');
+    goalFat = macroGoal(Number(iFat), Number(avgFats), 'fat');
+    goalCalories = calculateGoalCalories(iProtein, iCarbs, iFat, avgProtein, avgCarbs, avgFats);
   }
 
   // 3 Day Log Complete, and sufficient data to update goals from tracker.
@@ -60,17 +57,10 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
     const lastSevenDays = sortedDesc.slice(0, 7);
     const averages = macroAverage(lastSevenDays);
     const { avgProtein, avgCarbs, avgFats } = averages;
-    goalProtein = macroGoal(Number(idealProtein), Number(avgProtein), 'protein');
-    goalCarb = macroGoal(Number(idealCarbs), Number(avgCarbs), 'carbs');
-    goalFat = macroGoal(Number(idealFat), Number(avgFats), 'fat');
-    goalCalories = calculateGoalCalories(
-      idealProtein,
-      idealCarbs,
-      idealFat,
-      avgProtein,
-      avgCarbs,
-      avgFats
-    );
+    goalProtein = macroGoal(Number(iProtein), Number(avgProtein), 'protein');
+    goalCarb = macroGoal(Number(iCarbs), Number(avgCarbs), 'carbs');
+    goalFat = macroGoal(Number(iFat), Number(avgFats), 'fat');
+    goalCalories = calculateGoalCalories(iProtein, iCarbs, iFat, avgProtein, avgCarbs, avgFats);
   }
 
   // const goalProtein = Math.round((TDEE * 0.3) / 4);

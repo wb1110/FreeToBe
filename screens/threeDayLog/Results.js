@@ -10,6 +10,7 @@ import Container from '../../components/Container';
 import TextContainer from '../../components/TextContainer';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import { macroGoal, calculateGoalCalories, idealMacro } from '../../functions/GoalCalculator';
+import useSettingsStore from '../../state/SettingsStore';
 
 export function Results1({ navigation }) {
   return (
@@ -52,6 +53,8 @@ export function Results3({ navigation }) {
   const { tdee } = tdeeState.assessment;
   const state = useThreeDayLogStore();
   const logArray = state.threeDayLog;
+  const settingsState = useSettingsStore();
+  const { idealProtein, idealCarbs, idealFat } = settingsState.macroSettings;
   let loggedCalories = 0;
   let loggedProtein = 0;
   let loggedCarbs = 0;
@@ -65,9 +68,9 @@ export function Results3({ navigation }) {
   let avgFats = 0;
   const days = logArray.length;
 
-  const idealProtein = idealMacro(tdee, 'protein', 0.3);
-  const idealFat = idealMacro(tdee, 'fat', 0.3);
-  const idealCarbs = idealMacro(tdee, 'carbs', 0.4);
+  const iProtein = idealMacro(tdee, 'protein', parseFloat(idealProtein) / 100);
+  const iFat = idealMacro(tdee, 'fat', parseFloat(idealFat) / 100);
+  const iCarbs = idealMacro(tdee, 'carbs', parseFloat(idealCarbs) / 100);
 
   for (let i = 0; i < days; i++) {
     loggedCalories += logArray[i].calories;
@@ -102,11 +105,11 @@ export function Results3({ navigation }) {
           Daily Energy Expended needs are{'\n'}
           {'\n'}
           {`${tdee}`} Calories {'\n'}
-          {`${idealProtein}g`} Protein 30%
+          {`${iProtein}g`} Protein 30%
           {'\n'}
-          {`${idealFat}g`} Fat 30%
+          {`${iFat}g`} Fat 30%
           {'\n'}
-          {`${idealCarbs}g`} Carbs 40%
+          {`${iCarbs}g`} Carbs 40%
         </TextContainer>
       </View>
       <View>
@@ -130,9 +133,9 @@ export function Results3({ navigation }) {
               avgProtein,
               avgCarbs,
               avgFats,
-              idealProtein,
-              idealFat,
-              idealCarbs,
+              iProtein,
+              iFat,
+              iCarbs,
             })
           }
         />
@@ -142,7 +145,7 @@ export function Results3({ navigation }) {
 }
 
 export function Results4({ route, navigation }) {
-  const { avgProtein, avgCarbs, avgFats, idealProtein, idealFat, idealCarbs } = route.params;
+  const { avgProtein, avgCarbs, avgFats, iProtein, iFat, iCarbs } = route.params;
 
   return (
     <Container>
@@ -156,19 +159,19 @@ export function Results4({ route, navigation }) {
           {'\n'}
           This weeks calorie/macro goals:{'\n'}
           {`Calories ${calculateGoalCalories(
-            idealProtein,
-            idealCarbs,
-            idealFat,
+            iProtein,
+            iCarbs,
+            iFat,
             avgProtein,
             avgCarbs,
             avgFats
           )} kCal`}
           {'\n'}
-          {`Protein ${macroGoal(Number(idealProtein), Number(avgProtein), 'protein')}g`}
+          {`Protein ${macroGoal(Number(iProtein), Number(avgProtein), 'protein')}g`}
           {'\n'}
-          {`Carbohydrates ${macroGoal(Number(idealCarbs), Number(avgCarbs), 'carbs')}g`}
+          {`Carbohydrates ${macroGoal(Number(iCarbs), Number(avgCarbs), 'carbs')}g`}
           {'\n'}
-          {`Fats ${macroGoal(Number(idealFat), Number(avgFats), 'fat')}g`}
+          {`Fats ${macroGoal(Number(iFat), Number(avgFats), 'fat')}g`}
         </TextContainer>
       </View>
       <View style={{ flexDirection: 'row' }}>

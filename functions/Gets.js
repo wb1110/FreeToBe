@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { storeSettings } from './Posts';
 
 export const getAssessment = async (state) => {
   let userAssessment;
@@ -44,7 +45,15 @@ export const getSettings = async (state) => {
   try {
     const result = await AsyncStorage.getItem('settings');
     parsedResult = await JSON.parse(result);
-    state.updateSettings(parsedResult);
+    if (parsedResult) {
+      state.updateSettings(parsedResult);
+    } else {
+      storeSettings({
+        idealProtein: '30%',
+        idealCarbs: '40%',
+        idealFat: '30%',
+      });
+    }
   } catch (e) {
     return e;
   }

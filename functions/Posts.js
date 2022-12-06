@@ -36,7 +36,6 @@ export const storeThreeDayLog = async (value) => {
   }
 };
 
-// Used in LieSkinny4 and anytime meals or foods perform CRUD during the 3 days
 // eslint-disable-next-line consistent-return
 export const storeSettings = async (value) => {
   try {

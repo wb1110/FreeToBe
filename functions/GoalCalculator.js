@@ -6,35 +6,35 @@ export const macroGoal = (ideal, avg, macro) => {
     if (percentageDifference <= 50) {
       if (avg < ideal) {
         if (macro === 'protein' || macro === 'carbs') {
-          return avg + 5;
+          return (avg + 5).toFixed(2);
         }
         if (macro === 'fat') {
-          return avg + 2;
+          return (avg + 2).toFixed(2);
         }
       }
       if (avg > ideal) {
         if (macro === 'protein' || macro === 'carbs') {
-          return avg - 5;
+          return (avg - 5).toFixed(2);
         }
         if (macro === 'fat') {
-          return avg - 2;
+          return (avg - 2).toFixed(2);
         }
       }
     } else if (percentageDifference > 50) {
       if (avg < ideal) {
         if (macro === 'protein' || macro === 'carbs') {
-          return avg + 10;
+          return (avg + 10).toFixed(2);
         }
         if (macro === 'fat') {
-          return avg + 3;
+          return (avg + 3).toFixed(2);
         }
       }
       if (avg > ideal) {
         if (macro === 'protein' || macro === 'carbs') {
-          return avg - 10;
+          return (avg - 10).toFixed(2);
         }
         if (macro === 'fat') {
-          return avg - 3;
+          return (avg - 3).toFixed(2);
         }
       }
       // eslint-disable-next-line no-console
@@ -88,10 +88,12 @@ export const macroAverage = (array) => {
 
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < days; i++) {
-    loggedCalories += array[i].calories;
-    loggedProtein += array[i].protein;
-    loggedCarbs += array[i].carbs;
-    loggedFat += array[i].fats;
+    if (array[i]) {
+      loggedCalories += array[i].calories;
+      loggedProtein += array[i].protein;
+      loggedCarbs += array[i].carbs;
+      loggedFat += array[i].fats;
+    }
   }
 
   const calculateAverages = (calories, protein, carbs, fats, numberOfDays) => {

@@ -3,12 +3,28 @@ import create from 'zustand';
 
 const useSettingsStore = create((set) => ({
   macroSettings: {
-    idealProtein: 0.3,
-    idealCarbs: 0.4,
-    idealFat: 0.3,
+    idealProtein: '30%',
+    idealCarbs: '40%',
+    idealFat: '30%',
   },
+  // updateSettings: (data) => {
+  //   set(() => ({ macroSettings: data }));
+  // },
   updateSettings: (data) => {
-    set(() => ({ macroSettings: data }));
+    set(
+      produce((state) => {
+        const { macroSettings } = state;
+        if (data) {
+          Object.assign(macroSettings, data);
+        } else {
+          Object.assign(macroSettings, {
+            idealProtein: '30%',
+            idealCarbs: '40%',
+            idealFat: '30%',
+          });
+        }
+      })
+    );
   },
   // clearSettings: () => set({ macroSettings: 0 }),
   updateMacroSettings: (protein, carbs, fat) =>
