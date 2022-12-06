@@ -5,7 +5,6 @@ import { useTheme } from '@rneui/themed';
 import { Image } from 'react-native';
 import HomeTab from './homeTab/HomeTab';
 import MetabolicJournal from './metabolicJournal/MetabolicJournal';
-import Settings from './settings/Settings';
 import TrackerStackScreen from './tracker/TrackerStackScreen';
 import ftbnLogo from '../assets/icons/ftbnLogo.png';
 import SettingsStackScreen from './settings/SettingsStackScreen';

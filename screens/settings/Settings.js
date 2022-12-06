@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Button, Text, useTheme } from '@rneui/themed';
+import { Text, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import SettingsContainer from './SettingsContainer';
 

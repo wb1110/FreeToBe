@@ -1,5 +1,5 @@
 import { Text, useTheme } from '@rneui/themed';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 export default function SettingsContainer(props) {
   const { children, onPress } = props;
