@@ -77,6 +77,9 @@ export default function Settings({ navigation }) {
       <SettingsContainer onPress={() => navigation.navigate('HeightWeightAge')}>
         <Text h4>Retake Assessment</Text>
       </SettingsContainer>
+      <SettingsContainer onPress={() => navigation.navigate('MacroDistribution')}>
+        <Text h4>Select Macronutrient Distribution</Text>
+      </SettingsContainer>
     </View>
   );
 }
