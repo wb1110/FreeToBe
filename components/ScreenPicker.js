@@ -15,7 +15,9 @@ const styles = StyleSheet.create({
 function ScreenPicker({ value, setValue, items }) {
   const pickerData = (data) =>
     data?.length > 0 &&
-    data.map((val, index) => <Picker.Item label={val} value={val} key={index} />); // eslint-disable-line
+    data.map((val, index) => (
+      <Picker.Item label={val} value={val} key={index} /> // eslint-disable-line
+    ));
 
   return (
     <View style={styles.pickerContainer}>

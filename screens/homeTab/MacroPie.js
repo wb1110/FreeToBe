@@ -2,33 +2,24 @@ import { Button, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import Svg from 'react-native-svg';
 import { VictoryContainer, VictoryLabel, VictoryPie } from 'victory-native';
+import useSettingsStore from '../../state/SettingsStore';
 
 export default function MacroPie({ TDEE }) {
   const { theme } = useTheme();
+  const settingsState = useSettingsStore();
+  const { idealCarbs, idealProtein, idealFat } = settingsState.macroSettings;
 
   let protein;
   let carb;
   let fat;
 
-  const macroOptions = (option) => {
-    if (option === 1) {
-      protein = Math.round((TDEE * 0.3) / 4);
-      carb = Math.round((TDEE * 0.4) / 4);
-      fat = Math.round((TDEE * 0.3) / 4);
-    }
-    if (option === 2) {
-      protein = Math.round((TDEE * 0.2) / 4);
-      carb = Math.round((TDEE * 0.55) / 4);
-      fat = Math.round((TDEE * 0.25) / 4);
-    }
-    if (option === 3) {
-      protein = Math.round((TDEE * 0.25) / 4);
-      carb = Math.round((TDEE * 0.45) / 4);
-      fat = Math.round((TDEE * 0.2) / 4);
-    }
+  const macroOptions = () => {
+    protein = Math.round((TDEE * (parseFloat(idealProtein) / 100)) / 4);
+    carb = Math.round((TDEE * (parseFloat(idealCarbs) / 100)) / 4);
+    fat = Math.round((TDEE * (parseFloat(idealFat) / 100)) / 9);
   };
 
-  macroOptions(1);
+  macroOptions();
 
   return (
     <View style={{ flex: 1 }}>

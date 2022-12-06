@@ -16,7 +16,7 @@ export default function MacroDistribution() {
   const [carbPercentage, setCarbPercentage] = useState(idealCarbs);
   const [fatPercentage, setFatPercentage] = useState(idealFat);
 
-  const dataPercentages = percentageSelect(5, 100, 5);
+  const dataPercentages = percentageSelect(5, 95, 5);
 
   getSettings();
 

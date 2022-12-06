@@ -1,10 +1,10 @@
 import { SafeAreaView, View } from 'react-native';
-import { Text, useTheme } from '@rneui/themed';
+import { Button, Text, useTheme } from '@rneui/themed';
 import useStore from '../../state/Store';
 import MacroPie from './MacroPie';
 import MineralsPie from './MineralsPie';
 
-function HomeTab() {
+function HomeTab({ navigation }) {
   const state = useStore();
   const { theme } = useTheme();
   return (
@@ -14,15 +14,18 @@ function HomeTab() {
         style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '2%', flex: 1 }}
       >
         <View style={{ flex: 1, alignItems: 'center' }}>
-          <Text>Macro Goals</Text>
+          <Text h4>Macro Goals</Text>
           {state.assessment.tdee ? (
             <MacroPie TDEE={state.assessment.tdee} />
           ) : (
-            <Text>Missing Assessment Data</Text>
+            <Button
+              title="Take Assessment"
+              onPress={() => navigation.navigate('HeightWeightAge')}
+            />
           )}
         </View>
         <View style={{ flex: 1, alignItems: 'center' }}>
-          <Text>Mineral Goals</Text>
+          <Text h4>Mineral Goals</Text>
           <MineralsPie />
         </View>
       </View>
