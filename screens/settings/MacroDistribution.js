@@ -51,7 +51,7 @@ export default function MacroDistribution() {
       <View
         style={{
           justifyContent: 'center',
-          flex: 3,
+          flex: 1,
           backgroundColor: theme.colors.primary,
           alignItems: 'center',
           flexDirection: 'row',
@@ -81,7 +81,7 @@ export default function MacroDistribution() {
           <ScreenPicker value={fatPercentage} items={dataPercentages} setValue={setFatPercentage} />
         </View>
       </View>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, justifyContent: 'center' }}>
         <Button
           title="Submit"
           onPress={() => {
@@ -90,7 +90,7 @@ export default function MacroDistribution() {
           }}
           color="white"
           titleStyle={{ color: theme.colors.primary }}
-          containerStyle={{ width: '20%' }}
+          size="lg"
         />
       </View>
     </View>
