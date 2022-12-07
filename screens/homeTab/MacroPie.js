@@ -4,7 +4,7 @@ import Svg from 'react-native-svg';
 import { VictoryContainer, VictoryLabel, VictoryPie } from 'victory-native';
 import useSettingsStore from '../../state/SettingsStore';
 
-export default function MacroPie({ TDEE }) {
+export default function MacroPie({ TDEE, navigation }) {
   const { theme } = useTheme();
   const settingsState = useSettingsStore();
   const { idealCarbs, idealProtein, idealFat } = settingsState.macroSettings;
@@ -13,6 +13,7 @@ export default function MacroPie({ TDEE }) {
   let carb;
   let fat;
 
+  // The below function takes the user's selected percentage for each macro, and converts to grams based on TDEE
   const macroOptions = () => {
     protein = Math.round((TDEE * (parseFloat(idealProtein) / 100)) / 4);
     carb = Math.round((TDEE * (parseFloat(idealCarbs) / 100)) / 4);
@@ -20,6 +21,8 @@ export default function MacroPie({ TDEE }) {
   };
 
   macroOptions();
+  console.log(idealProtein, idealCarbs, idealFat);
+  console.log(protein, carb, fat);
 
   return (
     <View style={{ flex: 1 }}>
@@ -38,9 +41,9 @@ export default function MacroPie({ TDEE }) {
           innerRadius={80}
           // animate={{ duration: 1000 }}
           data={[
-            { x: protein, y: protein },
-            { x: `Carbohydrates ${carb}g`, y: carb },
-            { x: `Fats ${fat}g`, y: fat },
+            { x: idealProtein, y: idealProtein },
+            { x: idealCarbs, y: idealCarbs },
+            { x: idealFat, y: idealFat },
           ]}
         />
         <VictoryLabel
@@ -52,7 +55,19 @@ export default function MacroPie({ TDEE }) {
         />
       </Svg>
       <View style={{ alignItems: 'center' }}>
-        <Button title="Details" />
+        <Button
+          title="Details"
+          onPress={() =>
+            navigation.navigate('MacroDetails', {
+              protein,
+              carb,
+              fat,
+              idealFat,
+              idealCarbs,
+              idealProtein,
+            })
+          }
+        />
         {/* <Text>Proteins:{protein}</Text>
         <Text>Carbohydrates:{carb}</Text>
         <Text>Fats:{fat}</Text> */}

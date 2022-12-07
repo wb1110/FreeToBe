@@ -16,7 +16,7 @@ function HomeTab({ navigation }) {
         <View style={{ flex: 1, alignItems: 'center' }}>
           <Text h4>Macro Goals</Text>
           {state.assessment.tdee ? (
-            <MacroPie TDEE={state.assessment.tdee} />
+            <MacroPie TDEE={state.assessment.tdee} navigation={navigation} />
           ) : (
             <Button
               title="Take Assessment"

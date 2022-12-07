@@ -8,6 +8,7 @@ import MetabolicJournal from './metabolicJournal/MetabolicJournal';
 import TrackerStackScreen from './tracker/TrackerStackScreen';
 import ftbnLogo from '../assets/icons/ftbnLogo.png';
 import SettingsStackScreen from './settings/SettingsStackScreen';
+import HomeStackScreen from './homeTab/HomeStackScreen';
 
 function LogoTitle() {
   return <Image style={{ width: 100, height: 40 }} source={ftbnLogo} />;
@@ -50,7 +51,11 @@ export default function UserHome() {
     >
       <Tab.Screen name="Tracker" component={TrackerStackScreen} />
       <Tab.Screen name="Metabolic Journal" component={MetabolicJournal} />
-      <Tab.Screen name="Home" component={HomeTab} options={{ headerTitle: () => <LogoTitle /> }} />
+      <Tab.Screen
+        name="Home"
+        component={HomeStackScreen}
+        options={{ headerTitle: () => <LogoTitle /> }}
+      />
       <Tab.Screen
         name="Settings"
         component={SettingsStackScreen}
