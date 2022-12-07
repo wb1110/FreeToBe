@@ -26,7 +26,7 @@ function HomeTab({ navigation }) {
         </View>
         <View style={{ flex: 1, alignItems: 'center' }}>
           <Text h4>Mineral Goals</Text>
-          <MineralsPie />
+          <MineralsPie TDEE={state.assessment.tdee} navigation={navigation} />
         </View>
       </View>
       <View style={{ alignItems: 'center', flex: 1 }}>

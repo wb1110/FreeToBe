@@ -2,9 +2,25 @@ import { Button, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import Svg from 'react-native-svg';
 import { VictoryContainer, VictoryPie } from 'victory-native';
+import useSettingsStore from '../../state/SettingsStore';
 
-export default function MineralsPie() {
+export default function MineralsPie({ TDEE, navigation }) {
   const { theme } = useTheme();
+  const settingsState = useSettingsStore();
+  const { idealCarbs, idealProtein, idealFat } = settingsState.macroSettings;
+
+  let protein;
+  let carb;
+  let fat;
+
+  // The below function takes the user's selected percentage for each macro, and converts to grams based on TDEE
+  const macroOptions = () => {
+    protein = Math.round((TDEE * (parseFloat(idealProtein) / 100)) / 4);
+    carb = Math.round((TDEE * (parseFloat(idealCarbs) / 100)) / 4);
+    fat = Math.round((TDEE * (parseFloat(idealFat) / 100)) / 9);
+  };
+
+  macroOptions();
 
   return (
     <View style={{ flex: 1 }}>
@@ -37,7 +53,19 @@ export default function MineralsPie() {
         />
       </Svg>
       <View style={{ alignItems: 'center' }}>
-        <Button title="Details" />
+        <Button
+          title="Details"
+          onPress={() =>
+            navigation.navigate('MineralDetails', {
+              protein,
+              carb,
+              fat,
+              idealFat,
+              idealCarbs,
+              idealProtein,
+            })
+          }
+        />
         {/* <Text>Calcium: 10</Text>
         <Text>Choline: 10</Text>
         <Text>Copper: 10</Text>

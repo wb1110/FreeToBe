@@ -22,8 +22,9 @@ function NutrientContainer({ color, percentage, grams, nutrient }) {
   );
 }
 
-export default function MacroDetails({ route }) {
+export default function MineralDetails({ route }) {
   const { protein, carb, fat, idealFat, idealCarbs, idealProtein } = route.params;
+  const { theme } = useTheme();
   return (
     <View
       style={{
@@ -33,14 +34,8 @@ export default function MacroDetails({ route }) {
         flexDirection: 'row',
       }}
     >
-      <NutrientContainer
-        color="#519085"
-        percentage={idealProtein}
-        grams={protein}
-        nutrient="Protein"
-      />
-      <NutrientContainer color="#E9E0AC" percentage={idealCarbs} grams={carb} nutrient="Carbs" />
-      <NutrientContainer color="#88CED2" percentage={idealFat} grams={fat} nutrient="Fat" />
+      {/* <NutrientContainer color="white" percentage={idealCarbs} grams={carb} nutrient="Carbs" /> */}
+      <Text h1>Under Construction</Text>
     </View>
   );
 }

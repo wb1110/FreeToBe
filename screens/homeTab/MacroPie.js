@@ -21,8 +21,6 @@ export default function MacroPie({ TDEE, navigation }) {
   };
 
   macroOptions();
-  console.log(idealProtein, idealCarbs, idealFat);
-  console.log(protein, carb, fat);
 
   return (
     <View style={{ flex: 1 }}>
