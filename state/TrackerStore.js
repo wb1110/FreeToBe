@@ -1,5 +1,6 @@
 import create from 'zustand';
 import produce from 'immer';
+import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import { storeTracker } from '../functions/Posts';
 
@@ -38,6 +39,10 @@ const startingMealArray = [
 
 const useTrackerStore = create((set) => ({
   tracker: [],
+  goalCalories: 0,
+  goalProtein: 0,
+  goalCarbs: 0,
+  goalFat: 0,
   // {
   //   date: null,
   //   protein: 0,
@@ -72,6 +77,10 @@ const useTrackerStore = create((set) => ({
   //   ],
   // },
   // updateTracker: (data) => set({ tracker: data }),
+  updateGoalProtein: (grams) => set(() => ({ goalProtein: grams })),
+  updateGoalCarbs: (grams) => set(() => ({ goalCarbs: grams })),
+  updateGoalFat: (grams) => set(() => ({ goalFat: grams })),
+  updateGoalCalories: (calories) => set(() => ({ goalCalories: calories })),
   updateTracker: (data) =>
     set(
       produce((state) => {

@@ -2,25 +2,16 @@ import { Button, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import Svg from 'react-native-svg';
 import { VictoryContainer, VictoryLabel, VictoryPie } from 'victory-native';
-import useSettingsStore from '../../state/SettingsStore';
+import useTrackerStore from '../../state/TrackerStore';
 
-export default function MacroPie({ TDEE, navigation }) {
+export default function MacroPie({ navigation }) {
   const { theme } = useTheme();
-  const settingsState = useSettingsStore();
-  const { idealCarbs, idealProtein, idealFat } = settingsState.macroSettings;
+  const trackerState = useTrackerStore();
+  const { goalCalories, goalCarbs, goalProtein, goalFat } = trackerState;
 
-  let protein;
-  let carb;
-  let fat;
-
-  // The below function takes the user's selected percentage for each macro, and converts to grams based on TDEE
-  const macroOptions = () => {
-    protein = Math.round((TDEE * (parseFloat(idealProtein) / 100)) / 4);
-    carb = Math.round((TDEE * (parseFloat(idealCarbs) / 100)) / 4);
-    fat = Math.round((TDEE * (parseFloat(idealFat) / 100)) / 9);
-  };
-
-  macroOptions();
+  const carbPercent = (((goalCarbs * 4) / goalCalories) * 100).toFixed(2);
+  const proteinPercent = (((goalProtein * 4) / goalCalories) * 100).toFixed(2);
+  const fatPercent = (((goalFat * 9) / goalCalories) * 100).toFixed(2);
 
   return (
     <View style={{ flex: 1 }}>
@@ -39,33 +30,21 @@ export default function MacroPie({ TDEE, navigation }) {
           innerRadius={80}
           // animate={{ duration: 1000 }}
           data={[
-            { x: idealProtein, y: idealProtein },
-            { x: idealCarbs, y: idealCarbs },
-            { x: idealFat, y: idealFat },
+            { x: proteinPercent, y: proteinPercent },
+            { x: carbPercent, y: carbPercent },
+            { x: fatPercent, y: fatPercent },
           ]}
         />
         <VictoryLabel
           textAnchor="middle"
           style={{ fontSize: 32, fill: theme.colors.white }}
           x={95}
-          y={140}
-          text={`${TDEE} cal`}
+          y={150}
+          text={`${goalCalories}\nkCal`}
         />
       </Svg>
       <View style={{ alignItems: 'center' }}>
-        <Button
-          title="Details"
-          onPress={() =>
-            navigation.navigate('MacroDetails', {
-              protein,
-              carb,
-              fat,
-              idealFat,
-              idealCarbs,
-              idealProtein,
-            })
-          }
-        />
+        <Button title="Details" onPress={() => navigation.navigate('MacroDetails')} />
         {/* <Text>Proteins:{protein}</Text>
         <Text>Carbohydrates:{carb}</Text>
         <Text>Fats:{fat}</Text> */}

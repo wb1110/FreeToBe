@@ -1,5 +1,6 @@
 import { Text } from '@rneui/themed';
 import { View } from 'react-native';
+import useTrackerStore from '../../state/TrackerStore';
 
 function NutrientContainer({ color, percentage, grams, nutrient }) {
   return (
@@ -11,7 +12,7 @@ function NutrientContainer({ color, percentage, grams, nutrient }) {
       }}
     >
       <Text h4 h4Style={{ color, fontSize: 24 }}>
-        {percentage}
+        {percentage}%
       </Text>
       <Text h4 h4Style={{ fontSize: 32 }}>
         {grams} g
@@ -21,8 +22,13 @@ function NutrientContainer({ color, percentage, grams, nutrient }) {
   );
 }
 
-export default function MacroDetails({ route }) {
-  const { protein, carb, fat, idealFat, idealCarbs, idealProtein } = route.params;
+export default function MacroDetails() {
+  const trackerState = useTrackerStore();
+  const { goalProtein, goalCarbs, goalFat, goalCalories } = trackerState;
+
+  const carbPercent = (((goalCarbs * 4) / goalCalories) * 100).toFixed(2);
+  const proteinPercent = (((goalProtein * 4) / goalCalories) * 100).toFixed(2);
+  const fatPercent = (((goalFat * 9) / goalCalories) * 100).toFixed(2);
   return (
     <View
       style={{
@@ -34,12 +40,17 @@ export default function MacroDetails({ route }) {
     >
       <NutrientContainer
         color="#519085"
-        percentage={idealProtein}
-        grams={protein}
+        percentage={proteinPercent}
+        grams={goalProtein}
         nutrient="Protein"
       />
-      <NutrientContainer color="#E9E0AC" percentage={idealCarbs} grams={carb} nutrient="Carbs" />
-      <NutrientContainer color="#88CED2" percentage={idealFat} grams={fat} nutrient="Fat" />
+      <NutrientContainer
+        color="#E9E0AC"
+        percentage={carbPercent}
+        grams={goalCarbs}
+        nutrient="Carbs"
+      />
+      <NutrientContainer color="#88CED2" percentage={fatPercent} grams={goalFat} nutrient="Fat" />
     </View>
   );
 }

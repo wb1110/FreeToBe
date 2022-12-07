@@ -1,10 +1,9 @@
-import { useTheme, Text, Button } from '@rneui/themed';
+import { Button, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
 import ScreenPicker from '../../components/ScreenPicker';
 import { getSettings } from '../../functions/Gets';
 import percentageSelect from '../../functions/percentageSelect';
-import { storeSettings } from '../../functions/Posts';
 import useSettingsStore from '../../state/SettingsStore';
 import useStore from '../../state/Store';
 
@@ -87,7 +86,7 @@ export default function MacroDistribution() {
           title="Submit"
           onPress={() => {
             updateMacroSettings(proteinPercentage, carbPercentage, fatPercentage);
-            storeSettings(macroSettings);
+            // storeSettings(macroSettings);
           }}
           color="white"
           titleStyle={{ color: theme.colors.primary }}

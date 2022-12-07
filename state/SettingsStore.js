@@ -1,5 +1,6 @@
 import produce from 'immer';
 import create from 'zustand';
+import { storeSettings } from '../functions/Posts';
 
 const useSettingsStore = create((set) => ({
   macroSettings: {
@@ -27,8 +28,10 @@ const useSettingsStore = create((set) => ({
     );
   },
   // clearSettings: () => set({ macroSettings: 0 }),
-  updateMacroSettings: (protein, carbs, fat) =>
-    set(() => ({ macroSettings: { idealProtein: protein, idealCarbs: carbs, idealFat: fat } })),
+  updateMacroSettings: (protein, carbs, fat) => {
+    set(() => ({ macroSettings: { idealProtein: protein, idealCarbs: carbs, idealFat: fat } }));
+    storeSettings({ idealProtein: protein, idealCarbs: carbs, idealFat: fat });
+  },
 }));
 
 export default useSettingsStore;
