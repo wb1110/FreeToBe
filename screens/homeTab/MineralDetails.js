@@ -1,6 +1,5 @@
+import { Text } from '@rneui/themed';
 import { View } from 'react-native';
-import React from 'react';
-import { Text, useTheme } from '@rneui/themed';
 
 function NutrientContainer({ color, percentage, grams, nutrient }) {
   return (
@@ -22,9 +21,7 @@ function NutrientContainer({ color, percentage, grams, nutrient }) {
   );
 }
 
-export default function MineralDetails({ route }) {
-  const { protein, carb, fat, idealFat, idealCarbs, idealProtein } = route.params;
-  const { theme } = useTheme();
+export default function MineralDetails() {
   return (
     <View
       style={{

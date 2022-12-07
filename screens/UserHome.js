@@ -3,12 +3,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '@rneui/themed';
 import { Image } from 'react-native';
-import HomeTab from './homeTab/HomeTab';
-import MetabolicJournal from './metabolicJournal/MetabolicJournal';
-import TrackerStackScreen from './tracker/TrackerStackScreen';
 import ftbnLogo from '../assets/icons/ftbnLogo.png';
-import SettingsStackScreen from './settings/SettingsStackScreen';
 import HomeStackScreen from './homeTab/HomeStackScreen';
+import MetabolicJournal from './metabolicJournal/MetabolicJournal';
+import SettingsStackScreen from './settings/SettingsStackScreen';
+import TrackerStackScreen from './tracker/TrackerStackScreen';
 
 function LogoTitle() {
   return <Image style={{ width: 100, height: 40 }} source={ftbnLogo} />;

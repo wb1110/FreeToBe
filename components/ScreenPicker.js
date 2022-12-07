@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   pickerContainer: {
     width: '100%',
-    height: '30%',
+    height: '50%',
     justifyContent: 'center',
   },
 });
