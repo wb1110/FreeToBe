@@ -189,7 +189,6 @@ const useTrackerStore = create((set) => ({
         const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
         const foodArray = mealArray[mealIndex].foodItems;
         foodArray.push(values);
-        console.log(state, 'addfood');
         storeTracker(state.tracker);
       })
     ),

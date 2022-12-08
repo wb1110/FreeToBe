@@ -43,6 +43,7 @@ export default function useGoalUpdateConditions(complete) {
 
     // 3 Day Log Complete, and sufficient data to update goals from tracker.
     if (complete === true && tracker.length >= 7) {
+      // eslint-disable-next-line array-callback-return, consistent-return
       const convertDate = tracker.map((obj) => {
         if (obj.calories > 0) return { ...obj, date: new Date(obj.date) };
       });
@@ -57,5 +58,6 @@ export default function useGoalUpdateConditions(complete) {
         calculateGoalCalories(iProtein, iCarbs, iFat, avgProtein, avgCarbs, avgFats)
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [complete]);
 }
