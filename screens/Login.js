@@ -12,9 +12,11 @@ import FocusedStatusBar from '../components/FocusedStatusBar';
 import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import useStore from '../state/Store';
-import { getAssessment, getSettings } from '../functions/Gets';
+import { getAssessment, getSettings, getThreeDayLog, getTracker } from '../functions/Gets';
 import ftbnBigLogo from '../assets/icons/ftbnBigLogo.png';
 import useSettingsStore from '../state/SettingsStore';
+import useTrackerStore from '../state/TrackerStore';
+import useThreeDayLogStore from '../state/ThreeDayLogStore';
 
 function LogoTitle() {
   return <Image source={ftbnBigLogo} />;
@@ -22,6 +24,8 @@ function LogoTitle() {
 
 function Login({ navigation }) {
   const state = useStore();
+  const trackerState = useTrackerStore();
+  const threeDayLogState = useThreeDayLogStore();
   const settingsState = useSettingsStore();
 
   return (
@@ -41,6 +45,8 @@ function Login({ navigation }) {
                 navigation.navigate('UserHome', { screen: 'Home' });
                 getAssessment(state);
                 getSettings(settingsState);
+                getTracker(trackerState);
+                getThreeDayLog(threeDayLogState);
               }}
               title="Sign In"
             />

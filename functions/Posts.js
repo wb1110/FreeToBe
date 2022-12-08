@@ -15,6 +15,7 @@ export const storeData = async (value) => {
 // Used in TrackerStore.js anytime meals or foods perform CRUD
 // eslint-disable-next-line consistent-return
 export const storeTracker = async (value) => {
+  console.log(value, 'value');
   try {
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem(`tracker`, jsonValue);

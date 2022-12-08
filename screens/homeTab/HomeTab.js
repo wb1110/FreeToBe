@@ -3,10 +3,17 @@ import { Button, Text, useTheme } from '@rneui/themed';
 import useStore from '../../state/Store';
 import MacroPie from './MacroPie';
 import MineralsPie from './MineralsPie';
+import useGoalUpdateConditions from '../../functions/goalUpdateConditions';
+import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 
 function HomeTab({ navigation }) {
   const state = useStore();
+  const threeDayLogState = useThreeDayLogStore();
+  const { complete } = threeDayLogState;
   const { theme } = useTheme();
+
+  useGoalUpdateConditions(complete);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* Macros and Minerals Visuals */}

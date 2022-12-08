@@ -50,7 +50,6 @@ function Tracker({ navigation }) {
   useEffect(() => {
     setLoading(true);
     getTracker(state);
-    getThreeDayLog(state);
     getThreeDayLog(threeDayState);
     setTimeout(() => {
       setLoading(false);
@@ -62,7 +61,7 @@ function Tracker({ navigation }) {
   useFocusEffect(
     useCallback(() =>
       // Do something when the screen is focused
-    {
+      {
         addNewDate(date, setDateData, indexExists, tracker, addDate);
         if (selectedDay) {
           state.updateMacros(tracker, currentIndex);

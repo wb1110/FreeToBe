@@ -40,7 +40,7 @@ export default function MacroPie({ navigation }) {
           style={{ fontSize: 32, fill: theme.colors.white }}
           x={95}
           y={150}
-          text={`${goalCalories}\nkCal`}
+          text={`${goalCalories.toFixed(2)}\nkCal`}
         />
       </Svg>
       <View style={{ alignItems: 'center' }}>
