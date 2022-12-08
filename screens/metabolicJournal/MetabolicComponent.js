@@ -1,5 +1,5 @@
 import { Text } from '@rneui/themed';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import ComponentButton from './ComponentButton';
 
 function MetabolicComponent({ componentName, componentButtons }) {
@@ -11,19 +11,22 @@ function MetabolicComponent({ componentName, componentButtons }) {
         flex: 1,
         marginBottom: '2%',
         paddingBottom: '2%',
+        width: '95%',
       }}
     >
-      <Text>{componentName}</Text>
-      <View
-        style={{
-          flexDirection: 'row',
-        }}
-      >
-        {/* mapping of componentButtons */}
-        {componentButtons.map((item) => (
-          <ComponentButton buttonTitle={item.buttonTitle} buttonIcon={item.buttonIcon} />
-        ))}
-      </View>
+      <ScrollView>
+        <Text>{componentName}</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+          }}
+        >
+          {/* mapping of componentButtons */}
+          {componentButtons.map((item) => (
+            <ComponentButton buttonTitle={item.buttonTitle} buttonIcon={item.buttonIcon} />
+          ))}
+        </View>
+      </ScrollView>
     </View>
   );
 }
