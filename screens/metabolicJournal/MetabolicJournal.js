@@ -11,6 +11,7 @@ function MetabolicJournal() {
       componentName={item.componentName}
       componentButtons={item.componentButtons}
       componentInput={item.componentInput}
+      componentSubSection1={item.componentSubSection1}
     />
   );
 
@@ -22,13 +23,13 @@ function MetabolicJournal() {
         <PinnedComponent />
         <PinnedComponent />
       </View>
-      <View style={{ alignItems: 'center', width: '100%', paddingBottom: 250 }}>
-        <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} />
-      </View>
       {/* The below section is a flatlist of the array of Metabolic Journal components
             Users need to be able to reorder components in the array by pressing and dragging them to a new position
             Users need to be able to be able to add/replace a component in the pinned section
       */}
+      <View style={{ alignItems: 'center', width: '100%', paddingBottom: 250 }}>
+        <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} />
+      </View>
     </SafeAreaView>
   );
 }

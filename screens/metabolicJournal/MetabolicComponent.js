@@ -1,8 +1,14 @@
 import { Input, Text } from '@rneui/themed';
 import { ScrollView, View } from 'react-native';
 import ComponentButton from './ComponentButton';
+import SubSection from './SubSection';
 
-function MetabolicComponent({ componentName, componentButtons, componentInput }) {
+function MetabolicComponent({
+  componentName,
+  componentButtons,
+  componentInput,
+  componentSubSection1,
+}) {
   return (
     <View
       style={{
@@ -21,7 +27,7 @@ function MetabolicComponent({ componentName, componentButtons, componentInput })
             </View>
           ) : null}
 
-          {/* mapping of componentButtons */}
+          {/* mapping of componentButtons when there are no sub-sections */}
           {componentButtons ? (
             <View
               style={{
@@ -37,6 +43,14 @@ function MetabolicComponent({ componentName, componentButtons, componentInput })
                 />
               ))}
             </View>
+          ) : null}
+          {/* If there are sub sections, they will go here: */}
+          {/* Section 1 */}
+          {componentSubSection1 ? (
+            <SubSection
+              sectionTitle={componentSubSection1.sectionTitle}
+              sectionButtons={componentSubSection1.sectionButtons}
+            />
           ) : null}
         </View>
       </ScrollView>
