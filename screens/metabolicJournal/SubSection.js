@@ -7,7 +7,6 @@ function SubSection({ sectionTitle, sectionButtons }) {
     <View
       style={{
         alignItems: 'flex-start',
-        margin: '2%',
       }}
     >
       <Text h4>{sectionTitle}</Text>

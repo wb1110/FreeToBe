@@ -8,6 +8,7 @@ function MetabolicComponent({
   componentButtons,
   componentInput,
   componentSubSection1,
+  componentSubSection2,
 }) {
   return (
     <View
@@ -18,7 +19,7 @@ function MetabolicComponent({
       }}
     >
       <ScrollView directionalLockEnabled contentContainerStyle={{ flexGrow: 1, paddingRight: 200 }}>
-        <View style={{ flex: 1 }}>
+        <View>
           <Text h4>{componentName}</Text>
 
           {componentInput ? (
@@ -51,6 +52,12 @@ function MetabolicComponent({
             <SubSection
               sectionTitle={componentSubSection1.sectionTitle}
               sectionButtons={componentSubSection1.sectionButtons}
+            />
+          ) : null}
+          {componentSubSection2 ? (
+            <SubSection
+              sectionTitle={componentSubSection2.sectionTitle}
+              sectionButtons={componentSubSection2.sectionButtons}
             />
           ) : null}
         </View>

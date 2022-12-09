@@ -223,6 +223,26 @@ const data = [
         },
       ],
     },
+    componentSubSection2: {
+      sectionTitle: 'Menstrual flow',
+      sectionButtons: [
+        {
+          buttonTitle: 'Light',
+          buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+          buttonColor: 'pink',
+        },
+        {
+          buttonTitle: 'Medium',
+          buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+          buttonColor: 'pink',
+        },
+        {
+          buttonTitle: 'Heavy',
+          buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+          buttonColor: 'pink',
+        },
+      ],
+    },
   },
 ];
 

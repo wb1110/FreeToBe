@@ -12,6 +12,7 @@ function MetabolicJournal() {
       componentButtons={item.componentButtons}
       componentInput={item.componentInput}
       componentSubSection1={item.componentSubSection1}
+      componentSubSection2={item.componentSubSection2}
     />
   );
 
