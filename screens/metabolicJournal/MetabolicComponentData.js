@@ -244,6 +244,215 @@ const data = [
       ],
     },
   },
+  {
+    componentID: uuidv4(),
+    componentName: 'Fertility',
+    componentSubSection1: {
+      sectionTitle: 'Pregnancy Test',
+      sectionButtons: [
+        {
+          buttonTitle: 'Did not take a test',
+          buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+          buttonColor: 'purple',
+        },
+        {
+          buttonTitle: 'Positive',
+          buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+          buttonColor: 'purple',
+        },
+        {
+          buttonTitle: 'Faint line',
+          buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+          buttonColor: 'purple',
+        },
+
+        {
+          buttonTitle: 'Negative',
+          buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+          buttonColor: 'purple',
+        },
+      ],
+    },
+    componentSubSection2: {
+      sectionTitle: 'Ovulation',
+      sectionButtons: [
+        {
+          buttonTitle: 'Did not take a test',
+          buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+          buttonColor: 'purple',
+        },
+        {
+          buttonTitle: 'Test positive',
+          buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+          buttonColor: 'purple',
+        },
+        {
+          buttonTitle: 'Test negative',
+          buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+          buttonColor: 'purple',
+        },
+        {
+          buttonTitle: 'My own method',
+          buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+          buttonColor: 'purple',
+        },
+      ],
+    },
+  },
+  {
+    componentID: uuidv4(),
+    componentName: 'Physical Activity',
+    componentButtons: [
+      {
+        buttonTitle: 'Did not exercise',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'orange',
+      },
+      {
+        buttonTitle: 'Weight training',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'orange',
+      },
+      {
+        buttonTitle: 'Aerobic / Dancing',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'orange',
+      },
+      {
+        buttonTitle: 'Walk',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'orange',
+      },
+      {
+        buttonTitle: 'Running',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'orange',
+      },
+      {
+        buttonTitle: 'Yoga',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'orange',
+      },
+      {
+        buttonTitle: 'Cycling',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'orange',
+      },
+      {
+        buttonTitle: 'Team sports',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'orange',
+      },
+      {
+        buttonTitle: 'Swimming',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'orange',
+      },
+      {
+        buttonTitle: 'Pilates',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'orange',
+      },
+    ],
+  },
+  {
+    componentID: uuidv4(),
+    componentName: 'Skin',
+    componentButtons: [
+      {
+        buttonTitle: 'Healthy glow',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'brown',
+      },
+      {
+        buttonTitle: 'Irritated',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'brown',
+      },
+      {
+        buttonTitle: 'Red spots',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'brown',
+      },
+      {
+        buttonTitle: 'Itchy',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'brown',
+      },
+      {
+        buttonTitle: 'Dry',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'brown',
+      },
+      {
+        buttonTitle: 'Oily',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'brown',
+      },
+    ],
+  },
+  {
+    componentID: uuidv4(),
+    componentName: 'Hair',
+    componentButtons: [
+      {
+        buttonTitle: 'Vibrant',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'teal',
+      },
+      {
+        buttonTitle: 'Dull',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'teal',
+      },
+      {
+        buttonTitle: 'Oily',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'teal',
+      },
+      {
+        buttonTitle: 'Dry',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'teal',
+      },
+      {
+        buttonTitle: 'Brittle',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'teal',
+      },
+      {
+        buttonTitle: 'Losing hair',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'teal',
+      },
+      {
+        buttonTitle: 'Growing hair',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'teal',
+      },
+    ],
+  },
+  {
+    componentID: uuidv4(),
+    componentName: 'Nails',
+    componentButtons: [
+      {
+        buttonTitle: 'Strong',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'white',
+      },
+      {
+        buttonTitle: 'Brittle',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'white',
+      },
+      {
+        buttonTitle: 'Calcium spots',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'white',
+      },
+    ],
+  },
 ];
 
 export default data;
