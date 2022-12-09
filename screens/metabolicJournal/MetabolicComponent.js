@@ -26,6 +26,7 @@ function MetabolicComponent({ componentName, componentButtons }) {
                 buttonTitle={item.buttonTitle}
                 buttonIcon={item.buttonIcon}
                 buttonColor={item.buttonColor}
+                key={item.buttonTitle}
               />
             ))}
           </View>

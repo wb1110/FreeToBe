@@ -3,11 +3,10 @@ import { TouchableOpacity, View } from 'react-native';
 
 function PinnedComponent() {
   return (
-    <TouchableOpacity style={{ borderWidth: 1, alignItems: 'center', flex: 1 }}>
+    <TouchableOpacity style={{ alignItems: 'center', flex: 1 }}>
       <Text>Component Name</Text>
       <View
         style={{
-          borderWidth: 1,
           backgroundColor: 'black',
           width: 75,
           height: 75,
