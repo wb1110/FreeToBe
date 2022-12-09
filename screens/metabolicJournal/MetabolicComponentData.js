@@ -26,6 +26,12 @@ const data = [
   },
   {
     componentID: uuidv4(),
+    componentName: 'Pulse',
+    componentButtons: null,
+    componentInput: true,
+  },
+  {
+    componentID: uuidv4(),
     componentName: 'Mood',
     componentButtons: [
       {
@@ -87,6 +93,72 @@ const data = [
         buttonTitle: 'Self-critical',
         buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
+      },
+    ],
+  },
+  {
+    componentID: uuidv4(),
+    componentName: 'Sex and Sex Drive',
+    componentButtons: [
+      {
+        buttonTitle: 'Did not have sex',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'red',
+      },
+      {
+        buttonTitle: 'Protected sex',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'red',
+      },
+      {
+        buttonTitle: 'Unprotected sex',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'red',
+      },
+
+      {
+        buttonTitle: 'Masturbation',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'red',
+      },
+
+      {
+        buttonTitle: 'High sex drive',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'red',
+      },
+
+      {
+        buttonTitle: 'Low sex drive',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'red',
+      },
+      {
+        buttonTitle: 'No sex drive',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'red',
+      },
+    ],
+  },
+  {
+    componentID: uuidv4(),
+    componentName: 'Bowel movements',
+    componentInput: true,
+    componentButtons: [
+      {
+        buttonTitle: 'Healthy',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'green',
+      },
+      {
+        buttonTitle: 'Constipated',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'green',
+      },
+      {
+        buttonTitle: 'Diarrea',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
+        buttonColor: 'green',
       },
     ],
   },

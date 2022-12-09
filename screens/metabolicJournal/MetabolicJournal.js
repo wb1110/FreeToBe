@@ -10,6 +10,7 @@ function MetabolicJournal() {
     <MetabolicComponent
       componentName={item.componentName}
       componentButtons={item.componentButtons}
+      componentInput={item.componentInput}
     />
   );
 
@@ -21,7 +22,7 @@ function MetabolicJournal() {
         <PinnedComponent />
         <PinnedComponent />
       </View>
-      <View style={{ alignItems: 'center', width: '100%' }}>
+      <View style={{ alignItems: 'center', width: '100%', paddingBottom: 250 }}>
         <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} />
       </View>
       {/* The below section is a flatlist of the array of Metabolic Journal components
