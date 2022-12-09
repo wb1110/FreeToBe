@@ -9,22 +9,23 @@ function MetabolicComponent({ componentName, componentButtons }) {
         alignItems: 'flex-start',
         backgroundColor: 'black',
         flex: 1,
-        marginBottom: '2%',
+        margin: '2%',
         paddingBottom: '2%',
-        width: '95%',
       }}
     >
-      <ScrollView>
-        <Text>{componentName}</Text>
-        <View
-          style={{
-            flexDirection: 'row',
-          }}
-        >
-          {/* mapping of componentButtons */}
-          {componentButtons.map((item) => (
-            <ComponentButton buttonTitle={item.buttonTitle} buttonIcon={item.buttonIcon} />
-          ))}
+      <ScrollView directionalLockEnabled contentContainerStyle={{ flexGrow: 1, paddingRight: 200 }}>
+        <View>
+          <Text>{componentName}</Text>
+          <View
+            style={{
+              flexDirection: 'row',
+            }}
+          >
+            {/* mapping of componentButtons */}
+            {componentButtons.map((item) => (
+              <ComponentButton buttonTitle={item.buttonTitle} buttonIcon={item.buttonIcon} />
+            ))}
+          </View>
         </View>
       </ScrollView>
     </View>
