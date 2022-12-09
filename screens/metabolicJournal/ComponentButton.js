@@ -12,16 +12,15 @@ function ComponentButton({ buttonTitle, buttonIcon, buttonColor }) {
           borderRadius: 50 / 2,
         }}
       >
-        <Text
+        <View
           style={{
             position: 'absolute',
-            color: 'black',
-            left: 7,
-            top: 14,
+            left: 13,
+            top: 12,
           }}
         >
           {buttonIcon}
-        </Text>
+        </View>
       </View>
       <Text style={{ textAlign: 'center' }}>{buttonTitle}</Text>
     </TouchableOpacity>

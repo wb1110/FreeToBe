@@ -1,6 +1,7 @@
 import { FlatList, SafeAreaView, View } from 'react-native';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
+import { Feather } from '@expo/vector-icons';
 import MetabolicComponent from './MetabolicComponent';
 import PinnedComponent from './PinnedComponent';
 
@@ -11,17 +12,17 @@ const data = [
     componentButtons: [
       {
         buttonTitle: 'Waking Temp',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
         buttonColor: 'blue',
       },
       {
         buttonTitle: 'Pre-meal Temp',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
         buttonColor: 'blue',
       },
       {
         buttonTitle: 'Post-meal Temp',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="white" />,
         buttonColor: 'blue',
       },
     ],
@@ -32,62 +33,62 @@ const data = [
     componentButtons: [
       {
         buttonTitle: 'Calm',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Happy',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Energetic',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Mood Swings',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Sad',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Irritated',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Anxious',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Depressed',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Guilty',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Apathetic',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Confused',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Self-critical',
-        buttonIcon: 'Test',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
         buttonColor: 'yellow',
       },
     ],
