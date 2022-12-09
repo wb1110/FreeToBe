@@ -391,6 +391,7 @@ const data = [
         buttonColor: 'brown',
       },
     ],
+    componentPhoto: true
   },
   {
     componentID: uuidv4(),
@@ -432,6 +433,7 @@ const data = [
         buttonColor: 'teal',
       },
     ],
+    componentPhoto: true
   },
   {
     componentID: uuidv4(),
@@ -453,6 +455,7 @@ const data = [
         buttonColor: 'white',
       },
     ],
+    componentPhoto: true
   },
 ];
 

@@ -14,6 +14,7 @@ function MetabolicJournal() {
       componentSubSection1={item.componentSubSection1}
       componentSubSection2={item.componentSubSection2}
       periodCalendar={item.periodCalendar}
+      componentPhoto={item.componentPhoto}
     />
   );
 

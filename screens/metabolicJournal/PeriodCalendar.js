@@ -29,7 +29,7 @@ export default function PeriodCalendar({
     <View style={{ alignItems: 'flex-start' }}>
       <TouchableOpacity onPress={showDatePicker} style={{ alignItems: 'center' }}>
         <FontAwesome name="calendar" size={36} color="white" />
-        <Text h4>Log dates</Text>
+        <Text>Log dates</Text>
       </TouchableOpacity>
       <DateTimePickerModal
         isVisible={isDatePickerVisible}

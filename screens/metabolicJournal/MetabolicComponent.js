@@ -1,4 +1,4 @@
-import { Input, Text } from '@rneui/themed';
+import { Button, Input, Text } from '@rneui/themed';
 import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import ComponentButton from './ComponentButton';
@@ -12,6 +12,7 @@ function MetabolicComponent({
   componentSubSection1,
   componentSubSection2,
   periodCalendar,
+  componentPhoto,
 }) {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   // date = datePickerDate
@@ -74,6 +75,12 @@ function MetabolicComponent({
               sectionTitle={componentSubSection2.sectionTitle}
               sectionButtons={componentSubSection2.sectionButtons}
             />
+          ) : null}
+          {/* If the component allows adding a photo */}
+          {componentPhoto ? (
+            <View style={{ width: 200 }}>
+              <Button title="ADD PHOTO" size="md" />
+            </View>
           ) : null}
         </View>
       </ScrollView>
