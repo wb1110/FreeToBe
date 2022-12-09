@@ -19,9 +19,9 @@ function MetabolicJournal() {
   );
 
   return (
-    <SafeAreaView style={{ alignItems: 'center' }}>
+    <SafeAreaView style={{ alignItems: 'center', flex: 1 }}>
       {/* The below section represents three pinned Metabolic Journal components that the user wants easy access to. When clicked, the component will be displayed below this section and above the metabolic journal list */}
-      <View style={{ flexDirection: 'row', marginBottom: '2%' }}>
+      <View style={{ flexDirection: 'row', marginBottom: '2%', flex: 1, alignItems: 'center' }}>
         <PinnedComponent />
         <PinnedComponent />
         <PinnedComponent />
@@ -30,7 +30,7 @@ function MetabolicJournal() {
             Users need to be able to reorder components in the array by pressing and dragging them to a new position
             Users need to be able to be able to add/replace a component in the pinned section
       */}
-      <View style={{ alignItems: 'center', width: '100%', paddingBottom: 250 }}>
+      <View style={{ alignItems: 'center', width: '100%', flex: 3.5 }}>
         <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} />
       </View>
     </SafeAreaView>
