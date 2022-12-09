@@ -162,6 +162,65 @@ const data = [
       },
     ],
   },
+  {
+    componentID: uuidv4(),
+    componentName: 'Period',
+    componentButtons: [
+      {
+        buttonTitle: 'Everything is fine',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'pink',
+      },
+      {
+        buttonTitle: 'Cramps',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'pink',
+      },
+      {
+        buttonTitle: 'Bloating',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'pink',
+      },
+
+      {
+        buttonTitle: 'High pain',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'pink',
+      },
+
+      {
+        buttonTitle: 'Tender breasts',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'pink',
+      },
+
+      {
+        buttonTitle: 'Head ache',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'pink',
+      },
+      {
+        buttonTitle: 'Back ache',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'pink',
+      },
+      {
+        buttonTitle: 'Nausea',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'pink',
+      },
+      {
+        buttonTitle: 'Fatigue',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'pink',
+      },
+      {
+        buttonTitle: 'Cravings',
+        buttonIcon: <Feather name="sunrise" size={24} color="black" />,
+        buttonColor: 'pink',
+      },
+    ],
+  },
 ];
 
 export default data;
