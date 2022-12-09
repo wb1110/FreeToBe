@@ -43,7 +43,7 @@ function MetabolicComponent({
             ) : null}
             {/* The component has a text input */}
             {componentInput ? (
-              <View style={{ width: '100%' }}>
+              <View style={{ width: 300 }}>
                 <Input placeholder="Placeholder text" />
               </View>
             ) : null}
