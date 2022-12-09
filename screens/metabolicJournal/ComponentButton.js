@@ -3,7 +3,7 @@ import { TouchableOpacity, View } from 'react-native';
 
 function ComponentButton({ buttonTitle, buttonIcon, buttonColor }) {
   return (
-    <TouchableOpacity style={{ alignItems: 'center', marginLeft: '2%', width: 80 }}>
+    <TouchableOpacity style={{ alignItems: 'center', marginLeft: '2%', width: 80, height: 100 }}>
       <View
         style={{
           backgroundColor: buttonColor,

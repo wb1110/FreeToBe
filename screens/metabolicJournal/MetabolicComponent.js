@@ -18,7 +18,7 @@ function MetabolicComponent({
       }}
     >
       <ScrollView directionalLockEnabled contentContainerStyle={{ flexGrow: 1, paddingRight: 200 }}>
-        <View>
+        <View style={{ flex: 1 }}>
           <Text h4>{componentName}</Text>
 
           {componentInput ? (
@@ -32,6 +32,7 @@ function MetabolicComponent({
             <View
               style={{
                 flexDirection: 'row',
+                flex: 1,
               }}
             >
               {componentButtons.map((item) => (
