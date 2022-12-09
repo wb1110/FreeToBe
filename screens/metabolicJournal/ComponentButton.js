@@ -1,13 +1,12 @@
 import { Text } from '@rneui/themed';
 import { TouchableOpacity, View } from 'react-native';
 
-function ComponentButton({ buttonTitle, buttonIcon }) {
+function ComponentButton({ buttonTitle, buttonIcon, buttonColor }) {
   return (
-    <TouchableOpacity style={{ borderWidth: 1, alignItems: 'center', marginLeft: '2%' }}>
+    <TouchableOpacity style={{ alignItems: 'center', marginLeft: '2%', width: 80 }}>
       <View
         style={{
-          borderWidth: 1,
-          backgroundColor: 'white',
+          backgroundColor: buttonColor,
           width: 50,
           height: 50,
           borderRadius: 50 / 2,

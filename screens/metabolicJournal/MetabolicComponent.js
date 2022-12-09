@@ -7,7 +7,6 @@ function MetabolicComponent({ componentName, componentButtons }) {
     <View
       style={{
         alignItems: 'flex-start',
-        backgroundColor: 'black',
         flex: 1,
         margin: '2%',
         paddingBottom: '2%',
@@ -23,7 +22,11 @@ function MetabolicComponent({ componentName, componentButtons }) {
           >
             {/* mapping of componentButtons */}
             {componentButtons.map((item) => (
-              <ComponentButton buttonTitle={item.buttonTitle} buttonIcon={item.buttonIcon} />
+              <ComponentButton
+                buttonTitle={item.buttonTitle}
+                buttonIcon={item.buttonIcon}
+                buttonColor={item.buttonColor}
+              />
             ))}
           </View>
         </View>

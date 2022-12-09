@@ -12,14 +12,17 @@ const data = [
       {
         buttonTitle: 'Waking Temp',
         buttonIcon: 'Test',
+        buttonColor: 'blue',
       },
       {
         buttonTitle: 'Pre-meal Temp',
         buttonIcon: 'Test',
+        buttonColor: 'blue',
       },
       {
         buttonTitle: 'Post-meal Temp',
         buttonIcon: 'Test',
+        buttonColor: 'blue',
       },
     ],
   },
@@ -30,50 +33,62 @@ const data = [
       {
         buttonTitle: 'Calm',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Happy',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Energetic',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Mood Swings',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Sad',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Irritated',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Anxious',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Depressed',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Guilty',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Apathetic',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Confused',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
       {
         buttonTitle: 'Self-critical',
         buttonIcon: 'Test',
+        buttonColor: 'yellow',
       },
     ],
   },
