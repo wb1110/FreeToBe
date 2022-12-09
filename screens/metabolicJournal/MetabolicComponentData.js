@@ -165,6 +165,7 @@ const data = [
   {
     componentID: uuidv4(),
     componentName: 'Period',
+    periodCalendar: true,
     componentSubSection1: {
       sectionTitle: 'Symptoms',
       sectionButtons: [
