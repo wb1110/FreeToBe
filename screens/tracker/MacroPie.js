@@ -7,6 +7,7 @@ import { VictoryContainer, VictoryLabel, VictoryPie } from 'victory-native';
 
 export default function MacroPie({ macro, goal, label, complete }) {
   const { theme } = useTheme();
+  const [data, setData] = useState([{ y: 1 }]);
   const [labelText, setLabelText] = useState(0);
   const [labelColor, setLabelColor] = useState(theme.colors.white);
   const [innerRadius, setInnerRadius] = useState(30);
@@ -43,10 +44,16 @@ export default function MacroPie({ macro, goal, label, complete }) {
             // Display the grams and calories that need to be consumed, progress and completed colors, and a hollow circle.
             setLabelText(remainingGoal);
             setLabelColor(theme.colors.white);
+            setData([
+              { x: goal, y: goal, fill: '#519085' },
+              { x: macro, y: macro, fill: '#E9E0AC' },
+            ]);
+            setInnerRadius(30);
           } else if (remainingGoal <= 0) {
             // Display the total grams/calories, and fill in the circle with the completed color.
             setLabelText(macro.toFixed(0));
             setLabelColor(theme.colors.primary);
+            setData([{ y: 1, fill: '#E9E0AC' }]);
             setInnerRadius(0);
           }
         } else {
@@ -54,12 +61,14 @@ export default function MacroPie({ macro, goal, label, complete }) {
           //   // if the 3 day log is not completed, only use macro numbers and add up
           //   { x: macro, y: macro }
           // );
+
+          setInnerRadius(30);
           setLabelText(macro.toFixed(0));
         }
         // Do something when the screen is unfocused
         // Useful for cleanup functions
         // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
+      }, [remainingGoal])
   );
   // User has not complete the goal yet
 
@@ -100,14 +109,7 @@ export default function MacroPie({ macro, goal, label, complete }) {
           innerRadius={innerRadius}
           labels={() => null}
           // animate={{ duration: 1000 }}
-          data={
-            goal > macro
-              ? [
-                  { x: goal, y: goal, fill: '#519085' },
-                  { x: macro, y: macro, fill: '#E9E0AC' },
-                ]
-              : [{ y: 1, fill: '#E9E0AC' }]
-          }
+          data={data}
         />
         {/* <VictoryLabel
           textAnchor="middle"
