@@ -26,7 +26,7 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
           alignItems: 'center',
         }}
       >
-        <MacroPie macro={protein} complete={complete} goal={goalProtein} label="Protein" />
+        <MacroPie macro={protein} complete={complete} goal={goalProtein} label="Protein" unit="g" />
       </View>
       <View
         style={{
@@ -34,7 +34,7 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
           alignItems: 'center',
         }}
       >
-        <MacroPie macro={fats} complete={complete} goal={goalFat} label="Fat" />
+        <MacroPie macro={fats} complete={complete} goal={goalFat} label="Fat" unit="g" />
       </View>
       <View
         style={{
@@ -42,7 +42,7 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
           alignItems: 'center',
         }}
       >
-        <MacroPie macro={carbs} complete={complete} goal={goalCarbs} label="Carbs" />
+        <MacroPie macro={carbs} complete={complete} goal={goalCarbs} label="Carbs" unit="g" />
       </View>
       <View
         style={{
@@ -50,7 +50,13 @@ export default function MacroBar({ protein, carbs, fats, calories }) {
           alignItems: 'center',
         }}
       >
-        <MacroPie macro={calories} complete={complete} goal={goalCalories} label="Calories" />
+        <MacroPie
+          macro={calories}
+          complete={complete}
+          goal={goalCalories}
+          label="Calories"
+          unit="cal"
+        />
       </View>
     </View>
   );

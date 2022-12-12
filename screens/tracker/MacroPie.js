@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import Svg from 'react-native-svg';
 import { VictoryContainer, VictoryLabel, VictoryPie } from 'victory-native';
 
-export default function MacroPie({ macro, goal, label, complete }) {
+export default function MacroPie({ macro, goal, label, complete, unit }) {
   const { theme } = useTheme();
   const [data, setData] = useState([{ y: 1 }]);
   const [labelText, setLabelText] = useState(0);
@@ -83,11 +83,14 @@ export default function MacroPie({ macro, goal, label, complete }) {
         h4Style={{
           position: 'absolute',
           zIndex: 2,
-          top: 55,
+          top: 45,
           color: labelColor,
+          textAlign: 'center',
         }}
       >
         {labelText}
+        {`\n`}
+        {unit}
       </Text>
       <Svg viewBox="0 150 420 400">
         <VictoryPie
