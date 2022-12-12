@@ -12,7 +12,7 @@ import FoodScanner from '../foodScanner/FoodScanner';
 
 import LArrowButton from '../../components/Buttons/LArrowButton';
 
-function Item({ name, calories, onPress, nutrients }) {
+function Item({ name, calories, onPress, nutrients, fdcId }) {
   const { theme } = useTheme();
   const values = {};
   const nutrientIdsArray = [
@@ -41,7 +41,7 @@ function Item({ name, calories, onPress, nutrients }) {
   }
 
   const setValues = () => {
-    Object.assign(values, { foodName: name, foodID: uuidv4() });
+    Object.assign(values, { foodName: name, fdcId });
     nutrientIdsArray.map((nutrient) => nutrientFilter(nutrients, nutrient.id, nutrient.name));
   };
 
@@ -161,6 +161,7 @@ export default function AddFoodItem({ route, navigation }) {
           calories={calories}
           onPress={addNewFood}
           nutrients={nutrients}
+          fdcId={item.fdcId}
         />
       );
     }
@@ -183,6 +184,7 @@ export default function AddFoodItem({ route, navigation }) {
       return (
         <Item
           name={item.description}
+          fdcId={item.fdcId}
           calories={calories}
           onPress={addNewFood}
           nutrients={nutrients}

@@ -1,5 +1,7 @@
-import { Button, Input, useTheme } from '@rneui/themed';
+import { Button, Input, Text, useTheme } from '@rneui/themed';
+import axios from 'axios';
 import { Formik } from 'formik';
+import { useEffect } from 'react';
 import { Keyboard, ScrollView, TouchableWithoutFeedback, View } from 'react-native';
 import * as Yup from 'yup';
 import StandardButton from '../../components/Buttons/StandardButton';
@@ -26,8 +28,28 @@ const foodSchema = Yup.object().shape({
 
 export default function EditFoodManually({ route, navigation }) {
   const { mealName, item, dayIndex } = route.params;
+  const { fdcId } = item;
   const state = useTrackerStore();
   const { theme } = useTheme();
+
+  useEffect(() => {
+    const getByFDCID = () => {
+      axios
+        .get(
+          `https://api.nal.usda.gov/fdc/v1/food/${fdcId}?api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
+        )
+        .then((res) => {
+          // setData(res.data.foods);
+          console.log(res.data);
+        })
+        .catch((err) => {
+          // eslint-disable-next-line no-console
+          console.log(err);
+        });
+    };
+    getByFDCID();
+  }, [fdcId]);
+
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -67,6 +89,7 @@ export default function EditFoodManually({ route, navigation }) {
                     errorMessage={errors.foodName}
                     containerStyle={{ width: '100%' }}
                   />
+                  <Text h4>{values.foodName}</Text>
                   <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                     <Input
                       label="Calories"
