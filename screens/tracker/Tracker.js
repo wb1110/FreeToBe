@@ -8,7 +8,8 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { useTheme } from '@rneui/themed';
+import { Text, useTheme } from '@rneui/themed';
+import { FontAwesome } from '@expo/vector-icons';
 import useTrackerStore from '../../state/TrackerStore';
 import addNewDate from '../../functions/AddNewDate';
 import Calendar from './Calendar';
@@ -101,6 +102,21 @@ function Tracker({ navigation }) {
               setDate={setDate}
             />
             <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
+            <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '4%' }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <FontAwesome name="square" size={24} color="#519085" />
+                <Text style={{ marginLeft: '4%' }}>Progress</Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}
+              >
+                <FontAwesome name="square" size={24} color="#E9E0AC" />
+                <Text style={{ marginLeft: '4%' }}>Goal</Text>
+              </View>
+            </View>
             {selectedDay && threeDayLog?.length < 3 ? (
               <ThreeDayLogButton selectedDay={selectedDay} navigation={navigation} />
             ) : null}
