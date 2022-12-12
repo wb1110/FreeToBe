@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Keyboard, ScrollView, TouchableWithoutFeedback, View } from 'react-native';
 import * as Yup from 'yup';
 import StandardButton from '../../components/Buttons/StandardButton';
+import MyCustomerPicker from '../../components/MyCustomerPicker';
 import useTrackerStore from '../../state/TrackerStore';
 
 const foodSchema = Yup.object().shape({
@@ -27,35 +28,14 @@ const foodSchema = Yup.object().shape({
 });
 
 export default function EditFoodManually({ route, navigation }) {
-  const { mealName, item, dayIndex } = route.params;
+  const { mealName, item, dayIndex, foodPortionsData } = route.params;
   const [showNutritionFacts, setShowNutritionFacts] = useState(false);
-  const [changeButton, setChangeButton] = useState('Show facts');
-  const { fdcId } = item;
+  const [changeButton, setChangeButton] = useState(false);
   const state = useTrackerStore();
   const { theme } = useTheme();
 
-  useEffect(() => {
-    const getByFDCID = () => {
-      axios
-        .get(
-          `https://api.nal.usda.gov/fdc/v1/food/${fdcId}?api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
-        )
-        .then((res) => {
-          // setData(res.data.foods);
-          console.log(res.data.foodPortions);
-        })
-        .catch((err) => {
-          // eslint-disable-next-line no-console
-          console.log(err);
-        });
-    };
-    getByFDCID();
-    if (showNutritionFacts) {
-      setChangeButton('Hide');
-    } else {
-      setChangeButton('Show facts');
-    }
-  }, [fdcId, showNutritionFacts]);
+  const [servingSizeModal, setServingSizeModal] = useState(false);
+  const [servingSize, setServingSize] = useState(0);
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -108,7 +88,17 @@ export default function EditFoodManually({ route, navigation }) {
                       }}
                     >
                       <Text>Serving Size</Text>
-                      <Button title="Modal Open" />
+                      <Button
+                        title="Modal Open"
+                        onPress={() => setServingSizeModal(!servingSizeModal)}
+                      />
+                      <MyCustomerPicker
+                        setModalOpen={setServingSizeModal}
+                        modalOpen={servingSizeModal}
+                        value={servingSize}
+                        items={foodPortionsData}
+                        setValue={setServingSize}
+                      />
                     </View>
                     <View
                       style={{
@@ -131,9 +121,10 @@ export default function EditFoodManually({ route, navigation }) {
                     >
                       <Text>Nutrition Facts</Text>
                       <Button
-                        title={changeButton}
+                        title={changeButton ? 'Hide' : 'Show facts'}
                         onPress={() => {
                           setShowNutritionFacts(!showNutritionFacts);
+                          setChangeButton(!changeButton);
                         }}
                       />
                     </View>
