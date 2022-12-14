@@ -42,15 +42,28 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
 
   const [foodPortionsData, setFoodPortionsData] = useState([]);
 
-  const getByFDCID = (fdcId) => {
+  const getByFDCID = (fdcId, meal, day, item) => {
     axios
       .get(
         `https://api.nal.usda.gov/fdc/v1/food/${fdcId}?api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
       )
       .then((res) => {
-        res.data.foodPortions.map((i) =>
-          foodPortionsData.push(`${i.amount} ${i.measureUnit.name} ${i.modifier}`)
-        );
+        setFoodPortionsData([]);
+        res.data.foodPortions.map((i) => {
+          if (i.measureUnit.name === 'undetermined') {
+            foodPortionsData.push(`${i.amount} ${i.modifier}`);
+          } else if (!i.modifier) {
+            foodPortionsData.push(`${i.amount} ${i.measureUnit.name}`);
+          } else {
+            foodPortionsData.push(`${i.amount} ${i.measureUnit.name} ${i.modifier}`);
+          }
+        });
+        navigation.navigate('EditFoodManually', {
+          meal,
+          day,
+          item,
+          foodPortionsData,
+        });
       })
       .catch((err) => {
         // eslint-disable-next-line no-console
@@ -90,14 +103,7 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
                   key={item.fdcId}
                   style={{ marginBottom: '2%', width: '100%' }}
                   onPress={() => {
-                    setFoodPortionsData([]);
-                    getByFDCID(item.fdcId);
-                    navigation.navigate('EditFoodManually', {
-                      mealName,
-                      dayIndex,
-                      item,
-                      foodPortionsData,
-                    });
+                    getByFDCID(item.fdcId, mealName, dayIndex, item, foodPortionsData);
                   }}
                 >
                   <Text>{item.foodName}</Text>
