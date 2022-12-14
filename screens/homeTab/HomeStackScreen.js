@@ -1,7 +1,10 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { enableScreens } from 'react-native-screens';
 import HomeTab from './HomeTab';
 import MacroDetails from './MacroDetails';
 import MineralDetails from './MineralDetails';
+// Before rendering any navigation stack
+enableScreens();
 
 const HomeStack = createNativeStackNavigator();
 

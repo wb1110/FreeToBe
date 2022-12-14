@@ -1,10 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { enableScreens } from 'react-native-screens';
 import AddFoodItem from './AddFoodItem';
 import AddFoodManually from './AddFoodManually';
 import AddMeal from './AddMeal';
 import EditFoodManually from './EditFoodManually';
 import EditMeal from './EditMeal';
 import Tracker from './Tracker';
+// Before rendering any navigation stack
+enableScreens();
 
 const TrackerStack = createNativeStackNavigator();
 

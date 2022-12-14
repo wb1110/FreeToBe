@@ -1,6 +1,9 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { enableScreens } from 'react-native-screens';
 import MacroDistribution from './MacroDistribution';
 import Settings from './Settings';
+// Before rendering any navigation stack
+enableScreens();
 
 const SettingsStack = createNativeStackNavigator();
 

@@ -6,6 +6,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect } from 'react';
 import { ThemeProvider, createTheme } from '@rneui/themed';
+import { enableScreens } from 'react-native-screens';
 import Welcome from './screens/Welcome';
 import HeightWeightAge from './screens/assessment/HeightWeightAge';
 import BodyFatPercentage from './screens/assessment/BodyFatPercentage';
@@ -39,6 +40,8 @@ import {
   Results5,
   Results6,
 } from './screens/threeDayLog/Results';
+// Before rendering any navigation stack
+enableScreens();
 
 const theme = createTheme({
   colors: {
