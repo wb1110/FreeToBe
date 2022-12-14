@@ -4,7 +4,6 @@ import { age as dataAge, height as dataHeight, weight as dataWeight } from '../.
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import MyCustomerPicker from '../../components/MyCustomerPicker';
 import TextContainer from '../../components/TextContainer';
 import useStore from '../../state/Store';
@@ -46,7 +45,6 @@ function HeightWeightAge({ navigation }) {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar />
       <Container>
         <TextContainer>Fill in the following to get started:</TextContainer>
         <MyCustomerPicker

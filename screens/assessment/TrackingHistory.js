@@ -6,14 +6,12 @@ import NarrowButton from '../../components/Buttons/NarrowButton';
 import NarrowButtonSelected from '../../components/Buttons/NarrowButtonSelected';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 
 function TrackingHistory({ navigation }) {
   const [macrosHistory, setMacrosHistory] = useState(0);
   const [caloriesHistory, setCaloriesHistory] = useState(0);
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar />
       <Container>
         <Container>
           <Text h4>Have you had any experience with tracking macros?</Text>

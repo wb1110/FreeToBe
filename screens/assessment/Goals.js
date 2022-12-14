@@ -12,7 +12,6 @@ import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import CustomCheckBox from '../../components/CustomCheckBox';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from '../../components/TextContainer';
 
 function Goals({ navigation }) {
@@ -31,7 +30,6 @@ function Goals({ navigation }) {
     >
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <SafeAreaView style={{ flex: 1 }}>
-          <FocusedStatusBar />
           <Container>
             <TextContainer>
               Which of these goals would you like to get out of this experience?

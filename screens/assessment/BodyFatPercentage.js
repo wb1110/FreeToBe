@@ -2,13 +2,11 @@ import { SafeAreaView } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from '../../components/TextContainer';
 
 function BodyFatPercentage({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar />
       <Container>
         <TextContainer>
           Body Fat % is the percentage of fat on our body compared to everything else in our body

@@ -6,14 +6,12 @@ import RoundButton from '../../components/Buttons/RoundButton';
 import RoundButtonSelected from '../../components/Buttons/RoundButtonSelected';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from '../../components/TextContainer';
 
 function InternalStress({ navigation }) {
   const [selected, setSelected] = useState(0);
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar />
       <Container>
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
           <TextContainer>

@@ -4,7 +4,6 @@ import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-na
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import SingleSelectCheck from '../../components/SingleSelectCheck';
 import useStore from '../../state/Store';
 import useCalculations from './Calculations';
@@ -17,7 +16,6 @@ function Personality({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
-        <FocusedStatusBar />
         <Container>
           <Text h4>Which of the following tendency types describes you best?</Text>
           <View style={{ alignItems: 'flex-start' }}>

@@ -4,7 +4,6 @@ import { Text } from '@rneui/themed';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RoundButton from '../../components/Buttons/RoundButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import FourSite from './skinFoldSites/FourSite';
 import NineSite from './skinFoldSites/NineSite';
 import SevenSite from './skinFoldSites/SevenSite';
@@ -16,7 +15,6 @@ function CaliperSites({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
-        <FocusedStatusBar />
         <Container>
           <Text>How many sites did you use?</Text>
           <View style={{ flexDirection: 'row' }}>

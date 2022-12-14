@@ -2,14 +2,12 @@ import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-na
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RArrowButton from '../../components/Buttons/RArrowButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from '../../components/TextContainer';
 
 function LieSkinny3({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
-        <FocusedStatusBar />
         <Container>
           <TextContainer>
             Your 3 day assessment tracking will be used to pave a realistic path to achieve your

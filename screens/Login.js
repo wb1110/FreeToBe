@@ -8,7 +8,6 @@ import {
   Image,
 } from 'react-native';
 import { Input, Text, Button } from '@rneui/themed';
-import FocusedStatusBar from '../components/FocusedStatusBar';
 import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import useStore from '../state/Store';
@@ -35,7 +34,6 @@ function Login({ navigation }) {
     >
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <SafeAreaView style={{ flex: 1 }}>
-          <FocusedStatusBar />
           <Container>
             <LogoTitle />
             <Input label="Email" />

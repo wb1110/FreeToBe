@@ -3,7 +3,6 @@ import { ScrollView } from 'react-native-gesture-handler';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RArrowButton from '../../components/Buttons/RArrowButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from '../../components/TextContainer';
 import useStore from '../../state/Store';
 import { storeData, storeThreeDayLog } from '../../functions/Posts';
@@ -13,7 +12,6 @@ function LieSkinny4({ navigation }) {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar />
       <Container>
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
           <TextContainer>

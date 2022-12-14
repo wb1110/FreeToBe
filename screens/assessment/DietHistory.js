@@ -3,7 +3,6 @@ import { SafeAreaView, View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import SingleSelectCheck from '../../components/SingleSelectCheck';
 import TextContainer from '../../components/TextContainer';
 
@@ -11,7 +10,6 @@ function DietHistory({ navigation }) {
   const [selected, setSelected] = useState(0);
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar />
       <Container>
         <TextContainer>
           When thinking about your dieting experience, you most likely fit in which of these

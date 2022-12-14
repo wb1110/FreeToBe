@@ -2,14 +2,12 @@ import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-na
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RArrowButton from '../../components/Buttons/RArrowButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from '../../components/TextContainer';
 
 function LieSkinny2({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
-        <FocusedStatusBar />
         <Container>
           <TextContainer>
             Although this may be hard to do, please try your best to add everything you eat and

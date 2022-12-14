@@ -5,7 +5,6 @@ import LArrowButton from '../../components/Buttons/LArrowButton';
 import NarrowButton from '../../components/Buttons/NarrowButton';
 import NarrowButtonSelected from '../../components/Buttons/NarrowButtonSelected';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import IsNursing from '../../components/IsNursing';
 
 function Nursing({ navigation }) {
@@ -13,7 +12,6 @@ function Nursing({ navigation }) {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FocusedStatusBar />
       <Container>
         <Container>
           <Text h4>Are you currently nursing?</Text>

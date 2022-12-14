@@ -5,7 +5,6 @@ import LArrowButton from '../../components/Buttons/LArrowButton';
 import NarrowButton from '../../components/Buttons/NarrowButton';
 import NarrowButtonSelected from '../../components/Buttons/NarrowButtonSelected';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import IsPregnant from '../../components/IsPregnant';
 
 function Pregnant({ navigation }) {
@@ -13,7 +12,6 @@ function Pregnant({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
-        <FocusedStatusBar />
         <Container>
           <Text h4>Are you currently pregnant?</Text>
           <View style={{ flexDirection: 'row' }}>

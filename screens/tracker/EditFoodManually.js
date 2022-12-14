@@ -1,7 +1,6 @@
 import { Button, Input, Text, useTheme } from '@rneui/themed';
-import axios from 'axios';
 import { Formik } from 'formik';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Keyboard, ScrollView, TouchableWithoutFeedback, View } from 'react-native';
 import * as Yup from 'yup';
 import StandardButton from '../../components/Buttons/StandardButton';

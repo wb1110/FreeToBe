@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import 'react-native-get-random-values';
-import { v4 as uuidv4 } from 'uuid';
 import AddButton from '../../components/Buttons/AddButton';
 import useTrackerStore from '../../state/TrackerStore';
 import FoodScanner from '../foodScanner/FoodScanner';

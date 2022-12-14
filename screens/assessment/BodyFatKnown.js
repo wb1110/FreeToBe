@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import useStore from '../../state/Store';
 
 const BodyFatSchema = Yup.object().shape({
@@ -21,7 +20,6 @@ function BodyFatKnown({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
-        <FocusedStatusBar />
         <Formik
           initialValues={{ bodyFat: state.assessment.bodyFat }}
           onSubmit={(values) => {

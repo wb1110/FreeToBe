@@ -1,29 +1,26 @@
+import { FontAwesome } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/core';
+import { Text } from '@rneui/themed';
 import { useCallback, useEffect, useState } from 'react';
 import {
-  ActivityIndicator,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import { Text, useTheme } from '@rneui/themed';
-import { FontAwesome } from '@expo/vector-icons';
-import useTrackerStore from '../../state/TrackerStore';
 import addNewDate from '../../functions/AddNewDate';
+import { getThreeDayLog, getTracker } from '../../functions/Gets';
+import useThreeDayLogStore from '../../state/ThreeDayLogStore';
+import useTrackerStore from '../../state/TrackerStore';
 import Calendar from './Calendar';
 import MacroBar from './MacroBar';
 import Meals from './Meals';
-import { getTracker, getThreeDayLog } from '../../functions/Gets';
-import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import ThreeDayLogButton from './ThreeDayLogButton';
 
 function Tracker({ navigation }) {
   const state = useTrackerStore();
   const { addDate, tracker } = state;
-  const [loading, setLoading] = useState(false);
-  const { theme } = useTheme();
 
   const threeDayState = useThreeDayLogStore();
   const { threeDayLog } = threeDayState;
@@ -49,13 +46,8 @@ function Tracker({ navigation }) {
   const selectedDay = tracker[indexExists(tracker, dateData)];
 
   useEffect(() => {
-    setLoading(true);
     getTracker(state);
     getThreeDayLog(threeDayState);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-    return () => clearTimeout();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -83,47 +75,36 @@ function Tracker({ navigation }) {
       style={{ flex: 1 }}
     >
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        {loading ? (
-          <View style={{ justifyContent: 'center', flex: 1 }}>
-            <ActivityIndicator
-              size="large"
-              color={theme.colors.white}
-              visible={loading}
-              textContent="Searching USDA Database..."
-            />
-          </View>
-        ) : (
-          <View style={{ justifyContent: 'space-between', flex: 1 }}>
-            <Calendar
-              isDatePickerVisible={isDatePickerVisible}
-              setDatePickerVisibility={setDatePickerVisibility}
-              setDateData={setDateData}
-              date={date}
-              setDate={setDate}
-            />
-            <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
-            <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '4%' }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <FontAwesome name="square" size={24} color="#519085" />
-                <Text style={{ marginLeft: '4%' }}>Goal</Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                }}
-              >
-                <FontAwesome name="square" size={24} color="#E9E0AC" />
-                <Text style={{ marginLeft: '4%' }}>Completed</Text>
-              </View>
+        <View style={{ justifyContent: 'space-between', flex: 1 }}>
+          <Calendar
+            isDatePickerVisible={isDatePickerVisible}
+            setDatePickerVisibility={setDatePickerVisibility}
+            setDateData={setDateData}
+            date={date}
+            setDate={setDate}
+          />
+          <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '4%' }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <FontAwesome name="square" size={24} color="#519085" />
+              <Text style={{ marginLeft: '4%' }}>Goal</Text>
             </View>
-            {selectedDay && threeDayLog?.length < 3 ? (
-              <ThreeDayLogButton selectedDay={selectedDay} navigation={navigation} />
-            ) : null}
-
-            <Meals tracker={tracker} currentIndex={currentIndex} navigation={navigation} />
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}
+            >
+              <FontAwesome name="square" size={24} color="#E9E0AC" />
+              <Text style={{ marginLeft: '4%' }}>Completed</Text>
+            </View>
           </View>
-        )}
+          {selectedDay && threeDayLog?.length < 3 ? (
+            <ThreeDayLogButton selectedDay={selectedDay} navigation={navigation} />
+          ) : null}
+
+          <Meals tracker={tracker} currentIndex={currentIndex} navigation={navigation} />
+        </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );

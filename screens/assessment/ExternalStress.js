@@ -5,7 +5,6 @@ import RoundButton from '../../components/Buttons/RoundButton';
 import RoundButtonSelected from '../../components/Buttons/RoundButtonSelected';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
-import FocusedStatusBar from '../../components/FocusedStatusBar';
 import TextContainer from '../../components/TextContainer';
 
 function ExternalStress({ navigation }) {
@@ -13,7 +12,6 @@ function ExternalStress({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <SafeAreaView style={{ flex: 1 }}>
-        <FocusedStatusBar />
         <Container>
           <TextContainer>
             External stress is stress that comes from outside sources. For example, pressure at work
