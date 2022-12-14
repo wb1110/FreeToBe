@@ -11,7 +11,7 @@ import FoodScanner from '../foodScanner/FoodScanner';
 
 import LArrowButton from '../../components/Buttons/LArrowButton';
 
-function Item({ name, calories, onPress, nutrients, fdcId }) {
+function Item({ name, calories, onPress, nutrients, fdcId, navigation }) {
   const { theme } = useTheme();
   const values = {};
   const nutrientIdsArray = [
@@ -58,8 +58,16 @@ function Item({ name, calories, onPress, nutrients, fdcId }) {
       }}
     >
       <View style={{ width: '90%' }}>
-        <Text>{name}</Text>
-        <Text>{calories} cal</Text>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('FoodDetails', {
+              fdcId,
+            })
+          }
+        >
+          <Text>{name}</Text>
+          <Text>{calories} cal</Text>
+        </TouchableOpacity>
       </View>
       <AddButton
         onPress={() => {
@@ -161,6 +169,7 @@ export default function AddFoodItem({ route, navigation }) {
           onPress={addNewFood}
           nutrients={nutrients}
           fdcId={item.fdcId}
+          navigation={navigation}
         />
       );
     }

@@ -5,6 +5,7 @@ import AddFoodManually from './AddFoodManually';
 import AddMeal from './AddMeal';
 import EditFoodManually from './EditFoodManually';
 import EditMeal from './EditMeal';
+import FoodDetails from './FoodDetails';
 import Tracker from './Tracker';
 // Before rendering any navigation stack
 enableScreens();
@@ -18,6 +19,7 @@ export default function TrackerStackScreen() {
       <TrackerStack.Screen name="AddMeal" component={AddMeal} />
       <TrackerStack.Screen name="EditMeal" component={EditMeal} />
       <TrackerStack.Screen name="AddFoodItem" component={AddFoodItem} />
+      <TrackerStack.Screen name="FoodDetails" component={FoodDetails} />
       <TrackerStack.Screen name="AddFoodManually" component={AddFoodManually} />
       <TrackerStack.Screen name="EditFoodManually" component={EditFoodManually} />
     </TrackerStack.Navigator>
