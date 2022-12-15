@@ -17,8 +17,12 @@ export default function FoodDetails({ route }) {
   const [changeButton, setChangeButton] = useState(false);
   const [loading, setLoading] = useState(false);
   const { theme } = useTheme();
+  // Array containing the food details
   const [foodDetails, setFoodDetails] = useState();
+  // Array of serving sizes
   const [servingSizes, setServingSizes] = useState();
+  // Value from custompicker
+  const [selectServingSize, setSelectServingSize] = useState(false);
 
   const [servingSizeModal, setServingSizeModal] = useState(false);
 
@@ -80,15 +84,15 @@ export default function FoodDetails({ route }) {
                   >
                     <Text>Serving Size</Text>
                     <Button
-                      title={servingSizes ? servingSizes[0] : 'Select'}
+                      title={selectServingSize || 'Select'}
                       onPress={() => setServingSizeModal(!servingSizeModal)}
                     />
                     <MyCustomerPicker
                       setModalOpen={setServingSizeModal}
                       modalOpen={servingSizeModal}
-                      value={servingSizes}
+                      value={selectServingSize}
                       items={servingSizes}
-                      setValue={setServingSizes}
+                      setValue={setSelectServingSize}
                     />
                   </View>
                   <View
@@ -100,7 +104,14 @@ export default function FoodDetails({ route }) {
                     }}
                   >
                     <Text>Number of Servings</Text>
-                    <Button title="Modal Open" />
+                    <Button title="Select" onPress={() => setServingSizeModal(!servingSizeModal)} />
+                    {/* <MyCustomerPicker
+                      setModalOpen={setServingSizeModal}
+                      modalOpen={servingSizeModal}
+                      value={servingSizes}
+                      items={servingSizes}
+                      setValue={setServingSizes}
+                    /> */}
                   </View>
                   <View
                     style={{
