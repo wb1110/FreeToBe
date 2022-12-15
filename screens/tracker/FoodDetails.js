@@ -80,7 +80,7 @@ export default function FoodDetails({ route }) {
                   >
                     <Text>Serving Size</Text>
                     <Button
-                      title="Modal Open"
+                      title={servingSizes ? servingSizes[0] : 'Select'}
                       onPress={() => setServingSizeModal(!servingSizeModal)}
                     />
                     <MyCustomerPicker
