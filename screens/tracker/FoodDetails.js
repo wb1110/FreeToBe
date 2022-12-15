@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import MyCustomerPicker from '../../components/MyCustomerPicker';
 import servingSize from '../../functions/servingSize';
+import servingNumberFunction from './ServingArray';
 
 export default function FoodDetails({ route }) {
   const { fdcId } = route.params;
@@ -19,12 +20,16 @@ export default function FoodDetails({ route }) {
   const { theme } = useTheme();
   // Array containing the food details
   const [foodDetails, setFoodDetails] = useState();
+  const [servingSizeModal, setServingSizeModal] = useState(false);
   // Array of serving sizes
   const [servingSizes, setServingSizes] = useState();
-  // Value from custompicker
+  // Servings value from custompicker
   const [selectServingSize, setSelectServingSize] = useState(false);
+  // Numer of servings value from customer picker
+  const [selectNumberofServings, setSelectNumberofServings] = useState(false);
+  const [servingNumberModal, setServingNumberModal] = useState(false);
 
-  const [servingSizeModal, setServingSizeModal] = useState(false);
+  const servingNumberArray = servingNumberFunction(1, 200, 1);
 
   useEffect(() => {
     setLoading(true);
@@ -104,14 +109,17 @@ export default function FoodDetails({ route }) {
                     }}
                   >
                     <Text>Number of Servings</Text>
-                    <Button title="Select" onPress={() => setServingSizeModal(!servingSizeModal)} />
-                    {/* <MyCustomerPicker
-                      setModalOpen={setServingSizeModal}
-                      modalOpen={servingSizeModal}
-                      value={servingSizes}
-                      items={servingSizes}
-                      setValue={setServingSizes}
-                    /> */}
+                    <Button
+                      title="Select"
+                      onPress={() => setServingNumberModal(!servingNumberModal)}
+                    />
+                    <MyCustomerPicker
+                      setModalOpen={setServingNumberModal}
+                      modalOpen={servingNumberModal}
+                      value={selectNumberofServings}
+                      items={servingNumberArray}
+                      setValue={setSelectNumberofServings}
+                    />
                   </View>
                   <View
                     style={{
