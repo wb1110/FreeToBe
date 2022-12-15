@@ -31,6 +31,7 @@ export default function FoodDetails({ route }) {
         )
         .then(async (res) => {
           const result = await res.data;
+          setServingSizes(servingSize(result.foodPortions));
           setFoodDetails(result);
           setLoading(false);
           return result;
@@ -42,7 +43,6 @@ export default function FoodDetails({ route }) {
         });
     };
     getByFDCID(fdcId);
-    setServingSizes(servingSize(foodDetails?.foodPortions));
   }, [fdcId]);
 
   return (
@@ -87,7 +87,7 @@ export default function FoodDetails({ route }) {
                       setModalOpen={setServingSizeModal}
                       modalOpen={servingSizeModal}
                       value={servingSizes}
-                      items={foodDetails}
+                      items={servingSizes}
                       setValue={setServingSizes}
                     />
                   </View>
