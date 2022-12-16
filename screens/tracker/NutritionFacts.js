@@ -2,7 +2,24 @@ import { View, Text } from 'react-native';
 import React from 'react';
 
 function Item({ name, nutrient, multiplier }) {
-  const { amount, unit } = nutrient;
+  if (nutrient) {
+    const { amount, unit } = nutrient;
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          width: '90%',
+          margin: '2%',
+        }}
+      >
+        <Text>{name}</Text>
+        <Text>
+          {amount * multiplier} {unit}
+        </Text>
+      </View>
+    );
+  }
   return (
     <View
       style={{
@@ -13,9 +30,7 @@ function Item({ name, nutrient, multiplier }) {
       }}
     >
       <Text>{name}</Text>
-      <Text>
-        {amount * multiplier} {unit}
-      </Text>
+      <Text>0</Text>
     </View>
   );
 }
@@ -59,7 +74,7 @@ export default function NutritionFacts({ foodDetails }) {
       <Item name="Protein" nutrient={protein} multiplier={1} />
       <Item name="Fat" nutrient={fat} multiplier={1} />
       <Item name="Carbs" nutrient={carbs} multiplier={1} />
-      {/* <Item name="Calcium" nutrient={calcium} multiplier={1} />
+      <Item name="Calcium" nutrient={calcium} multiplier={1} />
       <Item name="Copper" nutrient={copper} multiplier={1} />
       <Item name="Choline" nutrient={choline} multiplier={1} />
       <Item name="Iodine" nutrient={iodine} multiplier={1} />
@@ -68,7 +83,7 @@ export default function NutritionFacts({ foodDetails }) {
       <Item name="Potassium" nutrient={potassium} multiplier={1} />
       <Item name="Selenium" nutrient={selenium} multiplier={1} />
       <Item name="Sodium" nutrient={sodium} multiplier={1} />
-      <Item name="Zinc" nutrient={zinc} multiplier={1} /> */}
+      <Item name="Zinc" nutrient={zinc} multiplier={1} />
     </View>
   );
 }
