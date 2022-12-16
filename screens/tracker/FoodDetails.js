@@ -11,6 +11,7 @@ import {
 import MyCustomerPicker from '../../components/MyCustomerPicker';
 import servingSize from '../../functions/servingSize';
 import servingNumberFunction from './ServingArray';
+import NutritionFacts from './NutritionFacts';
 
 export default function FoodDetails({ route }) {
   const { fdcId } = route.params;
@@ -139,11 +140,7 @@ export default function FoodDetails({ route }) {
                     />
                   </View>
                 </View>
-                {showNutritionFacts ? (
-                  <View>
-                    <Text>Test</Text>
-                  </View>
-                ) : null}
+                {showNutritionFacts ? <NutritionFacts foodDetails={foodDetails} /> : null}
               </View>
             )}
           </TouchableWithoutFeedback>
