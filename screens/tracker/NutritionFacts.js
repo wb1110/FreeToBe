@@ -1,65 +1,74 @@
 import { View, Text } from 'react-native';
 import React from 'react';
 
+function Item({ name, nutrient, multiplier }) {
+  const { amount, unit } = nutrient;
+  return (
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '90%',
+        margin: '2%',
+      }}
+    >
+      <Text>{name}</Text>
+      <Text>
+        {amount * multiplier} {unit}
+      </Text>
+    </View>
+  );
+}
+
 export default function NutritionFacts({ foodDetails }) {
   const { foodNutrients } = foodDetails;
-  const nutrientIdsArray = [
-    { id: 1003, name: 'protein' },
-    { id: 1005, name: 'carbs' },
-    { id: 1004, name: 'fat' },
-    { id: 1008, name: 'calories' },
-    { id: 1087, name: 'calcium' },
-    { id: 1098, name: 'copper' },
-    { id: 1180, name: 'choline' },
-    { id: 1100, name: 'iodine' },
-    { id: 1090, name: 'magnesium' },
-    { id: 1091, name: 'phosphorous' },
-    { id: 1092, name: 'potassium' },
-    { id: 1103, name: 'selenium' },
-    { id: 1093, name: 'sodium' },
-    { id: 1095, name: 'zinc' },
-  ];
 
   const nutrientFilter = (array, idNumber) => {
     const values = {};
     for (let i = 0; i < array.length; i++) {
       if (array[i].nutrient.id === idNumber) {
-        Object.assign(values, { amount: array[i].amount, unit: array[i].nutrient.unitName });
+        Object.assign(values, {
+          id: array[i].nutrient.id,
+          name: array[i].nutrient.name,
+          amount: array[i].amount,
+          unit: array[i].nutrient.unitName,
+        });
         return values;
       }
     }
   };
 
   const protein = nutrientFilter(foodNutrients, 1003);
+  const calories = nutrientFilter(foodNutrients, 1008);
+  const carbs = nutrientFilter(foodNutrients, 1005);
+  const fat = nutrientFilter(foodNutrients, 1004);
+  const calcium = nutrientFilter(foodNutrients, 1087);
+  const copper = nutrientFilter(foodNutrients, 1098);
+  const choline = nutrientFilter(foodNutrients, 1180);
+  const iodine = nutrientFilter(foodNutrients, 1100);
+  const magnesium = nutrientFilter(foodNutrients, 1090);
+  const phosphorous = nutrientFilter(foodNutrients, 1091);
+  const potassium = nutrientFilter(foodNutrients, 1092);
+  const selenium = nutrientFilter(foodNutrients, 1103);
+  const sodium = nutrientFilter(foodNutrients, 1093);
+  const zinc = nutrientFilter(foodNutrients, 1095);
 
   return (
     <View style={{ alignItems: 'center', width: '100%' }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          width: '90%',
-          margin: '2%',
-        }}
-      >
-        <Text>Calories</Text>
-        <Text>.amount nutrient.unitName</Text>
-      </View>
-      <View>
-        <Text>Total Fat</Text>
-        <Text>Total Fat</Text>
-      </View>
-      <View>
-        <Text>Calories</Text>
-        <Text>Calories</Text>
-      </View>
-      <View>
-        <Text>Protein</Text>
-        <Text>
-          {protein.amount}
-          {protein.unit}
-        </Text>
-      </View>
+      <Item name="Calories" nutrient={calories} multiplier={1} />
+      <Item name="Protein" nutrient={protein} multiplier={1} />
+      <Item name="Fat" nutrient={fat} multiplier={1} />
+      <Item name="Carbs" nutrient={carbs} multiplier={1} />
+      {/* <Item name="Calcium" nutrient={calcium} multiplier={1} />
+      <Item name="Copper" nutrient={copper} multiplier={1} />
+      <Item name="Choline" nutrient={choline} multiplier={1} />
+      <Item name="Iodine" nutrient={iodine} multiplier={1} />
+      <Item name="Magnesium" nutrient={magnesium} multiplier={1} />
+      <Item name="Phosphorous" nutrient={phosphorous} multiplier={1} />
+      <Item name="Potassium" nutrient={potassium} multiplier={1} />
+      <Item name="Selenium" nutrient={selenium} multiplier={1} />
+      <Item name="Sodium" nutrient={sodium} multiplier={1} />
+      <Item name="Zinc" nutrient={zinc} multiplier={1} /> */}
     </View>
   );
 }
