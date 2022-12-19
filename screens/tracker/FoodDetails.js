@@ -27,7 +27,7 @@ export default function FoodDetails({ route }) {
   // Servings value from custompicker
   const [selectServingSize, setSelectServingSize] = useState(false);
   // Numer of servings value from customer picker
-  const [selectNumberofServings, setSelectNumberofServings] = useState(false);
+  const [selectNumberofServings, setSelectNumberofServings] = useState(1);
   const [servingNumberModal, setServingNumberModal] = useState(false);
 
   const servingNumberArray = servingNumberFunction(1, 200, 1);
@@ -111,7 +111,7 @@ export default function FoodDetails({ route }) {
                   >
                     <Text>Number of Servings</Text>
                     <Button
-                      title="Select"
+                      title={`${selectNumberofServings}`}
                       onPress={() => setServingNumberModal(!servingNumberModal)}
                     />
                     <MyCustomerPicker
@@ -140,7 +140,9 @@ export default function FoodDetails({ route }) {
                     />
                   </View>
                 </View>
-                {showNutritionFacts ? <NutritionFacts foodDetails={foodDetails} /> : null}
+                {showNutritionFacts ? (
+                  <NutritionFacts foodDetails={foodDetails} multiplier={selectNumberofServings} />
+                ) : null}
               </View>
             )}
           </TouchableWithoutFeedback>

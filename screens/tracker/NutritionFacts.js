@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { Text } from '@rneui/themed';
-import React from 'react';
+import React, { useState } from 'react';
 
 function Item({ name, nutrient, multiplier }) {
   if (nutrient) {
@@ -36,7 +36,7 @@ function Item({ name, nutrient, multiplier }) {
   );
 }
 
-export default function NutritionFacts({ foodDetails }) {
+export default function NutritionFacts({ foodDetails, multiplier }) {
   const { foodNutrients } = foodDetails;
 
   const nutrientFilter = (array, idNumber) => {
@@ -71,20 +71,20 @@ export default function NutritionFacts({ foodDetails }) {
 
   return (
     <View style={{ alignItems: 'center', width: '100%' }}>
-      <Item name="Calories" nutrient={calories} multiplier={1} />
-      <Item name="Protein" nutrient={protein} multiplier={1} />
-      <Item name="Fat" nutrient={fat} multiplier={1} />
-      <Item name="Carbs" nutrient={carbs} multiplier={1} />
-      <Item name="Calcium" nutrient={calcium} multiplier={1} />
-      <Item name="Copper" nutrient={copper} multiplier={1} />
-      <Item name="Choline" nutrient={choline} multiplier={1} />
-      <Item name="Iodine" nutrient={iodine} multiplier={1} />
-      <Item name="Magnesium" nutrient={magnesium} multiplier={1} />
-      <Item name="Phosphorous" nutrient={phosphorous} multiplier={1} />
-      <Item name="Potassium" nutrient={potassium} multiplier={1} />
-      <Item name="Selenium" nutrient={selenium} multiplier={1} />
-      <Item name="Sodium" nutrient={sodium} multiplier={1} />
-      <Item name="Zinc" nutrient={zinc} multiplier={1} />
+      <Item name="Calories" nutrient={calories} multiplier={multiplier} />
+      <Item name="Protein" nutrient={protein} multiplier={multiplier} />
+      <Item name="Fat" nutrient={fat} multiplier={multiplier} />
+      <Item name="Carbs" nutrient={carbs} multiplier={multiplier} />
+      <Item name="Calcium" nutrient={calcium} multiplier={multiplier} />
+      <Item name="Copper" nutrient={copper} multiplier={multiplier} />
+      <Item name="Choline" nutrient={choline} multiplier={multiplier} />
+      <Item name="Iodine" nutrient={iodine} multiplier={multiplier} />
+      <Item name="Magnesium" nutrient={magnesium} multiplier={multiplier} />
+      <Item name="Phosphorous" nutrient={phosphorous} multiplier={multiplier} />
+      <Item name="Potassium" nutrient={potassium} multiplier={multiplier} />
+      <Item name="Selenium" nutrient={selenium} multiplier={multiplier} />
+      <Item name="Sodium" nutrient={sodium} multiplier={multiplier} />
+      <Item name="Zinc" nutrient={zinc} multiplier={multiplier} />
     </View>
   );
 }
