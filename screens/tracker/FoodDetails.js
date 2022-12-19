@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import MyCustomerPicker from '../../components/MyCustomerPicker';
+import ServingSizePicker from '../../components/ServingSizePicker';
 import servingSize from '../../functions/servingSize';
 import useTrackerStore from '../../state/TrackerStore';
 import NutritionFacts from './NutritionFacts';
@@ -84,12 +85,14 @@ export default function FoodDetails({ route, navigation }) {
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
           <TouchableWithoutFeedback>
             {loading ? (
-              <ActivityIndicator
-                size="large"
-                color={theme.colors.white}
-                visible={loading}
-                textContent="Searching USDA Database..."
-              />
+              <View style={{ flex: 1, justifyContent: 'center' }}>
+                <ActivityIndicator
+                  size="large"
+                  color={theme.colors.white}
+                  visible={loading}
+                  textContent="Searching USDA Database..."
+                />
+              </View>
             ) : (
               <View style={{ alignItems: 'center' }}>
                 <View
@@ -121,10 +124,10 @@ export default function FoodDetails({ route, navigation }) {
                   >
                     <Text>Serving Size</Text>
                     <Button
-                      title={selectServingSize || 'Select'}
+                      title={selectServingSize.name || 'Select'}
                       onPress={() => setServingSizeModal(!servingSizeModal)}
                     />
-                    <MyCustomerPicker
+                    <ServingSizePicker
                       setModalOpen={setServingSizeModal}
                       modalOpen={servingSizeModal}
                       value={selectServingSize}

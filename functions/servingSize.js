@@ -1,13 +1,24 @@
 const servingSize = (foodPortions) => {
-  const servingSizeArray = [];
+  const servingSizeArray = [
+    {
+      name: '100g',
+      gramWeight: 100,
+    },
+  ];
   if (foodPortions) {
     foodPortions.map((i) => {
       if (i.measureUnit.name === 'undetermined') {
-        servingSizeArray.push(`${i.amount} ${i.modifier}`);
+        servingSizeArray.push({ name: `${i.amount} ${i.modifier}`, gramWeight: i.gramWeight });
       } else if (!i.modifier) {
-        servingSizeArray.push(`${i.amount} ${i.measureUnit.name}`);
+        servingSizeArray.push({
+          name: `${i.amount} ${i.measureUnit.name}`,
+          gramWeight: i.gramWeight,
+        });
       } else {
-        servingSizeArray.push(`${i.amount} ${i.measureUnit.name} ${i.modifier}`);
+        servingSizeArray.push({
+          name: `${i.amount} ${i.measureUnit.name} ${i.modifier}`,
+          gramWeight: i.gramWeight,
+        });
       }
     });
   } else {

@@ -129,6 +129,7 @@ export default function NutritionFacts({
       sodium: { value: sodium.amount, unit: sodium.unit },
       zinc: { value: zinc.amount, unit: zinc.unit },
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectServingSize, multiplier, name]);
 
   return (
