@@ -199,6 +199,7 @@ const useTrackerStore = create((set) => ({
   addFood: (values, dayIndex, mealName) =>
     set(
       produce((state) => {
+        console.log(values, dayIndex, mealName);
         const mealArray = state.tracker[dayIndex].meals;
         const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
         const foodArray = mealArray[mealIndex].foodItems;

@@ -11,7 +11,7 @@ import FoodScanner from '../foodScanner/FoodScanner';
 
 import LArrowButton from '../../components/Buttons/LArrowButton';
 
-function Item({ name, calories, onPress, nutrients, fdcId, navigation }) {
+function Item({ name, calories, onPress, nutrients, fdcId, navigation, dayIndex, mealName }) {
   const { theme } = useTheme();
   const values = {};
   const nutrientIdsArray = [
@@ -62,6 +62,8 @@ function Item({ name, calories, onPress, nutrients, fdcId, navigation }) {
           onPress={() =>
             navigation.navigate('FoodDetails', {
               fdcId,
+              dayIndex,
+              mealName,
             })
           }
         >
@@ -170,6 +172,8 @@ export default function AddFoodItem({ route, navigation }) {
           nutrients={nutrients}
           fdcId={item.fdcId}
           navigation={navigation}
+          dayIndex={dayIndex}
+          mealName={mealName}
         />
       );
     }
