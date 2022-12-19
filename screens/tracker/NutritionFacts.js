@@ -44,6 +44,8 @@ export default function NutritionFacts({
   setServingValues,
   display,
 }) {
+  const amountModifier = (amount, gramWeight, servings) =>
+    (amount * (gramWeight / 100) * servings).toFixed(2);
   const { foodNutrients } = foodDetails;
   const noNutrient = { amount: 0, unit: '' };
 
@@ -54,7 +56,7 @@ export default function NutritionFacts({
         Object.assign(values, {
           id: array[i].nutrient.id,
           name: array[i].nutrient.name,
-          amount: (array[i].amount * multiplier).toFixed(2),
+          amount: amountModifier(array[i].amount, selectServingSize.gramWeight, multiplier),
           unit: array[i].nutrient.unitName,
         });
         return values;
