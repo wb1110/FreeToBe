@@ -36,7 +36,14 @@ function Item({ name, nutrient }) {
   );
 }
 
-export default function NutritionFacts({ foodDetails, multiplier, setServingValues }) {
+export default function NutritionFacts({
+  foodDetails,
+  name,
+  multiplier,
+  selectServingSize,
+  setServingValues,
+  display,
+}) {
   const { foodNutrients } = foodDetails;
   const noNutrient = { amount: 0, unit: '' };
 
@@ -47,7 +54,7 @@ export default function NutritionFacts({ foodDetails, multiplier, setServingValu
         Object.assign(values, {
           id: array[i].nutrient.id,
           name: array[i].nutrient.name,
-          amount: array[i].amount * multiplier,
+          amount: (array[i].amount * multiplier).toFixed(2),
           unit: array[i].nutrient.unitName,
         });
         return values;
@@ -101,9 +108,11 @@ export default function NutritionFacts({ foodDetails, multiplier, setServingValu
     ? nutrientFilter(foodNutrients, 1095)
     : noNutrient;
 
-  console.log(choline);
   useEffect(() => {
     setServingValues({
+      foodName: name,
+      servingSize: selectServingSize,
+      servingNumber: multiplier,
       foodCalories: calories.amount,
       proteinGrams: protein.amount,
       carbGrams: carbs.amount,
@@ -120,10 +129,10 @@ export default function NutritionFacts({ foodDetails, multiplier, setServingValu
       sodium: { value: sodium.amount, unit: sodium.unit },
       zinc: { value: zinc.amount, unit: zinc.unit },
     });
-  }, []);
+  }, [selectServingSize, multiplier, name]);
 
   return (
-    <View style={{ alignItems: 'center', width: '100%' }}>
+    <View style={{ alignItems: 'center', width: '100%', display }}>
       <Item name="Calories" nutrient={calories} />
       <Item name="Protein" nutrient={protein} />
       <Item name="Fat" nutrient={fat} />

@@ -10,15 +10,15 @@ import {
 } from 'react-native';
 import MyCustomerPicker from '../../components/MyCustomerPicker';
 import servingSize from '../../functions/servingSize';
-import servingNumberFunction from './ServingArray';
-import NutritionFacts from './NutritionFacts';
 import useTrackerStore from '../../state/TrackerStore';
+import NutritionFacts from './NutritionFacts';
+import servingNumberFunction from './ServingArray';
 
 export default function FoodDetails({ route, navigation }) {
   const { trackerState } = useTrackerStore();
   const { fdcId } = route.params;
-  const [showNutritionFacts, setShowNutritionFacts] = useState(false);
-  const [changeButton, setChangeButton] = useState(false);
+  const [showNutritionFacts, setShowNutritionFacts] = useState(true);
+  const [changeButton, setChangeButton] = useState(true);
   const [loading, setLoading] = useState(false);
   const { theme } = useTheme();
   // Array containing the food details
@@ -27,7 +27,7 @@ export default function FoodDetails({ route, navigation }) {
   // Array of serving sizes
   const [servingSizes, setServingSizes] = useState();
   // Servings value from custompicker
-  const [selectServingSize, setSelectServingSize] = useState(false);
+  const [selectServingSize, setSelectServingSize] = useState('');
   // Numer of servings value from customer picker
   const [selectNumberofServings, setSelectNumberofServings] = useState(1);
   const [servingNumberModal, setServingNumberModal] = useState(false);
@@ -36,7 +36,6 @@ export default function FoodDetails({ route, navigation }) {
     foodName: '',
     servingSize: selectServingSize,
     servingNumber: selectNumberofServings,
-    unitOfMeasurement: '',
     foodCalories: 0,
     proteinGrams: 0,
     carbGrams: 0,
@@ -79,8 +78,6 @@ export default function FoodDetails({ route, navigation }) {
     getByFDCID(fdcId);
   }, [fdcId]);
 
-  console.log(servingValues, 'servingValues');
-
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -106,6 +103,14 @@ export default function FoodDetails({ route, navigation }) {
                   <Text h4>{foodDetails?.description}</Text>
                 </View>
                 <View style={{ width: '100%' }}>
+                  <Button
+                    title="Log Food"
+                    onPress={() => {
+                      // trackerState.addFood(servingValues);
+                      console.log(servingValues, 'servingValues');
+                      // navigation.navigate('TrackerHome');
+                    }}
+                  />
                   <View
                     style={{
                       flexDirection: 'row',
@@ -166,20 +171,16 @@ export default function FoodDetails({ route, navigation }) {
                     />
                   </View>
                 </View>
-                {showNutritionFacts ? (
+                {showNutritionFacts && foodDetails ? (
                   <NutritionFacts
                     foodDetails={foodDetails}
+                    name={foodDetails?.description}
                     multiplier={selectNumberofServings}
+                    selectServingSize={selectServingSize}
                     setServingValues={setServingValues}
+                    display={showNutritionFacts ? 'flex' : 'none'}
                   />
                 ) : null}
-                <Button
-                  title="Log Food"
-                  onPress={() => {
-                    trackerState.addFood(servingValues);
-                    navigation.navigate('TrackerHome');
-                  }}
-                />
               </View>
             )}
           </TouchableWithoutFeedback>
