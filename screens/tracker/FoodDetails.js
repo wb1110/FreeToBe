@@ -12,8 +12,10 @@ import MyCustomerPicker from '../../components/MyCustomerPicker';
 import servingSize from '../../functions/servingSize';
 import servingNumberFunction from './ServingArray';
 import NutritionFacts from './NutritionFacts';
+import useTrackerStore from '../../state/TrackerStore';
 
-export default function FoodDetails({ route }) {
+export default function FoodDetails({ route, navigation }) {
+  const { trackerState } = useTrackerStore();
   const { fdcId } = route.params;
   const [showNutritionFacts, setShowNutritionFacts] = useState(false);
   const [changeButton, setChangeButton] = useState(false);
@@ -29,6 +31,28 @@ export default function FoodDetails({ route }) {
   // Numer of servings value from customer picker
   const [selectNumberofServings, setSelectNumberofServings] = useState(1);
   const [servingNumberModal, setServingNumberModal] = useState(false);
+
+  const [servingValues, setServingValues] = useState({
+    foodName: '',
+    servingSize: selectServingSize,
+    servingNumber: selectNumberofServings,
+    unitOfMeasurement: '',
+    foodCalories: 0,
+    proteinGrams: 0,
+    carbGrams: 0,
+    fatGrams: 0,
+    calcium: { value: 0, unit: '' },
+    choline: { value: 0, unit: '' },
+    copper: { value: 0, unit: '' },
+    iodine: { value: 0, unit: '' },
+    iron: { value: 0, unit: '' },
+    magnesium: { value: 0, unit: '' },
+    phosphorous: { value: 0, unit: '' },
+    potassium: { value: 0, unit: '' },
+    selenium: { value: 0, unit: '' },
+    sodium: { value: 0, unit: '' },
+    zinc: { value: 0, unit: '' },
+  });
 
   const servingNumberArray = servingNumberFunction(1, 200, 1);
 
@@ -54,6 +78,8 @@ export default function FoodDetails({ route }) {
     };
     getByFDCID(fdcId);
   }, [fdcId]);
+
+  console.log(servingValues, 'servingValues');
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -141,8 +167,19 @@ export default function FoodDetails({ route }) {
                   </View>
                 </View>
                 {showNutritionFacts ? (
-                  <NutritionFacts foodDetails={foodDetails} multiplier={selectNumberofServings} />
+                  <NutritionFacts
+                    foodDetails={foodDetails}
+                    multiplier={selectNumberofServings}
+                    setServingValues={setServingValues}
+                  />
                 ) : null}
+                <Button
+                  title="Log Food"
+                  onPress={() => {
+                    trackerState.addFood(servingValues);
+                    navigation.navigate('TrackerHome');
+                  }}
+                />
               </View>
             )}
           </TouchableWithoutFeedback>
