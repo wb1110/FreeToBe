@@ -28,7 +28,10 @@ export default function FoodDetails({ route, navigation }) {
   // Array of serving sizes
   const [servingSizes, setServingSizes] = useState();
   // Servings value from custompicker
-  const [selectServingSize, setSelectServingSize] = useState('');
+  const [selectServingSize, setSelectServingSize] = useState({
+    name: '100g',
+    gramWeight: 100,
+  });
   // Numer of servings value from customer picker
   const [selectNumberofServings, setSelectNumberofServings] = useState(1);
   const [servingNumberModal, setServingNumberModal] = useState(false);

@@ -103,7 +103,7 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
                   key={item.fdcId}
                   style={{ marginBottom: '2%', width: '100%' }}
                   onPress={() => {
-                    console.log('test');
+                    console.log(item);
                   }}
                 >
                   <Text>{item.foodName}</Text>
