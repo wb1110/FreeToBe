@@ -25,6 +25,7 @@ function Item({ name, nutrient }) {
       </View>
     );
   }
+  // If there is no nutrient
   return (
     <View
       style={{
@@ -42,8 +43,8 @@ function Item({ name, nutrient }) {
 
 export default function EditFood({ route, navigation }) {
   const { mealName, item, dayIndex } = route.params;
-  const [showNutritionFacts, setShowNutritionFacts] = useState(false);
-  const [changeButton, setChangeButton] = useState(false);
+  const [showNutritionFacts, setShowNutritionFacts] = useState(true);
+  const [changeButton, setChangeButton] = useState(true);
   const state = useTrackerStore();
   const { editFood } = useTrackerStore();
   const { theme } = useTheme();
@@ -185,11 +186,14 @@ export default function EditFood({ route, navigation }) {
                 </View>
               </View>
               {showNutritionFacts && foodDetails ? (
-                <View style={{ alignItems: 'center', width: '100%', display: showNutritionFacts }}>
-                  <Item name="Calories" nutrient={foodDetails.foodCalories} />
-                  <Item name="Protein" nutrient={foodDetails.proteinGrams} />
-                  <Item name="Fat" nutrient={foodDetails.fatGrams} />
-                  <Item name="Carbs" nutrient={foodDetails.carbGrams} />
+                <View style={{ alignItems: 'center', width: '100%' }}>
+                  <Item
+                    name="Calories"
+                    nutrient={{ value: foodDetails.foodCalories, unit: 'kcal' }}
+                  />
+                  <Item name="Protein" nutrient={{ value: foodDetails.proteinGrams, unit: 'g' }} />
+                  <Item name="Fat" nutrient={{ value: foodDetails.fatGrams, unit: 'g' }} />
+                  <Item name="Carbs" nutrient={{ value: foodDetails.carbGrams, unit: 'g' }} />
                   <Item name="Calcium" nutrient={foodDetails.calcium} />
                   <Item name="Copper" nutrient={foodDetails.copper} />
                   <Item name="Choline" nutrient={foodDetails.choline} />
