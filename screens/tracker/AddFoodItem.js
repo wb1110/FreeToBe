@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
+import 'react-native-get-random-values';
 import AddButton from '../../components/Buttons/AddButton';
 import useTrackerStore from '../../state/TrackerStore';
 import FoodScanner from '../foodScanner/FoodScanner';
@@ -40,7 +42,7 @@ function Item({ name, calories, onPress, nutrients, fdcId, navigation, dayIndex,
   }
 
   const setValues = () => {
-    Object.assign(values, { foodName: name, fdcId });
+    Object.assign(values, { foodName: name, fdcId, foodId: uuidv4() });
     nutrientIdsArray.map((nutrient) => nutrientFilter(nutrients, nutrient.id, nutrient.name));
   };
 

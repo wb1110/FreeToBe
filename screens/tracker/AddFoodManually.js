@@ -35,7 +35,7 @@ export default function AddFoodManually({ route, navigation }) {
       <View>
         <Formik
           initialValues={{
-            foodID: uuidv4(),
+            foodId: uuidv4(),
             foodName: '',
             calories: '',
             fat: '',
