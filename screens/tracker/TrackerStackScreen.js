@@ -3,6 +3,7 @@ import { enableScreens } from 'react-native-screens';
 import AddFoodItem from './AddFoodItem';
 import AddFoodManually from './AddFoodManually';
 import AddMeal from './AddMeal';
+import EditFood from './EditFood';
 import EditFoodManually from './EditFoodManually';
 import EditMeal from './EditMeal';
 import FoodDetails from './FoodDetails';
@@ -21,7 +22,7 @@ export default function TrackerStackScreen() {
       <TrackerStack.Screen name="AddFoodItem" component={AddFoodItem} />
       <TrackerStack.Screen name="FoodDetails" component={FoodDetails} />
       <TrackerStack.Screen name="AddFoodManually" component={AddFoodManually} />
-      <TrackerStack.Screen name="EditFoodManually" component={EditFoodManually} />
+      <TrackerStack.Screen name="EditFood" component={EditFood} />
     </TrackerStack.Navigator>
   );
 }

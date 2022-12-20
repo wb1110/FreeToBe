@@ -50,7 +50,7 @@ export default function EditFood({ route, navigation }) {
 
   const [servingSizeModal, setServingSizeModal] = useState(false);
   // Array containing the food details
-  const [foodDetails, setFoodDetails] = useState();
+  const [foodDetails, setFoodDetails] = useState(item);
   // Array of serving sizes
   const [servingSizes, setServingSizes] = useState();
   // Servings value from custompicker
@@ -78,39 +78,52 @@ export default function EditFood({ route, navigation }) {
                   borderBottomColor: theme.colors.white,
                 }}
               >
-                <Text h4>{foodDetails?.description}</Text>
+                <Text h4>{foodDetails.foodName}</Text>
               </View>
               <View style={{ width: '100%' }}>
-                <Button
-                  title="Update Food"
-                  onPress={() => {
-                    editFood(values, dayIndex, mealName, values.foodName);
-                    navigation.navigate('TrackerHome');
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                    width: '95%',
+                    margin: '2%',
                   }}
-                />
-                <Button
-                  title="Delete"
-                  color={theme.colors.white}
-                  onPress={() => {
-                    state.deleteFood(dayIndex, mealName, values.foodName);
-                    navigation.navigate('TrackerHome');
-                  }}
-                  buttonStyle={{
-                    borderWidth: 2,
-                    borderRadius: 30,
-                    color: theme.colors.white,
-                    borderColor: theme.colors.white,
-                  }}
-                  containerStyle={{
-                    width: 200,
-                    marginHorizontal: 10,
-                    marginVertical: 10,
-                    borderColor: theme.colors.white,
-                  }}
-                  titleStyle={{
-                    color: theme.colors.primary,
-                  }}
-                />
+                >
+                  <Button
+                    title="Update Food"
+                    onPress={() => {
+                      editFood(foodDetails, dayIndex, mealName, foodDetails.foodName);
+                      navigation.navigate('TrackerHome');
+                    }}
+                    buttonStyle={{
+                      color: theme.colors.white,
+                    }}
+                    containerStyle={{
+                      width: '45%',
+                      borderColor: theme.colors.white,
+                    }}
+                  />
+                  <Button
+                    title="Delete Food"
+                    color={theme.colors.white}
+                    onPress={() => {
+                      state.deleteFood(dayIndex, mealName, foodDetails.foodName);
+                      navigation.navigate('TrackerHome');
+                    }}
+                    buttonStyle={{
+                      color: theme.colors.white,
+                    }}
+                    containerStyle={{
+                      width: '45%',
+                      borderColor: theme.colors.white,
+                    }}
+                    titleStyle={{
+                      color: theme.colors.primary,
+                    }}
+                  />
+                </View>
+
                 <View
                   style={{
                     flexDirection: 'row',
@@ -173,21 +186,21 @@ export default function EditFood({ route, navigation }) {
               </View>
               {showNutritionFacts && foodDetails ? (
                 <View style={{ alignItems: 'center', width: '100%', display: showNutritionFacts }}>
-                  <Item name="Calories" nutrient={item.foodCalories} />
-                  <Item name="Protein" nutrient={item.proteinGrams} />
-                  <Item name="Fat" nutrient={item.fatGrams} />
-                  <Item name="Carbs" nutrient={item.carbGrams} />
-                  <Item name="Calcium" nutrient={item.calcium} />
-                  <Item name="Copper" nutrient={item.copper} />
-                  <Item name="Choline" nutrient={item.choline} />
-                  <Item name="Iodine" nutrient={item.iodine} />
-                  <Item name="Iron" nutrient={item.iron} />
-                  <Item name="Magnesium" nutrient={item.magnesium} />
-                  <Item name="Phosphorous" nutrient={item.phosphorous} />
-                  <Item name="Potassium" nutrient={item.potassium} />
-                  <Item name="Selenium" nutrient={item.selenium} />
-                  <Item name="Sodium" nutrient={item.sodium} />
-                  <Item name="Zinc" nutrient={item.zinc} />
+                  <Item name="Calories" nutrient={foodDetails.foodCalories} />
+                  <Item name="Protein" nutrient={foodDetails.proteinGrams} />
+                  <Item name="Fat" nutrient={foodDetails.fatGrams} />
+                  <Item name="Carbs" nutrient={foodDetails.carbGrams} />
+                  <Item name="Calcium" nutrient={foodDetails.calcium} />
+                  <Item name="Copper" nutrient={foodDetails.copper} />
+                  <Item name="Choline" nutrient={foodDetails.choline} />
+                  <Item name="Iodine" nutrient={foodDetails.iodine} />
+                  <Item name="Iron" nutrient={foodDetails.iron} />
+                  <Item name="Magnesium" nutrient={foodDetails.magnesium} />
+                  <Item name="Phosphorous" nutrient={foodDetails.phosphorous} />
+                  <Item name="Potassium" nutrient={foodDetails.potassium} />
+                  <Item name="Selenium" nutrient={foodDetails.selenium} />
+                  <Item name="Sodium" nutrient={foodDetails.sodium} />
+                  <Item name="Zinc" nutrient={foodDetails.zinc} />
                 </View>
               ) : null}
             </View>
