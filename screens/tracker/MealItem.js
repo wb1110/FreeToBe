@@ -1,6 +1,5 @@
 import { Feather, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { Button, Text, useTheme } from '@rneui/themed';
-import axios from 'axios';
 import { useState } from 'react';
 import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 import useTrackerStore from '../../state/TrackerStore';
@@ -39,37 +38,6 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
     foodItems.forEach((item) => (caloriesSum += parseInt(item.calories, 10)));
     return caloriesSum;
   }
-
-  const [foodPortionsData, setFoodPortionsData] = useState([]);
-
-  const getByFDCID = (fdcId, meal, day, item) => {
-    axios
-      .get(
-        `https://api.nal.usda.gov/fdc/v1/food/${fdcId}?api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
-      )
-      .then((res) => {
-        setFoodPortionsData([]);
-        res.data.foodPortions.map((i) => {
-          if (i.measureUnit.name === 'undetermined') {
-            foodPortionsData.push(`${i.amount} ${i.modifier}`);
-          } else if (!i.modifier) {
-            foodPortionsData.push(`${i.amount} ${i.measureUnit.name}`);
-          } else {
-            foodPortionsData.push(`${i.amount} ${i.measureUnit.name} ${i.modifier}`);
-          }
-        });
-        navigation.navigate('EditFoodManually', {
-          meal,
-          day,
-          item,
-          foodPortionsData,
-        });
-      })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log(err);
-      });
-  };
 
   return (
     <View
