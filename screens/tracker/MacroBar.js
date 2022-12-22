@@ -5,7 +5,6 @@ import useTrackerStore from '../../state/TrackerStore';
 import MacroPie from './MacroPie';
 
 export default function MacroBar({ protein, carbs, fats, calories }) {
-  console.log(protein, carbs, fats, calories, 'macrobar');
   const trackerState = useTrackerStore();
   const { goalProtein, goalCarbs, goalFat, goalCalories } = trackerState;
   const threeDayLogState = useThreeDayLogStore();

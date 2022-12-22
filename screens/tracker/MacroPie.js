@@ -12,20 +12,6 @@ export default function MacroPie({ macro, goal, label, complete, unit }) {
   const [labelColor, setLabelColor] = useState(theme.colors.white);
   const [innerRadius, setInnerRadius] = useState(30);
   const remainingGoal = (goal - macro).toFixed(0);
-  // const noData = [{ y: 1 }];
-
-  // if (complete) {
-  //   data.push(
-  //     // if the 3 day log is completed use remainingGoal
-  //     { x: goal, y: goal },
-  //     { x: macro, y: macro }
-  //   );
-  // } else {
-  //   data.push(
-  //     // if the 3 day log is not completed, only use macro numbers and add up
-  //     { x: macro, y: macro }
-  //   );
-  // }
 
   useFocusEffect(
     useCallback(() =>
@@ -35,11 +21,6 @@ export default function MacroPie({ macro, goal, label, complete, unit }) {
         // const macroBarStates = (complete, macro, goal, data) => {
         // User is completing 3 day log
         if (complete) {
-          // data.push(
-          //   // if the 3 day log is completed use remainingGoal
-          //   { x: goal, y: goal, fill: '#519085' },
-          //   { x: macro, y: macro, fill: '#E9E0AC' }
-          // );
           if (remainingGoal > 0) {
             // Display the grams and calories that need to be consumed, progress and completed colors, and a hollow circle.
             setLabelText(remainingGoal);
@@ -63,6 +44,7 @@ export default function MacroPie({ macro, goal, label, complete, unit }) {
           // );
 
           setInnerRadius(30);
+          setData([{ y: 1, fill: '#519085' }]);
           setLabelText(macro.toFixed(0));
         }
         // Do something when the screen is unfocused

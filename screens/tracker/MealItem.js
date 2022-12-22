@@ -7,7 +7,6 @@ import TimePicker from './TimePicker';
 
 export default function MealItem({ mealTime, foodItems, navigation, mealName, dayIndex }) {
   const state = useTrackerStore();
-  console.log(foodItems, 'items');
   const [time, setTime] = useState(mealTime);
   const { deleteMeal } = state;
   const { theme } = useTheme();
@@ -36,7 +35,7 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
   function sum() {
     let caloriesSum = 0;
     // eslint-disable-next-line no-return-assign
-    foodItems.forEach((item) => (caloriesSum += parseInt(item.foodCalories, 10)));
+    foodItems.forEach((item) => (caloriesSum += parseInt(item.calories, 10)));
     return caloriesSum;
   }
 

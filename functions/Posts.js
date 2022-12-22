@@ -16,7 +16,8 @@ export const storeData = async (value) => {
 // eslint-disable-next-line consistent-return
 export const storeTracker = async (value) => {
   try {
-    const jsonValue = JSON.stringify(value);
+    const filteredTracker = value.filter((day) => day.calories > 0);
+    const jsonValue = JSON.stringify(filteredTracker);
     await AsyncStorage.setItem(`tracker`, jsonValue);
   } catch (e) {
     // saving error
