@@ -4,6 +4,7 @@ import { Keyboard, ScrollView, TouchableWithoutFeedback, View } from 'react-nati
 import MyCustomerPicker from '../../components/MyCustomerPicker';
 import ServingSizePicker from '../../components/ServingSizePicker';
 import useTrackerStore from '../../state/TrackerStore';
+import NutritionFacts from './NutritionFacts';
 import servingNumberFunction from './ServingArray';
 
 function Item({ name, nutrient }) {
@@ -50,8 +51,6 @@ export default function EditFood({ route, navigation }) {
   const { theme } = useTheme();
 
   const [servingSizeModal, setServingSizeModal] = useState(false);
-  // Array containing the food details
-  const [foodDetails, setFoodDetails] = useState(item);
   // Array of serving sizes
   const [servingSizes, setServingSizes] = useState();
   // Servings value from custompicker
@@ -62,6 +61,29 @@ export default function EditFood({ route, navigation }) {
   // Numer of servings value from customer picker
   const [selectNumberofServings, setSelectNumberofServings] = useState(1);
   const [servingNumberModal, setServingNumberModal] = useState(false);
+  console.log(item, 'item values');
+
+  const [servingValues, setServingValues] = useState({
+    foodName: item.foodName,
+    servingSize: item.servingSize,
+    servingSizeOptions: item.servingSizeOptions,
+    servingNumber: item.servingNumber,
+    calories: item.calories,
+    protein: item.protein,
+    carbs: item.carbs,
+    fat: item.fat,
+    calcium: { value: item.calcium.value, unit: item.calcium.unit },
+    choline: { value: item.choline.value, unit: item.choline.unit },
+    copper: { value: item.copper.value, unit: item.copper.unit },
+    iodine: { value: item.iodine.value, unit: item.iodine.unit },
+    iron: { value: item.iron.value, unit: item.iron.unit },
+    magnesium: { value: item.magnesium.value, unit: item.magnesium.unit },
+    phosphorous: { value: item.phosphorous.value, unit: item.phosphorous.unit },
+    potassium: { value: item.potassium.value, unit: item.potassium.unit },
+    selenium: { value: item.selenium.value, unit: item.selenium.unit },
+    sodium: { value: item.sodium.value, unit: item.sodium.unit },
+    zinc: { value: item.zinc.value, unit: item.zinc.unit },
+  });
 
   const servingNumberArray = servingNumberFunction(1, 200, 1);
 
@@ -79,7 +101,7 @@ export default function EditFood({ route, navigation }) {
                   borderBottomColor: theme.colors.white,
                 }}
               >
-                <Text h4>{foodDetails.foodName}</Text>
+                <Text h4>{servingValues.foodName}</Text>
               </View>
               <View style={{ width: '100%' }}>
                 <View
@@ -94,7 +116,7 @@ export default function EditFood({ route, navigation }) {
                   <Button
                     title="Update Food"
                     onPress={() => {
-                      editFood(foodDetails, dayIndex, mealName, foodDetails.foodName);
+                      editFood(servingValues, dayIndex, mealName, servingValues.foodName);
                       navigation.navigate('TrackerHome');
                     }}
                     buttonStyle={{
@@ -109,7 +131,7 @@ export default function EditFood({ route, navigation }) {
                     title="Delete Food"
                     color={theme.colors.white}
                     onPress={() => {
-                      state.deleteFood(dayIndex, mealName, foodDetails.foodName);
+                      state.deleteFood(dayIndex, mealName, servingValues.foodName);
                       navigation.navigate('TrackerHome');
                     }}
                     buttonStyle={{
@@ -142,7 +164,7 @@ export default function EditFood({ route, navigation }) {
                     setModalOpen={setServingSizeModal}
                     modalOpen={servingSizeModal}
                     value={selectServingSize}
-                    items={foodDetails.servingSizeOptions}
+                    items={servingValues.servingSizeOptions}
                     setValue={setSelectServingSize}
                   />
                 </View>
@@ -185,25 +207,18 @@ export default function EditFood({ route, navigation }) {
                   />
                 </View>
               </View>
-              {showNutritionFacts && foodDetails ? (
-                <View style={{ alignItems: 'center', width: '100%' }}>
-                  <Item name="Calories" nutrient={{ value: foodDetails.calories, unit: 'kcal' }} />
-                  <Item name="Protein" nutrient={{ value: foodDetails.protein, unit: 'g' }} />
-                  <Item name="Fat" nutrient={{ value: foodDetails.fat, unit: 'g' }} />
-                  <Item name="Carbs" nutrient={{ value: foodDetails.carbs, unit: 'g' }} />
-                  <Item name="Calcium" nutrient={foodDetails.calcium} />
-                  <Item name="Copper" nutrient={foodDetails.copper} />
-                  <Item name="Choline" nutrient={foodDetails.choline} />
-                  <Item name="Iodine" nutrient={foodDetails.iodine} />
-                  <Item name="Iron" nutrient={foodDetails.iron} />
-                  <Item name="Magnesium" nutrient={foodDetails.magnesium} />
-                  <Item name="Phosphorous" nutrient={foodDetails.phosphorous} />
-                  <Item name="Potassium" nutrient={foodDetails.potassium} />
-                  <Item name="Selenium" nutrient={foodDetails.selenium} />
-                  <Item name="Sodium" nutrient={foodDetails.sodium} />
-                  <Item name="Zinc" nutrient={foodDetails.zinc} />
-                </View>
-              ) : null}
+              {/* {showNutritionFacts && servingValues ? (
+                <NutritionFacts
+                  foodDetails={item}
+                  name={item.description}
+                  multiplier={selectNumberofServings}
+                  servingSizes={servingSizes}
+                  selectServingSize={selectServingSize}
+                  servingValues={servingValues}
+                  setServingValues={setServingValues}
+                  display={showNutritionFacts ? 'flex' : 'none'}
+                />
+              ) : null} */}
             </View>
           </TouchableWithoutFeedback>
         </ScrollView>
