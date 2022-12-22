@@ -41,10 +41,10 @@ export default function FoodDetails({ route, navigation }) {
     foodName: '',
     servingSize: selectServingSize,
     servingNumber: selectNumberofServings,
-    foodCalories: 0,
-    proteinGrams: 0,
-    carbGrams: 0,
-    fatGrams: 0,
+    calories: 0,
+    protein: 0,
+    carbs: 0,
+    fat: 0,
     calcium: { value: 0, unit: '' },
     choline: { value: 0, unit: '' },
     copper: { value: 0, unit: '' },
@@ -183,6 +183,7 @@ export default function FoodDetails({ route, navigation }) {
                     name={foodDetails?.description}
                     multiplier={selectNumberofServings}
                     selectServingSize={selectServingSize}
+                    servingValues={servingValues}
                     setServingValues={setServingValues}
                     display={showNutritionFacts ? 'flex' : 'none'}
                   />

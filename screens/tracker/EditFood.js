@@ -187,13 +187,10 @@ export default function EditFood({ route, navigation }) {
               </View>
               {showNutritionFacts && foodDetails ? (
                 <View style={{ alignItems: 'center', width: '100%' }}>
-                  <Item
-                    name="Calories"
-                    nutrient={{ value: foodDetails.foodCalories, unit: 'kcal' }}
-                  />
-                  <Item name="Protein" nutrient={{ value: foodDetails.proteinGrams, unit: 'g' }} />
-                  <Item name="Fat" nutrient={{ value: foodDetails.fatGrams, unit: 'g' }} />
-                  <Item name="Carbs" nutrient={{ value: foodDetails.carbGrams, unit: 'g' }} />
+                  <Item name="Calories" nutrient={{ value: foodDetails.calories, unit: 'kcal' }} />
+                  <Item name="Protein" nutrient={{ value: foodDetails.protein, unit: 'g' }} />
+                  <Item name="Fat" nutrient={{ value: foodDetails.fat, unit: 'g' }} />
+                  <Item name="Carbs" nutrient={{ value: foodDetails.carbs, unit: 'g' }} />
                   <Item name="Calcium" nutrient={foodDetails.calcium} />
                   <Item name="Copper" nutrient={foodDetails.copper} />
                   <Item name="Choline" nutrient={foodDetails.choline} />
