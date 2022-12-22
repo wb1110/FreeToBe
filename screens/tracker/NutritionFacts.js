@@ -41,7 +41,7 @@ export default function NutritionFacts({
   name,
   multiplier,
   selectServingSize,
-  servingValues,
+  servingSizes,
   setServingValues,
   display,
 }) {
@@ -115,6 +115,7 @@ export default function NutritionFacts({
     setServingValues({
       foodName: name,
       servingSize: selectServingSize,
+      servingSizeOptions: servingSizes,
       servingNumber: multiplier,
       calories: calories.amount,
       protein: protein.amount,

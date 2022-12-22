@@ -40,6 +40,7 @@ export default function FoodDetails({ route, navigation }) {
     fdcId,
     foodName: '',
     servingSize: selectServingSize,
+    servingSizeOptions: servingSizes,
     servingNumber: selectNumberofServings,
     calories: 0,
     protein: 0,
@@ -182,6 +183,7 @@ export default function FoodDetails({ route, navigation }) {
                     foodDetails={foodDetails}
                     name={foodDetails?.description}
                     multiplier={selectNumberofServings}
+                    servingSizes={servingSizes}
                     selectServingSize={selectServingSize}
                     servingValues={servingValues}
                     setServingValues={setServingValues}

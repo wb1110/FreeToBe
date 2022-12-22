@@ -142,7 +142,7 @@ export default function EditFood({ route, navigation }) {
                     setModalOpen={setServingSizeModal}
                     modalOpen={servingSizeModal}
                     value={selectServingSize}
-                    items={servingSizes}
+                    items={foodDetails.servingSizeOptions}
                     setValue={setSelectServingSize}
                   />
                 </View>
