@@ -17,7 +17,9 @@ function TimePicker({ mealTime, setTime }) {
   };
 
   const handleConfirm = (time) => {
-    const selectedTime = moment(time).format('HH:mm A');
+    const selectedTime = moment(time).format('hh:mm A');
+    console.log(time, 'time');
+    console.log(selectedTime, 'selected time');
     setTime(selectedTime);
     hideTimePicker();
   };
