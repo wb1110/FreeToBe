@@ -4,6 +4,7 @@ import { Keyboard, ScrollView, TouchableWithoutFeedback, View } from 'react-nati
 import MyCustomerPicker from '../../components/MyCustomerPicker';
 import ServingSizePicker from '../../components/ServingSizePicker';
 import useTrackerStore from '../../state/TrackerStore';
+import EditNutritionFacts from './EditNutritionFacts';
 import NutritionFacts from './NutritionFacts';
 import servingNumberFunction from './ServingArray';
 
@@ -54,10 +55,7 @@ export default function EditFood({ route, navigation }) {
   // Array of serving sizes
   const [servingSizes, setServingSizes] = useState();
   // Servings value from custompicker
-  const [selectServingSize, setSelectServingSize] = useState({
-    name: '100g',
-    gramWeight: 100,
-  });
+  const [selectServingSize, setSelectServingSize] = useState(item.servingSize);
   // Numer of servings value from customer picker
   const [selectNumberofServings, setSelectNumberofServings] = useState(1);
   const [servingNumberModal, setServingNumberModal] = useState(false);
@@ -207,18 +205,18 @@ export default function EditFood({ route, navigation }) {
                   />
                 </View>
               </View>
-              {/* {showNutritionFacts && servingValues ? (
-                <NutritionFacts
+              {showNutritionFacts && servingValues ? (
+                <EditNutritionFacts
                   foodDetails={item}
-                  name={item.description}
-                  multiplier={selectNumberofServings}
-                  servingSizes={servingSizes}
+                  name={item.foodName}
+                  multiplier={item.servingNumber}
+                  servingSizes={item.servingSizeOptions}
                   selectServingSize={selectServingSize}
                   servingValues={servingValues}
                   setServingValues={setServingValues}
                   display={showNutritionFacts ? 'flex' : 'none'}
                 />
-              ) : null} */}
+              ) : null}
             </View>
           </TouchableWithoutFeedback>
         </ScrollView>
