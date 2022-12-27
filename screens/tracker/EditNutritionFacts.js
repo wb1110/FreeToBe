@@ -61,39 +61,63 @@ export default function EditNutritionFacts({
   const fat = amountModifier(foodDetails.fat, selectServingSize.gramWeight, multiplier)
     ? amountModifier(foodDetails.fat, selectServingSize.gramWeight, multiplier)
     : noNutrient;
-  // const calcium = nutrientFilter(foodNutrients, 1087)
-  //   ? nutrientFilter(foodNutrients, 1087)
-  //   : noNutrient;
-  // const copper = nutrientFilter(foodNutrients, 1098)
-  //   ? nutrientFilter(foodNutrients, 1098)
-  //   : noNutrient;
-  // const choline = nutrientFilter(foodNutrients, 1180)
-  //   ? nutrientFilter(foodNutrients, 1180)
-  //   : noNutrient;
-  // const iodine = nutrientFilter(foodNutrients, 1100)
-  //   ? nutrientFilter(foodNutrients, 1100)
-  //   : noNutrient;
-  // const iron = nutrientFilter(foodNutrients, 1089)
-  //   ? nutrientFilter(foodNutrients, 1089)
-  //   : noNutrient;
-  // const magnesium = nutrientFilter(foodNutrients, 1090)
-  //   ? nutrientFilter(foodNutrients, 1090)
-  //   : noNutrient;
-  // const phosphorous = nutrientFilter(foodNutrients, 1091)
-  //   ? nutrientFilter(foodNutrients, 1091)
-  //   : noNutrient;
-  // const potassium = nutrientFilter(foodNutrients, 1092)
-  //   ? nutrientFilter(foodNutrients, 1092)
-  //   : noNutrient;
-  // const selenium = nutrientFilter(foodNutrients, 1103)
-  //   ? nutrientFilter(foodNutrients, 1103)
-  //   : noNutrient;
-  // const sodium = nutrientFilter(foodNutrients, 1093)
-  //   ? nutrientFilter(foodNutrients, 1093)
-  //   : noNutrient;
-  // const zinc = nutrientFilter(foodNutrients, 1095)
-  //   ? nutrientFilter(foodNutrients, 1095)
-  //   : noNutrient;
+  const calcium = amountModifier(
+    foodDetails.calcium.value,
+    selectServingSize.gramWeight,
+    multiplier
+  )
+    ? amountModifier(foodDetails.calcium.value, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
+  const copper = amountModifier(foodDetails.copper.value, selectServingSize.gramWeight, multiplier)
+    ? amountModifier(foodDetails.copper.value, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
+  const choline = amountModifier(
+    foodDetails.choline.value,
+    selectServingSize.gramWeight,
+    multiplier
+  )
+    ? amountModifier(foodDetails.choline.value, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
+  const iodine = amountModifier(foodDetails.iodine.value, selectServingSize.gramWeight, multiplier)
+    ? amountModifier(foodDetails.iodine.value, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
+  const iron = amountModifier(foodDetails.iron.value, selectServingSize.gramWeight, multiplier)
+    ? amountModifier(foodDetails.iron.value, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
+  const magnesium = amountModifier(
+    foodDetails.magnesium.value,
+    selectServingSize.gramWeight,
+    multiplier
+  )
+    ? amountModifier(foodDetails.magnesium.value, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
+  const phosphorous = amountModifier(
+    foodDetails.phosphorous.value,
+    selectServingSize.gramWeight,
+    multiplier
+  )
+    ? amountModifier(foodDetails.phosphorous.value, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
+  const potassium = amountModifier(
+    foodDetails.potassium.value,
+    selectServingSize.gramWeight,
+    multiplier
+  )
+    ? amountModifier(foodDetails.potassium.value, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
+  const selenium = amountModifier(
+    foodDetails.selenium.value,
+    selectServingSize.gramWeight,
+    multiplier
+  )
+    ? amountModifier(foodDetails.selenium.value, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
+  const sodium = amountModifier(foodDetails.sodium.value, selectServingSize.gramWeight, multiplier)
+    ? amountModifier(foodDetails.sodium.value, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
+  const zinc = amountModifier(foodDetails.zinc.value, selectServingSize.gramWeight, multiplier)
+    ? amountModifier(foodDetails.zinc.value, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
 
   // useEffect(() => {
   //   setServingValues({
@@ -126,17 +150,20 @@ export default function EditNutritionFacts({
       <Item name="Protein" nutrient={{ amount: protein, unit: 'g' }} />
       <Item name="Fat" nutrient={{ amount: fat, unit: 'g' }} />
       <Item name="Carbs" nutrient={{ amount: carbs, unit: 'g' }} />
-      {/* <Item name="Calcium" nutrient={calcium} />
-      <Item name="Copper" nutrient={copper} />
-      <Item name="Choline" nutrient={choline} />
-      <Item name="Iodine" nutrient={iodine} />
-      <Item name="Iron" nutrient={iron} />
-      <Item name="Magnesium" nutrient={magnesium} />
-      <Item name="Phosphorous" nutrient={phosphorous} />
-      <Item name="Potassium" nutrient={potassium} />
-      <Item name="Selenium" nutrient={selenium} />
-      <Item name="Sodium" nutrient={sodium} />
-      <Item name="Zinc" nutrient={zinc} /> */}
+      <Item name="Calcium" nutrient={{ amount: calcium, unit: foodDetails.calcium.unit }} />
+      <Item name="Copper" nutrient={{ amount: copper, unit: foodDetails.copper.unit }} />
+      <Item name="Choline" nutrient={{ amount: choline, unit: foodDetails.choline.unit }} />
+      <Item name="Iodine" nutrient={{ amount: iodine, unit: foodDetails.iodine.unit }} />
+      <Item name="Iron" nutrient={{ amount: iron, unit: foodDetails.iron.unit }} />
+      <Item name="Magnesium" nutrient={{ amount: magnesium, unit: foodDetails.magnesium.unit }} />
+      <Item
+        name="Phosphorous"
+        nutrient={{ amount: phosphorous, unit: foodDetails.phosphorous.unit }}
+      />
+      <Item name="Potassium" nutrient={{ amount: potassium, unit: foodDetails.potassium.unit }} />
+      <Item name="Selenium" nutrient={{ amount: selenium, unit: foodDetails.selenium.unit }} />
+      <Item name="Sodium" nutrient={{ amount: sodium, unit: foodDetails.sodium.unit }} />
+      <Item name="Zinc" nutrient={{ amount: zinc, unit: foodDetails.zinc.unit }} />
     </View>
   );
 }
