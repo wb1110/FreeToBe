@@ -5,7 +5,8 @@ import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } f
 import useTrackerStore from '../../state/TrackerStore';
 import TimePicker from './TimePicker';
 
-export default function MealItem({ mealTime, foodItems, navigation, mealName, dayIndex }) {
+export default function MealItem({ mealTime, foodItems, navigation, mealName, dayIndex, mealID }) {
+  console.log(mealTime, 'mealTIme');
   const state = useTrackerStore();
   const [time, setTime] = useState(mealTime);
   const { deleteMeal } = state;
@@ -60,7 +61,7 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
         >
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Text h4>{mealName} </Text>
-            <TimePicker mealTime={time} setTime={setTime} />
+            <TimePicker mealTime={time} setTime={setTime} dayIndex={dayIndex} mealID={mealID} />
           </View>
           <Text>{sum()} cal</Text>
         </View>

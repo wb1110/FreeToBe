@@ -3,8 +3,11 @@ import { View } from 'react-native';
 import { Button, useTheme } from '@rneui/themed';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import moment from 'moment';
+import useTrackerStore from '../../state/TrackerStore';
 
-function TimePicker({ mealTime, setTime }) {
+function TimePicker({ mealTime, setTime, dayIndex, mealID }) {
+  const trackerState = useTrackerStore();
+  const { addMealTime } = trackerState;
   const { theme } = useTheme();
   const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
 
@@ -18,9 +21,8 @@ function TimePicker({ mealTime, setTime }) {
 
   const handleConfirm = (time) => {
     const selectedTime = moment(time).format('hh:mm A');
-    console.log(time, 'time');
-    console.log(selectedTime, 'selected time');
     setTime(selectedTime);
+    addMealTime(selectedTime, dayIndex, mealID);
     hideTimePicker();
   };
 

@@ -167,6 +167,15 @@ const useTrackerStore = create((set) => ({
         storeTracker(state.tracker);
       })
     ),
+  addMealTime: (values, dayIndex, mealID) =>
+    set(
+      produce((state) => {
+        const mealArray = state.tracker[dayIndex].meals;
+        const mealIndex = mealArray.findIndex((obj) => obj.mealID === mealID);
+        state.tracker[dayIndex].meals[mealIndex].mealTime = values;
+        storeTracker(state.tracker);
+      })
+    ),
   editMeal: (values, dayIndex, mealName) =>
     set(
       produce((state) => {
@@ -199,7 +208,6 @@ const useTrackerStore = create((set) => ({
   addFood: (values, dayIndex, mealName) =>
     set(
       produce((state) => {
-        console.log(values, 'addFoodValues');
         const mealArray = state.tracker[dayIndex].meals;
         const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
         const foodArray = mealArray[mealIndex].foodItems;

@@ -14,6 +14,7 @@ export default function Meals({ tracker, currentIndex, navigation }) {
               ? savedDate.meals.map((item) => (
                   <MealItem
                     mealName={item.mealName}
+                    mealID={item.mealID}
                     key={item.mealID}
                     mealTime={item.mealTime}
                     foodItems={item.foodItems}
