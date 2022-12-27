@@ -57,7 +57,7 @@ export default function EditFood({ route, navigation }) {
   // Servings value from custompicker
   const [selectServingSize, setSelectServingSize] = useState(item.servingSize);
   // Numer of servings value from customer picker
-  const [selectNumberofServings, setSelectNumberofServings] = useState(1);
+  const [selectNumberofServings, setSelectNumberofServings] = useState(item.servingNumber);
   const [servingNumberModal, setServingNumberModal] = useState(false);
   console.log(item, 'item values');
 
@@ -209,7 +209,7 @@ export default function EditFood({ route, navigation }) {
                 <EditNutritionFacts
                   foodDetails={item}
                   name={item.foodName}
-                  multiplier={item.servingNumber}
+                  multiplier={selectNumberofServings}
                   servingSizes={item.servingSizeOptions}
                   selectServingSize={selectServingSize}
                   servingValues={servingValues}

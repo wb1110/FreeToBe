@@ -49,13 +49,12 @@ export default function EditNutritionFacts({
     (amount * (gramWeight / 100) * servings).toFixed(2);
   const noNutrient = { amount: 0, unit: '' };
 
+  const calories = amountModifier(foodDetails.calories, selectServingSize.gramWeight, multiplier)
+    ? amountModifier(foodDetails.calories, selectServingSize.gramWeight, multiplier)
+    : noNutrient;
   const protein = amountModifier(foodDetails.protein, selectServingSize.gramWeight, multiplier)
     ? amountModifier(foodDetails.protein, selectServingSize.gramWeight, multiplier)
     : noNutrient;
-  console.log(protein, 'protein');
-  // const calories = nutrientFilter(foodNutrients, 1008)
-  //   ? nutrientFilter(foodNutrients, 1008)
-  //   : noNutrient;
   const carbs = amountModifier(foodDetails.carbs, selectServingSize.gramWeight, multiplier)
     ? amountModifier(foodDetails.carbs, selectServingSize.gramWeight, multiplier)
     : noNutrient;
@@ -123,7 +122,7 @@ export default function EditNutritionFacts({
 
   return (
     <View style={{ alignItems: 'center', width: '100%', display }}>
-      {/* <Item name="Calories" nutrient={calories} /> */}
+      <Item name="Calories" nutrient={{ amount: calories, unit: 'cal' }} />
       <Item name="Protein" nutrient={{ amount: protein, unit: 'g' }} />
       <Item name="Fat" nutrient={{ amount: fat, unit: 'g' }} />
       <Item name="Carbs" nutrient={{ amount: carbs, unit: 'g' }} />
