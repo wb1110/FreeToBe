@@ -5,43 +5,7 @@ import MyCustomerPicker from '../../components/MyCustomerPicker';
 import ServingSizePicker from '../../components/ServingSizePicker';
 import useTrackerStore from '../../state/TrackerStore';
 import EditNutritionFacts from './EditNutritionFacts';
-import NutritionFacts from './NutritionFacts';
 import servingNumberFunction from './ServingArray';
-
-function Item({ name, nutrient }) {
-  if (nutrient) {
-    const { value, unit } = nutrient;
-    return (
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          width: '90%',
-          margin: '2%',
-        }}
-      >
-        <Text>{name}</Text>
-        <Text>
-          {value} {unit}
-        </Text>
-      </View>
-    );
-  }
-  // If there is no nutrient
-  return (
-    <View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '90%',
-        margin: '2%',
-      }}
-    >
-      <Text>{name}</Text>
-      <Text>0</Text>
-    </View>
-  );
-}
 
 export default function EditFood({ route, navigation }) {
   const { mealName, item, dayIndex } = route.params;
@@ -52,14 +16,11 @@ export default function EditFood({ route, navigation }) {
   const { theme } = useTheme();
 
   const [servingSizeModal, setServingSizeModal] = useState(false);
-  // Array of serving sizes
-  const [servingSizes, setServingSizes] = useState();
   // Servings value from custompicker
   const [selectServingSize, setSelectServingSize] = useState(item.servingSize);
   // Numer of servings value from customer picker
   const [selectNumberofServings, setSelectNumberofServings] = useState(item.servingNumber);
   const [servingNumberModal, setServingNumberModal] = useState(false);
-  console.log(item, 'item values');
 
   const [servingValues, setServingValues] = useState({
     foodName: item.foodName,
