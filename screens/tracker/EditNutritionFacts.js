@@ -119,30 +119,30 @@ export default function EditNutritionFacts({
     ? amountModifier(foodDetails.zinc.value, selectServingSize.gramWeight, multiplier)
     : noNutrient;
 
-  // useEffect(() => {
-  //   setServingValues({
-  //     foodName: name,
-  //     servingSize: selectServingSize,
-  //     servingSizeOptions: servingSizes,
-  //     servingNumber: multiplier,
-  //     calories: calories.amount,
-  //     protein: protein.amount,
-  //     carbs: carbs.amount,
-  //     fat: fat.amount,
-  //     calcium: { value: calcium.amount, unit: calcium.unit },
-  //     choline: { value: choline.amount, unit: choline.unit },
-  //     copper: { value: copper.amount, unit: copper.unit },
-  //     iodine: { value: iodine.amount, unit: iodine.unit },
-  //     iron: { value: iron.amount, unit: iron.unit },
-  //     magnesium: { value: magnesium.amount, unit: magnesium.unit },
-  //     phosphorous: { value: phosphorous.amount, unit: phosphorous.unit },
-  //     potassium: { value: potassium.amount, unit: potassium.unit },
-  //     selenium: { value: selenium.amount, unit: selenium.unit },
-  //     sodium: { value: sodium.amount, unit: sodium.unit },
-  //     zinc: { value: zinc.amount, unit: zinc.unit },
-  //   });
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [selectServingSize, multiplier, name]);
+  useEffect(() => {
+    setServingValues({
+      foodName: name,
+      servingSize: selectServingSize,
+      servingSizeOptions: servingSizes,
+      servingNumber: multiplier,
+      calories,
+      protein,
+      carbs,
+      fat,
+      calcium: { value: calcium, unit: foodDetails.calcium.unit },
+      choline: { value: choline, unit: foodDetails.choline.unit },
+      copper: { value: copper, unit: foodDetails.copper.unit },
+      iodine: { value: iodine, unit: foodDetails.iodine.unit },
+      iron: { value: iron, unit: foodDetails.iron.unit },
+      magnesium: { value: magnesium, unit: foodDetails.magnesium.unit },
+      phosphorous: { value: phosphorous, unit: foodDetails.phosphorous.unit },
+      potassium: { value: potassium, unit: foodDetails.potassium.unit },
+      selenium: { value: selenium, unit: foodDetails.selenium.unit },
+      sodium: { value: sodium, unit: foodDetails.sodium.unit },
+      zinc: { value: zinc, unit: foodDetails.zinc.unit },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectServingSize, multiplier, name]);
 
   return (
     <View style={{ alignItems: 'center', width: '100%', display }}>
