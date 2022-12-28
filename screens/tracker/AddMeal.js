@@ -34,7 +34,7 @@ function AddMeal({ navigation, route }) {
               // eslint-disable-next-line no-param-reassign
               values.foodItems = [];
               // eslint-disable-next-line no-param-reassign
-              values.mealTime = time;
+              // values.mealTime = time;
               addNewMeal(values, savedDate.date);
             }}
           >
@@ -48,7 +48,7 @@ function AddMeal({ navigation, route }) {
                   errorMessage={errors.mealName}
                   containerStyle={{ width: '100%' }}
                 />
-                <TimePicker mealTime={time} setTime={setTime} />
+                {/* <TimePicker mealTime={time} setTime={setTime} /> */}
                 <StandardButton
                   title="Submit"
                   onPress={() => {

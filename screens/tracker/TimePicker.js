@@ -26,6 +26,8 @@ function TimePicker({ mealTime, setTime, dayIndex, mealID }) {
     hideTimePicker();
   };
 
+  console.log(mealTime, 'mealTime');
+
   return (
     <View>
       <Button
