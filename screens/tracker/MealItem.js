@@ -39,6 +39,22 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
     return caloriesSum;
   }
 
+  const editFoodPath = (item) => {
+    if (item.servingSize) {
+      navigation.navigate('EditFood', {
+        mealName,
+        item,
+        dayIndex,
+      });
+    } else {
+      navigation.navigate('EditFoodManually', {
+        mealName,
+        item,
+        dayIndex,
+      });
+    }
+  };
+
   return (
     <View
       style={{
@@ -71,11 +87,7 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
                   key={item.foodName}
                   style={{ marginBottom: '2%', width: '100%' }}
                   onPress={() => {
-                    navigation.navigate('EditFood', {
-                      mealName,
-                      item,
-                      dayIndex,
-                    });
+                    editFoodPath(item);
                   }}
                 >
                   <Text>{item.foodName}</Text>

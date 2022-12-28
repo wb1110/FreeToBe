@@ -23,6 +23,7 @@ export default function TrackerStackScreen() {
       <TrackerStack.Screen name="FoodDetails" component={FoodDetails} />
       <TrackerStack.Screen name="AddFoodManually" component={AddFoodManually} />
       <TrackerStack.Screen name="EditFood" component={EditFood} />
+      <TrackerStack.Screen name="EditFoodManually" component={EditFoodManually} />
     </TrackerStack.Navigator>
   );
 }
