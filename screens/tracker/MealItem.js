@@ -6,7 +6,6 @@ import useTrackerStore from '../../state/TrackerStore';
 import TimePicker from './TimePicker';
 
 export default function MealItem({ mealTime, foodItems, navigation, mealName, dayIndex, mealID }) {
-  console.log(mealTime, 'mealTIme');
   const state = useTrackerStore();
   const [time, setTime] = useState(mealTime);
   const { deleteMeal } = state;

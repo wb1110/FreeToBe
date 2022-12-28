@@ -56,7 +56,6 @@ function Tracker({ navigation }) {
       // Do something when the screen is focused
       {
         addNewDate(date, setDateData, indexExists, tracker, addDate);
-        console.log(tracker.length, 'tracker length');
         if (selectedDay) {
           state.updateMacros(tracker, currentIndex);
           setProtein(selectedDay.protein);

@@ -172,7 +172,9 @@ const useTrackerStore = create((set) => ({
       produce((state) => {
         const mealArray = state.tracker[dayIndex].meals;
         const mealIndex = mealArray.findIndex((obj) => obj.mealID === mealID);
-        state.tracker[dayIndex].meals[mealIndex].mealTime = values;
+        // state.tracker[dayIndex].meals[mealIndex].mealTime = values;
+        // Object.assign(mealArray[mealIndex].mealTime, values);
+        mealArray[mealIndex].mealTime = values;
         storeTracker(state.tracker);
       })
     ),
