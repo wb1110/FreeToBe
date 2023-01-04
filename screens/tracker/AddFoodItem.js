@@ -1,5 +1,7 @@
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { SearchBar, Text, useTheme } from '@rneui/themed';
+// eslint-disable-next-line import/no-unresolved
+import { REACT_APP_API_KEY } from '@env';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, View } from 'react-native';
@@ -99,7 +101,7 @@ export default function AddFoodItem({ route, navigation }) {
       const searchData = setTimeout(() => {
         axios
           .get(
-            `https://api.nal.usda.gov/fdc/v1/foods/search?query=${search}&dataType=Foundation,Survey%20%28FNDDS%29,SR%20Legacy&pageSize=50&sortBy=dataType.keyword&sortOrder=asc&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
+            `https://api.nal.usda.gov/fdc/v1/foods/search?query=${search}&dataType=Foundation,Survey%20%28FNDDS%29,SR%20Legacy&pageSize=50&sortBy=dataType.keyword&sortOrder=asc&api_key=${REACT_APP_API_KEY}`
           )
           .then((res) => {
             setData(res.data.foods);
@@ -118,7 +120,7 @@ export default function AddFoodItem({ route, navigation }) {
   const scanData = (value) => {
     axios
       .get(
-        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&pageSize=10&api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
+        `https://api.nal.usda.gov/fdc/v1/foods/search?query=${value}&pageSize=10&api_key=${REACT_APP_API_KEY}`
       )
       .then((res) => {
         setUsedBarcode(true);

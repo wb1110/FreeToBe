@@ -1,4 +1,6 @@
 import { Button, Text, useTheme } from '@rneui/themed';
+// eslint-disable-next-line import/no-unresolved
+import { REACT_APP_API_KEY } from '@env';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import {
@@ -65,9 +67,7 @@ export default function FoodDetails({ route, navigation }) {
     setLoading(true);
     const getByFDCID = (id) => {
       axios
-        .get(
-          `https://api.nal.usda.gov/fdc/v1/food/${id}?api_key=QGFVnH9V6cq73KFQNwa5ckdhM1dIbifXkZx7rFzZ`
-        )
+        .get(`https://api.nal.usda.gov/fdc/v1/food/${id}?api_key=${REACT_APP_API_KEY}`)
         .then(async (res) => {
           const result = await res.data;
           setServingSizes(servingSize(result.foodPortions));
