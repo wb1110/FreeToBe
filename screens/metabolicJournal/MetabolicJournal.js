@@ -1,5 +1,6 @@
 import { FlatList, SafeAreaView, View } from 'react-native';
 import { useEffect, useState } from 'react';
+import { Button } from '@rneui/themed';
 import MetabolicComponent from './MetabolicComponent';
 import PinnedComponent from './PinnedComponent';
 import data from './MetabolicComponentData';
@@ -65,6 +66,9 @@ function MetabolicJournal() {
       */}
       <View style={{ alignItems: 'center', width: '100%', flex: 3.5 }}>
         <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} />
+      </View>
+      <View style={{ width: '90%', margin: '2%' }}>
+        <Button title="Log the Journal" />
       </View>
     </SafeAreaView>
   );
