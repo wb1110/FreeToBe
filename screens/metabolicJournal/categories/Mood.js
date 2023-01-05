@@ -35,56 +35,67 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 buttonTitle="Happy"
                 buttonIcon={<Feather name="sunrise" size={24} color="black" />}
                 buttonColor="yellow"
+                onPress={() => metabolicData.mood.push('Happy')}
               />
               <ComponentButton
                 buttonTitle="Energetic"
                 buttonIcon={<Feather name="sunrise" size={24} color="black" />}
                 buttonColor="yellow"
+                onPress={() => metabolicData.mood.push('Energetic')}
               />
               <ComponentButton
                 buttonTitle="Mood Swings"
                 buttonIcon={<Feather name="sunrise" size={24} color="black" />}
                 buttonColor="yellow"
+                onPress={() => metabolicData.mood.push('Mood Swings')}
               />
               <ComponentButton
                 buttonTitle="Sad"
                 buttonIcon={<Feather name="sunrise" size={24} color="black" />}
                 buttonColor="yellow"
+                onPress={() => metabolicData.mood.push('Sad')}
               />
               <ComponentButton
                 buttonTitle="Irritated"
                 buttonIcon={<Feather name="sunrise" size={24} color="black" />}
                 buttonColor="yellow"
+                onPress={() => metabolicData.mood.push('Irritated')}
               />
               <ComponentButton
                 buttonTitle="Anxious"
                 buttonIcon={<Feather name="sunrise" size={24} color="black" />}
                 buttonColor="yellow"
+                onPress={() => metabolicData.mood.push('Anxious')}
               />
               <ComponentButton
                 buttonTitle="Depressed"
                 buttonIcon={<Feather name="sunrise" size={24} color="black" />}
                 buttonColor="yellow"
+                onPress={() => metabolicData.mood.push('Depressed')}
               />
               <ComponentButton
                 buttonTitle="Guilty"
                 buttonIcon={<Feather name="sunrise" size={24} color="black" />}
                 buttonColor="yellow"
+                onPress={() => metabolicData.mood.push('Guilty')}
               />
               <ComponentButton
                 buttonTitle="Apathetic"
                 buttonIcon={<Feather name="sunrise" size={24} color="black" />}
                 buttonColor="yellow"
+                onPress={() => metabolicData.mood.push('Apathetic')}
               />
               <ComponentButton
                 buttonTitle="Confused"
                 buttonIcon={<Feather name="sunrise" size={24} color="black" />}
                 buttonColor="yellow"
+                onPress={() => metabolicData.mood.push('Confused')}
               />
               <ComponentButton
                 buttonTitle="Self-critical"
                 buttonIcon={<Feather name="sunrise" size={24} color="black" />}
                 buttonColor="yellow"
+                onPress={() => metabolicData.mood.push('Self-critical')}
               />
             </View>
           </View>
