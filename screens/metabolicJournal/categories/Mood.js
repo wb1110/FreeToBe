@@ -1,6 +1,6 @@
 import { Feather } from '@expo/vector-icons';
-import { Button, Input, Text } from '@rneui/themed';
-import { useState } from 'react';
+import { Image } from '@rneui/base';
+import { Text } from '@rneui/themed';
 import { ScrollView, View } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
@@ -34,74 +34,122 @@ export default function Mood({ metabolicData, setMetabolicData }) {
             >
               <ComponentButton
                 buttonTitle="Calm"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Calm.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Calm')}
               />
               <ComponentButton
                 buttonTitle="Happy"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Happy.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Happy')}
               />
               <ComponentButton
                 buttonTitle="Energetic"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Energetic.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Energetic')}
               />
               <ComponentButton
                 buttonTitle="Mood Swings"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/MoodSwings.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Mood Swings')}
               />
               <ComponentButton
                 buttonTitle="Sad"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Sad.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Sad')}
               />
               <ComponentButton
                 buttonTitle="Irritated"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Irritated.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Irritated')}
               />
               <ComponentButton
                 buttonTitle="Anxious"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Anxious.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Anxious')}
               />
               <ComponentButton
                 buttonTitle="Depressed"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Depressed.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Depressed')}
               />
               <ComponentButton
                 buttonTitle="Guilty"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Guilty.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Guilty')}
               />
               <ComponentButton
                 buttonTitle="Apathetic"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Apathetic.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Apathetic')}
               />
               <ComponentButton
                 buttonTitle="Confused"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Confused.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Confused')}
               />
               <ComponentButton
                 buttonTitle="Self-critical"
-                buttonIcon={<Feather name="sunrise" size={24} color="black" />}
-                buttonColor="yellow"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/SelfCritical.png')}
+                  />
+                }
                 onPress={() => handleAddItem('Self-critical')}
               />
             </View>

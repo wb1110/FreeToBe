@@ -1,13 +1,9 @@
-import { FlatList, SafeAreaView, View } from 'react-native';
-import { useEffect, useState } from 'react';
 import { Button } from '@rneui/themed';
-import MetabolicComponent from './MetabolicComponent';
-import PinnedComponent from './PinnedComponent';
-import data from './MetabolicComponentData';
-import Calendar from './Calendar';
-import useTrackerStore from '../../state/TrackerStore';
-import Mood from './categories/Mood';
+import { useEffect, useState } from 'react';
+import { SafeAreaView, View } from 'react-native';
 import useMetabolicStore from '../../state/MetabolicStore';
+import Calendar from './Calendar';
+import Mood from './categories/Mood';
 
 function MetabolicJournal() {
   // metabolic state needs to be created as well as async storage
@@ -19,8 +15,6 @@ function MetabolicJournal() {
   const metabolicState = useMetabolicStore();
   const { addJournalEntry, metabolicJournal } = metabolicState;
   const [metabolicData, setMetabolicData] = useState({});
-  const trackerState = useTrackerStore();
-  const { tracker } = trackerState;
 
   const getObjectByDateProperty = (array, key, value) => {
     for (let i = 0; i < array.length; i++) {
@@ -33,29 +27,6 @@ function MetabolicJournal() {
   };
 
   const jounralEntryExists = () => getObjectByDateProperty(metabolicJournal, 'date', dateData);
-
-  const renderItem = ({ item }) => {
-    if (item.pinnedOneComponent) {
-      return (
-        <PinnedComponent
-          one={item.pinnedOneComponent}
-          two={item.pinnedTwoComponent}
-          three={item.pinnedThreeComponent}
-        />
-      );
-    }
-    return (
-      <MetabolicComponent
-        componentName={item.componentName}
-        componentButtons={item.componentButtons}
-        componentInput={item.componentInput}
-        componentSubSection1={item.componentSubSection1}
-        componentSubSection2={item.componentSubSection2}
-        periodCalendar={item.periodCalendar}
-        componentPhoto={item.componentPhoto}
-      />
-    );
-  };
 
   useEffect(() => {
     jounralEntryExists();

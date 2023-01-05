@@ -7,24 +7,7 @@ function ComponentButton({ buttonTitle, buttonIcon, buttonColor, onPress }) {
       onPress={onPress}
       style={{ alignItems: 'center', marginLeft: '2%', width: 80, height: 90 }}
     >
-      <View
-        style={{
-          backgroundColor: buttonColor,
-          width: 50,
-          height: 50,
-          borderRadius: 50 / 2,
-        }}
-      >
-        <View
-          style={{
-            position: 'absolute',
-            left: 13,
-            top: 12,
-          }}
-        >
-          {buttonIcon}
-        </View>
-      </View>
+      {buttonIcon}
       <Text style={{ textAlign: 'center' }}>{buttonTitle}</Text>
     </TouchableOpacity>
   );
