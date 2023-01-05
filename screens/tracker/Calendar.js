@@ -31,7 +31,7 @@ export default function Calendar({
   };
 
   return (
-    <View style={{ alignItems: 'center' }}>
+    <View style={{ alignItems: 'center', marginTop: '2%' }}>
       <View style={{ flexDirection: 'row' }}>
         <Text h4 onPress={showDatePicker}>{`${trackDate}`}</Text>
         <Ionicons name="chevron-down-circle" size={24} color="white" onPress={showDatePicker} />
