@@ -1,29 +1,73 @@
 import { Text } from '@rneui/themed';
 import { TouchableOpacity, View } from 'react-native';
 
-function PinnedComponent() {
+function PinnedComponent({ one, two, three }) {
   return (
-    <TouchableOpacity style={{ alignItems: 'center', flex: 1 }}>
-      <Text>Component Name</Text>
-      <View
-        style={{
-          backgroundColor: 'black',
-          width: 75,
-          height: 75,
-          borderRadius: 75 / 2,
-        }}
-      >
-        <Text
+    <View style={{ flexDirection: 'row' }}>
+      <TouchableOpacity style={{ alignItems: 'center', flex: 1 }}>
+        <Text>{one}</Text>
+        <View
           style={{
-            position: 'absolute',
-            left: 20,
-            top: 25,
+            backgroundColor: 'black',
+            width: 75,
+            height: 75,
+            borderRadius: 75 / 2,
           }}
         >
-          Icon
-        </Text>
-      </View>
-    </TouchableOpacity>
+          <Text
+            style={{
+              position: 'absolute',
+              left: 20,
+              top: 25,
+            }}
+          >
+            Icon
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={{ alignItems: 'center', flex: 1 }}>
+        <Text>{two}</Text>
+        <View
+          style={{
+            backgroundColor: 'black',
+            width: 75,
+            height: 75,
+            borderRadius: 75 / 2,
+          }}
+        >
+          <Text
+            style={{
+              position: 'absolute',
+              left: 20,
+              top: 25,
+            }}
+          >
+            Icon
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity style={{ alignItems: 'center', flex: 1 }}>
+        <Text>{three}</Text>
+        <View
+          style={{
+            backgroundColor: 'black',
+            width: 75,
+            height: 75,
+            borderRadius: 75 / 2,
+          }}
+        >
+          <Text
+            style={{
+              position: 'absolute',
+              left: 20,
+              top: 25,
+            }}
+          >
+            Icon
+          </Text>
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 }
 

@@ -26,17 +26,28 @@ function MetabolicJournal() {
     return null;
   };
 
-  const renderItem = ({ item }) => (
-    <MetabolicComponent
-      componentName={item.componentName}
-      componentButtons={item.componentButtons}
-      componentInput={item.componentInput}
-      componentSubSection1={item.componentSubSection1}
-      componentSubSection2={item.componentSubSection2}
-      periodCalendar={item.periodCalendar}
-      componentPhoto={item.componentPhoto}
-    />
-  );
+  const renderItem = ({ item }) => {
+    if (item.pinnedOneComponent) {
+      return (
+        <PinnedComponent
+          one={item.pinnedOneComponent}
+          two={item.pinnedTwoComponent}
+          three={item.pinnedThreeComponent}
+        />
+      );
+    }
+    return (
+      <MetabolicComponent
+        componentName={item.componentName}
+        componentButtons={item.componentButtons}
+        componentInput={item.componentInput}
+        componentSubSection1={item.componentSubSection1}
+        componentSubSection2={item.componentSubSection2}
+        periodCalendar={item.periodCalendar}
+        componentPhoto={item.componentPhoto}
+      />
+    );
+  };
 
   useEffect(() => {
     console.log(getObjectByDateProperty(tracker, 'date', dateData), 'function result');
@@ -53,12 +64,6 @@ function MetabolicJournal() {
           date={date}
           setDate={setDate}
         />
-      </View>
-      {/* The below section represents three pinned Metabolic Journal components that the user wants easy access to. When clicked, the component will be displayed below this section and above the metabolic journal list */}
-      <View style={{ flexDirection: 'row', marginBottom: '2%', flex: 1, alignItems: 'center' }}>
-        <PinnedComponent />
-        <PinnedComponent />
-        <PinnedComponent />
       </View>
       {/* The below section is a flatlist of the array of Metabolic Journal components
             Users need to be able to reorder components in the array by pressing and dragging them to a new position

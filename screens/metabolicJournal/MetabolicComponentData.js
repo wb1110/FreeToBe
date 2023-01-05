@@ -5,6 +5,39 @@ import { Feather } from '@expo/vector-icons';
 const data = [
   {
     componentID: uuidv4(),
+    pinnedOneComponent: 'Weight',
+    pinnedTwoComponent: 'Journal',
+    pinnedThreeComponent: 'Sleep',
+  },
+  {
+    componentID: uuidv4(),
+    componentName: 'Weight',
+    componentInput: true,
+    pinnedOne: true,
+    pinnedTwo: false,
+    pinnedThree: false,
+    hidden: false,
+  },
+  {
+    componentID: uuidv4(),
+    componentName: 'Journal',
+    componentInput: true,
+    pinnedOne: false,
+    pinnedTwo: true,
+    pinnedThree: false,
+    hidden: false,
+  },
+  {
+    componentID: uuidv4(),
+    componentName: 'Sleep',
+    componentInput: true,
+    pinnedOne: false,
+    pinnedTwo: false,
+    pinnedThree: true,
+    hidden: false,
+  },
+  {
+    componentID: uuidv4(),
     componentName: 'Temperatures',
     componentButtons: [
       {
@@ -391,7 +424,7 @@ const data = [
         buttonColor: 'brown',
       },
     ],
-    componentPhoto: true
+    componentPhoto: true,
   },
   {
     componentID: uuidv4(),
@@ -433,7 +466,7 @@ const data = [
         buttonColor: 'teal',
       },
     ],
-    componentPhoto: true
+    componentPhoto: true,
   },
   {
     componentID: uuidv4(),
@@ -455,7 +488,7 @@ const data = [
         buttonColor: 'white',
       },
     ],
-    componentPhoto: true
+    componentPhoto: true,
   },
 ];
 
