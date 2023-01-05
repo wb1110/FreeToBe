@@ -6,6 +6,7 @@ import PinnedComponent from './PinnedComponent';
 import data from './MetabolicComponentData';
 import Calendar from '../tracker/Calendar';
 import useTrackerStore from '../../state/TrackerStore';
+import Mood from './categories/Mood';
 
 function MetabolicJournal() {
   // metabolic state needs to be created as well as async storage
@@ -79,10 +80,10 @@ function MetabolicJournal() {
     );
   };
 
-  useEffect(() => {
-    console.log(getObjectByDateProperty(tracker, 'date', dateData), 'function result');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dateData]);
+  // useEffect(() => {
+  //   console.log(getObjectByDateProperty(tracker, 'date', dateData), 'function result');
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [dateData]);
 
   return (
     <SafeAreaView style={{ alignItems: 'center', flex: 1 }}>
@@ -100,10 +101,11 @@ function MetabolicJournal() {
             Users need to be able to be able to add/replace a component in the pinned section
       */}
       <View style={{ alignItems: 'center', width: '100%', flex: 3.5 }}>
-        <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} />
+        {/* <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} /> */}
+        <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
       </View>
       <View style={{ width: '90%', margin: '2%' }}>
-        <Button title="Log the Journal" />
+        <Button title="Log the Journal" onPress={() => console.log(metabolicData)} />
       </View>
     </SafeAreaView>
   );
