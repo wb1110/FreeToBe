@@ -16,6 +16,7 @@ function MetabolicJournal() {
   const [date, setDate] = useState(new Date());
   const [dateData, setDateData] = useState();
   const [metabolicData, setMetabolicData] = useState({
+    date: '',
     weight: 0,
     journal: '',
     sleep: '',
@@ -80,10 +81,14 @@ function MetabolicJournal() {
     );
   };
 
-  // useEffect(() => {
-  //   console.log(getObjectByDateProperty(tracker, 'date', dateData), 'function result');
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [dateData]);
+  useEffect(() => {
+    console.log(getObjectByDateProperty(tracker, 'date', dateData), 'function result');
+    setMetabolicData({
+      ...metabolicData,
+      date: dateData,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dateData]);
 
   return (
     <SafeAreaView style={{ alignItems: 'center', flex: 1 }}>
@@ -105,7 +110,7 @@ function MetabolicJournal() {
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
       </View>
       <View style={{ width: '90%', margin: '2%' }}>
-        <Button title="Log the Journal" onPress={() => console.log(metabolicData)} />
+        <Button title="Log the Journal" onPress={() => console.log(metabolicData, dateData)} />
       </View>
     </SafeAreaView>
   );
