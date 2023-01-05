@@ -7,6 +7,7 @@ import data from './MetabolicComponentData';
 import Calendar from '../tracker/Calendar';
 import useTrackerStore from '../../state/TrackerStore';
 import Mood from './categories/Mood';
+import useMetabolicStore from '../../state/MetabolicStore';
 
 function MetabolicJournal() {
   // metabolic state needs to be created as well as async storage
@@ -15,8 +16,10 @@ function MetabolicJournal() {
   // date = datePickerDate
   const [date, setDate] = useState(new Date());
   const [dateData, setDateData] = useState();
+  const metabolicState = useMetabolicStore();
+  const { addJournalEntry, metabolicJournal } = metabolicState;
   const [metabolicData, setMetabolicData] = useState({
-    date: '',
+    date: dateData,
     weight: 0,
     journal: '',
     sleep: '',
@@ -82,10 +85,38 @@ function MetabolicJournal() {
   };
 
   useEffect(() => {
-    console.log(getObjectByDateProperty(tracker, 'date', dateData), 'function result');
+    // console.log(getObjectByDateProperty(tracker, 'date', dateData), 'function result');
+    console.log(metabolicJournal);
     setMetabolicData({
-      ...metabolicData,
       date: dateData,
+      weight: 0,
+      journal: '',
+      sleep: '',
+      temperature: {
+        wakingTemp: 0,
+        meals: [
+          {
+            preMealTemp: 0,
+            postMealTemp: 0,
+          },
+        ],
+      },
+      pulse: 0,
+      mood: [],
+      sex: [],
+      bowelMovements: [],
+      period: {
+        symptoms: [],
+        mentrualFlow: '',
+      },
+      fertility: {
+        pregnancyTest: '',
+        ovulation: '',
+      },
+      physicalActivity: [],
+      skin: [],
+      hair: [],
+      nails: [],
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateData]);
@@ -110,7 +141,7 @@ function MetabolicJournal() {
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
       </View>
       <View style={{ width: '90%', margin: '2%' }}>
-        <Button title="Log the Journal" onPress={() => console.log(metabolicData, dateData)} />
+        <Button title="Log the Journal" onPress={() => addJournalEntry(metabolicData)} />
       </View>
     </SafeAreaView>
   );
