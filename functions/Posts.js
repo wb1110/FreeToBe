@@ -51,6 +51,7 @@ export const storeSettings = async (value) => {
 // Used when logging a journal
 // eslint-disable-next-line consistent-return
 export const storeMetabolicJournal = async (value) => {
+  console.log(value, 'value');
   try {
     const jsonValue = JSON.stringify(value);
     await AsyncStorage.setItem(`metabolicJournal`, jsonValue);

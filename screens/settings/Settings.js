@@ -52,6 +52,17 @@ export default function Settings({ navigation }) {
     // eslint-disable-next-line no-console
     console.log('Done.');
   };
+  const removeMetabolicJournal = async () => {
+    try {
+      await AsyncStorage.removeItem('metabolicJournal');
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log(e, 'error');
+      // remove error
+    }
+    // eslint-disable-next-line no-console
+    console.log('Done.');
+  };
   const getAllKeys = async () => {
     let keys = [];
     try {
@@ -84,6 +95,9 @@ export default function Settings({ navigation }) {
       </SettingsContainer>
       <SettingsContainer onPress={() => removeThreeDayLog()}>
         <Text h4>Clear Three Day Log Data</Text>
+      </SettingsContainer>
+      <SettingsContainer onPress={() => removeMetabolicJournal()}>
+        <Text h4>Clear Metabolic Journal Data</Text>
       </SettingsContainer>
       <SettingsContainer onPress={() => removeSettings()}>
         <Text h4>Clear Settings</Text>

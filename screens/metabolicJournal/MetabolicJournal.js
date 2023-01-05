@@ -4,7 +4,7 @@ import { Button } from '@rneui/themed';
 import MetabolicComponent from './MetabolicComponent';
 import PinnedComponent from './PinnedComponent';
 import data from './MetabolicComponentData';
-import Calendar from '../tracker/Calendar';
+import Calendar from './Calendar';
 import useTrackerStore from '../../state/TrackerStore';
 import Mood from './categories/Mood';
 import useMetabolicStore from '../../state/MetabolicStore';
@@ -18,48 +18,21 @@ function MetabolicJournal() {
   const [dateData, setDateData] = useState();
   const metabolicState = useMetabolicStore();
   const { addJournalEntry, metabolicJournal } = metabolicState;
-  const [metabolicData, setMetabolicData] = useState({
-    date: dateData,
-    weight: 0,
-    journal: '',
-    sleep: '',
-    temperature: {
-      wakingTemp: 0,
-      meals: [
-        {
-          preMealTemp: 0,
-          postMealTemp: 0,
-        },
-      ],
-    },
-    pulse: 0,
-    mood: [],
-    sex: [],
-    bowelMovements: [],
-    period: {
-      symptoms: [],
-      mentrualFlow: '',
-    },
-    fertility: {
-      pregnancyTest: '',
-      ovulation: '',
-    },
-    physicalActivity: [],
-    skin: [],
-    hair: [],
-    nails: [],
-  });
+  const [metabolicData, setMetabolicData] = useState({});
   const trackerState = useTrackerStore();
   const { tracker } = trackerState;
 
   const getObjectByDateProperty = (array, key, value) => {
     for (let i = 0; i < array.length; i++) {
       if (array[i][key] === value) {
-        return array[i];
+        setMetabolicData(array[i]);
+        return metabolicData;
       }
     }
     return null;
   };
+
+  const jounralEntryExists = () => getObjectByDateProperty(metabolicJournal, 'date', dateData);
 
   const renderItem = ({ item }) => {
     if (item.pinnedOneComponent) {
@@ -85,39 +58,41 @@ function MetabolicJournal() {
   };
 
   useEffect(() => {
-    // console.log(getObjectByDateProperty(tracker, 'date', dateData), 'function result');
-    console.log(metabolicJournal);
-    setMetabolicData({
-      date: dateData,
-      weight: 0,
-      journal: '',
-      sleep: '',
-      temperature: {
-        wakingTemp: 0,
-        meals: [
-          {
-            preMealTemp: 0,
-            postMealTemp: 0,
-          },
-        ],
-      },
-      pulse: 0,
-      mood: [],
-      sex: [],
-      bowelMovements: [],
-      period: {
-        symptoms: [],
-        mentrualFlow: '',
-      },
-      fertility: {
-        pregnancyTest: '',
-        ovulation: '',
-      },
-      physicalActivity: [],
-      skin: [],
-      hair: [],
-      nails: [],
-    });
+    jounralEntryExists();
+    if (jounralEntryExists() === null) {
+      setMetabolicData({
+        date: dateData,
+        weight: 0,
+        journal: '',
+        sleep: '',
+        temperature: {
+          wakingTemp: 0,
+          meals: [
+            {
+              preMealTemp: 0,
+              postMealTemp: 0,
+            },
+          ],
+        },
+        pulse: 0,
+        mood: [],
+        sex: [],
+        bowelMovements: [],
+        period: {
+          symptoms: [],
+          mentrualFlow: '',
+        },
+        fertility: {
+          pregnancyTest: '',
+          ovulation: '',
+        },
+        physicalActivity: [],
+        skin: [],
+        hair: [],
+        nails: [],
+      });
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateData]);
 
@@ -141,7 +116,12 @@ function MetabolicJournal() {
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
       </View>
       <View style={{ width: '90%', margin: '2%' }}>
-        <Button title="Log the Journal" onPress={() => addJournalEntry(metabolicData)} />
+        <Button
+          title="Log the Journal"
+          onPress={() => {
+            addJournalEntry(metabolicData);
+          }}
+        />
       </View>
     </SafeAreaView>
   );

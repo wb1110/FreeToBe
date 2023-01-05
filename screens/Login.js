@@ -11,11 +11,18 @@ import { Input, Text, Button } from '@rneui/themed';
 import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import useStore from '../state/Store';
-import { getAssessment, getSettings, getThreeDayLog, getTracker } from '../functions/Gets';
+import {
+  getAssessment,
+  getMetabolicJournal,
+  getSettings,
+  getThreeDayLog,
+  getTracker,
+} from '../functions/Gets';
 import ftbnBigLogo from '../assets/icons/ftbnBigLogo.png';
 import useSettingsStore from '../state/SettingsStore';
 import useTrackerStore from '../state/TrackerStore';
 import useThreeDayLogStore from '../state/ThreeDayLogStore';
+import useMetabolicStore from '../state/MetabolicStore';
 
 function LogoTitle() {
   return <Image source={ftbnBigLogo} />;
@@ -26,6 +33,7 @@ function Login({ navigation }) {
   const trackerState = useTrackerStore();
   const threeDayLogState = useThreeDayLogStore();
   const settingsState = useSettingsStore();
+  const metabolicState = useMetabolicStore();
 
   return (
     <KeyboardAvoidingView
@@ -45,6 +53,7 @@ function Login({ navigation }) {
                 getSettings(settingsState);
                 getTracker(trackerState);
                 getThreeDayLog(threeDayLogState);
+                getMetabolicJournal(metabolicState);
               }}
               title="Sign In"
             />

@@ -59,3 +59,17 @@ export const getSettings = async (state) => {
   }
   return parsedResult;
 };
+
+export const getMetabolicJournal = async (state) => {
+  let parsedResult;
+  try {
+    const result = await AsyncStorage.getItem('metabolicJournal');
+    parsedResult = await JSON.parse(result);
+    if (parsedResult !== null) {
+      state.addJournalEntry(parsedResult);
+    }
+  } catch (e) {
+    return e;
+  }
+  return parsedResult;
+};
