@@ -14,6 +14,36 @@ function MetabolicJournal() {
   // date = datePickerDate
   const [date, setDate] = useState(new Date());
   const [dateData, setDateData] = useState();
+  const [metabolicData, setMetabolicData] = useState({
+    weight: 0,
+    journal: '',
+    sleep: '',
+    temperature: {
+      wakingTemp: 0,
+      meals: [
+        {
+          preMealTemp: 0,
+          postMealTemp: 0,
+        },
+      ],
+    },
+    pulse: 0,
+    mood: [],
+    sex: [],
+    bowelMovements: [],
+    period: {
+      symptoms: [],
+      mentrualFlow: '',
+    },
+    fertility: {
+      pregnancyTest: '',
+      ovulation: '',
+    },
+    physicalActivity: [],
+    skin: [],
+    hair: [],
+    nails: [],
+  });
   const trackerState = useTrackerStore();
   const { tracker } = trackerState;
 
