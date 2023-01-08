@@ -1,8 +1,16 @@
 import { Text } from '@rneui/themed';
 import { TouchableOpacity, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { useState } from 'react';
 
-function ComponentButton({ buttonTitle, buttonIcon, buttonColor, onPress }) {
+function ComponentButton({ buttonTitle, buttonIcon, buttonColor, onPress, selected }) {
+  const changeDisplay = () => {
+    if (selected) {
+      return 'flex';
+    }
+    return 'none';
+  };
+
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -17,6 +25,7 @@ function ComponentButton({ buttonTitle, buttonIcon, buttonColor, onPress }) {
             bottom: 0,
             backgroundColor: 'green',
             borderRadius: 20,
+            display: changeDisplay(),
           }}
         >
           <FontAwesome5 name="check-circle" size={24} color="white" />

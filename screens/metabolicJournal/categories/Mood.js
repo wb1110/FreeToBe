@@ -2,15 +2,18 @@
 import { Feather } from '@expo/vector-icons';
 import { Image } from '@rneui/base';
 import { Text } from '@rneui/themed';
+import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
 export default function Mood({ metabolicData, setMetabolicData }) {
+  const [selected, setSelected] = useState(false);
   const handleAddItem = (value) => {
-    setMetabolicData({
-      ...metabolicData,
-      mood: [...metabolicData.mood, value],
-    });
+    // setMetabolicData({
+    //   ...metabolicData,
+    //   mood: [...metabolicData.mood, value],
+    // });
+    setSelected(!selected);
   };
 
   return (
@@ -42,6 +45,7 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                   />
                 }
                 onPress={() => handleAddItem('Calm')}
+                selected={selected}
               />
               <ComponentButton
                 buttonTitle="Happy"
