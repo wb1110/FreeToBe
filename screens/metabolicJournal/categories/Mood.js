@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import { Feather } from '@expo/vector-icons';
 import { Image } from '@rneui/base';
 import { Text } from '@rneui/themed';
