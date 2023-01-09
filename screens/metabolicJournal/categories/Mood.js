@@ -7,13 +7,11 @@ import { ScrollView, View } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
 export default function Mood({ metabolicData, setMetabolicData }) {
-  const [selected, setSelected] = useState(false);
   const handleAddItem = (value) => {
     // setMetabolicData({
     //   ...metabolicData,
     //   mood: [...metabolicData.mood, value],
     // });
-    setSelected(!selected);
   };
 
   return (
@@ -45,7 +43,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                   />
                 }
                 onPress={() => handleAddItem('Calm')}
-                selected={selected}
               />
               <ComponentButton
                 buttonTitle="Happy"

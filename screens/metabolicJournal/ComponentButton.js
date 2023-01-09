@@ -3,7 +3,15 @@ import { TouchableOpacity, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useState } from 'react';
 
-function ComponentButton({ buttonTitle, buttonIcon, buttonColor, onPress, selected }) {
+function ComponentButton({ buttonTitle, buttonIcon, buttonColor, onPress }) {
+  const [selected, setSelected] = useState(false);
+  const handleAddItem = (value) => {
+    // setMetabolicData({
+    //   ...metabolicData,
+    //   mood: [...metabolicData.mood, value],
+    // });
+    setSelected(!selected);
+  };
   const changeDisplay = () => {
     if (selected) {
       return 'flex';
@@ -13,7 +21,7 @@ function ComponentButton({ buttonTitle, buttonIcon, buttonColor, onPress, select
 
   return (
     <TouchableOpacity
-      onPress={onPress}
+      onPress={() => handleAddItem(buttonTitle)}
       style={{ alignItems: 'center', marginLeft: '2%', width: 80, height: 90 }}
     >
       <View>
