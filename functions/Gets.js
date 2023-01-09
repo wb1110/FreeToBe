@@ -66,7 +66,7 @@ export const getMetabolicJournal = async (state) => {
     const result = await AsyncStorage.getItem('metabolicJournal');
     parsedResult = await JSON.parse(result);
     if (parsedResult !== null) {
-      state.addJournalEntry(parsedResult);
+      state.updateState(parsedResult);
     }
   } catch (e) {
     return e;

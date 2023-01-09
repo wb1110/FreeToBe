@@ -1,6 +1,7 @@
 import { Button } from '@rneui/themed';
 import { useEffect, useState } from 'react';
 import { SafeAreaView, View } from 'react-native';
+import moment from 'moment';
 import useMetabolicStore from '../../state/MetabolicStore';
 import Calendar from './Calendar';
 import Mood from './categories/Mood';
@@ -11,7 +12,7 @@ function MetabolicJournal() {
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   // date = datePickerDate
   const [date, setDate] = useState(new Date());
-  const [dateData, setDateData] = useState();
+  const [dateData, setDateData] = useState(moment(new Date()).format('L'));
   const metabolicState = useMetabolicStore();
   const { addJournalEntry, metabolicJournal } = metabolicState;
   const [metabolicData, setMetabolicData] = useState({});
@@ -66,8 +67,6 @@ function MetabolicJournal() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateData]);
-
-  console.log(metabolicData, 'mJ');
 
   return (
     <SafeAreaView style={{ alignItems: 'center', flex: 1 }}>

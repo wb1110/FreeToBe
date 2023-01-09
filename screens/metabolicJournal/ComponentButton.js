@@ -5,6 +5,9 @@ import { useState } from 'react';
 
 function ComponentButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicData }) {
   const [selected, setSelected] = useState(false);
+  // if (metabolicData.mood.includes(buttonTitle)) {
+  //   setSelected(true);
+  // }
 
   const handleAddItem = (value) => {
     setSelected(!selected);

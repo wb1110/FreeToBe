@@ -6,6 +6,14 @@ import { storeMetabolicJournal } from '../functions/Posts';
 
 const useMetabolicStore = create((set) => ({
   metabolicJournal: [],
+  updateState: (data) => {
+    set(
+      produce((state) => {
+        const { metabolicJournal } = state;
+        metabolicJournal.push(data);
+      })
+    );
+  },
   addJournalEntry: (data) => {
     set(
       produce((state) => {
