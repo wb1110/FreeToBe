@@ -7,13 +7,6 @@ import { ScrollView, View } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
 export default function Mood({ metabolicData, setMetabolicData }) {
-  const handleAddItem = (value) => {
-    // setMetabolicData({
-    //   ...metabolicData,
-    //   mood: [...metabolicData.mood, value],
-    // });
-  };
-
   return (
     <View
       style={{
@@ -42,7 +35,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/Calm.png')}
                   />
                 }
-                onPress={() => handleAddItem('Calm')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
               <ComponentButton
                 buttonTitle="Happy"
@@ -52,7 +46,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/Happy.png')}
                   />
                 }
-                onPress={() => handleAddItem('Happy')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
               <ComponentButton
                 buttonTitle="Energetic"
@@ -62,7 +57,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/Energetic.png')}
                   />
                 }
-                onPress={() => handleAddItem('Energetic')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
               <ComponentButton
                 buttonTitle="Mood Swings"
@@ -72,7 +68,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/MoodSwings.png')}
                   />
                 }
-                onPress={() => handleAddItem('Mood Swings')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
               <ComponentButton
                 buttonTitle="Sad"
@@ -82,7 +79,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/Sad.png')}
                   />
                 }
-                onPress={() => handleAddItem('Sad')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
               <ComponentButton
                 buttonTitle="Irritated"
@@ -92,7 +90,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/Irritated.png')}
                   />
                 }
-                onPress={() => handleAddItem('Irritated')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
               <ComponentButton
                 buttonTitle="Anxious"
@@ -102,7 +101,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/Anxious.png')}
                   />
                 }
-                onPress={() => handleAddItem('Anxious')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
               <ComponentButton
                 buttonTitle="Depressed"
@@ -112,7 +112,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/Depressed.png')}
                   />
                 }
-                onPress={() => handleAddItem('Depressed')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
               <ComponentButton
                 buttonTitle="Guilty"
@@ -122,7 +123,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/Guilty.png')}
                   />
                 }
-                onPress={() => handleAddItem('Guilty')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
               <ComponentButton
                 buttonTitle="Apathetic"
@@ -132,7 +134,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/Apathetic.png')}
                   />
                 }
-                onPress={() => handleAddItem('Apathetic')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
               <ComponentButton
                 buttonTitle="Confused"
@@ -142,7 +145,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/Confused.png')}
                   />
                 }
-                onPress={() => handleAddItem('Confused')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
               <ComponentButton
                 buttonTitle="Self-critical"
@@ -152,7 +156,8 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                     source={require('../../../assets/icons/SelfCritical.png')}
                   />
                 }
-                onPress={() => handleAddItem('Self-critical')}
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
               />
             </View>
           </View>

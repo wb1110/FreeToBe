@@ -3,14 +3,23 @@ import { TouchableOpacity, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useState } from 'react';
 
-function ComponentButton({ buttonTitle, buttonIcon, buttonColor, onPress }) {
+function ComponentButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicData }) {
   const [selected, setSelected] = useState(false);
+
   const handleAddItem = (value) => {
-    // setMetabolicData({
-    //   ...metabolicData,
-    //   mood: [...metabolicData.mood, value],
-    // });
     setSelected(!selected);
+    if (metabolicData.mood.includes(value)) {
+      const removedItemArray = metabolicData.mood.filter((item) => item !== value);
+      setMetabolicData({
+        ...metabolicData,
+        mood: removedItemArray,
+      });
+    } else {
+      setMetabolicData({
+        ...metabolicData,
+        mood: [...metabolicData.mood, value],
+      });
+    }
   };
   const changeDisplay = () => {
     if (selected) {

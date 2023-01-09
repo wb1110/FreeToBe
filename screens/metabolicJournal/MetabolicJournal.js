@@ -67,6 +67,8 @@ function MetabolicJournal() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateData]);
 
+  console.log(metabolicData, 'mJ');
+
   return (
     <SafeAreaView style={{ alignItems: 'center', flex: 1 }}>
       <View>
