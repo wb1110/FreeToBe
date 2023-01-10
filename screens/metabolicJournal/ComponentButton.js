@@ -5,15 +5,14 @@ import { useEffect, useState } from 'react';
 
 function ComponentButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicData }) {
   const [selected, setSelected] = useState(false);
-  // if (metabolicData.mood.includes(buttonTitle)) {
-  //   setSelected(true);
-  // }
 
   useEffect(() => {
-    if (metabolicData.mood.includes(buttonTitle)) {
-      setSelected(true);
-    } else {
-      setSelected(false);
+    if (metabolicData.mood !== undefined) {
+      if (metabolicData.mood.includes(buttonTitle)) {
+        setSelected(true);
+      } else {
+        setSelected(false);
+      }
     }
   }, [metabolicData]);
 
