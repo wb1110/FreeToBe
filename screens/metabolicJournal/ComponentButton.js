@@ -1,13 +1,21 @@
 import { Text } from '@rneui/themed';
 import { TouchableOpacity, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function ComponentButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicData }) {
   const [selected, setSelected] = useState(false);
   // if (metabolicData.mood.includes(buttonTitle)) {
   //   setSelected(true);
   // }
+
+  useEffect(() => {
+    if (metabolicData.mood.includes(buttonTitle)) {
+      setSelected(true);
+    } else {
+      setSelected(false);
+    }
+  }, [metabolicData]);
 
   const handleAddItem = (value) => {
     setSelected(!selected);

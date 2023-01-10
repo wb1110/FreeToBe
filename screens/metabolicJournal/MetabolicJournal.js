@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { SafeAreaView, View } from 'react-native';
 import moment from 'moment';
 import useMetabolicStore from '../../state/MetabolicStore';
+import createNewData from './functions';
 import Calendar from './Calendar';
 import Mood from './categories/Mood';
 
@@ -17,54 +18,15 @@ function MetabolicJournal() {
   const { addJournalEntry, metabolicJournal } = metabolicState;
   const [metabolicData, setMetabolicData] = useState({});
 
-  const getObjectByDateProperty = (array, key, value) => {
-    for (let i = 0; i < array.length; i++) {
-      if (array[i][key] === value) {
-        setMetabolicData(array[i]);
-        return metabolicData;
-      }
-    }
-    return null;
-  };
-
-  const jounralEntryExists = () => getObjectByDateProperty(metabolicJournal, 'date', dateData);
+  const journalEntryExists = () => metabolicJournal.find((entry) => entry.date === dateData);
 
   useEffect(() => {
-    jounralEntryExists();
-    if (jounralEntryExists() === null) {
-      setMetabolicData({
-        date: dateData,
-        weight: 0,
-        journal: '',
-        sleep: '',
-        temperature: {
-          wakingTemp: 0,
-          meals: [
-            {
-              preMealTemp: 0,
-              postMealTemp: 0,
-            },
-          ],
-        },
-        pulse: 0,
-        mood: [],
-        sex: [],
-        bowelMovements: [],
-        period: {
-          symptoms: [],
-          mentrualFlow: '',
-        },
-        fertility: {
-          pregnancyTest: '',
-          ovulation: '',
-        },
-        physicalActivity: [],
-        skin: [],
-        hair: [],
-        nails: [],
-      });
+    const existingEntry = journalEntryExists();
+    if (!existingEntry) {
+      setMetabolicData(createNewData(dateData));
+    } else {
+      setMetabolicData(existingEntry);
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateData]);
 
