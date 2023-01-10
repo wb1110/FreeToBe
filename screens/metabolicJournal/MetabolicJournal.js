@@ -21,7 +21,9 @@ function MetabolicJournal() {
   const journalEntryExists = () => metabolicJournal.find((entry) => entry.date === dateData);
 
   useEffect(() => {
+    console.log(metabolicJournal, 'mj');
     const existingEntry = journalEntryExists();
+    console.log(existingEntry, 'existing');
     if (!existingEntry) {
       setMetabolicData(createNewData(dateData));
     } else {
