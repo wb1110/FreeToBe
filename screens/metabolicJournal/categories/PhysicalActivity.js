@@ -1,12 +1,13 @@
 /* eslint-disable global-require */
 import { Feather } from '@expo/vector-icons';
 import { Image } from '@rneui/base';
-import { Text } from '@rneui/themed';
+import { Input, Text } from '@rneui/themed';
 import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
-export default function Mood({ metabolicData, setMetabolicData }) {
+export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
+  const category = 'physicalActivity';
   return (
     <View
       style={{
@@ -20,7 +21,7 @@ export default function Mood({ metabolicData, setMetabolicData }) {
         contentContainerStyle={{ flexGrow: 1, paddingRight: 200, flex: 1 }}
       >
         <View style={{ flex: 1 }}>
-          <Text h3>Mood</Text>
+          <Text h3>Physical Activity</Text>
           <View style={{ flex: 1 }}>
             <View
               style={{
@@ -28,7 +29,7 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               }}
             >
               <ComponentButton
-                buttonTitle="Calm"
+                buttonTitle="Did not exercise"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
@@ -37,9 +38,10 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
+                category={category}
               />
               <ComponentButton
-                buttonTitle="Happy"
+                buttonTitle="Weight training"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
@@ -48,9 +50,10 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
+                category={category}
               />
               <ComponentButton
-                buttonTitle="Energetic"
+                buttonTitle="Aerobic / Dancing"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
@@ -59,107 +62,93 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
+                category={category}
               />
               <ComponentButton
-                buttonTitle="Mood Swings"
+                buttonTitle="Walk"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/MoodSwings.png')}
+                    source={require('../../../assets/icons/Energetic.png')}
                   />
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
+                category={category}
               />
               <ComponentButton
-                buttonTitle="Sad"
+                buttonTitle="Running"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Sad.png')}
+                    source={require('../../../assets/icons/Energetic.png')}
                   />
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
+                category={category}
               />
               <ComponentButton
-                buttonTitle="Irritated"
+                buttonTitle="Yoga"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Irritated.png')}
+                    source={require('../../../assets/icons/Energetic.png')}
                   />
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-              />
-              <ComponentButton
-                buttonTitle="Anxious"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Anxious.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-              />
-              <ComponentButton
-                buttonTitle="Depressed"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Depressed.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-              />
-              <ComponentButton
-                buttonTitle="Guilty"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Guilty.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-              />
-              <ComponentButton
-                buttonTitle="Apathetic"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Apathetic.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-              />
-              <ComponentButton
-                buttonTitle="Confused"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Confused.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-              />
-              <ComponentButton
-                buttonTitle="Self-critical"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/SelfCritical.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
+                category={category}
               />
             </View>
+            <ComponentButton
+              buttonTitle="Cycling"
+              buttonIcon={
+                <Image
+                  style={{ width: 50, height: 50 }}
+                  source={require('../../../assets/icons/Energetic.png')}
+                />
+              }
+              metabolicData={metabolicData}
+              setMetabolicData={setMetabolicData}
+              category={category}
+            />
+            <ComponentButton
+              buttonTitle="Team sports"
+              buttonIcon={
+                <Image
+                  style={{ width: 50, height: 50 }}
+                  source={require('../../../assets/icons/Energetic.png')}
+                />
+              }
+              metabolicData={metabolicData}
+              setMetabolicData={setMetabolicData}
+              category={category}
+            />
+            <ComponentButton
+              buttonTitle="Swimming"
+              buttonIcon={
+                <Image
+                  style={{ width: 50, height: 50 }}
+                  source={require('../../../assets/icons/Energetic.png')}
+                />
+              }
+              metabolicData={metabolicData}
+              setMetabolicData={setMetabolicData}
+              category={category}
+            />
+            <ComponentButton
+              buttonTitle="Pilates"
+              buttonIcon={
+                <Image
+                  style={{ width: 50, height: 50 }}
+                  source={require('../../../assets/icons/Energetic.png')}
+                />
+              }
+              metabolicData={metabolicData}
+              setMetabolicData={setMetabolicData}
+              category={category}
+            />
           </View>
         </View>
       </ScrollView>

@@ -9,6 +9,7 @@ import Mood from './categories/Mood';
 import Sex from './categories/Sex';
 import Bowel from './categories/Bowel';
 import Period from './categories/Period';
+import PhysicalActivity from './categories/PhysicalActivity';
 
 function MetabolicJournal() {
   // metabolic state needs to be created as well as async storage
@@ -53,9 +54,13 @@ function MetabolicJournal() {
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Sex metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Bowel metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+        <PhysicalActivity metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         {/* 
         Need to figure out how to dynamically reference a dynamic object within an object
         <Period metabolicData={metabolicData} setMetabolicData={setMetabolicData} /> */}
+        {/* 
+        Need to figure out how to dynamically reference a dynamic object within an object
+        <Fertility metabolicData={metabolicData} setMetabolicData={setMetabolicData} /> */}
       </ScrollView>
       <View style={{ width: '90%', margin: '2%' }}>
         <Button
