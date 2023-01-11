@@ -6,6 +6,7 @@ import useMetabolicStore from '../../state/MetabolicStore';
 import createNewData from './functions';
 import Calendar from './Calendar';
 import Mood from './categories/Mood';
+import Sex from './categories/Sex';
 
 function MetabolicJournal() {
   // metabolic state needs to be created as well as async storage
@@ -21,9 +22,7 @@ function MetabolicJournal() {
   const journalEntryExists = () => metabolicJournal.find((entry) => entry.date === dateData);
 
   useEffect(() => {
-    console.log(metabolicJournal, 'mj');
     const existingEntry = journalEntryExists();
-    console.log(existingEntry, 'existing');
     if (!existingEntry) {
       setMetabolicData(createNewData(dateData));
     } else {
@@ -47,9 +46,10 @@ function MetabolicJournal() {
             Users need to be able to reorder components in the array by pressing and dragging them to a new position
             Users need to be able to be able to add/replace a component in the pinned section
       */}
-      <View style={{ alignItems: 'center', width: '100%', flex: 3.5 }}>
+      <View style={{ alignItems: 'center', width: '100%', flex: 1 }}>
         {/* <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} /> */}
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+        <Sex metabolicData={metabolicData} setMetabolicData={setMetabolicData} category="sex" />
       </View>
       <View style={{ width: '90%', margin: '2%' }}>
         <Button

@@ -37,7 +37,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
               <ComponentButton
                 buttonTitle="Happy"
@@ -49,7 +48,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
               <ComponentButton
                 buttonTitle="Energetic"
@@ -61,7 +59,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
               <ComponentButton
                 buttonTitle="Mood Swings"
@@ -73,7 +70,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
               <ComponentButton
                 buttonTitle="Sad"
@@ -85,7 +81,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
               <ComponentButton
                 buttonTitle="Irritated"
@@ -97,7 +92,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
               <ComponentButton
                 buttonTitle="Anxious"
@@ -109,7 +103,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
               <ComponentButton
                 buttonTitle="Depressed"
@@ -121,7 +114,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
               <ComponentButton
                 buttonTitle="Guilty"
@@ -133,7 +125,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
               <ComponentButton
                 buttonTitle="Apathetic"
@@ -145,7 +136,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
               <ComponentButton
                 buttonTitle="Confused"
@@ -157,7 +147,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
               <ComponentButton
                 buttonTitle="Self-critical"
@@ -169,7 +158,6 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
               />
             </View>
           </View>

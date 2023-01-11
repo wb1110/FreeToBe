@@ -3,12 +3,12 @@ import { TouchableOpacity, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 
-function ComponentButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicData }) {
+function ComponentButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicData, category }) {
   const [selected, setSelected] = useState(false);
 
   useEffect(() => {
-    if (metabolicData.mood !== undefined) {
-      if (metabolicData.mood.includes(buttonTitle)) {
+    if (metabolicData[category] !== undefined) {
+      if (metabolicData[category].includes(buttonTitle)) {
         setSelected(true);
       } else {
         setSelected(false);
@@ -18,16 +18,16 @@ function ComponentButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicD
 
   const handleAddItem = (value) => {
     setSelected(!selected);
-    if (metabolicData.mood.includes(value)) {
-      const removedItemArray = metabolicData.mood.filter((item) => item !== value);
+    if (metabolicData[category].includes(value)) {
+      const removedItemArray = metabolicData[category].filter((item) => item !== value);
       setMetabolicData({
         ...metabolicData,
-        mood: removedItemArray,
+        [category]: removedItemArray,
       });
     } else {
       setMetabolicData({
         ...metabolicData,
-        mood: [...metabolicData.mood, value],
+        [category]: [...metabolicData[category], value],
       });
     }
   };

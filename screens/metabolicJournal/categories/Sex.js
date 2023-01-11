@@ -1,12 +1,10 @@
 /* eslint-disable global-require */
-import { Feather } from '@expo/vector-icons';
 import { Image } from '@rneui/base';
 import { Text } from '@rneui/themed';
-import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
-export default function Mood({ metabolicData, setMetabolicData }) {
+export default function Sex({ metabolicData, setMetabolicData }) {
   return (
     <View
       style={{
@@ -20,7 +18,7 @@ export default function Mood({ metabolicData, setMetabolicData }) {
         contentContainerStyle={{ flexGrow: 1, paddingRight: 200, flex: 1 }}
       >
         <View style={{ flex: 1 }}>
-          <Text h3>Mood</Text>
+          <Text h3>Sex</Text>
           <View style={{ flex: 1 }}>
             <View
               style={{
@@ -28,7 +26,7 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               }}
             >
               <ComponentButton
-                buttonTitle="Calm"
+                buttonTitle="Did not have sex"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
@@ -37,10 +35,10 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
+                category="sex"
               />
               <ComponentButton
-                buttonTitle="Happy"
+                buttonTitle="Protected Sex"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
@@ -49,10 +47,10 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
+                category="sex"
               />
               <ComponentButton
-                buttonTitle="Energetic"
+                buttonTitle="Unprotected Sex"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
@@ -61,10 +59,10 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
+                category="sex"
               />
               <ComponentButton
-                buttonTitle="Mood Swings"
+                buttonTitle="Masturbation"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
@@ -73,10 +71,10 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
+                category="sex"
               />
               <ComponentButton
-                buttonTitle="Sad"
+                buttonTitle="High Sex Drive"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
@@ -85,10 +83,10 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
+                category="sex"
               />
               <ComponentButton
-                buttonTitle="Irritated"
+                buttonTitle="Low Sex Drive"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
@@ -97,10 +95,10 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
+                category="sex"
               />
               <ComponentButton
-                buttonTitle="Anxious"
+                buttonTitle="No Sex Drive"
                 buttonIcon={
                   <Image
                     style={{ width: 50, height: 50 }}
@@ -109,67 +107,7 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
-                category="mood"
-              />
-              <ComponentButton
-                buttonTitle="Depressed"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Depressed.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category="mood"
-              />
-              <ComponentButton
-                buttonTitle="Guilty"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Guilty.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category="mood"
-              />
-              <ComponentButton
-                buttonTitle="Apathetic"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Apathetic.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category="mood"
-              />
-              <ComponentButton
-                buttonTitle="Confused"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Confused.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category="mood"
-              />
-              <ComponentButton
-                buttonTitle="Self-critical"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/SelfCritical.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category="mood"
+                category="sex"
               />
             </View>
           </View>

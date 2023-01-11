@@ -7,7 +7,6 @@ import { storeMetabolicJournal } from '../functions/Posts';
 const useMetabolicStore = create((set) => ({
   metabolicJournal: [],
   updateState: (data) => {
-    console.log(data, 'data');
     set(
       produce((state) => {
         // eslint-disable-next-line no-param-reassign
