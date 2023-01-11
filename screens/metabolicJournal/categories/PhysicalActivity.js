@@ -100,55 +100,55 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
                 setMetabolicData={setMetabolicData}
                 category={category}
               />
+              <ComponentButton
+                buttonTitle="Cycling"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Energetic.png')}
+                  />
+                }
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
+                category={category}
+              />
+              <ComponentButton
+                buttonTitle="Team sports"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Energetic.png')}
+                  />
+                }
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
+                category={category}
+              />
+              <ComponentButton
+                buttonTitle="Swimming"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Energetic.png')}
+                  />
+                }
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
+                category={category}
+              />
+              <ComponentButton
+                buttonTitle="Pilates"
+                buttonIcon={
+                  <Image
+                    style={{ width: 50, height: 50 }}
+                    source={require('../../../assets/icons/Energetic.png')}
+                  />
+                }
+                metabolicData={metabolicData}
+                setMetabolicData={setMetabolicData}
+                category={category}
+              />
             </View>
-            <ComponentButton
-              buttonTitle="Cycling"
-              buttonIcon={
-                <Image
-                  style={{ width: 50, height: 50 }}
-                  source={require('../../../assets/icons/Energetic.png')}
-                />
-              }
-              metabolicData={metabolicData}
-              setMetabolicData={setMetabolicData}
-              category={category}
-            />
-            <ComponentButton
-              buttonTitle="Team sports"
-              buttonIcon={
-                <Image
-                  style={{ width: 50, height: 50 }}
-                  source={require('../../../assets/icons/Energetic.png')}
-                />
-              }
-              metabolicData={metabolicData}
-              setMetabolicData={setMetabolicData}
-              category={category}
-            />
-            <ComponentButton
-              buttonTitle="Swimming"
-              buttonIcon={
-                <Image
-                  style={{ width: 50, height: 50 }}
-                  source={require('../../../assets/icons/Energetic.png')}
-                />
-              }
-              metabolicData={metabolicData}
-              setMetabolicData={setMetabolicData}
-              category={category}
-            />
-            <ComponentButton
-              buttonTitle="Pilates"
-              buttonIcon={
-                <Image
-                  style={{ width: 50, height: 50 }}
-                  source={require('../../../assets/icons/Energetic.png')}
-                />
-              }
-              metabolicData={metabolicData}
-              setMetabolicData={setMetabolicData}
-              category={category}
-            />
           </View>
         </View>
       </ScrollView>
