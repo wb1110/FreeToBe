@@ -10,6 +10,9 @@ import Sex from './categories/Sex';
 import Bowel from './categories/Bowel';
 import Period from './categories/Period';
 import PhysicalActivity from './categories/PhysicalActivity';
+import Skin from './categories/Skin';
+import Hair from './categories/Hair';
+import Nails from './categories/Nails';
 
 function MetabolicJournal() {
   // metabolic state needs to be created as well as async storage
@@ -55,6 +58,9 @@ function MetabolicJournal() {
         <Sex metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Bowel metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <PhysicalActivity metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+        <Skin metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+        <Hair metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+        <Nails metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         {/* 
         Need to figure out how to dynamically reference a dynamic object within an object
         <Period metabolicData={metabolicData} setMetabolicData={setMetabolicData} /> */}
