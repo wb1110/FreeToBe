@@ -17,6 +17,10 @@ export default function MealTemperatures({ metabolicData, setMetabolicData }) {
         meals: [...(metabolicData.temperature.meals || []), v],
       },
     });
+    setValues({
+      preMealTemp: '',
+      postMealTemp: '',
+    });
   };
 
   return (
@@ -30,6 +34,7 @@ export default function MealTemperatures({ metabolicData, setMetabolicData }) {
       <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-end' }}>
         <Input
           label="Meal Name"
+          value={values.mealName}
           onChangeText={(value) =>
             setValues({
               ...values,
@@ -40,6 +45,7 @@ export default function MealTemperatures({ metabolicData, setMetabolicData }) {
         />
         <Input
           label="Pre-Meal"
+          value={values.preMealTemp}
           onChangeText={(value) =>
             setValues({
               ...values,
@@ -50,6 +56,7 @@ export default function MealTemperatures({ metabolicData, setMetabolicData }) {
         />
         <Input
           label="Post-Meal"
+          value={values.postMealTemp}
           onChangeText={(value) =>
             setValues({
               ...values,
