@@ -6,10 +6,11 @@ const createNewData = (date) => ({
   temperature: {
     wakingTemp: 0,
     meals: [
-      {
-        preMealTemp: 0,
-        postMealTemp: 0,
-      },
+      // {
+      //   mealName: '',
+      //   preMealTemp: 0,
+      //   postMealTemp: 0,
+      // },
     ],
   },
   pulse: 0,

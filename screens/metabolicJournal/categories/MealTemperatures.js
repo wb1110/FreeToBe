@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-import { Input } from '@rneui/themed';
+import { Button, Input } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
 
@@ -8,6 +8,17 @@ export default function MealTemperatures({ metabolicData, setMetabolicData }) {
     preMealTemp: '',
     postMealTemp: '',
   });
+
+  const handleSubmit = (v) => {
+    setMetabolicData({
+      ...metabolicData,
+      temperature: {
+        ...(metabolicData.temperature || {}),
+        meals: [...(metabolicData.temperature.meals || []), v],
+      },
+    });
+  };
+
   return (
     <View
       style={{
@@ -16,30 +27,39 @@ export default function MealTemperatures({ metabolicData, setMetabolicData }) {
         margin: '2%',
       }}
     >
-      <View style={{ flex: 1 }}>
-        <View style={{ flex: 1, flexDirection: 'row' }}>
-          <Input
-            label="Enter pre-meal temperature here"
-            onChangeText={(value) =>
-              setValues({
-                ...values,
-                preMealTemp: value,
-              })
-            }
-            containerStyle={{ width: '50%' }}
-          />
-          <Input
-            label="Enter post-meal temperature here"
-            onChangeText={(value) =>
-              setValues({
-                ...values,
-                postMealTemp: value,
-              })
-            }
-            containerStyle={{ width: '50%' }}
-          />
-        </View>
+      <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-end' }}>
+        <Input
+          label="Meal Name"
+          onChangeText={(value) =>
+            setValues({
+              ...values,
+              mealName: value,
+            })
+          }
+          containerStyle={{ width: '33%' }}
+        />
+        <Input
+          label="Pre-Meal"
+          onChangeText={(value) =>
+            setValues({
+              ...values,
+              preMealTemp: value,
+            })
+          }
+          containerStyle={{ width: '33%' }}
+        />
+        <Input
+          label="Post-Meal"
+          onChangeText={(value) =>
+            setValues({
+              ...values,
+              postMealTemp: value,
+            })
+          }
+          containerStyle={{ width: '33%' }}
+        />
       </View>
+      <Button title="Add meal" onPress={() => handleSubmit(values)} />
     </View>
   );
 }

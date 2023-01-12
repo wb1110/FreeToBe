@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 import { Button, Input, Text } from '@rneui/themed';
 import { View } from 'react-native';
+import MealTemperatures from './MealTemperatures';
 
 export default function Temperature({ metabolicData, setMetabolicData }) {
   return (
@@ -26,8 +27,20 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
             }
           />
           <View style={{ margin: '2%' }}>
-            <Text h4>Click below to add temperatures before and after a meal</Text>
-            <Button title="Add a new meal" />
+            {metabolicData.temperature && metabolicData.temperature.meals
+              ? metabolicData.temperature.meals.map((item) => (
+                  <View
+                    key={item.mealName}
+                    style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+                  >
+                    <Text>Meal Name: {item.mealName}</Text>
+                    <Text>Pre-Meal: {item.preMealTemp}</Text>
+                    <Text>Post-Meal: {item.postMealTemp}</Text>
+                  </View>
+                ))
+              : null}
+            <Text>Click below to add temperatures before and after a meal</Text>
+            <MealTemperatures metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
           </View>
         </View>
       </View>

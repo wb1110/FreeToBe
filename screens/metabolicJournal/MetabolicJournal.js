@@ -57,7 +57,6 @@ function MetabolicJournal() {
       <ScrollView>
         {/* <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} /> */}
         <Temperature metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
-        <MealTemperatures />
         <Pulse metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Sex metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
