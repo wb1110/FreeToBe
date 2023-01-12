@@ -13,6 +13,7 @@ import PhysicalActivity from './categories/PhysicalActivity';
 import Skin from './categories/Skin';
 import Hair from './categories/Hair';
 import Nails from './categories/Nails';
+import Pulse from './categories/Pulse';
 
 function MetabolicJournal() {
   // metabolic state needs to be created as well as async storage
@@ -54,6 +55,7 @@ function MetabolicJournal() {
       */}
       <ScrollView>
         {/* <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} /> */}
+        <Pulse metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Sex metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Bowel metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
