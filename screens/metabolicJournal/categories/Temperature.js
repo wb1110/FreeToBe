@@ -1,9 +1,10 @@
 /* eslint-disable global-require */
-import { Button, Input, Text } from '@rneui/themed';
+import { Button, Input, Text, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import MealTemperatures from './MealTemperatures';
 
 export default function Temperature({ metabolicData, setMetabolicData }) {
+  const { theme } = useTheme();
   return (
     <View
       style={{
@@ -31,7 +32,13 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
               ? metabolicData.temperature.meals.map((item) => (
                   <View
                     key={item.mealName}
-                    style={{ flexDirection: 'row', justifyContent: 'space-between' }}
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                      backgroundColor: theme.colors.primary,
+                      padding: '2%',
+                      marginBottom: '2%',
+                    }}
                   >
                     <Text>Meal Name: {item.mealName}</Text>
                     <Text>Pre-Meal: {item.preMealTemp}</Text>
