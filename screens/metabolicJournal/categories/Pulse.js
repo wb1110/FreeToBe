@@ -1,10 +1,6 @@
 /* eslint-disable global-require */
-import { Feather } from '@expo/vector-icons';
-import { Image } from '@rneui/base';
 import { Input, Text } from '@rneui/themed';
-import { useState } from 'react';
-import { ScrollView, View } from 'react-native';
-import ComponentButton from '../ComponentButton';
+import { View } from 'react-native';
 
 export default function Pulse({ metabolicData, setMetabolicData }) {
   return (

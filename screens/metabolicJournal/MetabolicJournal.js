@@ -1,19 +1,20 @@
 import { Button } from '@rneui/themed';
+import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, View } from 'react-native';
-import moment from 'moment';
 import useMetabolicStore from '../../state/MetabolicStore';
-import createNewData from './functions';
 import Calendar from './Calendar';
-import Mood from './categories/Mood';
-import Sex from './categories/Sex';
 import Bowel from './categories/Bowel';
-import Period from './categories/Period';
-import PhysicalActivity from './categories/PhysicalActivity';
-import Skin from './categories/Skin';
 import Hair from './categories/Hair';
+import MealTemperatures from './categories/MealTemperatures';
+import Mood from './categories/Mood';
 import Nails from './categories/Nails';
+import PhysicalActivity from './categories/PhysicalActivity';
 import Pulse from './categories/Pulse';
+import Sex from './categories/Sex';
+import Skin from './categories/Skin';
+import Temperature from './categories/Temperature';
+import createNewData from './functions';
 
 function MetabolicJournal() {
   // metabolic state needs to be created as well as async storage
@@ -55,6 +56,8 @@ function MetabolicJournal() {
       */}
       <ScrollView>
         {/* <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} /> */}
+        <Temperature metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+        <MealTemperatures />
         <Pulse metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Sex metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
