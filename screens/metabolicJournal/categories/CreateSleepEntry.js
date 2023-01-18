@@ -21,14 +21,14 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
     const currentDate = selectedDate;
     setShow(false);
     setStart(currentDate);
-    setValues({ ...values, startTime: currentDate });
+    setValues({ ...values, id: uuidv4(), startTime: currentDate });
   };
 
   const onEndChange = (event, selectedDate) => {
     const currentDate = selectedDate;
     setShow(false);
     setEnd(currentDate);
-    setValues({ ...values, endTime: currentDate });
+    setValues({ ...values, id: uuidv4(), endTime: currentDate });
   };
 
   const showTimepicker = () => {
