@@ -22,7 +22,7 @@ export default function Sleep({ metabolicData, setMetabolicData }) {
               ? metabolicData.sleep.map((item) => {
                   const time1 = moment(item.startTime, 'h:mm a');
                   const time2 = moment(item.endTime, 'h:mm a');
-                  const difference = time1.diff(time2);
+                  const difference = time2.diff(time1, 'hours');
                   console.log(difference);
                   return (
                     <View
@@ -36,7 +36,7 @@ export default function Sleep({ metabolicData, setMetabolicData }) {
                     >
                       <Text>Start Time: {moment(item.startTime).format('h:mm a')}</Text>
                       <Text>End Time: {moment(item.endTime).format('h:mm a')}</Text>
-                      <Text>Hours Slept</Text>
+                      <Text>Hours Slept: {difference}</Text>
                     </View>
                   );
                 })
