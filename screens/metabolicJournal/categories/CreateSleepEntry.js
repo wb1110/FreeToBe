@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-import { Button, Input } from '@rneui/themed';
+import { Button, Input, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
 import 'react-native-get-random-values';
@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
+  const { theme } = useTheme();
   const [start, setStart] = useState(new Date(1598051730000));
   const [end, setEnd] = useState(new Date(1598051730000));
   const [show, setShow] = useState(false);
@@ -56,6 +57,7 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
           mode="time"
           is24Hour
           onChange={onStartChange}
+          style={{ backgroundColor: theme.colors.primary }}
         />
         <DateTimePicker
           testID="dateTimePicker"
