@@ -13,6 +13,7 @@ import PhysicalActivity from './categories/PhysicalActivity';
 import Pulse from './categories/Pulse';
 import Sex from './categories/Sex';
 import Skin from './categories/Skin';
+import Sleep from './categories/Sleep';
 import Temperature from './categories/Temperature';
 import createNewData from './functions';
 
@@ -55,7 +56,7 @@ function MetabolicJournal() {
             Users need to be able to be able to add/replace a component in the pinned section
       */}
       <ScrollView>
-        {/* <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.componentID} /> */}
+        <Sleep metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Temperature metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Pulse metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />

@@ -2,7 +2,7 @@ const createNewData = (date) => ({
   date,
   weight: 0,
   journal: '',
-  sleep: '',
+  sleep: [],
   temperature: {
     wakingTemp: 0,
     meals: [
