@@ -23,7 +23,6 @@ export default function Sleep({ metabolicData, setMetabolicData }) {
                   const time1 = moment(item.startTime, 'h:mm a');
                   const time2 = moment(item.endTime, 'h:mm a');
                   const difference = time2.diff(time1, 'hours');
-                  console.log(difference);
                   return (
                     <View
                       key={item.id}

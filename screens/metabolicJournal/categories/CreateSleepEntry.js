@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-import { Button, Input, useTheme } from '@rneui/themed';
+import { Button, Input, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { View } from 'react-native';
 import 'react-native-get-random-values';
@@ -10,6 +10,7 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
   const { theme } = useTheme();
   const [start, setStart] = useState(new Date(1598051730000));
   const [end, setEnd] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
   const [values, setValues] = useState({
     id: uuidv4(),
@@ -19,20 +20,27 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
 
   const onStartChange = (event, selectedDate) => {
     const currentDate = selectedDate;
-    setShow(false);
     setStart(currentDate);
     setValues({ ...values, id: uuidv4(), startTime: currentDate });
   };
 
   const onEndChange = (event, selectedDate) => {
     const currentDate = selectedDate;
-    setShow(false);
     setEnd(currentDate);
     setValues({ ...values, id: uuidv4(), endTime: currentDate });
   };
 
+  const showMode = (currentMode) => {
+    setMode(currentMode);
+    setShow(true);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
   const showTimepicker = () => {
-    setShow(!show);
+    showMode('time');
   };
 
   const handleSubmit = (v) => {
@@ -50,23 +58,37 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
         margin: '2%',
       }}
     >
-      <View style={{ flex: 1, flexDirection: 'row', alignItems: 'flex-end' }}>
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={start}
-          mode="time"
-          is24Hour
-          onChange={onStartChange}
-          style={{ backgroundColor: theme.colors.primary }}
-        />
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={end}
-          mode="time"
-          is24Hour
-          onChange={onEndChange}
-        />
+      <View style={{ flex: 1, flexDirection: 'row' }}>
+        <View style={{ flex: 1, alignItems: 'flex-start' }}>
+          <Button onPress={showDatepicker} title="Select Start Date" />
+          <Button onPress={showTimepicker} title="Select Start Time" />
+          <Text>Start: {start.toLocaleString()}</Text>
+          {show && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={start}
+              mode={mode}
+              is24Hour
+              onChange={onStartChange}
+            />
+          )}
+        </View>
+        <View style={{ flex: 1, alignItems: 'flex-start' }}>
+          <Button onPress={showDatepicker} title="Select Start Date" />
+          <Button onPress={showTimepicker} title="Select Start Time" />
+          <Text>End: {end.toLocaleString()}</Text>
+          {show && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={end}
+              mode={mode}
+              is24Hour
+              onChange={onEndChange}
+            />
+          )}
+        </View>
       </View>
+
       <Button title="Add sleep" onPress={() => handleSubmit(values)} />
     </View>
   );
