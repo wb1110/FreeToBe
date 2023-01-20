@@ -1,10 +1,11 @@
 /* eslint-disable global-require */
 import { Button, Input, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
   const { theme } = useTheme();
@@ -18,29 +19,49 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
     endTime: end,
   });
 
-  const onStartChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
+  const [isStartDatePickerVisible, setStartDatePickerVisibility] = useState(false);
+  const [isEndDatePickerVisible, setEndDatePickerVisibility] = useState(false);
+
+  const showStartDatePicker = () => {
+    setStartDatePickerVisibility(true);
+    setMode('date');
+  };
+
+  const showStartTimePicker = () => {
+    setStartDatePickerVisibility(true);
+    setMode('time');
+  };
+
+  const showEndDatePicker = () => {
+    setEndDatePickerVisibility(true);
+    setMode('date');
+  };
+
+  const showEndTimePicker = () => {
+    setEndDatePickerVisibility(true);
+    setMode('time');
+  };
+
+  const hideStartDatePicker = () => {
+    setStartDatePickerVisibility(false);
+  };
+
+  const hideEndDatePicker = () => {
+    setEndDatePickerVisibility(false);
+  };
+
+  const handleConfirmStart = (date) => {
+    const currentDate = date;
     setStart(currentDate);
     setValues({ ...values, id: uuidv4(), startTime: currentDate });
+    hideStartDatePicker();
   };
 
-  const onEndChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
+  const handleConfirmEnd = (date) => {
+    const currentDate = date;
     setEnd(currentDate);
     setValues({ ...values, id: uuidv4(), endTime: currentDate });
-  };
-
-  const showMode = (currentMode) => {
-    setMode(currentMode);
-    setShow(true);
-  };
-
-  const showDatepicker = () => {
-    showMode('date');
-  };
-
-  const showTimepicker = () => {
-    showMode('time');
+    hideEndDatePicker();
   };
 
   const handleSubmit = (v) => {
@@ -60,32 +81,26 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
     >
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <View style={{ flex: 1, alignItems: 'flex-start' }}>
-          <Button onPress={showDatepicker} title="Select Start Date" />
-          <Button onPress={showTimepicker} title="Select Start Time" />
+          <Button onPress={showStartDatePicker} title="Select Start Date" />
+          <Button onPress={showStartTimePicker} title="Select Start Time" />
           <Text>Start: {start.toLocaleString()}</Text>
-          {show && (
-            <DateTimePicker
-              testID="dateTimePicker"
-              value={start}
-              mode={mode}
-              is24Hour
-              onChange={onStartChange}
-            />
-          )}
+          <DateTimePickerModal
+            isVisible={isStartDatePickerVisible}
+            mode={mode}
+            onConfirm={handleConfirmStart}
+            onCancel={hideStartDatePicker}
+          />
+          <DateTimePickerModal
+            isVisible={isEndDatePickerVisible}
+            mode={mode}
+            onConfirm={handleConfirmEnd}
+            onCancel={hideEndDatePicker}
+          />
         </View>
         <View style={{ flex: 1, alignItems: 'flex-start' }}>
-          <Button onPress={showDatepicker} title="Select Start Date" />
-          <Button onPress={showTimepicker} title="Select Start Time" />
+          <Button onPress={showEndDatePicker} title="Select Start Date" />
+          <Button onPress={showEndTimePicker} title="Select Start Time" />
           <Text>End: {end.toLocaleString()}</Text>
-          {show && (
-            <DateTimePicker
-              testID="dateTimePicker"
-              value={end}
-              mode={mode}
-              is24Hour
-              onChange={onEndChange}
-            />
-          )}
         </View>
       </View>
 
