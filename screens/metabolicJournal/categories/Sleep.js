@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
-import { Button, Input, Text, useTheme } from '@rneui/themed';
-import { View } from 'react-native';
+import { Text, useTheme } from '@rneui/themed';
 import moment from 'moment';
+import { View } from 'react-native';
 import CreateSleepEntry from './CreateSleepEntry';
 
 export default function Sleep({ metabolicData, setMetabolicData }) {

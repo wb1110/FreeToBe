@@ -1,18 +1,14 @@
 /* eslint-disable global-require */
-import { Button, Input, Text, useTheme } from '@rneui/themed';
+import { Button, Text } from '@rneui/themed';
 import { useState } from 'react';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 import 'react-native-get-random-values';
-import { v4 as uuidv4 } from 'uuid';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
-  const { theme } = useTheme();
-  const [start, setStart] = useState(new Date(1598051730000));
-  const [end, setEnd] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState('date');
-  const [show, setShow] = useState(false);
+  const [start, setStart] = useState(new Date());
+  const [end, setEnd] = useState(new Date());
   const [values, setValues] = useState({
     id: uuidv4(),
     startTime: start,
@@ -24,22 +20,10 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
 
   const showStartDatePicker = () => {
     setStartDatePickerVisibility(true);
-    setMode('date');
-  };
-
-  const showStartTimePicker = () => {
-    setStartDatePickerVisibility(true);
-    setMode('time');
   };
 
   const showEndDatePicker = () => {
     setEndDatePickerVisibility(true);
-    setMode('date');
-  };
-
-  const showEndTimePicker = () => {
-    setEndDatePickerVisibility(true);
-    setMode('time');
   };
 
   const hideStartDatePicker = () => {
@@ -81,25 +65,23 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
     >
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <View style={{ flex: 1, alignItems: 'flex-start' }}>
-          <Button onPress={showStartDatePicker} title="Select Start Date" />
-          <Button onPress={showStartTimePicker} title="Select Start Time" />
+          <Button onPress={showStartDatePicker} title="Select Start" />
           <Text>Start: {start.toLocaleString()}</Text>
           <DateTimePickerModal
             isVisible={isStartDatePickerVisible}
-            mode={mode}
+            mode="datetime"
             onConfirm={handleConfirmStart}
             onCancel={hideStartDatePicker}
           />
           <DateTimePickerModal
             isVisible={isEndDatePickerVisible}
-            mode={mode}
+            mode="datetime"
             onConfirm={handleConfirmEnd}
             onCancel={hideEndDatePicker}
           />
         </View>
         <View style={{ flex: 1, alignItems: 'flex-start' }}>
-          <Button onPress={showEndDatePicker} title="Select Start Date" />
-          <Button onPress={showEndTimePicker} title="Select Start Time" />
+          <Button onPress={showEndDatePicker} title="Select End" />
           <Text>End: {end.toLocaleString()}</Text>
         </View>
       </View>
