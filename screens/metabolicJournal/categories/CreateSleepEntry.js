@@ -7,8 +7,8 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
-  const [start, setStart] = useState(new Date());
-  const [end, setEnd] = useState(new Date());
+  const [start, setStart] = useState('Select Start');
+  const [end, setEnd] = useState('Select End');
   const [values, setValues] = useState({
     id: uuidv4(),
     startTime: start,
@@ -58,31 +58,29 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
   return (
     <View
       style={{
-        alignItems: 'flex-start',
-        flex: 1,
+        alignItems: 'center',
+
         margin: '2%',
       }}
     >
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <View style={{ flex: 1, alignItems: 'flex-start' }}>
-          <Button onPress={showStartDatePicker} title="Select Start" />
-          <Text>Start: {start.toLocaleString()}</Text>
+      <View>
+        <View style={{ alignItems: 'flex-start' }}>
+          <Button onPress={showStartDatePicker} title={`${start}`} />
           <DateTimePickerModal
             isVisible={isStartDatePickerVisible}
             mode="datetime"
             onConfirm={handleConfirmStart}
             onCancel={hideStartDatePicker}
           />
+        </View>
+        <View style={{ alignItems: 'flex-start' }}>
+          <Button onPress={showEndDatePicker} title={`${end}`} />
           <DateTimePickerModal
             isVisible={isEndDatePickerVisible}
             mode="datetime"
             onConfirm={handleConfirmEnd}
             onCancel={hideEndDatePicker}
           />
-        </View>
-        <View style={{ flex: 1, alignItems: 'flex-start' }}>
-          <Button onPress={showEndDatePicker} title="Select End" />
-          <Text>End: {end.toLocaleString()}</Text>
         </View>
       </View>
 

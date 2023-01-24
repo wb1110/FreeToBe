@@ -14,9 +14,10 @@ export default function Sleep({ metabolicData, setMetabolicData }) {
         margin: '2%',
       }}
     >
-      <View style={{ flex: 1 }}>
+      <View>
         <Text h3>Sleep</Text>
-        <View style={{ flex: 1 }}>
+        <View>
+          <CreateSleepEntry metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
           <View style={{ margin: '2%' }}>
             {metabolicData.sleep
               ? metabolicData.sleep.map((item) => {
@@ -40,8 +41,6 @@ export default function Sleep({ metabolicData, setMetabolicData }) {
                   );
                 })
               : null}
-            <Text>Click below to add temperatures before and after a meal</Text>
-            <CreateSleepEntry metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
           </View>
         </View>
       </View>
