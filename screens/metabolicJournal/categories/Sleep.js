@@ -1,11 +1,30 @@
 /* eslint-disable global-require */
 import { Text, useTheme } from '@rneui/themed';
 import moment from 'moment';
+import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import CreateSleepEntry from './CreateSleepEntry';
 
 export default function Sleep({ metabolicData, setMetabolicData }) {
+  const [total, setTotal] = useState(0);
   const { theme } = useTheme();
+
+  const calculateTotal = (sleepData) => {
+    let newTotal = 0;
+    sleepData.forEach((item) => {
+      const time1 = moment(item.startTime, 'h:mm a');
+      const time2 = moment(item.endTime, 'h:mm a');
+      newTotal += time2.diff(time1, 'hours');
+    });
+    setTotal(newTotal);
+  };
+
+  useEffect(() => {
+    if (metabolicData.sleep) {
+      calculateTotal(metabolicData.sleep);
+    }
+  }, [metabolicData.sleep]);
+
   return (
     <View
       style={{
@@ -17,6 +36,7 @@ export default function Sleep({ metabolicData, setMetabolicData }) {
       <View>
         <Text h3>Sleep</Text>
         <View>
+          <Text h4>Total Hours Slept: {total}</Text>
           <CreateSleepEntry metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
           <View style={{ margin: '2%' }}>
             {metabolicData.sleep

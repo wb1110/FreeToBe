@@ -64,6 +64,9 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
         margin: '2%',
       }}
     >
+      <Text h4 style={{ marginBottom: '2%' }}>
+        Add a new sleep session:
+      </Text>
       <View>
         <View style={{ alignItems: 'flex-start' }}>
           <Button
@@ -71,6 +74,7 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
             title={
               start === 'Select Start' ? 'Select Start' : `${moment(start).format('dddd, h:mm a')}`
             }
+            style={{ width: 200, marginBottom: '2%' }}
           />
           <DateTimePickerModal
             isVisible={isStartDatePickerVisible}
@@ -79,10 +83,11 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
             onCancel={hideStartDatePicker}
           />
         </View>
-        <View style={{ alignItems: 'flex-start' }}>
+        <View style={{ alignItems: 'flex-start', marginBottom: '2%' }}>
           <Button
             onPress={showEndDatePicker}
             title={end === 'Select End' ? 'Select End' : `${moment(end).format('dddd, h:mm a')}`}
+            style={{ width: 200 }}
           />
           <DateTimePickerModal
             isVisible={isEndDatePickerVisible}
@@ -92,7 +97,6 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
           />
         </View>
       </View>
-
       <Button title="Add sleep" onPress={() => handleSubmit(values)} />
     </View>
   );
