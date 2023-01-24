@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
 import { Button, Text } from '@rneui/themed';
+import moment from 'moment';
 import { useState } from 'react';
 import { View } from 'react-native';
 import 'react-native-get-random-values';
@@ -65,7 +66,12 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
     >
       <View>
         <View style={{ alignItems: 'flex-start' }}>
-          <Button onPress={showStartDatePicker} title={`${start}`} />
+          <Button
+            onPress={showStartDatePicker}
+            title={
+              start === 'Select Start' ? 'Select Start' : `${moment(start).format('dddd, h:mm a')}`
+            }
+          />
           <DateTimePickerModal
             isVisible={isStartDatePickerVisible}
             mode="datetime"
@@ -74,7 +80,10 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
           />
         </View>
         <View style={{ alignItems: 'flex-start' }}>
-          <Button onPress={showEndDatePicker} title={`${end}`} />
+          <Button
+            onPress={showEndDatePicker}
+            title={end === 'Select End' ? 'Select End' : `${moment(end).format('dddd, h:mm a')}`}
+          />
           <DateTimePickerModal
             isVisible={isEndDatePickerVisible}
             mode="datetime"
