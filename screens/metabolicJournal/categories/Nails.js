@@ -1,9 +1,8 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
-import { Feather } from '@expo/vector-icons';
 import { Image } from '@rneui/base';
-import { Input, Text } from '@rneui/themed';
-import { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { Text } from '@rneui/themed';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
 export default function Nails({ metabolicData, setMetabolicData }) {
@@ -31,10 +30,12 @@ export default function Nails({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Strong"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Calm.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/NailIcons/Strong.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -43,10 +44,12 @@ export default function Nails({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Brittle"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Happy.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/NailIcons/Brittle.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -55,58 +58,12 @@ export default function Nails({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Calcium spots"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category={category}
-              />
-              <ComponentButton
-                buttonTitle="Dry"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category={category}
-              />
-              <ComponentButton
-                buttonTitle="Brittle"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category={category}
-              />
-              <ComponentButton
-                buttonTitle="Losing hair"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category={category}
-              />
-              <ComponentButton
-                buttonTitle="Growing hair"
-                buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/NailIcons/CalciumSpots.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -119,3 +76,19 @@ export default function Nails({ metabolicData, setMetabolicData }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: '50%',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    width: 60,
+    height: 60,
+    margin: -5,
+  },
+});
