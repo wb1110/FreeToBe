@@ -19,7 +19,7 @@ const createNewData = (date) => ({
   bowelMovements: [],
   period: {
     symptoms: [],
-    mentrualFlow: '',
+    menstrualFlow: '',
   },
   fertility: {
     pregnancyTest: '',

@@ -2,19 +2,20 @@
 /* eslint-disable global-require */
 import { Image } from '@rneui/base';
 import { StyleSheet, View } from 'react-native';
-import ComponentButton from '../../ComponentButton';
+import ComponentSubButton from './ComponentSubButton';
 
 export default function Flow({ metabolicData, setMetabolicData }) {
   const category = 'period';
   const subCategory1 = 'symptoms';
-  const subCategory2 = 'mentrualFlow';
+  const subCategory2 = 'menstrualFlow';
+  console.log(metabolicData.period);
   return (
     <View
       style={{
         flexDirection: 'row',
       }}
     >
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Light"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -29,7 +30,7 @@ export default function Flow({ metabolicData, setMetabolicData }) {
         category={category}
         subCategory={subCategory2}
       />
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Medium"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -44,7 +45,7 @@ export default function Flow({ metabolicData, setMetabolicData }) {
         category={category}
         subCategory={subCategory2}
       />
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Heavy"
         buttonIcon={
           <View style={styles.iconContainer}>

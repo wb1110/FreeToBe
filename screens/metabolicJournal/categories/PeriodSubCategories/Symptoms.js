@@ -2,7 +2,7 @@
 /* eslint-disable global-require */
 import { Image } from '@rneui/base';
 import { StyleSheet, View } from 'react-native';
-import ComponentButton from '../../ComponentButton';
+import ComponentSubButton from './ComponentSubButton';
 
 export default function Symptoms({ metabolicData, setMetabolicData }) {
   const category = 'period';
@@ -14,7 +14,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         flexDirection: 'row',
       }}
     >
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Everything is fine"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -29,7 +29,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         category={category}
         subCategory={subCategory1}
       />
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Cramps"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -44,7 +44,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         category={category}
         subCategory={subCategory1}
       />
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Bloating"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -59,7 +59,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         category={category}
         subCategory={subCategory1}
       />
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="High pain"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -74,7 +74,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         category={category}
         subCategory={subCategory1}
       />
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Tender breasts"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -89,7 +89,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         category={category}
         subCategory={subCategory1}
       />
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Head ache"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -104,7 +104,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         category={category}
         subCategory={subCategory1}
       />
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Back ache"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -119,7 +119,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         category={category}
         subCategory={subCategory1}
       />
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Nausea"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -134,7 +134,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         category={category}
         subCategory={subCategory1}
       />
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Fatigue"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -149,7 +149,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         category={category}
         subCategory={subCategory1}
       />
-      <ComponentButton
+      <ComponentSubButton
         buttonTitle="Cravings"
         buttonIcon={
           <View style={styles.iconContainer}>
