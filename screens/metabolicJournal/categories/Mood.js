@@ -1,7 +1,8 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
 import { Image } from '@rneui/base';
 import { Text } from '@rneui/themed';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
 export default function Mood({ metabolicData, setMetabolicData }) {
@@ -28,10 +29,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Calm"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Calm.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/Calm.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -40,10 +43,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Happy"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Happy.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/Happy.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -52,10 +57,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Energetic"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/Energetic.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -64,10 +71,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Mood Swings"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/MoodSwings.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/MoodSwings.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -76,10 +85,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Sad"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Sad.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/Sad.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -88,10 +99,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Irritated"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Irritated.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/Irritated.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -100,10 +113,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Anxious"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Anxious.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/Anxious.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -112,10 +127,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Depressed"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Depressed.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/Depressed.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -124,10 +141,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Guilty"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Guilty.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/Calm.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -136,10 +155,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Apathetic"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Apathetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/Apathetic.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -148,10 +169,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Confused"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Confused.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/Confused.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -160,10 +183,12 @@ export default function Mood({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Self-critical"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/SelfCritical.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/MoodIcons/Self-Critical.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -176,3 +201,19 @@ export default function Mood({ metabolicData, setMetabolicData }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: '50%',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    width: 70,
+    height: 70,
+    margin: -5,
+  },
+});

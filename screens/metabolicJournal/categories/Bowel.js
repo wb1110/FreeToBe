@@ -1,9 +1,10 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
 import { Feather } from '@expo/vector-icons';
 import { Image } from '@rneui/base';
 import { Input, Text } from '@rneui/themed';
 import { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
 export default function Bowel({ metabolicData, setMetabolicData }) {
@@ -34,10 +35,12 @@ export default function Bowel({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Healthy"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Calm.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/BowelMovements/Healthy.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -46,10 +49,12 @@ export default function Bowel({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Constipated"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Happy.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/BowelMovements/Constipated.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -58,10 +63,12 @@ export default function Bowel({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Diarrea"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/BowelMovements/Diarrhea.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -74,3 +81,19 @@ export default function Bowel({ metabolicData, setMetabolicData }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: '50%',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    width: 70,
+    height: 70,
+    margin: -5,
+  },
+});
