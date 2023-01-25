@@ -7,13 +7,13 @@ function ComponentButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicD
   const [selected, setSelected] = useState(false);
 
   useEffect(() => {
-    if (metabolicData[category] !== undefined) {
-      if (metabolicData[category].includes(buttonTitle)) {
-        setSelected(true);
-      } else {
-        setSelected(false);
-      }
-    }
+    // if (metabolicData[category] !== undefined) {
+    //   if (metabolicData[category].includes(buttonTitle)) {
+    //     setSelected(true);
+    //   } else {
+    //     setSelected(false);
+    //   }
+    // }
   }, [metabolicData]);
 
   const handleAddItem = (value) => {

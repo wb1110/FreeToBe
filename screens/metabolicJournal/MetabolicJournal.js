@@ -9,6 +9,7 @@ import Hair from './categories/Hair';
 import MealTemperatures from './categories/MealTemperatures';
 import Mood from './categories/Mood';
 import Nails from './categories/Nails';
+import Period from './categories/Period';
 import PhysicalActivity from './categories/PhysicalActivity';
 import Pulse from './categories/Pulse';
 import Sex from './categories/Sex';
@@ -62,6 +63,7 @@ function MetabolicJournal() {
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Sex metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Bowel metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+        <Period metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <PhysicalActivity metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Skin metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Hair metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
