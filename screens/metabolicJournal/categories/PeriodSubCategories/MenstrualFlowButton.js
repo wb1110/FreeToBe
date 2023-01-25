@@ -3,7 +3,7 @@ import { TouchableOpacity, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 
-function ComponentSubButton({
+function MenstrualFlowButton({
   buttonTitle,
   buttonIcon,
   metabolicData,
@@ -14,7 +14,7 @@ function ComponentSubButton({
 
   useEffect(() => {
     if (metabolicData.period !== undefined) {
-      if (metabolicData.period.symptoms.includes(buttonTitle)) {
+      if (metabolicData.period.menstrualFlow === buttonTitle) {
         setSelected(true);
       } else {
         setSelected(false);
@@ -24,24 +24,13 @@ function ComponentSubButton({
 
   const handleAddItem = (value) => {
     setSelected(!selected);
-    if (metabolicData.period.symptoms.includes(value)) {
-      const removedItemArray = metabolicData.period.symptoms.filter((item) => item !== value);
-      setMetabolicData({
-        ...metabolicData,
-        period: {
-          ...metabolicData.period,
-          symptoms: removedItemArray,
-        },
-      });
-    } else {
-      setMetabolicData({
-        ...metabolicData,
-        period: {
-          ...metabolicData.period,
-          symptoms: [...metabolicData.period.symptoms, value],
-        },
-      });
-    }
+    setMetabolicData({
+      ...metabolicData,
+      period: {
+        ...metabolicData.period,
+        menstrualFlow: value,
+      },
+    });
   };
   const changeDisplay = () => {
     if (selected) {
@@ -75,4 +64,4 @@ function ComponentSubButton({
   );
 }
 
-export default ComponentSubButton;
+export default MenstrualFlowButton;

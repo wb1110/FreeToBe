@@ -2,7 +2,7 @@
 /* eslint-disable global-require */
 import { Image } from '@rneui/base';
 import { StyleSheet, View } from 'react-native';
-import ComponentSubButton from './ComponentSubButton';
+import SymptomsButton from './SymptomsButton';
 
 export default function Symptoms({ metabolicData, setMetabolicData }) {
   const category = 'period';
@@ -12,7 +12,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         flexDirection: 'row',
       }}
     >
-      <ComponentSubButton
+      <SymptomsButton
         buttonTitle="Everything is fine"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -26,7 +26,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         setMetabolicData={setMetabolicData}
         category={category}
       />
-      <ComponentSubButton
+      <SymptomsButton
         buttonTitle="Cramps"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -40,7 +40,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         setMetabolicData={setMetabolicData}
         category={category}
       />
-      <ComponentSubButton
+      <SymptomsButton
         buttonTitle="Bloating"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -54,7 +54,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         setMetabolicData={setMetabolicData}
         category={category}
       />
-      <ComponentSubButton
+      <SymptomsButton
         buttonTitle="High pain"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -68,7 +68,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         setMetabolicData={setMetabolicData}
         category={category}
       />
-      <ComponentSubButton
+      <SymptomsButton
         buttonTitle="Tender breasts"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -82,7 +82,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         setMetabolicData={setMetabolicData}
         category={category}
       />
-      <ComponentSubButton
+      <SymptomsButton
         buttonTitle="Head ache"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -96,7 +96,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         setMetabolicData={setMetabolicData}
         category={category}
       />
-      <ComponentSubButton
+      <SymptomsButton
         buttonTitle="Back ache"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -110,7 +110,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         setMetabolicData={setMetabolicData}
         category={category}
       />
-      <ComponentSubButton
+      <SymptomsButton
         buttonTitle="Nausea"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -124,7 +124,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         setMetabolicData={setMetabolicData}
         category={category}
       />
-      <ComponentSubButton
+      <SymptomsButton
         buttonTitle="Fatigue"
         buttonIcon={
           <View style={styles.iconContainer}>
@@ -138,7 +138,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         setMetabolicData={setMetabolicData}
         category={category}
       />
-      <ComponentSubButton
+      <SymptomsButton
         buttonTitle="Cravings"
         buttonIcon={
           <View style={styles.iconContainer}>
