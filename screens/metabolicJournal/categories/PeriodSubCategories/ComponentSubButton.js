@@ -13,27 +13,33 @@ function ComponentSubButton({
   const [selected, setSelected] = useState(false);
 
   useEffect(() => {
-    // if (metabolicData[category] !== undefined) {
-    //   if (metabolicData[category].includes(buttonTitle)) {
-    //     setSelected(true);
-    //   } else {
-    //     setSelected(false);
-    //   }
-    // }
+    if (metabolicData.period !== undefined) {
+      if (metabolicData.period.symptoms.includes(buttonTitle)) {
+        setSelected(true);
+      } else {
+        setSelected(false);
+      }
+    }
   }, [metabolicData]);
 
   const handleAddItem = (value) => {
     setSelected(!selected);
-    if (metabolicData[category].includes(value)) {
-      const removedItemArray = metabolicData[category].filter((item) => item !== value);
+    if (metabolicData.period.symptoms.includes(value)) {
+      const removedItemArray = metabolicData.period.symptoms.filter((item) => item !== value);
       setMetabolicData({
         ...metabolicData,
-        [category]: removedItemArray,
+        period: {
+          ...metabolicData.period,
+          symptoms: removedItemArray,
+        },
       });
     } else {
       setMetabolicData({
         ...metabolicData,
-        [category]: [...metabolicData[category], value],
+        period: {
+          ...metabolicData.period,
+          symptoms: [...metabolicData.period.symptoms, value],
+        },
       });
     }
   };

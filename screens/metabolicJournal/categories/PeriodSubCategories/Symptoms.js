@@ -6,8 +6,6 @@ import ComponentSubButton from './ComponentSubButton';
 
 export default function Symptoms({ metabolicData, setMetabolicData }) {
   const category = 'period';
-  const subCategory1 = 'symptoms';
-  const subCategory2 = 'mentrualFlow';
   return (
     <View
       style={{
@@ -27,7 +25,6 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         metabolicData={metabolicData}
         setMetabolicData={setMetabolicData}
         category={category}
-        subCategory={subCategory1}
       />
       <ComponentSubButton
         buttonTitle="Cramps"
@@ -42,7 +39,6 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         metabolicData={metabolicData}
         setMetabolicData={setMetabolicData}
         category={category}
-        subCategory={subCategory1}
       />
       <ComponentSubButton
         buttonTitle="Bloating"
@@ -57,7 +53,6 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         metabolicData={metabolicData}
         setMetabolicData={setMetabolicData}
         category={category}
-        subCategory={subCategory1}
       />
       <ComponentSubButton
         buttonTitle="High pain"
@@ -72,7 +67,6 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         metabolicData={metabolicData}
         setMetabolicData={setMetabolicData}
         category={category}
-        subCategory={subCategory1}
       />
       <ComponentSubButton
         buttonTitle="Tender breasts"
@@ -87,7 +81,6 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         metabolicData={metabolicData}
         setMetabolicData={setMetabolicData}
         category={category}
-        subCategory={subCategory1}
       />
       <ComponentSubButton
         buttonTitle="Head ache"
@@ -102,7 +95,6 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         metabolicData={metabolicData}
         setMetabolicData={setMetabolicData}
         category={category}
-        subCategory={subCategory1}
       />
       <ComponentSubButton
         buttonTitle="Back ache"
@@ -117,7 +109,6 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         metabolicData={metabolicData}
         setMetabolicData={setMetabolicData}
         category={category}
-        subCategory={subCategory1}
       />
       <ComponentSubButton
         buttonTitle="Nausea"
@@ -132,7 +123,6 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         metabolicData={metabolicData}
         setMetabolicData={setMetabolicData}
         category={category}
-        subCategory={subCategory1}
       />
       <ComponentSubButton
         buttonTitle="Fatigue"
@@ -147,7 +137,6 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         metabolicData={metabolicData}
         setMetabolicData={setMetabolicData}
         category={category}
-        subCategory={subCategory1}
       />
       <ComponentSubButton
         buttonTitle="Cravings"
@@ -162,7 +151,6 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
         metabolicData={metabolicData}
         setMetabolicData={setMetabolicData}
         category={category}
-        subCategory={subCategory1}
       />
     </View>
   );

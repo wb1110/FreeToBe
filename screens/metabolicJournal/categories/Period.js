@@ -25,7 +25,7 @@ export default function Period({ metabolicData, setMetabolicData }) {
             <Text h4>Symptoms</Text>
             <Symptoms metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
             <Text h4>Menstrual Flow</Text>
-            <Flow metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+            {/* <Flow metabolicData={metabolicData} setMetabolicData={setMetabolicData} /> */}
           </View>
         </View>
       </ScrollView>
