@@ -1,8 +1,6 @@
 /* eslint-disable global-require */
-import { Feather } from '@expo/vector-icons';
 import { Image } from '@rneui/base';
 import { Text } from '@rneui/themed';
-import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import ComponentButton from '../ComponentButton';
 

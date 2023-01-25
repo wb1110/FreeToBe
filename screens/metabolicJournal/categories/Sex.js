@@ -1,7 +1,8 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
 import { Image } from '@rneui/base';
 import { Text } from '@rneui/themed';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
 export default function Sex({ metabolicData, setMetabolicData }) {
@@ -28,10 +29,12 @@ export default function Sex({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Did not have sex"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Calm.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/SexIcons/DidntHaveSex.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -40,10 +43,12 @@ export default function Sex({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Protected Sex"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Happy.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/SexIcons/ProtectedSex.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -52,10 +57,12 @@ export default function Sex({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Unprotected Sex"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/SexIcons/UnprotectedSex.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -64,10 +71,12 @@ export default function Sex({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Masturbation"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/MoodSwings.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/SexIcons/Masturbation.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -76,10 +85,12 @@ export default function Sex({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="High Sex Drive"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Sad.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/SexIcons/HighSexDrive.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -116,3 +127,19 @@ export default function Sex({ metabolicData, setMetabolicData }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: '50%',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    width: 60,
+    height: 60,
+    margin: -5,
+  },
+});
