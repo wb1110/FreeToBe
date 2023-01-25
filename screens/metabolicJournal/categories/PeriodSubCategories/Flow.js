@@ -6,7 +6,6 @@ import MenstrualFlowButton from './MenstrualFlowButton';
 
 export default function Flow({ metabolicData, setMetabolicData }) {
   const category = 'period';
-  const subCategory1 = 'symptoms';
   const subCategory2 = 'menstrualFlow';
   return (
     <View

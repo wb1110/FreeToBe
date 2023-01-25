@@ -3,7 +3,7 @@ import { TouchableOpacity, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 
-function SymptomsButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicData, category }) {
+function SymptomsButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicData }) {
   const [selected, setSelected] = useState(false);
 
   useEffect(() => {
@@ -14,6 +14,7 @@ function SymptomsButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicDa
         setSelected(false);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [metabolicData]);
 
   const handleAddItem = (value) => {

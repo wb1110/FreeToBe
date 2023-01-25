@@ -3,13 +3,7 @@ import { TouchableOpacity, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 
-function MenstrualFlowButton({
-  buttonTitle,
-  buttonIcon,
-  metabolicData,
-  setMetabolicData,
-  category,
-}) {
+function MenstrualFlowButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicData }) {
   const [selected, setSelected] = useState(false);
 
   useEffect(() => {
@@ -20,6 +14,7 @@ function MenstrualFlowButton({
         setSelected(false);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [metabolicData]);
 
   const handleAddItem = (value) => {

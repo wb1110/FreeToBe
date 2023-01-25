@@ -6,7 +6,6 @@ import useMetabolicStore from '../../state/MetabolicStore';
 import Calendar from './Calendar';
 import Bowel from './categories/Bowel';
 import Hair from './categories/Hair';
-import MealTemperatures from './categories/MealTemperatures';
 import Mood from './categories/Mood';
 import Nails from './categories/Nails';
 import Period from './categories/Period';
