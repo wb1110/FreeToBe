@@ -1,13 +1,13 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
-import { Text } from '@rneui/themed';
+import { Button, Text } from '@rneui/themed';
 import { ScrollView, View } from 'react-native';
-import { Calendar } from 'react-native-calendars';
+import { Calendar, CalendarList } from 'react-native-calendars';
 import { useMemo, useState } from 'react';
 import Flow from './PeriodSubCategories/Flow';
 import Symptoms from './PeriodSubCategories/Symptoms';
 
-export default function Period({ metabolicData, setMetabolicData }) {
+export default function Period({ metabolicData, setMetabolicData, navigation }) {
   const [date, setDate] = useState(new Date());
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
@@ -39,10 +39,10 @@ export default function Period({ metabolicData, setMetabolicData }) {
         <View style={{ flex: 1 }}>
           <Text h3>Period</Text>
           <View style={{ flex: 1, alignItems: 'flex-start' }}>
-            <Calendar
-              markedDates={marked}
-              onDayPress={(day) => {
-                setSelected(day.dateString);
+            <Button
+              title="Open Calendar"
+              onPress={() => {
+                navigation.navigate('MJCalendar');
               }}
             />
             <Text h4>Symptoms</Text>

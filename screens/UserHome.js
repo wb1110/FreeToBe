@@ -6,6 +6,7 @@ import { Image } from 'react-native';
 import ftbnLogo from '../assets/icons/ftbnLogo.png';
 import HomeStackScreen from './homeTab/HomeStackScreen';
 import MetabolicJournal from './metabolicJournal/MetabolicJournal';
+import MetabolicJournalStackScreen from './metabolicJournal/MetabolicJournalStackScreen';
 import SettingsStackScreen from './settings/SettingsStackScreen';
 import TrackerStackScreen from './tracker/TrackerStackScreen';
 
@@ -49,7 +50,7 @@ export default function UserHome() {
       })}
     >
       <Tab.Screen name="Tracker" component={TrackerStackScreen} />
-      <Tab.Screen name="Metabolic Journal" component={MetabolicJournal} />
+      <Tab.Screen name="Metabolic Journal" component={MetabolicJournalStackScreen} />
       <Tab.Screen
         name="Home"
         component={HomeStackScreen}

@@ -17,7 +17,7 @@ import Sleep from './categories/Sleep';
 import Temperature from './categories/Temperature';
 import createNewData from './functions';
 
-function MetabolicJournal() {
+function MetabolicJournal({ navigation }) {
   // metabolic state needs to be created as well as async storage
   // there is no connection to the tracker or home tab at this time, but eventually the app will need to look for a correlation between the foods consumed on that day and what was recorded in the journal to provide helpful hints to the user
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
@@ -62,7 +62,11 @@ function MetabolicJournal() {
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Sex metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Bowel metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
-        <Period metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+        <Period
+          metabolicData={metabolicData}
+          setMetabolicData={setMetabolicData}
+          navigation={navigation}
+        />
         <PhysicalActivity metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Skin metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Hair metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
