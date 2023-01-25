@@ -144,7 +144,7 @@ export default function Mood({ metabolicData, setMetabolicData }) {
                   <View style={styles.iconContainer}>
                     <Image
                       style={styles.icon}
-                      source={require('../../../assets/icons/MoodIcons/Calm.png')}
+                      source={require('../../../assets/icons/MoodIcons/Guilty.png')}
                     />
                   </View>
                 }

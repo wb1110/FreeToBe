@@ -1,9 +1,10 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
 import { Feather } from '@expo/vector-icons';
 import { Image } from '@rneui/base';
 import { Input, Text } from '@rneui/themed';
 import { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
 export default function Hair({ metabolicData, setMetabolicData }) {
@@ -31,10 +32,12 @@ export default function Hair({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Vibrant"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Calm.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/HairIcons/Vibrant.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -43,10 +46,12 @@ export default function Hair({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Dull"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Happy.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/HairIcons/Dull.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -55,10 +60,12 @@ export default function Hair({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Oily"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/HairIcons/Oily.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -67,10 +74,12 @@ export default function Hair({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Dry"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/HairIcons/Dry.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -79,10 +88,12 @@ export default function Hair({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Brittle"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/HairIcons/Brittle.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -91,10 +102,12 @@ export default function Hair({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Losing hair"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/HairIcons/LosingHair.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -103,10 +116,12 @@ export default function Hair({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Growing hair"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/HairIcons/GrowingHair.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -119,3 +134,19 @@ export default function Hair({ metabolicData, setMetabolicData }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: '50%',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    width: 70,
+    height: 70,
+    margin: -5,
+  },
+});

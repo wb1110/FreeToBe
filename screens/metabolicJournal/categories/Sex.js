@@ -32,7 +32,7 @@ export default function Sex({ metabolicData, setMetabolicData }) {
                   <View style={styles.iconContainer}>
                     <Image
                       style={styles.icon}
-                      source={require('../../../assets/icons/SexIcons/DidntHaveSex.png')}
+                      source={require('../../../assets/icons/SexDrive/DidntHaveSex.png')}
                     />
                   </View>
                 }
@@ -46,7 +46,7 @@ export default function Sex({ metabolicData, setMetabolicData }) {
                   <View style={styles.iconContainer}>
                     <Image
                       style={styles.icon}
-                      source={require('../../../assets/icons/SexIcons/ProtectedSex.png')}
+                      source={require('../../../assets/icons/SexDrive/ProtectedSex.png')}
                     />
                   </View>
                 }
@@ -60,7 +60,7 @@ export default function Sex({ metabolicData, setMetabolicData }) {
                   <View style={styles.iconContainer}>
                     <Image
                       style={styles.icon}
-                      source={require('../../../assets/icons/SexIcons/UnprotectedSex.png')}
+                      source={require('../../../assets/icons/SexDrive/UnprotectedSex.png')}
                     />
                   </View>
                 }
@@ -74,7 +74,7 @@ export default function Sex({ metabolicData, setMetabolicData }) {
                   <View style={styles.iconContainer}>
                     <Image
                       style={styles.icon}
-                      source={require('../../../assets/icons/SexIcons/Masturbation.png')}
+                      source={require('../../../assets/icons/SexDrive/Masturbation.png')}
                     />
                   </View>
                 }
@@ -88,7 +88,7 @@ export default function Sex({ metabolicData, setMetabolicData }) {
                   <View style={styles.iconContainer}>
                     <Image
                       style={styles.icon}
-                      source={require('../../../assets/icons/SexIcons/HighSexDrive.png')}
+                      source={require('../../../assets/icons/SexDrive/HighSexDrive.png')}
                     />
                   </View>
                 }
@@ -99,10 +99,12 @@ export default function Sex({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Low Sex Drive"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Irritated.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/SexDrive/LowSexDrive.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -111,10 +113,12 @@ export default function Sex({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="No Sex Drive"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Anxious.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/SexDrive/NoSexDrive.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
