@@ -1,9 +1,10 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
 import { Feather } from '@expo/vector-icons';
 import { Image } from '@rneui/base';
 import { Input, Text } from '@rneui/themed';
 import { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
 export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
@@ -31,10 +32,12 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Did not exercise"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Calm.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/PhysicalActivity/DidNotExercise.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -43,10 +46,12 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Weight training"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Happy.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/PhysicalActivity/WeightTraining.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -55,10 +60,12 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Aerobic / Dancing"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/PhysicalActivity/Aerobic_Dance.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -67,10 +74,12 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Walk"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/PhysicalActivity/Walking.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -79,10 +88,12 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Running"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/PhysicalActivity/Running.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -91,10 +102,12 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Yoga"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/PhysicalActivity/Yoga.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -103,10 +116,12 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Cycling"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/PhysicalActivity/Cycling.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -115,10 +130,12 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Team sports"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/PhysicalActivity/TeamSports.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -127,10 +144,12 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Swimming"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/PhysicalActivity/Swimming.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -139,10 +158,12 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
               <ComponentButton
                 buttonTitle="Pilates"
                 buttonIcon={
-                  <Image
-                    style={{ width: 50, height: 50 }}
-                    source={require('../../../assets/icons/Energetic.png')}
-                  />
+                  <View style={styles.iconContainer}>
+                    <Image
+                      style={styles.icon}
+                      source={require('../../../assets/icons/PhysicalActivity/Pilates.png')}
+                    />
+                  </View>
                 }
                 metabolicData={metabolicData}
                 setMetabolicData={setMetabolicData}
@@ -155,3 +176,19 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: '50%',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    width: 70,
+    height: 70,
+    margin: -5,
+  },
+});
