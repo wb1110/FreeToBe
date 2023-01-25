@@ -7,7 +7,7 @@ import { useMemo, useState } from 'react';
 import Flow from './PeriodSubCategories/Flow';
 import Symptoms from './PeriodSubCategories/Symptoms';
 
-export default function Period({ metabolicData, setMetabolicData, navigation }) {
+export default function Period({ metabolicData, setMetabolicData, navigation, metabolicJournal }) {
   const [date, setDate] = useState(new Date());
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;

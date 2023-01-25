@@ -66,6 +66,7 @@ function MetabolicJournal({ navigation }) {
           metabolicData={metabolicData}
           setMetabolicData={setMetabolicData}
           navigation={navigation}
+          metabolicJournal={metabolicJournal}
         />
         <PhysicalActivity metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Skin metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
