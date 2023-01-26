@@ -10,10 +10,11 @@ export default function PeriodCalendar() {
   const [selected, setSelected] = useState(new Date());
 
   function predictOvulationNextPeriod(data, date) {
-    const previousDate = moment(date, 'MM/DD/YYYY').subtract(1, 'days');
-    const filteredData = data.filter(
-      (item) => item.date === previousDate && item.period.menstrualFlow === ''
-    );
+    const previousDate = moment(date, 'MM/DD/YYYY').subtract(1, 'days').format('MM/DD/YYYY');
+    console.log(date, previousDate);
+    const filteredData = data.filter((item) => item.date === previousDate);
+    console.log(data, 'data');
+    console.log(filteredData, 'first day of period');
     if (filteredData.length === 0) {
       const predictedPeriod = moment(date, 'MM/DD/YYYY').add(28, 'days').format('YYYY-MM-DD');
       const predictedOvulation = moment(date, 'MM/DD/YYYY').add(14, 'days').format('YYYY-MM-DD');
@@ -33,11 +34,11 @@ export default function PeriodCalendar() {
       const ovulationDate = predictOvulationNextPeriod(
         metabolicJournal,
         item.date
-      ).predictedOvulation;
+      )?.predictedOvulation;
       const nextPeriodDate = predictOvulationNextPeriod(
         metabolicJournal,
         item.date
-      ).predictedPeriod;
+      )?.predictedPeriod;
       marked[formatDate] = {
         selected: true,
         selectedColor: '#FF647F',
