@@ -14,6 +14,7 @@ function ComponentButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicD
         setSelected(false);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [metabolicData]);
 
   const handleAddItem = (value) => {

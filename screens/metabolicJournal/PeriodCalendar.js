@@ -20,8 +20,18 @@ export default function PeriodCalendar() {
     });
     return marked;
   };
-
-  // console.log(moment('01/22/2023', 'MM/DD/YYYY').format('YYYY-MM-DD'));
+  const filterByUnprotectedSex = (data) => {
+    const marked = {};
+    const filteredData = data.filter((item) => item.sex.includes('Unprotected Sex'));
+    filteredData.forEach((item) => {
+      const formatDate = moment(item.date, 'MM/DD/YYYY').format('YYYY-MM-DD');
+      marked[formatDate] = {
+        marked: true,
+        dotColor: 'red',
+      };
+    });
+    return marked;
+  };
 
   const marked = useMemo(() => {
     const markedDates = {};
@@ -33,6 +43,7 @@ export default function PeriodCalendar() {
     return {
       ...markedDates,
       ...filterByPeriod(metabolicJournal, { selectedColor: '#FF647F' }),
+      ...filterByUnprotectedSex(metabolicJournal, { dotColor: 'red' }),
     };
   }, [selected, metabolicJournal]);
 
