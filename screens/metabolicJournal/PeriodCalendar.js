@@ -44,11 +44,12 @@ export default function PeriodCalendar() {
       };
       marked[ovulationDate] = {
         selected: true,
-        selectedColor: 'yellow',
+        selectedColor: '#ADD8E6',
       };
       marked[nextPeriodDate] = {
         selected: true,
-        selectedColor: 'blue',
+        selectedColor: '#FFFFFF',
+        selectedTextColor: '#FF647F',
       };
     });
     return marked;
