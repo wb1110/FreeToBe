@@ -36,8 +36,6 @@ export default function PeriodCalendar() {
     };
   }, [selected, metabolicJournal]);
 
-  console.log(marked);
-
   return (
     <View style={{ alignItems: 'flex-start' }}>
       <CalendarList
