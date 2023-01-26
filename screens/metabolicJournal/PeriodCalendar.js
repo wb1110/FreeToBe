@@ -10,13 +10,13 @@ export default function PeriodCalendar() {
   const [selected, setSelected] = useState(new Date());
 
   function predictOvulationNextPeriod(data, date) {
-    const previousDate = moment(date).subtract(1, 'days').format('MM/DD/YYYY');
+    const previousDate = moment(date, 'MM/DD/YYYY').subtract(1, 'days');
     const filteredData = data.filter(
       (item) => item.date === previousDate && item.period.menstrualFlow === ''
     );
-    if (filteredData) {
-      const predictedPeriod = moment(date).add(28, 'days').format('YYYY-MM-DD');
-      const predictedOvulation = moment(date).add(14, 'days').format('YYYY-MM-DD');
+    if (filteredData.length === 0) {
+      const predictedPeriod = moment(date, 'MM/DD/YYYY').add(28, 'days').format('YYYY-MM-DD');
+      const predictedOvulation = moment(date, 'MM/DD/YYYY').add(14, 'days').format('YYYY-MM-DD');
       return {
         predictedPeriod,
         predictedOvulation,
