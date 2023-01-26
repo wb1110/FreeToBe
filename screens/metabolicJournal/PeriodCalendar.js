@@ -41,9 +41,9 @@ export default function PeriodCalendar() {
       selectedTextColor: '#000000',
     };
     return {
+      ...filterByUnprotectedSex(metabolicJournal),
+      ...filterByPeriod(metabolicJournal),
       ...markedDates,
-      ...filterByPeriod(metabolicJournal, { selectedColor: '#FF647F' }),
-      ...filterByUnprotectedSex(metabolicJournal, { dotColor: 'red' }),
     };
   }, [selected, metabolicJournal]);
 
