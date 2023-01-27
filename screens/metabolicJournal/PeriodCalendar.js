@@ -2,9 +2,10 @@ import { useMemo, useState } from 'react';
 import { View } from 'react-native';
 import { CalendarList } from 'react-native-calendars';
 import moment from 'moment';
+import { Button } from '@rneui/themed';
 import useMetabolicStore from '../../state/MetabolicStore';
 
-export default function PeriodCalendar() {
+export default function PeriodCalendar({ navigation }) {
   const metabolicState = useMetabolicStore();
   const { metabolicJournal } = metabolicState;
   const [selected, setSelected] = useState(new Date());
@@ -95,13 +96,22 @@ export default function PeriodCalendar() {
   }, [selected, metabolicJournal]);
 
   return (
-    <View style={{ alignItems: 'flex-start' }}>
-      <CalendarList
-        markedDates={marked}
-        onDayPress={(day) => {
-          setSelected(day.dateString);
-        }}
-      />
+    <View style={{ alignItems: 'center', flex: 1 }}>
+      <View>
+        <CalendarList
+          markedDates={marked}
+          onDayPress={(day) => {
+            setSelected(day.dateString);
+          }}
+        />
+      </View>
+      <View style={{ position: 'absolute', bottom: 10, zIndex: 50 }}>
+        <Button
+          title="Close Calendar"
+          onPress={() => navigation.goBack()}
+          containerStyle={{ borderRadius: 20 }}
+        />
+      </View>
     </View>
   );
 }
