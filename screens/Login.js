@@ -45,7 +45,7 @@ function Login({ navigation }) {
           <Container>
             <LogoTitle />
             <Input label="Email" />
-            <Input secureTextEntry="true" label="Password" />
+            <Input secureTextEntry label="Password" />
             <StandardButton
               onPress={() => {
                 navigation.navigate('UserHome', { screen: 'Home' });

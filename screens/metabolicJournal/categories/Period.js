@@ -2,28 +2,11 @@
 /* eslint-disable global-require */
 import { Button, Text } from '@rneui/themed';
 import { ScrollView, View } from 'react-native';
-import { Calendar, CalendarList } from 'react-native-calendars';
-import { useMemo, useState } from 'react';
 import Flow from './PeriodSubCategories/Flow';
 import Symptoms from './PeriodSubCategories/Symptoms';
 
-export default function Period({ metabolicData, setMetabolicData, navigation, metabolicJournal }) {
-  const [date, setDate] = useState(new Date());
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate;
-    setDate(currentDate);
-  };
-  const [selected, setSelected] = useState(new Date());
-  const marked = useMemo(
-    () => ({
-      [selected]: {
-        selected: true,
-        selectedColor: '#00000050',
-        selectedTextColor: '#000000',
-      },
-    }),
-    [selected]
-  );
+export default function Period({ metabolicData, setMetabolicData, navigation }) {
+  
   return (
     <View
       style={{

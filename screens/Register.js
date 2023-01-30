@@ -27,7 +27,7 @@ function Register({ navigation }) {
           <Container>
             <LogoTitle />
             <Input label="Email" />
-            <Input secureTextEntry="true" label="Password" />
+            <Input secureTextEntry label="Password" />
             <Input label="Full name" />
             <StandardButton onPress={() => navigation.navigate('Welcome')} title="Sign Up" />
             <View

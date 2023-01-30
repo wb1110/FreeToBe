@@ -1,14 +1,17 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { View } from 'react-native';
 import { CalendarList } from 'react-native-calendars';
-import moment from 'moment';
 import { Button } from '@rneui/themed';
 import useMetabolicStore from '../../state/MetabolicStore';
 import { filterByUnprotectedSex, filterByPeriod } from './calendarFilterFunctions/FilterFunctions';
 
 export default function PeriodCalendar({ navigation }) {
   const { metabolicJournal } = useMetabolicStore();
-  const [selectedDate, setSelected] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  useEffect(() => {
+    setSelectedDate(new Date());
+  }, []);
 
   const marked = useMemo(() => {
     const markedDates = {};
@@ -30,7 +33,7 @@ export default function PeriodCalendar({ navigation }) {
         <CalendarList
           markedDates={marked}
           onDayPress={(day) => {
-            setSelected(day.dateString);
+            setSelectedDate(day.dateString);
           }}
         />
       </View>
