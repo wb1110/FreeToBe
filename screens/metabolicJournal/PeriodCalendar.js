@@ -13,6 +13,24 @@ export default function PeriodCalendar({ navigation }) {
     setSelectedDate(new Date());
   }, []);
 
+  function mergeMarkedDates(markedDatesArray) {
+    const mergedMarkedDates = {};
+    markedDatesArray.forEach((markedDates) => {
+      Object.keys(markedDates).forEach((date) => {
+        if (!mergedMarkedDates[date]) {
+          mergedMarkedDates[date] = markedDates[date];
+        } else {
+          mergedMarkedDates[date] = {
+            ...mergedMarkedDates[date],
+            ...markedDates[date],
+          };
+        }
+      });
+    });
+    return mergedMarkedDates;
+  }
+  
+
   const marked = useMemo(() => {
     const markedDates = {};
     markedDates[selectedDate] = {
@@ -20,13 +38,14 @@ export default function PeriodCalendar({ navigation }) {
       selectedColor: '#00000050',
       selectedTextColor: '#000000',
     };
-    return {
-      ...filterByUnprotectedSex(metabolicJournal),
-      ...filterByPeriod(metabolicJournal),
-      ...filterByOvulationWindow(metabolicJournal),
-      ...markedDates,
-    };
+    return mergeMarkedDates([
+      filterByUnprotectedSex(metabolicJournal),
+      filterByPeriod(metabolicJournal),
+      filterByOvulationWindow(metabolicJournal),
+      markedDates,
+    ]);
   }, [selectedDate, metabolicJournal]);
+  
 
   return (
     <View style={{ alignItems: 'center', flex: 1 }}>
