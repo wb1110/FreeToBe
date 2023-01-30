@@ -52,6 +52,7 @@ export default function PeriodCalendar({ navigation }) {
       <View>
         <CalendarList
           markedDates={marked}
+          markingType="custom"
           onDayPress={(day) => {
             setSelectedDate(day.dateString);
           }}

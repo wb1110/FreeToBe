@@ -51,12 +51,35 @@ export const filterByPeriod = (data) => {
     };
     marked[ovulationDate] = {
       selected: true,
-      selectedColor: '#ADD8E6',
+      selectedColor: 'white',
+      customStyles: {
+        container: {
+          backgroundColor: 'white',
+          borderColor: 'blue',
+          borderWidth: 2,
+          borderStyle: 'dotted',
+        },
+        text: {
+          color: 'blue',
+          fontWeight: 'bold',
+        },
+      },
     };
     marked[nextPeriodDate] = {
       selected: true,
-      selectedColor: '#FFFFFF',
-      selectedTextColor: '#FF647F',
+      selectedColor: 'white',
+      customStyles: {
+        container: {
+          backgroundColor: 'white',
+          borderColor: '#FF647F',
+          borderWidth: 2,
+          borderStyle: 'dotted',
+        },
+        text: {
+          color: '#FF647F',
+          fontWeight: 'bold',
+        },
+      },
     };
   });
   return marked;
@@ -75,8 +98,9 @@ export const filterByOvulationWindow = (data) => {
       const windowDates = getOvulationWindowRange(ovulationDate);
       windowDates.forEach((date) => {
         marked[date] = {
-          marked: true,
-          dotColor: 'blue',
+          selected: true,
+          selectedTextColor: 'blue',
+          selectedColor: 'white',
         };
       });
     }
