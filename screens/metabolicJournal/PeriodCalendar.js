@@ -9,11 +9,11 @@ import { filterByUnprotectedSex, filterByPeriod } from './calendarFilterFunction
 export default function PeriodCalendar({ navigation }) {
   const metabolicState = useMetabolicStore();
   const { metabolicJournal } = metabolicState;
-  const [selected, setSelected] = useState(new Date());
+  const [selectedDate, setSelected] = useState(new Date());
 
   const marked = useMemo(() => {
     const markedDates = {};
-    markedDates[selected] = {
+    markedDates[selectedDate] = {
       selected: true,
       selectedColor: '#00000050',
       selectedTextColor: '#000000',
@@ -23,7 +23,7 @@ export default function PeriodCalendar({ navigation }) {
       ...filterByPeriod(metabolicJournal),
       ...markedDates,
     };
-  }, [selected, metabolicJournal]);
+  }, [selectedDate, metabolicJournal]);
 
   return (
     <View style={{ alignItems: 'center', flex: 1 }}>
