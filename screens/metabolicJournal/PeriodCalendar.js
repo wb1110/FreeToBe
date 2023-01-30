@@ -7,8 +7,7 @@ import useMetabolicStore from '../../state/MetabolicStore';
 import { filterByUnprotectedSex, filterByPeriod } from './calendarFilterFunctions/FilterFunctions';
 
 export default function PeriodCalendar({ navigation }) {
-  const metabolicState = useMetabolicStore();
-  const { metabolicJournal } = metabolicState;
+  const { metabolicJournal } = useMetabolicStore();
   const [selectedDate, setSelected] = useState(new Date());
 
   const marked = useMemo(() => {
