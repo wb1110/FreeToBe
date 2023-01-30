@@ -1,5 +1,5 @@
 import produce from 'immer';
-import create from 'zustand';
+import { create } from 'zustand';
 import { storeThreeDayLog } from '../functions/Posts';
 
 const useThreeDayLogStore = create((set) => ({
