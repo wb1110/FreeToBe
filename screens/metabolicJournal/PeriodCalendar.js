@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { CalendarList } from 'react-native-calendars';
 import { Button } from '@rneui/themed';
 import useMetabolicStore from '../../state/MetabolicStore';
-import { filterByUnprotectedSex, filterByPeriod } from './calendarFilterFunctions/FilterFunctions';
+import { filterByUnprotectedSex, filterByPeriod, filterByOvulationWindow } from './calendarFilterFunctions/FilterFunctions';
 
 export default function PeriodCalendar({ navigation }) {
   const { metabolicJournal } = useMetabolicStore();
@@ -23,6 +23,7 @@ export default function PeriodCalendar({ navigation }) {
     return {
       ...filterByUnprotectedSex(metabolicJournal),
       ...filterByPeriod(metabolicJournal),
+      ...filterByOvulationWindow(metabolicJournal),
       ...markedDates,
     };
   }, [selectedDate, metabolicJournal]);

@@ -4,8 +4,7 @@ import moment from 'moment';
 export function predictOvulationNextPeriod(data, date) {
   // Creates a previous day variable based on the period date passed in
   const previousDate = moment(date, 'MM/DD/YYYY').subtract(1, 'days').format('MM/DD/YYYY');
-  // What it's currently doing: Filtering the metabolic journal based on each date not matching the previous period date
-  // What it needs to do: If there is no period recorded on the previous day of the current recorded day, then it must be the first period.
+  // If there is no period recorded on the previous day of the current recorded day, then it must be the first period.
   const filteredData = data.filter((item) => item.date === previousDate);
   if (filteredData.length > 0) {
     return null;
@@ -16,17 +15,20 @@ export function predictOvulationNextPeriod(data, date) {
     predictedPeriod,
     predictedOvulation,
   };
+}
 
-  // const firstPeriodFilter = data.filter((item) => item.date === previousDate);
-  // if (firstPeriodFilter.length > 0) {
-  //   const predictedPeriod = moment(date, 'MM/DD/YYYY').add(28, 'days').format('YYYY-MM-DD');
-  //   const predictedOvulation = moment(date, 'MM/DD/YYYY').add(14, 'days').format('YYYY-MM-DD');
-  //   return {
-  //     predictedPeriod,
-  //     predictedOvulation,
-  //   };
-  // }
-  // return null;
+export function getOvulationWindowRange(ovulationDate) {
+  const start = moment(ovulationDate, 'YYYY-MM-DD').subtract(5, 'days').format('YYYY-MM-DD');
+  const end = moment(ovulationDate, 'YYYY-MM-DD').add(3, 'days').format('YYYY-MM-DD');
+  const dates = [];
+
+  let current = start;
+  while (current <= end) {
+    dates.push(current);
+    current = moment(current, 'YYYY-MM-DD').add(1, 'days').format('YYYY-MM-DD');
+  }
+
+  return dates;
 }
 
 export const filterByPeriod = (data) => {
@@ -57,6 +59,29 @@ export const filterByPeriod = (data) => {
       selectedTextColor: '#FF647F',
     };
   });
+  return marked;
+};
+
+export const filterByOvulationWindow = (data) => {
+  const marked = {};
+  const periodDaysArray = data.filter((item) => item.period && item.period.menstrualFlow !== '');
+
+  periodDaysArray.forEach((item) => {
+    const ovulationDate = predictOvulationNextPeriod(
+      periodDaysArray,
+      item.date
+    )?.predictedOvulation;
+    if (ovulationDate) {
+      const windowDates = getOvulationWindowRange(ovulationDate);
+      windowDates.forEach((date) => {
+        marked[date] = {
+          marked: true,
+          dotColor: 'blue',
+        };
+      });
+    }
+  });
+
   return marked;
 };
 
