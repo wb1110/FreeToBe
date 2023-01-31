@@ -17,7 +17,7 @@ export default function Ovulation({ metabolicData, setMetabolicData }) {
           <View style={styles.iconContainer}>
             <Image
               style={styles.icon}
-              source={require('../../../../assets/icons/period/EverythingisFine.png')}
+              source={require('../../../../assets/icons/Ovulation/DidntTest.png')}
             />
           </View>
         }
@@ -30,7 +30,7 @@ export default function Ovulation({ metabolicData, setMetabolicData }) {
           <View style={styles.iconContainer}>
             <Image
               style={styles.icon}
-              source={require('../../../../assets/icons/period/Cramps.png')}
+              source={require('../../../../assets/icons/Ovulation/TestedPositive.png')}
             />
           </View>
         }
@@ -43,7 +43,7 @@ export default function Ovulation({ metabolicData, setMetabolicData }) {
           <View style={styles.iconContainer}>
             <Image
               style={styles.icon}
-              source={require('../../../../assets/icons/period/Bloating.png')}
+              source={require('../../../../assets/icons/Ovulation/TestedNegative.png')}
             />
           </View>
         }
@@ -51,12 +51,12 @@ export default function Ovulation({ metabolicData, setMetabolicData }) {
         setMetabolicData={setMetabolicData}
       />
       <OvulationButtons
-        buttonTitle="Ovulation = my own method"
+        buttonTitle="Ovulating"
         buttonIcon={
           <View style={styles.iconContainer}>
             <Image
               style={styles.icon}
-              source={require('../../../../assets/icons/period/HighPain.png')}
+              source={require('../../../../assets/icons/Ovulation/Ovulating.png')}
             />
           </View>
         }

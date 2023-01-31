@@ -17,7 +17,7 @@ export default function PregnancyTest({ metabolicData, setMetabolicData }) {
           <View style={styles.iconContainer}>
             <Image
               style={styles.icon}
-              source={require('../../../../assets/icons/MenstralFlowIcons/Light.png')}
+              source={require('../../../../assets/icons/PregnancyTest/DidntTakeTest.png')}
             />
           </View>
         }
@@ -30,7 +30,7 @@ export default function PregnancyTest({ metabolicData, setMetabolicData }) {
           <View style={styles.iconContainer}>
             <Image
               style={styles.icon}
-              source={require('../../../../assets/icons/MenstralFlowIcons/Medium.png')}
+              source={require('../../../../assets/icons/PregnancyTest/Positive.png')}
             />
           </View>
         }
@@ -43,7 +43,7 @@ export default function PregnancyTest({ metabolicData, setMetabolicData }) {
           <View style={styles.iconContainer}>
             <Image
               style={styles.icon}
-              source={require('../../../../assets/icons/MenstralFlowIcons/Heavy.png')}
+              source={require('../../../../assets/icons/PregnancyTest/FaintLine.png')}
             />
           </View>
         }
@@ -56,7 +56,7 @@ export default function PregnancyTest({ metabolicData, setMetabolicData }) {
           <View style={styles.iconContainer}>
             <Image
               style={styles.icon}
-              source={require('../../../../assets/icons/MenstralFlowIcons/Heavy.png')}
+              source={require('../../../../assets/icons/PregnancyTest/Negative.png')}
             />
           </View>
         }
