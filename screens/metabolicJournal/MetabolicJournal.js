@@ -5,6 +5,7 @@ import { SafeAreaView, ScrollView, View } from 'react-native';
 import useMetabolicStore from '../../state/MetabolicStore';
 import Calendar from './Calendar';
 import Bowel from './categories/Bowel';
+import Fertility from './categories/Fertility';
 import Hair from './categories/Hair';
 import Mood from './categories/Mood';
 import Nails from './categories/Nails';
@@ -68,6 +69,7 @@ function MetabolicJournal({ navigation }) {
           navigation={navigation}
           metabolicJournal={metabolicJournal}
         />
+        <Fertility metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <PhysicalActivity metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Skin metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Hair metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
