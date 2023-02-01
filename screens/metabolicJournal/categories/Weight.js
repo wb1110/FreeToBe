@@ -17,6 +17,7 @@ export default function Weight({ metabolicData, setMetabolicData }) {
         <View style={{ flex: 1 }}>
           <Input
             label="Enter Weight"
+            value={`${metabolicData.weight}`}
             onChangeText={(value) =>
               setMetabolicData({
                 ...metabolicData,
