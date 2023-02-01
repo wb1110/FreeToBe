@@ -9,6 +9,7 @@ import Weight from './categories/Weight';
 function PinnedComponent({ metabolicData, setMetabolicData, navigation }) {
   const { theme } = useTheme();
   const [selectedComponent, setSelectedComponent] = useState();
+
   return (
     <View>
       <View
@@ -17,20 +18,31 @@ function PinnedComponent({ metabolicData, setMetabolicData, navigation }) {
           justifyContent: 'space-between',
           flex: 1,
           backgroundColor: theme.colors.primary,
-          padding: '2%',
         }}
       >
         <TouchableOpacity
-          style={{ alignItems: 'center', flex: 1 }}
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            flex: 1,
+            backgroundColor:
+              selectedComponent === 'Weight' ? theme.colors.white : theme.colors.primary,
+          }}
           onPress={() => setSelectedComponent('Weight')}
         >
-          <Text h4 style={{ padding: '4%' }}>
+          <Text
+            h4
+            h4Style={{
+              padding: '4%',
+              display: selectedComponent === 'Weight' ? 'none' : 'flex',
+            }}
+          >
             Weight
           </Text>
           <MaterialCommunityIcons
             name="scale-bathroom"
             size={48}
-            color="white"
+            color={selectedComponent === 'Weight' ? theme.colors.primary : 'white'}
             style={{ padding: '4%' }}
           />
         </TouchableOpacity>
