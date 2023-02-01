@@ -72,6 +72,9 @@ function PinnedComponent({ metabolicData, setMetabolicData, navigation }) {
             color={selectedComponent === 'Sleep' ? theme.colors.primary : 'white'}
             style={{ padding: '4%' }}
           />
+          <Text h4 h4Style={{ display: selectedComponent === 'Sleep' ? 'none' : 'flex' }}>
+            Test
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
