@@ -65,7 +65,9 @@ function PinnedComponent({ metabolicData, setMetabolicData, navigation }) {
         </TouchableOpacity>
       </View>
       {selectedComponent === 'Weight' ? (
-        <Weight metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+        <View style={{ backgroundColor: theme.colors.white }}>
+          <Weight metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+        </View>
       ) : null}
       {selectedComponent === 'Journal' ? (
         <Journal
