@@ -26,7 +26,7 @@ export default function Weight({ metabolicData, setMetabolicData }) {
                 weight: value,
               })
             }
-            style={{ borderColor: 'black', borderWidth: 1, borderRadius: 20 }}
+            style={{ borderColor: 'black', borderWidth: 1, borderRadius: 20, color: 'black' }}
           />
           <Text style={{ color: 'black' }}>Enter Weight (lbs)</Text>
         </View>
