@@ -17,6 +17,7 @@ import Sex from './categories/Sex';
 import Skin from './categories/Skin';
 import Sleep from './categories/Sleep';
 import Temperature from './categories/Temperature';
+import Weight from './categories/Weight';
 import createNewData from './functions';
 
 function MetabolicJournal({ navigation }) {
@@ -58,6 +59,7 @@ function MetabolicJournal({ navigation }) {
             Users need to be able to be able to add/replace a component in the pinned section
       */}
       <ScrollView>
+        <Weight metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Journal
           metabolicData={metabolicData}
           setMetabolicData={setMetabolicData}
