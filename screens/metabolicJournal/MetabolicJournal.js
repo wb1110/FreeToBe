@@ -58,7 +58,11 @@ function MetabolicJournal({ navigation }) {
             Users need to be able to be able to add/replace a component in the pinned section
       */}
       <ScrollView>
-        <Journal metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
+        <Journal
+          metabolicData={metabolicData}
+          setMetabolicData={setMetabolicData}
+          navigation={navigation}
+        />
         <Sleep metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Temperature metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Pulse metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
