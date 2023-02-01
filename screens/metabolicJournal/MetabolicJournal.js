@@ -7,6 +7,7 @@ import Calendar from './Calendar';
 import Bowel from './categories/Bowel';
 import Fertility from './categories/Fertility';
 import Hair from './categories/Hair';
+import Journal from './categories/Journal';
 import Mood from './categories/Mood';
 import Nails from './categories/Nails';
 import Period from './categories/Period';
@@ -57,6 +58,7 @@ function MetabolicJournal({ navigation }) {
             Users need to be able to be able to add/replace a component in the pinned section
       */}
       <ScrollView>
+        <Journal metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Sleep metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Temperature metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Pulse metabolicData={metabolicData} setMetabolicData={setMetabolicData} />

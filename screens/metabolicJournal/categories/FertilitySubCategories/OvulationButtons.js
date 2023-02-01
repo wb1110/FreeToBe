@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 
 function OvulationButtons({ buttonTitle, buttonIcon, metabolicData, setMetabolicData }) {
   const [selected, setSelected] = useState(false);
-  console.log(metabolicData);
 
   useEffect(() => {
     if (metabolicData.fertility !== undefined) {
