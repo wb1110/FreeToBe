@@ -1,7 +1,8 @@
-import { Button } from '@rneui/themed';
+import { Button, Text, useTheme } from '@rneui/themed';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { SafeAreaView, ScrollView, TouchableOpacity, View } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import useMetabolicStore from '../../state/MetabolicStore';
 import Calendar from './Calendar';
 import Bowel from './categories/Bowel';
@@ -19,6 +20,7 @@ import Sleep from './categories/Sleep';
 import Temperature from './categories/Temperature';
 import Weight from './categories/Weight';
 import createNewData from './functions';
+import PinnedComponent from './PinnedComponent';
 
 function MetabolicJournal({ navigation }) {
   // metabolic state needs to be created as well as async storage
@@ -59,13 +61,11 @@ function MetabolicJournal({ navigation }) {
             Users need to be able to be able to add/replace a component in the pinned section
       */}
       <ScrollView>
-        <Weight metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
-        <Journal
+        <PinnedComponent
           metabolicData={metabolicData}
           setMetabolicData={setMetabolicData}
           navigation={navigation}
         />
-        <Sleep metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Temperature metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Pulse metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         <Mood metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
