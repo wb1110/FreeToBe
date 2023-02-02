@@ -1,10 +1,16 @@
 /* eslint-disable global-require */
-import { Button, Input, Text, useTheme } from '@rneui/themed';
+import { Button, Input, Text, useTheme, Overlay } from '@rneui/themed';
+import { useState } from 'react';
 import { View } from 'react-native';
 import MealTemperatures from './MealTemperatures';
 
 export default function Temperature({ metabolicData, setMetabolicData }) {
   const { theme } = useTheme();
+  const [visible, setVisible] = useState(false);
+
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  };
   return (
     <View
       style={{
@@ -16,17 +22,27 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
       <View style={{ flex: 1 }}>
         <Text h3>Temperature</Text>
         <View style={{ flex: 1 }}>
-          <Input
-            label="Enter waking temperature here"
-            onChangeText={(value) =>
-              setMetabolicData({
-                ...metabolicData,
-                temperature: {
-                  wakingTemp: value,
-                },
-              })
-            }
+          <Button
+            title="Set Waking Temp"
+            onPress={toggleOverlay}
+            containerStyle={{ borderRadius: 20, width: 200 }}
           />
+          <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
+            <Input
+              label="Enter waking temperature here"
+              onChangeText={(value) =>
+                setMetabolicData({
+                  ...metabolicData,
+                  temperature: {
+                    wakingTemp: value,
+                  },
+                })
+              }
+              labelStyle={{ color: 'black' }}
+              style={{ borderColor: 'black', borderWidth: 1, borderRadius: 20, color: 'black' }}
+            />
+          </Overlay>
+
           <View style={{ margin: '2%' }}>
             {metabolicData.temperature && metabolicData.temperature.meals
               ? metabolicData.temperature.meals.map((item) => (
