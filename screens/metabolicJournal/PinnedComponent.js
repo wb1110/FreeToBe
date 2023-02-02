@@ -29,7 +29,13 @@ function PinnedComponent({ metabolicData, setMetabolicData, navigation }) {
             backgroundColor:
               selectedComponent === 'Weight' ? theme.colors.white : theme.colors.primary,
           }}
-          onPress={() => setSelectedComponent('Weight')}
+          onPress={() => {
+            if (selectedComponent !== 'Weight') {
+              setSelectedComponent('Weight');
+            } else {
+              setSelectedComponent(null);
+            }
+          }}
         >
           <Text
             h4
@@ -56,7 +62,13 @@ function PinnedComponent({ metabolicData, setMetabolicData, navigation }) {
             backgroundColor:
               selectedComponent === 'Sleep' ? theme.colors.white : theme.colors.primary,
           }}
-          onPress={() => setSelectedComponent('Sleep')}
+          onPress={() => {
+            if (selectedComponent !== 'Sleep') {
+              setSelectedComponent('Sleep');
+            } else {
+              setSelectedComponent(null);
+            }
+          }}
         >
           <Text
             h4
@@ -85,7 +97,13 @@ function PinnedComponent({ metabolicData, setMetabolicData, navigation }) {
             backgroundColor:
               selectedComponent === 'Journal' ? theme.colors.white : theme.colors.primary,
           }}
-          onPress={() => setSelectedComponent('Journal')}
+          onPress={() => {
+            if (selectedComponent !== 'Journal') {
+              setSelectedComponent('Journal');
+            } else {
+              setSelectedComponent(null);
+            }
+          }}
         >
           <Text
             h4
