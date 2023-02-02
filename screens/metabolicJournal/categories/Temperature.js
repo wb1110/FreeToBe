@@ -1,7 +1,10 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
-import { Button, Input, Text, useTheme, Overlay } from '@rneui/themed';
+import { Button, Input, Text, useTheme, Overlay, Image } from '@rneui/themed';
 import { useState } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import ComponentButton from '../ComponentButton';
+import InputButton from '../InputButton';
 import MealTemperatures from './MealTemperatures';
 
 export default function Temperature({ metabolicData, setMetabolicData }) {
@@ -46,11 +49,36 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
       <View style={{ flex: 1 }}>
         <Text h3>Temperature</Text>
         <View style={{ flex: 1 }}>
-          <Button
-            title="Set Waking Temp"
-            onPress={() => toggleOverlay('waking')}
-            containerStyle={{ borderRadius: 20, width: 200 }}
-          />
+          <View
+            style={{
+              flexDirection: 'row',
+            }}
+          >
+            <InputButton
+              buttonTitle="Set Waking Temp"
+              buttonIcon={
+                <View style={styles.iconContainer}>
+                  <Image
+                    style={styles.icon}
+                    source={require('../../../assets/icons/MoodIcons/Calm.png')}
+                  />
+                </View>
+              }
+              onPress={() => toggleOverlay('waking')}
+            />
+            <InputButton
+              buttonTitle="Add temp around meal"
+              buttonIcon={
+                <View style={styles.iconContainer}>
+                  <Image
+                    style={styles.icon}
+                    source={require('../../../assets/icons/MoodIcons/Happy.png')}
+                  />
+                </View>
+              }
+              onPress={() => toggleOverlay('meal')}
+            />
+          </View>
           <Overlay isVisible={wakingVisible} onBackdropPress={() => toggleOverlay('waking')}>
             <Input
               label="Enter waking temperature here"
@@ -66,11 +94,6 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
               style={{ borderColor: 'black', borderWidth: 1, borderRadius: 20, color: 'black' }}
             />
           </Overlay>
-          <Button
-            title="Add temp around a meal"
-            onPress={() => toggleOverlay('meal')}
-            containerStyle={{ borderRadius: 20, width: 200 }}
-          />
           <Overlay
             isVisible={mealVisible}
             onBackdropPress={() => toggleOverlay('meal')}
@@ -149,3 +172,19 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    width: 50,
+    height: 50,
+    borderRadius: '50%',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    width: 70,
+    height: 70,
+    margin: -5,
+  },
+});
