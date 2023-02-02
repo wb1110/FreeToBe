@@ -56,6 +56,13 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
     });
   };
 
+  const validate = (startValue, endValue) => {
+    if (startValue !== 'Select Start' && endValue !== 'Select End') {
+      return false;
+    }
+    return true;
+  };
+
   return (
     <View
       style={{
@@ -97,7 +104,11 @@ export default function CreateSleepEntry({ metabolicData, setMetabolicData }) {
           />
         </View>
       </View>
-      <Button title="Add sleep" onPress={() => handleSubmit(values)} />
+      <Button
+        title="Add sleep"
+        onPress={() => handleSubmit(values)}
+        disabled={validate(start, end)}
+      />
     </View>
   );
 }
