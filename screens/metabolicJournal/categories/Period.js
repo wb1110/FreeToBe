@@ -1,7 +1,6 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
-import { Button, Image, Text } from '@rneui/themed';
-import { FontAwesome } from '@expo/vector-icons';
+import { Image, Text } from '@rneui/themed';
 import { StyleSheet, View } from 'react-native';
 import InputButton from '../InputButton';
 import Flow from './PeriodSubCategories/Flow';

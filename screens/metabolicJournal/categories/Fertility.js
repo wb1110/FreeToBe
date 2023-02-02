@@ -1,11 +1,11 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
-import { Button, Text } from '@rneui/themed';
-import { ScrollView, View } from 'react-native';
+import { Text } from '@rneui/themed';
+import { View } from 'react-native';
 import Ovulation from './FertilitySubCategories/Ovulation';
 import PregnancyTest from './FertilitySubCategories/PregnancyTest';
 
-export default function Fertility({ metabolicData, setMetabolicData, navigation }) {
+export default function Fertility({ metabolicData, setMetabolicData }) {
   return (
     <View
       style={{

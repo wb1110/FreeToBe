@@ -1,10 +1,8 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
-import { Feather } from '@expo/vector-icons';
 import { Image } from '@rneui/base';
-import { Input, Text } from '@rneui/themed';
-import { useState } from 'react';
-import { ScrollView, View, StyleSheet } from 'react-native';
+import { Text } from '@rneui/themed';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
 export default function Skin({ metabolicData, setMetabolicData }) {

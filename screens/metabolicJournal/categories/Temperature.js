@@ -1,11 +1,9 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
-import { Button, Input, Text, useTheme, Overlay, Image } from '@rneui/themed';
+import { Button, Image, Input, Overlay, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
-import ComponentButton from '../ComponentButton';
+import { StyleSheet, View } from 'react-native';
 import InputButton from '../InputButton';
-import MealTemperatures from './MealTemperatures';
 
 export default function Temperature({ metabolicData, setMetabolicData }) {
   const { theme } = useTheme();

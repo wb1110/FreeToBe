@@ -2,7 +2,7 @@
 /* eslint-disable global-require */
 import { Image } from '@rneui/base';
 import { Text } from '@rneui/themed';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ComponentButton from '../ComponentButton';
 
 export default function Bowel({ metabolicData, setMetabolicData }) {

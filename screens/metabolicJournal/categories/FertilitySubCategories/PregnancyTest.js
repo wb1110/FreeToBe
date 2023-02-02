@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable global-require */
 import { Image } from '@rneui/base';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import PregnancyTestButtons from './PregnancyTestButtons';
 
 export default function PregnancyTest({ metabolicData, setMetabolicData }) {
