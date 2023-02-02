@@ -10,6 +10,7 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
   const [wakingVisible, setWakingVisible] = useState(false);
   const [mealVisible, setMealVisible] = useState(false);
   const [values, setValues] = useState({
+    mealName: '',
     preMealTemp: '',
     postMealTemp: '',
   });
@@ -23,6 +24,7 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
       },
     });
     setValues({
+      mealName: '',
       preMealTemp: '',
       postMealTemp: '',
     });
@@ -157,28 +159,27 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
               onPress={() => handleSubmit(values)}
               containerStyle={{ borderRadius: 20, width: 200 }}
             />
+            <View style={{ margin: '2%', flexDirection: 'row', flexWrap: 'wrap' }}>
+              {metabolicData.temperature && metabolicData.temperature.meals
+                ? metabolicData.temperature.meals.map((item) => (
+                    <View
+                      key={item.mealName}
+                      style={{
+                        justifyContent: 'space-between',
+                        backgroundColor: theme.colors.primary,
+                        padding: '4%',
+                        margin: '2%',
+                        borderRadius: 20,
+                      }}
+                    >
+                      <Text>Meal Name: {item.mealName}</Text>
+                      <Text>Pre-Meal: {item.preMealTemp}</Text>
+                      <Text>Post-Meal: {item.postMealTemp}</Text>
+                    </View>
+                  ))
+                : null}
+            </View>
           </Overlay>
-
-          <View style={{ margin: '2%' }}>
-            {metabolicData.temperature && metabolicData.temperature.meals
-              ? metabolicData.temperature.meals.map((item) => (
-                  <View
-                    key={item.mealName}
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      backgroundColor: theme.colors.primary,
-                      padding: '2%',
-                      marginBottom: '2%',
-                    }}
-                  >
-                    <Text>Meal Name: {item.mealName}</Text>
-                    <Text>Pre-Meal: {item.preMealTemp}</Text>
-                    <Text>Post-Meal: {item.postMealTemp}</Text>
-                  </View>
-                ))
-              : null}
-          </View>
         </View>
       </View>
     </View>
