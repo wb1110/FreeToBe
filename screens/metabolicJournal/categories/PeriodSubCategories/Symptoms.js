@@ -9,7 +9,7 @@ export default function Symptoms({ metabolicData, setMetabolicData }) {
   return (
     <ScrollView
       directionalLockEnabled
-      contentContainerStyle={{ flexGrow: 1, paddingRight: 200, flex: 1 }}
+      contentContainerStyle={{ flexGrow: 1, paddingRight: 200, flex: 1, marginTop: '2%' }}
     >
       <View
         style={{

@@ -25,6 +25,7 @@ export default function Nails({ metabolicData, setMetabolicData }) {
             <View
               style={{
                 flexDirection: 'row',
+                marginTop: '2%',
               }}
             >
               <ComponentButton

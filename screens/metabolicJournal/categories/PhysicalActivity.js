@@ -12,7 +12,7 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
       style={{
         alignItems: 'flex-start',
         flex: 1,
-        margin: '2%',
+        margin: '4% 2%',
       }}
     >
       <ScrollView
@@ -25,6 +25,7 @@ export default function PhysicalActivity({ metabolicData, setMetabolicData }) {
             <View
               style={{
                 flexDirection: 'row',
+                marginTop: '2%',
               }}
             >
               <ComponentButton

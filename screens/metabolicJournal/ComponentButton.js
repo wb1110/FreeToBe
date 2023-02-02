@@ -42,7 +42,7 @@ function ComponentButton({ buttonTitle, buttonIcon, metabolicData, setMetabolicD
   return (
     <TouchableOpacity
       onPress={() => handleAddItem(buttonTitle)}
-      style={{ alignItems: 'center', marginLeft: '2%', width: 80, height: 90 }}
+      style={{ alignItems: 'center', marginLeft: '2%', width: 80, height: 100 }}
     >
       <View>
         {buttonIcon}

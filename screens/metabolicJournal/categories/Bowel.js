@@ -12,70 +12,61 @@ export default function Bowel({ metabolicData, setMetabolicData }) {
       style={{
         alignItems: 'flex-start',
         flex: 1,
-        margin: '2%',
+        margin: '4% 2%',
       }}
     >
-      <ScrollView
-        directionalLockEnabled
-        contentContainerStyle={{ flexGrow: 1, paddingRight: 200, flex: 1 }}
-      >
-        <View style={{ flex: 1 }}>
-          <Text h3>Bowel Movements</Text>
-          <View style={{ flex: 1 }}>
-            <Text>
-              Total: {`\n`} Healthy: {`\n`} Constipated: {`\n`} Diarrea: {`\n`}
-            </Text>
-            <View
-              style={{
-                flexDirection: 'row',
-              }}
-            >
-              <ComponentButton
-                buttonTitle="Healthy"
-                buttonIcon={
-                  <View style={styles.iconContainer}>
-                    <Image
-                      style={styles.icon}
-                      source={require('../../../assets/icons/BowelMovements/Healthy.png')}
-                    />
-                  </View>
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category={category}
-              />
-              <ComponentButton
-                buttonTitle="Constipated"
-                buttonIcon={
-                  <View style={styles.iconContainer}>
-                    <Image
-                      style={styles.icon}
-                      source={require('../../../assets/icons/BowelMovements/Constipated.png')}
-                    />
-                  </View>
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category={category}
-              />
-              <ComponentButton
-                buttonTitle="Diarrea"
-                buttonIcon={
-                  <View style={styles.iconContainer}>
-                    <Image
-                      style={styles.icon}
-                      source={require('../../../assets/icons/BowelMovements/Diarrhea.png')}
-                    />
-                  </View>
-                }
-                metabolicData={metabolicData}
-                setMetabolicData={setMetabolicData}
-                category={category}
-              />
-            </View>
-          </View>
+      <View style={{ flex: 1 }}>
+        <Text h3>Bowel Movements</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            marginTop: '2%',
+          }}
+        >
+          <ComponentButton
+            buttonTitle="Healthy"
+            buttonIcon={
+              <View style={styles.iconContainer}>
+                <Image
+                  style={styles.icon}
+                  source={require('../../../assets/icons/BowelMovements/Healthy.png')}
+                />
+              </View>
+            }
+            metabolicData={metabolicData}
+            setMetabolicData={setMetabolicData}
+            category={category}
+          />
+          <ComponentButton
+            buttonTitle="Constipated"
+            buttonIcon={
+              <View style={styles.iconContainer}>
+                <Image
+                  style={styles.icon}
+                  source={require('../../../assets/icons/BowelMovements/Constipated.png')}
+                />
+              </View>
+            }
+            metabolicData={metabolicData}
+            setMetabolicData={setMetabolicData}
+            category={category}
+          />
+          <ComponentButton
+            buttonTitle="Diarrea"
+            buttonIcon={
+              <View style={styles.iconContainer}>
+                <Image
+                  style={styles.icon}
+                  source={require('../../../assets/icons/BowelMovements/Diarrhea.png')}
+                />
+              </View>
+            }
+            metabolicData={metabolicData}
+            setMetabolicData={setMetabolicData}
+            category={category}
+          />
         </View>
-      </ScrollView>
+      </View>
     </View>
   );
 }

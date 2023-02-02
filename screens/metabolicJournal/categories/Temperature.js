@@ -43,12 +43,12 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
       style={{
         alignItems: 'flex-start',
         flex: 1,
-        margin: '2%',
+        margin: '4% 2%',
       }}
     >
       <View style={{ flex: 1 }}>
         <Text h3>Temperature</Text>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, marginTop: '4%' }}>
           <View
             style={{
               flexDirection: 'row',

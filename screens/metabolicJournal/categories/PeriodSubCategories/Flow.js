@@ -8,62 +8,58 @@ export default function Flow({ metabolicData, setMetabolicData }) {
   const category = 'period';
   const subCategory2 = 'menstrualFlow';
   return (
-    <ScrollView
-      directionalLockEnabled
-      contentContainerStyle={{ flexGrow: 1, paddingRight: 200, flex: 1 }}
+    <View
+      style={{
+        flexDirection: 'row',
+        marginTop: '2%',
+      }}
     >
-      <View
-        style={{
-          flexDirection: 'row',
-        }}
-      >
-        <MenstrualFlowButton
-          buttonTitle="Light"
-          buttonIcon={
-            <View style={styles.iconContainer}>
-              <Image
-                style={styles.icon}
-                source={require('../../../../assets/icons/MenstralFlowIcons/Light.png')}
-              />
-            </View>
-          }
-          metabolicData={metabolicData}
-          setMetabolicData={setMetabolicData}
-          category={category}
-          subCategory={subCategory2}
-        />
-        <MenstrualFlowButton
-          buttonTitle="Medium"
-          buttonIcon={
-            <View style={styles.iconContainer}>
-              <Image
-                style={styles.icon}
-                source={require('../../../../assets/icons/MenstralFlowIcons/Medium.png')}
-              />
-            </View>
-          }
-          metabolicData={metabolicData}
-          setMetabolicData={setMetabolicData}
-          category={category}
-          subCategory={subCategory2}
-        />
-        <MenstrualFlowButton
-          buttonTitle="Heavy"
-          buttonIcon={
-            <View style={styles.iconContainer}>
-              <Image
-                style={styles.icon}
-                source={require('../../../../assets/icons/MenstralFlowIcons/Heavy.png')}
-              />
-            </View>
-          }
-          metabolicData={metabolicData}
-          setMetabolicData={setMetabolicData}
-          category={category}
-          subCategory={subCategory2}
-        />
-      </View>
-    </ScrollView>
+      <MenstrualFlowButton
+        buttonTitle="Light"
+        buttonIcon={
+          <View style={styles.iconContainer}>
+            <Image
+              style={styles.icon}
+              source={require('../../../../assets/icons/MenstralFlowIcons/Light.png')}
+            />
+          </View>
+        }
+        metabolicData={metabolicData}
+        setMetabolicData={setMetabolicData}
+        category={category}
+        subCategory={subCategory2}
+      />
+      <MenstrualFlowButton
+        buttonTitle="Medium"
+        buttonIcon={
+          <View style={styles.iconContainer}>
+            <Image
+              style={styles.icon}
+              source={require('../../../../assets/icons/MenstralFlowIcons/Medium.png')}
+            />
+          </View>
+        }
+        metabolicData={metabolicData}
+        setMetabolicData={setMetabolicData}
+        category={category}
+        subCategory={subCategory2}
+      />
+      <MenstrualFlowButton
+        buttonTitle="Heavy"
+        buttonIcon={
+          <View style={styles.iconContainer}>
+            <Image
+              style={styles.icon}
+              source={require('../../../../assets/icons/MenstralFlowIcons/Heavy.png')}
+            />
+          </View>
+        }
+        metabolicData={metabolicData}
+        setMetabolicData={setMetabolicData}
+        category={category}
+        subCategory={subCategory2}
+      />
+    </View>
   );
 }
 

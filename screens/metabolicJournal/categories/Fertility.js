@@ -11,7 +11,7 @@ export default function Fertility({ metabolicData, setMetabolicData, navigation 
       style={{
         alignItems: 'flex-start',
         flex: 1,
-        margin: '2%',
+        margin: '4% 2%',
       }}
     >
       <View style={{ flex: 1 }}>

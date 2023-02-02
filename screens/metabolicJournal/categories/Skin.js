@@ -27,6 +27,7 @@ export default function Skin({ metabolicData, setMetabolicData }) {
             <View
               style={{
                 flexDirection: 'row',
+                marginTop: '2%',
               }}
             >
               <ComponentButton
