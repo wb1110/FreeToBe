@@ -39,8 +39,6 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
     }
   };
 
-  console.log(metabolicData);
-
   return (
     <View
       style={{
