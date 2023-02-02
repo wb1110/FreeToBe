@@ -26,7 +26,7 @@ export default function MealTemperatures({ metabolicData, setMetabolicData }) {
   return (
     <View
       style={{
-        alignItems: 'flex-start',
+        alignItems: 'center',
         flex: 1,
         margin: '2%',
       }}
@@ -41,6 +41,8 @@ export default function MealTemperatures({ metabolicData, setMetabolicData }) {
               mealName: value,
             })
           }
+          labelStyle={{ color: 'black' }}
+          style={{ borderColor: 'black', borderWidth: 1, borderRadius: 20, color: 'black' }}
           containerStyle={{ width: '33%' }}
         />
         <Input
@@ -52,6 +54,8 @@ export default function MealTemperatures({ metabolicData, setMetabolicData }) {
               preMealTemp: value,
             })
           }
+          labelStyle={{ color: 'black' }}
+          style={{ borderColor: 'black', borderWidth: 1, borderRadius: 20, color: 'black' }}
           containerStyle={{ width: '33%' }}
         />
         <Input
@@ -63,10 +67,16 @@ export default function MealTemperatures({ metabolicData, setMetabolicData }) {
               postMealTemp: value,
             })
           }
+          labelStyle={{ color: 'black' }}
+          style={{ borderColor: 'black', borderWidth: 1, borderRadius: 20, color: 'black' }}
           containerStyle={{ width: '33%' }}
         />
       </View>
-      <Button title="Add meal" onPress={() => handleSubmit(values)} />
+      <Button
+        title="Add meal"
+        onPress={() => handleSubmit(values)}
+        containerStyle={{ borderRadius: 20 }}
+      />
     </View>
   );
 }
