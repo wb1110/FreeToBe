@@ -76,7 +76,6 @@ function OpenJournal({ route, navigation }) {
           style={{ width: '100%' }}
         />
       </KeyboardAvoidingView>
-      <LArrowButton onPress={() => navigation.goBack()} />
     </SafeAreaView>
   );
 }
