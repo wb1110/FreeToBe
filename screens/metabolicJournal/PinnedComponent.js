@@ -5,6 +5,7 @@ import { TouchableOpacity, View } from 'react-native';
 import Journal from './categories/Journal';
 import Sleep from './categories/Sleep';
 import Weight from './categories/Weight';
+import calculateTotal from './categories/sleepFunctions/SleepFunctions';
 
 function PinnedComponent({ metabolicData, setMetabolicData, navigation }) {
   const { theme } = useTheme();
@@ -73,7 +74,7 @@ function PinnedComponent({ metabolicData, setMetabolicData, navigation }) {
             style={{ padding: '4%' }}
           />
           <Text h4 h4Style={{ display: selectedComponent === 'Sleep' ? 'none' : 'flex' }}>
-            Test
+            {metabolicData.sleep ? calculateTotal(metabolicData.sleep) : null}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity

@@ -35,7 +35,7 @@ export default function Sleep({ metabolicData, setMetabolicData }) {
           Total Hours Slept: {total}
         </Text>
         <CreateSleepEntry metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
-        <View style={{ margin: '2%', flexDirection: 'row' }}>
+        {/* <View style={{ margin: '2%', flexDirection: 'row' }}>
           {metabolicData.sleep
             ? metabolicData.sleep.map((item, index) => {
                 const time1 = moment(item.startTime, 'h:mm a');
@@ -112,7 +112,7 @@ export default function Sleep({ metabolicData, setMetabolicData }) {
                 );
               })
             : null}
-        </View>
+        </View> */}
       </View>
     </View>
   );
