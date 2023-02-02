@@ -42,6 +42,7 @@ export default function Pulse({ metabolicData, setMetabolicData }) {
           <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
             <Input
               label="Enter morning pulse here"
+              value={`${metabolicData.pulse}`}
               onChangeText={(value) =>
                 setMetabolicData({
                   ...metabolicData,

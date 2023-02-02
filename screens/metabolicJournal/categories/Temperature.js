@@ -82,6 +82,7 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
           <Overlay isVisible={wakingVisible} onBackdropPress={() => toggleOverlay('waking')}>
             <Input
               label="Enter waking temperature here"
+              value={`${metabolicData.temperature.wakingTemp}`}
               onChangeText={(value) =>
                 setMetabolicData({
                   ...metabolicData,
