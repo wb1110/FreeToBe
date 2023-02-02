@@ -18,7 +18,14 @@ const useMetabolicStore = create((set) => ({
     set(
       produce((state) => {
         const { metabolicJournal } = state;
-        metabolicJournal.push(data);
+        const existingEntryIndex = metabolicJournal.findIndex((entry) => entry.date === data.date);
+        if (existingEntryIndex >= 0) {
+          // If date already exists, replace the existing entry
+          metabolicJournal[existingEntryIndex] = data;
+        } else {
+          // If date doesn't exist, add new entry
+          metabolicJournal.push(data);
+        }
         storeMetabolicJournal(metabolicJournal);
       })
     );
