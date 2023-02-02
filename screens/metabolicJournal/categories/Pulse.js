@@ -39,10 +39,14 @@ export default function Pulse({ metabolicData, setMetabolicData }) {
               onPress={toggleOverlay}
             />
           </View>
-          <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
+          <Overlay
+            isVisible={visible}
+            onBackdropPress={toggleOverlay}
+            overlayStyle={{ alignItems: 'center' }}
+          >
             <Input
               label="Enter morning pulse here"
-              value={`${metabolicData.pulse}`}
+              value={metabolicData.pulse ? `${metabolicData.pulse}` : null}
               onChangeText={(value) =>
                 setMetabolicData({
                   ...metabolicData,
@@ -51,6 +55,11 @@ export default function Pulse({ metabolicData, setMetabolicData }) {
               }
               labelStyle={{ color: 'black' }}
               style={{ borderColor: 'black', borderWidth: 1, borderRadius: 20, color: 'black' }}
+            />
+            <Button
+              title="Save"
+              onPress={toggleOverlay}
+              containerStyle={{ borderRadius: 20, width: 200 }}
             />
           </Overlay>
         </View>

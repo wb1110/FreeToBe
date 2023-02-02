@@ -79,10 +79,18 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
               onPress={() => toggleOverlay('meal')}
             />
           </View>
-          <Overlay isVisible={wakingVisible} onBackdropPress={() => toggleOverlay('waking')}>
+          <Overlay
+            isVisible={wakingVisible}
+            onBackdropPress={() => toggleOverlay('waking')}
+            overlayStyle={{ alignItems: 'center' }}
+          >
             <Input
               label="Enter waking temperature here"
-              value={`${metabolicData.temperature.wakingTemp}`}
+              value={
+                metabolicData.temperature?.wakingTemp
+                  ? `${metabolicData.temperature.wakingTemp}`
+                  : null
+              }
               onChangeText={(value) =>
                 setMetabolicData({
                   ...metabolicData,
@@ -93,6 +101,11 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
               }
               labelStyle={{ color: 'black' }}
               style={{ borderColor: 'black', borderWidth: 1, borderRadius: 20, color: 'black' }}
+            />
+            <Button
+              title="Save"
+              onPress={() => toggleOverlay('waking')}
+              containerStyle={{ borderRadius: 20, width: 200 }}
             />
           </Overlay>
           <Overlay
