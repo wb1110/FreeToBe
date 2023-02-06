@@ -48,10 +48,25 @@ function Table() {
 
   function getCurrentData(dataArray) {
     const today = moment(new Date()).format('MM/DD/YYYY');
-    return dataArray.find((item) => item.date === today);
+    const todayObject = dataArray.find((item) => item.date === today);
+    if (todayObject) {
+      return todayObject;
+    }
+    return {
+      carbs: 0,
+      protein: 0,
+      fats: 0,
+    };
   }
 
   const todaysData = getCurrentData(tracker);
+  const { protein, carbs, fats } = todaysData;
+  const goalPercentage = (consumed, goal) => {
+    if (consumed > 0) {
+      return Math.round((consumed / goal) * 100);
+    }
+    return 0;
+  };
 
   return (
     <View style={styles.container}>
@@ -69,9 +84,7 @@ function Table() {
             <Text style={styles.columnText}>{todaysData?.protein}g</Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
-            <Text style={styles.columnText}>
-              {Math.round((todaysData?.protein / goalProtein) * 100)}%
-            </Text>
+            <Text style={styles.columnText}>{goalPercentage(protein, goalProtein)}%</Text>
           </View>
         </View>
         <View style={styles.rowContainer}>
@@ -82,9 +95,7 @@ function Table() {
             <Text style={styles.columnText}>{todaysData?.carbs}g</Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
-            <Text style={styles.columnText}>
-              {Math.round((todaysData?.carbs / goalCarbs) * 100)}%
-            </Text>
+            <Text style={styles.columnText}>{goalPercentage(carbs, goalCarbs)}%</Text>
           </View>
         </View>
         <View style={styles.rowContainer}>
@@ -95,7 +106,7 @@ function Table() {
             <Text style={styles.columnText}>{todaysData?.fats}g</Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
-            <Text style={styles.columnText}>{Math.round((todaysData?.fats / goalFat) * 100)}%</Text>
+            <Text style={styles.columnText}>{goalPercentage(fats, goalFat)}%</Text>
           </View>
         </View>
       </View>
