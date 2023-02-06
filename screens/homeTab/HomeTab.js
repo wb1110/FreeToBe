@@ -1,11 +1,10 @@
 /* eslint-disable no-use-before-define */
-import { SafeAreaView, View, StyleSheet, ScrollView } from 'react-native';
 import { Button, Text, useTheme } from '@rneui/themed';
-import useStore from '../../state/Store';
-import MacroPie from './MacroPie';
-import MineralsPie from './MineralsPie';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import useGoalUpdateConditions from '../../functions/goalUpdateConditions';
+import useStore from '../../state/Store';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
+import MacroPie from './MacroPie';
 import Table from './slideSection/MacroTable';
 
 function HomeTab({ navigation }) {

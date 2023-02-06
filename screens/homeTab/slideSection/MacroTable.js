@@ -1,6 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import moment from 'moment';
+import { StyleSheet, Text, View } from 'react-native';
 import useTrackerStore from '../../../state/TrackerStore';
 
 const styles = StyleSheet.create({
