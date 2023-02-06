@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   tableContainer: {
-    flexDirection: 'row',
     marginTop: 20,
   },
   headerContainer: {
@@ -45,7 +44,7 @@ function Table() {
     return dataArray.find((item) => item.date === today);
   }
 
-  console.log(getCurrentData(tracker));
+  const todaysData = getCurrentData(tracker);
 
   return (
     <View style={styles.container}>
@@ -55,13 +54,21 @@ function Table() {
         <Text style={styles.headerText}>%</Text>
       </View>
       <View style={styles.tableContainer}>
-        {/* {Object.entries(data).map(([macro, value], index) => (
-          <View key={index} style={styles.rowContainer}>
-            <Text style={styles.columnText}>{macro}</Text>
-            <Text style={styles.columnText}>{value}g</Text>
-            <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text>
-          </View>
-        ))} */}
+        <View style={styles.rowContainer}>
+          <Text style={styles.columnText}>Protein</Text>
+          <Text style={styles.columnText}>{todaysData.protein}g</Text>
+          {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
+        </View>
+        <View style={styles.rowContainer}>
+          <Text style={styles.columnText}>Carbs</Text>
+          <Text style={styles.columnText}>{todaysData.carbs}g</Text>
+          {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
+        </View>
+        <View style={styles.rowContainer}>
+          <Text style={styles.columnText}>Fat</Text>
+          <Text style={styles.columnText}>{todaysData.fats}g</Text>
+          {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
+        </View>
       </View>
     </View>
   );
