@@ -1,10 +1,12 @@
-import { SafeAreaView, View } from 'react-native';
+/* eslint-disable no-use-before-define */
+import { SafeAreaView, View, StyleSheet, ScrollView } from 'react-native';
 import { Button, Text, useTheme } from '@rneui/themed';
 import useStore from '../../state/Store';
 import MacroPie from './MacroPie';
 import MineralsPie from './MineralsPie';
 import useGoalUpdateConditions from '../../functions/goalUpdateConditions';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
+import Table from './slideSection/MacroTable';
 
 function HomeTab({ navigation }) {
   const state = useStore();
@@ -16,60 +18,115 @@ function HomeTab({ navigation }) {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#AD745D' }}>
-      {/* Swipe Section */}
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          margin: 12,
-          padding: 12,
-          flex: 1,
-          backgroundColor: theme.colors.secondary,
-        }}
-      >
-        <View style={{ flex: 1, alignItems: 'center' }}>
-          <Text h4>Macro Goals</Text>
-          {state.assessment.tdee ? (
-            <MacroPie TDEE={state.assessment.tdee} navigation={navigation} />
-          ) : (
-            <Button
-              title="Take Assessment"
-              onPress={() => navigation.navigate('HeightWeightAge')}
-            />
-          )}
+      <ScrollView>
+        {/* Swipe Section */}
+        <View
+          style={[
+            styles.container,
+            {
+              backgroundColor: theme.colors.secondary,
+            },
+          ]}
+        >
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View style={{ flex: 1, alignItems: 'center' }}>
+              <Text h4>Macro Goals</Text>
+              {state.assessment.tdee ? (
+                <MacroPie TDEE={state.assessment.tdee} navigation={navigation} />
+              ) : (
+                <Button
+                  title="Take Assessment"
+                  onPress={() => navigation.navigate('HeightWeightAge')}
+                />
+              )}
+            </View>
+            <View style={{ flex: 1, alignItems: 'center' }}>
+              {/* <Table data={ } goals={ } /> */}
+            </View>
+          </View>
         </View>
-        <View style={{ flex: 1, alignItems: 'center' }}>
-          <Text h4>Mineral Goals</Text>
-          <MineralsPie TDEE={state.assessment.tdee} navigation={navigation} />
-        </View>
-      </View>
-      <View style={{ alignItems: 'center', flex: 1 }}>
-        <Text h4>What helps fuel our bodies?</Text>
-        <View style={{ justifyContent: 'space-around', flex: 1, width: '100%' }}>
+        {/* Nutrition Info Section */}
+        <View
+          style={[
+            styles.container,
+            {
+              backgroundColor: theme.colors.secondary,
+            },
+          ]}
+        >
           <View
             style={{
-              flex: 1,
               backgroundColor: theme.colors.primary,
-              margin: '2%',
-              padding: '2%',
+              margin: 12,
+              padding: 12,
+              flex: 1,
             }}
           >
-            <Text h4>Proteins</Text>
-          </View>
-          <View
-            style={{ flex: 1, backgroundColor: theme.colors.primary, margin: '2%', padding: '2%' }}
-          >
-            <Text h4>Fats</Text>
-          </View>
-          <View
-            style={{ flex: 1, backgroundColor: theme.colors.primary, margin: '2%', padding: '2%' }}
-          >
-            <Text h4>Carbs</Text>
+            <Text h3 h3Style={{ marginBottom: 12 }}>
+              Proteins
+            </Text>
+            <View style={{ marginLeft: 12 }}>
+              <Text style={{ marginBottom: 12 }}>- Helps repair muscle tissue</Text>
+              <Text style={{ marginBottom: 12 }}>- Helps repair muscle tissue</Text>
+              <Text style={{ marginBottom: 12 }}>- Helps repair muscle tissue</Text>
+            </View>
           </View>
         </View>
-      </View>
+        {/* Instagram Feed Section */}
+        <View
+          style={[
+            styles.container,
+            {
+              backgroundColor: theme.colors.secondary,
+            },
+          ]}
+        >
+          <View
+            style={{
+              backgroundColor: theme.colors.primary,
+              margin: 12,
+              padding: 12,
+              flex: 1,
+            }}
+          >
+            <Text h3 h3Style={{ marginBottom: 12 }}>
+              Instagram Feed
+            </Text>
+          </View>
+        </View>
+        {/* Blog Feed Section */}
+        <View
+          style={[
+            styles.container,
+            {
+              backgroundColor: theme.colors.secondary,
+            },
+          ]}
+        >
+          <View
+            style={{
+              backgroundColor: theme.colors.primary,
+              margin: 12,
+              padding: 12,
+              flex: 1,
+            }}
+          >
+            <Text h3 h3Style={{ marginBottom: 12 }}>
+              Blog Feed
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
 
 export default HomeTab;
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 12,
+    padding: 12,
+    flex: 1,
+  },
+});
