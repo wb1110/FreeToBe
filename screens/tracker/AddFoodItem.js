@@ -13,6 +13,7 @@ import useTrackerStore from '../../state/TrackerStore';
 import FoodScanner from '../foodScanner/FoodScanner';
 
 import LArrowButton from '../../components/Buttons/LArrowButton';
+import Status403 from './statusScreens/Status403';
 
 function Item({ name, calories, onPress, nutrients, fdcId, navigation, dayIndex, mealName }) {
   const { theme } = useTheme();
@@ -93,6 +94,7 @@ export default function AddFoodItem({ route, navigation }) {
   const [usedBarcode, setUsedBarcode] = useState(false);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
@@ -109,7 +111,11 @@ export default function AddFoodItem({ route, navigation }) {
           })
           .catch((err) => {
             // eslint-disable-next-line no-console
-            console.log(err);
+            if (err.response.status === 403) {
+              setError(<Status403 />);
+              setLoading(false);
+              return error;
+            }
             setLoading(false);
           });
       }, 2000);
@@ -262,6 +268,7 @@ export default function AddFoodItem({ route, navigation }) {
         ) : (
           <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.fdcId} />
         )}
+        {error || null}
       </View>
       <FoodScanner scanData={scanData} modalOpen={modalOpen} setModalOpen={setModalOpen} />
       <LArrowButton onPress={() => navigation.goBack()} />
