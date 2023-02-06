@@ -56,17 +56,17 @@ function Table() {
       <View style={styles.tableContainer}>
         <View style={styles.rowContainer}>
           <Text style={styles.columnText}>Protein</Text>
-          <Text style={styles.columnText}>{todaysData.protein}g</Text>
+          <Text style={styles.columnText}>{todaysData?.protein}g</Text>
           {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.columnText}>Carbs</Text>
-          <Text style={styles.columnText}>{todaysData.carbs}g</Text>
+          <Text style={styles.columnText}>{todaysData?.carbs}g</Text>
           {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
         </View>
         <View style={styles.rowContainer}>
           <Text style={styles.columnText}>Fat</Text>
-          <Text style={styles.columnText}>{todaysData.fats}g</Text>
+          <Text style={styles.columnText}>{todaysData?.fats}g</Text>
           {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
         </View>
       </View>
