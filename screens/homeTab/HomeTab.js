@@ -15,10 +15,17 @@ function HomeTab({ navigation }) {
   useGoalUpdateConditions(complete);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      {/* Macros and Minerals Visuals */}
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#AD745D' }}>
+      {/* Swipe Section */}
       <View
-        style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '2%', flex: 1 }}
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          margin: 12,
+          padding: 12,
+          flex: 1,
+          backgroundColor: theme.colors.secondary,
+        }}
       >
         <View style={{ flex: 1, alignItems: 'center' }}>
           <Text h4>Macro Goals</Text>
