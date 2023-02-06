@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import moment from 'moment';
 import useTrackerStore from '../../../state/TrackerStore';
 
 const styles = StyleSheet.create({
@@ -38,7 +39,13 @@ const styles = StyleSheet.create({
 function Table() {
   const trackerState = useTrackerStore();
   const { tracker } = trackerState;
-  // console.log(tracker);
+
+  function getCurrentData(dataArray) {
+    const today = moment(new Date()).format('MM/DD/YYYY');
+    return dataArray.find((item) => item.date === today);
+  }
+
+  console.log(getCurrentData(tracker));
 
   return (
     <View style={styles.container}>
