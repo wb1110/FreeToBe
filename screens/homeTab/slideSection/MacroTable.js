@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 
 function Table() {
   const trackerState = useTrackerStore();
-  const { tracker } = trackerState;
+  const { tracker, goalProtein, goalCarbs, goalFat } = trackerState;
 
   function getCurrentData(dataArray) {
     const today = moment(new Date()).format('MM/DD/YYYY');
@@ -65,37 +65,38 @@ function Table() {
           <View style={{ width: 50 }}>
             <Text style={{ color: '#283618', fontSize: 12, fontWeight: '700' }}>Protein</Text>
           </View>
-          <View style={{ width: 50 }}>
+          <View style={{ width: 50, alignItems: 'flex-end' }}>
             <Text style={styles.columnText}>{todaysData?.protein}g</Text>
           </View>
-          <View style={{ width: 50 }}>
-            <Text style={styles.columnText}>{todaysData?.protein}g</Text>
+          <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
+            <Text style={styles.columnText}>
+              {Math.round((todaysData?.protein / goalProtein) * 100)}%
+            </Text>
           </View>
-          {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
         </View>
         <View style={styles.rowContainer}>
           <View style={{ width: 50 }}>
             <Text style={{ color: '#F5F5DC', fontSize: 12, fontWeight: '700' }}>Carbs</Text>
           </View>
-          <View style={{ width: 50 }}>
+          <View style={{ width: 50, alignItems: 'flex-end' }}>
             <Text style={styles.columnText}>{todaysData?.carbs}g</Text>
           </View>
-          <View style={{ width: 50 }}>
-            <Text style={styles.columnText}>{todaysData?.protein}g</Text>
+          <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
+            <Text style={styles.columnText}>
+              {Math.round((todaysData?.carbs / goalCarbs) * 100)}%
+            </Text>
           </View>
-          {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
         </View>
         <View style={styles.rowContainer}>
           <View style={{ width: 50 }}>
             <Text style={{ color: '#800020', fontSize: 12, fontWeight: '700' }}>Fat</Text>
           </View>
-          <View style={{ width: 50 }}>
+          <View style={{ width: 50, alignItems: 'flex-end' }}>
             <Text style={styles.columnText}>{todaysData?.fats}g</Text>
           </View>
-          <View style={{ width: 50 }}>
-            <Text style={styles.columnText}>{todaysData?.protein}g</Text>
+          <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
+            <Text style={styles.columnText}>{Math.round((todaysData?.fats / goalFat) * 100)}%</Text>
           </View>
-          {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
         </View>
       </View>
     </View>
