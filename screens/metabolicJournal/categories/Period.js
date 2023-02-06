@@ -24,7 +24,7 @@ export default function Period({ metabolicData, setMetabolicData, navigation }) 
               <View style={styles.iconContainer}>
                 <Image
                   style={styles.icon}
-                  source={require('../../../assets/icons/SexDrive/DidntHaveSex.png')}
+                  source={require('../../../assets/icons/calendarIcon.png')}
                 />
               </View>
             }
