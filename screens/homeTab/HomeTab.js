@@ -41,7 +41,7 @@ function HomeTab({ navigation }) {
               )}
             </View>
             <View style={{ flex: 1, alignItems: 'center' }}>
-              {/* <Table data={ } goals={ } /> */}
+              <Table />
             </View>
           </View>
         </View>

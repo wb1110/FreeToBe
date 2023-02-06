@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import useTrackerStore from '../../../state/TrackerStore';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,7 +35,11 @@ const styles = StyleSheet.create({
   },
 });
 
-function Table({ data, goals }) {
+function Table() {
+  const trackerState = useTrackerStore();
+  const { tracker } = trackerState;
+  // console.log(tracker);
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -43,13 +48,13 @@ function Table({ data, goals }) {
         <Text style={styles.headerText}>%</Text>
       </View>
       <View style={styles.tableContainer}>
-        {Object.entries(data).map(([macro, value], index) => (
+        {/* {Object.entries(data).map(([macro, value], index) => (
           <View key={index} style={styles.rowContainer}>
             <Text style={styles.columnText}>{macro}</Text>
             <Text style={styles.columnText}>{value}g</Text>
             <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text>
           </View>
-        ))}
+        ))} */}
       </View>
     </View>
   );
