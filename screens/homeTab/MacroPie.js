@@ -25,9 +25,9 @@ export default function MacroPie({ navigation }) {
             },
           }}
           labels={() => null}
-          colorScale={['#519085', '#E9E0AC', '#88CED2']}
+          colorScale={['#283618', '#F5F5DC', '#800020']}
           containerComponent={<VictoryContainer width={190} height={300} />}
-          innerRadius={80}
+          innerRadius={60}
           // animate={{ duration: 1000 }}
           data={[
             { x: proteinPercent, y: proteinPercent },
@@ -43,12 +43,12 @@ export default function MacroPie({ navigation }) {
           text={`${goalCalories.toFixed(2)}\nkCal`}
         />
       </Svg>
-      <View style={{ alignItems: 'center' }}>
+      {/* <View style={{ alignItems: 'center' }}>
         <Button title="Details" onPress={() => navigation.navigate('MacroDetails')} />
         {/* <Text>Proteins:{protein}</Text>
         <Text>Carbohydrates:{carb}</Text>
-        <Text>Fats:{fat}</Text> */}
-      </View>
+        <Text>Fats:{fat}</Text>
+      </View> */}
     </View>
   );
 }

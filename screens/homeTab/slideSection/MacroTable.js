@@ -10,28 +10,36 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   tableContainer: {
-    marginTop: 20,
+    marginTop: 2,
+    borderWidth: 3,
+    borderRadius: 20,
+    borderColor: '#FFFFFF50',
+    paddingTop: 12,
   },
   headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '100%',
-    marginBottom: 20,
+    width: 130,
   },
   headerText: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 12,
+    color: 'white',
   },
   rowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     width: '100%',
-    marginBottom: 10,
+    marginBottom: 15,
+    borderBottomWidth: 2,
+    borderColor: '#FFFFFF50',
   },
   columnText: {
-    fontSize: 16,
+    fontSize: 12,
+    color: 'white',
+    fontWeight: '700',
   },
 });
 
@@ -55,18 +63,39 @@ function Table() {
       </View>
       <View style={styles.tableContainer}>
         <View style={styles.rowContainer}>
-          <Text style={styles.columnText}>Protein</Text>
-          <Text style={styles.columnText}>{todaysData?.protein}g</Text>
+          <View style={{ width: 50 }}>
+            <Text style={{ color: '#283618', fontSize: 12, fontWeight: '700' }}>Protein</Text>
+          </View>
+          <View style={{ width: 50 }}>
+            <Text style={styles.columnText}>{todaysData?.protein}g</Text>
+          </View>
+          <View style={{ width: 50 }}>
+            <Text style={styles.columnText}>{todaysData?.protein}g</Text>
+          </View>
           {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
         </View>
         <View style={styles.rowContainer}>
-          <Text style={styles.columnText}>Carbs</Text>
-          <Text style={styles.columnText}>{todaysData?.carbs}g</Text>
+          <View style={{ width: 50 }}>
+            <Text style={{ color: '#F5F5DC', fontSize: 12, fontWeight: '700' }}>Carbs</Text>
+          </View>
+          <View style={{ width: 50 }}>
+            <Text style={styles.columnText}>{todaysData?.carbs}g</Text>
+          </View>
+          <View style={{ width: 50 }}>
+            <Text style={styles.columnText}>{todaysData?.protein}g</Text>
+          </View>
           {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
         </View>
         <View style={styles.rowContainer}>
-          <Text style={styles.columnText}>Fat</Text>
-          <Text style={styles.columnText}>{todaysData?.fats}g</Text>
+          <View style={{ width: 50 }}>
+            <Text style={{ color: '#800020', fontSize: 12, fontWeight: '700' }}>Fat</Text>
+          </View>
+          <View style={{ width: 50 }}>
+            <Text style={styles.columnText}>{todaysData?.fats}g</Text>
+          </View>
+          <View style={{ width: 50 }}>
+            <Text style={styles.columnText}>{todaysData?.protein}g</Text>
+          </View>
           {/* <Text style={styles.columnText}>{((value / goals[macro]) * 100).toFixed(2)}%</Text> */}
         </View>
       </View>

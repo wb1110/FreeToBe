@@ -28,9 +28,10 @@ function HomeTab({ navigation }) {
             },
           ]}
         >
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <View
+            style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
+          >
             <View style={{ flex: 1, alignItems: 'center' }}>
-              <Text h4>Macro Goals</Text>
               {state.assessment.tdee ? (
                 <MacroPie TDEE={state.assessment.tdee} navigation={navigation} />
               ) : (
