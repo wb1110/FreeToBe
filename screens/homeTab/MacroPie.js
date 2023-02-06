@@ -1,15 +1,19 @@
 import { useTheme } from '@rneui/themed';
+import { useEffect } from 'react';
 import { VictoryPie } from 'victory-native';
+import moment from 'moment';
 import useTrackerStore from '../../state/TrackerStore';
 
 export default function MacroPie() {
   const { theme } = useTheme();
   const trackerState = useTrackerStore();
-  const { goalCalories, goalCarbs, goalProtein, goalFat } = trackerState;
+  const { tracker } = trackerState;
 
-  const carbPercent = (((goalCarbs * 4) / goalCalories) * 100).toFixed(2);
-  const proteinPercent = (((goalProtein * 4) / goalCalories) * 100).toFixed(2);
-  const fatPercent = (((goalFat * 9) / goalCalories) * 100).toFixed(2);
+  function getCurrentData(dataArray) {
+    const today = moment(new Date()).format('MM/DD/YYYY');
+    return dataArray.find((item) => item.date === today);
+  }
+  const { carbs, protein, fats } = getCurrentData(tracker);
 
   return (
     <VictoryPie
@@ -25,9 +29,9 @@ export default function MacroPie() {
       innerRadius={70}
       // animate={{ duration: 1000 }}
       data={[
-        { x: proteinPercent, y: proteinPercent },
-        { x: carbPercent, y: carbPercent },
-        { x: fatPercent, y: fatPercent },
+        { x: protein, y: protein },
+        { x: carbs, y: carbs },
+        { x: fats, y: fats },
       ]}
     />
   );
