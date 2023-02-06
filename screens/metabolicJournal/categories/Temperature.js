@@ -61,7 +61,7 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
                 <View style={styles.iconContainer}>
                   <Image
                     style={styles.icon}
-                    source={require('../../../assets/icons/MoodIcons/Calm.png')}
+                    source={require('../../../assets/icons/tempPulse/wakingTemp.png')}
                   />
                 </View>
               }
@@ -73,7 +73,7 @@ export default function Temperature({ metabolicData, setMetabolicData }) {
                 <View style={styles.iconContainer}>
                   <Image
                     style={styles.icon}
-                    source={require('../../../assets/icons/MoodIcons/Happy.png')}
+                    source={require('../../../assets/icons/tempPulse/addTempAroundMeal.png')}
                   />
                 </View>
               }
