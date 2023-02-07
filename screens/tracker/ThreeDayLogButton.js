@@ -70,7 +70,7 @@ export default function ThreeDayLogButton({ selectedDay, navigation }) {
   );
 
   return (
-    <View style={{ alignItems: 'center', marginTop: '8%' }}>
+    <View style={{ alignItems: 'center', marginTop: 16 }}>
       {threeDayLog?.length === 2 ? (
         <Button
           titleStyle={{

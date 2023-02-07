@@ -84,10 +84,10 @@ function Tracker({ navigation }) {
             setDate={setDate}
           />
           <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
-          <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: '4%' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 36 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <FontAwesome name="square" size={24} color="#519085" />
-              <Text style={{ marginLeft: '4%' }}>Goal</Text>
+              <Text style={{ marginLeft: 8 }}>Goal</Text>
             </View>
             <View
               style={{
@@ -96,7 +96,7 @@ function Tracker({ navigation }) {
               }}
             >
               <FontAwesome name="square" size={24} color="#E9E0AC" />
-              <Text style={{ marginLeft: '4%' }}>Completed</Text>
+              <Text style={{ marginLeft: 8 }}>Completed</Text>
             </View>
           </View>
           {selectedDay && threeDayLog?.length < 3 ? (
