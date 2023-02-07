@@ -70,6 +70,27 @@ function HomeTab({ navigation }) {
                       consumed={1500}
                       goal={2200}
                     />
+                    <ProgressBar
+                      color="#283618"
+                      title="Protein"
+                      unit="g"
+                      consumed={1500}
+                      goal={2200}
+                    />
+                    <ProgressBar
+                      color="#F5F5DC"
+                      title="Carbs"
+                      unit="g"
+                      consumed={1500}
+                      goal={2200}
+                    />
+                    <ProgressBar
+                      color="#800020"
+                      title="Fats"
+                      unit="g"
+                      consumed={1500}
+                      goal={2200}
+                    />
                   </View>
                 ) : (
                   <Button

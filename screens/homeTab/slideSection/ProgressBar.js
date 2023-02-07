@@ -5,7 +5,7 @@ import React from 'react';
 export default function ProgressBar({ color, title, consumed, goal, unit }) {
   const percent = Math.round((consumed / goal) * 100);
   return (
-    <View>
+    <View style={{ marginBottom: 16 }}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <Text h4>
           {title} - {consumed}
