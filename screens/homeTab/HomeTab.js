@@ -1,11 +1,13 @@
 /* eslint-disable no-use-before-define */
-import { Button, Text, useTheme } from '@rneui/themed';
+import { Button, LinearProgress, Text, useTheme } from '@rneui/themed';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import Swiper from 'react-native-swiper';
 import useGoalUpdateConditions from '../../functions/goalUpdateConditions';
 import useStore from '../../state/Store';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import MacroPie from './MacroPie';
 import Table from './slideSection/MacroTable';
+import ProgressBar from './slideSection/ProgressBar';
 
 function HomeTab({ navigation }) {
   const state = useStore();
@@ -27,23 +29,57 @@ function HomeTab({ navigation }) {
             },
           ]}
         >
-          <View
-            style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}
-          >
-            <View style={{ flex: 1, alignItems: 'center' }}>
-              {state.assessment.tdee ? (
-                <MacroPie TDEE={state.assessment.tdee} navigation={navigation} />
-              ) : (
-                <Button
-                  title="Take Assessment"
-                  onPress={() => navigation.navigate('HeightWeightAge')}
-                />
-              )}
+          <Swiper showsButtons loop={false}>
+            {/* Slide 1 */}
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+            >
+              <View style={{ flex: 1, alignItems: 'center' }}>
+                {state.assessment.tdee ? (
+                  <MacroPie TDEE={state.assessment.tdee} navigation={navigation} />
+                ) : (
+                  <Button
+                    title="Take Assessment"
+                    onPress={() => navigation.navigate('HeightWeightAge')}
+                  />
+                )}
+              </View>
+              <View style={{ flex: 1, alignItems: 'center' }}>
+                <Table />
+              </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'center' }}>
-              <Table />
+            {/* Slide 2 */}
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+            >
+              <View style={{ flex: 1, alignItems: 'center' }}>
+                {state.assessment.tdee ? (
+                  <View>
+                    <ProgressBar
+                      color="#B65C3D"
+                      title="Energy"
+                      unit="kCal"
+                      consumed={1500}
+                      goal={2200}
+                    />
+                  </View>
+                ) : (
+                  <Button
+                    title="Take Assessment"
+                    onPress={() => navigation.navigate('HeightWeightAge')}
+                  />
+                )}
+              </View>
             </View>
-          </View>
+          </Swiper>
         </View>
         {/* Nutrition Info Section */}
         <View
