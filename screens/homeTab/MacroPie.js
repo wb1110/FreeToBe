@@ -36,6 +36,7 @@ export default function MacroPie() {
             { x: carbs, y: carbs, fill: '#F5F5DC' },
             { x: fats, y: fats, fill: '#800020' },
           ]);
+          setInnerRadius(30);
           // setInnerRadius(30);
         } else {
           setData([{ y: 1, fill: theme.colors.primary }]);
