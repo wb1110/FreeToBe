@@ -1,30 +1,12 @@
-import { useTheme } from '@rneui/themed';
-import { useCallback, useEffect, useState } from 'react';
-import { VictoryPie } from 'victory-native';
-import moment from 'moment';
 import { useFocusEffect } from '@react-navigation/core';
-import useTrackerStore from '../../state/TrackerStore';
+import { useTheme } from '@rneui/themed';
+import { useCallback, useState } from 'react';
+import { VictoryPie } from 'victory-native';
 
-export default function MacroPie() {
+export default function MacroPie({ carbs, protein, fats }) {
   const { theme } = useTheme();
-  const trackerState = useTrackerStore();
-  const { tracker } = trackerState;
   const [data, setData] = useState([{ y: 1 }]);
   const [innerRadius, setInnerRadius] = useState(40);
-
-  function getCurrentData(dataArray) {
-    const today = moment(new Date()).format('MM/DD/YYYY');
-    const todayObject = dataArray.find((item) => item.date === today);
-    if (todayObject) {
-      return todayObject;
-    }
-    return {
-      carbs: 0,
-      protein: 0,
-      fats: 0,
-    };
-  }
-  const { carbs, protein, fats } = getCurrentData(tracker);
 
   useFocusEffect(
     useCallback(() =>

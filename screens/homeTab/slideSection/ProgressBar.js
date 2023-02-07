@@ -1,6 +1,5 @@
+import { Text } from '@rneui/themed';
 import { View } from 'react-native';
-import { Button, LinearProgress, Text, useTheme } from '@rneui/themed';
-import React from 'react';
 
 export default function ProgressBar({ color, title, consumed, goal, unit }) {
   const percent = Math.round((consumed / goal) * 100);

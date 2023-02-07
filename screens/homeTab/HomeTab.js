@@ -1,10 +1,12 @@
 /* eslint-disable no-use-before-define */
-import { Button, LinearProgress, Text, useTheme } from '@rneui/themed';
+import { Button, Text, useTheme } from '@rneui/themed';
+import moment from 'moment';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Swiper from 'react-native-swiper';
 import useGoalUpdateConditions from '../../functions/goalUpdateConditions';
 import useStore from '../../state/Store';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
+import useTrackerStore from '../../state/TrackerStore';
 import MacroPie from './MacroPie';
 import Table from './slideSection/MacroTable';
 import ProgressBar from './slideSection/ProgressBar';
@@ -12,10 +14,28 @@ import ProgressBar from './slideSection/ProgressBar';
 function HomeTab({ navigation }) {
   const state = useStore();
   const threeDayLogState = useThreeDayLogStore();
+  const trackerState = useTrackerStore();
+
+  const { tracker } = trackerState;
   const { complete } = threeDayLogState;
   const { theme } = useTheme();
 
   useGoalUpdateConditions(complete);
+
+  function getCurrentData(dataArray) {
+    const today = moment(new Date()).format('MM/DD/YYYY');
+    const todayObject = dataArray.find((item) => item.date === today);
+    if (todayObject) {
+      return todayObject;
+    }
+    return {
+      calories: 0,
+      carbs: 0,
+      protein: 0,
+      fats: 0,
+    };
+  }
+  const { carbs, protein, fats, calories } = getCurrentData(tracker);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#AD745D' }}>
@@ -44,7 +64,7 @@ function HomeTab({ navigation }) {
             >
               <View style={{ flex: 1, alignItems: 'center' }}>
                 {state.assessment.tdee ? (
-                  <MacroPie TDEE={state.assessment.tdee} navigation={navigation} />
+                  <MacroPie carbs={carbs} fats={fats} protein={protein} navigation={navigation} />
                 ) : (
                   <Button
                     title="Take Assessment"
@@ -71,30 +91,24 @@ function HomeTab({ navigation }) {
                       color="#B65C3D"
                       title="Energy"
                       unit="kCal"
-                      consumed={1500}
+                      consumed={calories}
                       goal={2200}
                     />
                     <ProgressBar
                       color="#283618"
                       title="Protein"
                       unit="g"
-                      consumed={1500}
-                      goal={2200}
+                      consumed={protein}
+                      goal={165}
                     />
                     <ProgressBar
                       color="#F5F5DC"
                       title="Carbs"
                       unit="g"
-                      consumed={1500}
-                      goal={2200}
+                      consumed={carbs}
+                      goal={220}
                     />
-                    <ProgressBar
-                      color="#800020"
-                      title="Fats"
-                      unit="g"
-                      consumed={1500}
-                      goal={2200}
-                    />
+                    <ProgressBar color="#800020" title="Fats" unit="g" consumed={fats} goal={73} />
                   </View>
                 ) : (
                   <Button
