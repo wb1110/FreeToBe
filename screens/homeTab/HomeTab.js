@@ -16,7 +16,7 @@ function HomeTab({ navigation }) {
   const threeDayLogState = useThreeDayLogStore();
   const trackerState = useTrackerStore();
 
-  const { tracker } = trackerState;
+  const { tracker, goalProtein, goalCarbs, goalFat, goalCalories } = trackerState;
   const { complete } = threeDayLogState;
   const { theme } = useTheme();
 
@@ -92,23 +92,29 @@ function HomeTab({ navigation }) {
                       title="Energy"
                       unit="kCal"
                       consumed={calories}
-                      goal={2200}
+                      goal={goalCalories}
                     />
                     <ProgressBar
                       color="#283618"
                       title="Protein"
                       unit="g"
                       consumed={protein}
-                      goal={165}
+                      goal={goalProtein}
                     />
                     <ProgressBar
                       color="#F5F5DC"
                       title="Carbs"
                       unit="g"
                       consumed={carbs}
-                      goal={220}
+                      goal={goalCarbs}
                     />
-                    <ProgressBar color="#800020" title="Fats" unit="g" consumed={fats} goal={73} />
+                    <ProgressBar
+                      color="#800020"
+                      title="Fats"
+                      unit="g"
+                      consumed={fats}
+                      goal={goalFat}
+                    />
                   </View>
                 ) : (
                   <Button
