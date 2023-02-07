@@ -29,7 +29,11 @@ function HomeTab({ navigation }) {
             },
           ]}
         >
-          <Swiper showsButtons loop={false}>
+          <Swiper
+            style={{ height: 300, justifyContent: 'center' }}
+            activeDotColor="white"
+            loop={false}
+          >
             {/* Slide 1 */}
             <View
               style={{
@@ -62,7 +66,7 @@ function HomeTab({ navigation }) {
             >
               <View style={{ flex: 1, alignItems: 'center' }}>
                 {state.assessment.tdee ? (
-                  <View>
+                  <View style={{ padding: 20 }}>
                     <ProgressBar
                       color="#B65C3D"
                       title="Energy"
@@ -185,5 +189,6 @@ const styles = StyleSheet.create({
     margin: 12,
     padding: 12,
     flex: 1,
+    justifyContent: 'center',
   },
 });

@@ -10,7 +10,7 @@ export default function MacroPie() {
   const trackerState = useTrackerStore();
   const { tracker } = trackerState;
   const [data, setData] = useState([{ y: 1 }]);
-  const [innerRadius, setInnerRadius] = useState(30);
+  const [innerRadius, setInnerRadius] = useState(40);
 
   function getCurrentData(dataArray) {
     const today = moment(new Date()).format('MM/DD/YYYY');
@@ -36,8 +36,7 @@ export default function MacroPie() {
             { x: carbs, y: carbs, fill: '#F5F5DC' },
             { x: fats, y: fats, fill: '#800020' },
           ]);
-          setInnerRadius(30);
-          // setInnerRadius(30);
+          setInnerRadius(40);
         } else {
           setData([{ y: 1, fill: theme.colors.primary }]);
           setInnerRadius(0);
@@ -50,8 +49,8 @@ export default function MacroPie() {
 
   return (
     <VictoryPie
-      width={200}
-      height={200}
+      width={250}
+      height={250}
       labels={() => null}
       innerRadius={innerRadius}
       style={{
