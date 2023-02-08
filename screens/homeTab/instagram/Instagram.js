@@ -21,7 +21,7 @@ export default function Instagram() {
 
   return (
     <View>
-      <Image source={{ uri: data?.permalink }} />
+      <Image source={{ uri: data?.media_url }} style={{ width: '100%', aspectRatio: 1, flex: 1 }} />
       <Text>{data?.caption}</Text>
     </View>
   );
