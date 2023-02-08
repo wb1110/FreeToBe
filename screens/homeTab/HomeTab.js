@@ -7,6 +7,7 @@ import useGoalUpdateConditions from '../../functions/goalUpdateConditions';
 import useStore from '../../state/Store';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import useTrackerStore from '../../state/TrackerStore';
+import Instagram from './instagram/Instagram';
 import MacroPie from './MacroPie';
 import Table from './slideSection/MacroTable';
 import ProgressBar from './slideSection/ProgressBar';
@@ -173,6 +174,7 @@ function HomeTab({ navigation }) {
             <Text h3 h3Style={{ marginBottom: 12 }}>
               Instagram Feed
             </Text>
+            <Instagram />
           </View>
         </View>
         {/* Blog Feed Section */}
