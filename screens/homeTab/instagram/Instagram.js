@@ -9,10 +9,10 @@ export default function Instagram() {
   useEffect(() => {
     axios
       .get(
-        `https://graph.instagram.com/me/media?fields=media_url,caption,permalink&access_token=${INSTA_ACCESS}`
+        `https://graph.instagram.com/me/media?fields=media_url,caption,permalink,timestamp,thumbnail_url&access_token=${INSTA_ACCESS}`
       )
       .then((res) => {
-        setData(res.data.data[0]);
+        setData(res.data.data.slice(0, 4));
       })
       .catch((err) => {
         console.log(err);
@@ -21,8 +21,16 @@ export default function Instagram() {
 
   return (
     <View>
-      <Image source={{ uri: data?.media_url }} style={{ width: '100%', aspectRatio: 1, flex: 1 }} />
-      <Text>{data?.caption}</Text>
+      {data
+        ? data.map((item, index) => (
+            <View key={index}>
+              <Image
+                source={{ uri: item.thumbnail_url }}
+                style={{ width: '100%', aspectRatio: 1, flex: 1 }}
+              />
+            </View>
+          ))
+        : null}
     </View>
   );
 }
