@@ -21,7 +21,12 @@ export default function Instagram() {
   }, []);
 
   return (
-    <Swiper style={{ height: 300 }} activeDotColor="white">
+    <Swiper
+      style={{
+        height: 300,
+      }}
+      activeDotColor="white"
+    >
       {data ? (
         data.map((item, index) => (
           <View

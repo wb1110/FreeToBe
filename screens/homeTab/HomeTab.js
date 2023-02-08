@@ -169,11 +169,10 @@ function HomeTab({ navigation }) {
               margin: 12,
               padding: 12,
               flex: 1,
+              height: 320,
+              width: 320,
             }}
           >
-            <Text h3 h3Style={{ marginBottom: 12 }}>
-              Instagram Feed
-            </Text>
             <Instagram />
           </View>
         </View>
