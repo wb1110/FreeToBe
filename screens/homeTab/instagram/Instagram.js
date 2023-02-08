@@ -26,6 +26,7 @@ export default function Instagram() {
         height: 300,
       }}
       activeDotColor="white"
+      loop={false}
     >
       {data ? (
         data.map((item, index) => (
