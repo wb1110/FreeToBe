@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, Linking } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Image } from '@rneui/themed';
@@ -36,6 +36,7 @@ export default function Instagram() {
             <Image
               source={{ uri: item.media_type === 'VIDEO' ? item.thumbnail_url : item.media_url }}
               style={{ width: '100%', aspectRatio: 1, flex: 1 }}
+              onPress={() => Linking.openURL(item.permalink)}
             />
           </View>
         ))
