@@ -8,6 +8,7 @@ import {
   Image,
 } from 'react-native';
 import { Input, Text, Button } from '@rneui/themed';
+import { useState } from 'react';
 import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import ftbnBigLogo from '../assets/icons/ftbnBigLogo.png';
@@ -17,6 +18,9 @@ function LogoTitle() {
 }
 
 function Register({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -26,9 +30,28 @@ function Register({ navigation }) {
         <SafeAreaView style={{ flex: 1 }}>
           <Container>
             <LogoTitle />
-            <Input label="Email" />
-            <Input secureTextEntry label="Password" />
-            <Input label="Full name" />
+            <Input
+              label="Email"
+              value={email}
+              onChangeText={setEmail}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <Input
+              secureTextEntry
+              label="Password"
+              value={password}
+              onChangeText={setPassword}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <Input
+              label="Full name"
+              value={fullName}
+              onChangeText={setFullName}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
             <StandardButton onPress={() => navigation.navigate('Welcome')} title="Sign Up" />
             <View
               style={{

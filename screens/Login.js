@@ -8,6 +8,7 @@ import {
   Image,
 } from 'react-native';
 import { Input, Text, Button } from '@rneui/themed';
+import { useState } from 'react';
 import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import useStore from '../state/Store';
@@ -34,6 +35,8 @@ function Login({ navigation }) {
   const threeDayLogState = useThreeDayLogStore();
   const settingsState = useSettingsStore();
   const metabolicState = useMetabolicStore();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <KeyboardAvoidingView
@@ -44,8 +47,21 @@ function Login({ navigation }) {
         <SafeAreaView style={{ flex: 1 }}>
           <Container>
             <LogoTitle />
-            <Input label="Email" />
-            <Input secureTextEntry label="Password" />
+            <Input
+              label="Email"
+              value={email}
+              onChangeText={setEmail}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <Input
+              secureTextEntry
+              label="Password"
+              value={password}
+              onChangeText={setPassword}
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
             <StandardButton
               onPress={() => {
                 navigation.navigate('UserHome', { screen: 'Home' });
