@@ -12,6 +12,7 @@ import { useState } from 'react';
 import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import ftbnBigLogo from '../assets/icons/ftbnBigLogo.png';
+import useAuthStore from '../state/AuthStore';
 
 function LogoTitle() {
   return <Image source={ftbnBigLogo} />;
@@ -20,7 +21,7 @@ function LogoTitle() {
 function Register({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [fullName, setFullName] = useState('');
+  const { signup } = useAuthStore();
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -45,14 +46,13 @@ function Register({ navigation }) {
               autoCapitalize="none"
               autoCorrect={false}
             />
-            <Input
-              label="Full name"
-              value={fullName}
-              onChangeText={setFullName}
-              autoCapitalize="none"
-              autoCorrect={false}
+            <StandardButton
+              onPress={() => {
+                // navigation.navigate('Welcome');
+                signup({ email, password });
+              }}
+              title="Sign Up"
             />
-            <StandardButton onPress={() => navigation.navigate('Welcome')} title="Sign Up" />
             <View
               style={{
                 flexWrap: 'wrap',
