@@ -23,7 +23,7 @@ function HomeTab({ navigation }) {
   const { complete } = threeDayLogState;
   const { theme } = useTheme();
 
-  useGetAllData();
+  const isDataLoaded = useGetAllData();
   useGoalUpdateConditions(complete);
 
   function getCurrentData(dataArray) {
@@ -40,6 +40,10 @@ function HomeTab({ navigation }) {
     };
   }
   const { carbs, protein, fats, calories } = getCurrentData(tracker);
+
+  if (!isDataLoaded) {
+    return <Text>Loading...</Text>;
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#AD745D' }}>

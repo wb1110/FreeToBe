@@ -1,7 +1,7 @@
 import { FontAwesome } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/core';
 import { Text } from '@rneui/themed';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -10,7 +10,6 @@ import {
   View,
 } from 'react-native';
 import addNewDate from '../../functions/AddNewDate';
-import { getThreeDayLog, getTracker } from '../../functions/Gets';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import useTrackerStore from '../../state/TrackerStore';
 import Calendar from './Calendar';
@@ -44,12 +43,6 @@ function Tracker({ navigation }) {
   }
   const currentIndex = indexExists(tracker, dateData);
   const selectedDay = tracker[indexExists(tracker, dateData)];
-
-  useEffect(() => {
-    getTracker(state);
-    getThreeDayLog(threeDayState);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useFocusEffect(
     useCallback(() =>
