@@ -1,5 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { storeSettings } from './Posts';
+import useSettingsStore from '../state/SettingsStore';
+import useTrackerStore from '../state/TrackerStore';
+import useThreeDayLogStore from '../state/ThreeDayLogStore';
+import useMetabolicStore from '../state/MetabolicStore';
+import useStore from '../state/Store';
 
 export const getAssessment = async (state) => {
   let userAssessment;
@@ -72,4 +77,18 @@ export const getMetabolicJournal = async (state) => {
     return e;
   }
   return parsedResult;
+};
+
+export const useGetAllData = () => {
+  const state = useStore();
+  const settingsState = useSettingsStore();
+  const trackerState = useTrackerStore();
+  const threeDayLogState = useThreeDayLogStore();
+  const metabolicState = useMetabolicStore();
+
+  getAssessment(state);
+  getSettings(settingsState);
+  getTracker(trackerState);
+  getThreeDayLog(threeDayLogState);
+  getMetabolicJournal(metabolicState);
 };

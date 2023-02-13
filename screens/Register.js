@@ -5,7 +5,6 @@ import {
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
-  StyleSheet,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
@@ -48,11 +47,3 @@ function Register({ navigation }) {
 }
 
 export default Register;
-
-const styles = StyleSheet.create({
-  errorMessage: {
-    fontWeight: 'bold',
-    color: 'red',
-    marginBottom: 15,
-  },
-});

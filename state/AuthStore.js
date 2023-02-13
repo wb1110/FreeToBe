@@ -1,34 +1,32 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import produce from 'immer';
 import { create } from 'zustand';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useGetAllData } from '../functions/Gets';
 import freetobeApi from '../screens/freetobeApi';
 import { navigate } from '../screens/navigationRef';
-import useStore from './Store';
-import {
-  getAssessment,
-  getMetabolicJournal,
-  getSettings,
-  getThreeDayLog,
-  getTracker,
-} from '../functions/Gets';
-import ftbnBigLogo from '../assets/icons/ftbnBigLogo.png';
-import useSettingsStore from './SettingsStore';
-import useTrackerStore from './TrackerStore';
-import useThreeDayLogStore from './ThreeDayLogStore';
-import useMetabolicStore from './MetabolicStore';
 
 const useAuthStore = create((set) => ({
   token: null,
   errorMessage: '',
 
-  signin: (email, password) => {
-    set(produce((state) => {}));
+  signin: (values) => {
+    set(
+      produce(async (state) => {
+        const { setToken, setErrorMessage } = state;
+        try {
+          const response = await freetobeApi.post('/signin', values);
+          await AsyncStorage.setItem('token', response.data.token);
+          setToken(response.data.token);
+          setErrorMessage('');
+          // useGetAllData();
+          navigate('UserHome', { screen: 'Home' });
+        } catch (err) {
+          console.log(err);
+          setErrorMessage('Something went wrong with sign in');
+        }
+      })
+    );
     // navigation.navigate('UserHome', { screen: 'Home' });
-    // getAssessment(state);
-    // getSettings(settingsState);
-    // getTracker(trackerState);
-    // getThreeDayLog(threeDayLogState);
-    // getMetabolicJournal(metabolicState);
   },
   signup: (values) => {
     set(

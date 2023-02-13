@@ -7,6 +7,7 @@ export function navigate(name, params) {
   if (setNavigator.isReady()) {
     setNavigator.navigate(name, params);
   } else {
+    // eslint-disable-next-line no-console
     console.log('navigation error');
   }
 }
