@@ -8,6 +8,20 @@ const useAuthStore = create((set) => ({
   token: null,
   errorMessage: '',
 
+  tryLocalSignin: () => {
+    set(
+      produce(async (state) => {
+        const token = await AsyncStorage.getItem('token');
+        if (token) {
+          state.setToken(token);
+          navigate('UserHome', { screen: 'Home' });
+        } else {
+          navigate('Register');
+        }
+      })
+    );
+  },
+
   signin: (values) => {
     set(
       produce(async (state) => {
@@ -24,7 +38,6 @@ const useAuthStore = create((set) => ({
         }
       })
     );
-    // navigation.navigate('UserHome', { screen: 'Home' });
   },
   signup: (values) => {
     set(

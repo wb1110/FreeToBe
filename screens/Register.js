@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { useFocusEffect } from '@react-navigation/core';
 import { Button, Text } from '@rneui/themed';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -15,7 +15,11 @@ import Container from '../components/Container';
 import useAuthStore from '../state/AuthStore';
 
 function Register({ navigation }) {
-  const { signup, errorMessage, setErrorMessage } = useAuthStore();
+  const { signup, errorMessage, setErrorMessage, tryLocalSignin } = useAuthStore();
+
+  useEffect(() => {
+    tryLocalSignin();
+  }, []);
 
   useFocusEffect(
     useCallback(() => {
