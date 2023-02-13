@@ -21,7 +21,7 @@ function LogoTitle() {
 function Register({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { signup } = useAuthStore();
+  const { signup, errorMessage } = useAuthStore();
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -46,6 +46,7 @@ function Register({ navigation }) {
               autoCapitalize="none"
               autoCorrect={false}
             />
+            {errorMessage ? <Text>{errorMessage}</Text> : null}
             <StandardButton
               onPress={() => {
                 // navigation.navigate('Welcome');
