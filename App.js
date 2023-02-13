@@ -40,6 +40,7 @@ import {
   Results5,
   Results6,
 } from './screens/threeDayLog/Results';
+import { setNavigator } from './screens/navigationRef';
 // Before rendering any navigation stack
 enableScreens();
 
@@ -160,7 +161,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <NavigationContainer theme={MyTheme}>
+        <NavigationContainer theme={MyTheme} ref={setNavigator}>
           <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Register">
             {/* Authentication */}
             <Stack.Group screenOptions={{ headerShown: false }}>

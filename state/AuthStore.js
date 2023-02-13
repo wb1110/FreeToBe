@@ -1,9 +1,11 @@
 import produce from 'immer';
 import { create } from 'zustand';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import freetobeApi from '../screens/freetobeApi';
+import { navigate } from '../screens/navigationRef';
 
 const useAuthStore = create((set) => ({
-  isSignedIn: false,
+  token: null,
   errorMessage: '',
 
   signin: (email, password) => {
@@ -12,14 +14,16 @@ const useAuthStore = create((set) => ({
   signup: (values) => {
     set(
       produce(async (state) => {
+        const { setToken, setErrorMessage } = state;
         try {
           const response = await freetobeApi.post('/signup', values);
-          state.setErrorMessage('');
-          console.log(response.data);
+          await AsyncStorage.setItem('token', response.data.token);
+          setToken(response.data.token);
+          setErrorMessage('');
+          navigate('Welcome');
         } catch (err) {
           console.log(err);
-          state.setErrorMessage('Something went wrong with sign up');
-          console.log(state.errorMessage);
+          setErrorMessage('Something went wrong with sign up');
         }
       })
     );
@@ -29,6 +33,9 @@ const useAuthStore = create((set) => ({
   },
   setErrorMessage: (value) => {
     set({ errorMessage: value });
+  },
+  setToken: (value) => {
+    set({ token: value });
   },
 }));
 

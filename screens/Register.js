@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import {
   SafeAreaView,
   TouchableWithoutFeedback,
@@ -6,6 +7,7 @@ import {
   Platform,
   View,
   Image,
+  StyleSheet,
 } from 'react-native';
 import { Input, Text, Button } from '@rneui/themed';
 import { useState } from 'react';
@@ -22,6 +24,7 @@ function Register({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { signup, errorMessage } = useAuthStore();
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -46,7 +49,7 @@ function Register({ navigation }) {
               autoCapitalize="none"
               autoCorrect={false}
             />
-            {errorMessage ? <Text>{errorMessage}</Text> : null}
+            {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
             <StandardButton
               onPress={() => {
                 // navigation.navigate('Welcome');
@@ -73,3 +76,11 @@ function Register({ navigation }) {
 }
 
 export default Register;
+
+const styles = StyleSheet.create({
+  errorMessage: {
+    fontWeight: 'bold',
+    color: 'red',
+    marginBottom: 15,
+  },
+});
