@@ -163,40 +163,48 @@ export default function App() {
         <NavigationContainer theme={MyTheme}>
           <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Register">
             {/* Authentication */}
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Register" component={Register} />
+            <Stack.Group screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="Register" component={Register} />
+            </Stack.Group>
             {/* Assessment */}
-            <Stack.Screen name="Welcome" component={Welcome} />
-            <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
-            <Stack.Screen name="BodyFatPercentage" component={BodyFatPercentage} />
-            <Stack.Screen name="BodyFatKnown" component={BodyFatKnown} />
-            <Stack.Screen name="CaliperSites" component={CaliperSites} />
-            <Stack.Screen name="Pregnant" component={Pregnant} />
-            <Stack.Screen name="Nursing" component={Nursing} />
-            <Stack.Screen name="Goals" component={Goals} />
-            <Stack.Screen name="DietHistory" component={DietHistory} />
-            <Stack.Screen name="FoodPreferences" component={FoodPreferences} />
-            <Stack.Screen name="TrackingHistory" component={TrackingHistory} />
-            <Stack.Screen name="InternalStress" component={InternalStress} />
-            <Stack.Screen name="ExternalStress" component={ExternalStress} />
-            <Stack.Screen name="ActivityLevel" component={ActivityLevel} />
-            <Stack.Screen name="WorkActivityLevel" component={WorkActivityLevel} />
-            <Stack.Screen name="Personality" component={Personality} />
-            <Stack.Screen name="Disclaimer" component={Disclaimer} />
-            <Stack.Screen name="AbleToTrack" component={AbleToTrack} />
-            <Stack.Screen name="LieSkinny" component={LieSkinny} />
-            <Stack.Screen name="LieSkinny2" component={LieSkinny2} />
-            <Stack.Screen name="LieSkinny3" component={LieSkinny3} />
-            <Stack.Screen name="LieSkinny4" component={LieSkinny4} />
+            <Stack.Group screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="Welcome" component={Welcome} />
+              <Stack.Screen name="HeightWeightAge" component={HeightWeightAge} />
+              <Stack.Screen name="BodyFatPercentage" component={BodyFatPercentage} />
+              <Stack.Screen name="BodyFatKnown" component={BodyFatKnown} />
+              <Stack.Screen name="CaliperSites" component={CaliperSites} />
+              <Stack.Screen name="Pregnant" component={Pregnant} />
+              <Stack.Screen name="Nursing" component={Nursing} />
+              <Stack.Screen name="Goals" component={Goals} />
+              <Stack.Screen name="DietHistory" component={DietHistory} />
+              <Stack.Screen name="FoodPreferences" component={FoodPreferences} />
+              <Stack.Screen name="TrackingHistory" component={TrackingHistory} />
+              <Stack.Screen name="InternalStress" component={InternalStress} />
+              <Stack.Screen name="ExternalStress" component={ExternalStress} />
+              <Stack.Screen name="ActivityLevel" component={ActivityLevel} />
+              <Stack.Screen name="WorkActivityLevel" component={WorkActivityLevel} />
+              <Stack.Screen name="Personality" component={Personality} />
+              <Stack.Screen name="Disclaimer" component={Disclaimer} />
+              <Stack.Screen name="AbleToTrack" component={AbleToTrack} />
+              <Stack.Screen name="LieSkinny" component={LieSkinny} />
+              <Stack.Screen name="LieSkinny2" component={LieSkinny2} />
+              <Stack.Screen name="LieSkinny3" component={LieSkinny3} />
+              <Stack.Screen name="LieSkinny4" component={LieSkinny4} />
+            </Stack.Group>
             {/* Home Tab Navigator */}
-            <Stack.Screen name="UserHome" component={UserHome} />
+            <Stack.Group screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="UserHome" component={UserHome} />
+            </Stack.Group>
             {/* threeDayLog Results Pages */}
-            <Stack.Screen name="Results1" component={Results1} />
-            <Stack.Screen name="Results2" component={Results2} />
-            <Stack.Screen name="Results3" component={Results3} />
-            <Stack.Screen name="Results4" component={Results4} />
-            <Stack.Screen name="Results5" component={Results5} />
-            <Stack.Screen name="Results6" component={Results6} />
+            <Stack.Group screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="Results1" component={Results1} />
+              <Stack.Screen name="Results2" component={Results2} />
+              <Stack.Screen name="Results3" component={Results3} />
+              <Stack.Screen name="Results4" component={Results4} />
+              <Stack.Screen name="Results5" component={Results5} />
+              <Stack.Screen name="Results6" component={Results6} />
+            </Stack.Group>
           </Stack.Navigator>
         </NavigationContainer>
       </ThemeProvider>
