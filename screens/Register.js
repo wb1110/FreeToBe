@@ -1,21 +1,17 @@
 /* eslint-disable no-use-before-define */
+import { Button, Text } from '@rneui/themed';
 import {
-  SafeAreaView,
-  TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
-  View,
-  Image,
+  SafeAreaView,
   StyleSheet,
+  TouchableWithoutFeedback,
+  View,
 } from 'react-native';
-import { Input, Text, Button } from '@rneui/themed';
-import { useState } from 'react';
-import StandardButton from '../components/Buttons/StandardButton';
-import Container from '../components/Container';
-import ftbnBigLogo from '../assets/icons/ftbnBigLogo.png';
-import useAuthStore from '../state/AuthStore';
 import AuthForm from '../components/AuthForm';
+import Container from '../components/Container';
+import useAuthStore from '../state/AuthStore';
 
 function Register({ navigation }) {
   const { signup, errorMessage } = useAuthStore();

@@ -1,42 +1,18 @@
+import { Button, Text } from '@rneui/themed';
 import {
-  SafeAreaView,
-  TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
+  SafeAreaView,
+  TouchableWithoutFeedback,
   View,
-  Image,
 } from 'react-native';
-import { Input, Text, Button } from '@rneui/themed';
-import { useState } from 'react';
-import StandardButton from '../components/Buttons/StandardButton';
+import AuthForm from '../components/AuthForm';
 import Container from '../components/Container';
-import useStore from '../state/Store';
-import {
-  getAssessment,
-  getMetabolicJournal,
-  getSettings,
-  getThreeDayLog,
-  getTracker,
-} from '../functions/Gets';
-import ftbnBigLogo from '../assets/icons/ftbnBigLogo.png';
-import useSettingsStore from '../state/SettingsStore';
-import useTrackerStore from '../state/TrackerStore';
-import useThreeDayLogStore from '../state/ThreeDayLogStore';
-import useMetabolicStore from '../state/MetabolicStore';
-
-function LogoTitle() {
-  return <Image source={ftbnBigLogo} />;
-}
+import useAuthStore from '../state/AuthStore';
 
 function Login({ navigation }) {
-  const state = useStore();
-  const trackerState = useTrackerStore();
-  const threeDayLogState = useThreeDayLogStore();
-  const settingsState = useSettingsStore();
-  const metabolicState = useMetabolicStore();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { signin, errorMessage } = useAuthStore();
 
   return (
     <KeyboardAvoidingView
@@ -46,32 +22,10 @@ function Login({ navigation }) {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <SafeAreaView style={{ flex: 1 }}>
           <Container>
-            <LogoTitle />
-            <Input
-              label="Email"
-              value={email}
-              onChangeText={setEmail}
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            <Input
-              secureTextEntry
-              label="Password"
-              value={password}
-              onChangeText={setPassword}
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            <StandardButton
-              onPress={() => {
-                navigation.navigate('UserHome', { screen: 'Home' });
-                getAssessment(state);
-                getSettings(settingsState);
-                getTracker(trackerState);
-                getThreeDayLog(threeDayLogState);
-                getMetabolicJournal(metabolicState);
-              }}
-              title="Sign In"
+            <AuthForm
+              handleSubmit={signin}
+              submitButtonText="Sign in"
+              errorMessage={errorMessage}
             />
             <View
               style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'center' }}
