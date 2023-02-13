@@ -1,4 +1,6 @@
+import { useFocusEffect } from '@react-navigation/core';
 import { Button, Text } from '@rneui/themed';
+import { useCallback } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -12,7 +14,13 @@ import Container from '../components/Container';
 import useAuthStore from '../state/AuthStore';
 
 function Login({ navigation }) {
-  const { signin, errorMessage } = useAuthStore();
+  const { signin, errorMessage, setErrorMessage } = useAuthStore();
+
+  useFocusEffect(
+    useCallback(() => {
+      setErrorMessage('');
+    }, [])
+  );
 
   return (
     <KeyboardAvoidingView
