@@ -15,14 +15,9 @@ import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import ftbnBigLogo from '../assets/icons/ftbnBigLogo.png';
 import useAuthStore from '../state/AuthStore';
-
-function LogoTitle() {
-  return <Image source={ftbnBigLogo} />;
-}
+import AuthForm from '../components/AuthForm';
 
 function Register({ navigation }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const { signup, errorMessage } = useAuthStore();
 
   return (
@@ -33,29 +28,10 @@ function Register({ navigation }) {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <SafeAreaView style={{ flex: 1 }}>
           <Container>
-            <LogoTitle />
-            <Input
-              label="Email"
-              value={email}
-              onChangeText={setEmail}
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            <Input
-              secureTextEntry
-              label="Password"
-              value={password}
-              onChangeText={setPassword}
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
-            <StandardButton
-              onPress={() => {
-                // navigation.navigate('Welcome');
-                signup({ email, password });
-              }}
-              title="Sign Up"
+            <AuthForm
+              handleSubmit={signup}
+              submitButtonText="Sign Up"
+              errorMessage={errorMessage}
             />
             <View
               style={{
