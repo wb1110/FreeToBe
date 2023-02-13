@@ -12,6 +12,8 @@ import MacroPie from './MacroPie';
 import Table from './slideSection/MacroTable';
 import ProgressBar from './slideSection/ProgressBar';
 
+import { useGetAllData } from '../../functions/Gets';
+
 function HomeTab({ navigation }) {
   const state = useStore();
   const threeDayLogState = useThreeDayLogStore();
@@ -21,6 +23,7 @@ function HomeTab({ navigation }) {
   const { complete } = threeDayLogState;
   const { theme } = useTheme();
 
+  useGetAllData();
   useGoalUpdateConditions(complete);
 
   function getCurrentData(dataArray) {

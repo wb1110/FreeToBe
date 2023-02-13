@@ -1,4 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect } from 'react';
 import { storeSettings } from './Posts';
 import useSettingsStore from '../state/SettingsStore';
 import useTrackerStore from '../state/TrackerStore';
@@ -86,9 +87,11 @@ export const useGetAllData = () => {
   const threeDayLogState = useThreeDayLogStore();
   const metabolicState = useMetabolicStore();
 
-  getAssessment(state);
-  getSettings(settingsState);
-  getTracker(trackerState);
-  getThreeDayLog(threeDayLogState);
-  getMetabolicJournal(metabolicState);
+  useEffect(() => {
+    getAssessment(state);
+    getSettings(settingsState);
+    getTracker(trackerState);
+    getThreeDayLog(threeDayLogState);
+    getMetabolicJournal(metabolicState);
+  }, []);
 };

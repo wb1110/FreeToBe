@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import produce from 'immer';
 import { create } from 'zustand';
-import { useGetAllData } from '../functions/Gets';
 import freetobeApi from '../screens/freetobeApi';
 import { navigate } from '../screens/navigationRef';
 
@@ -18,7 +17,6 @@ const useAuthStore = create((set) => ({
           await AsyncStorage.setItem('token', response.data.token);
           setToken(response.data.token);
           setErrorMessage('');
-          // useGetAllData();
           navigate('UserHome', { screen: 'Home' });
         } catch (err) {
           console.log(err);
