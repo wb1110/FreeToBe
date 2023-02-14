@@ -1,4 +1,4 @@
-import { Input, Text } from '@rneui/themed';
+import { Input } from '@rneui/themed';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import StandardButton from '../../components/Buttons/StandardButton';

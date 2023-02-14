@@ -78,6 +78,15 @@ export default function WillSettings() {
     // example console.log result:
     // ['@MyApp_user', '@MyApp_key']
   };
+  const clearAll = async () => {
+    try {
+      await AsyncStorage.clear();
+    } catch (e) {
+      // clear error
+    }
+
+    console.log('Done.');
+  };
   return (
     <>
       <Button title="Show Will's Settings" onPress={() => setHide(!hide)} />
@@ -106,6 +115,9 @@ export default function WillSettings() {
           </TouchableOpacity>
           <TouchableOpacity onPress={() => getAllKeys()}>
             <Text h4>Check Data</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => clearAll()}>
+            <Text h4>Delete All Data</Text>
           </TouchableOpacity>
         </View>
       ) : null}

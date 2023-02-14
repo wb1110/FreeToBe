@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 import useAuthStore from '../state/AuthStore';
 
 function LoadingScreen() {

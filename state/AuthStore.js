@@ -34,7 +34,8 @@ const useAuthStore = create((set) => ({
             await AsyncStorage.setItem(response.data.id, '{}');
             setid(response.data.id);
           }
-          await AsyncStorage.setItem('token', response.data.token);
+          const jsonValue = JSON.stringify({ token: response.data.token });
+          await AsyncStorage.mergeItem(response.data.id, jsonValue);
           setToken(response.data.token);
           setid(response.data.id);
           setErrorMessage('');
