@@ -1,15 +1,16 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Text, useTheme } from '@rneui/themed';
-import { View } from 'react-native';
+import { Button, Text, useTheme } from '@rneui/themed';
+import { useState } from 'react';
+import { TouchableOpacity, View } from 'react-native';
 import useAuthStore from '../../state/AuthStore';
 import useSettingsStore from '../../state/SettingsStore';
 import SettingsContainer from './SettingsContainer';
-import WillSettings from './WillSettings';
 
-export default function Settings({ navigation }) {
+export default function WillSettings({ navigation }) {
   const { theme } = useTheme();
   const settingsState = useSettingsStore();
   const { signout } = useAuthStore();
+  const [hide, setHide] = useState(false);
   const removeAssessment = async () => {
     try {
       await AsyncStorage.removeItem('assessment');
@@ -81,39 +82,36 @@ export default function Settings({ navigation }) {
     // ['@MyApp_user', '@MyApp_key']
   };
   return (
-    <View
-      style={{
-        justifyContent: 'center',
-        flex: 1,
-        backgroundColor: theme.colors.primary,
-        alignItems: 'flex-end',
-      }}
-    >
-      <SettingsContainer onPress={() => console.log('test')}>
-        <Text h4>Account</Text>
-      </SettingsContainer>
-      <SettingsContainer onPress={() => console.log('test')}>
-        <Text h4>Profile</Text>
-      </SettingsContainer>
-      <SettingsContainer onPress={() => console.log('test')}>
-        <Text h4>Targets</Text>
-      </SettingsContainer>
-      <SettingsContainer onPress={() => console.log('test')}>
-        <Text h4>Display</Text>
-      </SettingsContainer>
-      <SettingsContainer onPress={() => console.log('test')}>
-        <Text h4>Send feedback & help us improve</Text>
-      </SettingsContainer>
-      <SettingsContainer onPress={() => navigation.navigate('HeightWeightAge')}>
-        <Text h4>Retake Assessment</Text>
-      </SettingsContainer>
-      <SettingsContainer onPress={() => navigation.navigate('MacroDistribution')}>
-        <Text h4>Select Macronutrient Distribution</Text>
-      </SettingsContainer>
-      <SettingsContainer onPress={signout}>
-        <Text h4>Log Out</Text>
-      </SettingsContainer>
-      <WillSettings />
-    </View>
+    <>
+      <Button title="Show Will's Settings" onPress={() => setHide(!hide)} />
+      {hide ? (
+        <View
+          style={{
+            backgroundColor: theme.colors.primary,
+            alignItems: 'flex-end',
+          }}
+        >
+          <TouchableOpacity onPress={() => removeAssessment()}>
+            <Text h4>Clear Assessment Data</Text>
+            {/* <Button title="Clear Assessment Data" /> */}
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => removeTracker()}>
+            <Text h4>Clear Tracker Data</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => removeThreeDayLog()}>
+            <Text h4>Clear Three Day Log Data</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => removeMetabolicJournal()}>
+            <Text h4>Clear Metabolic Journal Data</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => removeSettings()}>
+            <Text h4>Clear Settings</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => getAllKeys()}>
+            <Text h4>Check Data</Text>
+          </TouchableOpacity>
+        </View>
+      ) : null}
+    </>
   );
 }
