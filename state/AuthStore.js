@@ -57,7 +57,14 @@ const useAuthStore = create((set) => ({
     );
   },
   signout: () => {
-    set(produce((state) => {}));
+    set(
+      produce(async (state) => {
+        const { setToken } = state;
+        await AsyncStorage.removeItem('token');
+        setToken(null);
+        navigate('Login');
+      })
+    );
   },
   setErrorMessage: (value) => {
     set({ errorMessage: value });

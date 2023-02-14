@@ -1,12 +1,14 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Text, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
+import useAuthStore from '../../state/AuthStore';
 import useSettingsStore from '../../state/SettingsStore';
 import SettingsContainer from './SettingsContainer';
 
 export default function Settings({ navigation }) {
   const { theme } = useTheme();
   const settingsState = useSettingsStore();
+  const { signout } = useAuthStore();
   const removeAssessment = async () => {
     try {
       await AsyncStorage.removeItem('assessment');
@@ -110,6 +112,9 @@ export default function Settings({ navigation }) {
       </SettingsContainer>
       <SettingsContainer onPress={() => navigation.navigate('MacroDistribution')}>
         <Text h4>Select Macronutrient Distribution</Text>
+      </SettingsContainer>
+      <SettingsContainer onPress={signout}>
+        <Text h4>Log Out</Text>
       </SettingsContainer>
     </View>
   );
