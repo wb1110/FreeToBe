@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import SettingsContainer from './SettingsContainer';
 
-export default function Account({ navigation }) {
+export default function Targets({ navigation }) {
   const { theme } = useTheme();
 
   return (
@@ -23,13 +23,13 @@ export default function Account({ navigation }) {
         }}
       >
         <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Name</Text>
+          <Text h4>Energy Settings</Text>
         </SettingsContainer>
         <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Email</Text>
+          <Text h4>Macronutrient Settings</Text>
         </SettingsContainer>
         <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Change Password</Text>
+          <Text h4>Nutrient Targets</Text>
         </SettingsContainer>
       </View>
     </View>

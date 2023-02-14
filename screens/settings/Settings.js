@@ -22,16 +22,13 @@ export default function Settings({ navigation }) {
       <SettingsContainer onPress={() => navigation.navigate('Account')}>
         <Text h4>Account</Text>
       </SettingsContainer>
-      <SettingsContainer onPress={() => console.log('test')}>
+      <SettingsContainer onPress={() => navigation.navigate('Profile')}>
         <Text h4>Profile</Text>
       </SettingsContainer>
-      <SettingsContainer onPress={() => console.log('test')}>
+      <SettingsContainer onPress={() => navigation.navigate('Targets')}>
         <Text h4>Targets</Text>
       </SettingsContainer>
-      <SettingsContainer onPress={() => console.log('test')}>
-        <Text h4>Display</Text>
-      </SettingsContainer>
-      <SettingsContainer onPress={() => console.log('test')}>
+      <SettingsContainer onPress={() => navigation.navigate('Feedback')}>
         <Text h4>Send feedback & help us improve</Text>
       </SettingsContainer>
       <SettingsContainer onPress={() => navigation.navigate('HeightWeightAge')}>

@@ -1,8 +1,11 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { enableScreens } from 'react-native-screens';
 import Account from './Account';
+import Feedback from './Feedback';
 import MacroDistribution from './MacroDistribution';
+import Profile from './Profile';
 import Settings from './Settings';
+import Targets from './Targets';
 // Before rendering any navigation stack
 enableScreens();
 
@@ -14,6 +17,9 @@ export default function SettingsStackScreen() {
       <SettingsStack.Screen name="SettingsHome" component={Settings} />
       <SettingsStack.Screen name="MacroDistribution" component={MacroDistribution} />
       <SettingsStack.Screen name="Account" component={Account} />
+      <SettingsStack.Screen name="Profile" component={Profile} />
+      <SettingsStack.Screen name="Targets" component={Targets} />
+      <SettingsStack.Screen name="Feedback" component={Feedback} />
     </SettingsStack.Navigator>
   );
 }

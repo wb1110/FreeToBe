@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import SettingsContainer from './SettingsContainer';
 
-export default function Account({ navigation }) {
+export default function Feedback({ navigation }) {
   const { theme } = useTheme();
 
   return (
