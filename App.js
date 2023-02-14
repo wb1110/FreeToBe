@@ -41,6 +41,7 @@ import {
   Results6,
 } from './screens/threeDayLog/Results';
 import { setNavigator } from './screens/navigationRef';
+import LoadingScreen from './screens/Loading';
 // Before rendering any navigation stack
 enableScreens();
 
@@ -162,7 +163,8 @@ export default function App() {
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <NavigationContainer theme={MyTheme} ref={setNavigator}>
-          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Register">
+          <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="LoadingScreen">
+            <Stack.Screen name="LoadingScreen" component={LoadingScreen} />
             {/* Authentication */}
             <Stack.Group screenOptions={{ headerShown: false }}>
               <Stack.Screen name="Login" component={Login} />
