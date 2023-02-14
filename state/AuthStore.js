@@ -29,12 +29,9 @@ const useAuthStore = create((set) => ({
         const { setToken, setErrorMessage, setid } = state;
         try {
           const response = await freetobeApi.post('/signin', values);
-          // Check if the id already exists in storage
-          const jsonValue = JSON.stringify(response.data.id);
-          const value = await AsyncStorage.getItem(jsonValue);
+          const value = await AsyncStorage.getItem(response.data.id);
           if (value === null) {
-            // If it does not exist, add the id key to storage
-            await AsyncStorage.setItem(jsonValue, '{}');
+            await AsyncStorage.setItem(response.data.id, '{}');
             setid(response.data.id);
           }
           await AsyncStorage.setItem('token', response.data.token);
@@ -55,8 +52,7 @@ const useAuthStore = create((set) => ({
         const { setToken, setErrorMessage, setid } = state;
         try {
           const response = await freetobeApi.post('/signup', values);
-          const jsonValue = JSON.stringify(response.data.id);
-          await AsyncStorage.setItem(jsonValue, '{}');
+          await AsyncStorage.setItem(response.data.id, '{}');
           await AsyncStorage.setItem('token', response.data.token);
           setToken(response.data.token);
           setid(response.data.id);
