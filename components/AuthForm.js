@@ -1,7 +1,7 @@
-/* eslint-disable no-use-before-define */
-import { Input, Text } from '@rneui/themed';
-import { useState } from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Button, Input, Text } from '@rneui/themed';
+import { useFormik } from 'formik';
+import { View, Image, StyleSheet } from 'react-native';
+import * as Yup from 'yup';
 import ftbnBigLogo from '../assets/icons/ftbnBigLogo.png';
 import StandardButton from './Buttons/StandardButton';
 
@@ -9,40 +9,50 @@ function LogoTitle() {
   return <Image source={ftbnBigLogo} />;
 }
 
-function Register({ handleSubmit, errorMessage, submitButtonText }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function AuthForm({ submitValues, submitButtonText, errorMessage }) {
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Email is required'),
+    password: Yup.string()
+      .min(8, 'Password must be at least 8 characters')
+      .required('Password is required'),
+  });
+
+  const { handleChange, handleBlur, handleSubmit, values, errors, touched } = useFormik({
+    initialValues: { email: '', password: '' },
+    validationSchema,
+    onSubmit: (formValues) => {
+      submitValues(formValues);
+    },
+  });
 
   return (
     <>
       <LogoTitle />
       <Input
         label="Email"
-        value={email}
-        onChangeText={setEmail}
+        placeholder="Enter email"
+        value={values.email}
         autoCapitalize="none"
         autoCorrect={false}
+        onChangeText={handleChange('email')}
+        onBlur={handleBlur('email')}
+        errorMessage={touched.email && errors.email}
       />
       <Input
-        secureTextEntry
         label="Password"
-        value={password}
-        onChangeText={setPassword}
+        placeholder="Enter password"
+        value={values.password}
         autoCapitalize="none"
         autoCorrect={false}
+        onChangeText={handleChange('password')}
+        onBlur={handleBlur('password')}
+        errorMessage={touched.password && errors.password}
+        secureTextEntry
       />
-      {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
-      <StandardButton onPress={() => handleSubmit({ email, password })} title={submitButtonText} />
+      <StandardButton title={submitButtonText} onPress={handleSubmit} />
+      <Text>{errorMessage}</Text>
     </>
   );
 }
 
-export default Register;
-
-const styles = StyleSheet.create({
-  errorMessage: {
-    fontWeight: 'bold',
-    color: 'red',
-    marginBottom: 15,
-  },
-});
+export default AuthForm;

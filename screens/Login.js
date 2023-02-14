@@ -31,7 +31,7 @@ function Login({ navigation }) {
         <SafeAreaView style={{ flex: 1 }}>
           <Container>
             <AuthForm
-              handleSubmit={signin}
+              submitValues={signin}
               submitButtonText="Sign in"
               errorMessage={errorMessage}
             />

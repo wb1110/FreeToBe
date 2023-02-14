@@ -32,7 +32,7 @@ function Register({ navigation }) {
         <SafeAreaView style={{ flex: 1 }}>
           <Container>
             <AuthForm
-              handleSubmit={signup}
+              submitValues={signup}
               submitButtonText="Sign Up"
               errorMessage={errorMessage}
             />
