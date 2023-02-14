@@ -5,9 +5,11 @@ import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import useStore from '../../state/Store';
 import { storeData } from '../../functions/Posts';
+import useAuthStore from '../../state/AuthStore';
 
 function AbleToTrack({ navigation }) {
   const state = useStore();
+  const { id } = useAuthStore();
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -22,7 +24,7 @@ function AbleToTrack({ navigation }) {
         <StandardButton
           title="Unable to track 3 days"
           onPress={() => {
-            storeData(state.assessment);
+            storeData(id, state.assessment);
             navigation.navigate('UserHome', { screen: 'Home' });
           }}
         />

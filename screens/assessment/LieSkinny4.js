@@ -6,9 +6,11 @@ import Container from '../../components/Container';
 import TextContainer from '../../components/TextContainer';
 import useStore from '../../state/Store';
 import { storeData, storeThreeDayLog } from '../../functions/Posts';
+import useAuthStore from '../../state/AuthStore';
 
 function LieSkinny4({ navigation }) {
   const state = useStore();
+  const { id } = useAuthStore();
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -41,7 +43,7 @@ function LieSkinny4({ navigation }) {
             title="Let's Get Started"
             onPress={() => {
               navigation.navigate('UserHome', { screen: 'Tracker' });
-              storeData(state.assessment);
+              storeData(id, state.assessment);
               storeThreeDayLog('test');
             }}
           />

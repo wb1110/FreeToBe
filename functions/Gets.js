@@ -7,10 +7,11 @@ import useThreeDayLogStore from '../state/ThreeDayLogStore';
 import useMetabolicStore from '../state/MetabolicStore';
 import useStore from '../state/Store';
 
-export const getAssessment = async (state) => {
+export const getAssessment = async (id, state) => {
   let userAssessment;
   try {
-    const assessment = await AsyncStorage.getItem('assessment');
+    const { assessment } = await AsyncStorage.getItem(id);
+    console.log(assessment, 'assessment');
     userAssessment = JSON.parse(assessment);
     state.setAssessment(userAssessment);
   } catch (e) {
