@@ -6,8 +6,10 @@ import useTrackerStore from '../state/TrackerStore';
 import useThreeDayLogStore from '../state/ThreeDayLogStore';
 import useMetabolicStore from '../state/MetabolicStore';
 import useStore from '../state/Store';
+import useAuthStore from '../state/AuthStore';
 
 export const getAssessment = async (id, state) => {
+  console.log(id, 'getassess');
   let userAssessment;
   try {
     const { assessment } = await AsyncStorage.getItem(id);
@@ -87,16 +89,17 @@ export const useGetAllData = () => {
   const trackerState = useTrackerStore();
   const threeDayLogState = useThreeDayLogStore();
   const metabolicState = useMetabolicStore();
+  const { id } = useAuthStore();
 
   const [isDataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
     Promise.all([
-      getAssessment(state),
-      getSettings(settingsState),
-      getTracker(trackerState),
-      getThreeDayLog(threeDayLogState),
-      getMetabolicJournal(metabolicState),
+      getAssessment(id, state),
+      // getSettings(id, settingsState),
+      // getTracker(id, trackerState),
+      // getThreeDayLog(id, threeDayLogState),
+      // getMetabolicJournal(id, metabolicState),
     ])
       .then(() => {
         setDataLoaded(true);

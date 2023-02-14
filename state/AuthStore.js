@@ -7,7 +7,7 @@ import { navigate } from '../screens/navigationRef';
 const useAuthStore = create((set) => ({
   token: null,
   errorMessage: '',
-  id: null,
+  id: '',
 
   tryLocalSignin: () => {
     set(
@@ -42,8 +42,8 @@ const useAuthStore = create((set) => ({
           setErrorMessage('');
           navigate('UserHome', { screen: 'Home' });
         } catch (err) {
-          console.log(err);
-          setErrorMessage('Something went wrong with sign in');
+          console.log(err.response.data.error);
+          setErrorMessage(err.response.data.error);
         }
       })
     );
@@ -57,11 +57,12 @@ const useAuthStore = create((set) => ({
           await AsyncStorage.setItem(response.data.id, '{}');
           await AsyncStorage.setItem('token', response.data.token);
           setToken(response.data.token);
+          console.log(response.data.id, 'response id');
           setid(response.data.id);
           setErrorMessage('');
           navigate('Welcome');
         } catch (err) {
-          console.log(err);
+          console.log(err.data);
           setErrorMessage('Something went wrong with sign up');
         }
       })
