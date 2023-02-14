@@ -13,11 +13,14 @@ import Table from './slideSection/MacroTable';
 import ProgressBar from './slideSection/ProgressBar';
 
 import { useGetAllData } from '../../functions/Gets';
+import useAuthStore from '../../state/AuthStore';
 
 function HomeTab({ navigation }) {
   const state = useStore();
   const threeDayLogState = useThreeDayLogStore();
   const trackerState = useTrackerStore();
+  const statea = useAuthStore();
+  console.log(state, 'assessment');
 
   const { tracker, goalProtein, goalCarbs, goalFat, goalCalories } = trackerState;
   const { complete } = threeDayLogState;
@@ -93,7 +96,7 @@ function HomeTab({ navigation }) {
               }}
             >
               <View style={{ flex: 1, alignItems: 'center' }}>
-                {state.assessment.tdee ? (
+                {goalCalories ? (
                   <View style={{ padding: 20 }}>
                     <ProgressBar
                       color="#B65C3D"

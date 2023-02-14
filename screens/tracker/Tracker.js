@@ -44,8 +44,6 @@ function Tracker({ navigation }) {
   const currentIndex = indexExists(tracker, dateData);
   const selectedDay = tracker[indexExists(tracker, dateData)];
 
-  console.log(selectedDay);
-
   useFocusEffect(
     useCallback(() =>
       // Do something when the screen is focused

@@ -14,6 +14,8 @@ const useAuthStore = create((set) => ({
       produce(async (state) => {
         const token = await AsyncStorage.getItem('token');
         if (token) {
+          const id = await AsyncStorage.getItem('currentUserID');
+          state.setid(id);
           state.setToken(token);
           navigate('UserHome', { screen: 'Home' });
         } else {
@@ -36,14 +38,18 @@ const useAuthStore = create((set) => ({
           }
           // const jsonValue = JSON.stringify({ token: response.data.token });
           // await AsyncStorage.mergeItem(response.data.id, jsonValue);
+          await AsyncStorage.setItem('currentUserID', response.data.id);
           await AsyncStorage.setItem('token', response.data.token);
           setToken(response.data.token);
           setid(response.data.id);
           setErrorMessage('');
           navigate('UserHome', { screen: 'Home' });
         } catch (err) {
-          console.log(err.response.data.error);
-          setErrorMessage(err.response.data.error);
+          if (err.response.data.error) {
+            console.log(err.response.data.error);
+            setErrorMessage(err.response.data.error);
+          }
+          console.log(err);
         }
       })
     );
@@ -55,9 +61,9 @@ const useAuthStore = create((set) => ({
         try {
           const response = await freetobeApi.post('/signup', values);
           await AsyncStorage.setItem(response.data.id, '{}');
+          await AsyncStorage.setItem('currentUserID', response.data.id);
           await AsyncStorage.setItem('token', response.data.token);
           setToken(response.data.token);
-          console.log(response.data.id, 'response id');
           setid(response.data.id);
           setErrorMessage('');
           navigate('Welcome');
@@ -73,6 +79,7 @@ const useAuthStore = create((set) => ({
       produce(async (state) => {
         const { setToken } = state;
         await AsyncStorage.removeItem('token');
+        await AsyncStorage.removeItem('currentUserID');
         setToken(null);
         navigate('Login');
       })
@@ -85,7 +92,11 @@ const useAuthStore = create((set) => ({
     set({ token: value });
   },
   setid: (value) => {
-    set({ id: value });
+    set(
+      produce((state) => {
+        state.id = value;
+      })
+    );
   },
 }));
 

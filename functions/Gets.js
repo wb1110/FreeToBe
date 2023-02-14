@@ -9,13 +9,16 @@ import useStore from '../state/Store';
 import useAuthStore from '../state/AuthStore';
 
 export const getAssessment = async (id, state) => {
-  console.log(id, 'getassess');
   let userAssessment;
   try {
-    const { assessment } = await AsyncStorage.getItem(id);
-    console.log(assessment, 'assessment');
-    userAssessment = JSON.parse(assessment);
-    state.setAssessment(userAssessment);
+    const jsonValue = await AsyncStorage.getItem(id);
+    const currentUser = JSON.parse(jsonValue);
+    console.log(currentUser, 'currentUser');
+    if (currentUser.assessment) {
+      console.log(currentUser.assessment, 'assessment');
+      state.setAssessment(currentUser.assessment);
+    }
+    console.log('no assessment data');
   } catch (e) {
     return e;
   }
