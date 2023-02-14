@@ -23,9 +23,6 @@ export default function Account({ navigation }) {
         }}
       >
         <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Name</Text>
-        </SettingsContainer>
-        <SettingsContainer onPress={() => console.log('test')}>
           <Text h4>Email</Text>
         </SettingsContainer>
         <SettingsContainer onPress={() => console.log('test')}>

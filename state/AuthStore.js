@@ -7,6 +7,7 @@ import { navigate } from '../screens/navigationRef';
 const useAuthStore = create((set) => ({
   token: null,
   errorMessage: '',
+  id: null,
 
   tryLocalSignin: () => {
     set(
@@ -25,11 +26,20 @@ const useAuthStore = create((set) => ({
   signin: (values) => {
     set(
       produce(async (state) => {
-        const { setToken, setErrorMessage } = state;
+        const { setToken, setErrorMessage, setid } = state;
         try {
           const response = await freetobeApi.post('/signin', values);
+          // Check if the id already exists in storage
+          const jsonValue = JSON.stringify(response.data.id);
+          const value = await AsyncStorage.getItem(jsonValue);
+          if (value === null) {
+            // If it does not exist, add the id key to storage
+            await AsyncStorage.setItem(jsonValue, '{}');
+            setid(response.data.id);
+          }
           await AsyncStorage.setItem('token', response.data.token);
           setToken(response.data.token);
+          setid(response.data.id);
           setErrorMessage('');
           navigate('UserHome', { screen: 'Home' });
         } catch (err) {
@@ -42,11 +52,14 @@ const useAuthStore = create((set) => ({
   signup: (values) => {
     set(
       produce(async (state) => {
-        const { setToken, setErrorMessage } = state;
+        const { setToken, setErrorMessage, setid } = state;
         try {
           const response = await freetobeApi.post('/signup', values);
+          const jsonValue = JSON.stringify(response.data.id);
+          await AsyncStorage.setItem(jsonValue, '{}');
           await AsyncStorage.setItem('token', response.data.token);
           setToken(response.data.token);
+          setid(response.data.id);
           setErrorMessage('');
           navigate('Welcome');
         } catch (err) {
@@ -71,6 +84,9 @@ const useAuthStore = create((set) => ({
   },
   setToken: (value) => {
     set({ token: value });
+  },
+  setid: (value) => {
+    set({ id: value });
   },
 }));
 
