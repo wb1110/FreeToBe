@@ -1,6 +1,6 @@
-import { Button, Input, Text } from '@rneui/themed';
+import { Input, Text } from '@rneui/themed';
 import { useFormik } from 'formik';
-import { View, Image, StyleSheet } from 'react-native';
+import { Image } from 'react-native';
 import * as Yup from 'yup';
 import ftbnBigLogo from '../assets/icons/ftbnBigLogo.png';
 import StandardButton from './Buttons/StandardButton';

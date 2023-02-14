@@ -2,14 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Button, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import useAuthStore from '../../state/AuthStore';
 import useSettingsStore from '../../state/SettingsStore';
-import SettingsContainer from './SettingsContainer';
 
-export default function WillSettings({ navigation }) {
+export default function WillSettings() {
   const { theme } = useTheme();
   const settingsState = useSettingsStore();
-  const { signout } = useAuthStore();
   const [hide, setHide] = useState(false);
   const removeAssessment = async () => {
     try {

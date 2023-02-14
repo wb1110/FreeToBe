@@ -1,37 +1,74 @@
-import { Text, useTheme } from '@rneui/themed';
-import { View } from 'react-native';
-import LArrowButton from '../../components/Buttons/LArrowButton';
-import SettingsContainer from './SettingsContainer';
+import { Input, Text } from '@rneui/themed';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import StandardButton from '../../components/Buttons/StandardButton';
+import Container from '../../components/Container';
 
-export default function Feedback({ navigation }) {
-  const { theme } = useTheme();
+function Feedback() {
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Email is required'),
+    name: Yup.string().required('Name is required'),
+    subject: Yup.string().required('Subject is required'),
+    feedback: Yup.string().required('Feedback is required'),
+  });
+
+  const { handleChange, handleBlur, handleSubmit, values, errors, touched } = useFormik({
+    initialValues: { email: '', name: '', subject: '', feedback: '' },
+    validationSchema,
+    onSubmit: (formValues) => {
+      console.log(formValues);
+    },
+  });
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: theme.colors.primary,
-      }}
-    >
-      <LArrowButton onPress={() => navigation.goBack()} />
-      <View
-        style={{
-          justifyContent: 'center',
-          flex: 1,
-          backgroundColor: theme.colors.primary,
-          alignItems: 'flex-end',
-        }}
-      >
-        <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Name</Text>
-        </SettingsContainer>
-        <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Email</Text>
-        </SettingsContainer>
-        <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Change Password</Text>
-        </SettingsContainer>
-      </View>
-    </View>
+    <Container>
+      <Input
+        label="Email"
+        placeholder="Email (Required)"
+        value={values.email}
+        autoCapitalize="none"
+        autoCorrect={false}
+        onChangeText={handleChange('email')}
+        onBlur={handleBlur('email')}
+        errorMessage={touched.email && errors.email}
+      />
+      <Input
+        label="Name"
+        placeholder="Name (Required)"
+        value={values.name}
+        autoCapitalize="none"
+        autoCorrect={false}
+        onChangeText={handleChange('name')}
+        onBlur={handleBlur('name')}
+        errorMessage={touched.name && errors.name}
+      />
+      <Input
+        label="Subject"
+        placeholder="Subject (Required)"
+        value={values.subject}
+        autoCapitalize="none"
+        autoCorrect={false}
+        onChangeText={handleChange('subject')}
+        onBlur={handleBlur('subject')}
+        errorMessage={touched.subject && errors.subject}
+      />
+      <Input
+        label="Feedback"
+        placeholder="Enter your feedback here... (Required)"
+        value={values.feedback}
+        autoCapitalize="none"
+        autoCorrect={false}
+        onChangeText={handleChange('feedback')}
+        onBlur={handleBlur('feedback')}
+        errorMessage={touched.feedback && errors.feedback}
+      />
+      <StandardButton
+        title="Submit"
+        onPress={handleSubmit}
+        disabled={Object.values(errors).some(Boolean)}
+      />
+    </Container>
   );
 }
+
+export default Feedback;

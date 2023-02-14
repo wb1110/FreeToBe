@@ -1,8 +1,6 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Text, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import useAuthStore from '../../state/AuthStore';
-import useSettingsStore from '../../state/SettingsStore';
 import SettingsContainer from './SettingsContainer';
 import WillSettings from './WillSettings';
 
