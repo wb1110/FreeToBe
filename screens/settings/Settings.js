@@ -8,78 +8,8 @@ import WillSettings from './WillSettings';
 
 export default function Settings({ navigation }) {
   const { theme } = useTheme();
-  const settingsState = useSettingsStore();
   const { signout } = useAuthStore();
-  const removeAssessment = async () => {
-    try {
-      await AsyncStorage.removeItem('assessment');
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log(e, 'error');
-      // remove error
-    }
-    // eslint-disable-next-line no-console
-    console.log('Done.');
-  };
-  const removeTracker = async () => {
-    try {
-      await AsyncStorage.removeItem('tracker');
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log(e, 'error');
-      // remove error
-    }
-    // eslint-disable-next-line no-console
-    console.log('Done.');
-  };
-  const removeThreeDayLog = async () => {
-    try {
-      await AsyncStorage.removeItem('threeDayLog');
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log(e, 'error');
-      // remove error
-    }
-    // eslint-disable-next-line no-console
-    console.log('Done.');
-  };
-  const removeSettings = async () => {
-    try {
-      await AsyncStorage.removeItem('settings');
-      settingsState.clearSettings();
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log(e, 'error');
-      // remove error
-    }
-    // eslint-disable-next-line no-console
-    console.log('Done.');
-  };
-  const removeMetabolicJournal = async () => {
-    try {
-      await AsyncStorage.removeItem('metabolicJournal');
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log(e, 'error');
-      // remove error
-    }
-    // eslint-disable-next-line no-console
-    console.log('Done.');
-  };
-  const getAllKeys = async () => {
-    let keys = [];
-    try {
-      keys = await AsyncStorage.getAllKeys();
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      console.log(e, 'error');
-      // read key error
-    }
-    // eslint-disable-next-line no-console
-    console.log(keys);
-    // example console.log result:
-    // ['@MyApp_user', '@MyApp_key']
-  };
+
   return (
     <View
       style={{
@@ -89,7 +19,7 @@ export default function Settings({ navigation }) {
         alignItems: 'flex-end',
       }}
     >
-      <SettingsContainer onPress={() => console.log('test')}>
+      <SettingsContainer onPress={() => navigation.navigate('Account')}>
         <Text h4>Account</Text>
       </SettingsContainer>
       <SettingsContainer onPress={() => console.log('test')}>
