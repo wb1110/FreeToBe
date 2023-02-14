@@ -197,7 +197,11 @@ export default function App() {
             </Stack.Group>
             {/* Home Tab Navigator */}
             <Stack.Group screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="UserHome" component={UserHome} />
+              <Stack.Screen
+                name="UserHome"
+                component={UserHome}
+                options={{ animationEnabled: false }}
+              />
             </Stack.Group>
             {/* threeDayLog Results Pages */}
             <Stack.Group screenOptions={{ headerShown: false }}>

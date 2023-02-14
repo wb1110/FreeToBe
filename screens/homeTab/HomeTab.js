@@ -42,7 +42,7 @@ function HomeTab({ navigation }) {
   const { carbs, protein, fats, calories } = getCurrentData(tracker);
 
   if (!isDataLoaded) {
-    return <Text>Loading...</Text>;
+    return null;
   }
 
   return (
