@@ -96,7 +96,7 @@ function HomeTab({ navigation }) {
               }}
             >
               <View style={{ flex: 1, alignItems: 'center' }}>
-                {goalCalories ? (
+                {state.assessment.tdee ? (
                   <View style={{ padding: 20 }}>
                     <ProgressBar
                       color="#B65C3D"

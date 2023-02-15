@@ -7,11 +7,17 @@ export default function ProgressBar({ color, title, consumed, goal, unit }) {
     if (inner > outer) {
       return 300;
     }
+    if (inner <= 0) {
+      return 0;
+    }
     return percent * 3;
   };
   const borderRadiusChange = (width) => {
     if (width === 300) {
       return 20;
+    }
+    if (width <= 0) {
+      return 0;
     }
     return 0;
   };
@@ -24,7 +30,7 @@ export default function ProgressBar({ color, title, consumed, goal, unit }) {
           {unit} / {goal}
           {unit}
         </Text>
-        <Text h4>{percent}%</Text>
+        <Text h4>{percent || 0}%</Text>
       </View>
       <View
         style={{
@@ -36,20 +42,24 @@ export default function ProgressBar({ color, title, consumed, goal, unit }) {
           justifyContent: 'center',
         }}
       >
-        <View
-          style={{
-            width: maximumValue(percent * 3, 300),
-            backgroundColor: color,
-            borderColor: color,
-            borderWidth: 1,
-            borderTopLeftRadius: 20,
-            borderBottomLeftRadius: 20,
+        {percent ? (
+          <View
+            style={{
+              width: maximumValue(percent * 3, 300),
+              backgroundColor: color,
+              borderColor: color,
+              borderWidth: 1,
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
 
-            borderTopRightRadius: borderRadiusChange(maximumValue(percent * 3, 300)),
-            borderBottomRightRadius: borderRadiusChange(maximumValue(percent * 3, 300)),
-            height: 20,
-          }}
-        />
+              borderTopRightRadius: borderRadiusChange(maximumValue(percent * 3, 300)),
+              borderBottomRightRadius: percent
+                ? borderRadiusChange(maximumValue(percent * 3, 300))
+                : 0,
+              height: 20,
+            }}
+          />
+        ) : null}
       </View>
     </View>
   );
