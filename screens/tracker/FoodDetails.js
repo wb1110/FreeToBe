@@ -67,9 +67,9 @@ export default function FoodDetails({ route, navigation }) {
 
   useEffect(() => {
     setLoading(true);
-    const getByFDCID = (id) => {
+    const getByFDCID = (foodid) => {
       axios
-        .get(`https://api.nal.usda.gov/fdc/v1/food/${id}?api_key=${REACT_APP_API_KEY}`)
+        .get(`https://api.nal.usda.gov/fdc/v1/food/${foodid}?api_key=${REACT_APP_API_KEY}`)
         .then(async (res) => {
           const result = await res.data;
           setServingSizes(servingSize(result.foodPortions));
