@@ -13,12 +13,9 @@ export const getAssessment = async (id, state) => {
   try {
     const jsonValue = await AsyncStorage.getItem(id);
     const currentUser = JSON.parse(jsonValue);
-    console.log(currentUser, 'currentUser');
     if (currentUser.assessment) {
-      console.log(currentUser.assessment, 'assessment');
       state.setAssessment(currentUser.assessment);
     }
-    console.log('no assessment data');
   } catch (e) {
     return e;
   }
@@ -52,15 +49,14 @@ export const getThreeDayLog = async (state) => {
   return parsedResult;
 };
 
-export const getSettings = async (state) => {
-  let parsedResult;
+export const getSettings = async (id, state) => {
   try {
-    const result = await AsyncStorage.getItem('settings');
-    parsedResult = await JSON.parse(result);
-    if (parsedResult) {
-      state.updateSettings(parsedResult);
+    const jsonValue = await AsyncStorage.getItem(id);
+    const currentUser = await JSON.parse(jsonValue);
+    if (currentUser.settings) {
+      state.updateSettings(currentUser.settings);
     } else {
-      storeSettings({
+      storeSettings(id, {
         idealProtein: '30%',
         idealCarbs: '40%',
         idealFat: '30%',
@@ -69,7 +65,6 @@ export const getSettings = async (state) => {
   } catch (e) {
     return e;
   }
-  return parsedResult;
 };
 
 export const getMetabolicJournal = async (state) => {
@@ -99,7 +94,7 @@ export const useGetAllData = () => {
   useEffect(() => {
     Promise.all([
       getAssessment(id, state),
-      // getSettings(id, settingsState),
+      getSettings(id, settingsState),
       // getTracker(id, trackerState),
       // getThreeDayLog(id, threeDayLogState),
       // getMetabolicJournal(id, metabolicState),

@@ -12,6 +12,7 @@ const useSettingsStore = create((set) => ({
   //   set(() => ({ macroSettings: data }));
   // },
   updateSettings: (data) => {
+    console.log(data, 'data');
     set(
       produce((state) => {
         const { macroSettings } = state;
@@ -28,9 +29,20 @@ const useSettingsStore = create((set) => ({
     );
   },
   // clearSettings: () => set({ macroSettings: 0 }),
-  updateMacroSettings: (protein, carbs, fat) => {
-    set(() => ({ macroSettings: { idealProtein: protein, idealCarbs: carbs, idealFat: fat } }));
-    storeSettings({ idealProtein: protein, idealCarbs: carbs, idealFat: fat });
+  updateMacroSettings: (id, protein, carbs, fat) => {
+    set(
+      produce((state) => {
+        storeSettings(id, { idealProtein: protein, idealCarbs: carbs, idealFat: fat });
+        state.setMacros({ idealProtein: protein, idealCarbs: carbs, idealFat: fat });
+      })
+    );
+  },
+  setMacros: (value) => {
+    set(
+      produce((state) => {
+        state.macroSettings = value;
+      })
+    );
   },
 }));
 

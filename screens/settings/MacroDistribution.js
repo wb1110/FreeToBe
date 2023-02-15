@@ -5,11 +5,13 @@ import LArrowButton from '../../components/Buttons/LArrowButton';
 import ScreenPicker from '../../components/ScreenPicker';
 import { getSettings } from '../../functions/Gets';
 import percentageSelect from '../../functions/percentageSelect';
+import useAuthStore from '../../state/AuthStore';
 import useSettingsStore from '../../state/SettingsStore';
 import useStore from '../../state/Store';
 
 export default function MacroDistribution({ navigation }) {
   const { theme } = useTheme();
+  const { id } = useAuthStore();
   const state = useStore();
   const settingsState = useSettingsStore();
   const { updateMacroSettings, macroSettings } = settingsState;
@@ -30,9 +32,11 @@ export default function MacroDistribution({ navigation }) {
     fat = Math.round((state.assessment.tdee * (parseFloat(idealFat) / 100)) / 9);
   };
 
+  console.log(macroSettings, 'settings state');
+
   macroOptions();
 
-  getSettings();
+  getSettings(id);
 
   return (
     <View
@@ -86,8 +90,7 @@ export default function MacroDistribution({ navigation }) {
         <Button
           title="Submit"
           onPress={() => {
-            updateMacroSettings(proteinPercentage, carbPercentage, fatPercentage);
-            // storeSettings(macroSettings);
+            updateMacroSettings(id, proteinPercentage, carbPercentage, fatPercentage);
           }}
           color="white"
           titleStyle={{ color: theme.colors.primary }}
