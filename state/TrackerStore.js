@@ -239,6 +239,9 @@ const useTrackerStore = create((set) => ({
         storeTracker(id, state.tracker);
       })
     ),
+  resetState: () => {
+    set({ tracker: [], goalCalories: 0, goalProtein: 0, goalCarbs: 0, goalFat: 0 });
+  },
 }));
 
 export default useTrackerStore;

@@ -43,6 +43,15 @@ const useSettingsStore = create((set) => ({
       })
     );
   },
+  resetState: () => {
+    set({
+      macroSettings: {
+        idealProtein: '30%',
+        idealCarbs: '40%',
+        idealFat: '30%',
+      },
+    });
+  },
 }));
 
 export default useSettingsStore;

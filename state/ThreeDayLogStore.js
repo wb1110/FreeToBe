@@ -86,6 +86,16 @@ const useThreeDayLogStore = create((set) => ({
         tracker[date].calories = caloriesSum;
       })
     ),
+  resetState: () => {
+    set({
+      threeDayLog: [],
+      complete: false,
+      goalProtein: 0,
+      goalCarbs: 0,
+      goalFats: 0,
+      goalCalories: 0,
+    });
+  },
 }));
 
 export default useThreeDayLogStore;

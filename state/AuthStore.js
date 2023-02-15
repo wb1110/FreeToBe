@@ -98,6 +98,9 @@ const useAuthStore = create((set) => ({
       })
     );
   },
+  resetState: () => {
+    set({ token: null, errorMessage: '', id: '' });
+  },
 }));
 
 export default useAuthStore;

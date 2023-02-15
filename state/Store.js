@@ -82,6 +82,22 @@ const useStore = create((set) => ({
         tdee: values.tdee,
       },
     })),
+  resetState: () => {
+    set({
+      assessment: {
+        height: 0,
+        weight: 0,
+        age: 0,
+        bodyFat: 0,
+        dueDate: 0,
+        babies: 0,
+        nursing: 0,
+        exerciseActivity: 0,
+        workActivity: 0,
+        tdee: 0,
+      },
+    });
+  },
 }));
 
 export default useStore;

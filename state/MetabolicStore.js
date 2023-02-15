@@ -30,6 +30,9 @@ const useMetabolicStore = create((set) => ({
       })
     );
   },
+  resetState: () => {
+    set({ metabolicJournal: [] });
+  },
 }));
 
 export default useMetabolicStore;
