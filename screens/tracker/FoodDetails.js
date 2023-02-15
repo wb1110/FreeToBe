@@ -16,9 +16,11 @@ import servingSize from '../../functions/servingSize';
 import useTrackerStore from '../../state/TrackerStore';
 import NutritionFacts from './NutritionFacts';
 import servingNumberFunction from './ServingArray';
+import useAuthStore from '../../state/AuthStore';
 
 export default function FoodDetails({ route, navigation }) {
   const { addFood } = useTrackerStore();
+  const { id } = useAuthStore();
   const { fdcId, dayIndex, mealName } = route.params;
   const [showNutritionFacts, setShowNutritionFacts] = useState(true);
   const [changeButton, setChangeButton] = useState(true);
@@ -114,7 +116,7 @@ export default function FoodDetails({ route, navigation }) {
                   <Button
                     title="Log Food"
                     onPress={() => {
-                      addFood(servingValues, dayIndex, mealName);
+                      addFood(id, servingValues, dayIndex, mealName);
                       navigation.navigate('TrackerHome');
                     }}
                   />

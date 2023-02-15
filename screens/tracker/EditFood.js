@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Keyboard, ScrollView, TouchableWithoutFeedback, View } from 'react-native';
 import MyCustomerPicker from '../../components/MyCustomerPicker';
 import ServingSizePicker from '../../components/ServingSizePicker';
+import useAuthStore from '../../state/AuthStore';
 import useTrackerStore from '../../state/TrackerStore';
 import EditNutritionFacts from './EditNutritionFacts';
 import servingNumberFunction from './ServingArray';
@@ -13,6 +14,7 @@ export default function EditFood({ route, navigation }) {
   const [changeButton, setChangeButton] = useState(true);
   const state = useTrackerStore();
   const { editFood } = useTrackerStore();
+  const { id } = useAuthStore();
   const { theme } = useTheme();
 
   const [servingSizeModal, setServingSizeModal] = useState(false);
@@ -75,7 +77,7 @@ export default function EditFood({ route, navigation }) {
                   <Button
                     title="Update Food"
                     onPress={() => {
-                      editFood(servingValues, dayIndex, mealName, servingValues.foodName);
+                      editFood(id, servingValues, dayIndex, mealName, servingValues.foodName);
                       navigation.navigate('TrackerHome');
                     }}
                     buttonStyle={{
@@ -90,7 +92,7 @@ export default function EditFood({ route, navigation }) {
                     title="Delete Food"
                     color={theme.colors.white}
                     onPress={() => {
-                      state.deleteFood(dayIndex, mealName, servingValues.foodName);
+                      state.deleteFood(id, dayIndex, mealName, servingValues.foodName);
                       navigation.navigate('TrackerHome');
                     }}
                     buttonStyle={{

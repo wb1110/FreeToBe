@@ -12,7 +12,6 @@ const useSettingsStore = create((set) => ({
   //   set(() => ({ macroSettings: data }));
   // },
   updateSettings: (data) => {
-    console.log(data, 'data');
     set(
       produce((state) => {
         const { macroSettings } = state;

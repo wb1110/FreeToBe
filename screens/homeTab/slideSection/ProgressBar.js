@@ -2,7 +2,13 @@ import { Text } from '@rneui/themed';
 import { View } from 'react-native';
 
 export default function ProgressBar({ color, title, consumed, goal, unit }) {
-  const percent = Math.round((consumed / goal) * 100);
+  const percent = () => {
+    if (goal > 0) {
+      return Math.round((consumed / goal) * 100);
+    }
+    return 0;
+  };
+  console.log(percent());
   const maximumValue = (inner, outer) => {
     if (inner > outer) {
       return 300;
@@ -10,7 +16,7 @@ export default function ProgressBar({ color, title, consumed, goal, unit }) {
     if (inner <= 0) {
       return 0;
     }
-    return percent * 3;
+    return percent() * 3;
   };
   const borderRadiusChange = (width) => {
     if (width === 300) {
@@ -30,7 +36,7 @@ export default function ProgressBar({ color, title, consumed, goal, unit }) {
           {unit} / {goal}
           {unit}
         </Text>
-        <Text h4>{percent || 0}%</Text>
+        <Text h4>{percent() || 0}%</Text>
       </View>
       <View
         style={{
@@ -42,19 +48,19 @@ export default function ProgressBar({ color, title, consumed, goal, unit }) {
           justifyContent: 'center',
         }}
       >
-        {percent ? (
+        {goal ? (
           <View
             style={{
-              width: maximumValue(percent * 3, 300),
+              width: maximumValue(percent() * 3, 300),
               backgroundColor: color,
               borderColor: color,
               borderWidth: 1,
               borderTopLeftRadius: 20,
               borderBottomLeftRadius: 20,
 
-              borderTopRightRadius: borderRadiusChange(maximumValue(percent * 3, 300)),
-              borderBottomRightRadius: percent
-                ? borderRadiusChange(maximumValue(percent * 3, 300))
+              borderTopRightRadius: borderRadiusChange(maximumValue(percent() * 3, 300)),
+              borderBottomRightRadius: percent()
+                ? borderRadiusChange(maximumValue(percent() * 3, 300))
                 : 0,
               height: 20,
             }}

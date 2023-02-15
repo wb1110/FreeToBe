@@ -6,20 +6,21 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
-  View,
+  View
 } from 'react-native';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
+import useAuthStore from '../../state/AuthStore';
 import useTrackerStore from '../../state/TrackerStore';
-import TimePicker from './TimePicker';
 
 function AddMeal({ navigation, route }) {
   const { savedDate } = route.params;
   const state = useTrackerStore();
   const [time, setTime] = useState('');
   const addNewMeal = state.addMeal;
+  const { id } = useAuthStore();
 
   return (
     <KeyboardAvoidingView
@@ -35,7 +36,7 @@ function AddMeal({ navigation, route }) {
               values.foodItems = [];
               // eslint-disable-next-line no-param-reassign
               // values.mealTime = time;
-              addNewMeal(values, savedDate.date);
+              addNewMeal(id, values, savedDate.date);
             }}
           >
             {({ handleChange, handleBlur, handleSubmit, values, errors }) => (

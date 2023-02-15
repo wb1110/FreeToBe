@@ -22,16 +22,14 @@ export const getAssessment = async (id, state) => {
   return userAssessment;
 };
 
-export const getTracker = async (state) => {
-  let parsedResult;
+export const getTracker = async (id, state) => {
   try {
-    const result = await AsyncStorage.getItem('tracker');
-    parsedResult = await JSON.parse(result);
-    state.updateTracker(parsedResult);
+    const jsonValue = await AsyncStorage.getItem(id);
+    const currentUser = await JSON.parse(jsonValue);
+    state.updateTracker(currentUser.tracker);
   } catch (e) {
     return e;
   }
-  return parsedResult;
 };
 
 export const getThreeDayLog = async (state) => {
@@ -95,7 +93,7 @@ export const useGetAllData = () => {
     Promise.all([
       getAssessment(id, state),
       getSettings(id, settingsState),
-      // getTracker(id, trackerState),
+      getTracker(id, trackerState),
       // getThreeDayLog(id, threeDayLogState),
       // getMetabolicJournal(id, metabolicState),
     ])

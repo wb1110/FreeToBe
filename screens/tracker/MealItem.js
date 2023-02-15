@@ -2,12 +2,14 @@ import { Feather, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { Button, Text, useTheme } from '@rneui/themed';
 import { useState } from 'react';
 import { Modal, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
+import useAuthStore from '../../state/AuthStore';
 import useTrackerStore from '../../state/TrackerStore';
 import TimePicker from './TimePicker';
 
 export default function MealItem({ mealTime, foodItems, navigation, mealName, dayIndex, mealID }) {
   const state = useTrackerStore();
   const [time, setTime] = useState(mealTime);
+  const { id } = useAuthStore();
   const { deleteMeal } = state;
   const { theme } = useTheme();
   const styles = StyleSheet.create({
@@ -154,7 +156,7 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
                     flexDirection: 'row',
                     alignItems: 'center',
                   }}
-                  onPress={() => deleteMeal(dayIndex, mealName)}
+                  onPress={() => deleteMeal(id, dayIndex, mealName)}
                 >
                   <MaterialIcons name="delete-outline" size={24} color={theme.colors.white} />
                   <Text style={{ marginLeft: '2%' }}>Delete Meal</Text>

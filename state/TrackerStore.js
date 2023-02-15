@@ -157,17 +157,17 @@ const useTrackerStore = create((set) => ({
       })
     ),
   // Meal CRUD
-  addMeal: (values, dateV) =>
+  addMeal: (id, values, dateV) =>
     set(
       produce((state) => {
         const dayArray = state.tracker;
         const objIndex = dayArray.findIndex((obj) => obj.date === dateV);
         const dayResult = dayArray[objIndex].meals;
         dayResult.push(values);
-        storeTracker(state.tracker);
+        storeTracker(id, state.tracker);
       })
     ),
-  addMealTime: (values, dayIndex, mealID) =>
+  addMealTime: (id, values, dayIndex, mealID) =>
     set(
       produce((state) => {
         const mealArray = state.tracker[dayIndex].meals;
@@ -175,10 +175,10 @@ const useTrackerStore = create((set) => ({
         // state.tracker[dayIndex].meals[mealIndex].mealTime = values;
         // Object.assign(mealArray[mealIndex].mealTime, values);
         mealArray[mealIndex].mealTime = values;
-        storeTracker(state.tracker);
+        storeTracker(id, state.tracker);
       })
     ),
-  editMeal: (values, dayIndex, mealName) =>
+  editMeal: (id, values, dayIndex, mealName) =>
     set(
       produce((state) => {
         const dayArray = state.tracker;
@@ -186,17 +186,17 @@ const useTrackerStore = create((set) => ({
         const mealIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
         const meal = dayResult[mealIndex];
         Object.assign(meal, values);
-        storeTracker(state.tracker);
+        storeTracker(id, state.tracker);
       })
     ),
-  deleteMeal: (dayIndex, mealName) =>
+  deleteMeal: (id, dayIndex, mealName) =>
     set(
       produce((state) => {
         const dayArray = state.tracker;
         const dayResult = dayArray[dayIndex].meals;
         const mealIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
         dayResult.splice(mealIndex, 1);
-        storeTracker(state.tracker);
+        storeTracker(id, state.tracker);
       })
     ),
   clearMeals: () =>
@@ -207,17 +207,17 @@ const useTrackerStore = create((set) => ({
       })
     ),
   // Food Items Crud
-  addFood: (values, dayIndex, mealName) =>
+  addFood: (id, values, dayIndex, mealName) =>
     set(
       produce((state) => {
         const mealArray = state.tracker[dayIndex].meals;
         const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
         const foodArray = mealArray[mealIndex].foodItems;
         foodArray.push(values);
-        storeTracker(state.tracker);
+        storeTracker(id, state.tracker);
       })
     ),
-  editFood: (values, dayIndex, mealName, foodName) =>
+  editFood: (id, values, dayIndex, mealName, foodName) =>
     set(
       produce((state) => {
         const mealArray = state.tracker[dayIndex].meals;
@@ -225,10 +225,10 @@ const useTrackerStore = create((set) => ({
         const foodArray = mealArray[mealIndex].foodItems;
         const foodIndex = foodArray.findIndex((obj) => obj.foodName === foodName);
         Object.assign(foodArray[foodIndex], values);
-        storeTracker(state.tracker);
+        storeTracker(id, state.tracker);
       })
     ),
-  deleteFood: (dayIndex, mealName, foodName) =>
+  deleteFood: (id, dayIndex, mealName, foodName) =>
     set(
       produce((state) => {
         const mealArray = state.tracker[dayIndex].meals;
@@ -236,7 +236,7 @@ const useTrackerStore = create((set) => ({
         const foodArray = mealArray[mealIndex].foodItems;
         const foodIndex = foodArray.findIndex((obj) => obj.foodName === foodName);
         foodArray.splice(foodIndex, 1);
-        storeTracker(state.tracker);
+        storeTracker(id, state.tracker);
       })
     ),
 }));

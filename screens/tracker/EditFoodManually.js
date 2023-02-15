@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import { Keyboard, ScrollView, TouchableWithoutFeedback, View } from 'react-native';
 import * as Yup from 'yup';
 import StandardButton from '../../components/Buttons/StandardButton';
+import useAuthStore from '../../state/AuthStore';
 import useTrackerStore from '../../state/TrackerStore';
 
 const foodSchema = Yup.object().shape({
@@ -27,6 +28,7 @@ const foodSchema = Yup.object().shape({
 export default function EditFoodManually({ route, navigation }) {
   const { mealName, item, dayIndex } = route.params;
   const state = useTrackerStore();
+  const { id } = useAuthStore();
   const { theme } = useTheme();
 
   return (
@@ -52,7 +54,7 @@ export default function EditFoodManually({ route, navigation }) {
             zinc: item.zinc === undefined ? `${0}` : `${item.zinc}`,
           }}
           onSubmit={(values) => {
-            state.editFood(values, dayIndex, mealName, values.foodName);
+            state.editFood(id, values, dayIndex, mealName, values.foodName);
           }}
           validationSchema={foodSchema}
         >
@@ -204,7 +206,7 @@ export default function EditFoodManually({ route, navigation }) {
                     title="Delete"
                     color={theme.colors.white}
                     onPress={() => {
-                      state.deleteFood(dayIndex, mealName, values.foodName);
+                      state.deleteFood(id, dayIndex, mealName, values.foodName);
                       navigation.navigate('TrackerHome');
                     }}
                     buttonStyle={{

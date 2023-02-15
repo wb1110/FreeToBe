@@ -3,12 +3,14 @@ import { Formik } from 'formik';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
 import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
+import useAuthStore from '../../state/AuthStore';
 import useTrackerStore from '../../state/TrackerStore';
 
 function EditMeal({ navigation, route }) {
   const { mealName, dayIndex } = route.params;
   const state = useTrackerStore();
   const { editMeal } = state;
+  const { id } = useAuthStore();
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -18,7 +20,7 @@ function EditMeal({ navigation, route }) {
           onSubmit={(values) => {
             // eslint-disable-next-line no-param-reassign
             // values.mealTime = time;
-            editMeal(values, dayIndex, mealName);
+            editMeal(id, values, dayIndex, mealName);
           }}
         >
           {({ handleChange, handleBlur, handleSubmit, values, errors }) => (

@@ -6,6 +6,7 @@ import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import StandardButton from '../../components/Buttons/StandardButton';
 import useTrackerStore from '../../state/TrackerStore';
+import useAuthStore from '../../state/AuthStore';
 
 const foodSchema = Yup.object().shape({
   foodName: Yup.string().required('Required'),
@@ -29,6 +30,7 @@ const foodSchema = Yup.object().shape({
 export default function AddFoodManually({ route, navigation }) {
   const { mealName, dayIndex } = route.params;
   const state = useTrackerStore();
+  const { id } = useAuthStore();
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -54,7 +56,7 @@ export default function AddFoodManually({ route, navigation }) {
             zinc: '',
           }}
           onSubmit={(values) => {
-            state.addFood(values, dayIndex, mealName);
+            state.addFood(id, values, dayIndex, mealName);
           }}
           validationSchema={foodSchema}
         >

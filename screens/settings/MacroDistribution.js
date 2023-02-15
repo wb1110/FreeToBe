@@ -32,8 +32,6 @@ export default function MacroDistribution({ navigation }) {
     fat = Math.round((state.assessment.tdee * (parseFloat(idealFat) / 100)) / 9);
   };
 
-  console.log(macroSettings, 'settings state');
-
   macroOptions();
 
   getSettings(id);

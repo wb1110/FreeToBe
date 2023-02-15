@@ -14,6 +14,7 @@ import FoodScanner from '../foodScanner/FoodScanner';
 
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import Status403 from './statusScreens/Status403';
+import useAuthStore from '../../state/AuthStore';
 
 function Item({ name, calories, onPress, nutrients, fdcId, navigation, dayIndex, mealName }) {
   const { theme } = useTheme();
@@ -87,6 +88,7 @@ function Item({ name, calories, onPress, nutrients, fdcId, navigation, dayIndex,
 
 export default function AddFoodItem({ route, navigation }) {
   const state = useTrackerStore();
+  const { id } = useAuthStore();
   const { theme } = useTheme();
   const { dayIndex, mealName } = route.params;
   const [search, setSearch] = useState('');
@@ -143,7 +145,7 @@ export default function AddFoodItem({ route, navigation }) {
   };
 
   const addNewFood = (foodValues) => {
-    state.addFood(foodValues, dayIndex, mealName);
+    state.addFood(id, foodValues, dayIndex, mealName);
     navigation.navigate('TrackerHome');
   };
 
