@@ -23,10 +23,15 @@ export const getAssessment = async (id, state) => {
 };
 
 export const getTracker = async (id, state) => {
+  console.log(id, state);
   try {
     const jsonValue = await AsyncStorage.getItem(id);
     const currentUser = await JSON.parse(jsonValue);
-    state.updateTracker(currentUser.tracker);
+    state.updateTracker(currentUser.tracker.tracker);
+    state.updateGoalProtein(currentUser.tracker.goalProtein);
+    state.updateGoalCarbs(currentUser.tracker.goalCarbs);
+    state.updateGoalCalories(currentUser.tracker.goalCalories);
+    state.updateGoalFat(currentUser.tracker.goalFat);
   } catch (e) {
     return e;
   }

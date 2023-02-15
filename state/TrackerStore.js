@@ -160,43 +160,47 @@ const useTrackerStore = create((set) => ({
   addMeal: (id, values, dateV) =>
     set(
       produce((state) => {
-        const dayArray = state.tracker;
+        const { tracker, goalCalories, goalCarbs, goalFat, goalProtein } = state;
+        const dayArray = tracker;
         const objIndex = dayArray.findIndex((obj) => obj.date === dateV);
         const dayResult = dayArray[objIndex].meals;
         dayResult.push(values);
-        storeTracker(id, state.tracker);
+        storeTracker(id, { tracker, goalCalories, goalCarbs, goalFat, goalProtein });
       })
     ),
   addMealTime: (id, values, dayIndex, mealID) =>
     set(
       produce((state) => {
-        const mealArray = state.tracker[dayIndex].meals;
+        const { tracker, goalCalories, goalCarbs, goalFat, goalProtein } = state;
+        const mealArray = tracker[dayIndex].meals;
         const mealIndex = mealArray.findIndex((obj) => obj.mealID === mealID);
         // state.tracker[dayIndex].meals[mealIndex].mealTime = values;
         // Object.assign(mealArray[mealIndex].mealTime, values);
         mealArray[mealIndex].mealTime = values;
-        storeTracker(id, state.tracker);
+        storeTracker(id, { tracker, goalCalories, goalCarbs, goalFat, goalProtein });
       })
     ),
   editMeal: (id, values, dayIndex, mealName) =>
     set(
       produce((state) => {
-        const dayArray = state.tracker;
+        const { tracker, goalCalories, goalCarbs, goalFat, goalProtein } = state;
+        const dayArray = tracker;
         const dayResult = dayArray[dayIndex].meals;
         const mealIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
         const meal = dayResult[mealIndex];
         Object.assign(meal, values);
-        storeTracker(id, state.tracker);
+        storeTracker(id, { tracker, goalCalories, goalCarbs, goalFat, goalProtein });
       })
     ),
   deleteMeal: (id, dayIndex, mealName) =>
     set(
       produce((state) => {
-        const dayArray = state.tracker;
+        const { tracker, goalCalories, goalCarbs, goalFat, goalProtein } = state;
+        const dayArray = tracker;
         const dayResult = dayArray[dayIndex].meals;
         const mealIndex = dayResult.findIndex((obj) => obj.mealName === mealName);
         dayResult.splice(mealIndex, 1);
-        storeTracker(id, state.tracker);
+        storeTracker(id, { tracker, goalCalories, goalCarbs, goalFat, goalProtein });
       })
     ),
   clearMeals: () =>
@@ -210,33 +214,36 @@ const useTrackerStore = create((set) => ({
   addFood: (id, values, dayIndex, mealName) =>
     set(
       produce((state) => {
-        const mealArray = state.tracker[dayIndex].meals;
+        const { tracker, goalCalories, goalCarbs, goalFat, goalProtein } = state;
+        const mealArray = tracker[dayIndex].meals;
         const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
         const foodArray = mealArray[mealIndex].foodItems;
         foodArray.push(values);
-        storeTracker(id, state.tracker);
+        storeTracker(id, { tracker, goalCalories, goalCarbs, goalFat, goalProtein });
       })
     ),
   editFood: (id, values, dayIndex, mealName, foodName) =>
     set(
       produce((state) => {
-        const mealArray = state.tracker[dayIndex].meals;
+        const { tracker, goalCalories, goalCarbs, goalFat, goalProtein } = state;
+        const mealArray = tracker[dayIndex].meals;
         const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
         const foodArray = mealArray[mealIndex].foodItems;
         const foodIndex = foodArray.findIndex((obj) => obj.foodName === foodName);
         Object.assign(foodArray[foodIndex], values);
-        storeTracker(id, state.tracker);
+        storeTracker(id, { tracker, goalCalories, goalCarbs, goalFat, goalProtein });
       })
     ),
   deleteFood: (id, dayIndex, mealName, foodName) =>
     set(
       produce((state) => {
-        const mealArray = state.tracker[dayIndex].meals;
+        const { tracker, goalCalories, goalCarbs, goalFat, goalProtein } = state;
+        const mealArray = tracker[dayIndex].meals;
         const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
         const foodArray = mealArray[mealIndex].foodItems;
         const foodIndex = foodArray.findIndex((obj) => obj.foodName === foodName);
         foodArray.splice(foodIndex, 1);
-        storeTracker(id, state.tracker);
+        storeTracker(id, { tracker, goalCalories, goalCarbs, goalFat, goalProtein });
       })
     ),
   resetState: () => {
