@@ -14,8 +14,7 @@ export const storeData = async (id, value) => {
 // Used in TrackerStore.js anytime meals or foods perform CRUD
 export const storeTracker = async (id, value) => {
   try {
-    const filteredTracker = value.filter((day) => day.calories > 0);
-    const jsonValue = JSON.stringify({ tracker: filteredTracker });
+    const jsonValue = JSON.stringify({ tracker: value });
     await AsyncStorage.mergeItem(id, jsonValue);
   } catch (e) {
     return e;

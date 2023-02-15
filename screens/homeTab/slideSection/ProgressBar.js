@@ -8,7 +8,6 @@ export default function ProgressBar({ color, title, consumed, goal, unit }) {
     }
     return 0;
   };
-  console.log(percent());
   const maximumValue = (inner, outer) => {
     if (inner > outer) {
       return 300;
