@@ -5,7 +5,6 @@ import RArrowButton from '../../components/Buttons/RArrowButton';
 import Container from '../../components/Container';
 import TextContainer from '../../components/TextContainer';
 import useStore from '../../state/Store';
-import { storeData, storeThreeDayLog } from '../../functions/Posts';
 import useAuthStore from '../../state/AuthStore';
 
 function LieSkinny4({ navigation }) {
@@ -44,7 +43,6 @@ function LieSkinny4({ navigation }) {
             onPress={() => {
               navigation.navigate('UserHome', { screen: 'Tracker' });
               storeData(id, state.assessment);
-              storeThreeDayLog('test');
             }}
           />
         </View>

@@ -8,9 +8,6 @@ const useSettingsStore = create((set) => ({
     idealCarbs: '40%',
     idealFat: '30%',
   },
-  // updateSettings: (data) => {
-  //   set(() => ({ macroSettings: data }));
-  // },
   updateSettings: (data) => {
     set(
       produce((state) => {
@@ -27,7 +24,6 @@ const useSettingsStore = create((set) => ({
       })
     );
   },
-  // clearSettings: () => set({ macroSettings: 0 }),
   updateMacroSettings: (id, protein, carbs, fat) => {
     set(
       produce((state) => {

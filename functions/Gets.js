@@ -23,7 +23,6 @@ export const getAssessment = async (id, state) => {
 };
 
 export const getTracker = async (id, state) => {
-  console.log(id, state);
   try {
     const jsonValue = await AsyncStorage.getItem(id);
     const currentUser = await JSON.parse(jsonValue);
@@ -37,12 +36,17 @@ export const getTracker = async (id, state) => {
   }
 };
 
-export const getThreeDayLog = async (state) => {
+export const getThreeDayLog = async (id, state) => {
   let parsedResult;
   try {
-    const result = await AsyncStorage.getItem('threeDayLog');
-    parsedResult = await JSON.parse(result);
-    state.updateThreeDayLog(parsedResult);
+    const jsonValue = await AsyncStorage.getItem(id);
+    const currentUser = await JSON.parse(jsonValue);
+    state.updateThreeDayLog(currentUser.threeDayLog.threeDayLog);
+    state.updateGoalProtein(currentUser.threeDayLog.goalProtein);
+    state.updateGoalCarbs(currentUser.threeDayLog.goalCarbs);
+    state.updateGoalCalories(currentUser.threeDayLog.goalCalories);
+    state.updateGoalFat(currentUser.threeDayLog.goalFat);
+    state.updateComplete(currentUser.threeDayLog.complete);
     if (parsedResult.length === 3) {
       state.updateCompletion();
     }
@@ -99,7 +103,7 @@ export const useGetAllData = () => {
       getAssessment(id, state),
       getSettings(id, settingsState),
       getTracker(id, trackerState),
-      // getThreeDayLog(id, threeDayLogState),
+      getThreeDayLog(id, threeDayLogState),
       // getMetabolicJournal(id, metabolicState),
     ])
       .then(() => {

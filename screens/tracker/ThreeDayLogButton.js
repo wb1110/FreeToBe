@@ -2,12 +2,14 @@ import { useFocusEffect } from '@react-navigation/core';
 import { Button, useTheme } from '@rneui/themed';
 import { useCallback, useState } from 'react';
 import { View } from 'react-native';
+import useAuthStore from '../../state/AuthStore';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 
 export default function ThreeDayLogButton({ selectedDay, navigation }) {
   const { theme } = useTheme();
   const threeDayState = useThreeDayLogStore();
   const { addDay, threeDayLog, updateCompletion } = threeDayState;
+  const { id } = useAuthStore();
   const [submitted, setSubmitted] = useState(false);
   const [dayNumber, setDayNumber] = useState(1);
   // console.log(threeDayLog[0].date, '3day');
@@ -80,7 +82,7 @@ export default function ThreeDayLogButton({ selectedDay, navigation }) {
           containerStyle={{ width: '90%' }}
           color={theme.colors.white}
           onPress={() => {
-            addDay(selectedDay);
+            addDay(id, selectedDay);
             conditionalTitle();
             updateCompletion();
             navigation.navigate('Results1');
@@ -97,7 +99,7 @@ export default function ThreeDayLogButton({ selectedDay, navigation }) {
           containerStyle={{ width: '90%' }}
           color={theme.colors.white}
           onPress={() => {
-            addDay(selectedDay);
+            addDay(id, selectedDay);
             conditionalTitle();
           }}
           title={title}

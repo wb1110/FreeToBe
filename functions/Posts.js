@@ -23,10 +23,9 @@ export const storeTracker = async (id, value) => {
 
 // Used in LieSkinny4 and anytime meals or foods perform CRUD during the 3 days
 export const storeThreeDayLog = async (id, value) => {
-  console.log(typeof id, 'store3day');
   try {
-    const jsonValue = JSON.stringify(value);
-    await AsyncStorage.mergeItem(`threeDayLog`, jsonValue);
+    const jsonValue = JSON.stringify({ threeDayLog: value });
+    await AsyncStorage.mergeItem(id, jsonValue);
   } catch (e) {
     return e;
   }

@@ -43,6 +43,11 @@ const useThreeDayLogStore = create((set) => ({
   //   ],
   // },
   updateCompletion: () => set(() => ({ complete: true })),
+  updateGoalProtein: (grams) => set(() => ({ goalProtein: grams })),
+  updateGoalCarbs: (grams) => set(() => ({ goalCarbs: grams })),
+  updateGoalFat: (grams) => set(() => ({ goalFat: grams })),
+  updateGoalCalories: (calories) => set(() => ({ goalCalories: calories })),
+  updateComplete: (completeStatus) => set(() => ({ complete: completeStatus })),
   updateThreeDayLog: (data) =>
     set(
       produce((state) => {
@@ -52,12 +57,19 @@ const useThreeDayLogStore = create((set) => ({
         }
       })
     ),
-  addDay: (trackerDay) =>
+  addDay: (id, trackerDay) =>
     set(
       produce((state) => {
-        const { threeDayLog } = state;
+        const { threeDayLog, complete, goalCalories, goalCarbs, goalFats, goalProtein } = state;
         threeDayLog.push(trackerDay);
-        storeThreeDayLog(threeDayLog);
+        storeThreeDayLog(id, {
+          threeDayLog,
+          complete,
+          goalCalories,
+          goalCarbs,
+          goalFats,
+          goalProtein,
+        });
       })
     ),
   updateMacros: (array, date) =>
