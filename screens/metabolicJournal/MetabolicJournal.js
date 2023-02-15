@@ -21,6 +21,7 @@ import Temperature from './categories/Temperature';
 import Weight from './categories/Weight';
 import createNewData from './functions';
 import PinnedComponent from './PinnedComponent';
+import useAuthStore from '../../state/AuthStore';
 
 function MetabolicJournal({ navigation }) {
   // metabolic state needs to be created as well as async storage
@@ -31,7 +32,9 @@ function MetabolicJournal({ navigation }) {
   const [dateData, setDateData] = useState(moment(new Date()).format('L'));
   const metabolicState = useMetabolicStore();
   const { addJournalEntry, metabolicJournal } = metabolicState;
+  const { id } = useAuthStore();
   const [metabolicData, setMetabolicData] = useState({});
+  console.log(metabolicJournal, 'MetabolicJournal');
 
   const journalEntryExists = () => metabolicJournal.find((entry) => entry.date === dateData);
 
@@ -93,7 +96,7 @@ function MetabolicJournal({ navigation }) {
         <Button
           title="Log the Journal"
           onPress={() => {
-            addJournalEntry(metabolicData);
+            addJournalEntry(id, metabolicData);
           }}
         />
       </View>

@@ -47,7 +47,7 @@ export const getThreeDayLog = async (id, state) => {
     state.updateGoalCalories(currentUser.threeDayLog.goalCalories);
     state.updateGoalFat(currentUser.threeDayLog.goalFat);
     state.updateComplete(currentUser.threeDayLog.complete);
-    if (parsedResult.length === 3) {
+    if (currentUser.threeDayLog.threeDayLog.length === 3) {
       state.updateCompletion();
     }
   } catch (e) {
@@ -74,13 +74,13 @@ export const getSettings = async (id, state) => {
   }
 };
 
-export const getMetabolicJournal = async (state) => {
+export const getMetabolicJournal = async (id, state) => {
   let parsedResult;
   try {
-    const result = await AsyncStorage.getItem('metabolicJournal');
-    parsedResult = await JSON.parse(result);
-    if (parsedResult !== null) {
-      state.updateState(parsedResult);
+    const jsonValue = await AsyncStorage.getItem(id);
+    const currentUser = await JSON.parse(jsonValue);
+    if (currentUser.metabolicJournal) {
+      state.updateState(currentUser.metabolicJournal);
     }
   } catch (e) {
     return e;
@@ -104,7 +104,7 @@ export const useGetAllData = () => {
       getSettings(id, settingsState),
       getTracker(id, trackerState),
       getThreeDayLog(id, threeDayLogState),
-      // getMetabolicJournal(id, metabolicState),
+      getMetabolicJournal(id, metabolicState),
     ])
       .then(() => {
         setDataLoaded(true);

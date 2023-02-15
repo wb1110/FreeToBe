@@ -9,12 +9,14 @@ const useMetabolicStore = create((set) => ({
   updateState: (data) => {
     set(
       produce((state) => {
-        // eslint-disable-next-line no-param-reassign
-        state.metabolicJournal = data;
+        const { metabolicJournal } = state;
+        if (data) {
+          data.map((obj) => metabolicJournal.push(obj));
+        }
       })
     );
   },
-  addJournalEntry: (data) => {
+  addJournalEntry: (id, data) => {
     set(
       produce((state) => {
         const { metabolicJournal } = state;
@@ -26,7 +28,7 @@ const useMetabolicStore = create((set) => ({
           // If date doesn't exist, add new entry
           metabolicJournal.push(data);
         }
-        storeMetabolicJournal(metabolicJournal);
+        storeMetabolicJournal(id, metabolicJournal);
       })
     );
   },
