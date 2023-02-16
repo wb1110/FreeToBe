@@ -97,8 +97,7 @@ const useAuthStore = create((set) => ({
       })
     );
   },
-  updateEmail: (id, token, newEmail, setEmail) => {
-    console.log(token);
+  updateEmail: (id, newEmail, setEmail) => {
     set(
       produce(async () => {
         try {

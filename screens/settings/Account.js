@@ -19,17 +19,22 @@ export default function Account({ navigation }) {
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
-    confirmEmail: Yup.string().email('Invalid email').required('Email is required'),
+    confirmEmail: Yup.string()
+      .email('Invalid email')
+      .oneOf([Yup.ref('email'), null], 'Emails must match')
+      .required('Email is required'),
   });
 
-  const { handleChange, handleBlur, handleSubmit, values, errors, touched } = useFormik({
-    initialValues: { email: '', confirmEmail: '' },
-    validationSchema,
-    onSubmit: (formValues) => {
-      updateEmail(id, token, formValues.email, setEmail);
-      toggleOverlay();
-    },
-  });
+  const { handleChange, handleBlur, handleSubmit, values, errors, touched, handleReset } =
+    useFormik({
+      initialValues: { email: '', confirmEmail: '' },
+      validationSchema,
+      onSubmit: (formValues, { resetForm }) => {
+        updateEmail(id, token, formValues.email, setEmail);
+        toggleOverlay();
+        resetForm({ formValues: '' });
+      },
+    });
 
   useEffect(() => {
     getEmail(id, token, setEmail);
@@ -83,7 +88,14 @@ export default function Account({ navigation }) {
               />
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-              <Button type="clear" title="CANCEL" onPress={toggleOverlay} />
+              <Button
+                type="clear"
+                title="CANCEL"
+                onPress={() => {
+                  toggleOverlay();
+                  handleReset();
+                }}
+              />
               <Button
                 type="clear"
                 title="SAVE"
