@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { enableScreens } from 'react-native-screens';
-import Account from './Account';
+import Account from './account/Account';
 import Feedback from './Feedback';
 import MacroDistribution from './MacroDistribution';
 import Profile from './Profile';
