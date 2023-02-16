@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import * as Yup from 'yup';
 import LArrowButton from '../../components/Buttons/LArrowButton';
+import OverlayForm from '../../components/OverlayForm';
 import useAuthStore from '../../state/AuthStore';
 import SettingsContainer from './SettingsContainer';
 
@@ -66,49 +67,32 @@ export default function Account({ navigation }) {
             <Text h4>Email</Text>
             <Text h4>{email}</Text>
           </View>
-          <Overlay
-            isVisible={visible}
-            onBackdropPress={toggleOverlay}
-            overlayStyle={{ width: '90%', backgroundColor: theme.colors.secondary }}
+          <OverlayForm
+            overlayTitle="Change Email"
+            visible={visible}
+            setVisible={setVisible}
+            handleReset={handleReset}
+            handleSubmit={handleSubmit}
           >
-            <Text h4>Change Email</Text>
-            <View style={{ marginTop: 16 }}>
-              <Input
-                placeholder="New Email"
-                value={values.email}
-                autoCapitalize="none"
-                autoCorrect={false}
-                onChangeText={handleChange('email')}
-                onBlur={handleBlur('email')}
-                errorMessage={touched.email && errors.email}
-              />
-              <Input
-                placeholder="Confirm Email"
-                value={values.confirmEmail}
-                autoCapitalize="none"
-                autoCorrect={false}
-                onChangeText={handleChange('confirmEmail')}
-                onBlur={handleBlur('confirmEmail')}
-                errorMessage={touched.confirmEmail && errors.confirmEmail}
-              />
-            </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-              <Button
-                type="clear"
-                title="CANCEL"
-                onPress={() => {
-                  toggleOverlay();
-                  handleReset();
-                }}
-              />
-              <Button
-                type="clear"
-                title="SAVE"
-                titleStyle={{ color: theme.colors.white }}
-                onPress={handleSubmit}
-              />
-            </View>
-          </Overlay>
+            <Input
+              placeholder="New Email"
+              value={values.email}
+              autoCapitalize="none"
+              autoCorrect={false}
+              onChangeText={handleChange('email')}
+              onBlur={handleBlur('email')}
+              errorMessage={touched.email && errors.email}
+            />
+            <Input
+              placeholder="Confirm Email"
+              value={values.confirmEmail}
+              autoCapitalize="none"
+              autoCorrect={false}
+              onChangeText={handleChange('confirmEmail')}
+              onBlur={handleBlur('confirmEmail')}
+              errorMessage={touched.confirmEmail && errors.confirmEmail}
+            />
+          </OverlayForm>
         </SettingsContainer>
         <SettingsContainer onPress={() => console.log('test')}>
           <Text h4>Change Password</Text>
