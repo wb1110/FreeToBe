@@ -85,7 +85,7 @@ const useAuthStore = create((set) => ({
       })
     );
   },
-  getEmail: (id, token, setEmail) => {
+  getEmail: (id, setEmail) => {
     set(
       produce(async () => {
         try {

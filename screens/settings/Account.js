@@ -30,14 +30,19 @@ export default function Account({ navigation }) {
       initialValues: { email: '', confirmEmail: '' },
       validationSchema,
       onSubmit: (formValues, { resetForm }) => {
-        updateEmail(id, token, formValues.email, setEmail);
+        updateEmail(id, formValues.email, setEmail);
         toggleOverlay();
-        resetForm({ formValues: '' });
+        resetForm({
+          formValues: {
+            email: '',
+            confirmEmail: '',
+          },
+        });
       },
     });
 
   useEffect(() => {
-    getEmail(id, token, setEmail);
+    getEmail(id, setEmail);
   }, [id]);
 
   return (
