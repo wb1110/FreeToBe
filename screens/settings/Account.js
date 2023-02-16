@@ -27,6 +27,7 @@ export default function Account({ navigation }) {
     validationSchema,
     onSubmit: (formValues) => {
       console.log(formValues);
+      toggleOverlay();
     },
   });
 
@@ -83,7 +84,12 @@ export default function Account({ navigation }) {
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
               <Button type="clear" title="CANCEL" onPress={toggleOverlay} />
-              <Button type="clear" title="SAVE" titleStyle={{ color: theme.colors.white }} />
+              <Button
+                type="clear"
+                title="SAVE"
+                titleStyle={{ color: theme.colors.white }}
+                onPress={handleSubmit}
+              />
             </View>
           </Overlay>
         </SettingsContainer>
