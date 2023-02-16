@@ -6,6 +6,7 @@ import Container from '../../components/Container';
 import TextContainer from '../../components/TextContainer';
 import useStore from '../../state/Store';
 import useAuthStore from '../../state/AuthStore';
+import { storeData } from '../../functions/Posts';
 
 function LieSkinny4({ navigation }) {
   const state = useStore();
