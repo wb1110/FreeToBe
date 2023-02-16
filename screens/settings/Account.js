@@ -31,8 +31,10 @@ export default function Account({ navigation }) {
         }}
       >
         <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Email</Text>
-          <Text h4>{email}</Text>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}>
+            <Text h4>Email</Text>
+            <Text h4>{email}</Text>
+          </View>
         </SettingsContainer>
         <SettingsContainer onPress={() => console.log('test')}>
           <Text h4>Change Password</Text>
