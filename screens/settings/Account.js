@@ -9,7 +9,7 @@ import SettingsContainer from './SettingsContainer';
 
 export default function Account({ navigation }) {
   const { theme } = useTheme();
-  const { getEmail, id, token } = useAuthStore();
+  const { getEmail, updateEmail, id, token } = useAuthStore();
   const [email, setEmail] = useState('');
   const [visible, setVisible] = useState(false);
 
@@ -26,7 +26,7 @@ export default function Account({ navigation }) {
     initialValues: { email: '', confirmEmail: '' },
     validationSchema,
     onSubmit: (formValues) => {
-      console.log(formValues);
+      updateEmail(id, token, formValues.email, setEmail);
       toggleOverlay();
     },
   });

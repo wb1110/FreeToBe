@@ -87,15 +87,25 @@ const useAuthStore = create((set) => ({
   },
   getEmail: (id, token, setEmail) => {
     set(
-      produce(async (state) => {
-        const { setToken, setErrorMessage, setid } = state;
+      produce(async () => {
         try {
-          const response = await freetobeApi.get(`/users/${id}/email`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
+          const response = await freetobeApi.get(`/users/${id}/email`);
           setEmail(response.data.email);
+        } catch (err) {
+          console.log(err);
+        }
+      })
+    );
+  },
+  updateEmail: (id, token, newEmail, setEmail) => {
+    console.log(token);
+    set(
+      produce(async () => {
+        try {
+          await freetobeApi.put(`/users/${id}/email`, {
+            email: newEmail,
+          });
+          setEmail(newEmail);
         } catch (err) {
           console.log(err);
         }
