@@ -1,10 +1,18 @@
 import { Text, useTheme } from '@rneui/themed';
+import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
+import useAuthStore from '../../state/AuthStore';
 import SettingsContainer from './SettingsContainer';
 
 export default function Account({ navigation }) {
   const { theme } = useTheme();
+  const { getEmail, id, token } = useAuthStore();
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    getEmail(id, token, setEmail);
+  }, [id]);
 
   return (
     <View
@@ -24,6 +32,7 @@ export default function Account({ navigation }) {
       >
         <SettingsContainer onPress={() => console.log('test')}>
           <Text h4>Email</Text>
+          <Text h4>{email}</Text>
         </SettingsContainer>
         <SettingsContainer onPress={() => console.log('test')}>
           <Text h4>Change Password</Text>

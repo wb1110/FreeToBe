@@ -42,7 +42,6 @@ export const storeSettings = async (id, value) => {
 
 // Used when logging a journal
 export const storeMetabolicJournal = async (id, value) => {
-  console.log(id, value, 'storeMetabolcJournal');
   try {
     const jsonValue = JSON.stringify({ metabolicJournal: value });
     await AsyncStorage.mergeItem(id, jsonValue);

@@ -85,6 +85,23 @@ const useAuthStore = create((set) => ({
       })
     );
   },
+  getEmail: (id, token, setEmail) => {
+    set(
+      produce(async (state) => {
+        const { setToken, setErrorMessage, setid } = state;
+        try {
+          const response = await freetobeApi.get(`/users/${id}/email`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setEmail(response.data.email);
+        } catch (err) {
+          console.log(err);
+        }
+      })
+    );
+  },
   setErrorMessage: (value) => {
     set({ errorMessage: value });
   },
