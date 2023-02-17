@@ -40,6 +40,7 @@ function HomeTab({ navigation }) {
     };
   }
   const { carbs, protein, fats, calories } = getCurrentData(tracker);
+  console.log(carbs, fats, protein);
 
   if (!isDataLoaded) {
     return null;
@@ -71,14 +72,7 @@ function HomeTab({ navigation }) {
               }}
             >
               <View style={{ flex: 1, alignItems: 'center' }}>
-                {state.assessment.tdee ? (
-                  <MacroPie carbs={carbs} fats={fats} protein={protein} navigation={navigation} />
-                ) : (
-                  <Button
-                    title="Take Assessment"
-                    onPress={() => navigation.navigate('HeightWeightAge')}
-                  />
-                )}
+                <MacroPie carbs={carbs} fats={fats} protein={protein} navigation={navigation} />
               </View>
               <View style={{ flex: 1, alignItems: 'center' }}>
                 <Table />
@@ -93,43 +87,36 @@ function HomeTab({ navigation }) {
               }}
             >
               <View style={{ flex: 1, alignItems: 'center' }}>
-                {state.assessment.tdee ? (
-                  <View style={{ padding: 20 }}>
-                    <ProgressBar
-                      color="#B65C3D"
-                      title="Energy"
-                      unit="kCal"
-                      consumed={calories}
-                      goal={goalCalories}
-                    />
-                    <ProgressBar
-                      color="#283618"
-                      title="Protein"
-                      unit="g"
-                      consumed={protein}
-                      goal={goalProtein}
-                    />
-                    <ProgressBar
-                      color="#F5F5DC"
-                      title="Carbs"
-                      unit="g"
-                      consumed={carbs}
-                      goal={goalCarbs}
-                    />
-                    <ProgressBar
-                      color="#800020"
-                      title="Fats"
-                      unit="g"
-                      consumed={fats}
-                      goal={goalFat}
-                    />
-                  </View>
-                ) : (
-                  <Button
-                    title="Take Assessment"
-                    onPress={() => navigation.navigate('HeightWeightAge')}
+                <View style={{ padding: 20 }}>
+                  <ProgressBar
+                    color="#B65C3D"
+                    title="Energy"
+                    unit="kCal"
+                    consumed={calories}
+                    goal={goalCalories}
                   />
-                )}
+                  <ProgressBar
+                    color="#283618"
+                    title="Protein"
+                    unit="g"
+                    consumed={protein}
+                    goal={goalProtein}
+                  />
+                  <ProgressBar
+                    color="#F5F5DC"
+                    title="Carbs"
+                    unit="g"
+                    consumed={carbs}
+                    goal={goalCarbs}
+                  />
+                  <ProgressBar
+                    color="#800020"
+                    title="Fats"
+                    unit="g"
+                    consumed={fats}
+                    goal={goalFat}
+                  />
+                </View>
               </View>
             </View>
           </Swiper>
