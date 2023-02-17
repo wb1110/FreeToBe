@@ -37,7 +37,6 @@ export default function Age() {
   };
 
   useEffect(() => {
-    console.log(assessment.age);
     setAge(assessment.age);
   }, []);
 
