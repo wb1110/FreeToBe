@@ -37,6 +37,7 @@ export default function BodyFat() {
     <SettingsContainer onPress={toggleOverlay}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}>
         <Text h4>Body Fat</Text>
+        <Text h4>{assessment.bodyFat}%</Text>
       </View>
       <OverlayForm
         overlayTitle="Body Fat"

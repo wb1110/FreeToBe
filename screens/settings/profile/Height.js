@@ -46,6 +46,7 @@ export default function Height() {
     <SettingsContainer onPress={toggleOverlay}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}>
         <Text h4>Height</Text>
+        <Text h4>{assessment.height}</Text>
       </View>
       <OverlayForm
         overlayTitle="Height"

@@ -44,6 +44,7 @@ export default function Age() {
     <SettingsContainer onPress={toggleOverlay}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}>
         <Text h4>Age</Text>
+        <Text h4>{assessment.age}</Text>
       </View>
       <OverlayForm
         overlayTitle="Age"

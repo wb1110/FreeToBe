@@ -44,6 +44,7 @@ export default function Weight() {
     <SettingsContainer onPress={toggleOverlay}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}>
         <Text h4>Weight</Text>
+        <Text h4>{assessment.weight}</Text>
       </View>
       <OverlayForm
         overlayTitle="Weight"
