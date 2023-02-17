@@ -1,15 +1,13 @@
-import { Input, Text, useTheme } from '@rneui/themed';
+import { Input, Text } from '@rneui/themed';
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import * as Yup from 'yup';
-import LArrowButton from '../../../components/Buttons/LArrowButton';
 import OverlayForm from '../../../components/OverlayForm';
 import useAuthStore from '../../../state/AuthStore';
 import SettingsContainer from '../SettingsContainer';
 
-export default function Password({ navigation }) {
-  const { theme } = useTheme();
+export default function Password() {
   const { updatePassword, id } = useAuthStore();
   const [visible, setVisible] = useState(false);
 

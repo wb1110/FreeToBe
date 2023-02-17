@@ -5,10 +5,12 @@ import { View } from 'react-native';
 import * as Yup from 'yup';
 import OverlayForm from '../../../components/OverlayForm';
 import useAuthStore from '../../../state/AuthStore';
+import useStore from '../../../state/Store';
 import SettingsContainer from '../SettingsContainer';
 
-export default function Email() {
-  const { getEmail, updateEmail, id } = useAuthStore();
+export default function Age() {
+  const { id } = useAuthStore();
+  const { } = useStore();
   const [email, setEmail] = useState('');
   const [visible, setVisible] = useState(false);
 

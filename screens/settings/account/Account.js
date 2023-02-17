@@ -1,12 +1,6 @@
-import { Input, Text, useTheme } from '@rneui/themed';
-import { useFormik } from 'formik';
-import { useEffect, useState } from 'react';
+import { useTheme } from '@rneui/themed';
 import { View } from 'react-native';
-import * as Yup from 'yup';
 import LArrowButton from '../../../components/Buttons/LArrowButton';
-import OverlayForm from '../../../components/OverlayForm';
-import useAuthStore from '../../../state/AuthStore';
-import SettingsContainer from '../SettingsContainer';
 import Email from './Email';
 import Password from './Password';
 

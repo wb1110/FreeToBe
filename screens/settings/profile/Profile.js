@@ -1,7 +1,7 @@
 import { Text, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
-import LArrowButton from '../../components/Buttons/LArrowButton';
-import SettingsContainer from './SettingsContainer';
+import LArrowButton from '../../../components/Buttons/LArrowButton';
+import SettingsContainer from '../SettingsContainer';
 
 export default function Profile({ navigation }) {
   const { theme } = useTheme();
@@ -24,9 +24,6 @@ export default function Profile({ navigation }) {
       >
         <SettingsContainer onPress={() => console.log('test')}>
           <Text h4>Age</Text>
-        </SettingsContainer>
-        <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Sex</Text>
         </SettingsContainer>
         <SettingsContainer onPress={() => console.log('test')}>
           <Text h4>Weight</Text>

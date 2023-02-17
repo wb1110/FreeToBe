@@ -3,7 +3,7 @@ import { enableScreens } from 'react-native-screens';
 import Account from './account/Account';
 import Feedback from './Feedback';
 import MacroDistribution from './MacroDistribution';
-import Profile from './Profile';
+import Profile from './profile/Profile';
 import Settings from './Settings';
 import Targets from './Targets';
 // Before rendering any navigation stack
