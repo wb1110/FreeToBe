@@ -20,7 +20,7 @@ const useAuthStore = create((set) => ({
           state.setToken(token);
           navigate('UserHome', { screen: 'Home' });
         } else {
-          navigate('Register');
+          navigate('Login');
         }
       })
     );
@@ -43,6 +43,34 @@ const useAuthStore = create((set) => ({
           await AsyncStorage.setItem('token', response.data.token);
           setToken(response.data.token);
           setid(response.data.id);
+          setErrorMessage('');
+          navigate('UserHome', { screen: 'Home' });
+        } catch (err) {
+          if (err.response.data.error) {
+            console.log(err.response.data.error);
+            setErrorMessage(err.response.data.error);
+          }
+          console.log(err);
+        }
+      })
+    );
+  },
+  guestsignin: () => {
+    set(
+      produce(async (state) => {
+        const { setToken, setErrorMessage, setid } = state;
+        try {
+          const value = await AsyncStorage.getItem('guest');
+          if (value === null) {
+            await AsyncStorage.setItem('guest', '{}');
+            setid('guest');
+          }
+          // const jsonValue = JSON.stringify({ token: response.data.token });
+          // await AsyncStorage.mergeItem('guest', jsonValue);
+          await AsyncStorage.setItem('currentUserID', 'guest');
+          await AsyncStorage.setItem('token', 'guestToken');
+          setToken('guestToken');
+          setid('guest');
           setErrorMessage('');
           navigate('UserHome', { screen: 'Home' });
         } catch (err) {

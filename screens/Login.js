@@ -10,11 +10,12 @@ import {
   View,
 } from 'react-native';
 import AuthForm from '../components/AuthForm';
+import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import useAuthStore from '../state/AuthStore';
 
 function Login({ navigation }) {
-  const { signin, errorMessage, setErrorMessage } = useAuthStore();
+  const { signin, errorMessage, setErrorMessage, guestsignin } = useAuthStore();
 
   useFocusEffect(
     useCallback(() => {
@@ -47,6 +48,7 @@ function Login({ navigation }) {
                 title="Register"
               />
             </View>
+            <StandardButton title="Guest Login" onPress={guestsignin} />
           </Container>
         </SafeAreaView>
       </TouchableWithoutFeedback>
