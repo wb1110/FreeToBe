@@ -38,7 +38,11 @@ export default function BMI() {
       }}
     >
       <Text h4>Body Mass Index (BMI)</Text>
-      <Text style={{ margin: '2%' }}>{calculateBMI(assessment.weight, assessment.height)}</Text>
+      <Text style={{ margin: '2%' }}>
+        {assessment.height && assessment.weight
+          ? calculateBMI(assessment.weight, assessment.height)
+          : null}
+      </Text>
     </TouchableOpacity>
   );
 }
