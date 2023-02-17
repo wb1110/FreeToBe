@@ -1,82 +1,61 @@
-import { Input, Text } from '@rneui/themed';
-import { useFormik } from 'formik';
+import { Picker } from '@react-native-picker/picker';
+import { Text } from '@rneui/themed';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
-import * as Yup from 'yup';
+import { age as dataAge } from '../../../assets/data/data';
 import OverlayForm from '../../../components/OverlayForm';
+import { storeData } from '../../../functions/Posts';
 import useAuthStore from '../../../state/AuthStore';
 import useStore from '../../../state/Store';
 import SettingsContainer from '../SettingsContainer';
 
 export default function Age() {
   const { id } = useAuthStore();
-  const { } = useStore();
-  const [email, setEmail] = useState('');
+  const { setNewAge, assessment } = useStore();
+  const [age, setAge] = useState(assessment.age);
   const [visible, setVisible] = useState(false);
+  let nAge;
+
+  const pickerData = (data) =>
+    data?.length > 0 &&
+    data.map((val, index) => <Picker.Item label={val} value={val} key={index} color="white" />); // eslint-disable-line
 
   const toggleOverlay = () => {
     setVisible(!visible);
   };
 
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email').required('Email is required'),
-    confirmEmail: Yup.string()
-      .email('Invalid email')
-      .oneOf([Yup.ref('email'), null], 'Emails must match')
-      .required('Email is required'),
-  });
+  const conversion = (newAge) => {
+    nAge = parseInt(newAge, 10);
 
-  const { handleChange, handleBlur, handleSubmit, values, errors, touched, handleReset } =
-    useFormik({
-      initialValues: { email: '', confirmEmail: '' },
-      validationSchema,
-      onSubmit: (formValues, { resetForm }) => {
-        updateEmail(id, formValues.email, setEmail);
-        toggleOverlay();
-        resetForm({
-          formValues: {
-            email: '',
-            confirmEmail: '',
-          },
-        });
-      },
-    });
+    setAge(nAge);
+
+    return age;
+  };
+  const handleSubmit = () => {
+    setNewAge(id, conversion(age));
+    toggleOverlay();
+  };
 
   useEffect(() => {
-    getEmail(id, setEmail);
-  }, [id]);
+    console.log(assessment.age);
+    setAge(assessment.age);
+  }, []);
 
   return (
     <SettingsContainer onPress={toggleOverlay}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}>
-        <Text h4>Email</Text>
-        <Text h4>{email}</Text>
+        <Text h4>Age</Text>
       </View>
       <OverlayForm
-        overlayTitle="Change Email"
+        overlayTitle="Age"
         visible={visible}
         setVisible={setVisible}
-        handleReset={handleReset}
         handleSubmit={handleSubmit}
+        handleReset={toggleOverlay}
       >
-        <Input
-          placeholder="New Email"
-          value={values.email}
-          autoCapitalize="none"
-          autoCorrect={false}
-          onChangeText={handleChange('email')}
-          onBlur={handleBlur('email')}
-          errorMessage={touched.email && errors.email}
-        />
-        <Input
-          placeholder="Confirm Email"
-          value={values.confirmEmail}
-          autoCapitalize="none"
-          autoCorrect={false}
-          onChangeText={handleChange('confirmEmail')}
-          onBlur={handleBlur('confirmEmail')}
-          errorMessage={touched.confirmEmail && errors.confirmEmail}
-        />
+        <Picker selectedValue={age} onValueChange={(itemValue) => setAge(itemValue)}>
+          {pickerData(dataAge)}
+        </Picker>
       </OverlayForm>
     </SettingsContainer>
   );

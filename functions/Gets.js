@@ -15,6 +15,7 @@ export const getAssessment = async (id, state) => {
     const currentUser = JSON.parse(jsonValue);
     if (currentUser.assessment) {
       state.setAssessment(currentUser.assessment);
+      console.log(state.assessment);
     }
   } catch (e) {
     return e;

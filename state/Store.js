@@ -1,4 +1,6 @@
 import { create } from 'zustand';
+import produce from 'immer';
+import { storeData } from '../functions/Posts';
 
 const useStore = create((set) => ({
   assessment: {
@@ -23,6 +25,14 @@ const useStore = create((set) => ({
         age: values.age,
       },
     })),
+  setNewAge: (id, value) => {
+    set(
+      produce((state) => {
+        state.assessment.age = value;
+        storeData(id, state.assessment);
+      })
+    );
+  },
   setBodyFat: (values) =>
     set((state) => ({
       assessment: {
