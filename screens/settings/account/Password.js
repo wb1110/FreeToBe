@@ -10,7 +10,7 @@ import SettingsContainer from '../SettingsContainer';
 
 export default function Password({ navigation }) {
   const { theme } = useTheme();
-  const { getEmail, updateEmail, id } = useAuthStore();
+  const { updatePassword, id } = useAuthStore();
   const [visible, setVisible] = useState(false);
 
   const toggleOverlay = () => {
@@ -36,7 +36,7 @@ export default function Password({ navigation }) {
       initialValues: { current: '', new: '', confirm: '' },
       validationSchema,
       onSubmit: (formValues, { resetForm }) => {
-        // updateEmail(id, formValues.email, setEmail);
+        updatePassword(id, formValues.current, formValues.new);
         toggleOverlay();
         resetForm({
           formValues: {
@@ -66,6 +66,7 @@ export default function Password({ navigation }) {
       >
         <Input
           placeholder="Current Password"
+          secureTextEntry
           value={values.current}
           autoCapitalize="none"
           autoCorrect={false}
@@ -75,6 +76,7 @@ export default function Password({ navigation }) {
         />
         <Input
           placeholder="New Password"
+          secureTextEntry
           value={values.new}
           autoCapitalize="none"
           autoCorrect={false}
@@ -84,6 +86,7 @@ export default function Password({ navigation }) {
         />
         <Input
           placeholder="Confirm Password"
+          secureTextEntry
           value={values.confirm}
           autoCapitalize="none"
           autoCorrect={false}

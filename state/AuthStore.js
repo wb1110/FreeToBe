@@ -111,6 +111,20 @@ const useAuthStore = create((set) => ({
       })
     );
   },
+  updatePassword: (id, currentPassword, newPassword) => {
+    set(
+      produce(async () => {
+        try {
+          await freetobeApi.put(`/users/${id}/password`, {
+            password: currentPassword,
+            newPassword,
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      })
+    );
+  },
   setErrorMessage: (value) => {
     set({ errorMessage: value });
   },
