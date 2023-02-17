@@ -33,6 +33,14 @@ const useStore = create((set) => ({
       })
     );
   },
+  setNewHeight: (id, value) => {
+    set(
+      produce((state) => {
+        state.assessment.height = value;
+        storeData(id, state.assessment);
+      })
+    );
+  },
   setBodyFat: (values) =>
     set((state) => ({
       assessment: {
