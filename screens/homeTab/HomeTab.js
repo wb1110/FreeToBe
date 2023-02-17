@@ -40,7 +40,6 @@ function HomeTab({ navigation }) {
     };
   }
   const { carbs, protein, fats, calories } = getCurrentData(tracker);
-  console.log(carbs, fats, protein);
 
   if (!isDataLoaded) {
     return null;

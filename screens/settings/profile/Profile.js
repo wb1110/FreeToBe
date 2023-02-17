@@ -4,6 +4,7 @@ import LArrowButton from '../../../components/Buttons/LArrowButton';
 import SettingsContainer from '../SettingsContainer';
 import Age from './Age';
 import BMI from './BMI';
+import BodyFat from './BodyFat';
 import Height from './Height';
 import Weight from './Weight';
 
@@ -30,9 +31,7 @@ export default function Profile({ navigation }) {
         <Weight />
         <Height />
         <BMI />
-        <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Body Fat</Text>
-        </SettingsContainer>
+        <BodyFat />
       </View>
     </View>
   );
