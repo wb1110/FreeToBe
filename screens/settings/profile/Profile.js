@@ -3,7 +3,9 @@ import { View } from 'react-native';
 import LArrowButton from '../../../components/Buttons/LArrowButton';
 import SettingsContainer from '../SettingsContainer';
 import Age from './Age';
+import BMI from './BMI';
 import Height from './Height';
+import Weight from './Weight';
 
 export default function Profile({ navigation }) {
   const { theme } = useTheme();
@@ -25,13 +27,9 @@ export default function Profile({ navigation }) {
         }}
       >
         <Age />
-        <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Weight</Text>
-        </SettingsContainer>
+        <Weight />
         <Height />
-        <SettingsContainer onPress={() => console.log('test')}>
-          <Text h4>Body Mass Index (BMI)</Text>
-        </SettingsContainer>
+        <BMI />
         <SettingsContainer onPress={() => console.log('test')}>
           <Text h4>Body Fat</Text>
         </SettingsContainer>

@@ -41,6 +41,14 @@ const useStore = create((set) => ({
       })
     );
   },
+  setNewWeight: (id, value) => {
+    set(
+      produce((state) => {
+        state.assessment.weight = value;
+        storeData(id, state.assessment);
+      })
+    );
+  },
   setBodyFat: (values) =>
     set((state) => ({
       assessment: {
