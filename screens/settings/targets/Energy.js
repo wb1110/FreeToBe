@@ -1,10 +1,13 @@
-import { Text, useTheme } from '@rneui/themed';
+import { Text, Tooltip, useTheme } from '@rneui/themed';
 import { StyleSheet, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import { useState } from 'react';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import LArrowButton from '../../../components/Buttons/LArrowButton';
 
 export default function Energy({ navigation }) {
   const { theme } = useTheme();
+  const [open, setOpen] = useState(false);
 
   return (
     <View
@@ -39,8 +42,38 @@ export default function Energy({ navigation }) {
           >
             <Text h4>At work</Text>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <Text>Lightly Active (BMR x 0.375)</Text>
-              <AntDesign name="caretdown" size={12} color="white" />
+              <Tooltip
+                visible={open}
+                onOpen={() => {
+                  setOpen(true);
+                }}
+                onClose={() => {
+                  setOpen(false);
+                }}
+                popover={
+                  <TouchableOpacity>
+                    <Text>Tooltip info goes here</Text>
+                  </TouchableOpacity>
+                }
+                width={200}
+                backgroundColor={theme.colors.secondary}
+                containerStyle={{
+                  right: 0,
+                  left: undefined,
+                  position: 'absolute',
+                  shadowColor: 'black',
+                  shadowOffset: { width: 0, height: 2 },
+                  shadowOpacity: 0.25,
+                  shadowRadius: 3,
+                }}
+                withOverlay
+                withPointer={false}
+              >
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Text>Lightly Active (BMR x 0.375)</Text>
+                  <AntDesign name="caretdown" size={12} color="white" />
+                </View>
+              </Tooltip>
             </View>
           </View>
           <View
