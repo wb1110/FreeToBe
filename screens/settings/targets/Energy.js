@@ -1,7 +1,7 @@
 import { Text, useTheme } from '@rneui/themed';
 import { StyleSheet, View } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 import LArrowButton from '../../../components/Buttons/LArrowButton';
-import SettingsContainer from '../SettingsContainer';
 
 export default function Energy({ navigation }) {
   const { theme } = useTheme();
@@ -28,9 +28,34 @@ export default function Energy({ navigation }) {
           <Text h4>BMR</Text>
           <Text h4>7777 kcal</Text>
         </View>
-        <View style={styles.container}>
-          <Text>Activity Level</Text>
-          <Text>Lightly Active (BMR x 0.375)</Text>
+        <View style={{ padding: 16, borderBottomWidth: 1, borderBottomColor: 'white' }}>
+          <Text h4>Activity Level</Text>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: 16,
+            }}
+          >
+            <Text h4>At work</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text>Lightly Active (BMR x 0.375)</Text>
+              <AntDesign name="caretdown" size={12} color="white" />
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: 16,
+            }}
+          >
+            <Text h4>Outside work</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Text>Lightly Active (BMR x 0.375)</Text>
+              <AntDesign name="caretdown" size={12} color="white" />
+            </View>
+          </View>
         </View>
         <View
           style={{
