@@ -1,14 +1,40 @@
 import { Text, Tooltip, useTheme } from '@rneui/themed';
 import { StyleSheet, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import LArrowButton from '../../../components/Buttons/LArrowButton';
+import useStore from '../../../state/Store';
+import useAuthStore from '../../../state/AuthStore';
 
 export default function Energy({ navigation }) {
   const { theme } = useTheme();
+  const { setNewWorkActivity, setNewExerciseActivity, assessment } = useStore();
+  const { id } = useAuthStore();
   const [exerciseOpen, setExerciseOpen] = useState(false);
   const [workOpen, setWorkOpen] = useState(false);
+  const [work, setWork] = useState('');
+
+  // console.log(assessment, 'assessment in Energy');
+
+  const selectedWorkActivity = (activityLevel) => {
+    if (activityLevel === 1) {
+      return <Text>No activity</Text>;
+    }
+    if (activityLevel === 2) {
+      return <Text>Moderate</Text>;
+    }
+    if (activityLevel === 3) {
+      return <Text>Very active</Text>;
+    }
+    if (activityLevel === 4) {
+      return <Text>Extremely active</Text>;
+    }
+  };
+
+  useEffect(() => {
+    setWork(selectedWorkActivity(assessment.workActivity));
+  }, [assessment]);
 
   return (
     <View
@@ -53,22 +79,45 @@ export default function Energy({ navigation }) {
                 }}
                 popover={
                   <View>
-                    <TouchableOpacity style={{ marginBottom: 16 }}>
+                    <TouchableOpacity
+                      style={{ marginBottom: 16 }}
+                      onPress={() => {
+                        setNewWorkActivity(id, 1);
+                        setWorkOpen(!workOpen);
+                      }}
+                    >
                       <Text>No activity - desk job with minimal movement</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ marginBottom: 16 }}>
+                    <TouchableOpacity
+                      style={{ marginBottom: 16 }}
+                      onPress={() => {
+                        setNewWorkActivity(id, 2);
+                        setWorkOpen(!workOpen);
+                      }}
+                    >
                       <Text>
                         Moderate - requires some movement (realtor, teacher, pastor, sales, some
                         stay at home moms)
                       </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ marginBottom: 16 }}>
+                    <TouchableOpacity
+                      style={{ marginBottom: 16 }}
+                      onPress={() => {
+                        setNewWorkActivity(id, 3);
+                        setWorkOpen(!workOpen);
+                      }}
+                    >
                       <Text>
                         Very active - requires physical activity (trainer, construction worker, stay
                         at home mama with littles)
                       </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={() => {
+                        setNewWorkActivity(id, 4);
+                        setWorkOpen(!workOpen);
+                      }}
+                    >
                       <Text>Extremely active - professional/collegiate athlete</Text>
                     </TouchableOpacity>
                   </View>
@@ -88,11 +137,15 @@ export default function Energy({ navigation }) {
                 }}
                 withOverlay
                 withPointer={false}
+                toggleOnPress={false}
               >
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Text>Lightly Active (BMR x 0.375)</Text>
+                <TouchableOpacity
+                  style={{ flexDirection: 'row', alignItems: 'center' }}
+                  onPress={() => setWorkOpen(!workOpen)}
+                >
+                  {work}
                   <AntDesign name="caretdown" size={12} color="white" />
-                </View>
+                </TouchableOpacity>
               </Tooltip>
             </View>
           </View>

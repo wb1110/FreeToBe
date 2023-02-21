@@ -57,6 +57,15 @@ const useStore = create((set) => ({
       })
     );
   },
+  setNewWorkActivity: (id, value) => {
+    console.log(id, value, 'newworkactivity');
+    set(
+      produce((state) => {
+        state.assessment.workActivity = value;
+        storeData(id, state.assessment);
+      })
+    );
+  },
   setNewExerciseActivity: (id, value) => {
     set(
       produce((state) => {
