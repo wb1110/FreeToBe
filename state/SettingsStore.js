@@ -25,6 +25,7 @@ const useSettingsStore = create((set) => ({
     );
   },
   updateMacroSettings: (id, protein, carbs, fat) => {
+    console.log(protein, carbs, fat, 'updateMacroSettings');
     set(
       produce((state) => {
         storeSettings(id, { idealProtein: protein, idealCarbs: carbs, idealFat: fat });
@@ -35,6 +36,7 @@ const useSettingsStore = create((set) => ({
   setMacros: (value) => {
     set(
       produce((state) => {
+        console.log(value, 'setMacros');
         state.macroSettings = value;
       })
     );

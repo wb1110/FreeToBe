@@ -25,7 +25,7 @@ export default function Targets({ navigation }) {
         <SettingsContainer onPress={() => navigation.navigate('Energy')}>
           <Text h4>Energy Settings</Text>
         </SettingsContainer>
-        <SettingsContainer onPress={() => console.log('test')}>
+        <SettingsContainer onPress={() => navigation.navigate('MacroDistribution')}>
           <Text h4>Macronutrient Settings</Text>
         </SettingsContainer>
         <SettingsContainer onPress={() => console.log('test')}>
