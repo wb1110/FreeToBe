@@ -1,7 +1,7 @@
 import { Text, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
-import LArrowButton from '../../components/Buttons/LArrowButton';
-import SettingsContainer from './SettingsContainer';
+import LArrowButton from '../../../components/Buttons/LArrowButton';
+import SettingsContainer from '../SettingsContainer';
 
 export default function Targets({ navigation }) {
   const { theme } = useTheme();
@@ -22,7 +22,7 @@ export default function Targets({ navigation }) {
           alignItems: 'flex-end',
         }}
       >
-        <SettingsContainer onPress={() => console.log('test')}>
+        <SettingsContainer onPress={() => navigation.navigate('Energy')}>
           <Text h4>Energy Settings</Text>
         </SettingsContainer>
         <SettingsContainer onPress={() => console.log('test')}>

@@ -5,7 +5,8 @@ import Feedback from './Feedback';
 import MacroDistribution from './MacroDistribution';
 import Profile from './profile/Profile';
 import Settings from './Settings';
-import Targets from './Targets';
+import Energy from './targets/Energy';
+import Targets from './targets/Targets';
 // Before rendering any navigation stack
 enableScreens();
 
@@ -19,6 +20,7 @@ export default function SettingsStackScreen() {
       <SettingsStack.Screen name="Account" component={Account} />
       <SettingsStack.Screen name="Profile" component={Profile} />
       <SettingsStack.Screen name="Targets" component={Targets} />
+      <SettingsStack.Screen name="Energy" component={Energy} />
       <SettingsStack.Screen name="Feedback" component={Feedback} />
     </SettingsStack.Navigator>
   );
