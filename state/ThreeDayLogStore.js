@@ -89,7 +89,6 @@ const useThreeDayLogStore = create((set) => ({
             caloriesSum += +foodObj.calories;
             return foodObj;
           });
-          // console.log(macroSum, date);
           return mealObj;
         });
         tracker[date].protein = proteinSum;

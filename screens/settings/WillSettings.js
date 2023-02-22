@@ -75,8 +75,6 @@ export default function WillSettings() {
     }
     // eslint-disable-next-line no-console
     console.log(keys);
-    // example console.log result:
-    // ['@MyApp_user', '@MyApp_key']
   };
   const clearAll = async () => {
     try {

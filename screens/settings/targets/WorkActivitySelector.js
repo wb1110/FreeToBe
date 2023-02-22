@@ -27,8 +27,6 @@ export default function WorkActivitySelector() {
   };
   const [work, setWork] = useState(selectedWorkActivity(assessment.workActivity) || '');
 
-  // console.log(assessment, 'assessment in Energy');
-
   useEffect(() => {
     setWork(selectedWorkActivity(assessment.workActivity));
   }, [assessment]);

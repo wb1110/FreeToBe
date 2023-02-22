@@ -29,8 +29,6 @@ export default function ExerciseActivitySelector() {
     selectedExerciseActivity(assessment.exerciseActivity) || ''
   );
 
-  // console.log(assessment, 'assessment in Energy');
-
   useEffect(() => {
     setExercise(selectedExerciseActivity(assessment.exerciseActivity));
   }, [assessment]);

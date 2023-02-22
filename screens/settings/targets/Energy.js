@@ -14,7 +14,7 @@ export default function Energy({ navigation }) {
 
   const bmr = () => {
     let BMR;
-    const heightSplit = height.split('ft ');
+    const heightSplit = height?.split('ft ');
     const feet = heightSplit[0];
     const inches = heightSplit[1];
     const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
@@ -27,8 +27,6 @@ export default function Energy({ navigation }) {
     BMR = 370 + 21.6 * LBM;
     return Math.round(BMR);
   };
-
-  // console.log(assessment, 'assessment in Energy');
 
   const selectedWorkActivity = (activityLevel) => {
     if (activityLevel === 1) {

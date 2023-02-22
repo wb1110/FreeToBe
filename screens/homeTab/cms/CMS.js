@@ -19,7 +19,6 @@ export default function CMS() {
       .then((response) => {
         // handle success
         const entry = response.data.data[0].attributes;
-        console.log(response.data.data);
         setTitle(entry.Title);
         setBody(entry.Body);
       })

@@ -196,7 +196,13 @@ const useAuthStore = create((set) => ({
     );
   },
   resetState: () => {
-    set({ token: null, errorMessage: '', id: '' });
+    set(
+      produce((state) => {
+        state.token = null;
+        state.errorMessage = '';
+        state.id = '0';
+      })
+    );
   },
 }));
 

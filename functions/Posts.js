@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Used in AbleToTrack.js and LieSkinny4.js
 export const storeData = async (id, value) => {
-  console.log(id, value);
   try {
     const jsonValue = JSON.stringify({ assessment: value });
     await AsyncStorage.mergeItem(id, jsonValue);

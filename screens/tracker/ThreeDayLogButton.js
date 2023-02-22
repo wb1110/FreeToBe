@@ -12,8 +12,6 @@ export default function ThreeDayLogButton({ selectedDay, navigation }) {
   const { id } = useAuthStore();
   const [submitted, setSubmitted] = useState(false);
   const [dayNumber, setDayNumber] = useState(1);
-  // console.log(threeDayLog[0].date, '3day');
-  // console.log(selectedDay.date, 'selected');
   const [title, setTitle] = useState(`Three Day Log: Submit Day ${dayNumber}`);
 
   const daySubmitted = () => {

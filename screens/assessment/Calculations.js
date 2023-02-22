@@ -80,19 +80,22 @@ export default function useCalculations() {
   // 4 = Extreme
 
   const energyEquations = () => {
-    const heightSplit = height?.split('ft ');
-    const feet = heightSplit[0];
-    const inches = heightSplit[1];
-    const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
-    if (!bodyFat) {
+    if (!bodyFat && height) {
+      const heightSplit = height.split('ft ');
+      const feet = heightSplit[0];
+      const inches = heightSplit[1];
+      const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
       const BMR = 10 * (weight * 0.45359237) + 6.25 * (totalInches * 2.54) - 5 * age - 161;
       TDEE = BMR * activityMultiplier();
       return TDEE;
     }
-    const FBM = weight * 0.45359237 * (bodyFat / 100);
-    const LBM = weight * 0.45359237 - FBM;
-    TDEE = 370 + 21.6 * LBM;
-    return TDEE;
+    if (bodyFat && weight) {
+      const FBM = weight * 0.45359237 * (bodyFat / 100);
+      const LBM = weight * 0.45359237 - FBM;
+      TDEE = 370 + 21.6 * LBM;
+      return TDEE;
+    }
+    return 0;
   };
 
   const weeksDifference = Math.ceil(moment(dueDate).diff(moment(), 'days') / 7);
