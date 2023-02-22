@@ -200,7 +200,7 @@ const useAuthStore = create((set) => ({
       produce((state) => {
         state.token = null;
         state.errorMessage = '';
-        state.id = '0';
+        state.id = '';
       })
     );
   },
