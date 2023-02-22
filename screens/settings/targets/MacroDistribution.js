@@ -18,23 +18,22 @@ export default function MacroDistribution({ navigation }) {
   const [proteinPercentage, setProteinPercentage] = useState(idealProtein);
   const [carbPercentage, setCarbPercentage] = useState(idealCarbs);
   const [fatPercentage, setFatPercentage] = useState(idealFat);
-
-  let protein;
-  let carb;
-  let fat;
+  const [protein, setProtein] = useState();
+  const [carb, setCarb] = useState();
+  const [fat, setFat] = useState();
 
   const dataPercentages = percentageSelect(5, 95, 5);
 
   const macroOptions = () => {
-    protein = Math.round((state.assessment.tdee * (parseFloat(idealProtein) / 100)) / 4);
-    carb = Math.round((state.assessment.tdee * (parseFloat(idealCarbs) / 100)) / 4);
-    fat = Math.round((state.assessment.tdee * (parseFloat(idealFat) / 100)) / 9);
+    setProtein(Math.round((state.assessment.tdee * (parseFloat(idealProtein) / 100)) / 4));
+    setCarb(Math.round((state.assessment.tdee * (parseFloat(idealCarbs) / 100)) / 4));
+    setFat(Math.round((state.assessment.tdee * (parseFloat(idealFat) / 100)) / 9));
   };
 
   useEffect(() => {
     macroOptions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settingsState.macroSettings]);
+  }, [settingsState.macroSettings, proteinPercentage, carbPercentage, fatPercentage]);
 
   return (
     <View
