@@ -5,18 +5,6 @@ export default function useCalculations() {
   const state = useStore();
   const { bodyFat, weight, height, age, dueDate, exerciseActivity, workActivity, babies, nursing } =
     state.assessment;
-  console.log(
-    bodyFat,
-    weight,
-    height,
-    age,
-    dueDate,
-    exerciseActivity,
-    workActivity,
-    babies,
-    nursing,
-    'useCalculations input values'
-  );
   let TDEE;
   let pregnancyCalories = 0;
   const babyCalories = () => {
@@ -92,15 +80,20 @@ export default function useCalculations() {
   // 4 = Extreme
 
   const energyEquations = () => {
+    const heightSplit = height.split('ft ');
+    const feet = heightSplit[0];
+    const inches = heightSplit[1];
+    const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
     if (!bodyFat) {
-      const BMR = 10 * (weight * 0.45359237) + 6.25 * (height * 2.54) - 5 * age - 161;
+      const BMR = 10 * (weight * 0.45359237) + 6.25 * (totalInches * 2.54) - 5 * age - 161;
       TDEE = BMR * activityMultiplier();
+      console.log(TDEE, 'nonbodyfat');
       return TDEE;
     }
     const FBM = weight * 0.45359237 * (bodyFat / 100);
     const LBM = weight * 0.45359237 - FBM;
     TDEE = 370 + 21.6 * LBM;
-
+    console.log(TDEE, 'TDEE');
     return TDEE;
   };
 
@@ -125,6 +118,6 @@ export default function useCalculations() {
   const maintenanceCal = Math.round(
     energyEquations() + (dueDate ? trimester(weeksDifference) : 0) + babyCalories() + nursing
   );
-
+  console.log(maintenanceCal, 'maintenanceCal');
   return maintenanceCal;
 }

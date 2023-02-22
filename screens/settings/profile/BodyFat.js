@@ -37,7 +37,7 @@ export default function BodyFat() {
     <SettingsContainer onPress={toggleOverlay}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}>
         <Text h4>Body Fat</Text>
-        <Text h4>{assessment.bodyFat}%</Text>
+        <Text h4>{assessment.bodyFat > 0 ? `${assessment.bodyFat}%` : 'Unknown Body Fat'}</Text>
       </View>
       <OverlayForm
         overlayTitle="Body Fat"
@@ -46,7 +46,7 @@ export default function BodyFat() {
         handleSubmit={handleSubmit}
         handleReset={toggleOverlay}
       >
-        <Text>Update body fat:</Text>
+        <Text>Update body fat (If unknown, enter 0):</Text>
         <View
           style={{
             flexDirection: 'row',

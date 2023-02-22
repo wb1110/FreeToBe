@@ -29,7 +29,7 @@ export default function Height() {
     const feet = parseInt(array[0], 10) * 12;
     const inches = parseInt(array[1], 10);
     nHeight = feet + inches;
-
+    console.log(nHeight, 'nHeight');
     setHeight(nHeight);
     return height;
   };
