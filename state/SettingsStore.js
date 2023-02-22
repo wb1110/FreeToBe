@@ -36,8 +36,8 @@ const useSettingsStore = create((set) => ({
   setMacros: (value) => {
     set(
       produce((state) => {
-        console.log(value, 'setMacros');
-        state.macroSettings = value;
+        const { macroSettings } = state;
+        Object.assign(macroSettings, value);
       })
     );
   },

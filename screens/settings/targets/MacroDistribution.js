@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import LArrowButton from '../../../components/Buttons/LArrowButton';
 import ScreenPicker from '../../../components/ScreenPicker';
-import { getSettings } from '../../../functions/Gets';
 import percentageSelect from '../../../functions/percentageSelect';
 import useAuthStore from '../../../state/AuthStore';
 import useSettingsStore from '../../../state/SettingsStore';
@@ -14,7 +13,7 @@ export default function MacroDistribution({ navigation }) {
   const { id } = useAuthStore();
   const state = useStore();
   const settingsState = useSettingsStore();
-  const { updateMacroSettings, macroSettings } = settingsState;
+  const { updateMacroSettings, macroSettings, setMacros } = settingsState;
   const { idealCarbs, idealFat, idealProtein } = macroSettings;
   const [proteinPercentage, setProteinPercentage] = useState(idealProtein);
   const [carbPercentage, setCarbPercentage] = useState(idealCarbs);
@@ -34,7 +33,7 @@ export default function MacroDistribution({ navigation }) {
 
   useEffect(() => {
     macroOptions();
-    console.log(settingsState, 'MacroDistribution');
+    console.log(settingsState.macroSettings, 'MacroDistribution');
   }, [settingsState.macroSettings]);
 
   return (
