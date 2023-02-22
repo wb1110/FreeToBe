@@ -1,7 +1,8 @@
-import { Button, Input, useTheme } from '@rneui/themed';
+import { Button, Input, Text, useTheme } from '@rneui/themed';
 import { useFormik } from 'formik';
 import { View } from 'react-native';
 import * as Yup from 'yup';
+import { FontAwesome } from '@expo/vector-icons';
 import LArrowButton from '../../../components/Buttons/LArrowButton';
 import StandardButton from '../../../components/Buttons/StandardButton';
 import Container from '../../../components/Container';
@@ -80,6 +81,20 @@ function Feedback({ navigation }) {
             onBlur={handleBlur('feedback')}
             errorMessage={touched.feedback && errors.feedback}
           />
+          <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+            <Button buttonStyle={{ borderRadius: 25 }}>
+              <FontAwesome name="camera" size={24} color="white" />
+              <Text h4 h4Style={{ marginLeft: 12 }}>
+                ADD PHOTO
+              </Text>
+            </Button>
+            <Button buttonStyle={{ borderRadius: 25 }}>
+              <FontAwesome name="video-camera" size={24} color="white" />
+              <Text h4 h4Style={{ marginLeft: 12 }}>
+                ADD VIDEO
+              </Text>
+            </Button>
+          </View>
         </View>
         <Button
           title="Submit"
