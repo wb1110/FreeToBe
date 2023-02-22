@@ -3,28 +3,33 @@ import { useFormik } from 'formik';
 import { View } from 'react-native';
 import * as Yup from 'yup';
 import { FontAwesome } from '@expo/vector-icons';
-import Mailer from 'react-native-mail';
+import * as ImagePicker from 'expo-image-picker';
+import * as MailComposer from 'expo-mail-composer';
+import { useState } from 'react';
 import LArrowButton from '../../../components/Buttons/LArrowButton';
 
 function Feedback({ navigation }) {
   const { theme } = useTheme();
+  const [status, setStatus] = useState();
 
-  const sendEmail = (email, name, subject, feedback) => {
-    Mailer.mail(
-      {
-        recipients: ['williamjaredbuchanan@gmail.com'],
-        subject: 'Feedback Form',
-        body: `Email: ${email}\nName: ${name}\nSubject: ${subject}\nFeedback: ${feedback}`,
-        isHtml: true,
-        // attachments: [{
-        //   uri: imageUri,
-        //   mimeType: 'image/jpeg',
-        //   fileName: 'feedback-photo.jpg'
-        // }]
-      },
-      (error, event) => {
-        console.log(error, event);
-      }
+  const sendEmail = async (email, name, subject, feedback) => {
+    const options = {
+      subject: `${subject}`,
+      recipients: ['williamjaredbuchanan@gmail.com'],
+      body: `Name: ${name}, Email: ${email}, Feedback: ${feedback}`,
+    };
+    const promise = new Promise((resolve, reject) => {
+      MailComposer.composeAsync(options)
+        .then((result) => {
+          resolve(result);
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+    promise.then(
+      (result) => setStatus(`Status: email ${result.status}`),
+      (error) => setStatus(`Status: email ${error.status}`)
     );
   };
 
@@ -115,6 +120,7 @@ function Feedback({ navigation }) {
               </Text>
             </Button>
           </View>
+          {status ? <Text style={{ alignSelf: 'center', marginTop: 16 }}>{status}</Text> : null}
         </View>
         <Button
           title="Submit"
