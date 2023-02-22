@@ -12,10 +12,27 @@ import ExerciseActivitySelector from './ExerciseActivitySelector';
 export default function Energy({ navigation }) {
   const { theme } = useTheme();
   const { setNewWorkActivity, setNewExerciseActivity, assessment } = useStore();
+  const { height, bodyFat, age, weight } = assessment;
   const { id } = useAuthStore();
   const [exerciseOpen, setExerciseOpen] = useState(false);
   const [workOpen, setWorkOpen] = useState(false);
   const [work, setWork] = useState('');
+
+  const bmr = () => {
+    let BMR;
+    const heightSplit = height.split('ft ');
+    const feet = heightSplit[0];
+    const inches = heightSplit[1];
+    const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
+    if (!bodyFat) {
+      BMR = 10 * (weight * 0.45359237) + 6.25 * (totalInches * 2.54) - 5 * age - 161;
+      return Math.round(BMR);
+    }
+    const FBM = weight * 0.45359237 * (bodyFat / 100);
+    const LBM = weight * 0.45359237 - FBM;
+    BMR = 370 + 21.6 * LBM;
+    return Math.round(BMR);
+  };
 
   // console.log(assessment, 'assessment in Energy');
 
@@ -58,7 +75,7 @@ export default function Energy({ navigation }) {
       >
         <View style={styles.container}>
           <Text h4>BMR</Text>
-          <Text h4>7777 kcal</Text>
+          <Text h4>{bmr()} kcal</Text>
         </View>
         <View style={{ padding: 16, borderBottomWidth: 1, borderBottomColor: 'white' }}>
           <Text h4>Activity Level</Text>
@@ -94,7 +111,7 @@ export default function Energy({ navigation }) {
           }}
         >
           <Text>Total Energy Burned (TDEE)</Text>
-          <Text h4> = 2553</Text>
+          <Text h4> = {assessment.tdee}</Text>
         </View>
       </View>
     </View>

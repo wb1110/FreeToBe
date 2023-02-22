@@ -87,13 +87,11 @@ export default function useCalculations() {
     if (!bodyFat) {
       const BMR = 10 * (weight * 0.45359237) + 6.25 * (totalInches * 2.54) - 5 * age - 161;
       TDEE = BMR * activityMultiplier();
-      console.log(TDEE, 'nonbodyfat');
       return TDEE;
     }
     const FBM = weight * 0.45359237 * (bodyFat / 100);
     const LBM = weight * 0.45359237 - FBM;
     TDEE = 370 + 21.6 * LBM;
-    console.log(TDEE, 'TDEE');
     return TDEE;
   };
 
@@ -118,6 +116,5 @@ export default function useCalculations() {
   const maintenanceCal = Math.round(
     energyEquations() + (dueDate ? trimester(weeksDifference) : 0) + babyCalories() + nursing
   );
-  console.log(maintenanceCal, 'maintenanceCal');
   return maintenanceCal;
 }

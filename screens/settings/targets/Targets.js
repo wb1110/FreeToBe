@@ -28,9 +28,9 @@ export default function Targets({ navigation }) {
         <SettingsContainer onPress={() => navigation.navigate('MacroDistribution')}>
           <Text h4>Macronutrient Settings</Text>
         </SettingsContainer>
-        <SettingsContainer onPress={() => console.log('test')}>
+        {/* <SettingsContainer onPress={() => console.log('test')}>
           <Text h4>Nutrient Targets</Text>
-        </SettingsContainer>
+        </SettingsContainer> */}
       </View>
     </View>
   );
