@@ -28,8 +28,7 @@ export default function Weight() {
     nWeight = parseInt(newWeight, 10);
 
     setWeight(nWeight);
-
-    return weight;
+    return nWeight;
   };
   const handleSubmit = () => {
     setNewWeight(id, conversion(weight));
@@ -44,7 +43,7 @@ export default function Weight() {
     <SettingsContainer onPress={toggleOverlay}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}>
         <Text h4>Weight</Text>
-        <Text h4>{assessment.weight}</Text>
+        <Text h4>{assessment.weight} lb</Text>
       </View>
       <OverlayForm
         overlayTitle="Weight"

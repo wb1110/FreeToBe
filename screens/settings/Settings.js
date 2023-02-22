@@ -1,4 +1,5 @@
 import { Text, useTheme } from '@rneui/themed';
+import { useEffect } from 'react';
 import { View } from 'react-native';
 import useAuthStore from '../../state/AuthStore';
 import useMetabolicStore from '../../state/MetabolicStore';
@@ -6,18 +7,28 @@ import useSettingsStore from '../../state/SettingsStore';
 import useStore from '../../state/Store';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import useTrackerStore from '../../state/TrackerStore';
+import useCalculations from '../assessment/Calculations';
 import SettingsContainer from './SettingsContainer';
 import WillSettings from './WillSettings';
 
 export default function Settings({ navigation }) {
   const { theme } = useTheme();
-  const { signout } = useAuthStore();
+  const { signout, id } = useAuthStore();
   const trackerState = useTrackerStore();
   const authState = useAuthStore();
   const settingsState = useSettingsStore();
   const threeDayLogState = useThreeDayLogStore();
   const metabolicState = useMetabolicStore();
   const assessmentState = useStore();
+  const { setNewTDEE, assessment } = assessmentState;
+  const { bodyFat, weight, height, age, dueDate, exerciseActivity, workActivity, babies, nursing } =
+    assessment;
+  const tdee = useCalculations();
+
+  useEffect(() => {
+    setNewTDEE(id, tdee);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bodyFat, weight, height, age, dueDate, exerciseActivity, workActivity, babies, nursing, id]);
 
   return (
     <View

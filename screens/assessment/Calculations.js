@@ -5,6 +5,18 @@ export default function useCalculations() {
   const state = useStore();
   const { bodyFat, weight, height, age, dueDate, exerciseActivity, workActivity, babies, nursing } =
     state.assessment;
+  console.log(
+    bodyFat,
+    weight,
+    height,
+    age,
+    dueDate,
+    exerciseActivity,
+    workActivity,
+    babies,
+    nursing,
+    'useCalculations input values'
+  );
   let TDEE;
   let pregnancyCalories = 0;
   const babyCalories = () => {

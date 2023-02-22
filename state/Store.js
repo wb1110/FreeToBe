@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { create } from 'zustand';
 import produce from 'immer';
 import { storeData } from '../functions/Posts';
@@ -70,6 +71,14 @@ const useStore = create((set) => ({
     set(
       produce((state) => {
         state.assessment.exerciseActivity = value;
+        storeData(id, state.assessment);
+      })
+    );
+  },
+  setNewTDEE: (id, tdee) => {
+    set(
+      produce((state) => {
+        state.assessment.tdee = tdee;
         storeData(id, state.assessment);
       })
     );

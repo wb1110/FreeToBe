@@ -33,7 +33,6 @@ export default function MacroDistribution({ navigation }) {
 
   useEffect(() => {
     macroOptions();
-    console.log(settingsState.macroSettings, 'MacroDistribution');
   }, [settingsState.macroSettings]);
 
   return (

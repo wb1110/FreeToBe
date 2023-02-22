@@ -61,7 +61,6 @@ export const getSettings = async (id, state) => {
     const jsonValue = await AsyncStorage.getItem(id);
     const currentUser = await JSON.parse(jsonValue);
     if (currentUser.settings) {
-      console.log(currentUser.settings, 'getSettings');
       state.updateSettings(currentUser.settings);
     }
   } catch (e) {
