@@ -13,6 +13,7 @@ import Table from './slideSection/MacroTable';
 import ProgressBar from './slideSection/ProgressBar';
 
 import { useGetAllData } from '../../functions/Gets';
+import CMS from './cms/CMS';
 
 function HomeTab({ navigation }) {
   const state = useStore();
@@ -129,23 +130,7 @@ function HomeTab({ navigation }) {
             },
           ]}
         >
-          <View
-            style={{
-              backgroundColor: theme.colors.primary,
-              margin: 12,
-              padding: 12,
-              flex: 1,
-            }}
-          >
-            <Text h3 h3Style={{ marginBottom: 12 }}>
-              Proteins
-            </Text>
-            <View style={{ marginLeft: 12 }}>
-              <Text style={{ marginBottom: 12 }}>- Helps repair muscle tissue</Text>
-              <Text style={{ marginBottom: 12 }}>- Helps repair muscle tissue</Text>
-              <Text style={{ marginBottom: 12 }}>- Helps repair muscle tissue</Text>
-            </View>
-          </View>
+          <CMS />
         </View>
         {/* Instagram Feed Section */}
         <View
