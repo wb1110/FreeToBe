@@ -82,13 +82,13 @@ function Feedback({ navigation }) {
             errorMessage={touched.feedback && errors.feedback}
           />
           <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-            <Button buttonStyle={{ borderRadius: 25 }}>
+            <Button buttonStyle={{ borderRadius: 25 }} disabled>
               <FontAwesome name="camera" size={24} color="white" />
               <Text h4 h4Style={{ marginLeft: 12 }}>
                 ADD PHOTO
               </Text>
             </Button>
-            <Button buttonStyle={{ borderRadius: 25 }}>
+            <Button buttonStyle={{ borderRadius: 25 }} disabled>
               <FontAwesome name="video-camera" size={24} color="white" />
               <Text h4 h4Style={{ marginLeft: 12 }}>
                 ADD VIDEO
