@@ -5,8 +5,8 @@ import axios from 'axios';
 
 export default function CMS() {
   const { theme } = useTheme();
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  const [title, setTitle] = useState('Placeholder Title');
+  const [body, setBody] = useState('Placeholder Body');
 
   useEffect(() => {
     const token =
