@@ -3,12 +3,31 @@ import { useFormik } from 'formik';
 import { View } from 'react-native';
 import * as Yup from 'yup';
 import { FontAwesome } from '@expo/vector-icons';
+import Mailer from 'react-native-mail';
 import LArrowButton from '../../../components/Buttons/LArrowButton';
-import StandardButton from '../../../components/Buttons/StandardButton';
-import Container from '../../../components/Container';
 
 function Feedback({ navigation }) {
   const { theme } = useTheme();
+
+  const sendEmail = (email, name, subject, feedback) => {
+    Mailer.mail(
+      {
+        recipients: ['williamjaredbuchanan@gmail.com'],
+        subject: 'Feedback Form',
+        body: `Email: ${email}\nName: ${name}\nSubject: ${subject}\nFeedback: ${feedback}`,
+        isHtml: true,
+        // attachments: [{
+        //   uri: imageUri,
+        //   mimeType: 'image/jpeg',
+        //   fileName: 'feedback-photo.jpg'
+        // }]
+      },
+      (error, event) => {
+        console.log(error, event);
+      }
+    );
+  };
+
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
     name: Yup.string().required('Name is required'),
@@ -20,7 +39,8 @@ function Feedback({ navigation }) {
     initialValues: { email: '', name: '', subject: '', feedback: '' },
     validationSchema,
     onSubmit: (formValues) => {
-      console.log(formValues);
+      const { email, name, subject, feedback } = formValues;
+      sendEmail(email, name, subject, feedback);
     },
   });
 
