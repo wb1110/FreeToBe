@@ -80,7 +80,7 @@ export default function useCalculations() {
   // 4 = Extreme
 
   const energyEquations = () => {
-    const heightSplit = height.split('ft ');
+    const heightSplit = height?.split('ft ');
     const feet = heightSplit[0];
     const inches = heightSplit[1];
     const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
