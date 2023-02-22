@@ -11,11 +11,12 @@ import {
   View,
 } from 'react-native';
 import AuthForm from '../components/AuthForm';
+import StandardButton from '../components/Buttons/StandardButton';
 import Container from '../components/Container';
 import useAuthStore from '../state/AuthStore';
 
 function Register({ navigation }) {
-  const { signup, errorMessage, setErrorMessage } = useAuthStore();
+  const { signup, errorMessage, setErrorMessage, guestregister } = useAuthStore();
 
   useFocusEffect(
     useCallback(() => {
@@ -47,6 +48,7 @@ function Register({ navigation }) {
               <Text>Already a member of Free To Be Nourished?</Text>
               <Button type="clear" onPress={() => navigation.navigate('Login')} title="Login" />
             </View>
+            <StandardButton title="Guest Register" onPress={guestregister} />
           </Container>
         </SafeAreaView>
       </TouchableWithoutFeedback>
