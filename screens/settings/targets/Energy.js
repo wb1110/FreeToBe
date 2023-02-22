@@ -1,22 +1,16 @@
-import { Text, Tooltip, useTheme } from '@rneui/themed';
-import { StyleSheet, View } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+/* eslint-disable no-use-before-define */
+import { Text, useTheme } from '@rneui/themed';
 import { useEffect, useState } from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, View } from 'react-native';
 import LArrowButton from '../../../components/Buttons/LArrowButton';
 import useStore from '../../../state/Store';
-import useAuthStore from '../../../state/AuthStore';
-import WorkActivitySelector from './WorkActivitySelector';
 import ExerciseActivitySelector from './ExerciseActivitySelector';
+import WorkActivitySelector from './WorkActivitySelector';
 
 export default function Energy({ navigation }) {
   const { theme } = useTheme();
-  const { setNewWorkActivity, setNewExerciseActivity, assessment } = useStore();
+  const { assessment } = useStore();
   const { height, bodyFat, age, weight } = assessment;
-  const { id } = useAuthStore();
-  const [exerciseOpen, setExerciseOpen] = useState(false);
-  const [workOpen, setWorkOpen] = useState(false);
-  const [work, setWork] = useState('');
 
   const bmr = () => {
     let BMR;
@@ -52,7 +46,7 @@ export default function Energy({ navigation }) {
   };
 
   useEffect(() => {
-    setWork(selectedWorkActivity(assessment.workActivity));
+    selectedWorkActivity(assessment.workActivity);
   }, [assessment]);
 
   return (

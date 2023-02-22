@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { height as dataHeight } from '../../../assets/data/data';
 import OverlayForm from '../../../components/OverlayForm';
-import { storeData } from '../../../functions/Posts';
 import useAuthStore from '../../../state/AuthStore';
 import useStore from '../../../state/Store';
 import SettingsContainer from '../SettingsContainer';
@@ -29,7 +28,6 @@ export default function Height() {
     const feet = parseInt(array[0], 10) * 12;
     const inches = parseInt(array[1], 10);
     nHeight = feet + inches;
-    console.log(nHeight, 'nHeight');
     setHeight(nHeight);
     return height;
   };
@@ -40,6 +38,7 @@ export default function Height() {
 
   useEffect(() => {
     setHeight(assessment.height);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -1,11 +1,9 @@
-import { Picker } from '@react-native-picker/picker';
 import { Input, Text } from '@rneui/themed';
 import { useFormik } from 'formik';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { View } from 'react-native';
 import * as Yup from 'yup';
 import OverlayForm from '../../../components/OverlayForm';
-import { storeData } from '../../../functions/Posts';
 import useAuthStore from '../../../state/AuthStore';
 import useStore from '../../../state/Store';
 import SettingsContainer from '../SettingsContainer';
@@ -13,7 +11,6 @@ import SettingsContainer from '../SettingsContainer';
 export default function BodyFat() {
   const { id } = useAuthStore();
   const { setNewBodyFat, assessment } = useStore();
-  const [bf, setBf] = useState(assessment.bodyFat);
   const [visible, setVisible] = useState(false);
 
   const toggleOverlay = () => {

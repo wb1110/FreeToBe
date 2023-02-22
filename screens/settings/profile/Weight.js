@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { weight as dataWeight } from '../../../assets/data/data';
 import OverlayForm from '../../../components/OverlayForm';
-import { storeData } from '../../../functions/Posts';
 import useAuthStore from '../../../state/AuthStore';
 import useStore from '../../../state/Store';
 import SettingsContainer from '../SettingsContainer';
@@ -37,6 +36,7 @@ export default function Weight() {
 
   useEffect(() => {
     setWeight(assessment.weight);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

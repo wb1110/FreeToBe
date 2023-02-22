@@ -13,7 +13,7 @@ export default function MacroDistribution({ navigation }) {
   const { id } = useAuthStore();
   const state = useStore();
   const settingsState = useSettingsStore();
-  const { updateMacroSettings, macroSettings, setMacros } = settingsState;
+  const { updateMacroSettings, macroSettings } = settingsState;
   const { idealCarbs, idealFat, idealProtein } = macroSettings;
   const [proteinPercentage, setProteinPercentage] = useState(idealProtein);
   const [carbPercentage, setCarbPercentage] = useState(idealCarbs);
@@ -33,6 +33,7 @@ export default function MacroDistribution({ navigation }) {
 
   useEffect(() => {
     macroOptions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settingsState.macroSettings]);
 
   return (
