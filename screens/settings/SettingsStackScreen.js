@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { enableScreens } from 'react-native-screens';
 import Account from './account/Account';
-import Feedback from './Feedback';
+import Feedback from './feedback/Feedback';
 import Profile from './profile/Profile';
 import Settings from './Settings';
 import Energy from './targets/Energy';
