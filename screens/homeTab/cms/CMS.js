@@ -15,10 +15,11 @@ export default function CMS() {
       headers: { Authorization: `bearer ${token}` },
     };
     axios
-      .get('http://localhost:1337/api/tips', config)
+      .get('http://localhost:1337/api/tips?sort[0]=updatedAt%3Adesc', config)
       .then((response) => {
         // handle success
         const entry = response.data.data[0].attributes;
+        console.log(response.data.data);
         setTitle(entry.Title);
         setBody(entry.Body);
       })
