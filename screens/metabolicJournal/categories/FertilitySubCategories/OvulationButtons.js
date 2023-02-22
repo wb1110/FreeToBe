@@ -37,7 +37,7 @@ function OvulationButtons({ buttonTitle, buttonIcon, metabolicData, setMetabolic
   return (
     <TouchableOpacity
       onPress={() => handleAddItem(buttonTitle)}
-      style={{ alignItems: 'center', marginLeft: '2%', width: 80, height: 90 }}
+      style={{ alignItems: 'center', marginRight: 16, width: 80, height: 90 }}
     >
       <View>
         {buttonIcon}

@@ -17,7 +17,7 @@ export default function Period({ metabolicData, setMetabolicData, navigation }) 
     >
       <View style={{ flex: 1 }}>
         <Text h3>Period</Text>
-        <View style={{ flex: 1, alignItems: 'flex-start', margin: '2% 0%' }}>
+        <View style={{ flex: 1, alignItems: 'flex-start', marginTop: 16 }}>
           <InputButton
             buttonTitle="Open Calendar"
             buttonIcon={
@@ -32,9 +32,13 @@ export default function Period({ metabolicData, setMetabolicData, navigation }) 
               navigation.navigate('MJCalendar');
             }}
           />
-          <Text h4>Symptoms</Text>
+          <Text h4 h4Style={{ marginTop: 16 }}>
+            Symptoms
+          </Text>
           <Symptoms metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
-          <Text h4>Menstrual Flow</Text>
+          <Text h4 h4Style={{ marginTop: 16 }}>
+            Menstrual Flow
+          </Text>
           <Flow metabolicData={metabolicData} setMetabolicData={setMetabolicData} />
         </View>
       </View>

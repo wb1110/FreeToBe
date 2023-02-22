@@ -11,7 +11,7 @@ export default function Mood({ metabolicData, setMetabolicData }) {
       style={{
         alignItems: 'flex-start',
         flex: 1,
-        margin: '4% 2%',
+        margin: 16,
       }}
     >
       <ScrollView
@@ -24,7 +24,7 @@ export default function Mood({ metabolicData, setMetabolicData }) {
             <View
               style={{
                 flexDirection: 'row',
-                marginTop: '2%',
+                marginTop: 16,
               }}
             >
               <ComponentButton
