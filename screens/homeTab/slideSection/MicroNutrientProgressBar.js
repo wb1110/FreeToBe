@@ -28,7 +28,7 @@ export default function MicroNutrientProgressBar({ color, title, consumed, goal,
   };
 
   return (
-    <View style={{ marginBottom: 16 }}>
+    <View style={{ marginBottom: 16, marginRight: 8 }}>
       <Text style={{ fontSize: 12, alignSelf: 'center' }}>{title}</Text>
       <View
         style={{
@@ -61,8 +61,7 @@ export default function MicroNutrientProgressBar({ color, title, consumed, goal,
       </View>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <Text style={{ fontSize: 12 }}>
-          {consumed}
-          {unit} / {goal}
+          {consumed}/{goal}
           {unit}
         </Text>
         <Text style={{ fontSize: 12 }}>{percent() || 0}%</Text>
