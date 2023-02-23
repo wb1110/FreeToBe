@@ -22,7 +22,7 @@ export default function Slide3() {
     sodium,
     zinc,
   } = todaysData;
-  console.log(todaysData);
+  console.log(microNutrientGoals('calcium', 'mg', false, false));
 
   return (
     <View
@@ -47,15 +47,15 @@ export default function Slide3() {
             title="Calcium"
             unit="mg"
             consumed={calcium}
-            goal={calcium}
+            goal={microNutrientGoals('calcium', 'mg', false, false)}
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
             color="#800020"
             title="Copper"
-            unit="mg"
+            unit="µg"
             consumed={copper}
-            goal={copper}
+            goal={microNutrientGoals('copper', 'µg', false, false)}
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
@@ -63,15 +63,15 @@ export default function Slide3() {
             title="Choline"
             unit="mg"
             consumed={choline}
-            goal={choline}
+            goal={microNutrientGoals('choline', 'mg', false, false)}
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
             color="#800020"
             title="Iodine"
-            unit="mg"
+            unit="µg"
             consumed={iodine}
-            goal={iodine}
+            goal={microNutrientGoals('iodine', 'µg', false, false)}
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
@@ -79,7 +79,7 @@ export default function Slide3() {
             title="Iron"
             unit="mg"
             consumed={iron}
-            goal={iron}
+            goal={microNutrientGoals('iron', 'mg', false, false)}
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
@@ -87,7 +87,7 @@ export default function Slide3() {
             title="Magnesium"
             unit="mg"
             consumed={magnesium}
-            goal={magnesium}
+            goal={microNutrientGoals('magnesium', 'mg', false, false)}
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
@@ -95,7 +95,7 @@ export default function Slide3() {
             title="Phosphorous"
             unit="mg"
             consumed={phosphorous}
-            goal={phosphorous}
+            goal={microNutrientGoals('phosphorous', 'mg', false, false)}
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
@@ -103,7 +103,7 @@ export default function Slide3() {
             title="Potassium"
             unit="mg"
             consumed={potassium}
-            goal={potassium}
+            goal={microNutrientGoals('potassium', 'mg', false, false)}
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
@@ -111,7 +111,7 @@ export default function Slide3() {
             title="Selenium"
             unit="mg"
             consumed={selenium}
-            goal={selenium}
+            goal={microNutrientGoals('selenium', 'µg', false, false)}
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
@@ -119,7 +119,7 @@ export default function Slide3() {
             title="Sodium"
             unit="mg"
             consumed={sodium}
-            goal={sodium}
+            goal={microNutrientGoals('sodium', 'mg', false, false)}
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
@@ -127,7 +127,7 @@ export default function Slide3() {
             title="Zinc"
             unit="mg"
             consumed={zinc}
-            goal={zinc}
+            goal={microNutrientGoals('zinc', 'mg', false, false)}
             maxWidth={maxWidth}
           />
         </View>

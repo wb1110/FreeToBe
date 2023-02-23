@@ -3,7 +3,7 @@ function microNutrientGoals(vitamin, unit, isPregnant = false, isBreastfeeding =
   const nutrientObj = {
     calcium: { mg: 1000, pregnantChange: 0, breastfeedingChange: 0 },
     copper: { µg: 900, pregnantChange: 400, breastfeedingChange: 400 },
-    choline: { mg: null, µg: 15, pregnantChange: 5, breastfeedingChange: 5 },
+    choline: { mg: 425, µg: null, pregnantChange: 55, breastfeedingChange: 125 },
     iodine: { µg: 150, pregnantChange: 70, breastfeedingChange: 140 },
     iron: { mg: 18, pregnantChange: 27, breastfeedingChange: 9 },
     magnesium: { mg: 315, pregnantChange: 355, breastfeedingChange: 0 },
