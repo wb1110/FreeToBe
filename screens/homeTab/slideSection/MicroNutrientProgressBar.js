@@ -10,7 +10,7 @@ export default function MicroNutrientProgressBar({ color, title, consumed, goal,
   };
   const maximumValue = (inner, outer) => {
     if (inner > outer) {
-      return 300;
+      return maxWidth;
     }
     if (inner <= 0) {
       return 0;
@@ -18,7 +18,7 @@ export default function MicroNutrientProgressBar({ color, title, consumed, goal,
     return percent() * 3;
   };
   const borderRadiusChange = (width) => {
-    if (width === 300) {
+    if (width === maxWidth) {
       return 20;
     }
     if (width <= 0) {
@@ -43,16 +43,16 @@ export default function MicroNutrientProgressBar({ color, title, consumed, goal,
         {goal ? (
           <View
             style={{
-              width: maximumValue(percent() * 3, 300),
+              width: maximumValue(percent() * 3, maxWidth),
               backgroundColor: color,
               borderColor: color,
               borderWidth: 1,
               borderTopLeftRadius: 20,
               borderBottomLeftRadius: 20,
 
-              borderTopRightRadius: borderRadiusChange(maximumValue(percent() * 3, 300)),
+              borderTopRightRadius: borderRadiusChange(maximumValue(percent() * 3, maxWidth)),
               borderBottomRightRadius: percent()
-                ? borderRadiusChange(maximumValue(percent() * 3, 300))
+                ? borderRadiusChange(maximumValue(percent() * 3, maxWidth))
                 : 0,
               height: 20,
             }}
