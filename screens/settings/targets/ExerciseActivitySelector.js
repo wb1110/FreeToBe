@@ -13,16 +13,16 @@ export default function ExerciseActivitySelector() {
   const [exerciseOpen, setWorkOpen] = useState(false);
   const selectedExerciseActivity = (activityLevel) => {
     if (activityLevel === 1) {
-      return <Text>No activity</Text>;
+      return <Text>No exercise</Text>;
     }
     if (activityLevel === 2) {
-      return <Text>Moderate</Text>;
+      return <Text>Light</Text>;
     }
     if (activityLevel === 3) {
-      return <Text>Very active</Text>;
+      return <Text>Moderate</Text>;
     }
     if (activityLevel === 4) {
-      return <Text>Extremely active</Text>;
+      return <Text>Extreme</Text>;
     }
   };
   const [exercise, setExercise] = useState(
@@ -51,7 +51,7 @@ export default function ExerciseActivitySelector() {
               setWorkOpen(!exerciseOpen);
             }}
           >
-            <Text>No activity - desk job with minimal movement</Text>
+            <Text>No exercise</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{ marginBottom: 16 }}
@@ -60,10 +60,7 @@ export default function ExerciseActivitySelector() {
               setWorkOpen(!exerciseOpen);
             }}
           >
-            <Text>
-              Moderate - requires some movement (realtor, teacher, pastor, sales, some stay at home
-              moms)
-            </Text>
+            <Text>Light Exercise/Rec Sports (1-3x per week)</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{ marginBottom: 16 }}
@@ -72,10 +69,7 @@ export default function ExerciseActivitySelector() {
               setWorkOpen(!exerciseOpen);
             }}
           >
-            <Text>
-              Very active - requires physical activity (trainer, construction worker, stay at home
-              mama with littles)
-            </Text>
+            <Text>Moderate Exercise/Sports (3-5x per week)</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -83,7 +77,7 @@ export default function ExerciseActivitySelector() {
               setWorkOpen(!exerciseOpen);
             }}
           >
-            <Text>Extremely active - professional/collegiate athlete</Text>
+            <Text>Extreme Exercise (6-7x per week)</Text>
           </TouchableOpacity>
         </View>
       }

@@ -141,10 +141,11 @@ const useTrackerStore = create((set) => ({
         array[date].meals.map((mealObj) => {
           // eslint-disable-next-line no-return-assign
           mealObj.foodItems.map((foodObj) => {
-            proteinSum += +foodObj.protein;
-            carbSum += +foodObj.carbs;
-            fatSum += +foodObj.fat;
-            caloriesSum += +foodObj.calories;
+            console.log(foodObj, 'foodObj in updateMacros');
+            proteinSum += +foodObj.protein.value;
+            carbSum += +foodObj.carbs.value;
+            fatSum += +foodObj.fat.value;
+            caloriesSum += +foodObj.calories.value;
             return foodObj;
           });
           return mealObj;

@@ -14,11 +14,11 @@ export default function Energy({ navigation }) {
 
   const bmr = () => {
     let BMR;
-    const heightSplit = height?.split('ft ');
-    const feet = heightSplit[0];
-    const inches = heightSplit[1];
-    const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
-    if (!bodyFat) {
+    if (!bodyFat && height) {
+      const heightSplit = height?.split('ft ');
+      const feet = heightSplit[0];
+      const inches = heightSplit[1];
+      const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
       BMR = 10 * (weight * 0.45359237) + 6.25 * (totalInches * 2.54) - 5 * age - 161;
       return Math.round(BMR);
     }

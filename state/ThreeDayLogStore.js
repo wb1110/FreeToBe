@@ -83,10 +83,10 @@ const useThreeDayLogStore = create((set) => ({
         array[date].meals.map((mealObj) => {
           // eslint-disable-next-line no-return-assign
           mealObj.foodItems.map((foodObj) => {
-            proteinSum += +foodObj.protein;
-            carbSum += +foodObj.carbs;
-            fatSum += +foodObj.fat;
-            caloriesSum += +foodObj.calories;
+            proteinSum += +foodObj.protein.value;
+            carbSum += +foodObj.carbs.value;
+            fatSum += +foodObj.fat.value;
+            caloriesSum += +foodObj.calories.value;
             return foodObj;
           });
           return mealObj;
@@ -95,6 +95,57 @@ const useThreeDayLogStore = create((set) => ({
         tracker[date].carbs = carbSum;
         tracker[date].fats = fatSum;
         tracker[date].calories = caloriesSum;
+      })
+    ),
+  updateMicros: (array, date) =>
+    set(
+      produce((state) => {
+        const { tracker } = state;
+        const todayData = array[date];
+        const micronutrientTotals = {
+          calcium: 0,
+          copper: 0,
+          choline: 0,
+          iodine: 0,
+          iron: 0,
+          magnesium: 0,
+          phosphorous: 0,
+          potassium: 0,
+          selenium: 0,
+          sodium: 0,
+          zinc: 0,
+        };
+
+        // Loop through all the meals recorded for today
+        todayData.meals.forEach((meal) => {
+          // Loop through all the food items for each meal and add up the micronutrient values
+          meal.foodItems.forEach((foodItem) => {
+            micronutrientTotals.calcium += +foodItem.calcium || 0;
+            micronutrientTotals.copper += +foodItem.copper || 0;
+            micronutrientTotals.choline += +foodItem.choline || 0;
+            micronutrientTotals.iodine += +foodItem.iodine || 0;
+            micronutrientTotals.iron += +foodItem.iron || 0;
+            micronutrientTotals.magnesium += +foodItem.magnesium || 0;
+            micronutrientTotals.phosphorous += +foodItem.phosphorous || 0;
+            micronutrientTotals.potassium += +foodItem.potassium || 0;
+            micronutrientTotals.selenium += +foodItem.selenium || 0;
+            micronutrientTotals.sodium += +foodItem.sodium || 0;
+            micronutrientTotals.zinc += +foodItem.zinc || 0;
+          });
+        });
+
+        // Update today's object with the micronutrient totals
+        tracker[date].calcium = micronutrientTotals.calcium;
+        tracker[date].copper = micronutrientTotals.copper;
+        tracker[date].choline = micronutrientTotals.choline;
+        tracker[date].iodine = micronutrientTotals.iodine;
+        tracker[date].iron = micronutrientTotals.iron;
+        tracker[date].magnesium = micronutrientTotals.magnesium;
+        tracker[date].phosphorous = micronutrientTotals.phosphorous;
+        tracker[date].potassium = micronutrientTotals.potassium;
+        tracker[date].selenium = micronutrientTotals.selenium;
+        tracker[date].sodium = micronutrientTotals.sodium;
+        tracker[date].zinc = micronutrientTotals.zinc;
       })
     ),
   resetState: () => {

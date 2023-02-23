@@ -37,7 +37,7 @@ export default function MealItem({ mealTime, foodItems, navigation, mealName, da
   function sum() {
     let caloriesSum = 0;
     // eslint-disable-next-line no-return-assign
-    foodItems.forEach((item) => (caloriesSum += parseInt(item.calories, 10)));
+    foodItems.forEach((item) => (caloriesSum += parseInt(item.calories.value, 10)));
     return caloriesSum;
   }
 

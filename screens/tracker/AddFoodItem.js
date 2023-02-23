@@ -40,8 +40,7 @@ function Item({ name, calories, onPress, nutrients, fdcId, navigation, dayIndex,
     const results = nutrientsArray.filter((obj) => obj.nutrientId === nutrientId);
     if (results.length > 0) {
       const property = nutrientName;
-      console.log(results[0], 'results  in AddFoodItem');
-      Object.assign(values, { [property]: results[0].value });
+      Object.assign(values, { [property]: { value: results[0].value, unit: results[0].unitName } });
     }
   }
 
