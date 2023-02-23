@@ -2,6 +2,7 @@ import { View } from 'react-native';
 import getTodaysTrackerData from '../../../functions/getTodaysTrackerData';
 import useTrackerStore from '../../../state/TrackerStore';
 import MicroNutrientProgressBar from './MicroNutrientProgressBar';
+import microNutrientGoals from '../../../functions/microNutrientGoals';
 
 export default function Slide3() {
   const { tracker } = useTrackerStore();
@@ -21,7 +22,8 @@ export default function Slide3() {
     sodium,
     zinc,
   } = todaysData;
-  // console.log(tracker);
+  console.log(todaysData);
+
   return (
     <View
       style={{
