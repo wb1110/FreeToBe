@@ -49,17 +49,25 @@ export default function EditNutritionFacts({
     (amount * (gramWeight / 100) * servings).toFixed(2);
   const noNutrient = { amount: 0, unit: '' };
 
-  const calories = amountModifier(foodDetails.calories, selectServingSize.gramWeight, multiplier)
-    ? amountModifier(foodDetails.calories, selectServingSize.gramWeight, multiplier)
+  const calories = amountModifier(
+    foodDetails.calories.value,
+    selectServingSize.gramWeight,
+    multiplier
+  )
+    ? amountModifier(foodDetails.calories.value, selectServingSize.gramWeight, multiplier)
     : noNutrient;
-  const protein = amountModifier(foodDetails.protein, selectServingSize.gramWeight, multiplier)
-    ? amountModifier(foodDetails.protein, selectServingSize.gramWeight, multiplier)
+  const protein = amountModifier(
+    foodDetails.protein.value,
+    selectServingSize.gramWeight,
+    multiplier
+  )
+    ? amountModifier(foodDetails.protein.value, selectServingSize.gramWeight, multiplier)
     : noNutrient;
-  const carbs = amountModifier(foodDetails.carbs, selectServingSize.gramWeight, multiplier)
-    ? amountModifier(foodDetails.carbs, selectServingSize.gramWeight, multiplier)
+  const carbs = amountModifier(foodDetails.carbs.value, selectServingSize.gramWeight, multiplier)
+    ? amountModifier(foodDetails.carbs.value, selectServingSize.gramWeight, multiplier)
     : noNutrient;
-  const fat = amountModifier(foodDetails.fat, selectServingSize.gramWeight, multiplier)
-    ? amountModifier(foodDetails.fat, selectServingSize.gramWeight, multiplier)
+  const fat = amountModifier(foodDetails.fat.value, selectServingSize.gramWeight, multiplier)
+    ? amountModifier(foodDetails.fat.value, selectServingSize.gramWeight, multiplier)
     : noNutrient;
   const calcium = amountModifier(
     foodDetails.calcium.value,
@@ -125,10 +133,10 @@ export default function EditNutritionFacts({
       servingSize: selectServingSize,
       servingSizeOptions: servingSizes,
       servingNumber: multiplier,
-      calories,
-      protein,
-      carbs,
-      fat,
+      calories: { value: calories, unit: foodDetails.calories.unit },
+      protein: { value: protein, unit: foodDetails.protein.unit },
+      carbs: { value: carbs, unit: foodDetails.carbs.unit },
+      fat: { value: fat, unit: foodDetails.fat.unit },
       calcium: { value: calcium, unit: foodDetails.calcium.unit },
       choline: { value: choline, unit: foodDetails.choline.unit },
       copper: { value: copper, unit: foodDetails.copper.unit },

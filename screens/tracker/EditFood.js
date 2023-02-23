@@ -17,6 +17,8 @@ export default function EditFood({ route, navigation }) {
   const { id } = useAuthStore();
   const { theme } = useTheme();
 
+  console.log(item, 'item in EditFood');
+
   const [servingSizeModal, setServingSizeModal] = useState(false);
   // Servings value from custompicker
   const [selectServingSize, setSelectServingSize] = useState(item.servingSize);
@@ -29,10 +31,10 @@ export default function EditFood({ route, navigation }) {
     servingSize: item.servingSize,
     servingSizeOptions: item.servingSizeOptions,
     servingNumber: item.servingNumber,
-    calories: item.calories,
-    protein: item.protein,
-    carbs: item.carbs,
-    fat: item.fat,
+    calories: { value: item.calories.value, unit: item.calories.unit },
+    protein: { value: item.protein.value, unit: item.protein.unit },
+    carbs: { value: item.carbs.value, unit: item.carbs.unit },
+    fat: { value: item.fat.value, unit: item.fat.unit },
     calcium: { value: item.calcium.value, unit: item.calcium.unit },
     choline: { value: item.choline.value, unit: item.choline.unit },
     copper: { value: item.copper.value, unit: item.copper.unit },
