@@ -1,13 +1,13 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import getTodaysTrackerData from '../../../functions/getTodaysTrackerData';
-import MicroNutrientProgressBar from './MicroNutrientProgressBar';
 import useTrackerStore from '../../../state/TrackerStore';
+import MicroNutrientProgressBar from './MicroNutrientProgressBar';
 
 export default function Slide3() {
   const { tracker } = useTrackerStore();
   const todaysData = getTodaysTrackerData(tracker);
   const maxWidth = 100;
-  console.log(todaysData);
+  // console.log(todaysData, 'todaysData in Slide3');
   const {
     calcium,
     copper,

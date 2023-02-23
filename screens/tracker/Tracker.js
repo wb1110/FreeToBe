@@ -51,6 +51,7 @@ function Tracker({ navigation }) {
         addNewDate(date, setDateData, indexExists, tracker, addDate);
         if (selectedDay) {
           state.updateMacros(tracker, currentIndex);
+          state.updateMicros(tracker, currentIndex);
           setProtein(selectedDay.protein);
           setCarbs(selectedDay.carbs);
           setFats(selectedDay.fats);
