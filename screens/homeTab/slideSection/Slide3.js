@@ -41,7 +41,7 @@ export default function Slide3() {
           }}
         >
           <MicroNutrientProgressBar
-            color="#B65C3D"
+            color="#800020"
             title="Calcium"
             unit="mg"
             consumed={calcium}
@@ -49,7 +49,7 @@ export default function Slide3() {
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#283618"
+            color="#800020"
             title="Copper"
             unit="mg"
             consumed={copper}
@@ -57,7 +57,7 @@ export default function Slide3() {
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#F5F5DC"
+            color="#800020"
             title="Choline"
             unit="mg"
             consumed={choline}
@@ -73,7 +73,7 @@ export default function Slide3() {
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#B65C3D"
+            color="#800020"
             title="Iron"
             unit="mg"
             consumed={iron}
@@ -81,7 +81,7 @@ export default function Slide3() {
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#283618"
+            color="#800020"
             title="Magnesium"
             unit="mg"
             consumed={magnesium}
@@ -89,7 +89,7 @@ export default function Slide3() {
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#F5F5DC"
+            color="#800020"
             title="Phosphorous"
             unit="mg"
             consumed={phosphorous}
@@ -105,7 +105,7 @@ export default function Slide3() {
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#B65C3D"
+            color="#800020"
             title="Selenium"
             unit="mg"
             consumed={selenium}
@@ -113,7 +113,7 @@ export default function Slide3() {
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#283618"
+            color="#800020"
             title="Sodium"
             unit="mg"
             consumed={sodium}
@@ -121,7 +121,7 @@ export default function Slide3() {
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#F5F5DC"
+            color="#800020"
             title="Zinc"
             unit="mg"
             consumed={zinc}
