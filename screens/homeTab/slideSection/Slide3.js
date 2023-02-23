@@ -22,7 +22,7 @@ export default function Slide3() {
     sodium,
     zinc,
   } = todaysData;
-  console.log(microNutrientGoals('calcium', 'mg', false, false));
+  console.log(todaysData, 'todaysData in Slide3');
 
   return (
     <View

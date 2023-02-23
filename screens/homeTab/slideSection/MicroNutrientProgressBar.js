@@ -40,7 +40,7 @@ export default function MicroNutrientProgressBar({ color, title, consumed, goal,
           justifyContent: 'center',
         }}
       >
-        {goal ? (
+        {consumed ? (
           <View
             style={{
               width: maximumValue(percent() * 3, maxWidth),
