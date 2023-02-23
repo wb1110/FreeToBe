@@ -31,7 +31,7 @@ export default function ProgressBar({ color, title, consumed, goal, unit, maxWid
     <View style={{ marginBottom: 16 }}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <Text h4>
-          {title} - {consumed}
+          {title} - {Math.round(consumed)}
           {unit} / {goal}
           {unit}
         </Text>

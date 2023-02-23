@@ -178,17 +178,17 @@ const useTrackerStore = create((set) => ({
         todayData.meals.forEach((meal) => {
           // Loop through all the food items for each meal and add up the micronutrient values
           meal.foodItems.forEach((foodItem) => {
-            micronutrientTotals.calcium += +foodItem.calcium || 0;
-            micronutrientTotals.copper += +foodItem.copper || 0;
-            micronutrientTotals.choline += +foodItem.choline || 0;
-            micronutrientTotals.iodine += +foodItem.iodine || 0;
-            micronutrientTotals.iron += +foodItem.iron || 0;
-            micronutrientTotals.magnesium += +foodItem.magnesium || 0;
-            micronutrientTotals.phosphorous += +foodItem.phosphorous || 0;
-            micronutrientTotals.potassium += +foodItem.potassium || 0;
-            micronutrientTotals.selenium += +foodItem.selenium || 0;
-            micronutrientTotals.sodium += +foodItem.sodium || 0;
-            micronutrientTotals.zinc += +foodItem.zinc || 0;
+            micronutrientTotals.calcium += +(foodItem.calcium?.value ?? 0);
+            micronutrientTotals.copper += +(foodItem.copper?.value ?? 0);
+            micronutrientTotals.choline += +(foodItem.choline?.value ?? 0);
+            micronutrientTotals.iodine += +(foodItem.iodine?.value ?? 0);
+            micronutrientTotals.iron += +(foodItem.iron?.value ?? 0);
+            micronutrientTotals.magnesium += +(foodItem.magnesium?.value ?? 0);
+            micronutrientTotals.phosphorous += +(foodItem.phosphorous?.value ?? 0);
+            micronutrientTotals.potassium += +(foodItem.potassium?.value ?? 0);
+            micronutrientTotals.selenium += +(foodItem.selenium?.value ?? 0);
+            micronutrientTotals.sodium += +(foodItem.sodium?.value ?? 0);
+            micronutrientTotals.zinc += +(foodItem.zinc?.value ?? 0);
           });
         });
 
@@ -269,7 +269,6 @@ const useTrackerStore = create((set) => ({
         const mealIndex = mealArray.findIndex((obj) => obj.mealName === mealName);
         const foodArray = mealArray[mealIndex].foodItems;
         foodArray.push(values);
-        console.log(values, 'values in addFood');
         storeTracker(id, { tracker, goalCalories, goalCarbs, goalFat, goalProtein });
       })
     ),
