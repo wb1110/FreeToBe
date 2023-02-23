@@ -69,7 +69,7 @@ function Table() {
             <Text style={{ color: '#283618', fontSize: 12, fontWeight: '700' }}>Protein</Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end' }}>
-            <Text style={styles.columnText}>{todaysData?.protein}g</Text>
+            <Text style={styles.columnText}>{todaysData?.protein.toFixed(2)}g</Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
             <Text style={styles.columnText}>{goalPercentage(protein, goalProtein)}%</Text>
@@ -80,7 +80,7 @@ function Table() {
             <Text style={{ color: '#F5F5DC', fontSize: 12, fontWeight: '700' }}>Carbs</Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end' }}>
-            <Text style={styles.columnText}>{todaysData?.carbs}g</Text>
+            <Text style={styles.columnText}>{todaysData?.carbs.toFixed(2)}g</Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
             <Text style={styles.columnText}>{goalPercentage(carbs, goalCarbs)}%</Text>
@@ -91,7 +91,7 @@ function Table() {
             <Text style={{ color: '#800020', fontSize: 12, fontWeight: '700' }}>Fat</Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end' }}>
-            <Text style={styles.columnText}>{todaysData?.fats}g</Text>
+            <Text style={styles.columnText}>{todaysData?.fats.toFixed(2)}g</Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
             <Text style={styles.columnText}>{goalPercentage(fats, goalFat)}%</Text>
