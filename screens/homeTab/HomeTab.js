@@ -1,22 +1,21 @@
 /* eslint-disable no-use-before-define */
-import { Button, Text, useTheme } from '@rneui/themed';
-import moment from 'moment';
+import { Text, useTheme } from '@rneui/themed';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Swiper from 'react-native-swiper';
+import getTodaysTrackerData from '../../functions/getTodaysTrackerData';
 import useGoalUpdateConditions from '../../functions/goalUpdateConditions';
 import useStore from '../../state/Store';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import useTrackerStore from '../../state/TrackerStore';
 import Instagram from './instagram/Instagram';
-import MacroPie from './MacroPie';
-import Table from './slideSection/MacroTable';
-import ProgressBar from './slideSection/ProgressBar';
 
 import { useGetAllData } from '../../functions/Gets';
 import CMS from './cms/CMS';
+import Slide1 from './slideSection/Slide1';
+import Slide2 from './slideSection/Slide2';
+import Slide3 from './slideSection/Slide3';
 
-function HomeTab({ navigation }) {
-  const state = useStore();
+function HomeTab() {
   const threeDayLogState = useThreeDayLogStore();
   const trackerState = useTrackerStore();
 
@@ -27,20 +26,7 @@ function HomeTab({ navigation }) {
   const isDataLoaded = useGetAllData();
   useGoalUpdateConditions(complete);
 
-  function getCurrentData(dataArray) {
-    const today = moment(new Date()).format('MM/DD/YYYY');
-    const todayObject = dataArray.find((item) => item.date === today);
-    if (todayObject) {
-      return todayObject;
-    }
-    return {
-      calories: 0,
-      carbs: 0,
-      protein: 0,
-      fats: 0,
-    };
-  }
-  const { carbs, protein, fats, calories } = getCurrentData(tracker);
+  const { carbs, protein, fats, calories } = getTodaysTrackerData(tracker);
 
   if (!isDataLoaded) {
     return null;
@@ -63,62 +49,20 @@ function HomeTab({ navigation }) {
             activeDotColor="white"
             loop={false}
           >
-            {/* Slide 1 */}
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
-            >
-              <View style={{ flex: 1, alignItems: 'center' }}>
-                <MacroPie carbs={carbs} fats={fats} protein={protein} navigation={navigation} />
-              </View>
-              <View style={{ flex: 1, alignItems: 'center' }}>
-                <Table />
-              </View>
-            </View>
-            {/* Slide 2 */}
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
-            >
-              <View style={{ flex: 1, alignItems: 'center' }}>
-                <View style={{ padding: 20 }}>
-                  <ProgressBar
-                    color="#B65C3D"
-                    title="Energy"
-                    unit="kCal"
-                    consumed={calories}
-                    goal={goalCalories}
-                  />
-                  <ProgressBar
-                    color="#283618"
-                    title="Protein"
-                    unit="g"
-                    consumed={protein}
-                    goal={goalProtein}
-                  />
-                  <ProgressBar
-                    color="#F5F5DC"
-                    title="Carbs"
-                    unit="g"
-                    consumed={carbs}
-                    goal={goalCarbs}
-                  />
-                  <ProgressBar
-                    color="#800020"
-                    title="Fats"
-                    unit="g"
-                    consumed={fats}
-                    goal={goalFat}
-                  />
-                </View>
-              </View>
-            </View>
+            {/* Pie Chart and Table */}
+            <Slide1 carbs={carbs} protein={protein} fats={fats} calories={calories} />
+            {/* Macro Progress Bars */}
+            <Slide2
+              calories={calories}
+              goalCalories={goalCalories}
+              protein={protein}
+              goalProtein={goalProtein}
+              carbs={carbs}
+              fats={fats}
+              goalCarbs={goalCarbs}
+              goalFat={goalFat}
+            />
+            <Slide3 />
           </Swiper>
         </View>
         {/* Nutrition Info Section */}

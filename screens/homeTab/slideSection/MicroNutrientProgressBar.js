@@ -1,7 +1,7 @@
 import { Text } from '@rneui/themed';
 import { View } from 'react-native';
 
-export default function ProgressBar({ color, title, consumed, goal, unit, maxWidth }) {
+export default function MicroNutrientProgressBar({ color, title, consumed, goal, unit, maxWidth }) {
   const percent = () => {
     if (goal > 0) {
       return Math.round((consumed / goal) * 100);
@@ -29,14 +29,7 @@ export default function ProgressBar({ color, title, consumed, goal, unit, maxWid
 
   return (
     <View style={{ marginBottom: 16 }}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <Text h4>
-          {title} - {consumed}
-          {unit} / {goal}
-          {unit}
-        </Text>
-        <Text h4>{percent() || 0}%</Text>
-      </View>
+      <Text style={{ fontSize: 12, alignSelf: 'center' }}>{title}</Text>
       <View
         style={{
           borderColor: color,
@@ -65,6 +58,14 @@ export default function ProgressBar({ color, title, consumed, goal, unit, maxWid
             }}
           />
         ) : null}
+      </View>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <Text style={{ fontSize: 12 }}>
+          {consumed}
+          {unit} / {goal}
+          {unit}
+        </Text>
+        <Text style={{ fontSize: 12 }}>{percent() || 0}%</Text>
       </View>
     </View>
   );

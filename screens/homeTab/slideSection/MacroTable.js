@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { StyleSheet, Text, View } from 'react-native';
+import getTodaysTrackerData from '../../../functions/getTodaysTrackerData';
 import useTrackerStore from '../../../state/TrackerStore';
 
 const styles = StyleSheet.create({
@@ -46,20 +47,7 @@ function Table() {
   const trackerState = useTrackerStore();
   const { tracker, goalProtein, goalCarbs, goalFat } = trackerState;
 
-  function getCurrentData(dataArray) {
-    const today = moment(new Date()).format('MM/DD/YYYY');
-    const todayObject = dataArray.find((item) => item.date === today);
-    if (todayObject) {
-      return todayObject;
-    }
-    return {
-      carbs: 0,
-      protein: 0,
-      fats: 0,
-    };
-  }
-
-  const todaysData = getCurrentData(tracker);
+  const todaysData = getTodaysTrackerData(tracker);
   const { protein, carbs, fats } = todaysData;
   const goalPercentage = (consumed, goal) => {
     if (consumed > 0 && goal !== 0) {
