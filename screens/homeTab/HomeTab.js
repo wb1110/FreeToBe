@@ -4,7 +4,6 @@ import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Swiper from 'react-native-swiper';
 import getTodaysTrackerData from '../../functions/getTodaysTrackerData';
 import useGoalUpdateConditions from '../../functions/goalUpdateConditions';
-import useStore from '../../state/Store';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import useTrackerStore from '../../state/TrackerStore';
 import Instagram from './instagram/Instagram';
@@ -26,7 +25,23 @@ function HomeTab() {
   const isDataLoaded = useGetAllData();
   useGoalUpdateConditions(complete);
 
-  const { carbs, protein, fats, calories } = getTodaysTrackerData(tracker);
+  const {
+    carbs,
+    protein,
+    fats,
+    calories,
+    calcium,
+    copper,
+    choline,
+    iodine,
+    iron,
+    magnesium,
+    phosphorous,
+    potassium,
+    selenium,
+    sodium,
+    zinc,
+  } = getTodaysTrackerData(tracker);
 
   if (!isDataLoaded) {
     return null;
@@ -62,7 +77,19 @@ function HomeTab() {
               goalCarbs={goalCarbs}
               goalFat={goalFat}
             />
-            <Slide3 />
+            <Slide3
+              calcium={calcium}
+              copper={copper}
+              choline={choline}
+              iodine={iodine}
+              iron={iron}
+              magnesium={magnesium}
+              phosphorous={phosphorous}
+              potassium={potassium}
+              selenium={selenium}
+              sodium={sodium}
+              zinc={zinc}
+            />
           </Swiper>
         </View>
         {/* Nutrition Info Section */}

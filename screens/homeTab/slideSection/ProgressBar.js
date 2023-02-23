@@ -32,7 +32,7 @@ export default function ProgressBar({ color, title, consumed, goal, unit, maxWid
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <Text h4>
           {title} - {Math.round(consumed)}
-          {unit} / {goal}
+          {unit} / {Math.round(goal)}
           {unit}
         </Text>
         <Text h4>{percent() || 0}%</Text>

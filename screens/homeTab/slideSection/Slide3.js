@@ -1,27 +1,21 @@
 import { View } from 'react-native';
-import getTodaysTrackerData from '../../../functions/getTodaysTrackerData';
-import useTrackerStore from '../../../state/TrackerStore';
-import MicroNutrientProgressBar from './MicroNutrientProgressBar';
 import microNutrientGoals from '../../../functions/microNutrientGoals';
+import MicroNutrientProgressBar from './MicroNutrientProgressBar';
 
-export default function Slide3() {
-  const { tracker } = useTrackerStore();
-  const todaysData = getTodaysTrackerData(tracker);
+export default function Slide3({
+  calcium,
+  copper,
+  choline,
+  iodine,
+  iron,
+  magnesium,
+  phosphorous,
+  potassium,
+  selenium,
+  sodium,
+  zinc,
+}) {
   const maxWidth = 100;
-  // console.log(todaysData, 'todaysData in Slide3');
-  const {
-    calcium,
-    copper,
-    choline,
-    iodine,
-    iron,
-    magnesium,
-    phosphorous,
-    potassium,
-    selenium,
-    sodium,
-    zinc,
-  } = todaysData;
 
   return (
     <View
