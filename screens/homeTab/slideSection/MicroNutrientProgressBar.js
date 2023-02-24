@@ -9,11 +9,12 @@ export default function MicroNutrientProgressBar({ color, title, consumed, goal,
     return 0;
   };
   const maximumValue = (inner, outer) => {
+    console.log(inner, title);
     if (inner > outer) {
       return maxWidth;
     }
-    if (inner <= 0) {
-      return 0;
+    if (inner < 5) {
+      return 7;
     }
     return percent() * 3;
   };
@@ -40,7 +41,7 @@ export default function MicroNutrientProgressBar({ color, title, consumed, goal,
           justifyContent: 'center',
         }}
       >
-        {consumed > 0.99 ? (
+        {percent() * 3 >= 1 ? (
           <View
             style={{
               width: maximumValue(percent() * 3, maxWidth),
