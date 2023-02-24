@@ -88,7 +88,7 @@ function Tracker({ navigation }) {
           <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 36 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <FontAwesome name="square" size={24} color={theme.colors.chart1} />
-              <Text style={{ marginLeft: 8, color: theme.colors.primary }}>Goal</Text>
+              <Text style={{ marginLeft: 8, color: theme.colors.white }}>Goal</Text>
             </View>
             <View
               style={{
@@ -97,7 +97,7 @@ function Tracker({ navigation }) {
               }}
             >
               <FontAwesome name="square" size={24} color={theme.colors.chart2} />
-              <Text style={{ marginLeft: 8, color: theme.colors.primary }}>Completed</Text>
+              <Text style={{ marginLeft: 8, color: theme.colors.white }}>Completed</Text>
             </View>
           </View>
           {selectedDay && threeDayLog?.length < 3 ? (
