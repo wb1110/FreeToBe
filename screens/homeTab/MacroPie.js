@@ -14,9 +14,9 @@ export default function MacroPie({ carbs, protein, fats }) {
       {
         if (protein || carbs || fats > 0) {
           setData([
-            { x: protein, y: protein, fill: '#283618' },
-            { x: carbs, y: carbs, fill: '#F5F5DC' },
-            { x: fats, y: fats, fill: '#800020' },
+            { x: protein, y: protein, fill: theme.colors.chart1 },
+            { x: carbs, y: carbs, fill: theme.colors.chart2 },
+            { x: fats, y: fats, fill: theme.colors.chart3 },
           ]);
           setInnerRadius(40);
         } else {

@@ -1,6 +1,6 @@
 import { FontAwesome } from '@expo/vector-icons';
 import { useFocusEffect } from '@react-navigation/core';
-import { Text } from '@rneui/themed';
+import { Text, useTheme } from '@rneui/themed';
 import { useCallback, useState } from 'react';
 import {
   Keyboard,
@@ -20,6 +20,7 @@ import ThreeDayLogButton from './ThreeDayLogButton';
 function Tracker({ navigation }) {
   const state = useTrackerStore();
   const { addDate, tracker } = state;
+  const { theme } = useTheme();
 
   const threeDayState = useThreeDayLogStore();
   const { threeDayLog } = threeDayState;
@@ -69,7 +70,13 @@ function Tracker({ navigation }) {
       style={{ flex: 1 }}
     >
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <View style={{ justifyContent: 'space-between', flex: 1 }}>
+        <View
+          style={{
+            justifyContent: 'space-between',
+            flex: 1,
+            backgroundColor: theme.colors.secondary,
+          }}
+        >
           <Calendar
             isDatePickerVisible={isDatePickerVisible}
             setDatePickerVisibility={setDatePickerVisibility}
@@ -80,8 +87,8 @@ function Tracker({ navigation }) {
           <MacroBar protein={protein} fats={fats} carbs={carbs} calories={calories} />
           <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 36 }}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-              <FontAwesome name="square" size={24} color="#519085" />
-              <Text style={{ marginLeft: 8 }}>Goal</Text>
+              <FontAwesome name="square" size={24} color={theme.colors.chart1} />
+              <Text style={{ marginLeft: 8, color: theme.colors.primary }}>Goal</Text>
             </View>
             <View
               style={{
@@ -89,8 +96,8 @@ function Tracker({ navigation }) {
                 alignItems: 'center',
               }}
             >
-              <FontAwesome name="square" size={24} color="#E9E0AC" />
-              <Text style={{ marginLeft: 8 }}>Completed</Text>
+              <FontAwesome name="square" size={24} color={theme.colors.chart2} />
+              <Text style={{ marginLeft: 8, color: theme.colors.primary }}>Completed</Text>
             </View>
           </View>
           {selectedDay && threeDayLog?.length < 3 ? (

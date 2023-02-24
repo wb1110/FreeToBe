@@ -1,8 +1,9 @@
-import { Button, Text } from '@rneui/themed';
+import { Button, Text, useTheme } from '@rneui/themed';
 import React from 'react';
 import { View } from 'react-native';
 
 function Journal({ metabolicData, setMetabolicData, navigation }) {
+  const { theme } = useTheme();
   return (
     <View
       style={{
@@ -11,7 +12,7 @@ function Journal({ metabolicData, setMetabolicData, navigation }) {
         margin: '2%',
       }}
     >
-      <Text h4 h4Style={{ color: 'black', alignSelf: 'flex-start' }}>
+      <Text h4 h4Style={{ color: theme.colors.primary, alignSelf: 'flex-start' }}>
         Journal
       </Text>
       <View style={{ alignItems: 'center' }}>

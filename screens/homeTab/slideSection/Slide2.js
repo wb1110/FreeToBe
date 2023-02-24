@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native';
 import React from 'react';
+import { useTheme } from '@rneui/themed';
 import ProgressBar from './ProgressBar';
 
 export default function Slide2({
@@ -12,6 +13,7 @@ export default function Slide2({
   goalCarbs,
   goalFat,
 }) {
+  const { theme } = useTheme();
   return (
     <View
       style={{
@@ -23,7 +25,7 @@ export default function Slide2({
       <View style={{ flex: 1, alignItems: 'center' }}>
         <View style={{ padding: 20 }}>
           <ProgressBar
-            color="#B65C3D"
+            color={theme.colors.chart1}
             title="Energy"
             unit="kCal"
             consumed={calories}
@@ -31,7 +33,7 @@ export default function Slide2({
             maxWidth={300}
           />
           <ProgressBar
-            color="#283618"
+            color={theme.colors.chart2}
             title="Protein"
             unit="g"
             consumed={protein}
@@ -39,7 +41,7 @@ export default function Slide2({
             maxWidth={300}
           />
           <ProgressBar
-            color="#F5F5DC"
+            color={theme.colors.chart3}
             title="Carbs"
             unit="g"
             consumed={carbs}
@@ -47,7 +49,7 @@ export default function Slide2({
             maxWidth={300}
           />
           <ProgressBar
-            color="#800020"
+            color={theme.colors.chart4}
             title="Fats"
             unit="g"
             consumed={fats}

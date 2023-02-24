@@ -49,7 +49,7 @@ function HomeTab() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '#AD745D' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.primary }}>
       <ScrollView>
         {/* Swipe Section */}
         <View

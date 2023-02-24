@@ -37,11 +37,11 @@ export default function CMS() {
         flex: 1,
       }}
     >
-      <Text h4 h4Style={{ marginBottom: 12, fontSize: 24 }}>
+      <Text h4 h4Style={{ marginBottom: 12, fontSize: 24, color: theme.colors.primary }}>
         {title}
       </Text>
       <View>
-        <Text style={{ marginBottom: 12 }}>{body}</Text>
+        <Text style={{ marginBottom: 12, color: theme.colors.primary }}>{body}</Text>
       </View>
     </View>
   );

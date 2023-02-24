@@ -27,11 +27,11 @@ export default function Sleep({ metabolicData, setMetabolicData }) {
         margin: '2%',
       }}
     >
-      <Text h4 h4Style={{ color: 'black', alignSelf: 'flex-start' }}>
+      <Text h4 h4Style={{ color: theme.colors.primary, alignSelf: 'flex-start' }}>
         Sleep
       </Text>
       <View style={{ alignItems: 'center' }}>
-        <Text h4 h4Style={{ color: 'black' }}>
+        <Text h4 h4Style={{ color: theme.colors.primary }}>
           Total Hours Slept: {total}
         </Text>
         <CreateSleepEntry metabolicData={metabolicData} setMetabolicData={setMetabolicData} />

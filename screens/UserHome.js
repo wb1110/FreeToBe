@@ -24,7 +24,7 @@ export default function UserHome() {
         headerStyle: {
           backgroundColor: theme.colors.secondary,
         },
-        headerTintColor: theme.colors.white,
+        headerTintColor: theme.colors.primary,
         tabBarStyle: { backgroundColor: theme.colors.primary },
         tabBarIcon: ({ color, size }) => {
           let iconName;

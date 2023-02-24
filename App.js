@@ -47,10 +47,14 @@ enableScreens();
 
 const theme = createTheme({
   colors: {
-    primary: '#B65C3D',
-    secondary: '#CD947D',
+    primary: '#5D4B3C',
+    secondary: '#DBC8B6',
     white: '#F6F7EC',
     error: 'FF0000',
+    chart1: '#5D4B3C',
+    chart2: '#A69F88',
+    chart3: '#B29780',
+    chart4: '#A8A99E',
   },
   components: {
     Text: {
@@ -124,7 +128,7 @@ const MyTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: '#CD947D',
+    background: '#DBC8B6',
   },
 };
 

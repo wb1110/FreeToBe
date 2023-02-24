@@ -1,5 +1,5 @@
 import { View } from 'react-native';
-import { Text } from '@rneui/themed';
+import { Text, useTheme } from '@rneui/themed';
 import { Ionicons } from '@expo/vector-icons';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { useState } from 'react';
@@ -17,6 +17,7 @@ export default function Calendar({
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
+  const { theme } = useTheme();
 
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
@@ -33,8 +34,17 @@ export default function Calendar({
   return (
     <View style={{ alignItems: 'center', marginTop: '2%' }}>
       <View style={{ flexDirection: 'row' }}>
-        <Text h4 onPress={showDatePicker}>{`${trackDate}`}</Text>
-        <Ionicons name="chevron-down-circle" size={24} color="white" onPress={showDatePicker} />
+        <Text
+          h4
+          h4Style={{ color: theme.colors.primary }}
+          onPress={showDatePicker}
+        >{`${trackDate}`}</Text>
+        <Ionicons
+          name="chevron-down-circle"
+          size={24}
+          color={theme.colors.primary}
+          onPress={showDatePicker}
+        />
       </View>
       <DateTimePickerModal
         isVisible={isDatePickerVisible}

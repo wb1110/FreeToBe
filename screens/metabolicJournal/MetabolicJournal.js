@@ -1,4 +1,4 @@
-import { Button } from '@rneui/themed';
+import { Button, useTheme } from '@rneui/themed';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { SafeAreaView, ScrollView, View } from 'react-native';
@@ -29,6 +29,7 @@ function MetabolicJournal({ navigation }) {
   const { addJournalEntry, metabolicJournal } = metabolicState;
   const { id } = useAuthStore();
   const [metabolicData, setMetabolicData] = useState({});
+  const { theme } = useTheme();
 
   const journalEntryExists = () => metabolicJournal.find((entry) => entry.date === dateData);
 
@@ -43,7 +44,9 @@ function MetabolicJournal({ navigation }) {
   }, [dateData]);
 
   return (
-    <SafeAreaView style={{ alignItems: 'center', flex: 1 }}>
+    <SafeAreaView
+      style={{ alignItems: 'center', flex: 1, backgroundColor: theme.colors.secondary }}
+    >
       <View>
         <Calendar
           isDatePickerVisible={isDatePickerVisible}

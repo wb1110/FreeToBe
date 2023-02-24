@@ -9,7 +9,7 @@ export default function MacroPie({ macro, goal, label, complete, unit }) {
   const { theme } = useTheme();
   const [data, setData] = useState([{ y: 1 }]);
   const [labelText, setLabelText] = useState(0);
-  const [labelColor, setLabelColor] = useState(theme.colors.white);
+  const [labelColor, setLabelColor] = useState(theme.colors.primary);
   const [innerRadius, setInnerRadius] = useState(30);
   const remainingGoal = (goal - macro).toFixed(0);
 
@@ -24,17 +24,17 @@ export default function MacroPie({ macro, goal, label, complete, unit }) {
           if (remainingGoal > 0) {
             // Display the grams and calories that need to be consumed, progress and completed colors, and a hollow circle.
             setLabelText(remainingGoal);
-            setLabelColor(theme.colors.white);
+            setLabelColor(theme.colors.primary);
             setData([
-              { x: goal, y: goal, fill: '#519085' },
-              { x: macro, y: macro, fill: '#E9E0AC' },
+              { x: goal, y: goal, fill: theme.colors.chart1 },
+              { x: macro, y: macro, fill: theme.colors.chart2 },
             ]);
             setInnerRadius(30);
           } else if (remainingGoal <= 0) {
             // Display the total grams/calories, and fill in the circle with the completed color.
             setLabelText(macro.toFixed(0));
             setLabelColor(theme.colors.primary);
-            setData([{ y: 1, fill: '#E9E0AC' }]);
+            setData([{ y: 1, fill: theme.colors.chart2 }]);
             setInnerRadius(0);
           }
         } else {
@@ -44,7 +44,7 @@ export default function MacroPie({ macro, goal, label, complete, unit }) {
           // );
 
           setInnerRadius(30);
-          setData([{ y: 1, fill: '#519085' }]);
+          setData([{ y: 1, fill: theme.colors.chart1 }]);
           setLabelText(macro.toFixed(0));
         }
         // Do something when the screen is unfocused
@@ -59,7 +59,9 @@ export default function MacroPie({ macro, goal, label, complete, unit }) {
 
   return (
     <View style={{ width: '100%', alignItems: 'center' }}>
-      <Text>{label}</Text>
+      <Text h4 h4Style={{ color: labelColor }}>
+        {label}
+      </Text>
       <Text
         h4
         h4Style={{

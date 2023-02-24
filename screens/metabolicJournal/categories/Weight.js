@@ -13,7 +13,7 @@ export default function Weight({ metabolicData, setMetabolicData }) {
       }}
     >
       <View style={{ flex: 1, alignItems: 'center', width: '100%' }}>
-        <Text h4 h4Style={{ color: 'black', alignSelf: 'flex-start' }}>
+        <Text h4 h4Style={{ color: theme.colors.primary, alignSelf: 'flex-start' }}>
           Weight
         </Text>
         <View style={{ flex: 1 }}>
@@ -26,9 +26,14 @@ export default function Weight({ metabolicData, setMetabolicData }) {
                 weight: value,
               })
             }
-            style={{ borderColor: 'black', borderWidth: 1, borderRadius: 20, color: 'black' }}
+            style={{
+              borderColor: theme.colors.primary,
+              borderWidth: 1,
+              borderRadius: 20,
+              color: theme.colors.primary,
+            }}
           />
-          <Text style={{ color: 'black' }}>Enter Weight (lbs)</Text>
+          <Text style={{ color: theme.colors.primary }}>Enter Weight (lbs)</Text>
         </View>
       </View>
     </View>

@@ -1,3 +1,4 @@
+import { useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 import microNutrientGoals from '../../../functions/microNutrientGoals';
 import useStore from '../../../state/Store';
@@ -19,6 +20,7 @@ export default function Slide3({
   const maxWidth = 100;
   const { assessment } = useStore();
   const { dueDate, nursing } = assessment;
+  const { theme } = useTheme();
 
   return (
     <View
@@ -39,7 +41,7 @@ export default function Slide3({
           }}
         >
           <MicroNutrientProgressBar
-            color="#800020"
+            color={theme.colors.chart1}
             title="Calcium"
             unit="mg"
             consumed={calcium}
@@ -47,7 +49,7 @@ export default function Slide3({
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#800020"
+            color={theme.colors.chart1}
             title="Copper"
             unit="µg"
             consumed={copper}
@@ -55,7 +57,7 @@ export default function Slide3({
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#800020"
+            color={theme.colors.chart1}
             title="Choline"
             unit="mg"
             consumed={choline}
@@ -63,7 +65,7 @@ export default function Slide3({
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#800020"
+            color={theme.colors.chart1}
             title="Iodine"
             unit="µg"
             consumed={iodine}
@@ -71,7 +73,7 @@ export default function Slide3({
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#800020"
+            color={theme.colors.chart1}
             title="Iron"
             unit="mg"
             consumed={iron}
@@ -79,7 +81,7 @@ export default function Slide3({
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#800020"
+            color={theme.colors.chart1}
             title="Magnesium"
             unit="mg"
             consumed={magnesium}
@@ -87,7 +89,7 @@ export default function Slide3({
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#800020"
+            color={theme.colors.chart1}
             title="Phosphorous"
             unit="mg"
             consumed={phosphorous}
@@ -95,7 +97,7 @@ export default function Slide3({
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#800020"
+            color={theme.colors.chart1}
             title="Potassium"
             unit="mg"
             consumed={potassium}
@@ -103,7 +105,7 @@ export default function Slide3({
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#800020"
+            color={theme.colors.chart1}
             title="Selenium"
             unit="mg"
             consumed={selenium}
@@ -111,7 +113,7 @@ export default function Slide3({
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#800020"
+            color={theme.colors.chart1}
             title="Sodium"
             unit="mg"
             consumed={sodium}
@@ -119,7 +121,7 @@ export default function Slide3({
             maxWidth={maxWidth}
           />
           <MicroNutrientProgressBar
-            color="#800020"
+            color={theme.colors.chart1}
             title="Zinc"
             unit="mg"
             consumed={zinc}
