@@ -59,56 +59,56 @@ function Table() {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={{ ...styles.headerText, color: theme.colors.primary }}>Macro</Text>
-        <Text style={{ ...styles.headerText, color: theme.colors.primary }}>Consumed</Text>
-        <Text style={{ ...styles.headerText, color: theme.colors.primary }}>%</Text>
+        <Text style={{ ...styles.headerText, color: theme.colors.white }}>Macro</Text>
+        <Text style={{ ...styles.headerText, color: theme.colors.white }}>Consumed</Text>
+        <Text style={{ ...styles.headerText, color: theme.colors.white }}>%</Text>
       </View>
-      <View style={{ ...styles.tableContainer, borderColor: theme.colors.primary }}>
-        <View style={{ ...styles.rowContainer, borderColor: theme.colors.primary }}>
+      <View style={{ ...styles.tableContainer, borderColor: theme.colors.white }}>
+        <View style={{ ...styles.rowContainer, borderColor: theme.colors.white }}>
           <View style={{ width: 50 }}>
             <Text style={{ color: theme.colors.chart1, fontSize: 12, fontWeight: '700' }}>
               Protein
             </Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end' }}>
-            <Text style={{ ...styles.columnText, color: theme.colors.primary }}>
+            <Text style={{ ...styles.columnText, color: theme.colors.white }}>
               {todaysData?.protein.toFixed(2)}g
             </Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
-            <Text style={{ ...styles.columnText, color: theme.colors.primary }}>
+            <Text style={{ ...styles.columnText, color: theme.colors.white }}>
               {goalPercentage(protein, goalProtein)}%
             </Text>
           </View>
         </View>
-        <View style={{ ...styles.rowContainer, borderColor: theme.colors.primary }}>
+        <View style={{ ...styles.rowContainer, borderColor: theme.colors.white }}>
           <View style={{ width: 50 }}>
             <Text style={{ color: theme.colors.chart2, fontSize: 12, fontWeight: '700' }}>
               Carbs
             </Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end' }}>
-            <Text style={{ ...styles.columnText, color: theme.colors.primary }}>
+            <Text style={{ ...styles.columnText, color: theme.colors.white }}>
               {todaysData?.carbs.toFixed(2)}g
             </Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
-            <Text style={{ ...styles.columnText, color: theme.colors.primary }}>
+            <Text style={{ ...styles.columnText, color: theme.colors.white }}>
               {goalPercentage(carbs, goalCarbs)}%
             </Text>
           </View>
         </View>
-        <View style={{ ...styles.rowContainer, borderColor: theme.colors.primary }}>
+        <View style={{ ...styles.rowContainer, borderColor: theme.colors.white }}>
           <View style={{ width: 50 }}>
             <Text style={{ color: theme.colors.chart3, fontSize: 12, fontWeight: '700' }}>Fat</Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end' }}>
-            <Text style={{ ...styles.columnText, color: theme.colors.primary }}>
+            <Text style={{ ...styles.columnText, color: theme.colors.white }}>
               {todaysData?.fats.toFixed(2)}g
             </Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end', marginRight: 6 }}>
-            <Text style={{ ...styles.columnText, color: theme.colors.primary }}>
+            <Text style={{ ...styles.columnText, color: theme.colors.white }}>
               {goalPercentage(fats, goalFat)}%
             </Text>
           </View>

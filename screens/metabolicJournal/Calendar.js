@@ -36,13 +36,13 @@ export default function Calendar({
       <View style={{ flexDirection: 'row' }}>
         <Text
           h4
-          h4Style={{ color: theme.colors.primary }}
+          h4Style={{ color: theme.colors.white }}
           onPress={showDatePicker}
         >{`${trackDate}`}</Text>
         <Ionicons
           name="chevron-down-circle"
           size={24}
-          color={theme.colors.primary}
+          color={theme.colors.white}
           onPress={showDatePicker}
         />
       </View>

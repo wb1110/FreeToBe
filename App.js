@@ -47,14 +47,14 @@ enableScreens();
 
 const theme = createTheme({
   colors: {
-    primary: '#5D4B3C',
-    secondary: '#DBC8B6',
+    primary: '#B65C3D',
+    secondary: '#CD947D',
     white: '#F6F7EC',
-    error: 'FF0000',
-    chart1: '#5D4B3C',
-    chart2: '#A69F88',
-    chart3: '#B29780',
-    chart4: '#A8A99E',
+    error: '#FF0000',
+    chart1: '#eee1d8',
+    chart2: '#506a68',
+    chart3: '#424240',
+    chart4: '#738478',
   },
   components: {
     Text: {
@@ -128,7 +128,7 @@ const MyTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: '#DBC8B6',
+    background: '#CD947D',
   },
 };
 

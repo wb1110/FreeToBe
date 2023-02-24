@@ -9,7 +9,7 @@ export default function MacroPie({ macro, goal, label, complete, unit }) {
   const { theme } = useTheme();
   const [data, setData] = useState([{ y: 1 }]);
   const [labelText, setLabelText] = useState(0);
-  const [labelColor, setLabelColor] = useState(theme.colors.primary);
+  const [labelColor, setLabelColor] = useState(theme.colors.white);
   const [innerRadius, setInnerRadius] = useState(30);
   const remainingGoal = (goal - macro).toFixed(0);
 
@@ -24,7 +24,7 @@ export default function MacroPie({ macro, goal, label, complete, unit }) {
           if (remainingGoal > 0) {
             // Display the grams and calories that need to be consumed, progress and completed colors, and a hollow circle.
             setLabelText(remainingGoal);
-            setLabelColor(theme.colors.primary);
+            setLabelColor(theme.colors.white);
             setData([
               { x: goal, y: goal, fill: theme.colors.chart1 },
               { x: macro, y: macro, fill: theme.colors.chart2 },
@@ -33,7 +33,7 @@ export default function MacroPie({ macro, goal, label, complete, unit }) {
           } else if (remainingGoal <= 0) {
             // Display the total grams/calories, and fill in the circle with the completed color.
             setLabelText(macro.toFixed(0));
-            setLabelColor(theme.colors.primary);
+            setLabelColor(theme.colors.white);
             setData([{ y: 1, fill: theme.colors.chart2 }]);
             setInnerRadius(0);
           }
