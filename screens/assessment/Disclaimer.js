@@ -2,6 +2,7 @@ import { Text } from '@rneui/themed';
 import { Keyboard, SafeAreaView, TouchableWithoutFeedback, View } from 'react-native';
 import LArrowButton from '../../components/Buttons/LArrowButton';
 import RArrowButton from '../../components/Buttons/RArrowButton';
+import StandardButton from '../../components/Buttons/StandardButton';
 import Container from '../../components/Container';
 import TextContainer from '../../components/TextContainer';
 
@@ -26,7 +27,12 @@ function Disclaimer({ navigation }) {
           </TextContainer>
           <View style={{ flexDirection: 'row' }}>
             <LArrowButton onPress={() => navigation.goBack()} />
-            <RArrowButton title="Submit" onPress={() => navigation.navigate('AbleToTrack')} />
+            <StandardButton
+              title="I am able to track"
+              onPress={() => {
+                navigation.navigate('LieSkinny');
+              }}
+            />
           </View>
         </Container>
       </SafeAreaView>

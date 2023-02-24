@@ -19,11 +19,11 @@ function FoodPreferences({ navigation }) {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View>
+      <View style={{ alignItems: 'center' }}>
         <TextContainer>
           What I currently eat can be best described as…{/* {"\n"}{"\n"}Choose all that apply.} */}
         </TextContainer>
-        <View style={{ alignItems: 'center' }}>
+        <View style={{ alignItems: 'flex-start' }}>
           <CustomCheckBox title="All types of food" state={all} setState={setAll} />
           <CustomCheckBox title="Vegan" state={vegan} setState={setVegan} />
           <CustomCheckBox title="Vegetarian" state={vegetarian} setState={setVegetarian} />
