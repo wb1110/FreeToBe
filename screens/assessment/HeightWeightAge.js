@@ -29,14 +29,10 @@ function HeightWeightAge({ navigation }) {
   const [age, setAge] = useState('');
 
   const conversion = (x, y, z) => {
-    const array = x.match(/\d+/g);
-    const feet = parseInt(array[0], 10) * 12;
-    const inches = parseInt(array[1], 10);
-    nHeight = feet + inches;
     nWeight = parseInt(y, 10);
     nAge = parseInt(z, 10);
 
-    values.height = nHeight;
+    values.height = x;
     values.weight = nWeight;
     values.age = nAge;
 

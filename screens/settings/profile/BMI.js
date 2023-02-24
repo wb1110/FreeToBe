@@ -8,17 +8,28 @@ export default function BMI() {
 
   function calculateBMI(weightStr, heightStr) {
     // input validation: check that height string is in expected format
-    const heightSplit = heightStr.split('ft ');
-    const feet = heightSplit[0];
-    const inches = heightSplit[1];
+    if (typeof heightStr === 'string') {
+      const heightSplit = heightStr.split('ft ');
+      const feet = heightSplit[0];
+      const inches = heightSplit[1];
+      const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
+      const weight = parseFloat(weightStr);
 
+      // convert units to metric (pounds to kilograms, inches to meters)
+      const weightInKg = weight / 2.205;
+      const heightInMeters = totalInches * 0.0254;
+
+      // calculate BMI using the formula
+      const bmi = weightInKg / (heightInMeters * heightInMeters);
+
+      return bmi.toFixed(1); // round BMI to 1 decimal place and return as a string
+    }
     // parse numerical values and calculate height in inches
     const weight = parseFloat(weightStr);
-    const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
 
     // convert units to metric (pounds to kilograms, inches to meters)
     const weightInKg = weight / 2.205;
-    const heightInMeters = totalInches * 0.0254;
+    const heightInMeters = heightStr * 0.0254;
 
     // calculate BMI using the formula
     const bmi = weightInKg / (heightInMeters * heightInMeters);

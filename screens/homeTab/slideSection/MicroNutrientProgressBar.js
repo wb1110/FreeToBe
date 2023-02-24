@@ -9,7 +9,6 @@ export default function MicroNutrientProgressBar({ color, title, consumed, goal,
     return 0;
   };
   const maximumValue = (inner, outer) => {
-    console.log(inner, title);
     if (inner > outer) {
       return maxWidth;
     }

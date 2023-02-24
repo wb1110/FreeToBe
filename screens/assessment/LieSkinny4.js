@@ -15,7 +15,7 @@ function LieSkinny4({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Container>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
           <TextContainer>
             Women eat anywhere from 1 to 7 meals a day.
             {'\n'}

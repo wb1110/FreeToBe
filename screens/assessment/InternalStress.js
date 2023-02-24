@@ -13,24 +13,22 @@ function InternalStress({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Container>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-          <TextContainer>
-            Studies show that stress has an impact on many health markers including sleep, weight
-            loss, energy throughout the day, and many more.
-            {'\n'}
-            {'\n'}
-            Internal stress is stress that comes from within. Worrying about things outside of your
-            control such as losing your job, rain on your birthday, or negative self-talk are all
-            examples of internal stress.
-            {'\n'}
-            {'\n'}
-            What would you rate your internal stress between 0-5?
-            {'\n'}
-            {'\n'}0 = no internal stress
-            {'\n'}
-            {'\n'}5 = overwhelming amount of internal stress
-          </TextContainer>
-        </ScrollView>
+        <TextContainer>
+          Studies show that stress has an impact on many health markers including sleep, weight
+          loss, energy throughout the day, and many more.
+          {'\n'}
+          {'\n'}
+          Internal stress is stress that comes from within. Worrying about things outside of your
+          control such as losing your job, rain on your birthday, or negative self-talk are all
+          examples of internal stress.
+          {'\n'}
+          {'\n'}
+          What would you rate your internal stress between 0-5?
+          {'\n'}
+          {'\n'}0 = no internal stress
+          {'\n'}
+          {'\n'}5 = overwhelming amount of internal stress
+        </TextContainer>
         <View style={{ flexDirection: 'row' }}>
           {selected === 0 ? (
             <RoundButtonSelected title="0" type="clear" onPress={() => setSelected(0)} />
