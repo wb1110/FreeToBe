@@ -12,8 +12,11 @@ export default function ProgressBar({ color, title, consumed, goal, unit, maxWid
     if (inner > outer) {
       return 300;
     }
-    if (inner <= 0) {
-      return 0;
+    if (inner < 5) {
+      return 7;
+    }
+    if (inner > 295 && inner < 300) {
+      return 290;
     }
     return percent() * 3;
   };
@@ -47,7 +50,7 @@ export default function ProgressBar({ color, title, consumed, goal, unit, maxWid
           justifyContent: 'center',
         }}
       >
-        {goal ? (
+        {percent() * 3 >= 1 ? (
           <View
             style={{
               width: maximumValue(percent() * 3, 300),
