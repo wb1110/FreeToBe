@@ -54,7 +54,25 @@ export default function EditFoodManually({ route, navigation }) {
             zinc: item.zinc === undefined ? `${0}` : `${item.zinc.value}`,
           }}
           onSubmit={(values) => {
-            state.editFood(id, values, dayIndex, mealName, values.foodName);
+            const foodData = {
+              foodName: values.foodName,
+              calories: { value: values.calories, unit: 'kCal' },
+              protein: { value: values.protein, unit: 'g' },
+              carbs: { value: values.carbs, unit: 'g' },
+              fat: { value: values.fat, unit: 'g' },
+              calcium: { value: values.calcium, unit: 'mg' },
+              choline: { value: values.choline, unit: 'mg' },
+              copper: { value: values.copper, unit: 'µg' },
+              iodine: { value: values.iodine, unit: 'µg' },
+              iron: { value: values.iron, unit: 'mg' },
+              magnesium: { value: values.magnesium, unit: 'mg' },
+              phosphorous: { value: values.phosphorous, unit: 'mg' },
+              potassium: { value: values.potassium, unit: 'mg' },
+              selenium: { value: values.selenium, unit: 'µg' },
+              sodium: { value: values.sodium, unit: 'mg' },
+              zinc: { value: values.zinc, unit: 'mg' },
+            };
+            state.editFood(id, foodData, dayIndex, mealName, values.foodName);
           }}
           validationSchema={foodSchema}
         >

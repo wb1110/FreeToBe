@@ -75,7 +75,6 @@ export default function AddFoodManually({ route, navigation }) {
               sodium: { value: values.sodium, unit: 'mg' },
               zinc: { value: values.zinc, unit: 'mg' },
             };
-            console.log(foodData, 'values in AddFoodManually');
             state.addFood(id, foodData, dayIndex, mealName);
           }}
           validationSchema={foodSchema}
