@@ -81,11 +81,16 @@ export default function useCalculations() {
 
   const energyEquations = () => {
     if (!bodyFat && height) {
-      const heightSplit = height.split('ft ');
-      const feet = heightSplit[0];
-      const inches = heightSplit[1];
-      const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
-      const BMR = 10 * (weight * 0.45359237) + 6.25 * (totalInches * 2.54) - 5 * age - 161;
+      if (typeof height === 'string') {
+        const heightSplit = height.split('ft ');
+        const feet = heightSplit[0];
+        const inches = heightSplit[1];
+        const totalInches = parseFloat(feet) * 12 + parseFloat(inches);
+        const BMR = 10 * (weight * 0.45359237) + 6.25 * (totalInches * 2.54) - 5 * age - 161;
+        TDEE = BMR * activityMultiplier();
+        return TDEE;
+      }
+      const BMR = 10 * (weight * 0.45359237) + 6.25 * (height * 2.54) - 5 * age - 161;
       TDEE = BMR * activityMultiplier();
       return TDEE;
     }

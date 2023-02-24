@@ -54,7 +54,7 @@ export const calculateGoalCalories = (
     macroGoal(Number(idealProtein), Number(avgProtein), 'protein') * 4 +
     macroGoal(Number(idealCarbs), Number(avgCarbs), 'carbs') * 4 +
     macroGoal(Number(idealFat), Number(avgFats), 'fat') * 9;
-  return total;
+  return total.toFixed(2);
 };
 
 // percentage needs to be in decimal format (ex: 0.3)
