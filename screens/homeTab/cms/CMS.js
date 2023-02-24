@@ -5,8 +5,8 @@ import axios from 'axios';
 
 export default function CMS() {
   const { theme } = useTheme();
-  const [title, setTitle] = useState('Placeholder Title');
-  const [body, setBody] = useState('Placeholder Body');
+  const [title, setTitle] = useState('Daily Tip Title');
+  const [body, setBody] = useState('Daily Tip Body');
 
   useEffect(() => {
     const token =
@@ -33,16 +33,14 @@ export default function CMS() {
   return (
     <View
       style={{
-        backgroundColor: theme.colors.primary,
         margin: 12,
-        padding: 12,
         flex: 1,
       }}
     >
-      <Text h3 h3Style={{ marginBottom: 12 }}>
+      <Text h4 h4Style={{ marginBottom: 12, fontSize: 24 }}>
         {title}
       </Text>
-      <View style={{ marginLeft: 12 }}>
+      <View>
         <Text style={{ marginBottom: 12 }}>{body}</Text>
       </View>
     </View>
