@@ -39,24 +39,44 @@ export default function AddFoodManually({ route, navigation }) {
           initialValues={{
             foodId: uuidv4(),
             foodName: '',
-            calories: '',
-            fat: '',
-            carbs: '',
-            protein: '',
-            calcium: '',
-            choline: '',
-            copper: '',
-            iodine: '',
-            iron: '',
-            magnesium: '',
-            phosphorous: '',
-            potassium: '',
-            selenium: '',
-            sodium: '',
-            zinc: '',
+            calories: { value: 0, unit: 'kCal' },
+            protein: { value: 0, unit: 'g' },
+            carbs: { value: 0, unit: 'g' },
+            fat: { value: 0, unit: 'g' },
+            calcium: { value: 0, unit: 'mg' },
+            choline: { value: 0, unit: 'mg' },
+            copper: { value: 0, unit: 'µg' },
+            iodine: { value: 0, unit: 'µg' },
+            iron: { value: 0, unit: 'mg' },
+            magnesium: { value: 0, unit: 'mg' },
+            phosphorous: { value: 0, unit: 'mg' },
+            potassium: { value: 0, unit: 'mg' },
+            selenium: { value: 0, unit: 'µg' },
+            sodium: { value: 0, unit: 'mg' },
+            zinc: { value: 0, unit: 'mg' },
           }}
           onSubmit={(values) => {
-            state.addFood(id, values, dayIndex, mealName);
+            const foodData = {
+              foodId: uuidv4(),
+              foodName: values.foodName,
+              calories: { value: values.calories, unit: 'kCal' },
+              protein: { value: values.protein, unit: 'g' },
+              carbs: { value: values.carbs, unit: 'g' },
+              fat: { value: values.fat, unit: 'g' },
+              calcium: { value: values.calcium, unit: 'mg' },
+              choline: { value: values.choline, unit: 'mg' },
+              copper: { value: values.copper, unit: 'µg' },
+              iodine: { value: values.iodine, unit: 'µg' },
+              iron: { value: values.iron, unit: 'mg' },
+              magnesium: { value: values.magnesium, unit: 'mg' },
+              phosphorous: { value: values.phosphorous, unit: 'mg' },
+              potassium: { value: values.potassium, unit: 'mg' },
+              selenium: { value: values.selenium, unit: 'µg' },
+              sodium: { value: values.sodium, unit: 'mg' },
+              zinc: { value: values.zinc, unit: 'mg' },
+            };
+            console.log(foodData, 'values in AddFoodManually');
+            state.addFood(id, foodData, dayIndex, mealName);
           }}
           validationSchema={foodSchema}
         >
@@ -74,122 +94,122 @@ export default function AddFoodManually({ route, navigation }) {
                   />
                   <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                     <Input
-                      label="Calories"
+                      label="Calories (kCal)"
                       onChangeText={handleChange('calories')}
                       onBlur={handleBlur('calories')}
-                      value={values.calories}
+                      value={values.calories.value}
                       errorMessage={errors.calories}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Fat"
+                      label="Fat (g)"
                       onChangeText={handleChange('fat')}
                       onBlur={handleBlur('fat')}
-                      value={values.fat}
+                      value={values.fat.value}
                       errorMessage={errors.fat}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Carbs"
+                      label="Carbs (g)"
                       onChangeText={handleChange('carbs')}
                       onBlur={handleBlur('carbs')}
-                      value={values.carbs}
+                      value={values.carbs.value}
                       errorMessage={errors.carbs}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Protein"
+                      label="Protein (g)"
                       onChangeText={handleChange('protein')}
                       onBlur={handleBlur('protein')}
-                      value={values.protein}
+                      value={values.protein.value}
                       errorMessage={errors.protein}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Calcium"
+                      label="Calcium (mg)"
                       onChangeText={handleChange('calcium')}
                       onBlur={handleBlur('calcium')}
-                      value={values.calcium}
+                      value={values.calcium.value}
                       errorMessage={errors.calcium}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Choline"
+                      label="Choline (mg)"
                       onChangeText={handleChange('choline')}
                       onBlur={handleBlur('choline')}
-                      value={values.choline}
+                      value={values.choline.value}
                       errorMessage={errors.choline}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Copper"
+                      label="Copper (µg)"
                       onChangeText={handleChange('copper')}
                       onBlur={handleBlur('copper')}
-                      value={values.copper}
+                      value={values.copper.value}
                       errorMessage={errors.copper}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Iodine"
+                      label="Iodine (µg)"
                       onChangeText={handleChange('iodine')}
                       onBlur={handleBlur('iodine')}
-                      value={values.iodine}
+                      value={values.iodine.value}
                       errorMessage={errors.iodine}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Iron"
+                      label="Iron (mg)"
                       onChangeText={handleChange('iron')}
                       onBlur={handleBlur('iron')}
-                      value={values.iron}
+                      value={values.iron.value}
                       errorMessage={errors.iron}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Magnesium"
+                      label="Magnesium (mg)"
                       onChangeText={handleChange('magnesium')}
                       onBlur={handleBlur('magnesium')}
-                      value={values.magnesium}
+                      value={values.magnesium.value}
                       errorMessage={errors.magnesium}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Phosphorous"
+                      label="Phosphorous (mg)"
                       onChangeText={handleChange('phosphorous')}
                       onBlur={handleBlur('phosphorous')}
-                      value={values.phosphorous}
+                      value={values.phosphorous.value}
                       errorMessage={errors.phosphorous}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Potassium"
+                      label="Potassium (mg)"
                       onChangeText={handleChange('potassium')}
                       onBlur={handleBlur('potassium')}
-                      value={values.potassium}
+                      value={values.potassium.value}
                       errorMessage={errors.potassium}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Selenium"
+                      label="Selenium (µg)"
                       onChangeText={handleChange('selenium')}
                       onBlur={handleBlur('selenium')}
-                      value={values.selenium}
+                      value={values.selenium.value}
                       errorMessage={errors.selenium}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Sodium"
+                      label="Sodium (mg)"
                       onChangeText={handleChange('sodium')}
                       onBlur={handleBlur('sodium')}
-                      value={values.sodium}
+                      value={values.sodium.value}
                       errorMessage={errors.sodium}
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Zinc"
+                      label="Zinc (mg)"
                       onChangeText={handleChange('zinc')}
                       onBlur={handleBlur('zinc')}
-                      value={values.zinc}
+                      value={values.zinc.value}
                       errorMessage={errors.zinc}
                       containerStyle={{ width: '50%' }}
                     />
