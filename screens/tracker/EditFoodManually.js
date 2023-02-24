@@ -37,21 +37,21 @@ export default function EditFoodManually({ route, navigation }) {
         <Formik
           initialValues={{
             foodName: item.foodName,
-            calories: item.calories === undefined ? 0 : `${item.calories}`,
-            fat: item.fat === undefined ? `${0}` : `${item.fat}`,
-            carbs: item.carbs === undefined ? `${0}` : `${item.carbs}`,
-            protein: item.protein === undefined ? `${0}` : `${item.protein}`,
-            calcium: item.calcium === undefined ? `${0}` : `${item.calcium}`,
-            choline: item.choline === undefined ? `${0}` : `${item.choline}`,
-            copper: item.copper === undefined ? `${0}` : `${item.copper}`,
-            iodine: item.iodine === undefined ? `${0}` : `${item.iodine}`,
-            iron: item.iron === undefined ? `${0}` : `${item.iron}`,
-            magnesium: item.magnesium === undefined ? `${0}` : `${item.magnesium}`,
-            phosphorous: item.phosphorous === undefined ? `${0}` : `${item.phosphorous}`,
-            potassium: item.potassium === undefined ? `${0}` : `${item.potassium}`,
-            selenium: item.selenium === undefined ? `${0}` : `${item.selenium}`,
-            sodium: item.sodium === undefined ? `${0}` : `${item.sodium}`,
-            zinc: item.zinc === undefined ? `${0}` : `${item.zinc}`,
+            calories: item.calories === undefined ? 0 : `${item.calories.value}`,
+            fat: item.fat === undefined ? `${0}` : `${item.fat.value}`,
+            carbs: item.carbs === undefined ? `${0}` : `${item.carbs.value}`,
+            protein: item.protein === undefined ? `${0}` : `${item.protein.value}`,
+            calcium: item.calcium === undefined ? `${0}` : `${item.calcium.value}`,
+            choline: item.choline === undefined ? `${0}` : `${item.choline.value}`,
+            copper: item.copper === undefined ? `${0}` : `${item.copper.value}`,
+            iodine: item.iodine === undefined ? `${0}` : `${item.iodine.value}`,
+            iron: item.iron === undefined ? `${0}` : `${item.iron.value}`,
+            magnesium: item.magnesium === undefined ? `${0}` : `${item.magnesium.value}`,
+            phosphorous: item.phosphorous === undefined ? `${0}` : `${item.phosphorous.value}`,
+            potassium: item.potassium === undefined ? `${0}` : `${item.potassium.value}`,
+            selenium: item.selenium === undefined ? `${0}` : `${item.selenium.value}`,
+            sodium: item.sodium === undefined ? `${0}` : `${item.sodium.value}`,
+            zinc: item.zinc === undefined ? `${0}` : `${item.zinc.value}`,
           }}
           onSubmit={(values) => {
             state.editFood(id, values, dayIndex, mealName, values.foodName);
@@ -74,7 +74,7 @@ export default function EditFoodManually({ route, navigation }) {
                   </View>
                   <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
                     <Input
-                      label="Calories"
+                      label="Calories (kCal)"
                       onChangeText={handleChange('calories')}
                       onBlur={handleBlur('calories')}
                       value={values.calories}
@@ -82,7 +82,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Fat"
+                      label="Fat (g)"
                       onChangeText={handleChange('fat')}
                       onBlur={handleBlur('fat')}
                       value={values.fat}
@@ -90,7 +90,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Carbs"
+                      label="Carbs (g)"
                       onChangeText={handleChange('carbs')}
                       onBlur={handleBlur('carbs')}
                       value={values.carbs}
@@ -98,7 +98,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Protein"
+                      label="Protein (g)"
                       onChangeText={handleChange('protein')}
                       onBlur={handleBlur('protein')}
                       value={values.protein}
@@ -106,7 +106,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Calcium"
+                      label="Calcium (kCal)"
                       onChangeText={handleChange('calcium')}
                       onBlur={handleBlur('calcium')}
                       value={values.calcium}
@@ -114,7 +114,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Choline"
+                      label="Choline (mg)"
                       onChangeText={handleChange('choline')}
                       onBlur={handleBlur('choline')}
                       value={values.choline}
@@ -122,7 +122,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Copper"
+                      label="Copper (µg)"
                       onChangeText={handleChange('copper')}
                       onBlur={handleBlur('copper')}
                       value={values.copper}
@@ -130,7 +130,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Iodine"
+                      label="Iodine (µg)"
                       onChangeText={handleChange('iodine')}
                       onBlur={handleBlur('iodine')}
                       value={values.iodine}
@@ -138,7 +138,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Iron"
+                      label="Iron (mg)"
                       onChangeText={handleChange('iron')}
                       onBlur={handleBlur('iron')}
                       value={values.iron}
@@ -146,7 +146,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Magnesium"
+                      label="Magnesium (mg)"
                       onChangeText={handleChange('magnesium')}
                       onBlur={handleBlur('magnesium')}
                       value={values.magnesium}
@@ -154,7 +154,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Phosphorous"
+                      label="Phosphorous (mg)"
                       onChangeText={handleChange('phosphorous')}
                       onBlur={handleBlur('phosphorous')}
                       value={values.phosphorous}
@@ -162,7 +162,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Potassium"
+                      label="Potassium (mg)"
                       onChangeText={handleChange('potassium')}
                       onBlur={handleBlur('potassium')}
                       value={values.potassium}
@@ -170,7 +170,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Selenium"
+                      label="Selenium (µg)"
                       onChangeText={handleChange('selenium')}
                       onBlur={handleBlur('selenium')}
                       value={values.selenium}
@@ -178,7 +178,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Sodium"
+                      label="Sodium (mg)"
                       onChangeText={handleChange('sodium')}
                       onBlur={handleBlur('sodium')}
                       value={values.sodium}
@@ -186,7 +186,7 @@ export default function EditFoodManually({ route, navigation }) {
                       containerStyle={{ width: '50%' }}
                     />
                     <Input
-                      label="Zinc"
+                      label="Zinc (mg)"
                       onChangeText={handleChange('zinc')}
                       onBlur={handleBlur('zinc')}
                       value={values.zinc}
