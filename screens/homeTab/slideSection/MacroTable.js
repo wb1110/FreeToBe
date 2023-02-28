@@ -1,5 +1,4 @@
 import { useTheme } from '@rneui/themed';
-import moment from 'moment';
 import { StyleSheet, Text, View } from 'react-native';
 import getTodaysTrackerData from '../../../functions/getTodaysTrackerData';
 import useTrackerStore from '../../../state/TrackerStore';

@@ -1,6 +1,5 @@
-import { View, Text } from 'react-native';
-import React from 'react';
 import { useTheme } from '@rneui/themed';
+import { View } from 'react-native';
 import ProgressBar from './ProgressBar';
 
 export default function Slide2({

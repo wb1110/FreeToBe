@@ -1,16 +1,15 @@
 /* eslint-disable no-use-before-define */
-import { Skeleton, Text, useTheme } from '@rneui/themed';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Text, useTheme } from '@rneui/themed';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Swiper from 'react-native-swiper';
-import { LinearGradient } from 'react-native-svg';
-import { MaterialIcons } from '@expo/vector-icons';
+import { useGetAllData } from '../../functions/Gets';
 import getTodaysTrackerData from '../../functions/getTodaysTrackerData';
 import useGoalUpdateConditions from '../../functions/goalUpdateConditions';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import useTrackerStore from '../../state/TrackerStore';
-import Instagram from './instagram/Instagram';
-import { useGetAllData } from '../../functions/Gets';
 import CMS from './cms/CMS';
+import Instagram from './instagram/Instagram';
 import Slide1 from './slideSection/Slide1';
 import Slide2 from './slideSection/Slide2';
 import Slide3 from './slideSection/Slide3';
