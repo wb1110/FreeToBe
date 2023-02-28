@@ -65,7 +65,7 @@ function Table() {
       </View>
       <View style={{ ...styles.tableContainer, borderColor: theme.colors.white }}>
         <View style={{ ...styles.rowContainer, borderColor: theme.colors.white }}>
-          <View style={{ width: 50 }}>
+          <View style={{ width: 50, padding: '2%' }}>
             <Text style={{ color: theme.colors.chart1, fontSize: 12, fontWeight: '700' }}>
               Protein
             </Text>
@@ -82,7 +82,7 @@ function Table() {
           </View>
         </View>
         <View style={{ ...styles.rowContainer, borderColor: theme.colors.white }}>
-          <View style={{ width: 50 }}>
+          <View style={{ width: 50, padding: '2%' }}>
             <Text style={{ color: theme.colors.chart2, fontSize: 12, fontWeight: '700' }}>
               Carbs
             </Text>
@@ -99,7 +99,7 @@ function Table() {
           </View>
         </View>
         <View style={{ ...styles.rowContainer, borderColor: theme.colors.white }}>
-          <View style={{ width: 50 }}>
+          <View style={{ width: 50, padding: '2%' }}>
             <Text style={{ color: theme.colors.chart3, fontSize: 12, fontWeight: '700' }}>Fat</Text>
           </View>
           <View style={{ width: 50, alignItems: 'flex-end' }}>
