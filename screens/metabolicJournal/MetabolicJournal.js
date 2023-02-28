@@ -60,7 +60,7 @@ function MetabolicJournal({ navigation }) {
             Users need to be able to reorder components in the array by pressing and dragging them to a new position
             Users need to be able to be able to add/replace a component in the pinned section
       */}
-      <ScrollView directionalLockEnabled>
+      <ScrollView directionalLockEnabled style={{ width: '100%' }}>
         <PinnedComponent
           metabolicData={metabolicData}
           setMetabolicData={setMetabolicData}
