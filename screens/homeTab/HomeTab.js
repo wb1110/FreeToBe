@@ -60,7 +60,7 @@ function HomeTab() {
             },
           ]}
         >
-          {complete ? (
+          {complete && calories ? (
             <Swiper
               style={{ height: 300, justifyContent: 'center' }}
               activeDotColor="white"
@@ -107,10 +107,17 @@ function HomeTab() {
                 <MaterialIcons name="view-column" size={150} color="white" />
               </View>
               <View>
-                <Text h4>
-                  Before we can show you useful data here, we need you to complete the Three Day Log
-                  in the Tracker tab!
-                </Text>
+                {complete ? (
+                  <Text h4>
+                    Before we can show you useful data here, we need you to record the food you have
+                    consumed so far today!
+                  </Text>
+                ) : (
+                  <Text h4>
+                    Before we can show you useful data for today, we need you to complete the Three
+                    Day Log in the Tracker tab!
+                  </Text>
+                )}
               </View>
             </View>
           )}
