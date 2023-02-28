@@ -8,6 +8,7 @@ import getTodaysTrackerData from '../../functions/getTodaysTrackerData';
 import useGoalUpdateConditions from '../../functions/goalUpdateConditions';
 import useThreeDayLogStore from '../../state/ThreeDayLogStore';
 import useTrackerStore from '../../state/TrackerStore';
+import Blog from './blog/Blog';
 import CMS from './cms/CMS';
 import Instagram from './instagram/Instagram';
 import Slide1 from './slideSection/Slide1';
@@ -163,15 +164,14 @@ function HomeTab() {
         >
           <View
             style={{
-              backgroundColor: theme.colors.primary,
               margin: 12,
               padding: 12,
               flex: 1,
+              alignItems: 'center',
             }}
           >
-            <Text h3 h3Style={{ marginBottom: 12 }}>
-              Blog Feed
-            </Text>
+            <Text h4>Free To Be Nourished Blog</Text>
+            <Blog />
           </View>
         </View>
       </ScrollView>

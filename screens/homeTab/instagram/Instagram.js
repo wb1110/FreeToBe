@@ -1,5 +1,5 @@
 import { View, Text, Linking } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Image } from '@rneui/themed';
 import { INSTA_ACCESS } from '@env';
