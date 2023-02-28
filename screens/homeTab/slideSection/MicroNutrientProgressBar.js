@@ -28,7 +28,7 @@ export default function MicroNutrientProgressBar({ color, title, consumed, goal,
   };
 
   return (
-    <View style={{ marginBottom: 16, marginRight: 8 }}>
+    <View style={{ marginBottom: '2%', marginRight: '2%', width: '30%' }}>
       <Text style={{ fontSize: 12, alignSelf: 'center', color }}>{title}</Text>
       <View
         style={{

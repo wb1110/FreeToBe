@@ -9,6 +9,7 @@ export default function Slide1({ carbs, fats, protein, navigation }) {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        width: '100%',
       }}
     >
       <View style={{ flex: 1, alignItems: 'center' }}>

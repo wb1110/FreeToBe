@@ -28,6 +28,7 @@ export default function Slide3({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        width: '100%',
       }}
     >
       <View style={{ flex: 1, alignItems: 'center' }}>
@@ -35,7 +36,7 @@ export default function Slide3({
           style={{
             padding: 5,
             flexDirection: 'row',
-            width: 350,
+            width: '100%',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
           }}
