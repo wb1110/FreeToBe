@@ -50,7 +50,7 @@ function Table() {
   const todaysData = getTodaysTrackerData(tracker);
   const { protein, carbs, fats } = todaysData;
   const goalPercentage = (consumed, goal) => {
-    if (consumed > 0 && goal !== 0) {
+    if (consumed > 0 && goal > 0) {
       return Math.round((consumed / goal) * 100);
     }
     return 0;

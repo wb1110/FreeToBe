@@ -14,7 +14,10 @@ export const macroGoal = (ideal, avg, macro) => {
       }
       if (avg > ideal) {
         if (macro === 'protein' || macro === 'carbs') {
-          return (avg - 5).toFixed(2);
+          if (avg > 5) {
+            return (avg - 5).toFixed(2);
+          }
+          return avg.toFixed(2);
         }
         if (macro === 'fat') {
           return (avg - 2).toFixed(2);
@@ -31,7 +34,10 @@ export const macroGoal = (ideal, avg, macro) => {
       }
       if (avg > ideal) {
         if (macro === 'protein' || macro === 'carbs') {
-          return (avg - 10).toFixed(2);
+          if (avg > 10) {
+            return (avg - 10).toFixed(2);
+          }
+          return avg.toFixed(2);
         }
         if (macro === 'fat') {
           return (avg - 3).toFixed(2);
